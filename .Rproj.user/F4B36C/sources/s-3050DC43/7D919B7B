@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1575501946696.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3799743191",
+    "id" : "7D919B7B",
+    "lastKnownWriteTime" : 1575501960,
+    "last_content_update" : 1575501960611,
+    "path" : "C:/Users/rata/switchdrive/Projekte/2019_15_R_for_ArcGISusers/01_Making_Maps/Making_Maps.Rmd",
+    "project_path" : "01_Making_Maps/Making_Maps.Rmd",
+    "properties" : {
+        "cursorPosition" : "0,13",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

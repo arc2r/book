@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>0.1 Binary Predicates and DE-9IM | _main.utf8.md</title>
+  <meta name="description" content="" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="0.1 Binary Predicates and DE-9IM | _main.utf8.md" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="0.1 Binary Predicates and DE-9IM | _main.utf8.md" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="0.1" data-path=""><a href="#binary-predicates-and-de-9im"><i class="fa fa-check"></i><b>0.1</b> Binary Predicates and DE-9IM</a></li>
+<li class="chapter" data-level="0.2" data-path=""><a href="#rooks-case"><i class="fa fa-check"></i><b>0.2</b> Rooks Case</a></li>
+<li class="chapter" data-level="0.3" data-path=""><a href="#bishops-case"><i class="fa fa-check"></i><b>0.3</b> Bishops Case</a></li>
+<li class="chapter" data-level="0.4" data-path=""><a href="#toplogy-rules"><i class="fa fa-check"></i><b>0.4</b> Toplogy Rules</a><ul>
+<li class="chapter" data-level="0.4.1" data-path=""><a href="#must-not-overlap"><i class="fa fa-check"></i><b>0.4.1</b> Must not overlap</a></li>
+<li class="chapter" data-level="0.4.2" data-path=""><a href="#must-not-have-gaps"><i class="fa fa-check"></i><b>0.4.2</b> Must not have gaps</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<!--bookdown:title:end-->
+<!--bookdown:title:start-->
+<div id="binary-predicates-and-de-9im" class="section level2">
+<h2><span class="header-section-number">0.1</span> Binary Predicates and DE-9IM</h2>
+<p>Binary Predicates check topological relationships betweeen geometries. This can be very practical for data quality questions (e.g. “None of the State borders should ovelap”) or also for neighbourhood question (e.g. “which states border the state of Nevada?”).</p>
+<p>Lets take the example of a chessboard:</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>Some topological relationships have specific names. For example, if we want to know which field touch a specific field, the name for this predicate is “touches”. This is implemented in the function <code>st_touches</code> of the packages <code>sf</code>:</p>
+<p>So to see which field touch field number 36, we can write the following line of code:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">st_touches</span>(board[<span class="dv">36</span>,],board)</a></code></pre></div>
+<pre><code>## Sparse geometry binary predicate list of length 1, where the predicate was `touches&#39;
+##  1: 27, 28, 29, 35, 37, 43, 44, 45</code></pre>
+<p>Visually, these are the following fields:
+<img src="_main_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Similarly, there are further named topological relationships. Each of them has it’s own function in R:</p>
+<ul>
+<li>Contains (<code>st_contains</code>)</li>
+<li>Covers (<code>st_covers</code>)</li>
+<li>Intersects (<code>st_intersects</code>)</li>
+<li>Within / Inside (<code>st_within</code>)</li>
+<li>Covered by (<code>st_covered_by</code>)</li>
+<li>Crosses (<code>st_crosses</code>)</li>
+<li>Overlaps (<code>st_overlaps</code>)</li>
+</ul>
+<p>Regarding the visual example above, we can imagine a chess piece placed on field #36. If this figure was a Queen or a King, all of the fields resulting from <code>st_touches</code> are reachable. In terms of contiguity, this is what is typically called the Queen’s or the King’s Case. However, this is might not the relationship that we are looking for: Say we would want to exclude the diagonal fields from our selection, the way a Rook would move in chess. How can we implement this in R?</p>
+<p>None of the named topological relationships (binary predicates) above correctly describes this case (<code>touches_but_not_at_edges</code> or <code>shares_boundary</code> would be appropriate). In this case, we can use the Dimensionally Extended 9-Intersection Model (DE-9IM) to precisely formulate the realtionship we are looking for: the Rooks Case.</p>
+<p>IN DE-9IM, the intersection of two objects is viewed at three levels for each object: The Interior, the Boundry and the Exterior (<span class="math inline">\(3^2= 9\)</span>, hence the name). These levels mean different things for Polygons, Lines or Points, but let’s just look at the simple case for now, polygons (which is the case for our chess fields). Take the following example</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>The interior of a polygon is the area inside the polygon. If the two areas overlap (as is the case of blue and red), the result from an intersection would also be a polygon. More formally: The Dimesion of <span class="math inline">\(I(blue) \cap I(red)\)</span> is an area. Areas get a value of 2, Lines 1 and points 0. If there is no intersection (as is the case in blue and green), the result equals to <code>FALSE</code>.</p>
+<p>This was the first of 9 Intersections. Let’s look at the next one:</p>
+<p>Interior of blue with the boundry of green:</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>The resulting object has a dimenion “line”, i.e. 1. Formally: <span class="math inline">\(dim(I(blue) \cap B(red)) = 1\)</span>. Now just for the sake of looking at the third level (Exerior), let’s look at what this looks like:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">p2_ls &lt;-<span class="st"> </span><span class="kw">st_cast</span>(p2,<span class="st">&quot;LINESTRING&quot;</span>)</a>
+<a class="sourceLine" id="cb3-2" title="2">p2_ls2 &lt;-<span class="st"> </span><span class="kw">st_intersection</span>(p1,p2_ls)</a>
+<a class="sourceLine" id="cb3-3" title="3"></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="kw">ggplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> p1, <span class="dt">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> p2, <span class="dt">fill =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> <span class="kw">st_difference</span>(p1,p2), <span class="dt">fill =</span> <span class="st">&quot;yellow&quot;</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb3-8" title="8"><span class="st">  </span><span class="kw">theme_void</span>()</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>The resulting object is again an area, i.e. 2. Formally <span class="math inline">\(dim(I(blue) \cap E(red)) = 2\)</span>.</p>
+<p>If we go through all intersections of <strong>I</strong>nterior, <strong>B</strong>oundry and <strong>E</strong>xterior of both geometries, we can denote for each comination what type of dimesion we “allow”. This can be either 0 (for points), 1 (for lines) or 3 (for areas) or <code>TRUE</code> (for either of these), or <code>FALSE</code> (for none of these) or <code>*</code> (for "I dont care).</p>
+<p><img src="https://postgis.net/workshops/postgis-intro/_images/de9im3.jpg" /></p>
+<p>Why go through all this trouble? Because we would like to specify the rooks case, and none of the named predicates matches. So let’s define the rooks case ourselves:</p>
+</div>
+<div id="rooks-case" class="section level2">
+<h2><span class="header-section-number">0.2</span> Rooks Case</h2>
+<p>If we go throught the all nine combinations of the DE-9IM, this is what defines the rooks case:</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Interior</th>
+<th>Boundary</th>
+<th>Exterior</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Interior</td>
+<td><strong>nothing</strong></td>
+<td>dont care</td>
+<td>dont care</td>
+</tr>
+<tr class="even">
+<td>Boundary</td>
+<td>dont care</td>
+<td><strong>Line</strong></td>
+<td>dont care</td>
+</tr>
+<tr class="odd">
+<td>Exterior</td>
+<td>dont care</td>
+<td>dont care</td>
+<td>dont care</td>
+</tr>
+</tbody>
+</table>
+<p>We can now write this into a string, starting from the top left: F<strong><em>1</em></strong>*</p>
+<p>Now that we have this string, we case use <code>st_relate()</code>and specify the string as the pattern we are looking for:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">st_relate</span>(board[<span class="dv">36</span>,],board,<span class="dt">pattern =</span> <span class="st">&quot;F***1****&quot;</span>)</a></code></pre></div>
+<pre><code>## Sparse geometry binary predicate list of length 1, where the predicate was `relate_pattern&#39;
+##  1: 28, 35, 37, 44</code></pre>
+<p>Which visually gives us this pattern:</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>Because this was so much fun, let’s also have a look at the opposite, the Bishops Case.</p>
+</div>
+<div id="bishops-case" class="section level2">
+<h2><span class="header-section-number">0.3</span> Bishops Case</h2>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Interior</th>
+<th>Boundary</th>
+<th>Exterior</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Interior</td>
+<td><strong>nothing</strong></td>
+<td>dont care</td>
+<td>dont care</td>
+</tr>
+<tr class="even">
+<td>Boundary</td>
+<td>dont care</td>
+<td><strong>Point</strong></td>
+<td>dont care</td>
+</tr>
+<tr class="odd">
+<td>Exterior</td>
+<td>dont care</td>
+<td>dont care</td>
+<td>dont care</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">st_relate</span>(board[<span class="dv">36</span>,],board,<span class="dt">pattern =</span> <span class="st">&quot;F***0****&quot;</span>)</a></code></pre></div>
+<pre><code>## Sparse geometry binary predicate list of length 1, where the predicate was `relate_pattern&#39;
+##  1: 27, 29, 43, 45</code></pre>
+<p>Visually:</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+</div>
+<div id="toplogy-rules" class="section level2">
+<h2><span class="header-section-number">0.4</span> Toplogy Rules</h2>
+<p>in ArcGIS, you create a topology rule by first creating a Feature Dataset in a Geodatabase, and then adding one or more Topology Rules to that Feature Dataset. In R, you can check topology using the DE-9IM together with <code>st_relate()</code>.</p>
+<div id="must-not-overlap" class="section level3">
+<h3><span class="header-section-number">0.4.1</span> Must not overlap</h3>
+<p><img src="images/0_0.jpg" /></p>
+<p>In context of DE-9IM, this is a simple case. The polygon interiors should not overlap <em>at all</em>, everything else does not matter. Interior-Interior is the first of the 9 intersections, so the the intersection matrix as a code string would be: <strong>2********</strong>. In the case of the example below:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">set.seed</span>(<span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb8-2" title="2">nrows &lt;-<span class="st"> </span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb8-3" title="3">circs &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</a>
+<a class="sourceLine" id="cb8-4" title="4">  <span class="dt">id =</span> <span class="dv">1</span><span class="op">:</span>nrows,</a>
+<a class="sourceLine" id="cb8-5" title="5">  <span class="dt">x =</span> <span class="kw">rnorm</span>(nrows),</a>
+<a class="sourceLine" id="cb8-6" title="6">  <span class="dt">y =</span> <span class="kw">rnorm</span>(nrows)</a>
+<a class="sourceLine" id="cb8-7" title="7">) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb8-8" title="8"><span class="st">  </span><span class="kw">st_as_sf</span>(<span class="dt">coords =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb8-9" title="9"><span class="st">  </span><span class="kw">st_buffer</span>(<span class="fl">0.25</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1">circsplot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(circs) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">fill =</span> <span class="st">&quot;blue&quot;</span>,<span class="dt">alpha =</span> <span class="fl">0.3</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-3" title="3"><span class="st">  </span><span class="kw">geom_sf_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> id)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-4" title="4"><span class="st">  </span><span class="kw">theme_void</span>()</a>
+<a class="sourceLine" id="cb9-5" title="5">circsplot</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p>This gives us a sparse matrix as an output, which is esentially a list with the same length as the <code>x</code>, where each position is a vector of integers with the indicies of the features in <code>y</code> (which may equal to <code>x</code>) where the pattern matches.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="kw">st_relate</span>(circs,<span class="dt">pattern =</span> <span class="st">&quot;2********&quot;</span>)</a></code></pre></div>
+<pre><code>## Sparse geometry binary predicate list of length 10, where the predicate was `relate_pattern&#39;
+##  1: 1, 2, 5
+##  2: 1, 2, 4, 5, 10
+##  3: 3
+##  4: 2, 4
+##  5: 1, 2, 5
+##  6: 6
+##  7: 7
+##  8: 8
+##  9: 9
+##  10: 2, 10</code></pre>
+<p>Setting <code>sparse = FALSE</code> returns a crossmatrix of all combinations.W</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1">crossmatrix &lt;-<span class="st"> </span><span class="kw">st_relate</span>(circs,<span class="dt">pattern =</span> <span class="st">&quot;2********&quot;</span>,<span class="dt">sparse =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb12-2" title="2">crossmatrix[<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>] <span class="co"># only showing 6 since this prints nicely</span></a></code></pre></div>
+<pre><code>##       [,1]  [,2]  [,3]  [,4]  [,5]  [,6]
+## [1,]  TRUE  TRUE FALSE FALSE  TRUE FALSE
+## [2,]  TRUE  TRUE FALSE  TRUE  TRUE FALSE
+## [3,] FALSE FALSE  TRUE FALSE FALSE FALSE
+## [4,] FALSE  TRUE FALSE  TRUE FALSE FALSE
+## [5,]  TRUE  TRUE FALSE FALSE  TRUE FALSE
+## [6,] FALSE FALSE FALSE FALSE FALSE  TRUE</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="co"># Remove the diagonals since it&#39;s simply each feature tested against itself</span></a>
+<a class="sourceLine" id="cb14-2" title="2"><span class="kw">diag</span>(crossmatrix) &lt;-<span class="st"> </span><span class="ot">FALSE</span></a>
+<a class="sourceLine" id="cb14-3" title="3">error &lt;-<span class="st"> </span><span class="kw">which</span>(crossmatrix,<span class="dt">arr.ind =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb14-4" title="4"><span class="st">  </span><span class="kw">as.vector</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb14-5" title="5"><span class="st">  </span><span class="kw">unique</span>()</a>
+<a class="sourceLine" id="cb14-6" title="6"></a>
+<a class="sourceLine" id="cb14-7" title="7"></a>
+<a class="sourceLine" id="cb14-8" title="8">circsplot <span class="op">+</span></a>
+<a class="sourceLine" id="cb14-9" title="9"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> circs[error,], <span class="dt">fill =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.3</span>)</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+</div>
+<div id="must-not-have-gaps" class="section level3">
+<h3><span class="header-section-number">0.4.2</span> Must not have gaps</h3>
+<p><img src="images/0_0.jpg" /></p>
+<p>Lets cosider the North Carolina Dataset for this question.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1">nc =<span class="st"> </span><span class="kw">st_read</span>(<span class="kw">system.file</span>(<span class="st">&quot;shape/nc.shp&quot;</span>, <span class="dt">package=</span><span class="st">&quot;sf&quot;</span>), <span class="dt">quiet =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb15-2" title="2"></a>
+<a class="sourceLine" id="cb15-3" title="3"><span class="kw">ggplot</span>(nc) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb15-4" title="4"><span class="st">  </span><span class="kw">geom_sf</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb15-5" title="5"><span class="st">  </span><span class="kw">theme_void</span>()</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p>The first task is to dissolve all adjecent polygons together</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1">nc_union &lt;-<span class="st"> </span><span class="kw">st_union</span>(nc)</a>
+<a class="sourceLine" id="cb16-2" title="2">nc_union</a></code></pre></div>
+<pre><code>## Geometry set for 1 feature 
+## geometry type:  MULTIPOLYGON
+## dimension:      XY
+## bbox:           xmin: -84.32385 ymin: 33.88199 xmax: -75.45698 ymax: 36.58965
+## epsg (SRID):    4267
+## proj4string:    +proj=longlat +datum=NAD27 +no_defs</code></pre>
+<p>If the output is a multipolygon as it is the case here, it’s bad news, there are gaps. To check which parts are disconnected from each other, we can cast the multipolygon to a polygon (in ArcGIS Terms “Multipart to singlepart”), add a rowname for each part and colour it by rowname.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1">nc_singlepart &lt;-<span class="st"> </span>nc_union <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb18-2" title="2"><span class="st">  </span><span class="kw">st_cast</span>(<span class="st">&quot;POLYGON&quot;</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb18-3" title="3"><span class="st">  </span><span class="kw">st_sf</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb18-4" title="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">id =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">n</span>())</a>
+<a class="sourceLine" id="cb18-5" title="5"></a>
+<a class="sourceLine" id="cb18-6" title="6"><span class="kw">ggplot</span>(nc_singlepart) <span class="op">+</span></a>
+<a class="sourceLine" id="cb18-7" title="7"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> <span class="kw">factor</span>(id))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb18-8" title="8"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">fill =</span> <span class="st">&quot;id&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb18-9" title="9"><span class="st">  </span><span class="kw">theme_void</span>()</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p>But maybe we can live with these Islands in the state of North Carolina, since this is in fact an accurate representation of reality (the gaps are a result of the Atlantic Ocean). We must now check whether the individual geometries have holes. Here we can make use of the way polygons are defined in <code>sf</code>:</p>
+<blockquote>
+<p>geometry with a positive area (two-dimensional); sequence of points form a closed, non-self intersecting ring; the first ring denotes the exterior ring, zero or more subsequent rings denote holes in this exterior ring</p>
+</blockquote>
+<p>This means that the length of each Polygon geometry must be 1. A length of 2 or more would mean that there are one (or more) holes in the geometry. We can do this with any of the functions from the <code>apply</code> family, I prefer <code>purrr</code>:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1"><span class="kw">map_lgl</span>(nc_singlepart<span class="op">$</span>geometry,<span class="op">~</span><span class="kw">length</span>(.x)<span class="op">==</span><span class="st"> </span><span class="dv">1</span>)</a></code></pre></div>
+<pre><code>## [1] TRUE TRUE TRUE TRUE TRUE TRUE</code></pre>
+<p>Let’s see what happens if we cut a hole into the polygons</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1">holes &lt;-<span class="st"> </span>nc_singlepart <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb21-2" title="2"><span class="st">  </span><span class="kw">st_union</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb21-3" title="3"><span class="st">  </span><span class="kw">st_centroid</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb21-4" title="4"><span class="st">  </span><span class="kw">st_buffer</span>(<span class="fl">0.5</span>)</a>
+<a class="sourceLine" id="cb21-5" title="5"></a>
+<a class="sourceLine" id="cb21-6" title="6">nc_holes &lt;-<span class="st"> </span><span class="kw">st_difference</span>(nc_singlepart,holes)</a>
+<a class="sourceLine" id="cb21-7" title="7"></a>
+<a class="sourceLine" id="cb21-8" title="8"><span class="kw">ggplot</span>(nc_holes) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb21-9" title="9"><span class="st">  </span><span class="kw">geom_sf</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb21-10" title="10"><span class="st">  </span><span class="kw">theme_void</span>()</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1"><span class="kw">map_lgl</span>(nc_holes<span class="op">$</span>geometry,<span class="op">~</span><span class="kw">length</span>(.x)<span class="op">==</span><span class="st"> </span><span class="dv">1</span>)</a></code></pre></div>
+<pre><code>## [1]  TRUE  TRUE  TRUE  TRUE FALSE  TRUE</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

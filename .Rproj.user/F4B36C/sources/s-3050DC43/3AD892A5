@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1575501815604.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "3AD892A5",
+    "lastKnownWriteTime" : 1575502668,
+    "last_content_update" : 1575502668877,
+    "path" : "C:/Users/rata/switchdrive/Projekte/2019_15_R_for_ArcGISusers/05_Geoprocessing_Tools/Geoprocessing_Tools.Rmd",
+    "project_path" : "05_Geoprocessing_Tools/Geoprocessing_Tools.Rmd",
+    "properties" : {
+        "cursorPosition" : "1,21",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
