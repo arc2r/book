@@ -1,9 +1,0 @@
-rmd_files: [
-  "index.Rmd",
-  "01_Making_Maps/Making_Maps.Rmd",
-  "02_Select_by_Attribute_or_Location/Select_by_Attribute_or_Location.Rmd",
-  "05_Geoprocessing_Tools/Geoprocessing_tools.Rmd",
-  "06_Topology_Rules/Topology_Rules.Rmd",
-  "07_Additional_Reading/BinaryPredicates.Rmd"
-]
-delete_merged_file: TRUE

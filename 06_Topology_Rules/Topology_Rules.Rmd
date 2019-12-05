@@ -10,6 +10,7 @@ library(tidyverse)
 
 in ArcGIS, you create a topology rule by first creating a Feature Dataset in a Geodatabase, and then adding one or more Topology Rules to that Feature Dataset. In R, you can check topology using the DE-9IM together with `st_relate()`.
 
+## Polygons
 
 ### Must not overlap
 
@@ -122,34 +123,133 @@ ggplot(nc_holes) +
 map_lgl(nc_holes$geometry,~length(.x)== 1)
 ```
 
+### Contains point
+
+![](06_Topology_Rules/images/1_0.jpg)
+
+### Contains one Point 
+
+![](06_Topology_Rules/images/1_1.jpg)
+
+
+### Must be covered by feature class of
+
+![](06_Topology_Rules/images/2_0.jpg)
+
+
+### Boundary must be covered by
+
+![](06_Topology_Rules/images/2_1.jpg)
+
+
+### Must not overlap with
+
+![](06_Topology_Rules/images/3_0.jpg)
+
+
+### Must be covered by 
+
+![](06_Topology_Rules/images/3_1.jpg)
+
+### Area boundary must be covered by boundary of
+
+![](06_Topology_Rules/images/4_0.jpg)
+
+### Must cover each other
+
+![](06_Topology_Rules/images/4_1.jpg)
+
+
+## Line or Polygon
+
+### Must be larger than cluster tolarance
 
 ![](06_Topology_Rules/images/0_2.jpg)
+
+## Line
+
+### Must not have pseudo nodes
+
 ![](06_Topology_Rules/images/0_3.jpg)
-![](06_Topology_Rules/images/1_0.jpg)
-![](06_Topology_Rules/images/1_1.jpg)
+
+### Must not have dangles
+
 ![](06_Topology_Rules/images/1_2.jpg)
+
+### Must not self overlap
+
 ![](06_Topology_Rules/images/1_3.jpg)
-![](06_Topology_Rules/images/2_0.jpg)
-![](06_Topology_Rules/images/2_1.jpg)
+
+### Must not overlap
+
 ![](06_Topology_Rules/images/2_2.jpg)
+
+### Must not self-intersect
+
 ![](06_Topology_Rules/images/2_3.jpg)
-![](06_Topology_Rules/images/3_0.jpg)
-![](06_Topology_Rules/images/3_1.jpg)
+
+### Must not intersect
+
 ![](06_Topology_Rules/images/3_2.jpg)
+
+### Must be single part
+
 ![](06_Topology_Rules/images/3_3.jpg)
-![](06_Topology_Rules/images/4_0.jpg)
-![](06_Topology_Rules/images/4_1.jpg)
+
+### Must not intersect with
+
 ![](06_Topology_Rules/images/4_2.jpg)
+
+### Must be covered by feature class of
+
 ![](06_Topology_Rules/images/4_3.jpg)
-![](06_Topology_Rules/images/5_0.jpg)
-![](06_Topology_Rules/images/5_1.jpg)
+
+### Must not intersect or touch interior
+
 ![](06_Topology_Rules/images/5_2.jpg)
+
+### Must be covered by boundary of
+
 ![](06_Topology_Rules/images/5_3.jpg)
-![](06_Topology_Rules/images/6_0.jpg)
-![](06_Topology_Rules/images/6_1.jpg)
+
+### Must not intersect or touch interior with
+
 ![](06_Topology_Rules/images/6_2.jpg)
+
+### Must be properly inside
+
 ![](06_Topology_Rules/images/6_3.jpg)
-![](06_Topology_Rules/images/7_0.jpg)
-![](06_Topology_Rules/images/7_1.jpg)
+
+### Must not overlap with
+
 ![](06_Topology_Rules/images/7_2.jpg)
+
+### Endpoint must be covered by
+
 ![](06_Topology_Rules/images/7_3.jpg)
+
+## Point
+
+### Must coincide with 
+
+![](06_Topology_Rules/images/5_0.jpg)
+
+### Must be disjoint
+
+![](06_Topology_Rules/images/5_1.jpg)
+
+### Must be covered by endpoint of
+
+![](06_Topology_Rules/images/6_0.jpg)
+
+### Point must be covered by line
+
+![](06_Topology_Rules/images/6_1.jpg)
+
+### Must be properly inside
+
+![](06_Topology_Rules/images/7_0.jpg)
+
+### Must be covered by boundary of
+
+![](06_Topology_Rules/images/7_1.jpg)
