@@ -6,10 +6,18 @@ output: bookdown::gitbook
 ---
 
 
-# Abstract
+# TL;DR
 
-![](Burning_Chita2.jpg)
+This is a ressource for people coming from ArcGIS who want to learn spatial stuff in R. You will soon find out that the open source world has agreed on many standards, this makes transioning between, say  spatial Python, spatial Postgres and spatial R very easy. ArcGIS however has coined it's own terms and methods, so transitiong away from ArcGIS might need a little help. This ressource should provide some help on this journey.
 
+
+
+![](fire_PNG6023.png)
+
+
+
+
+# Foreword
 
 
 After tweeting this a couple of times, I decided to start my own ressource on the topic: 
@@ -20,20 +28,6 @@ I, like many, leared GIS in University using ArcGIS. It took me a considerable a
 
 There are already a great many spatial-R Ressources out there, and I'm not planning to rewrite everything that has been written. My aim is just to provide a resource for people looking to do spial stuff in R, but only know the ArcGIS-Term for it. This might mean that for some topics, I will simply provide a link to an existing ressource. 
 
-Currently, I have to following topics in mind: 
-
-- Making Maps
-  - Dynamic, for exploration purposes
-  - Static, for presentation purposes
-- Select by Attribute
-- Select by Location
-- Topology Rules
-- Spatial Joins
-- Geoprocessing Tools
-  - KDE
-  - Multippoint to singlepoint
-  - Merge, Join, Intersect, Erase...
-  - Aggregate Polygons
   
 
 
