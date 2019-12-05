@@ -242,23 +242,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">6.1.1</span> Must not overlap</h3>
 <p><img src="06_Topology_Rules/images/0_0.jpg" /></p>
 <p>In context of DE-9IM, this is a simple case. The polygon interiors should not overlap <em>at all</em>, everything else does not matter. Interior-Interior is the first of the 9 intersections, so the the intersection matrix as a code string would be: <strong>2********</strong>. In the case of the example below:</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" title="1"><span class="kw">set.seed</span>(<span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb40-2" title="2">nrows &lt;-<span class="st"> </span><span class="dv">10</span></a>
-<a class="sourceLine" id="cb40-3" title="3">circs &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</a>
-<a class="sourceLine" id="cb40-4" title="4">  <span class="dt">id =</span> <span class="dv">1</span><span class="op">:</span>nrows,</a>
-<a class="sourceLine" id="cb40-5" title="5">  <span class="dt">x =</span> <span class="kw">rnorm</span>(nrows),</a>
-<a class="sourceLine" id="cb40-6" title="6">  <span class="dt">y =</span> <span class="kw">rnorm</span>(nrows)</a>
-<a class="sourceLine" id="cb40-7" title="7">) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb40-8" title="8"><span class="st">  </span><span class="kw">st_as_sf</span>(<span class="dt">coords =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb40-9" title="9"><span class="st">  </span><span class="kw">st_buffer</span>(<span class="fl">0.25</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1">circsplot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(circs) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb41-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">fill =</span> <span class="st">&quot;blue&quot;</span>,<span class="dt">alpha =</span> <span class="fl">0.3</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb41-3" title="3"><span class="st">  </span><span class="kw">geom_sf_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> id)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb41-4" title="4"><span class="st">  </span><span class="kw">theme_void</span>()</a>
-<a class="sourceLine" id="cb41-5" title="5">circsplot</a></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1"><span class="kw">set.seed</span>(<span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb42-2" title="2">nrows &lt;-<span class="st"> </span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb42-3" title="3">circs &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</a>
+<a class="sourceLine" id="cb42-4" title="4">  <span class="dt">id =</span> <span class="dv">1</span><span class="op">:</span>nrows,</a>
+<a class="sourceLine" id="cb42-5" title="5">  <span class="dt">x =</span> <span class="kw">rnorm</span>(nrows),</a>
+<a class="sourceLine" id="cb42-6" title="6">  <span class="dt">y =</span> <span class="kw">rnorm</span>(nrows)</a>
+<a class="sourceLine" id="cb42-7" title="7">) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb42-8" title="8"><span class="st">  </span><span class="kw">st_as_sf</span>(<span class="dt">coords =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb42-9" title="9"><span class="st">  </span><span class="kw">st_buffer</span>(<span class="fl">0.25</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1">circsplot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(circs) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb43-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">fill =</span> <span class="st">&quot;blue&quot;</span>,<span class="dt">alpha =</span> <span class="fl">0.3</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb43-3" title="3"><span class="st">  </span><span class="kw">geom_sf_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> id)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb43-4" title="4"><span class="st">  </span><span class="kw">theme_void</span>()</a>
+<a class="sourceLine" id="cb43-5" title="5">circsplot</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 <p>This gives us a sparse matrix as an output, which is esentially a list with the same length as the <code>x</code>, where each position is a vector of integers with the indicies of the features in <code>y</code> (which may equal to <code>x</code>) where the pattern matches.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1"><span class="kw">st_relate</span>(circs,<span class="dt">pattern =</span> <span class="st">&quot;2********&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1"><span class="kw">st_relate</span>(circs,<span class="dt">pattern =</span> <span class="st">&quot;2********&quot;</span>)</a></code></pre></div>
 <pre><code>## Sparse geometry binary predicate list of length 10, where the predicate was `relate_pattern&#39;
 ##  1: 1, 2, 5
 ##  2: 1, 2, 4, 5, 10
@@ -271,8 +271,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9: 9
 ##  10: 2, 10</code></pre>
 <p>Setting <code>sparse = FALSE</code> returns a crossmatrix of all combinations.W</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1">crossmatrix &lt;-<span class="st"> </span><span class="kw">st_relate</span>(circs,<span class="dt">pattern =</span> <span class="st">&quot;2********&quot;</span>,<span class="dt">sparse =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb44-2" title="2">crossmatrix[<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>] <span class="co"># only showing 6 since this prints nicely</span></a></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1">crossmatrix &lt;-<span class="st"> </span><span class="kw">st_relate</span>(circs,<span class="dt">pattern =</span> <span class="st">&quot;2********&quot;</span>,<span class="dt">sparse =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb46-2" title="2">crossmatrix[<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>] <span class="co"># only showing 6 since this prints nicely</span></a></code></pre></div>
 <pre><code>##       [,1]  [,2]  [,3]  [,4]  [,5]  [,6]
 ## [1,]  TRUE  TRUE FALSE FALSE  TRUE FALSE
 ## [2,]  TRUE  TRUE FALSE  TRUE  TRUE FALSE
@@ -280,30 +280,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [4,] FALSE  TRUE FALSE  TRUE FALSE FALSE
 ## [5,]  TRUE  TRUE FALSE FALSE  TRUE FALSE
 ## [6,] FALSE FALSE FALSE FALSE FALSE  TRUE</code></pre>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1"><span class="co"># Remove the diagonals since it&#39;s simply each feature tested against itself</span></a>
-<a class="sourceLine" id="cb46-2" title="2"><span class="kw">diag</span>(crossmatrix) &lt;-<span class="st"> </span><span class="ot">FALSE</span></a>
-<a class="sourceLine" id="cb46-3" title="3">error &lt;-<span class="st"> </span><span class="kw">which</span>(crossmatrix,<span class="dt">arr.ind =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb46-4" title="4"><span class="st">  </span><span class="kw">as.vector</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb46-5" title="5"><span class="st">  </span><span class="kw">unique</span>()</a>
-<a class="sourceLine" id="cb46-6" title="6"></a>
-<a class="sourceLine" id="cb46-7" title="7"></a>
-<a class="sourceLine" id="cb46-8" title="8">circsplot <span class="op">+</span></a>
-<a class="sourceLine" id="cb46-9" title="9"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> circs[error,], <span class="dt">fill =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.3</span>)</a></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1"><span class="co"># Remove the diagonals since it&#39;s simply each feature tested against itself</span></a>
+<a class="sourceLine" id="cb48-2" title="2"><span class="kw">diag</span>(crossmatrix) &lt;-<span class="st"> </span><span class="ot">FALSE</span></a>
+<a class="sourceLine" id="cb48-3" title="3">error &lt;-<span class="st"> </span><span class="kw">which</span>(crossmatrix,<span class="dt">arr.ind =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb48-4" title="4"><span class="st">  </span><span class="kw">as.vector</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb48-5" title="5"><span class="st">  </span><span class="kw">unique</span>()</a>
+<a class="sourceLine" id="cb48-6" title="6"></a>
+<a class="sourceLine" id="cb48-7" title="7"></a>
+<a class="sourceLine" id="cb48-8" title="8">circsplot <span class="op">+</span></a>
+<a class="sourceLine" id="cb48-9" title="9"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> circs[error,], <span class="dt">fill =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.3</span>)</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 </div>
 <div id="must-not-have-gaps" class="section level3">
 <h3><span class="header-section-number">6.1.2</span> Must not have gaps</h3>
 <p><img src="06_Topology_Rules/images/0_0.jpg" /></p>
 <p>Lets cosider the North Carolina Dataset for this question.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" title="1">nc =<span class="st"> </span><span class="kw">st_read</span>(<span class="kw">system.file</span>(<span class="st">&quot;shape/nc.shp&quot;</span>, <span class="dt">package=</span><span class="st">&quot;sf&quot;</span>), <span class="dt">quiet =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb47-2" title="2"></a>
-<a class="sourceLine" id="cb47-3" title="3"><span class="kw">ggplot</span>(nc) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb47-4" title="4"><span class="st">  </span><span class="kw">geom_sf</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb47-5" title="5"><span class="st">  </span><span class="kw">theme_void</span>()</a></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" title="1">nc =<span class="st"> </span><span class="kw">st_read</span>(<span class="kw">system.file</span>(<span class="st">&quot;shape/nc.shp&quot;</span>, <span class="dt">package=</span><span class="st">&quot;sf&quot;</span>), <span class="dt">quiet =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb49-2" title="2"></a>
+<a class="sourceLine" id="cb49-3" title="3"><span class="kw">ggplot</span>(nc) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb49-4" title="4"><span class="st">  </span><span class="kw">geom_sf</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb49-5" title="5"><span class="st">  </span><span class="kw">theme_void</span>()</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 <p>The first task is to dissolve all adjecent polygons together</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1">nc_union &lt;-<span class="st"> </span><span class="kw">st_union</span>(nc)</a>
-<a class="sourceLine" id="cb48-2" title="2">nc_union</a></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" title="1">nc_union &lt;-<span class="st"> </span><span class="kw">st_union</span>(nc)</a>
+<a class="sourceLine" id="cb50-2" title="2">nc_union</a></code></pre></div>
 <pre><code>## Geometry set for 1 feature 
 ## geometry type:  MULTIPOLYGON
 ## dimension:      XY
@@ -311,36 +311,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## epsg (SRID):    4267
 ## proj4string:    +proj=longlat +datum=NAD27 +no_defs</code></pre>
 <p>If the output is a multipolygon as it is the case here, it’s bad news, there are gaps. To check which parts are disconnected from each other, we can cast the multipolygon to a polygon (in ArcGIS Terms “Multipart to singlepart”), add a rowname for each part and colour it by rowname.</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" title="1">nc_singlepart &lt;-<span class="st"> </span>nc_union <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb50-2" title="2"><span class="st">  </span><span class="kw">st_cast</span>(<span class="st">&quot;POLYGON&quot;</span>)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb50-3" title="3"><span class="st">  </span><span class="kw">st_sf</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb50-4" title="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">id =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">n</span>())</a>
-<a class="sourceLine" id="cb50-5" title="5"></a>
-<a class="sourceLine" id="cb50-6" title="6"><span class="kw">ggplot</span>(nc_singlepart) <span class="op">+</span></a>
-<a class="sourceLine" id="cb50-7" title="7"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> <span class="kw">factor</span>(id))) <span class="op">+</span></a>
-<a class="sourceLine" id="cb50-8" title="8"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">fill =</span> <span class="st">&quot;id&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb50-9" title="9"><span class="st">  </span><span class="kw">theme_void</span>()</a></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" title="1">nc_singlepart &lt;-<span class="st"> </span>nc_union <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb52-2" title="2"><span class="st">  </span><span class="kw">st_cast</span>(<span class="st">&quot;POLYGON&quot;</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb52-3" title="3"><span class="st">  </span><span class="kw">st_sf</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb52-4" title="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">id =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">n</span>())</a>
+<a class="sourceLine" id="cb52-5" title="5"></a>
+<a class="sourceLine" id="cb52-6" title="6"><span class="kw">ggplot</span>(nc_singlepart) <span class="op">+</span></a>
+<a class="sourceLine" id="cb52-7" title="7"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> <span class="kw">factor</span>(id))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb52-8" title="8"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">fill =</span> <span class="st">&quot;id&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb52-9" title="9"><span class="st">  </span><span class="kw">theme_void</span>()</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 <p>But maybe we can live with these Islands in the state of North Carolina, since this is in fact an accurate representation of reality (the gaps are a result of the Atlantic Ocean). We must now check whether the individual geometries have holes. Here we can make use of the way polygons are defined in <code>sf</code>:</p>
 <blockquote>
 <p>geometry with a positive area (two-dimensional); sequence of points form a closed, non-self intersecting ring; the first ring denotes the exterior ring, zero or more subsequent rings denote holes in this exterior ring</p>
 </blockquote>
 <p>This means that the length of each Polygon geometry must be 1. A length of 2 or more would mean that there are one (or more) holes in the geometry. We can do this with any of the functions from the <code>apply</code> family, I prefer <code>purrr</code>:</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" title="1"><span class="kw">map_lgl</span>(nc_singlepart<span class="op">$</span>geometry,<span class="op">~</span><span class="kw">length</span>(.x)<span class="op">==</span><span class="st"> </span><span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" title="1"><span class="kw">map_lgl</span>(nc_singlepart<span class="op">$</span>geometry,<span class="op">~</span><span class="kw">length</span>(.x)<span class="op">==</span><span class="st"> </span><span class="dv">1</span>)</a></code></pre></div>
 <pre><code>## [1] TRUE TRUE TRUE TRUE TRUE TRUE</code></pre>
 <p>Let’s see what happens if we cut a hole into the polygons</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" title="1">holes &lt;-<span class="st"> </span>nc_singlepart <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb53-2" title="2"><span class="st">  </span><span class="kw">st_union</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb53-3" title="3"><span class="st">  </span><span class="kw">st_centroid</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb53-4" title="4"><span class="st">  </span><span class="kw">st_buffer</span>(<span class="fl">0.5</span>)</a>
-<a class="sourceLine" id="cb53-5" title="5"></a>
-<a class="sourceLine" id="cb53-6" title="6">nc_holes &lt;-<span class="st"> </span><span class="kw">st_difference</span>(nc_singlepart,holes)</a>
-<a class="sourceLine" id="cb53-7" title="7"></a>
-<a class="sourceLine" id="cb53-8" title="8"><span class="kw">ggplot</span>(nc_holes) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb53-9" title="9"><span class="st">  </span><span class="kw">geom_sf</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb53-10" title="10"><span class="st">  </span><span class="kw">theme_void</span>()</a></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" title="1"><span class="kw">map_lgl</span>(nc_holes<span class="op">$</span>geometry,<span class="op">~</span><span class="kw">length</span>(.x)<span class="op">==</span><span class="st"> </span><span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" title="1">holes &lt;-<span class="st"> </span>nc_singlepart <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb55-2" title="2"><span class="st">  </span><span class="kw">st_union</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb55-3" title="3"><span class="st">  </span><span class="kw">st_centroid</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb55-4" title="4"><span class="st">  </span><span class="kw">st_buffer</span>(<span class="fl">0.5</span>)</a>
+<a class="sourceLine" id="cb55-5" title="5"></a>
+<a class="sourceLine" id="cb55-6" title="6">nc_holes &lt;-<span class="st"> </span><span class="kw">st_difference</span>(nc_singlepart,holes)</a>
+<a class="sourceLine" id="cb55-7" title="7"></a>
+<a class="sourceLine" id="cb55-8" title="8"><span class="kw">ggplot</span>(nc_holes) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb55-9" title="9"><span class="st">  </span><span class="kw">geom_sf</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb55-10" title="10"><span class="st">  </span><span class="kw">theme_void</span>()</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" title="1"><span class="kw">map_lgl</span>(nc_holes<span class="op">$</span>geometry,<span class="op">~</span><span class="kw">length</span>(.x)<span class="op">==</span><span class="st"> </span><span class="dv">1</span>)</a></code></pre></div>
 <pre><code>## [1]  TRUE  TRUE  TRUE  TRUE FALSE  TRUE</code></pre>
 </div>
 <div id="contains-point" class="section level3">

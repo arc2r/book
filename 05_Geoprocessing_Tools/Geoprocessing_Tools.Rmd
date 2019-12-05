@@ -64,7 +64,7 @@ ggplot() +
   geom_sf(data = mypoints, alpha = 0.2, fill = "black") +
   scale_fill_viridis_c() +
   labs(fill = "KDE") +
-  theme_void()
+  theme_void() 
 
 
 ```
@@ -159,6 +159,19 @@ morans_i <- function(sf_object,col) {
 
 ### Raster Interpolation Toolset
 
+```{r}
+library(sp)
+library(sf)
+library(tidyverse)
+library(stars)
+data(meuse)
+
+meuse_sf <- meuse %>%
+  st_as_sf(coords = c("x","y"))
+
+```
+
+
 #### IDW
 
 ```{r}
@@ -187,10 +200,24 @@ my_idw <- function(groundtruth,column,cellsize, nmax = Inf, maxdist = Inf, idp =
 ```
 
 
+```{r}
+meuse_idw <- my_idw(meuse_sf,"copper",cellsize = 10,idp = 3)
+
+ggplot() +
+  geom_stars(data = st_as_stars(meuse_idw)) +
+  scale_fill_viridis_c() +
+  theme_void() +
+  labs(fill = "copper") +
+  coord_equal()
+  
+
+```
+
+
 #### Kriging
 
 ```{r}
-my_krige <- function(groundtruth,column,cellsize, nmax = Inf, maxdist = Inf, idp = 2, extent = NULL){
+my_krige <- function(groundtruth,column,cellsize, nmax = Inf, maxdist = Inf, extent = NULL){
   require(gstat)
   require(sf)
   require(raster)
@@ -200,7 +227,7 @@ my_krige <- function(groundtruth,column,cellsize, nmax = Inf, maxdist = Inf, idp
   
   samples <- st_make_grid(extent,cellsize,what = "centers") %>% st_as_sf()
   my_formula <- formula(paste(column,"~1"))
-  idw_sf <- gstat::krige(formula = my_formula,groundtruth,newdata = samples,nmin = 1, maxdist = maxdist, idp = idp)
+  idw_sf <- gstat::krige(formula = my_formula,groundtruth,newdata = samples,nmin = 1, maxdist = maxdist)
   
   idw_matrix <- cbind(st_coordinates(idw_sf),idw_sf$var1.pred)
   
@@ -215,39 +242,37 @@ my_krige <- function(groundtruth,column,cellsize, nmax = Inf, maxdist = Inf, idp
 ```
 
 
+```{r}
+meuse_krige <- my_krige(meuse_sf,"copper",cellsize = 10,nmax = 30, maxdist = 500)
+
+ggplot() +
+  geom_stars(data = st_as_stars(meuse_krige)) +
+  scale_fill_viridis_c(na.value = NA) +
+  theme_void() +
+  labs(fill = "copper") +
+  coord_equal()
+```
+
 #### Natural Neighbor
 
 Nearest Neighbor:
 
 ```{r}
 
-nc <- st_read(system.file("shape/nc.shp", package="sf"), quiet = TRUE)
-nc_union <- st_union(nc)
+meuse_thiessen <- st_voronoi(st_union(meuse_sf))
+meuse_thiessen <- st_cast(meuse_thiessen)
+meuse_bbox <- meuse_sf %>%
+  st_bbox() %>%
+  st_as_sfc()
 
-points <- nc_union %>%
-  st_sample(1000) %>%
-  st_sf() %>%
-  mutate(val = rnorm(1000))
+meuse_thiessen <- st_intersection(meuse_thiessen,meuse_bbox)
 
-thiessen <- st_voronoi(st_union(points))
-thiessen <- st_cast(thiessen)
-
-thiessen <- st_intersection(thiessen,nc_union)
-
+meuse_thiessen <- st_as_sf(meuse_thiessen)
+meuse_thiessen <- st_join(meuse_thiessen,meuse_sf)
 
 ggplot() + 
-  geom_sf(data = nc) +
-  geom_sf(data = thiessen, fill = NA) +
-  geom_sf(data = points, aes(colour = val)) +
-  theme_void()
-
-
-thiessen <- st_as_sf(thiessen)
-thiessen <- st_join(thiessen,points)
-
-ggplot() + 
-  geom_sf(data = thiessen, aes(fill = val)) +
-  geom_sf(data = points) +
+  geom_sf(data = meuse_thiessen, aes(fill = copper)) +
+  geom_sf(data = meuse_sf) +
   scale_fill_viridis_c() +
   theme_void()
 ```
