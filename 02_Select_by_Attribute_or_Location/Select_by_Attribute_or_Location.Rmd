@@ -1,5 +1,0 @@
-# Select (by Attribute or Location)
-
-## Select by Attribute
-
-## Select by Location

@@ -1,0 +1,45 @@
+## Interactive (for Data Exploration)
+
+Probabbly one of the first things you want to do when working with a dataset is visualizing it spatially. This is basically always the first thing you do in ArcGIS. So how do you this in R?
+
+If your aim is to explore the data, to just get a feel for it, your map needs to:
+
+- allow pan and zoom
+- display attribute information in popups
+- provide a background map
+- be easy to make
+
+There are many packages that provide these features. In terms of simplicity, versatility and scaleablity `tmap` is one of the best in my opion. To see how it works, import the usual libraries and the North Carlolina Sample data.
+
+```{r}
+library(sf)
+library(tidyverse)
+library(tmap)
+
+nc <- st_read(system.file("shape/nc.shp", package = "sf"),quiet = TRUE)
+```
+
+Here's how the data looks in base plot:
+
+```{r, echo = FALSE}
+plot(st_geometry(nc))
+```
+
+`tmap` has two modes: a static mode for printable maps (called `plot`) and a dynamic mode for exploratory, interactive maps (called `view`). We want the latter for now, so we switch to the dynamic mode with: 
+```{r}
+tmap_mode("view")
+```
+
+`tmap` has based it's syntax loosely on `ggplot2`: Mainly, layer are added with `+` and aesthetics are specified within each layer.
+```{r}
+tm_shape(nc) +
+  tm_polygons()
+```
+
+You can have a look at the attributes of each feature by clicking on it. To view the entire attribute table, you can print `nc` to the console, or have a look at it with `View(nc)` if you are using Rstudio.
+
+Check the following ressources for more information:
+
+- https://github.com/mtennekes/tmap
+- https://geocompr.robinlovelace.net/adv-map.html#interactive-maps
+

@@ -1,0 +1,26 @@
+
+## Point
+
+### Must coincide with 
+
+![](06_Topology_Rules/images/5_0.jpg)
+
+### Must be disjoint
+
+![](06_Topology_Rules/images/5_1.jpg)
+
+### Must be covered by endpoint of
+
+![](06_Topology_Rules/images/6_0.jpg)
+
+### Point must be covered by line
+
+![](06_Topology_Rules/images/6_1.jpg)
+
+### Must be properly inside
+
+![](06_Topology_Rules/images/7_0.jpg)
+
+### Must be covered by boundary of
+
+![](06_Topology_Rules/images/7_1.jpg)

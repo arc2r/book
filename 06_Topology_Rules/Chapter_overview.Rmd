@@ -1,0 +1,3 @@
+# Toplogy Rules
+
+in ArcGIS, you create a topology rule by first creating a Feature Dataset in a Geodatabase, and then adding one or more Topology Rules to that Feature Dataset. In R, you can check topology using the DE-9IM together with `st_relate()`.

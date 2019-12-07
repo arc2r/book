@@ -1,15 +1,20 @@
 ---
 title: "Burning the Bridges"
 subtitle: "Spatial R for ArcGIS Users"
+author: "Nils Ratnaweera"
 site: bookdown::bookdown_site
-output: bookdown::gitbook
 ---
 
 
 # TL;DR
 
-This is a ressource for people coming from ArcGIS who want to learn spatial stuff in R. You will soon find out that the open source world has agreed on many standards, this makes transioning between, say  spatial Python, spatial Postgres and spatial R very easy. ArcGIS however has coined it's own terms and methods, so transitiong away from ArcGIS might need a little help. This ressource should provide some help on this journey.
+This is a ressource for people coming from ArcGIS who want to learn spatial stuff (Analysis, Visualization) in R. This ressource should provide some help on this journey.
 
+Who this book is for:
+
+- you've worked primarily with ArcGIS and would like to transition to R
+- you have some experience with R
+- you don't mind working with the tidyverse (if you don't know what this is, you probabbly won't mind)
 
 
 ![](fire_PNG6023.png)

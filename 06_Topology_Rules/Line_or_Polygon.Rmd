@@ -1,0 +1,5 @@
+## Line or Polygon
+
+### Must be larger than cluster tolarance
+
+![](06_Topology_Rules/images/0_2.jpg)

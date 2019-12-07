@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>7 Additional Reading | Burning the Bridges</title>
-  <meta name="description" content="7 Additional Reading | Burning the Bridges" />
+  <title>12 Additional Reading | Burning the Bridges</title>
+  <meta name="description" content="12 Additional Reading | Burning the Bridges" />
   <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="7 Additional Reading | Burning the Bridges" />
+  <meta property="og:title" content="12 Additional Reading | Burning the Bridges" />
   <meta property="og:type" content="book" />
   
   
@@ -16,11 +16,12 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="7 Additional Reading | Burning the Bridges" />
+  <meta name="twitter:title" content="12 Additional Reading | Burning the Bridges" />
   
   
   
 
+<meta name="author" content="Nils Ratnaweera" />
 
 
 
@@ -29,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="toplogy-rules.html"/>
-
+<link rel="prev" href="point.html"/>
+<link rel="next" href="binary-predicates-and-de-9im.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -48,6 +49,16 @@
 
 
 
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.2/leaflet.js"></script>
+<script src="libs/leaflet-providers-1.1.17/leaflet-providers.js"></script>
+<script src="libs/leaflet-providers-plugin-2.0.2/leaflet-providers-plugin.js"></script>
 
 
 <style type="text/css">
@@ -128,92 +139,115 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> TL;DR</a></li>
 <li class="chapter" data-level="2" data-path="foreword.html"><a href="foreword.html"><i class="fa fa-check"></i><b>2</b> Foreword</a></li>
 <li class="chapter" data-level="3" data-path="making-maps.html"><a href="making-maps.html"><i class="fa fa-check"></i><b>3</b> Making Maps</a><ul>
-<li class="chapter" data-level="3.1" data-path="making-maps.html"><a href="making-maps.html#interactive-for-data-exploration"><i class="fa fa-check"></i><b>3.1</b> Interactive (for Data Exploration)</a></li>
-<li class="chapter" data-level="3.2" data-path="making-maps.html"><a href="making-maps.html#static-for-presentation"><i class="fa fa-check"></i><b>3.2</b> Static (for Presentation)</a></li>
+<li class="chapter" data-level="3.1" data-path="interactive-for-data-exploration.html"><a href="interactive-for-data-exploration.html"><i class="fa fa-check"></i><b>3.1</b> Interactive (for Data Exploration)</a></li>
+<li class="chapter" data-level="3.2" data-path="static-for-presentation.html"><a href="static-for-presentation.html"><i class="fa fa-check"></i><b>3.2</b> Static (for Presentation)</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="select-by-attribute-or-location.html"><a href="select-by-attribute-or-location.html"><i class="fa fa-check"></i><b>4</b> Select (by Attribute or Location)</a><ul>
-<li class="chapter" data-level="4.1" data-path="select-by-attribute-or-location.html"><a href="select-by-attribute-or-location.html#select-by-attribute"><i class="fa fa-check"></i><b>4.1</b> Select by Attribute</a></li>
-<li class="chapter" data-level="4.2" data-path="select-by-attribute-or-location.html"><a href="select-by-attribute-or-location.html#select-by-location"><i class="fa fa-check"></i><b>4.2</b> Select by Location</a></li>
+<li class="chapter" data-level="4.1" data-path="select-by-attribute.html"><a href="select-by-attribute.html"><i class="fa fa-check"></i><b>4.1</b> Select by Attribute</a></li>
+<li class="chapter" data-level="4.2" data-path="select-by-location.html"><a href="select-by-location.html"><i class="fa fa-check"></i><b>4.2</b> Select by Location</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="geoprocessing-tools.html"><a href="geoprocessing-tools.html"><i class="fa fa-check"></i><b>5</b> Geoprocessing Tools</a><ul>
-<li class="chapter" data-level="5.1" data-path="geoprocessing-tools.html"><a href="geoprocessing-tools.html#spatial-analyst-toolbox"><i class="fa fa-check"></i><b>5.1</b> Spatial Analyst Toolbox</a><ul>
-<li class="chapter" data-level="5.1.1" data-path="geoprocessing-tools.html"><a href="geoprocessing-tools.html#conditional-toolset"><i class="fa fa-check"></i><b>5.1.1</b> Conditional Toolset</a></li>
-<li class="chapter" data-level="5.1.2" data-path="geoprocessing-tools.html"><a href="geoprocessing-tools.html#density-toolset"><i class="fa fa-check"></i><b>5.1.2</b> Density Toolset</a></li>
-<li class="chapter" data-level="5.1.3" data-path="geoprocessing-tools.html"><a href="geoprocessing-tools.html#distance-toolset"><i class="fa fa-check"></i><b>5.1.3</b> Distance Toolset</a></li>
-<li class="chapter" data-level="5.1.4" data-path="geoprocessing-tools.html"><a href="geoprocessing-tools.html#extraction-toolset"><i class="fa fa-check"></i><b>5.1.4</b> Extraction Toolset</a></li>
-<li class="chapter" data-level="5.1.5" data-path="geoprocessing-tools.html"><a href="geoprocessing-tools.html#generalization-toolset"><i class="fa fa-check"></i><b>5.1.5</b> Generalization Toolset</a></li>
-<li class="chapter" data-level="5.1.6" data-path="geoprocessing-tools.html"><a href="geoprocessing-tools.html#interpolation-toolset"><i class="fa fa-check"></i><b>5.1.6</b> Interpolation Toolset</a></li>
-<li class="chapter" data-level="5.1.7" data-path="geoprocessing-tools.html"><a href="geoprocessing-tools.html#map-algebra-toolset"><i class="fa fa-check"></i><b>5.1.7</b> Map Algebra Toolset</a></li>
-<li class="chapter" data-level="5.1.8" data-path="geoprocessing-tools.html"><a href="geoprocessing-tools.html#math-toolset"><i class="fa fa-check"></i><b>5.1.8</b> Math Toolset</a></li>
-<li class="chapter" data-level="5.1.9" data-path="geoprocessing-tools.html"><a href="geoprocessing-tools.html#neighborhood-toolset"><i class="fa fa-check"></i><b>5.1.9</b> Neighborhood Toolset</a></li>
-<li class="chapter" data-level="5.1.10" data-path="geoprocessing-tools.html"><a href="geoprocessing-tools.html#overlay-toolset"><i class="fa fa-check"></i><b>5.1.10</b> Overlay Toolset</a></li>
-<li class="chapter" data-level="5.1.11" data-path="geoprocessing-tools.html"><a href="geoprocessing-tools.html#reclass-toolset"><i class="fa fa-check"></i><b>5.1.11</b> Reclass Toolset</a></li>
-<li class="chapter" data-level="5.1.12" data-path="geoprocessing-tools.html"><a href="geoprocessing-tools.html#surface-toolset"><i class="fa fa-check"></i><b>5.1.12</b> Surface Toolset</a></li>
-<li class="chapter" data-level="5.1.13" data-path="geoprocessing-tools.html"><a href="geoprocessing-tools.html#zonal-toolset"><i class="fa fa-check"></i><b>5.1.13</b> Zonal Toolset</a></li>
+<li class="chapter" data-level="5" data-path="spatial-analyst-toolbox.html"><a href="spatial-analyst-toolbox.html"><i class="fa fa-check"></i><b>5</b> Spatial Analyst Toolbox</a><ul>
+<li class="chapter" data-level="5.1" data-path="conditional-toolset.html"><a href="conditional-toolset.html"><i class="fa fa-check"></i><b>5.1</b> Conditional Toolset</a></li>
+<li class="chapter" data-level="5.2" data-path="density-toolset.html"><a href="density-toolset.html"><i class="fa fa-check"></i><b>5.2</b> Density Toolset</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="density-toolset.html"><a href="density-toolset.html#kernel-denisity"><i class="fa fa-check"></i><b>5.2.1</b> Kernel Denisity</a></li>
+<li class="chapter" data-level="5.2.2" data-path="density-toolset.html"><a href="density-toolset.html#line-density"><i class="fa fa-check"></i><b>5.2.2</b> Line Density</a></li>
+<li class="chapter" data-level="5.2.3" data-path="density-toolset.html"><a href="density-toolset.html#point-density"><i class="fa fa-check"></i><b>5.2.3</b> Point Density</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="geoprocessing-tools.html"><a href="geoprocessing-tools.html#spatial-statistics-toolbox"><i class="fa fa-check"></i><b>5.2</b> Spatial Statistics Toolbox</a><ul>
-<li class="chapter" data-level="5.2.1" data-path="geoprocessing-tools.html"><a href="geoprocessing-tools.html#analyzing-patterns-toolset"><i class="fa fa-check"></i><b>5.2.1</b> Analyzing Patterns Toolset</a></li>
-<li class="chapter" data-level="5.2.2" data-path="geoprocessing-tools.html"><a href="geoprocessing-tools.html#morans-i"><i class="fa fa-check"></i><b>5.2.2</b> Morans I</a></li>
+<li class="chapter" data-level="5.3" data-path="distance-toolset.html"><a href="distance-toolset.html"><i class="fa fa-check"></i><b>5.3</b> Distance Toolset</a></li>
+<li class="chapter" data-level="5.4" data-path="extraction-toolset.html"><a href="extraction-toolset.html"><i class="fa fa-check"></i><b>5.4</b> Extraction Toolset</a></li>
+<li class="chapter" data-level="5.5" data-path="generalization-toolset.html"><a href="generalization-toolset.html"><i class="fa fa-check"></i><b>5.5</b> Generalization Toolset</a></li>
+<li class="chapter" data-level="5.6" data-path="interpolation-toolset.html"><a href="interpolation-toolset.html"><i class="fa fa-check"></i><b>5.6</b> Interpolation Toolset</a></li>
+<li class="chapter" data-level="5.7" data-path="map-algebra-toolset.html"><a href="map-algebra-toolset.html"><i class="fa fa-check"></i><b>5.7</b> Map Algebra Toolset</a></li>
+<li class="chapter" data-level="5.8" data-path="math-toolset.html"><a href="math-toolset.html"><i class="fa fa-check"></i><b>5.8</b> Math Toolset</a></li>
+<li class="chapter" data-level="5.9" data-path="neighborhood-toolset.html"><a href="neighborhood-toolset.html"><i class="fa fa-check"></i><b>5.9</b> Neighborhood Toolset</a></li>
+<li class="chapter" data-level="5.10" data-path="overlay-toolset.html"><a href="overlay-toolset.html"><i class="fa fa-check"></i><b>5.10</b> Overlay Toolset</a></li>
+<li class="chapter" data-level="5.11" data-path="reclass-toolset.html"><a href="reclass-toolset.html"><i class="fa fa-check"></i><b>5.11</b> Reclass Toolset</a></li>
+<li class="chapter" data-level="5.12" data-path="surface-toolset.html"><a href="surface-toolset.html"><i class="fa fa-check"></i><b>5.12</b> Surface Toolset</a></li>
+<li class="chapter" data-level="5.13" data-path="zonal-toolset.html"><a href="zonal-toolset.html"><i class="fa fa-check"></i><b>5.13</b> Zonal Toolset</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="geoprocessing-tools.html"><a href="geoprocessing-tools.html#analysis-toolbox"><i class="fa fa-check"></i><b>5.3</b> Analysis Toolbox</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="geoprocessing-tools.html"><a href="geoprocessing-tools.html#extract-toolset"><i class="fa fa-check"></i><b>5.3.1</b> Extract Toolset</a></li>
-<li class="chapter" data-level="5.3.2" data-path="geoprocessing-tools.html"><a href="geoprocessing-tools.html#overlay-toolset-1"><i class="fa fa-check"></i><b>5.3.2</b> Overlay Toolset</a></li>
-<li class="chapter" data-level="5.3.3" data-path="geoprocessing-tools.html"><a href="geoprocessing-tools.html#proximity-toolset"><i class="fa fa-check"></i><b>5.3.3</b> Proximity Toolset</a></li>
-</ul></li>
-<li class="chapter" data-level="5.4" data-path="geoprocessing-tools.html"><a href="geoprocessing-tools.html#geocoding-toolbox"><i class="fa fa-check"></i><b>5.4</b> Geocoding Toolbox</a></li>
-<li class="chapter" data-level="5.5" data-path="geoprocessing-tools.html"><a href="geoprocessing-tools.html#image-analysis-toolbox"><i class="fa fa-check"></i><b>5.5</b> Image Analysis Toolbox</a><ul>
-<li class="chapter" data-level="5.5.1" data-path="geoprocessing-tools.html"><a href="geoprocessing-tools.html#map-algebra-toolset-1"><i class="fa fa-check"></i><b>5.5.1</b> Map Algebra Toolset</a></li>
-</ul></li>
-<li class="chapter" data-level="5.6" data-path="geoprocessing-tools.html"><a href="geoprocessing-tools.html#d-analyst-toolbox"><i class="fa fa-check"></i><b>5.6</b> 3D Analyst Toolbox</a><ul>
-<li class="chapter" data-level="5.6.1" data-path="geoprocessing-tools.html"><a href="geoprocessing-tools.html#raster-interpolation-toolset"><i class="fa fa-check"></i><b>5.6.1</b> Raster Interpolation Toolset</a></li>
+<li class="chapter" data-level="6" data-path="d-analyst-toolbox.html"><a href="d-analyst-toolbox.html"><i class="fa fa-check"></i><b>6</b> 3D Analyst Toolbox</a><ul>
+<li class="chapter" data-level="6.1" data-path="raster-interpolation-toolset.html"><a href="raster-interpolation-toolset.html"><i class="fa fa-check"></i><b>6.1</b> Raster Interpolation Toolset</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="raster-interpolation-toolset.html"><a href="raster-interpolation-toolset.html#idw"><i class="fa fa-check"></i><b>6.1.1</b> IDW</a></li>
+<li class="chapter" data-level="6.1.2" data-path="raster-interpolation-toolset.html"><a href="raster-interpolation-toolset.html#kriging"><i class="fa fa-check"></i><b>6.1.2</b> Kriging</a></li>
+<li class="chapter" data-level="6.1.3" data-path="raster-interpolation-toolset.html"><a href="raster-interpolation-toolset.html#natural-neighbor"><i class="fa fa-check"></i><b>6.1.3</b> Natural Neighbor</a></li>
+<li class="chapter" data-level="6.1.4" data-path="raster-interpolation-toolset.html"><a href="raster-interpolation-toolset.html#spline"><i class="fa fa-check"></i><b>6.1.4</b> Spline</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="toplogy-rules.html"><a href="toplogy-rules.html"><i class="fa fa-check"></i><b>6</b> Toplogy Rules</a><ul>
-<li class="chapter" data-level="6.1" data-path="toplogy-rules.html"><a href="toplogy-rules.html#polygons"><i class="fa fa-check"></i><b>6.1</b> Polygons</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="toplogy-rules.html"><a href="toplogy-rules.html#must-not-overlap"><i class="fa fa-check"></i><b>6.1.1</b> Must not overlap</a></li>
-<li class="chapter" data-level="6.1.2" data-path="toplogy-rules.html"><a href="toplogy-rules.html#must-not-have-gaps"><i class="fa fa-check"></i><b>6.1.2</b> Must not have gaps</a></li>
-<li class="chapter" data-level="6.1.3" data-path="toplogy-rules.html"><a href="toplogy-rules.html#contains-point"><i class="fa fa-check"></i><b>6.1.3</b> Contains point</a></li>
-<li class="chapter" data-level="6.1.4" data-path="toplogy-rules.html"><a href="toplogy-rules.html#contains-one-point"><i class="fa fa-check"></i><b>6.1.4</b> Contains one Point</a></li>
-<li class="chapter" data-level="6.1.5" data-path="toplogy-rules.html"><a href="toplogy-rules.html#must-be-covered-by-feature-class-of"><i class="fa fa-check"></i><b>6.1.5</b> Must be covered by feature class of</a></li>
-<li class="chapter" data-level="6.1.6" data-path="toplogy-rules.html"><a href="toplogy-rules.html#boundary-must-be-covered-by"><i class="fa fa-check"></i><b>6.1.6</b> Boundary must be covered by</a></li>
-<li class="chapter" data-level="6.1.7" data-path="toplogy-rules.html"><a href="toplogy-rules.html#must-not-overlap-with"><i class="fa fa-check"></i><b>6.1.7</b> Must not overlap with</a></li>
-<li class="chapter" data-level="6.1.8" data-path="toplogy-rules.html"><a href="toplogy-rules.html#must-be-covered-by"><i class="fa fa-check"></i><b>6.1.8</b> Must be covered by</a></li>
-<li class="chapter" data-level="6.1.9" data-path="toplogy-rules.html"><a href="toplogy-rules.html#area-boundary-must-be-covered-by-boundary-of"><i class="fa fa-check"></i><b>6.1.9</b> Area boundary must be covered by boundary of</a></li>
-<li class="chapter" data-level="6.1.10" data-path="toplogy-rules.html"><a href="toplogy-rules.html#must-cover-each-other"><i class="fa fa-check"></i><b>6.1.10</b> Must cover each other</a></li>
+<li class="chapter" data-level="7" data-path="analysis-toolbox.html"><a href="analysis-toolbox.html"><i class="fa fa-check"></i><b>7</b> Analysis Toolbox</a><ul>
+<li class="chapter" data-level="7.1" data-path="extract-toolset.html"><a href="extract-toolset.html"><i class="fa fa-check"></i><b>7.1</b> Extract Toolset</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="extract-toolset.html"><a href="extract-toolset.html#clip"><i class="fa fa-check"></i><b>7.1.1</b> Clip</a></li>
+<li class="chapter" data-level="7.1.2" data-path="extract-toolset.html"><a href="extract-toolset.html#select"><i class="fa fa-check"></i><b>7.1.2</b> Select</a></li>
+<li class="chapter" data-level="7.1.3" data-path="extract-toolset.html"><a href="extract-toolset.html#split"><i class="fa fa-check"></i><b>7.1.3</b> Split</a></li>
+<li class="chapter" data-level="7.1.4" data-path="extract-toolset.html"><a href="extract-toolset.html#aplit-by-attributes"><i class="fa fa-check"></i><b>7.1.4</b> Aplit by Attributes</a></li>
+<li class="chapter" data-level="7.1.5" data-path="extract-toolset.html"><a href="extract-toolset.html#table-select"><i class="fa fa-check"></i><b>7.1.5</b> Table Select</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="toplogy-rules.html"><a href="toplogy-rules.html#line-or-polygon"><i class="fa fa-check"></i><b>6.2</b> Line or Polygon</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="toplogy-rules.html"><a href="toplogy-rules.html#must-be-larger-than-cluster-tolarance"><i class="fa fa-check"></i><b>6.2.1</b> Must be larger than cluster tolarance</a></li>
+<li class="chapter" data-level="7.2" data-path="overlay-toolset-1.html"><a href="overlay-toolset-1.html"><i class="fa fa-check"></i><b>7.2</b> Overlay Toolset</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="overlay-toolset-1.html"><a href="overlay-toolset-1.html#erase"><i class="fa fa-check"></i><b>7.2.1</b> Erase</a></li>
+<li class="chapter" data-level="7.2.2" data-path="overlay-toolset-1.html"><a href="overlay-toolset-1.html#union"><i class="fa fa-check"></i><b>7.2.2</b> Union</a></li>
+<li class="chapter" data-level="7.2.3" data-path="overlay-toolset-1.html"><a href="overlay-toolset-1.html#symmetrical-difference"><i class="fa fa-check"></i><b>7.2.3</b> Symmetrical Difference</a></li>
+<li class="chapter" data-level="7.2.4" data-path="overlay-toolset-1.html"><a href="overlay-toolset-1.html#spatial-join"><i class="fa fa-check"></i><b>7.2.4</b> Spatial Join</a></li>
+<li class="chapter" data-level="7.2.5" data-path="overlay-toolset-1.html"><a href="overlay-toolset-1.html#intersect"><i class="fa fa-check"></i><b>7.2.5</b> Intersect</a></li>
+<li class="chapter" data-level="7.2.6" data-path="overlay-toolset-1.html"><a href="overlay-toolset-1.html#identity"><i class="fa fa-check"></i><b>7.2.6</b> Identity</a></li>
+<li class="chapter" data-level="7.2.7" data-path="overlay-toolset-1.html"><a href="overlay-toolset-1.html#update"><i class="fa fa-check"></i><b>7.2.7</b> Update</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="toplogy-rules.html"><a href="toplogy-rules.html#line"><i class="fa fa-check"></i><b>6.3</b> Line</a><ul>
-<li class="chapter" data-level="6.3.1" data-path="toplogy-rules.html"><a href="toplogy-rules.html#must-not-have-pseudo-nodes"><i class="fa fa-check"></i><b>6.3.1</b> Must not have pseudo nodes</a></li>
-<li class="chapter" data-level="6.3.2" data-path="toplogy-rules.html"><a href="toplogy-rules.html#must-not-have-dangles"><i class="fa fa-check"></i><b>6.3.2</b> Must not have dangles</a></li>
-<li class="chapter" data-level="6.3.3" data-path="toplogy-rules.html"><a href="toplogy-rules.html#must-not-self-overlap"><i class="fa fa-check"></i><b>6.3.3</b> Must not self overlap</a></li>
-<li class="chapter" data-level="6.3.4" data-path="toplogy-rules.html"><a href="toplogy-rules.html#must-not-overlap-1"><i class="fa fa-check"></i><b>6.3.4</b> Must not overlap</a></li>
-<li class="chapter" data-level="6.3.5" data-path="toplogy-rules.html"><a href="toplogy-rules.html#must-not-self-intersect"><i class="fa fa-check"></i><b>6.3.5</b> Must not self-intersect</a></li>
-<li class="chapter" data-level="6.3.6" data-path="toplogy-rules.html"><a href="toplogy-rules.html#must-not-intersect"><i class="fa fa-check"></i><b>6.3.6</b> Must not intersect</a></li>
-<li class="chapter" data-level="6.3.7" data-path="toplogy-rules.html"><a href="toplogy-rules.html#must-be-single-part"><i class="fa fa-check"></i><b>6.3.7</b> Must be single part</a></li>
-<li class="chapter" data-level="6.3.8" data-path="toplogy-rules.html"><a href="toplogy-rules.html#must-not-intersect-with"><i class="fa fa-check"></i><b>6.3.8</b> Must not intersect with</a></li>
-<li class="chapter" data-level="6.3.9" data-path="toplogy-rules.html"><a href="toplogy-rules.html#must-be-covered-by-feature-class-of-1"><i class="fa fa-check"></i><b>6.3.9</b> Must be covered by feature class of</a></li>
-<li class="chapter" data-level="6.3.10" data-path="toplogy-rules.html"><a href="toplogy-rules.html#must-not-intersect-or-touch-interior"><i class="fa fa-check"></i><b>6.3.10</b> Must not intersect or touch interior</a></li>
-<li class="chapter" data-level="6.3.11" data-path="toplogy-rules.html"><a href="toplogy-rules.html#must-be-covered-by-boundary-of"><i class="fa fa-check"></i><b>6.3.11</b> Must be covered by boundary of</a></li>
-<li class="chapter" data-level="6.3.12" data-path="toplogy-rules.html"><a href="toplogy-rules.html#must-not-intersect-or-touch-interior-with"><i class="fa fa-check"></i><b>6.3.12</b> Must not intersect or touch interior with</a></li>
-<li class="chapter" data-level="6.3.13" data-path="toplogy-rules.html"><a href="toplogy-rules.html#must-be-properly-inside"><i class="fa fa-check"></i><b>6.3.13</b> Must be properly inside</a></li>
-<li class="chapter" data-level="6.3.14" data-path="toplogy-rules.html"><a href="toplogy-rules.html#must-not-overlap-with-1"><i class="fa fa-check"></i><b>6.3.14</b> Must not overlap with</a></li>
-<li class="chapter" data-level="6.3.15" data-path="toplogy-rules.html"><a href="toplogy-rules.html#endpoint-must-be-covered-by"><i class="fa fa-check"></i><b>6.3.15</b> Endpoint must be covered by</a></li>
+<li class="chapter" data-level="7.3" data-path="proximity-toolset.html"><a href="proximity-toolset.html"><i class="fa fa-check"></i><b>7.3</b> Proximity Toolset</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="toplogy-rules.html"><a href="toplogy-rules.html#point"><i class="fa fa-check"></i><b>6.4</b> Point</a><ul>
-<li class="chapter" data-level="6.4.1" data-path="toplogy-rules.html"><a href="toplogy-rules.html#must-coincide-with"><i class="fa fa-check"></i><b>6.4.1</b> Must coincide with</a></li>
-<li class="chapter" data-level="6.4.2" data-path="toplogy-rules.html"><a href="toplogy-rules.html#must-be-disjoint"><i class="fa fa-check"></i><b>6.4.2</b> Must be disjoint</a></li>
-<li class="chapter" data-level="6.4.3" data-path="toplogy-rules.html"><a href="toplogy-rules.html#must-be-covered-by-endpoint-of"><i class="fa fa-check"></i><b>6.4.3</b> Must be covered by endpoint of</a></li>
-<li class="chapter" data-level="6.4.4" data-path="toplogy-rules.html"><a href="toplogy-rules.html#point-must-be-covered-by-line"><i class="fa fa-check"></i><b>6.4.4</b> Point must be covered by line</a></li>
-<li class="chapter" data-level="6.4.5" data-path="toplogy-rules.html"><a href="toplogy-rules.html#must-be-properly-inside-1"><i class="fa fa-check"></i><b>6.4.5</b> Must be properly inside</a></li>
-<li class="chapter" data-level="6.4.6" data-path="toplogy-rules.html"><a href="toplogy-rules.html#must-be-covered-by-boundary-of-1"><i class="fa fa-check"></i><b>6.4.6</b> Must be covered by boundary of</a></li>
+<li class="chapter" data-level="8" data-path="geocoding-toolbox.html"><a href="geocoding-toolbox.html"><i class="fa fa-check"></i><b>8</b> Geocoding Toolbox</a></li>
+<li class="chapter" data-level="9" data-path="image-analysis-toolbox.html"><a href="image-analysis-toolbox.html"><i class="fa fa-check"></i><b>9</b> Image Analysis Toolbox</a><ul>
+<li class="chapter" data-level="9.1" data-path="map-algebra-toolset-1.html"><a href="map-algebra-toolset-1.html"><i class="fa fa-check"></i><b>9.1</b> Map Algebra Toolset</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="map-algebra-toolset-1.html"><a href="map-algebra-toolset-1.html#raster-calulator"><i class="fa fa-check"></i><b>9.1.1</b> Raster Calulator</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="additional-reading.html"><a href="additional-reading.html"><i class="fa fa-check"></i><b>7</b> Additional Reading</a><ul>
-<li class="chapter" data-level="7.1" data-path="additional-reading.html"><a href="additional-reading.html#binary-predicates-and-de-9im"><i class="fa fa-check"></i><b>7.1</b> Binary Predicates and DE-9IM</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="additional-reading.html"><a href="additional-reading.html#rooks-case"><i class="fa fa-check"></i><b>7.1.1</b> Rooks Case</a></li>
-<li class="chapter" data-level="7.1.2" data-path="additional-reading.html"><a href="additional-reading.html#bishops-case"><i class="fa fa-check"></i><b>7.1.2</b> Bishops Case</a></li>
+<li class="chapter" data-level="10" data-path="spatial-statistics-toolbox.html"><a href="spatial-statistics-toolbox.html"><i class="fa fa-check"></i><b>10</b> Spatial Statistics Toolbox</a><ul>
+<li class="chapter" data-level="10.1" data-path="analyzing-patterns-toolset.html"><a href="analyzing-patterns-toolset.html"><i class="fa fa-check"></i><b>10.1</b> Analyzing Patterns Toolset</a></li>
+<li class="chapter" data-level="10.2" data-path="morans-i.html"><a href="morans-i.html"><i class="fa fa-check"></i><b>10.2</b> Morans I</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="toplogy-rules.html"><a href="toplogy-rules.html"><i class="fa fa-check"></i><b>11</b> Toplogy Rules</a><ul>
+<li class="chapter" data-level="11.1" data-path="polygon.html"><a href="polygon.html"><i class="fa fa-check"></i><b>11.1</b> Polygon</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="polygon.html"><a href="polygon.html#must-not-overlap"><i class="fa fa-check"></i><b>11.1.1</b> Must not overlap</a></li>
+<li class="chapter" data-level="11.1.2" data-path="polygon.html"><a href="polygon.html#must-not-have-gaps"><i class="fa fa-check"></i><b>11.1.2</b> Must not have gaps</a></li>
+<li class="chapter" data-level="11.1.3" data-path="polygon.html"><a href="polygon.html#contains-point"><i class="fa fa-check"></i><b>11.1.3</b> Contains point</a></li>
+<li class="chapter" data-level="11.1.4" data-path="polygon.html"><a href="polygon.html#contains-one-point"><i class="fa fa-check"></i><b>11.1.4</b> Contains one Point</a></li>
+<li class="chapter" data-level="11.1.5" data-path="polygon.html"><a href="polygon.html#must-be-covered-by-feature-class-of"><i class="fa fa-check"></i><b>11.1.5</b> Must be covered by feature class of</a></li>
+<li class="chapter" data-level="11.1.6" data-path="polygon.html"><a href="polygon.html#boundary-must-be-covered-by"><i class="fa fa-check"></i><b>11.1.6</b> Boundary must be covered by</a></li>
+<li class="chapter" data-level="11.1.7" data-path="polygon.html"><a href="polygon.html#must-not-overlap-with"><i class="fa fa-check"></i><b>11.1.7</b> Must not overlap with</a></li>
+<li class="chapter" data-level="11.1.8" data-path="polygon.html"><a href="polygon.html#must-be-covered-by"><i class="fa fa-check"></i><b>11.1.8</b> Must be covered by</a></li>
+<li class="chapter" data-level="11.1.9" data-path="polygon.html"><a href="polygon.html#area-boundary-must-be-covered-by-boundary-of"><i class="fa fa-check"></i><b>11.1.9</b> Area boundary must be covered by boundary of</a></li>
+<li class="chapter" data-level="11.1.10" data-path="polygon.html"><a href="polygon.html#must-cover-each-other"><i class="fa fa-check"></i><b>11.1.10</b> Must cover each other</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="line-or-polygon.html"><a href="line-or-polygon.html"><i class="fa fa-check"></i><b>11.2</b> Line or Polygon</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="line-or-polygon.html"><a href="line-or-polygon.html#must-be-larger-than-cluster-tolarance"><i class="fa fa-check"></i><b>11.2.1</b> Must be larger than cluster tolarance</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="line.html"><a href="line.html"><i class="fa fa-check"></i><b>11.3</b> Line</a><ul>
+<li class="chapter" data-level="11.3.1" data-path="line.html"><a href="line.html#must-not-have-pseudo-nodes"><i class="fa fa-check"></i><b>11.3.1</b> Must not have pseudo nodes</a></li>
+<li class="chapter" data-level="11.3.2" data-path="line.html"><a href="line.html#must-not-have-dangles"><i class="fa fa-check"></i><b>11.3.2</b> Must not have dangles</a></li>
+<li class="chapter" data-level="11.3.3" data-path="line.html"><a href="line.html#must-not-self-overlap"><i class="fa fa-check"></i><b>11.3.3</b> Must not self overlap</a></li>
+<li class="chapter" data-level="11.3.4" data-path="line.html"><a href="line.html#must-not-overlap-1"><i class="fa fa-check"></i><b>11.3.4</b> Must not overlap</a></li>
+<li class="chapter" data-level="11.3.5" data-path="line.html"><a href="line.html#must-not-self-intersect"><i class="fa fa-check"></i><b>11.3.5</b> Must not self-intersect</a></li>
+<li class="chapter" data-level="11.3.6" data-path="line.html"><a href="line.html#must-not-intersect"><i class="fa fa-check"></i><b>11.3.6</b> Must not intersect</a></li>
+<li class="chapter" data-level="11.3.7" data-path="line.html"><a href="line.html#must-be-single-part"><i class="fa fa-check"></i><b>11.3.7</b> Must be single part</a></li>
+<li class="chapter" data-level="11.3.8" data-path="line.html"><a href="line.html#must-not-intersect-with"><i class="fa fa-check"></i><b>11.3.8</b> Must not intersect with</a></li>
+<li class="chapter" data-level="11.3.9" data-path="line.html"><a href="line.html#must-be-covered-by-feature-class-of-1"><i class="fa fa-check"></i><b>11.3.9</b> Must be covered by feature class of</a></li>
+<li class="chapter" data-level="11.3.10" data-path="line.html"><a href="line.html#must-not-intersect-or-touch-interior"><i class="fa fa-check"></i><b>11.3.10</b> Must not intersect or touch interior</a></li>
+<li class="chapter" data-level="11.3.11" data-path="line.html"><a href="line.html#must-be-covered-by-boundary-of"><i class="fa fa-check"></i><b>11.3.11</b> Must be covered by boundary of</a></li>
+<li class="chapter" data-level="11.3.12" data-path="line.html"><a href="line.html#must-not-intersect-or-touch-interior-with"><i class="fa fa-check"></i><b>11.3.12</b> Must not intersect or touch interior with</a></li>
+<li class="chapter" data-level="11.3.13" data-path="line.html"><a href="line.html#must-be-properly-inside"><i class="fa fa-check"></i><b>11.3.13</b> Must be properly inside</a></li>
+<li class="chapter" data-level="11.3.14" data-path="line.html"><a href="line.html#must-not-overlap-with-1"><i class="fa fa-check"></i><b>11.3.14</b> Must not overlap with</a></li>
+<li class="chapter" data-level="11.3.15" data-path="line.html"><a href="line.html#endpoint-must-be-covered-by"><i class="fa fa-check"></i><b>11.3.15</b> Endpoint must be covered by</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="point.html"><a href="point.html"><i class="fa fa-check"></i><b>11.4</b> Point</a><ul>
+<li class="chapter" data-level="11.4.1" data-path="point.html"><a href="point.html#must-coincide-with"><i class="fa fa-check"></i><b>11.4.1</b> Must coincide with</a></li>
+<li class="chapter" data-level="11.4.2" data-path="point.html"><a href="point.html#must-be-disjoint"><i class="fa fa-check"></i><b>11.4.2</b> Must be disjoint</a></li>
+<li class="chapter" data-level="11.4.3" data-path="point.html"><a href="point.html#must-be-covered-by-endpoint-of"><i class="fa fa-check"></i><b>11.4.3</b> Must be covered by endpoint of</a></li>
+<li class="chapter" data-level="11.4.4" data-path="point.html"><a href="point.html#point-must-be-covered-by-line"><i class="fa fa-check"></i><b>11.4.4</b> Point must be covered by line</a></li>
+<li class="chapter" data-level="11.4.5" data-path="point.html"><a href="point.html#must-be-properly-inside-1"><i class="fa fa-check"></i><b>11.4.5</b> Must be properly inside</a></li>
+<li class="chapter" data-level="11.4.6" data-path="point.html"><a href="point.html#must-be-covered-by-boundary-of-1"><i class="fa fa-check"></i><b>11.4.6</b> Must be covered by boundary of</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="additional-reading.html"><a href="additional-reading.html"><i class="fa fa-check"></i><b>12</b> Additional Reading</a><ul>
+<li class="chapter" data-level="12.1" data-path="binary-predicates-and-de-9im.html"><a href="binary-predicates-and-de-9im.html"><i class="fa fa-check"></i><b>12.1</b> Binary Predicates and DE-9IM</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="binary-predicates-and-de-9im.html"><a href="binary-predicates-and-de-9im.html#rooks-case"><i class="fa fa-check"></i><b>12.1.1</b> Rooks Case</a></li>
+<li class="chapter" data-level="12.1.2" data-path="binary-predicates-and-de-9im.html"><a href="binary-predicates-and-de-9im.html#bishops-case"><i class="fa fa-check"></i><b>12.1.2</b> Bishops Case</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -234,141 +268,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="additional-reading" class="section level1">
-<h1><span class="header-section-number">7</span> Additional Reading</h1>
-<div id="binary-predicates-and-de-9im" class="section level2">
-<h2><span class="header-section-number">7.1</span> Binary Predicates and DE-9IM</h2>
-<p>Binary Predicates check topological relationships betweeen geometries. This can be very practical for data quality questions (e.g. “None of the State borders should ovelap”) or for neighbourhood question (e.g. “which states border the state of Nevada?”).</p>
-<p>Lets take the example of a chessboard:</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
-<p>Some topological relationships have specific names. For example, if we want to know which field touch a specific field, the name for this predicate is “touches”. This is implemented in the function <code>st_touches</code> of the packages <code>sf</code>:</p>
-<p>So to see which field touch field number 36, we can write the following line of code:</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" title="1"><span class="kw">st_touches</span>(board[<span class="dv">36</span>,],board)</a></code></pre></div>
-<pre><code>## Sparse geometry binary predicate list of length 1, where the predicate was `touches&#39;
-##  1: 27, 28, 29, 35, 37, 43, 44, 45</code></pre>
-<p>Visually, these are the following fields:
-<img src="_main_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
-<p>Similarly, there are further named topological relationships. Each of them has it’s own function in R:</p>
-<ul>
-<li>Contains (<code>st_contains</code>)</li>
-<li>Covers (<code>st_covers</code>)</li>
-<li>Intersects (<code>st_intersects</code>)</li>
-<li>Within / Inside (<code>st_within</code>)</li>
-<li>Covered by (<code>st_covered_by</code>)</li>
-<li>Crosses (<code>st_crosses</code>)</li>
-<li>Overlaps (<code>st_overlaps</code>)</li>
-</ul>
-<p>Regarding the visual example above, we can imagine a chess piece placed on field #36. If this figure was a Queen or a King, all of the fields resulting from <code>st_touches</code> are reachable. In terms of contiguity, this is what is typically called the Queen’s or the King’s Case. However, this is might not the relationship that we are looking for: Say we would want to exclude the diagonal fields from our selection, the way a Rook would move in chess. How can we implement this in R?</p>
-<p>None of the named topological relationships (binary predicates) above correctly describes this case (<code>touches_but_not_at_edges</code> or <code>shares_boundary</code> would be appropriate). In this case, we can use the Dimensionally Extended 9-Intersection Model (DE-9IM) to precisely formulate the realtionship we are looking for: the Rooks Case.</p>
-<p>IN DE-9IM, the intersection of two objects is viewed at three levels for each object: The Interior, the Boundry and the Exterior (<span class="math inline">\(3^2= 9\)</span>, hence the name). These levels mean different things for Polygons, Lines or Points, but let’s just look at the simple case for now, polygons (which is the case for our chess fields). Take the following example</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
-<p>The interior of a polygon is the area inside the polygon. If the two areas overlap (as is the case of blue and red), the result from an intersection would also be a polygon. More formally: The Dimesion of <span class="math inline">\(I(blue) \cap I(red)\)</span> is an area. Areas get a value of 2, Lines 1 and points 0. If there is no intersection (as is the case in blue and green), the result equals to <code>FALSE</code>.</p>
-<p>This was the first of 9 Intersections. Let’s look at the next one:</p>
-<p>Interior of blue with the boundry of green:</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
-<p>The resulting object has a dimenion “line”, i.e. 1. Formally: <span class="math inline">\(dim(I(blue) \cap B(red)) = 1\)</span>. Now just for the sake of looking at the third level (Exerior), let’s look at what this looks like:</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" title="1">p2_ls &lt;-<span class="st"> </span><span class="kw">st_cast</span>(p2,<span class="st">&quot;LINESTRING&quot;</span>)</a>
-<a class="sourceLine" id="cb60-2" title="2">p2_ls2 &lt;-<span class="st"> </span><span class="kw">st_intersection</span>(p1,p2_ls)</a>
-<a class="sourceLine" id="cb60-3" title="3"></a>
-<a class="sourceLine" id="cb60-4" title="4"><span class="kw">ggplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb60-5" title="5"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> p1, <span class="dt">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb60-6" title="6"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> p2, <span class="dt">fill =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb60-7" title="7"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> <span class="kw">st_difference</span>(p1,p2), <span class="dt">fill =</span> <span class="st">&quot;yellow&quot;</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb60-8" title="8"><span class="st">  </span><span class="kw">theme_void</span>()</a></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
-<p>The resulting object is again an area, i.e. 2. Formally <span class="math inline">\(dim(I(blue) \cap E(red)) = 2\)</span>.</p>
-<p>If we go through all intersections of <strong>I</strong>nterior, <strong>B</strong>oundry and <strong>E</strong>xterior of both geometries, we can denote for each comination what type of dimesion we “allow”. This can be either 0 (for points), 1 (for lines) or 3 (for areas) or <code>TRUE</code> (for either of these), or <code>FALSE</code> (for none of these) or <code>*</code> (for "I dont care).</p>
-<p><img src="https://postgis.net/workshops/postgis-intro/_images/de9im3.jpg" /></p>
-<p>Why go through all this trouble? Because we would like to specify the rooks case, and none of the named predicates matches. So let’s define the rooks case ourselves:</p>
-<div id="rooks-case" class="section level3">
-<h3><span class="header-section-number">7.1.1</span> Rooks Case</h3>
-<p>If we go throught the all nine combinations of the DE-9IM, this is what defines the rooks case:</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left"></th>
-<th align="left">Interior</th>
-<th align="left">Boundary</th>
-<th align="left">Exterior</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Interior</td>
-<td align="left"><strong>nothing</strong></td>
-<td align="left">don’t care</td>
-<td align="left">don’t care</td>
-</tr>
-<tr class="even">
-<td align="left">Boundary</td>
-<td align="left">don’t care</td>
-<td align="left"><strong>Line</strong></td>
-<td align="left">don’t care</td>
-</tr>
-<tr class="odd">
-<td align="left">Exterior</td>
-<td align="left">don’t care</td>
-<td align="left">don’t care</td>
-<td align="left">don’t care</td>
-</tr>
-</tbody>
-</table>
-<p>We can now write this into a string, starting from the top left: F<strong><em>1</em></strong>*</p>
-<p>Now that we have this string, we case use <code>st_relate()</code>and specify the string as the pattern we are looking for:</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" title="1"><span class="kw">st_relate</span>(board[<span class="dv">36</span>,],board,<span class="dt">pattern =</span> <span class="st">&quot;F***1****&quot;</span>)</a></code></pre></div>
-<pre><code>## Sparse geometry binary predicate list of length 1, where the predicate was `relate_pattern&#39;
-##  1: 28, 35, 37, 44</code></pre>
-<p>Which visually gives us this pattern:</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
-<p>Because this was so much fun, let’s also have a look at the opposite, the Bishops Case.</p>
-</div>
-<div id="bishops-case" class="section level3">
-<h3><span class="header-section-number">7.1.2</span> Bishops Case</h3>
-<table>
-<thead>
-<tr class="header">
-<th align="left"></th>
-<th align="left">Interior</th>
-<th align="left">Boundary</th>
-<th align="left">Exterior</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Interior</td>
-<td align="left"><strong>nothing</strong></td>
-<td align="left">don’t care</td>
-<td align="left">don’t care</td>
-</tr>
-<tr class="even">
-<td align="left">Boundary</td>
-<td align="left">don’t care</td>
-<td align="left"><strong>Point</strong></td>
-<td align="left">don’t care</td>
-</tr>
-<tr class="odd">
-<td align="left">Exterior</td>
-<td align="left">don’t care</td>
-<td align="left">don’t care</td>
-<td align="left">don’t care</td>
-</tr>
-</tbody>
-</table>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" title="1"><span class="kw">st_relate</span>(board[<span class="dv">36</span>,],board,<span class="dt">pattern =</span> <span class="st">&quot;F***0****&quot;</span>)</a></code></pre></div>
-<pre><code>## Sparse geometry binary predicate list of length 1, where the predicate was `relate_pattern&#39;
-##  1: 27, 29, 43, 45</code></pre>
-<p>Visually:</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
-
-</div>
-</div>
+<h1><span class="header-section-number">12</span> Additional Reading</h1> 
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="toplogy-rules.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="point.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="binary-predicates-and-de-9im.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -1,9 +1,0 @@
-# Making Maps
-
-## Interactive (for Data Exploration)
-
-see https://geocompr.robinlovelace.net/adv-map.html#interactive-maps
-
-## Static (for Presentation)
-
-see https://geocompr.robinlovelace.net/adv-map.html#static-maps

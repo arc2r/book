@@ -1,0 +1,27 @@
+# Spatial Statistics Toolbox
+
+## Analyzing Patterns Toolset
+
+## Morans I
+
+```{r}
+morans_i <- function(sf_object,col) {
+  require(sf)
+  n <- nrow(sf_object)
+  y <- unlist(st_set_geometry(sf_object,NULL)[,col],use.names = FALSE)
+  ybar <- mean(y, na.rm = TRUE)
+  dy <- y - ybar
+  dy_sum <- sum(dy^2, na.rm = TRUE)
+  vr <- n/dy_sum
+  w <- st_touches(sf_object,sparse = FALSE)
+  pm <- tcrossprod(dy)
+  pmw <- pm * w
+  spmw <- sum(pmw, na.rm = TRUE)
+  smw <- sum(w, na.rm = TRUE)
+  sw  <- spmw / smw
+  MI <- vr * sw
+  MI
+}
+```
+
+
