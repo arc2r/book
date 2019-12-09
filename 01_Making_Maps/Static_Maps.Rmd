@@ -1,3 +1,133 @@
 ## Static (for Presentation)
 
+If you are a seasond `ggplot2` user (or want) to become one, you can create very nice static maps with `ggplot2`. Some facets of mapmaking are not native to this package however, and it might be worthwile to learn a new framework like `tmap`.
+
+
+## Static maps with `ggplot2`
+
+### Basics
+```{r}
+library(sf)
+library(tidyverse)
+eire <- read_sf(system.file("shapes/eire.shp", package="spData"))
+```
+
+The most basic plot consists of a `ggplot()` initiation and a single layer. In case of `sf` data, you can add a layer with `geom_sf()`. If the coordinate system is unknown, the axes will be labelled with the numerical values of the coorindates.
+```{r}
+st_crs(eire)
+ggplot(eire) + 
+  geom_sf()
+```
+
+However, if the coordinate system *is* known, the WGS84 Coordinates are labelled and used as the major and minor grid lines.
+
+```{r}
+eire <- st_set_crs(eire, "+proj=utm +zone=30 +ellps=airy +units=km")
+
+ggplot(eire) + 
+  geom_sf()
+```
+
+As always in `ggplot`, if you want to use a column from your dataset as an input for, say, colour, you need to specify this with `aes()`:
+```{r}
+ggplot(eire) + 
+  geom_sf(aes(fill = INCOME))
+```
+
+There are various ways to beautify this simple plot:
+
+```{r}
+ggplot(eire) + 
+  geom_sf(aes(fill = log(INCOME)), colour = "grey") +
+  labs(title = "Counties of the Irish Republic", 
+       subtitle = expression("Distribution of Income (log"[10]*")"),
+       fill = "") +
+  scale_fill_viridis_c() +
+  theme_void() +
+  theme(legend.position = "bottom")
+```
+
+### Adding Raster Data
+
+While vector data is very easily implemented in ggplot2, rasterdata is not. 
+### Raster Maps
+
+One of the most common formats for raster background maps are (geo-) tif files. These can include colours or be greyscale. We'll have a look at both cases.
+
+#### With Colours
+
+Tif files with colours can either be single band or include multiple bands in a single tif file. These need to be treated differently. Let's take two variants of the [swiss raster map 1:50k](https://shop.swisstopo.admin.ch/de/products/maps/digital_maps/digital/srm10) map. One is a single band dataset, the other a 3-band dataset.
+
+Take the foll
+```{r}
+library(raster)
+
+path_1b <- "sample_data/SMR_Musterdaten/SMR50_LV95_KOMB_Mosaic.tif"
+path_3b <- "sample_data/SMR_Musterdaten/SMR50_LV95_KREL_10L_Mosaic.tif"
+
+raster(path_1b)
+raster(path_3b)
+```
+
+As you can see in the output of `raster(path_3b)`, only one of the 3 bands was imported with `raster::raster`. In the case of multiband rasters, it's better to use `raster::brick`:
+
+```{r}
+map_1b <- raster(path_1b)
+map_3b <- brick(path_3b)
+```
+
+##### Singleband
+
+In case of single band raster, the file usually has a colourtable stored in its metadata. Is is a table mapping the values 1:255 to the appropriate hex-codes
+
+```{r}
+
+
+coltab <- colortable(map_1b)
+# map_1b <- aggregate(map_1b,frac = 5)
+
+coltab
+scales::show_col(coltab,labels = FALSE)
+```
+
+```{r}
+map.df <- data.frame(coordinates(map_1b),fill = coltab[getValues(map_1b)])
+names(coltab) <- 0:(length(coltab) - 1) 
+
+ggplot() +
+  geom_tile(data = map.df, aes(x,y, fill = fill)) +
+  scale_fill_identity()
+
+```
+
+
+##### Multiple bands
+
+```{r}
+
+bgmap <- raster::aggregate(bgmap, fact = 5)
+
+z <- rgb(values(bgmap[[1]]),values(bgmap[[2]]),values(bgmap[[3]]),maxColorValue = 255)
+df <- data.frame(coordinates(bgmap),fill = z)
+
+ggplot() + 
+  geom_tile(data = df, aes(x,y,fill = fill)) + 
+  scale_fill_identity() +
+  coord_equal()
+```
+
+
+
+```{r}
+library(raster)
+
+
+smr10 <- raster::brick("sample_data/SMR_10_Musterdaten/SMR_10KREL_508dpi_uncompressed/SMR10_LV95_KREL_Mosaic.tif")
+
+plot(smr10)
+```
+
+
+#### Greyscale
+
 see https://geocompr.robinlovelace.net/adv-map.html#static-maps

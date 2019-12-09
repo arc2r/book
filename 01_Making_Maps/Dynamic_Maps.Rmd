@@ -4,10 +4,12 @@ Probabbly one of the first things you want to do when working with a dataset is 
 
 If your aim is to explore the data, to just get a feel for it, your map needs to:
 
-- allow pan and zoom
-- display attribute information in popups
-- provide a background map
-- be easy to make
+1. allow pan and zoom
+2. display attribute information in popups
+3. provide a background map
+4. be easy to make
+
+If all of these features are important to you, check out the next section on `tmap`. If interactivity (feature 1 & 2) aren't important to you, and especially if you are a season't `ggplot2` user, check the section on `ggplot2`. <!-- Add crossreference -->
 
 There are many packages that provide these features. In terms of simplicity, versatility and scaleablity `tmap` is one of the best in my opion. To see how it works, import the usual libraries and the North Carlolina Sample data.
 

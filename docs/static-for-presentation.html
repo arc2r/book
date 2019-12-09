@@ -269,6 +269,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="static-for-presentation" class="section level2">
 <h2><span class="header-section-number">3.2</span> Static (for Presentation)</h2>
+<p>If you are a seasond <code>ggplot2</code> user (or want) to become one, you can create very nice static maps with <code>ggplot2</code>. Some facets of mapmaking are not native to this package however, and it might be worthwile to learn a new framework like <code>tmap</code>.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="kw">library</span>(sf)</a>
+<a class="sourceLine" id="cb16-2" title="2"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb16-3" title="3">eire &lt;-<span class="st"> </span><span class="kw">read_sf</span>(<span class="kw">system.file</span>(<span class="st">&quot;shapes/eire.shp&quot;</span>, <span class="dt">package=</span><span class="st">&quot;spData&quot;</span>))</a></code></pre></div>
+<p>The most basic plot consists of a <code>ggplot()</code> initiation and a single layer. In case of <code>sf</code> data, you can add a layer with <code>geom_sf()</code>. If the coordinate system is unknown, the axes will be labelled with the numerical values of the coorindates.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="kw">st_crs</span>(eire)</a></code></pre></div>
+<pre><code>## Coordinate Reference System: NA</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1"><span class="kw">ggplot</span>(eire) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb19-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>()</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>However, if the coordinate system <em>is</em> known, the WGS84 Coordinates are labelled and used as the major and minor grid lines.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1">eire &lt;-<span class="st"> </span><span class="kw">st_set_crs</span>(eire, <span class="st">&quot;+proj=utm +zone=30 +ellps=airy +units=km&quot;</span>)</a>
+<a class="sourceLine" id="cb20-2" title="2"></a>
+<a class="sourceLine" id="cb20-3" title="3"><span class="kw">ggplot</span>(eire) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb20-4" title="4"><span class="st">  </span><span class="kw">geom_sf</span>()</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>As always in <code>ggplot</code>, if you want to use a column from your dataset as an input for, say, colour, you need to specify this with <code>aes()</code>:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1"><span class="kw">ggplot</span>(eire) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb21-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> INCOME))</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>There are various ways to beautify this simple plot:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1"><span class="kw">ggplot</span>(eire) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb22-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> <span class="kw">log</span>(INCOME)), <span class="dt">colour =</span> <span class="st">&quot;grey&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb22-3" title="3"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Counties of the Irish Republic&quot;</span>, </a>
+<a class="sourceLine" id="cb22-4" title="4">       <span class="dt">subtitle =</span> <span class="kw">expression</span>(<span class="st">&quot;Distribution of Income (log&quot;</span>[<span class="dv">10</span>]<span class="op">*</span><span class="st">&quot;)&quot;</span>),</a>
+<a class="sourceLine" id="cb22-5" title="5">       <span class="dt">fill =</span> <span class="st">&quot;&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb22-6" title="6"><span class="st">  </span><span class="kw">scale_fill_viridis_c</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb22-7" title="7"><span class="st">  </span><span class="kw">theme_void</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb22-8" title="8"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <p>see <a href="https://geocompr.robinlovelace.net/adv-map.html#static-maps" class="uri">https://geocompr.robinlovelace.net/adv-map.html#static-maps</a></p>
 
 </div>

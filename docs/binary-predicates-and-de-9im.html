@@ -271,14 +271,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">12.1</span> Binary Predicates and DE-9IM</h2>
 <p>Binary Predicates check topological relationships betweeen geometries. This can be very practical for data quality questions (e.g. “None of the State borders should ovelap”) or for neighbourhood question (e.g. “which states border the state of Nevada?”).</p>
 <p>Lets take the example of a chessboard:</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
 <p>Some topological relationships have specific names. For example, if we want to know which field touch a specific field, the name for this predicate is “touches”. This is implemented in the function <code>st_touches</code> of the packages <code>sf</code>:</p>
 <p>So to see which field touch field number 36, we can write the following line of code:</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" title="1"><span class="kw">st_touches</span>(board[<span class="dv">36</span>,],board)</a></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1"><span class="kw">st_touches</span>(board[<span class="dv">36</span>,],board)</a></code></pre></div>
 <pre><code>## Sparse geometry binary predicate list of length 1, where the predicate was `touches&#39;
 ##  1: 27, 28, 29, 35, 37, 43, 44, 45</code></pre>
 <p>Visually, these are the following fields:
-<img src="_main_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
+<img src="_main_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
 <p>Similarly, there are further named topological relationships. Each of them has it’s own function in R:</p>
 <ul>
 <li>Contains (<code>st_contains</code>)</li>
@@ -292,21 +292,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Regarding the visual example above, we can imagine a chess piece placed on field #36. If this figure was a Queen or a King, all of the fields resulting from <code>st_touches</code> are reachable. In terms of contiguity, this is what is typically called the Queen’s or the King’s Case. However, this is might not the relationship that we are looking for: Say we would want to exclude the diagonal fields from our selection, the way a Rook would move in chess. How can we implement this in R?</p>
 <p>None of the named topological relationships (binary predicates) above correctly describes this case (<code>touches_but_not_at_edges</code> or <code>shares_boundary</code> would be appropriate). In this case, we can use the Dimensionally Extended 9-Intersection Model (DE-9IM) to precisely formulate the realtionship we are looking for: the Rooks Case.</p>
 <p>IN DE-9IM, the intersection of two objects is viewed at three levels for each object: The Interior, the Boundry and the Exterior (<span class="math inline">\(3^2= 9\)</span>, hence the name). These levels mean different things for Polygons, Lines or Points, but let’s just look at the simple case for now, polygons (which is the case for our chess fields). Take the following example</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
 <p>The interior of a polygon is the area inside the polygon. If the two areas overlap (as is the case of blue and red), the result from an intersection would also be a polygon. More formally: The Dimesion of <span class="math inline">\(I(blue) \cap I(red)\)</span> is an area. Areas get a value of 2, Lines 1 and points 0. If there is no intersection (as is the case in blue and green), the result equals to <code>FALSE</code>.</p>
 <p>This was the first of 9 Intersections. Let’s look at the next one:</p>
 <p>Interior of blue with the boundry of green:</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
 <p>The resulting object has a dimenion “line”, i.e. 1. Formally: <span class="math inline">\(dim(I(blue) \cap B(red)) = 1\)</span>. Now just for the sake of looking at the third level (Exerior), let’s look at what this looks like:</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" title="1">p2_ls &lt;-<span class="st"> </span><span class="kw">st_cast</span>(p2,<span class="st">&quot;LINESTRING&quot;</span>)</a>
-<a class="sourceLine" id="cb67-2" title="2">p2_ls2 &lt;-<span class="st"> </span><span class="kw">st_intersection</span>(p1,p2_ls)</a>
-<a class="sourceLine" id="cb67-3" title="3"></a>
-<a class="sourceLine" id="cb67-4" title="4"><span class="kw">ggplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb67-5" title="5"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> p1, <span class="dt">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb67-6" title="6"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> p2, <span class="dt">fill =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb67-7" title="7"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> <span class="kw">st_difference</span>(p1,p2), <span class="dt">fill =</span> <span class="st">&quot;yellow&quot;</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb67-8" title="8"><span class="st">  </span><span class="kw">theme_void</span>()</a></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" title="1">p2_ls &lt;-<span class="st"> </span><span class="kw">st_cast</span>(p2,<span class="st">&quot;LINESTRING&quot;</span>)</a>
+<a class="sourceLine" id="cb74-2" title="2">p2_ls2 &lt;-<span class="st"> </span><span class="kw">st_intersection</span>(p1,p2_ls)</a>
+<a class="sourceLine" id="cb74-3" title="3"></a>
+<a class="sourceLine" id="cb74-4" title="4"><span class="kw">ggplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb74-5" title="5"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> p1, <span class="dt">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb74-6" title="6"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> p2, <span class="dt">fill =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb74-7" title="7"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> <span class="kw">st_difference</span>(p1,p2), <span class="dt">fill =</span> <span class="st">&quot;yellow&quot;</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb74-8" title="8"><span class="st">  </span><span class="kw">theme_void</span>()</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
 <p>The resulting object is again an area, i.e. 2. Formally <span class="math inline">\(dim(I(blue) \cap E(red)) = 2\)</span>.</p>
 <p>If we go through all intersections of <strong>I</strong>nterior, <strong>B</strong>oundry and <strong>E</strong>xterior of both geometries, we can denote for each comination what type of dimesion we “allow”. This can be either 0 (for points), 1 (for lines) or 3 (for areas) or <code>TRUE</code> (for either of these), or <code>FALSE</code> (for none of these) or <code>*</code> (for "I dont care).</p>
 <p><img src="https://postgis.net/workshops/postgis-intro/_images/de9im3.jpg" /></p>
@@ -346,11 +346,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 <p>We can now write this into a string, starting from the top left: F<strong><em>1</em></strong>*</p>
 <p>Now that we have this string, we case use <code>st_relate()</code>and specify the string as the pattern we are looking for:</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1"><span class="kw">st_relate</span>(board[<span class="dv">36</span>,],board,<span class="dt">pattern =</span> <span class="st">&quot;F***1****&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" title="1"><span class="kw">st_relate</span>(board[<span class="dv">36</span>,],board,<span class="dt">pattern =</span> <span class="st">&quot;F***1****&quot;</span>)</a></code></pre></div>
 <pre><code>## Sparse geometry binary predicate list of length 1, where the predicate was `relate_pattern&#39;
 ##  1: 28, 35, 37, 44</code></pre>
 <p>Which visually gives us this pattern:</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
 <p>Because this was so much fun, let’s also have a look at the opposite, the Bishops Case.</p>
 </div>
 <div id="bishops-case" class="section level3">
@@ -385,11 +385,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" title="1"><span class="kw">st_relate</span>(board[<span class="dv">36</span>,],board,<span class="dt">pattern =</span> <span class="st">&quot;F***0****&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" title="1"><span class="kw">st_relate</span>(board[<span class="dv">36</span>,],board,<span class="dt">pattern =</span> <span class="st">&quot;F***0****&quot;</span>)</a></code></pre></div>
 <pre><code>## Sparse geometry binary predicate list of length 1, where the predicate was `relate_pattern&#39;
 ##  1: 27, 29, 43, 45</code></pre>
 <p>Visually:</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
 
 </div>
 </div>

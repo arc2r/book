@@ -269,56 +269,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="raster-interpolation-toolset" class="section level2">
 <h2><span class="header-section-number">6.1</span> Raster Interpolation Toolset</h2>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1"><span class="kw">library</span>(sp)</a>
-<a class="sourceLine" id="cb34-2" title="2"><span class="kw">library</span>(sf)</a>
-<a class="sourceLine" id="cb34-3" title="3"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb34-4" title="4"><span class="kw">library</span>(stars)</a>
-<a class="sourceLine" id="cb34-5" title="5"><span class="kw">data</span>(meuse)</a>
-<a class="sourceLine" id="cb34-6" title="6"></a>
-<a class="sourceLine" id="cb34-7" title="7">meuse_sf &lt;-<span class="st"> </span>meuse <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb34-8" title="8"><span class="st">  </span><span class="kw">st_as_sf</span>(<span class="dt">coords =</span> <span class="kw">c</span>(<span class="st">&quot;x&quot;</span>,<span class="st">&quot;y&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1"><span class="kw">library</span>(sp)</a>
+<a class="sourceLine" id="cb41-2" title="2"><span class="kw">library</span>(sf)</a>
+<a class="sourceLine" id="cb41-3" title="3"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb41-4" title="4"><span class="kw">library</span>(stars)</a>
+<a class="sourceLine" id="cb41-5" title="5"><span class="kw">data</span>(meuse)</a>
+<a class="sourceLine" id="cb41-6" title="6"></a>
+<a class="sourceLine" id="cb41-7" title="7">meuse_sf &lt;-<span class="st"> </span>meuse <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb41-8" title="8"><span class="st">  </span><span class="kw">st_as_sf</span>(<span class="dt">coords =</span> <span class="kw">c</span>(<span class="st">&quot;x&quot;</span>,<span class="st">&quot;y&quot;</span>))</a></code></pre></div>
 <div id="idw" class="section level3">
 <h3><span class="header-section-number">6.1.1</span> IDW</h3>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1">my_idw &lt;-<span class="st"> </span><span class="cf">function</span>(groundtruth,column,cellsize, <span class="dt">nmax =</span> <span class="ot">Inf</span>, <span class="dt">maxdist =</span> <span class="ot">Inf</span>, <span class="dt">idp =</span> <span class="dv">2</span>, <span class="dt">extent =</span> <span class="ot">NULL</span>){</a>
-<a class="sourceLine" id="cb35-2" title="2">  <span class="kw">require</span>(gstat)</a>
-<a class="sourceLine" id="cb35-3" title="3">  <span class="kw">require</span>(sf)</a>
-<a class="sourceLine" id="cb35-4" title="4">  <span class="kw">require</span>(raster)</a>
-<a class="sourceLine" id="cb35-5" title="5">  <span class="cf">if</span>(<span class="kw">is.null</span>(extent)){</a>
-<a class="sourceLine" id="cb35-6" title="6">    extent &lt;-<span class="st"> </span>groundtruth</a>
-<a class="sourceLine" id="cb35-7" title="7">  }</a>
-<a class="sourceLine" id="cb35-8" title="8">  </a>
-<a class="sourceLine" id="cb35-9" title="9">  samples &lt;-<span class="st"> </span><span class="kw">st_make_grid</span>(extent,cellsize,<span class="dt">what =</span> <span class="st">&quot;centers&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">st_as_sf</span>()</a>
-<a class="sourceLine" id="cb35-10" title="10">  my_formula &lt;-<span class="st"> </span><span class="kw">formula</span>(<span class="kw">paste</span>(column,<span class="st">&quot;~1&quot;</span>))</a>
-<a class="sourceLine" id="cb35-11" title="11">  idw_sf &lt;-<span class="st"> </span>gstat<span class="op">::</span><span class="kw">idw</span>(<span class="dt">formula =</span> my_formula,groundtruth,<span class="dt">newdata =</span> samples,<span class="dt">nmin =</span> <span class="dv">1</span>, <span class="dt">maxdist =</span> maxdist, <span class="dt">idp =</span> idp)</a>
-<a class="sourceLine" id="cb35-12" title="12">  </a>
-<a class="sourceLine" id="cb35-13" title="13">  idw_matrix &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="kw">st_coordinates</span>(idw_sf),idw_sf<span class="op">$</span>var1.pred)</a>
-<a class="sourceLine" id="cb35-14" title="14">  </a>
-<a class="sourceLine" id="cb35-15" title="15">  </a>
-<a class="sourceLine" id="cb35-16" title="16">  ras &lt;-<span class="st"> </span>raster<span class="op">::</span><span class="kw">rasterFromXYZ</span>(idw_matrix)</a>
-<a class="sourceLine" id="cb35-17" title="17">  </a>
-<a class="sourceLine" id="cb35-18" title="18">  <span class="cf">if</span>(<span class="kw">all</span>(<span class="kw">grepl</span>(<span class="st">&quot;polygon&quot;</span>,<span class="kw">st_geometry_type</span>(extent),<span class="dt">ignore.case =</span> <span class="ot">TRUE</span>))){</a>
-<a class="sourceLine" id="cb35-19" title="19">    ras &lt;-<span class="st"> </span>raster<span class="op">::</span><span class="kw">mask</span>(ras,<span class="kw">st_as_sf</span>(<span class="kw">st_zm</span>(extent)))</a>
-<a class="sourceLine" id="cb35-20" title="20">  }</a>
-<a class="sourceLine" id="cb35-21" title="21">  ras</a>
-<a class="sourceLine" id="cb35-22" title="22">}</a></code></pre></div>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1">meuse_idw &lt;-<span class="st"> </span><span class="kw">my_idw</span>(meuse_sf,<span class="st">&quot;copper&quot;</span>,<span class="dt">cellsize =</span> <span class="dv">10</span>,<span class="dt">idp =</span> <span class="dv">3</span>)</a></code></pre></div>
-<pre><code>## Loading required package: gstat</code></pre>
-<pre><code>## Warning: package &#39;gstat&#39; was built under R version 3.6.1</code></pre>
-<pre><code>## Registered S3 method overwritten by &#39;xts&#39;:
-##   method     from
-##   as.zoo.xts zoo</code></pre>
-<pre><code>## [inverse distance weighted interpolation]</code></pre>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb41-2" title="2"><span class="st">  </span><span class="kw">geom_stars</span>(<span class="dt">data =</span> <span class="kw">st_as_stars</span>(meuse_idw)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb41-3" title="3"><span class="st">  </span><span class="kw">scale_fill_viridis_c</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb41-4" title="4"><span class="st">  </span><span class="kw">theme_void</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb41-5" title="5"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">fill =</span> <span class="st">&quot;copper&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb41-6" title="6"><span class="st">  </span><span class="kw">coord_equal</span>()</a></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
-</div>
-<div id="kriging" class="section level3">
-<h3><span class="header-section-number">6.1.2</span> Kriging</h3>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1">my_krige &lt;-<span class="st"> </span><span class="cf">function</span>(groundtruth,column,cellsize, <span class="dt">nmax =</span> <span class="ot">Inf</span>, <span class="dt">maxdist =</span> <span class="ot">Inf</span>, <span class="dt">extent =</span> <span class="ot">NULL</span>){</a>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1">my_idw &lt;-<span class="st"> </span><span class="cf">function</span>(groundtruth,column,cellsize, <span class="dt">nmax =</span> <span class="ot">Inf</span>, <span class="dt">maxdist =</span> <span class="ot">Inf</span>, <span class="dt">idp =</span> <span class="dv">2</span>, <span class="dt">extent =</span> <span class="ot">NULL</span>){</a>
 <a class="sourceLine" id="cb42-2" title="2">  <span class="kw">require</span>(gstat)</a>
 <a class="sourceLine" id="cb42-3" title="3">  <span class="kw">require</span>(sf)</a>
 <a class="sourceLine" id="cb42-4" title="4">  <span class="kw">require</span>(raster)</a>
@@ -328,7 +289,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb42-8" title="8">  </a>
 <a class="sourceLine" id="cb42-9" title="9">  samples &lt;-<span class="st"> </span><span class="kw">st_make_grid</span>(extent,cellsize,<span class="dt">what =</span> <span class="st">&quot;centers&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">st_as_sf</span>()</a>
 <a class="sourceLine" id="cb42-10" title="10">  my_formula &lt;-<span class="st"> </span><span class="kw">formula</span>(<span class="kw">paste</span>(column,<span class="st">&quot;~1&quot;</span>))</a>
-<a class="sourceLine" id="cb42-11" title="11">  idw_sf &lt;-<span class="st"> </span>gstat<span class="op">::</span><span class="kw">krige</span>(<span class="dt">formula =</span> my_formula,groundtruth,<span class="dt">newdata =</span> samples,<span class="dt">nmin =</span> <span class="dv">1</span>, <span class="dt">maxdist =</span> maxdist)</a>
+<a class="sourceLine" id="cb42-11" title="11">  idw_sf &lt;-<span class="st"> </span>gstat<span class="op">::</span><span class="kw">idw</span>(<span class="dt">formula =</span> my_formula,groundtruth,<span class="dt">newdata =</span> samples,<span class="dt">nmin =</span> <span class="dv">1</span>, <span class="dt">maxdist =</span> maxdist, <span class="dt">idp =</span> idp)</a>
 <a class="sourceLine" id="cb42-12" title="12">  </a>
 <a class="sourceLine" id="cb42-13" title="13">  idw_matrix &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="kw">st_coordinates</span>(idw_sf),idw_sf<span class="op">$</span>var1.pred)</a>
 <a class="sourceLine" id="cb42-14" title="14">  </a>
@@ -340,37 +301,76 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb42-20" title="20">  }</a>
 <a class="sourceLine" id="cb42-21" title="21">  ras</a>
 <a class="sourceLine" id="cb42-22" title="22">}</a></code></pre></div>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1">meuse_krige &lt;-<span class="st"> </span><span class="kw">my_krige</span>(meuse_sf,<span class="st">&quot;copper&quot;</span>,<span class="dt">cellsize =</span> <span class="dv">10</span>,<span class="dt">nmax =</span> <span class="dv">30</span>, <span class="dt">maxdist =</span> <span class="dv">500</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1">meuse_idw &lt;-<span class="st"> </span><span class="kw">my_idw</span>(meuse_sf,<span class="st">&quot;copper&quot;</span>,<span class="dt">cellsize =</span> <span class="dv">10</span>,<span class="dt">idp =</span> <span class="dv">3</span>)</a></code></pre></div>
+<pre><code>## Loading required package: gstat</code></pre>
+<pre><code>## Warning: package &#39;gstat&#39; was built under R version 3.6.1</code></pre>
+<pre><code>## Registered S3 method overwritten by &#39;xts&#39;:
+##   method     from
+##   as.zoo.xts zoo</code></pre>
 <pre><code>## [inverse distance weighted interpolation]</code></pre>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb45-2" title="2"><span class="st">  </span><span class="kw">geom_stars</span>(<span class="dt">data =</span> <span class="kw">st_as_stars</span>(meuse_krige)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb45-3" title="3"><span class="st">  </span><span class="kw">scale_fill_viridis_c</span>(<span class="dt">na.value =</span> <span class="ot">NA</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb45-4" title="4"><span class="st">  </span><span class="kw">theme_void</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb45-5" title="5"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">fill =</span> <span class="st">&quot;copper&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb45-6" title="6"><span class="st">  </span><span class="kw">coord_equal</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb48-2" title="2"><span class="st">  </span><span class="kw">geom_stars</span>(<span class="dt">data =</span> <span class="kw">st_as_stars</span>(meuse_idw)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb48-3" title="3"><span class="st">  </span><span class="kw">scale_fill_viridis_c</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb48-4" title="4"><span class="st">  </span><span class="kw">theme_void</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb48-5" title="5"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">fill =</span> <span class="st">&quot;copper&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb48-6" title="6"><span class="st">  </span><span class="kw">coord_equal</span>()</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+</div>
+<div id="kriging" class="section level3">
+<h3><span class="header-section-number">6.1.2</span> Kriging</h3>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" title="1">my_krige &lt;-<span class="st"> </span><span class="cf">function</span>(groundtruth,column,cellsize, <span class="dt">nmax =</span> <span class="ot">Inf</span>, <span class="dt">maxdist =</span> <span class="ot">Inf</span>, <span class="dt">extent =</span> <span class="ot">NULL</span>){</a>
+<a class="sourceLine" id="cb49-2" title="2">  <span class="kw">require</span>(gstat)</a>
+<a class="sourceLine" id="cb49-3" title="3">  <span class="kw">require</span>(sf)</a>
+<a class="sourceLine" id="cb49-4" title="4">  <span class="kw">require</span>(raster)</a>
+<a class="sourceLine" id="cb49-5" title="5">  <span class="cf">if</span>(<span class="kw">is.null</span>(extent)){</a>
+<a class="sourceLine" id="cb49-6" title="6">    extent &lt;-<span class="st"> </span>groundtruth</a>
+<a class="sourceLine" id="cb49-7" title="7">  }</a>
+<a class="sourceLine" id="cb49-8" title="8">  </a>
+<a class="sourceLine" id="cb49-9" title="9">  samples &lt;-<span class="st"> </span><span class="kw">st_make_grid</span>(extent,cellsize,<span class="dt">what =</span> <span class="st">&quot;centers&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">st_as_sf</span>()</a>
+<a class="sourceLine" id="cb49-10" title="10">  my_formula &lt;-<span class="st"> </span><span class="kw">formula</span>(<span class="kw">paste</span>(column,<span class="st">&quot;~1&quot;</span>))</a>
+<a class="sourceLine" id="cb49-11" title="11">  idw_sf &lt;-<span class="st"> </span>gstat<span class="op">::</span><span class="kw">krige</span>(<span class="dt">formula =</span> my_formula,groundtruth,<span class="dt">newdata =</span> samples,<span class="dt">nmin =</span> <span class="dv">1</span>, <span class="dt">maxdist =</span> maxdist)</a>
+<a class="sourceLine" id="cb49-12" title="12">  </a>
+<a class="sourceLine" id="cb49-13" title="13">  idw_matrix &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="kw">st_coordinates</span>(idw_sf),idw_sf<span class="op">$</span>var1.pred)</a>
+<a class="sourceLine" id="cb49-14" title="14">  </a>
+<a class="sourceLine" id="cb49-15" title="15">  </a>
+<a class="sourceLine" id="cb49-16" title="16">  ras &lt;-<span class="st"> </span>raster<span class="op">::</span><span class="kw">rasterFromXYZ</span>(idw_matrix)</a>
+<a class="sourceLine" id="cb49-17" title="17">  </a>
+<a class="sourceLine" id="cb49-18" title="18">  <span class="cf">if</span>(<span class="kw">all</span>(<span class="kw">grepl</span>(<span class="st">&quot;polygon&quot;</span>,<span class="kw">st_geometry_type</span>(extent),<span class="dt">ignore.case =</span> <span class="ot">TRUE</span>))){</a>
+<a class="sourceLine" id="cb49-19" title="19">    ras &lt;-<span class="st"> </span>raster<span class="op">::</span><span class="kw">mask</span>(ras,<span class="kw">st_as_sf</span>(<span class="kw">st_zm</span>(extent)))</a>
+<a class="sourceLine" id="cb49-20" title="20">  }</a>
+<a class="sourceLine" id="cb49-21" title="21">  ras</a>
+<a class="sourceLine" id="cb49-22" title="22">}</a></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" title="1">meuse_krige &lt;-<span class="st"> </span><span class="kw">my_krige</span>(meuse_sf,<span class="st">&quot;copper&quot;</span>,<span class="dt">cellsize =</span> <span class="dv">10</span>,<span class="dt">nmax =</span> <span class="dv">30</span>, <span class="dt">maxdist =</span> <span class="dv">500</span>)</a></code></pre></div>
+<pre><code>## [inverse distance weighted interpolation]</code></pre>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb52-2" title="2"><span class="st">  </span><span class="kw">geom_stars</span>(<span class="dt">data =</span> <span class="kw">st_as_stars</span>(meuse_krige)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb52-3" title="3"><span class="st">  </span><span class="kw">scale_fill_viridis_c</span>(<span class="dt">na.value =</span> <span class="ot">NA</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb52-4" title="4"><span class="st">  </span><span class="kw">theme_void</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb52-5" title="5"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">fill =</span> <span class="st">&quot;copper&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb52-6" title="6"><span class="st">  </span><span class="kw">coord_equal</span>()</a></code></pre></div>
 <pre><code>## Warning: Removed 31412 rows containing missing values (geom_raster).</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 </div>
 <div id="natural-neighbor" class="section level3">
 <h3><span class="header-section-number">6.1.3</span> Natural Neighbor</h3>
 <p>Nearest Neighbor:</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" title="1">meuse_thiessen &lt;-<span class="st"> </span><span class="kw">st_voronoi</span>(<span class="kw">st_union</span>(meuse_sf))</a>
-<a class="sourceLine" id="cb47-2" title="2">meuse_thiessen &lt;-<span class="st"> </span><span class="kw">st_cast</span>(meuse_thiessen)</a>
-<a class="sourceLine" id="cb47-3" title="3">meuse_bbox &lt;-<span class="st"> </span>meuse_sf <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb47-4" title="4"><span class="st">  </span><span class="kw">st_bbox</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb47-5" title="5"><span class="st">  </span><span class="kw">st_as_sfc</span>()</a>
-<a class="sourceLine" id="cb47-6" title="6"></a>
-<a class="sourceLine" id="cb47-7" title="7">meuse_thiessen &lt;-<span class="st"> </span><span class="kw">st_intersection</span>(meuse_thiessen,meuse_bbox)</a>
-<a class="sourceLine" id="cb47-8" title="8"></a>
-<a class="sourceLine" id="cb47-9" title="9">meuse_thiessen &lt;-<span class="st"> </span><span class="kw">st_as_sf</span>(meuse_thiessen)</a>
-<a class="sourceLine" id="cb47-10" title="10">meuse_thiessen &lt;-<span class="st"> </span><span class="kw">st_join</span>(meuse_thiessen,meuse_sf)</a>
-<a class="sourceLine" id="cb47-11" title="11"></a>
-<a class="sourceLine" id="cb47-12" title="12"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb47-13" title="13"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> meuse_thiessen, <span class="kw">aes</span>(<span class="dt">fill =</span> copper)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb47-14" title="14"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> meuse_sf) <span class="op">+</span></a>
-<a class="sourceLine" id="cb47-15" title="15"><span class="st">  </span><span class="kw">scale_fill_viridis_c</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb47-16" title="16"><span class="st">  </span><span class="kw">theme_void</span>()</a></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" title="1">meuse_thiessen &lt;-<span class="st"> </span><span class="kw">st_voronoi</span>(<span class="kw">st_union</span>(meuse_sf))</a>
+<a class="sourceLine" id="cb54-2" title="2">meuse_thiessen &lt;-<span class="st"> </span><span class="kw">st_cast</span>(meuse_thiessen)</a>
+<a class="sourceLine" id="cb54-3" title="3">meuse_bbox &lt;-<span class="st"> </span>meuse_sf <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb54-4" title="4"><span class="st">  </span><span class="kw">st_bbox</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb54-5" title="5"><span class="st">  </span><span class="kw">st_as_sfc</span>()</a>
+<a class="sourceLine" id="cb54-6" title="6"></a>
+<a class="sourceLine" id="cb54-7" title="7">meuse_thiessen &lt;-<span class="st"> </span><span class="kw">st_intersection</span>(meuse_thiessen,meuse_bbox)</a>
+<a class="sourceLine" id="cb54-8" title="8"></a>
+<a class="sourceLine" id="cb54-9" title="9">meuse_thiessen &lt;-<span class="st"> </span><span class="kw">st_as_sf</span>(meuse_thiessen)</a>
+<a class="sourceLine" id="cb54-10" title="10">meuse_thiessen &lt;-<span class="st"> </span><span class="kw">st_join</span>(meuse_thiessen,meuse_sf)</a>
+<a class="sourceLine" id="cb54-11" title="11"></a>
+<a class="sourceLine" id="cb54-12" title="12"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb54-13" title="13"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> meuse_thiessen, <span class="kw">aes</span>(<span class="dt">fill =</span> copper)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb54-14" title="14"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> meuse_sf) <span class="op">+</span></a>
+<a class="sourceLine" id="cb54-15" title="15"><span class="st">  </span><span class="kw">scale_fill_viridis_c</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb54-16" title="16"><span class="st">  </span><span class="kw">theme_void</span>()</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 </div>
 <div id="spline" class="section level3">
 <h3><span class="header-section-number">6.1.4</span> Spline</h3>
