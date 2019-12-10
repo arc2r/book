@@ -1,21 +1,20 @@
 ---
-title: "Burning Bridges: A guide to doing spatial stuff in R"
-subtitle: "Particularly for transitioning ArcGIS Users"
+title: "Burning Bridges"
+subtitle: "An intro to (spatial) R for ArcGIS users"
 author: "Nils Ratnaweera"
 site: bookdown::bookdown_site
 ---
 
 
-# TL;DR
+# Abstract
 
-This is a ressource for people coming from ArcGIS who want to learn spatial stuff (Analysis, Visualization) in R. This ressource should provide some help on this journey.
+This is a ressource for people coming from ArcGIS who want to do spatial stuff (Analysis, Visualization) in R. This ressource should provide some help on this journey.
 
 Who this book is for:
 
 - you've worked primarily with ArcGIS and would like to transition to R
 - you have some experience with R
-- you don't mind working with the tidyverse (if you don't know what this is, you probabbly won't mind)
-
+- you don't mind working with the tidyverse
 
 ![](2999236c73d7f6b3561d742dc2471ff8.jpg)
 
@@ -24,14 +23,14 @@ Who this book is for:
 
 # Foreword
 
+I had long since thought about the necessity of a resource which helps ArcGIS users transition to R or Python. I had [tweeted this](https://twitter.com/NRatnaweera/status/1187759876472213504) without getting much reception, and and one point just decided to start my own resource. 
 
-After tweeting this a couple of times, I decided to start my own ressource on the topic: 
+![](tweet1.jpg)
 
-> "Spatial Stuff in R for People indoctrinated with ArcGIS". 
 
-I, like many, leared GIS in University using ArcGIS. It took me a considerable amount of time to learn that there are alternatives to ArcGIS, but not much longer to realize that I'm more attracted to these alternatives than to ArcGIS. When you transition from a proriatary Software like ArcGIS to FOSS, you have to relearn many of the concepts because the proprietery software usually does not adhere to common standards. 
+I, like many, learned GIS in University using ArcGIS. It took me a considerable amount of time to learn that there are alternatives to ArcGIS, but not much longer to realize that I'm more attracted to these alternatives than to ArcGIS. When you transition from a proprietary Software like ArcGIS to FOSS, you have to relearn many of the concepts because the proprietary software usually does not adhere to common standards. 
 
-There are already a great many spatial-R Ressources out there, and I'm not planning to rewrite everything that has been written. My aim is just to provide a resource for people looking to do spial stuff in R, but only know the ArcGIS-Term for it. This might mean that for some topics, I will simply provide a link to an existing ressource. 
+There are already a great many spatial-R Resources out there, and I'm not planning to rewrite everything that has been written. My aim is just to provide a resource for people looking to do spatial stuff in R, but only know the ArcGIS-Term for it. This might mean that for some topics, I will simply provide a link to an existing resource. 
 
   
 

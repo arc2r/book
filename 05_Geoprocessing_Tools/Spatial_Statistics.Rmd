@@ -22,6 +22,7 @@ Ripley's k-function
 
 ### Spatial Autocorrelation (Global Morans I)
 
+#### TL;DR - here's the funciton to calculate Morans I
 ```{r}
 morans_i <- function(sf_object,col) {
   require(sf)
@@ -70,3 +71,5 @@ zweit_plot +
   labs(caption = paste("Morans I",formatC(MI_zweitwo,2,flag = "+")))
 ```
 
+
+#### Let's take this apart step by step
