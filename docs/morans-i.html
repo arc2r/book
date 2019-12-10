@@ -141,6 +141,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3" data-path="making-maps.html"><a href="making-maps.html"><i class="fa fa-check"></i><b>3</b> Making Maps</a><ul>
 <li class="chapter" data-level="3.1" data-path="interactive-for-data-exploration.html"><a href="interactive-for-data-exploration.html"><i class="fa fa-check"></i><b>3.1</b> Interactive (for Data Exploration)</a></li>
 <li class="chapter" data-level="3.2" data-path="static-for-presentation.html"><a href="static-for-presentation.html"><i class="fa fa-check"></i><b>3.2</b> Static (for Presentation)</a></li>
+<li class="chapter" data-level="3.3" data-path="static-maps-with-ggplot2.html"><a href="static-maps-with-ggplot2.html"><i class="fa fa-check"></i><b>3.3</b> Static maps with <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="3.3.1" data-path="static-maps-with-ggplot2.html"><a href="static-maps-with-ggplot2.html#basics"><i class="fa fa-check"></i><b>3.3.1</b> Basics</a></li>
+<li class="chapter" data-level="3.3.2" data-path="static-maps-with-ggplot2.html"><a href="static-maps-with-ggplot2.html#adding-raster-data"><i class="fa fa-check"></i><b>3.3.2</b> Adding Raster Data</a></li>
+<li class="chapter" data-level="3.3.3" data-path="static-maps-with-ggplot2.html"><a href="static-maps-with-ggplot2.html#raster-maps"><i class="fa fa-check"></i><b>3.3.3</b> Raster Maps</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="select-by-attribute-or-location.html"><a href="select-by-attribute-or-location.html"><i class="fa fa-check"></i><b>4</b> Select (by Attribute or Location)</a><ul>
 <li class="chapter" data-level="4.1" data-path="select-by-attribute.html"><a href="select-by-attribute.html"><i class="fa fa-check"></i><b>4.1</b> Select by Attribute</a></li>
@@ -269,23 +274,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="morans-i" class="section level2">
 <h2><span class="header-section-number">10.2</span> Morans I</h2>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" title="1">morans_i &lt;-<span class="st"> </span><span class="cf">function</span>(sf_object,col) {</a>
-<a class="sourceLine" id="cb55-2" title="2">  <span class="kw">require</span>(sf)</a>
-<a class="sourceLine" id="cb55-3" title="3">  n &lt;-<span class="st"> </span><span class="kw">nrow</span>(sf_object)</a>
-<a class="sourceLine" id="cb55-4" title="4">  y &lt;-<span class="st"> </span><span class="kw">unlist</span>(<span class="kw">st_set_geometry</span>(sf_object,<span class="ot">NULL</span>)[,col],<span class="dt">use.names =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb55-5" title="5">  ybar &lt;-<span class="st"> </span><span class="kw">mean</span>(y, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb55-6" title="6">  dy &lt;-<span class="st"> </span>y <span class="op">-</span><span class="st"> </span>ybar</a>
-<a class="sourceLine" id="cb55-7" title="7">  dy_sum &lt;-<span class="st"> </span><span class="kw">sum</span>(dy<span class="op">^</span><span class="dv">2</span>, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb55-8" title="8">  vr &lt;-<span class="st"> </span>n<span class="op">/</span>dy_sum</a>
-<a class="sourceLine" id="cb55-9" title="9">  w &lt;-<span class="st"> </span><span class="kw">st_touches</span>(sf_object,<span class="dt">sparse =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb55-10" title="10">  pm &lt;-<span class="st"> </span><span class="kw">tcrossprod</span>(dy)</a>
-<a class="sourceLine" id="cb55-11" title="11">  pmw &lt;-<span class="st"> </span>pm <span class="op">*</span><span class="st"> </span>w</a>
-<a class="sourceLine" id="cb55-12" title="12">  spmw &lt;-<span class="st"> </span><span class="kw">sum</span>(pmw, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb55-13" title="13">  smw &lt;-<span class="st"> </span><span class="kw">sum</span>(w, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb55-14" title="14">  sw  &lt;-<span class="st"> </span>spmw <span class="op">/</span><span class="st"> </span>smw</a>
-<a class="sourceLine" id="cb55-15" title="15">  MI &lt;-<span class="st"> </span>vr <span class="op">*</span><span class="st"> </span>sw</a>
-<a class="sourceLine" id="cb55-16" title="16">  MI</a>
-<a class="sourceLine" id="cb55-17" title="17">}</a></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" title="1">morans_i &lt;-<span class="st"> </span><span class="cf">function</span>(sf_object,col) {</a>
+<a class="sourceLine" id="cb95-2" title="2">  <span class="kw">require</span>(sf)</a>
+<a class="sourceLine" id="cb95-3" title="3">  n &lt;-<span class="st"> </span><span class="kw">nrow</span>(sf_object)</a>
+<a class="sourceLine" id="cb95-4" title="4">  y &lt;-<span class="st"> </span><span class="kw">unlist</span>(<span class="kw">st_set_geometry</span>(sf_object,<span class="ot">NULL</span>)[,col],<span class="dt">use.names =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb95-5" title="5">  ybar &lt;-<span class="st"> </span><span class="kw">mean</span>(y, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb95-6" title="6">  dy &lt;-<span class="st"> </span>y <span class="op">-</span><span class="st"> </span>ybar</a>
+<a class="sourceLine" id="cb95-7" title="7">  dy_sum &lt;-<span class="st"> </span><span class="kw">sum</span>(dy<span class="op">^</span><span class="dv">2</span>, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb95-8" title="8">  vr &lt;-<span class="st"> </span>n<span class="op">/</span>dy_sum</a>
+<a class="sourceLine" id="cb95-9" title="9">  w &lt;-<span class="st"> </span><span class="kw">st_touches</span>(sf_object,<span class="dt">sparse =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb95-10" title="10">  pm &lt;-<span class="st"> </span><span class="kw">tcrossprod</span>(dy)</a>
+<a class="sourceLine" id="cb95-11" title="11">  pmw &lt;-<span class="st"> </span>pm <span class="op">*</span><span class="st"> </span>w</a>
+<a class="sourceLine" id="cb95-12" title="12">  spmw &lt;-<span class="st"> </span><span class="kw">sum</span>(pmw, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb95-13" title="13">  smw &lt;-<span class="st"> </span><span class="kw">sum</span>(w, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb95-14" title="14">  sw  &lt;-<span class="st"> </span>spmw <span class="op">/</span><span class="st"> </span>smw</a>
+<a class="sourceLine" id="cb95-15" title="15">  MI &lt;-<span class="st"> </span>vr <span class="op">*</span><span class="st"> </span>sw</a>
+<a class="sourceLine" id="cb95-16" title="16">  MI</a>
+<a class="sourceLine" id="cb95-17" title="17">}</a></code></pre></div>
 
 </div>
 <!-- </div> -->

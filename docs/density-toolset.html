@@ -141,6 +141,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3" data-path="making-maps.html"><a href="making-maps.html"><i class="fa fa-check"></i><b>3</b> Making Maps</a><ul>
 <li class="chapter" data-level="3.1" data-path="interactive-for-data-exploration.html"><a href="interactive-for-data-exploration.html"><i class="fa fa-check"></i><b>3.1</b> Interactive (for Data Exploration)</a></li>
 <li class="chapter" data-level="3.2" data-path="static-for-presentation.html"><a href="static-for-presentation.html"><i class="fa fa-check"></i><b>3.2</b> Static (for Presentation)</a></li>
+<li class="chapter" data-level="3.3" data-path="static-maps-with-ggplot2.html"><a href="static-maps-with-ggplot2.html"><i class="fa fa-check"></i><b>3.3</b> Static maps with <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="3.3.1" data-path="static-maps-with-ggplot2.html"><a href="static-maps-with-ggplot2.html#basics"><i class="fa fa-check"></i><b>3.3.1</b> Basics</a></li>
+<li class="chapter" data-level="3.3.2" data-path="static-maps-with-ggplot2.html"><a href="static-maps-with-ggplot2.html#adding-raster-data"><i class="fa fa-check"></i><b>3.3.2</b> Adding Raster Data</a></li>
+<li class="chapter" data-level="3.3.3" data-path="static-maps-with-ggplot2.html"><a href="static-maps-with-ggplot2.html#raster-maps"><i class="fa fa-check"></i><b>3.3.3</b> Raster Maps</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="select-by-attribute-or-location.html"><a href="select-by-attribute-or-location.html"><i class="fa fa-check"></i><b>4</b> Select (by Attribute or Location)</a><ul>
 <li class="chapter" data-level="4.1" data-path="select-by-attribute.html"><a href="select-by-attribute.html"><i class="fa fa-check"></i><b>4.1</b> Select by Attribute</a></li>
@@ -278,63 +283,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>MASS::kde2d()</code>: Takes x/y coordinates as vectors and returns a matrix</li>
 </ul>
 <p>In this example, I take <code>MASS:kde2d()</code> and tweak it to take <code>sf</code> and return <code>raster</code>. First, let’s create some sample data:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1"><span class="kw">set.seed</span>(<span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb24-2" title="2">mypoints &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">rnorm</span>(<span class="dv">1000</span>),<span class="dt">y =</span> <span class="kw">rnorm</span>(<span class="dv">1000</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb24-3" title="3"><span class="st">  </span><span class="kw">st_as_sf</span>(<span class="dt">coords =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb24-4" title="4"></a>
-<a class="sourceLine" id="cb24-5" title="5"><span class="kw">plot</span>(mypoints)</a></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1">my_kde &lt;-<span class="st"> </span><span class="cf">function</span>(points,cellsize, bandwith, <span class="dt">extent =</span> <span class="ot">NULL</span>){</a>
-<a class="sourceLine" id="cb25-2" title="2">  <span class="kw">require</span>(MASS)</a>
-<a class="sourceLine" id="cb25-3" title="3">  <span class="kw">require</span>(raster)</a>
-<a class="sourceLine" id="cb25-4" title="4">  <span class="kw">require</span>(sf)</a>
-<a class="sourceLine" id="cb25-5" title="5">  <span class="cf">if</span>(<span class="kw">is.null</span>(extent)){</a>
-<a class="sourceLine" id="cb25-6" title="6">    extent_vec &lt;-<span class="st"> </span><span class="kw">st_bbox</span>(points)[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>)]</a>
-<a class="sourceLine" id="cb25-7" title="7">  } <span class="cf">else</span>{</a>
-<a class="sourceLine" id="cb25-8" title="8">    extent_vec &lt;-<span class="st"> </span><span class="kw">st_bbox</span>(extent)[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>)]</a>
-<a class="sourceLine" id="cb25-9" title="9">  }</a>
-<a class="sourceLine" id="cb25-10" title="10">  </a>
-<a class="sourceLine" id="cb25-11" title="11">  n_y &lt;-<span class="st"> </span><span class="kw">ceiling</span>((extent_vec[<span class="dv">4</span>]<span class="op">-</span>extent_vec[<span class="dv">3</span>])<span class="op">/</span>cellsize)</a>
-<a class="sourceLine" id="cb25-12" title="12">  n_x &lt;-<span class="st"> </span><span class="kw">ceiling</span>((extent_vec[<span class="dv">2</span>]<span class="op">-</span>extent_vec[<span class="dv">1</span>])<span class="op">/</span>cellsize)</a>
-<a class="sourceLine" id="cb25-13" title="13">  </a>
-<a class="sourceLine" id="cb25-14" title="14">  extent_vec[<span class="dv">2</span>] &lt;-<span class="st"> </span>extent_vec[<span class="dv">1</span>]<span class="op">+</span>(n_x<span class="op">*</span>cellsize)<span class="op">-</span>cellsize</a>
-<a class="sourceLine" id="cb25-15" title="15">  extent_vec[<span class="dv">4</span>] &lt;-<span class="st"> </span>extent_vec[<span class="dv">3</span>]<span class="op">+</span>(n_y<span class="op">*</span>cellsize)<span class="op">-</span>cellsize</a>
-<a class="sourceLine" id="cb25-16" title="16"></a>
-<a class="sourceLine" id="cb25-17" title="17">  coords &lt;-<span class="st"> </span><span class="kw">st_coordinates</span>(points)</a>
-<a class="sourceLine" id="cb25-18" title="18">  matrix &lt;-<span class="st"> </span><span class="kw">kde2d</span>(coords[,<span class="dv">1</span>],coords[,<span class="dv">2</span>],<span class="dt">h =</span> bandwith,<span class="dt">n =</span> <span class="kw">c</span>(n_x,n_y),<span class="dt">lims =</span> extent_vec)</a>
-<a class="sourceLine" id="cb25-19" title="19">  <span class="kw">raster</span>(matrix)</a>
-<a class="sourceLine" id="cb25-20" title="20">}</a></code></pre></div>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1">mypoints_kde &lt;-<span class="st"> </span><span class="kw">my_kde</span>(mypoints,<span class="fl">0.01</span>,<span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" title="1"><span class="kw">set.seed</span>(<span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb70-2" title="2">mypoints &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">rnorm</span>(<span class="dv">1000</span>),<span class="dt">y =</span> <span class="kw">rnorm</span>(<span class="dv">1000</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb70-3" title="3"><span class="st">  </span><span class="kw">st_as_sf</span>(<span class="dt">coords =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb70-4" title="4"></a>
+<a class="sourceLine" id="cb70-5" title="5"><span class="kw">plot</span>(mypoints)</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" title="1">my_kde &lt;-<span class="st"> </span><span class="cf">function</span>(points,cellsize, bandwith, <span class="dt">extent =</span> <span class="ot">NULL</span>){</a>
+<a class="sourceLine" id="cb71-2" title="2">  <span class="kw">require</span>(MASS)</a>
+<a class="sourceLine" id="cb71-3" title="3">  <span class="kw">require</span>(raster)</a>
+<a class="sourceLine" id="cb71-4" title="4">  <span class="kw">require</span>(sf)</a>
+<a class="sourceLine" id="cb71-5" title="5">  <span class="cf">if</span>(<span class="kw">is.null</span>(extent)){</a>
+<a class="sourceLine" id="cb71-6" title="6">    extent_vec &lt;-<span class="st"> </span><span class="kw">st_bbox</span>(points)[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>)]</a>
+<a class="sourceLine" id="cb71-7" title="7">  } <span class="cf">else</span>{</a>
+<a class="sourceLine" id="cb71-8" title="8">    extent_vec &lt;-<span class="st"> </span><span class="kw">st_bbox</span>(extent)[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>)]</a>
+<a class="sourceLine" id="cb71-9" title="9">  }</a>
+<a class="sourceLine" id="cb71-10" title="10">  </a>
+<a class="sourceLine" id="cb71-11" title="11">  n_y &lt;-<span class="st"> </span><span class="kw">ceiling</span>((extent_vec[<span class="dv">4</span>]<span class="op">-</span>extent_vec[<span class="dv">3</span>])<span class="op">/</span>cellsize)</a>
+<a class="sourceLine" id="cb71-12" title="12">  n_x &lt;-<span class="st"> </span><span class="kw">ceiling</span>((extent_vec[<span class="dv">2</span>]<span class="op">-</span>extent_vec[<span class="dv">1</span>])<span class="op">/</span>cellsize)</a>
+<a class="sourceLine" id="cb71-13" title="13">  </a>
+<a class="sourceLine" id="cb71-14" title="14">  extent_vec[<span class="dv">2</span>] &lt;-<span class="st"> </span>extent_vec[<span class="dv">1</span>]<span class="op">+</span>(n_x<span class="op">*</span>cellsize)<span class="op">-</span>cellsize</a>
+<a class="sourceLine" id="cb71-15" title="15">  extent_vec[<span class="dv">4</span>] &lt;-<span class="st"> </span>extent_vec[<span class="dv">3</span>]<span class="op">+</span>(n_y<span class="op">*</span>cellsize)<span class="op">-</span>cellsize</a>
+<a class="sourceLine" id="cb71-16" title="16"></a>
+<a class="sourceLine" id="cb71-17" title="17">  coords &lt;-<span class="st"> </span><span class="kw">st_coordinates</span>(points)</a>
+<a class="sourceLine" id="cb71-18" title="18">  matrix &lt;-<span class="st"> </span><span class="kw">kde2d</span>(coords[,<span class="dv">1</span>],coords[,<span class="dv">2</span>],<span class="dt">h =</span> bandwith,<span class="dt">n =</span> <span class="kw">c</span>(n_x,n_y),<span class="dt">lims =</span> extent_vec)</a>
+<a class="sourceLine" id="cb71-19" title="19">  <span class="kw">raster</span>(matrix)</a>
+<a class="sourceLine" id="cb71-20" title="20">}</a></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1">mypoints_kde &lt;-<span class="st"> </span><span class="kw">my_kde</span>(mypoints,<span class="fl">0.01</span>,<span class="dv">1</span>)</a></code></pre></div>
 <pre><code>## Loading required package: MASS</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;MASS&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
-## 
-##     select</code></pre>
-<pre><code>## Loading required package: raster</code></pre>
-<pre><code>## Warning: package &#39;raster&#39; was built under R version 3.6.1</code></pre>
-<pre><code>## Loading required package: sp</code></pre>
-<pre><code>## 
-## Attaching package: &#39;raster&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:MASS&#39;:
+<pre><code>## The following objects are masked from &#39;package:raster&#39;:
 ## 
 ##     area, select</code></pre>
 <pre><code>## The following object is masked from &#39;package:dplyr&#39;:
 ## 
 ##     select</code></pre>
-<pre><code>## The following object is masked from &#39;package:tidyr&#39;:
-## 
-##     extract</code></pre>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" title="1"><span class="kw">library</span>(stars)</a></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" title="1"><span class="kw">library</span>(stars)</a></code></pre></div>
 <pre><code>## Warning: package &#39;stars&#39; was built under R version 3.6.1</code></pre>
 <pre><code>## Loading required package: abind</code></pre>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb40-2" title="2"><span class="st">  </span><span class="kw">geom_stars</span>(<span class="dt">data =</span> <span class="kw">st_as_stars</span>(mypoints_kde)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb40-3" title="3"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> mypoints, <span class="dt">alpha =</span> <span class="fl">0.2</span>, <span class="dt">fill =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb40-4" title="4"><span class="st">  </span><span class="kw">scale_fill_viridis_c</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb40-5" title="5"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">fill =</span> <span class="st">&quot;KDE&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb40-6" title="6"><span class="st">  </span><span class="kw">theme_void</span>() </a></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb80-2" title="2"><span class="st">  </span><span class="kw">geom_stars</span>(<span class="dt">data =</span> <span class="kw">st_as_stars</span>(mypoints_kde)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb80-3" title="3"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> mypoints, <span class="dt">alpha =</span> <span class="fl">0.2</span>, <span class="dt">fill =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb80-4" title="4"><span class="st">  </span><span class="kw">scale_fill_viridis_c</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb80-5" title="5"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">fill =</span> <span class="st">&quot;KDE&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb80-6" title="6"><span class="st">  </span><span class="kw">theme_void</span>() </a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
 </div>
 <div id="line-density" class="section level3">
 <h3><span class="header-section-number">5.2.2</span> Line Density</h3>

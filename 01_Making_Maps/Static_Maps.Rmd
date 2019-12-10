@@ -1,7 +1,10 @@
 ## Static (for Presentation)
 
+
+
 If you are a seasond `ggplot2` user (or want) to become one, you can create very nice static maps with `ggplot2`. Some facets of mapmaking are not native to this package however, and it might be worthwile to learn a new framework like `tmap`.
 
+Additional reading: see https://geocompr.robinlovelace.net/adv-map.html#static-maps
 
 ## Static maps with `ggplot2`
 
@@ -50,6 +53,7 @@ ggplot(eire) +
 ### Adding Raster Data
 
 While vector data is very easily implemented in ggplot2, rasterdata is not. 
+
 ### Raster Maps
 
 One of the most common formats for raster background maps are (geo-) tif files. These can include colours or be greyscale. We'll have a look at both cases.
@@ -78,56 +82,167 @@ map_3b <- brick(path_3b)
 
 ##### Singleband
 
-In case of single band raster, the file usually has a colourtable stored in its metadata. Is is a table mapping the values 1:255 to the appropriate hex-codes
+A singleband RasterLayer can be regarded as vector of numeric values arranged in a matrix with some additional metadata. The metadata can be view with `str()`, the values can be obtained with `getValues()`.
 
 ```{r}
+str(map_1b)
+head(getValues(map_1b),50)
 
+extent(map_1b)
+```
 
+The first 50 cells of this `RasterLayer` contain the value `37`. This value `37` is associated with a specific colour, which can be viewd in the `colortable` of the `RasterLayer`.
+
+```{r}
 coltab <- colortable(map_1b)
-# map_1b <- aggregate(map_1b,frac = 5)
-
-coltab
+head(coltab)
 scales::show_col(coltab,labels = FALSE)
 ```
 
+
+In order to plot this `RasterLayer` in ggplot, we need to convert it into a dataframe. You can imagine that this is converting the wide matrix into a very long table with three columns: x and y coordinates of the lower left corner of each cell and a value specifying what the cell holds. 
+
 ```{r}
-map.df <- data.frame(coordinates(map_1b),fill = coltab[getValues(map_1b)])
-names(coltab) <- 0:(length(coltab) - 1) 
+map_1b_df <- data.frame(coordinates(map_1b),values = getValues(map_1b))
+head(map_1b_df)
+```
+
+We can now use the `values` column in `ggplot2` to specify the `fill` aesthetic. If we then pass the colortable as our fill values, the colours will be matched correctly. However we need two additional tricks:
+
+- name the colourtable to make sure the correct colours are correct to the according values
+- wrap the `values` column in `factor()` so that the `ggplot2` does not mistake the numeric values as a continuous scale:
+
+
+```{r}
+names(coltab) <- 0:255 # 1:256 would be wrong by 1
 
 ggplot() +
-  geom_tile(data = map.df, aes(x,y, fill = fill)) +
-  scale_fill_identity()
+  geom_raster(data = map_1b_df, aes(x,y, fill = factor(values))) +
+  scale_fill_manual(values = coltab) +
+  theme(legend.position = "none") +
+  coord_equal()
 
 ```
 
+Note that there are thee ways to plot this type of data in `ggplot2`: `geom_rect`, `geom_tile` and `geom_raster`. The latter is "a high performance special case for when all the tiles are the same size" (see [the docs](https://ggplot2.tidyverse.org/reference/geom_tile.html).
+
+
+Alternatively, you can add the hex colourcode to the dataframe and use `scale_fill_identitiy()`.
+```{r, eval = FALSE}
+map_1b_df <- mutate(map_1b_df, colorvalue = coltab[values+1])
+ggplot() +
+  geom_raster(data = map_1b_df, aes(x,y, fill = colorvalue)) +
+  scale_fill_identity() +
+  theme(legend.position = "none") +
+  coord_equal()
+```
+
+The big drawback of using `ggplot2` in this way: you cannot add a second layer with a `fill` aesthetic, since `ggplot2` only allows one per plot.
 
 ##### Multiple bands
 
+
+
+In case of a 3-Band Raster Brick, each layer holds a value of 0 to 255 representing colours in the RGB colour model. Usually, the first layer represents **R**ed, the second **G**reen and the third **B**lue. We can subset the `RasterBrick` into the individual `RasterLayers` using double brackets (`[[1]]` for the first layer).
+
 ```{r}
+map_3b
 
-bgmap <- raster::aggregate(bgmap, fact = 5)
+map_3b[[1]]
+```
 
-z <- rgb(values(bgmap[[1]]),values(bgmap[[2]]),values(bgmap[[3]]),maxColorValue = 255)
-df <- data.frame(coordinates(bgmap),fill = z)
+We can extract the Values of each layer again with `getValues()`:
+
+```{r}
+head(values(map_3b[[1]]),50)
+```
+
+We can then use these values to create hex-codes from the RGB values.
+
+```{r}
+rgb(10,10,10,maxColorValue = 255)
+
+cols <- rgb(values(map_3b[[1]]),values(map_3b[[2]]),values(map_3b[[3]]),maxColorValue = 255)
+
+head(cols,50)
+```
+
+Like with the single band raster, we now transform the Raster into a dataframe, this time using the output of `rgb()` to directly add the hex colourvalues to the table.
+
+```{r}
+map_3b_df <- data.frame(coordinates(map_3b),colorvalue = cols)
+
+head(map_3b_df)
+```
+
+
+```{r}
+ggplot() + 
+  geom_raster(data = map_3b_df, aes(x,y,fill = colorvalue)) + 
+  scale_fill_identity() +
+  coord_equal()
+```
+
+Tipp, if your file is to large and ggplot has trouble plotting it fast, you can use `aggregate` to reduce the resolution
+
+```{r}
+map_3b_lowres <- raster::aggregate(map_3b, fact = 5)
+
+map_3b_lowres_df <- data.frame(coordinates(map_3b_lowres),colorvalue = rgb(values(map_3b_lowres[[1]]),values(map_3b_lowres[[2]]),values(map_3b_lowres[[3]]),maxColorValue = 255))
+
 
 ggplot() + 
-  geom_tile(data = df, aes(x,y,fill = fill)) + 
+  geom_raster(data = map_3b_lowres_df, aes(x,y,fill = colorvalue)) + 
   scale_fill_identity() +
   coord_equal()
 ```
 
 
 
+#### Greyscale
+
+In greyscale maps, `raster` cannot find a associated colortable to match the values to rgb or hex colours.
 ```{r}
-library(raster)
+map_grey_path <- "sample_data/SMR_Musterdaten/SMR50_LV95_KGRS_Mosaic.tif"
+map_grey <- raster(map_grey_path)
+
+head(getValues(map_grey))
+colortable(map_grey)
+```
+
+However, the package `tiff` _can_ find the rgb values of a tiff, we just need to set `indexed = TRUE` and get the `color.map` attribute of the output:
+
+```{r}
+library(tiff)
+
+index <- readTIFF(map_grey_path,indexed = TRUE)
+colormap <- attr(index,"color.map")
 
 
-smr10 <- raster::brick("sample_data/SMR_10_Musterdaten/SMR_10KREL_508dpi_uncompressed/SMR10_LV95_KREL_Mosaic.tif")
+colormap[,1:10] # only showing the first 10 columns (of 256)
+```
 
-plot(smr10)
+This is an index with three rows (**R**ed, **G**reen and **B**lue) and 265 columns (with are the Values from `getValues()`). We can now use `rgb()` to turn this matrix into a vector of 265 hex colours:
+
+```{r}
+coltab <- rgb(colormap[1,],colormap[2,],colormap[3,])
+
+scales::show_col(coltab,labels = FALSE)
+```
+
+Like before, we now turn the `RasterLayer` into a dataframe and use the `Values` and the newly created colortable to assign the correct values:
+
+```{r}
+map_grey_df <- data.frame(coordinates(map_grey),values = getValues(map_grey))
+
+
+names(coltab) <- 0:255
+
+ggplot() +
+  geom_raster(data = map_grey_df, aes(x,y, fill = factor(values))) +
+  scale_fill_manual(values = coltab) +
+  theme(legend.position = "none") +
+  coord_equal()
 ```
 
 
-#### Greyscale
-
-see https://geocompr.robinlovelace.net/adv-map.html#static-maps
