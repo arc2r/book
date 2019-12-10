@@ -1,6 +1,6 @@
 ---
-title: "Burning the Bridges"
-subtitle: "Spatial R for ArcGIS Users"
+title: "Burning Bridges: A guide to doing spatial stuff in R"
+subtitle: "Particularly for transitioning ArcGIS Users"
 author: "Nils Ratnaweera"
 site: bookdown::bookdown_site
 ---
@@ -17,7 +17,7 @@ Who this book is for:
 - you don't mind working with the tidyverse (if you don't know what this is, you probabbly won't mind)
 
 
-![](fire_PNG6023.png)
+![](2999236c73d7f6b3561d742dc2471ff8.jpg)
 
 
 

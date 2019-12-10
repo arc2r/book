@@ -1,6 +1,4 @@
-## Static (for Presentation)
-
-
+# Making Maps: Static Maps for Presentation
 
 If you are a seasond `ggplot2` user (or want) to become one, you can create very nice static maps with `ggplot2`. Some facets of mapmaking are not native to this package however, and it might be worthwile to learn a new framework like `tmap`.
 
@@ -12,7 +10,8 @@ Additional reading: see https://geocompr.robinlovelace.net/adv-map.html#static-m
 ```{r}
 library(sf)
 library(tidyverse)
-eire <- read_sf(system.file("shapes/eire.shp", package="spData"))
+
+eire <- read_sf("sample_data/spData/eire.shp")
 ```
 
 The most basic plot consists of a `ggplot()` initiation and a single layer. In case of `sf` data, you can add a layer with `geom_sf()`. If the coordinate system is unknown, the axes will be labelled with the numerical values of the coorindates.

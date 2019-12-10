@@ -1,6 +1,5 @@
 rmd_files: [
   "index.Rmd",
-  "01_Making_Maps/Chapter_overview.Rmd",
   "01_Making_Maps/Dynamic_Maps.Rmd",
   "01_Making_Maps/Static_Maps.Rmd",
   "02_Select/Chapter_overview.Rmd",

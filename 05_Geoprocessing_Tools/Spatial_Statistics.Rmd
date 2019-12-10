@@ -1,8 +1,26 @@
 # Spatial Statistics Toolbox
 
+## Mapping Clusters Toolset
+
+## Measuring Geographic Distributions Toolset
+
+## Modeling Spatial Relationships Toolset
+
+## Utilities Toolset
+
 ## Analyzing Patterns Toolset
 
-## Morans I
+### Average Nearest Neighbor
+
+### High / Low Clustering
+
+### Incremental Spatial Atuocorrelation
+
+### Multi-Distance Spatial Cluster Analysis
+
+Ripley's k-function
+
+### Spatial Autocorrelation (Global Morans I)
 
 ```{r}
 morans_i <- function(sf_object,col) {
@@ -24,4 +42,31 @@ morans_i <- function(sf_object,col) {
 }
 ```
 
+
+```{r}
+zweitwohung <- read_sf("sample_data/other/zweitwohnung_gemeinden.gpkg")
+
+zweitwohung <- st_set_crs(zweitwohung,2056)
+```
+
+
+```{r}
+zweit_plot <- ggplot(zweitwohung) +
+  geom_sf(aes(fill = ja_in_percent), colour = NA) +
+  scale_fill_gradient2(low = "#2c7bb6",mid = "#ffffbf",high = "#d7191c", midpoint = 50,breaks = c(0,25,50,75,100),limits = c(0,100))+
+  labs(title = "Results from the 'Zweitwohungsinitiative'",
+       subtitle = "Percent in Approval",
+       fill = "") +
+  theme_void() +
+  theme(legend.position = "bottom")
+
+zweit_plot
+```
+
+```{r}
+MI_zweitwo <- morans_i(zweitwohung,"ja_in_percent")
+
+zweit_plot +
+  labs(caption = paste("Morans I",formatC(MI_zweitwo,2,flag = "+")))
+```
 

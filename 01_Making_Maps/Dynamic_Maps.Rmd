@@ -1,4 +1,4 @@
-## Interactive (for Data Exploration)
+# Making Maps: Interactive Maps for Data Exploration
 
 Probabbly one of the first things you want to do when working with a dataset is visualizing it spatially. This is basically always the first thing you do in ArcGIS. So how do you this in R?
 
