@@ -1,6 +1,8 @@
 # Making Interactive Maps
 
-Probabbly one of the first things you want to do when working with a dataset is visualizing it spatially. This is basically always the first thing you do in ArcGIS. So how do you this in R?
+## Overview
+
+Probably one of the first things you want to do when working with a dataset is visualizing it spatially. This is basically always the first thing you do in ArcGIS. So how do you this in R?
 
 If your aim is to explore the data, to just get a feel for it, your map needs to:
 
@@ -9,9 +11,20 @@ If your aim is to explore the data, to just get a feel for it, your map needs to
 3. provide a background map
 4. be easy to make
 
-If all of these features are important to you, check out the next section on `tmap`. If interactivity (feature 1 & 2) aren't important to you, and especially if you are a season't `ggplot2` user, check the section on `ggplot2`. <!-- Add crossreference -->
+Before you start making maps however, you will have to familiarize yourself with importing raster or vector data into R in the first place. For Vector data, you can read chapter [2.2 Vector data](https://geocompr.robinlovelace.net/spatial-class.html#vector-data) from the book "Geocomputation with R". The next chapter [2.3 Raster data](https://geocompr.robinlovelace.net/spatial-class.html#raster-data) provides a very good overview on rasterdata in R
 
-There are many packages that provide these features. In terms of simplicity, versatility and scaleablity `tmap` is one of the best in my opion. To see how it works, import the usual libraries and the North Carlolina Sample data.
+There are many packages that provide these features. 
+
+- [`leaflet`](https://rstudio.github.io/leaflet/)
+- [`mapview`](https://r-spatial.github.io/mapview/)
+- [`tmap`](https://github.com/mtennekes/tmap)
+
+In terms of simplicity, versatility and scalability `tmap` is one of the best in my option. 
+
+## Introduction to `tmap`
+
+To see how it works, import the usual libraries and the North Carolina Sample data.
+
 
 ```{r}
 library(sf)
@@ -40,7 +53,7 @@ tm_shape(nc) +
 
 You can have a look at the attributes of each feature by clicking on it. To view the entire attribute table, you can print `nc` to the console, or have a look at it with `View(nc)` if you are using Rstudio.
 
-Check the following ressources for more information:
+Check the following resources for more information:
 
 - https://github.com/mtennekes/tmap
 - https://geocompr.robinlovelace.net/adv-map.html#interactive-maps

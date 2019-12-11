@@ -1,6 +1,6 @@
 ---
 title: "Burning Bridges"
-subtitle: "An intro to (spatial) R for ArcGIS users"
+subtitle: "An intro to spatial-R for ArcGIS users"
 author: "Nils Ratnaweera"
 site: bookdown::bookdown_site
 ---
