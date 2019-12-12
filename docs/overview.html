@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5.1 Select by Attribute | Burning Bridges</title>
-  <meta name="description" content="5.1 Select by Attribute | Burning Bridges" />
+  <title>3.1 Overview | Burning Bridges</title>
+  <meta name="description" content="3.1 Overview | Burning Bridges" />
   <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5.1 Select by Attribute | Burning Bridges" />
+  <meta property="og:title" content="3.1 Overview | Burning Bridges" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5.1 Select by Attribute | Burning Bridges" />
+  <meta name="twitter:title" content="3.1 Overview | Burning Bridges" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="select-by-attribute-or-location.html"/>
-<link rel="next" href="select-by-location.html"/>
+<link rel="prev" href="making-interactive-maps.html"/>
+<link rel="next" href="introduction-to-tmap.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -291,17 +291,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="select-by-attribute" class="section level2">
-<h2><span class="header-section-number">5.1</span> Select by Attribute</h2>
-
+<div id="overview" class="section level2">
+<h2><span class="header-section-number">3.1</span> Overview</h2>
+<p>Probably one of the first things you want to do when working with a dataset is visualizing it spatially. This is basically always the first thing you do in ArcGIS. So how do you this in R?</p>
+<p>If your aim is to explore the data, to just get a feel for it, your map needs to:</p>
+<ol style="list-style-type: decimal">
+<li>allow pan and zoom</li>
+<li>display attribute information in popups</li>
+<li>provide a background map</li>
+<li>be easy to make</li>
+</ol>
+<p>Before you start making maps however, you will have to familiarize yourself with importing raster or vector data into R in the first place. For Vector data, you can read chapter <a href="https://geocompr.robinlovelace.net/spatial-class.html#vector-data">2.2 Vector data</a> from the book “Geocomputation with R”. The next chapter <a href="https://geocompr.robinlovelace.net/spatial-class.html#raster-data">2.3 Raster data</a> provides a very good overview on rasterdata in R</p>
+<p>There are many packages that provide these features.</p>
+<ul>
+<li><a href="https://rstudio.github.io/leaflet/"><code>leaflet</code></a></li>
+<li><a href="https://r-spatial.github.io/mapview/"><code>mapview</code></a></li>
+<li><a href="https://github.com/mtennekes/tmap"><code>tmap</code></a></li>
+</ul>
+<p>In terms of simplicity, versatility and scalability <code>tmap</code> is one of the best in my option.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="select-by-attribute-or-location.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="select-by-location.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="making-interactive-maps.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="introduction-to-tmap.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
