@@ -69,18 +69,29 @@ ggplot() +
 
 
 ### Line Density
+
 ### Point Density
 
 ## Distance Toolset
+
 ## Extraction Toolset
+
 ## Generalization Toolset
+
 ## Interpolation Toolset
+
 ## Map Algebra Toolset
+
 ## Math Toolset
+
 ## Neighborhood Toolset
+
 ## Overlay Toolset
+
 ## Reclass Toolset
+
 ## Surface Toolset
+
 ## Zonal Toolset
 
 
