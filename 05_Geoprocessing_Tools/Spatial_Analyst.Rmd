@@ -88,9 +88,38 @@ ggplot() +
 
 ## Overlay Toolset
 
+### Fuzzy Membership
+### Fuzzy Overlay
+### Locate Regions
+### Weighted Overlay
+### Weighted Sum
+
+
 ## Reclass Toolset
 
+### Lookup
+### Reclass by ASCII File
+### Reclass by Table
+### Reclassify
+### Rescale by Function
+### Slice
+
+
 ## Surface Toolset
+
+### Aspect
+### Contour
+### Contour List
+### Contour with Barriers
+### Curvature
+### Cut Fill
+### Hillshade
+### Observer Points
+### Slope
+### Viewshed
+### Viewshed 2
+### Visibility
+
 
 ## Zonal Toolset
 

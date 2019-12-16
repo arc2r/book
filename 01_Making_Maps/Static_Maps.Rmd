@@ -49,7 +49,7 @@ ggplot(eire) +
   theme(legend.position = "bottom")
 ```
 
-### Adding Raster Maps
+### Adding Raster Maps Files (geotiffs)
 
 While vector data is very easily implemented in ggplot2, rasterdata is a little harder. Its complicated enough with standard Raster Data, and even more so with raster maps.  There are two packages than facilatate the combination of rastermaps and ggplot: 
 
