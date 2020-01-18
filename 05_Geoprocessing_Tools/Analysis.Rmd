@@ -56,26 +56,25 @@ Note that points not located in a Gemeinde get the value `NA`. You have to speci
 | ArcGIS Term                     | R Spatial Predicate     |
 |---------------------------------|-------------------------|
 | Intersect                       | st_intersect            |
-| Intersect 3D                    |                         |
+| Intersect 3D                    | (1)                     |
 | Within a distance               | st_is_within_distance   |
-| Within a distance geodesic      |                         |
-| Within a distance 3D            |                         |
+| Within a distance geodesic      | ??                      |
+| Within a distance 3D            | (1)                     |
 | Contains                        | st_contains             |
 | Completely contains             | _st_contains_properly?_ |
-| Contains clementini             |                         |
+| Contains clementini             | ??                      |
 | Within                          | st_within               |
 | Completely within               |                         |
-| Within clementini               |                         |
+| Within clementini               | ??                      |
 | Are identical to                | _st_equals?_            |
 | boundry touches                 | st_touches              |
 | Share a line segment            |                         |
 | Have their center in            |                         |
 | Closest                         | _st_nearest_feature?_   |
-| Closest geodesic                | (1)                     |
+| Closest geodesic                | ??                      |
 
 
-The case closest / closest geodesic is a special case, for which ArcGIS provides an extrememly fast and easy solution, that R (currently) can't keep up with. The question "which object is closest to this object" theoretically requires you to measure the distances of _all_ objects to determin the closest one. SThis problem is known as the K-Nearest-Neighbour problem (KNN) and currently does not have nice implemenation in sf. 
-
+(1) All binary predicates only work on 2D Objects (see [this issue](https://github.com/r-spatial/sf/issues/907))
 
 ### Intersect
 
