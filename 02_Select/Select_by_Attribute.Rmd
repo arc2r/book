@@ -1,1 +1,14 @@
 ## Select by Attribute
+
+One of the selection methods you can use in ArcGIS pro to select features in a layer is to select features using an attribute query. This is performed using the **Select By Attributes** tool.
+
+**Select By Attributes** allows you to provide a SQL query expression that is used to select features that match the selection criteria.
+
+Let's see how this can be performed using R.
+
+As a first step, we might want to import a shapefile. We can use the __sf package__ to work with vector data in R. Important to know is that the **rgdal package** automatically loads when sf is loaded.
+
+```{r, message=FALSE, warning=FALSE, eval=TRUE}
+library(sf)
+world <- st_read("../sample_data/spData/world.shp")
+```
