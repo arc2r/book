@@ -4,19 +4,19 @@ rmd_files: [
   "01_Making_Maps/Static_Maps.Rmd",
   "02_Select/Chapter_overview.Rmd",
   "02_Select/Select_by_Attribute.Rmd",
-  "02_Select/Select_by_Location.Rmd",
-  "05_Geoprocessing_Tools/Spatial_Analyst.Rmd",
-  "05_Geoprocessing_Tools/3D_Analyst.Rmd",
-  "05_Geoprocessing_Tools/Analysis.Rmd",
-  "05_Geoprocessing_Tools/Geocoding.Rmd",
-  "05_Geoprocessing_Tools/Image_Analysis.Rmd",
-  "05_Geoprocessing_Tools/Spatial_Statistics.Rmd",
-  "06_Topology_Rules/Chapter_overview.Rmd",
-  "06_Topology_Rules/Polygon.Rmd",
-  "06_Topology_Rules/Line_or_Polygon.Rmd",
-  "06_Topology_Rules/Line.Rmd",
-  "06_Topology_Rules/Point.Rmd",
-  "07_Additional_Reading/Binary_Predicates.Rmd"
+  #"02_Select/Select_by_Location.Rmd",
+  #"05_Geoprocessing_Tools/Spatial_Analyst.Rmd",
+  #"05_Geoprocessing_Tools/3D_Analyst.Rmd",
+  #"05_Geoprocessing_Tools/Analysis.Rmd",
+  #"05_Geoprocessing_Tools/Geocoding.Rmd",
+  #"05_Geoprocessing_Tools/Image_Analysis.Rmd",
+  #"05_Geoprocessing_Tools/Spatial_Statistics.Rmd",
+  #"06_Topology_Rules/Chapter_overview.Rmd",
+  #"06_Topology_Rules/Polygon.Rmd",
+  #"06_Topology_Rules/Line_or_Polygon.Rmd",
+  #"06_Topology_Rules/Line.Rmd",
+  #"06_Topology_Rules/Point.Rmd",
+  #"07_Additional_Reading/Binary_Predicates.Rmd"
 ]
 delete_merged_file: TRUE
 output_dir: "docs"
