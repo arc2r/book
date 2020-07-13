@@ -1,14 +1,36 @@
 ## Select by Attribute
-
-One of the selection methods you can use in ArcGIS pro to select features in a layer is to select features using an attribute query. This is performed using the **Select By Attributes** tool.
-
-**Select By Attributes** allows you to provide a SQL query expression that is used to select features that match the selection criteria.
-
-Let's see how this can be performed using R.
-
-As a first step, we might want to import a shapefile. We can use the __sf package__ to work with vector data in R. Important to know is that the **rgdal package** automatically loads when sf is loaded.
-
-```{r, message=FALSE, warning=FALSE, eval=TRUE}
-library(sf)
-world <- st_read("../sample_data/spData/world.shp")
+```{r,echo=FALSE}
+knitr::opts_chunk$set(warning = F, message = F, tidy = T)
 ```
+
+
+One of the approaches we can follow in ArcGIS pro to select features in a layer is by using an attribute query. The action is performed using the **Select By Attributes** tool.
+
+**Select By Attributes** tool allows us to provide a SQL query expression to select features that match the selection criteria.
+
+__R__ on the other hand offers the users many and different options to perform similar operations. Let's examine some of them.
+
+As a first step, we might want to import a shapefile. To do so, we can use __sf package__ to work with vector data in R. Important to know is that the **rgdal package** automatically loads when sf is loaded.
+
+In the code snippet below, we read the shapefile, which represents the parking spots for bicycles within the canton of Zurich. The dataset is publicly available for download in the following link: (https://opendata.swiss/en/dataset/veloparkierungsanlagen).
+
+```{r}
+library(sf)
+library(ggplot2)
+parkBikes <- st_read("sample_data/Kanton_Zuerich/Veloparkierungsanlagen/OGD_VELOPARKIERANLAGEN_P.shp")
+```
+
+After importing the dataset, let's say we want to filter it by selecting only the parking spots that lie within a specific municipality (Gemeinde) in the canton of Zurich. More specifically, we will select only the parking spots within the municipality of Winterthur.
+For the aforementioned operation, R offers the function _filter()_, which lies within the __dplyr__ package.
+This functions works as follows: _filter(dataset, conditon)_
+
+```{r}
+library(dplyr)
+parkBikes_winti <- filter(parkBikes,GEMEINDE == "Winterthur")
+```
+The operation above produces the same outcome as the one depicted in the figure below \@ref(fig:select).
+
+```{r select, fig.cap= "Select by Attributes in ArcGIS pro",echo=F, out.width = "500px",fig.align='center'}
+knitr::include_graphics("images/selectAttr.png")
+```
+

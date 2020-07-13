@@ -367,17 +367,24 @@ summary {
 
 <div id="select-by-attribute" class="section level2">
 <h2>Select by Attribute</h2>
-<p>One of the selection methods you can use in ArcGIS pro to select features in a layer is to select features using an attribute query. This is performed using the <strong>Select By Attributes</strong> tool.</p>
-<p><strong>Select By Attributes</strong> allows you to provide a SQL query expression that is used to select features that match the selection criteria.</p>
-<p>Let’s see how this can be performed using R.</p>
+<pre class="r"><code>knitr::opts_chunk$set(warning = F, message = F, tidy = T)</code></pre>
+<p>One of the selection methods you can use in ArcGIS pro to select features in a layer is by using an attribute query. The action is performed using the <strong>Select By Attributes</strong> tool.</p>
+<p><strong>Select By Attributes</strong> tool allows you to provide a SQL query expression to select features that match the selection criteria.</p>
+<p><strong>R</strong> on the other hand offers the users many and different options to perform similar operations. Let’s examine some of them.</p>
+<p>As a first step, we might want to import a shapefile. To do so, we can use <strong>sf package</strong> to work with vector data in R. Important to know is that the <strong>rgdal package</strong> automatically loads when sf is loaded.</p>
+<p>In the code snippet below, we read the shapefile, which represents the parking spots for bicycles within the canton of Zurich. The dataset is publicly available for download in the following link: (<a href="https://opendata.swiss/en/dataset/veloparkierungsanlagen" class="uri">https://opendata.swiss/en/dataset/veloparkierungsanlagen</a>).</p>
 <pre class="r"><code>library(sf)
-world &lt;- st_read(&quot;../sample_data/spData/world.shp&quot;)</code></pre>
-<pre><code>## Reading layer `world&#39; from data source `C:\Users\bako\Desktop\Projekte\All_thing_R_Spatial\repo\spatialR_for_ArcGIS_Users\sample_data\spData\world.shp&#39; using driver `ESRI Shapefile&#39;
-## Simple feature collection with 177 features and 10 fields
-## geometry type:  MULTIPOLYGON
+library(ggplot2)
+parkBikes &lt;- st_read(&quot;sample_data/Kanton_Zuerich/Veloparkierungsanlagen/OGD_VELOPARKIERANLAGEN_P.shp&quot;)</code></pre>
+<pre><code>## Reading layer `OGD_VELOPARKIERANLAGEN_P&#39; from data source `C:\Users\bako\Desktop\Projekte\All_thing_R_Spatial\repo\spatialR_for_ArcGIS_Users\sample_data\Kanton_Zuerich\Veloparkierungsanlagen\OGD_VELOPARKIERANLAGEN_P.shp&#39; using driver `ESRI Shapefile&#39;
+## Simple feature collection with 511 features and 28 fields
+## geometry type:  POINT
 ## dimension:      XY
-## bbox:           xmin: -180 ymin: -90 xmax: 180 ymax: 83.64513
-## geographic CRS: WGS 84</code></pre>
+## bbox:           xmin: 2669965 ymin: 1229454 xmax: 2707390 ymax: 1280235
+## projected CRS:  CH1903+ / LV95</code></pre>
+<p>After importing the dataset, let’s say we want to filter it by selecting only the parking spots that lie within a specific municipality (Gemeinde) in the canton of Zurich. More specifically, we will select only the parking spots within the municipality of Winterthur. For the aforementioned operation, R offers the function <em>filter()</em>, which lies within the <strong>dplyr</strong> package. This functions works as follows: <em>filter(dataset, conditon)</em></p>
+<pre class="r"><code>library(dplyr)
+parkBikes_winti &lt;- filter(parkBikes,parkBikes$GEMEINDE == &quot;Winterthur&quot;)</code></pre>
 </div>
 
 
