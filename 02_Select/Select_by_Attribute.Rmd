@@ -34,3 +34,8 @@ The operation above produces the same outcome as the one depicted in the figure 
 knitr::include_graphics("images/selectAttr.png")
 ```
 
+```{r,echo = F}
+ggplot() + geom_sf(data = parkBikes) + geom_sf(data = parkBikes_winti, aes(color = "Bike parking facilities in Winterthur")) + theme(legend.title=element_blank()) + ggtitle("Bike parking facilities in Canton Zurich")
+```
+
+
