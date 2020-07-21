@@ -22,7 +22,7 @@ parkBikes <- st_read("sample_data/Kanton_Zuerich/Veloparkierungsanlagen/OGD_VELO
 
 After importing the dataset, let's say we want to filter it by selecting only the parking spots that lie within a specific municipality (Gemeinde) in the canton of Zurich. More specifically, we will select only the parking spots within the municipality of Winterthur.
 For the aforementioned operation, R offers the function _filter()_, which lies within the __dplyr__ package.
-This functions works as follows: _filter(dataset, conditon)_
+This functions works as follows: _filter(dataset, condition)_
 
 ```{r}
 library(dplyr)

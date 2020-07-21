@@ -1,3 +1,7 @@
 ## Select by Location
 
-One of the most commonly used operations in ArcGIS pro is performed using the __Select by Location__ tool. It is undoubtedly one quite powerful operation, since it allows us to select features based on their location relative to features in another layer. 
+One of the most commonly used operations in ArcGIS pro is the process of selecting features of spatial object (layer) based on whether or not these relate spatially to another object (layer). This process is also referred as _spatial subsetting_ and in ArcGIS pro can be preformed in various ways using the __Select by Location__ tool. 
+
+Respectively, in __R__ the same operation is, on a first level, performed using the _square bracket ([])_ operator within the base R package.
+
+An example of spatial subsetting could be the following.
