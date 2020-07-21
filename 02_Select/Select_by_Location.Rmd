@@ -1,1 +1,3 @@
 ## Select by Location
+
+One of the most commonly used operations in ArcGIS pro is performed using the __Select by Location__ tool. It is undoubtedly one quite powerful operation, since it allows us to select features based on their location relative to features in another layer. 

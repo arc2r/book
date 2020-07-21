@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="chapter-overview.html"/>
-
+<link rel="next" href="select-by-location.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -149,6 +149,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="chapter-overview.html"><a href="chapter-overview.html"><i class="fa fa-check"></i><b>5</b> Chapter overview</a><ul>
 <li class="chapter" data-level="5.1" data-path="select-by-attribute.html"><a href="select-by-attribute.html"><i class="fa fa-check"></i><b>5.1</b> Select by Attribute</a></li>
+<li class="chapter" data-level="5.2" data-path="select-by-location.html"><a href="select-by-location.html"><i class="fa fa-check"></i><b>5.2</b> Select by Location</a></li>
 </ul></li>
 </ul>
 
@@ -171,7 +172,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">5.1</span> Select by Attribute</h2>
 <p>One of the approaches we can follow in ArcGIS pro to select features in a layer is by using an attribute query. The action is performed using the <strong>Select By Attributes</strong> tool.</p>
 <p><strong>Select By Attributes</strong> tool allows us to provide a SQL query expression to select features that match the selection criteria.</p>
-<p><strong>R</strong> on the other hand offers the users many and different options to perform similar operations. Let’s examine some of them.</p>
+<p><strong>R</strong> on the other hand offers quite easy and straightforward options to perform similar operations. Let’s examine one of them.</p>
 <p>As a first step, we might want to import a shapefile. To do so, we can use <strong>sf package</strong> to work with vector data in R. Important to know is that the <strong>rgdal package</strong> automatically loads when sf is loaded.</p>
 <p>In the code snippet below, we read the shapefile, which represents the parking spots for bicycles within the canton of Zurich. The dataset is publicly available for download in the following link: (<a href="https://opendata.swiss/en/dataset/veloparkierungsanlagen" class="uri">https://opendata.swiss/en/dataset/veloparkierungsanlagen</a>).</p>
 <div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" title="1"><span class="kw">library</span>(sf)</a>
@@ -198,14 +199,13 @@ Figure 5.1: Select by Attributes in ArcGIS pro
 </div>
 
 </div>
-<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="chapter-overview.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="chapter-overview.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="select-by-location.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
