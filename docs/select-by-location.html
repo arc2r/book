@@ -170,8 +170,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="select-by-location" class="section level2">
 <h2><span class="header-section-number">5.2</span> Select by Location</h2>
-<p>One of the most commonly used operations in ArcGIS pro is the process of selecting features of spatial object (layer) based on whether or not these relate spatially to another object (layer). This process is also referred as <em>spatial subsetting</em> and in ArcGIS pro can be preformed in various ways using the <strong>Select by Location</strong> tool.</p>
-<p>Respectively, in <strong>R</strong> the same operation is, on a first level, performed using the square bracket ([]) operator</p>
+<p>One of the most commonly used operations in ArcGIS pro is the process of selecting features of a spatial object (layer) based on whether or not these relate spatially to another object (layer). This process is also referred as <em>spatial subsetting</em>. In ArcGIS pro respectively, this can be preformed in various ways using the <strong>Select by Location</strong> tool.</p>
+<p>In <strong>R</strong> the same operation is, on a first level, performed using the <em>square bracket ([])</em> operator within the base R package.</p>
+<p>An example of spatial subsetting could be the following.</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" title="1"><span class="co"># Minicipalities (Gemeinde) in Canton Zurich</span></a>
+<a class="sourceLine" id="cb78-2" title="2">gemeinde_ZH &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;sample_data/Kanton_Zuerich/Gemeinde_ZH.shp&quot;</span>)</a></code></pre></div>
+<pre><code>## Reading layer `Gemeinde_ZH&#39; from data source `C:\Users\bako\Desktop\Projekte\All_thing_R_Spatial\github\spatialR_for_ArcGIS_Users\sample_data\Kanton_Zuerich\Gemeinde_ZH.shp&#39; using driver `ESRI Shapefile&#39;
+## Simple feature collection with 166 features and 7 fields
+## geometry type:  MULTIPOLYGON
+## dimension:      XY
+## bbox:           xmin: 2669245 ymin: 1223896 xmax: 2716900 ymax: 1283343
+## projected CRS:  CH1903+ / LV95</code></pre>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" title="1"><span class="co"># &quot;Swimming&quot; spots in the Canton of Zurich</span></a>
+<a class="sourceLine" id="cb80-2" title="2">swimmSpots &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;sample_data/Kanton_Zuerich/Badeplaetze_ZH.shp&quot;</span>)</a></code></pre></div>
+<pre><code>## Reading layer `Badeplaetze_ZH&#39; from data source `C:\Users\bako\Desktop\Projekte\All_thing_R_Spatial\github\spatialR_for_ArcGIS_Users\sample_data\Kanton_Zuerich\Badeplaetze_ZH.shp&#39; using driver `ESRI Shapefile&#39;
+## Simple feature collection with 71 features and 6 fields
+## geometry type:  POINT
+## dimension:      XY
+## bbox:           xmin: 2671636 ymin: 1226720 xmax: 2710101 ymax: 1282760
+## projected CRS:  CH1903+ / LV95</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
+<p>After importing and depicting the <em>swimming spots</em> throughout the canton of Zurich, let’s assume we want to check if and how many of them <strong>lie within</strong> the Municipality of Richterswil. To do so, we will perform an operation, which belongs to the category of <em>Spatial subsetting</em>.</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" title="1">swimmSpots_richt &lt;-<span class="st"> </span>swimmSpots[richterswil, ,op =<span class="st"> </span>st_within]</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
 
 </div>
 <!-- </div> -->
