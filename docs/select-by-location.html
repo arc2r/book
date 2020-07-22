@@ -149,7 +149,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="chapter-overview.html"><a href="chapter-overview.html"><i class="fa fa-check"></i><b>5</b> Chapter overview</a><ul>
 <li class="chapter" data-level="5.1" data-path="select-by-attribute.html"><a href="select-by-attribute.html"><i class="fa fa-check"></i><b>5.1</b> Select by Attribute</a></li>
-<li class="chapter" data-level="5.2" data-path="select-by-location.html"><a href="select-by-location.html"><i class="fa fa-check"></i><b>5.2</b> Select by Location</a></li>
+<li class="chapter" data-level="5.2" data-path="select-by-location.html"><a href="select-by-location.html"><i class="fa fa-check"></i><b>5.2</b> Select by Location</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="select-by-location.html"><a href="select-by-location.html#topological-relations"><i class="fa fa-check"></i><b>5.2.1</b> Topological relations</a></li>
+</ul></li>
 </ul></li>
 </ul>
 
@@ -170,9 +172,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="select-by-location" class="section level2">
 <h2><span class="header-section-number">5.2</span> Select by Location</h2>
-<p>One of the most commonly used operations in ArcGIS pro is the process of selecting features of a spatial object (layer) based on whether or not these relate spatially to another object (layer). This process is also referred as <em>spatial subsetting</em>. In ArcGIS pro respectively, this can be preformed in various ways using the <strong>Select by Location</strong> tool.</p>
-<p>In <strong>R</strong> the same operation is, on a first level, performed using the <em>square bracket ([])</em> operator within the base R package.</p>
-<p>An example of spatial subsetting could be the following.</p>
+<p>One of the most commonly used operations in ArcGIS pro is the process of selecting features of a spatial object (layer) based on whether or not these relate spatially to another object (layer). This process is also referred as <em>spatial subsetting</em>. In ArcGIS pro this can be preformed in various ways using the <strong>Select by Location</strong> tool.</p>
+<p>In <strong>R</strong> the same operation is, on a first level, performed using the <em>square bracket ([])</em> operator from the base R package.</p>
+<p>An example of spatial subsetting could be the following. Let’s assume we have as a shapefile (polygon dataframe) with all the municipalities (Gemeinde) of the Canton of Zurich. Furthermore, we are also using a shapefile in the form of a point dataframe, which represents all the <em>“swimming spots”</em> (Badenplätze) in the same spatial region (Canton of Zurich). So, ultimately, our goal is to find out the “swimming spots” that lie within a specific municipality of the Canton of Zurich.</p>
 <div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" title="1"><span class="co"># Minicipalities (Gemeinde) in Canton Zurich</span></a>
 <a class="sourceLine" id="cb78-2" title="2">gemeinde_ZH &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;sample_data/Kanton_Zuerich/Gemeinde_ZH.shp&quot;</span>)</a></code></pre></div>
 <pre><code>## Reading layer `Gemeinde_ZH&#39; from data source `C:\Users\bako\Desktop\Projekte\All_thing_R_Spatial\github\spatialR_for_ArcGIS_Users\sample_data\Kanton_Zuerich\Gemeinde_ZH.shp&#39; using driver `ESRI Shapefile&#39;
@@ -193,7 +195,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>After importing and depicting the <em>swimming spots</em> throughout the canton of Zurich, let’s assume we want to check if and how many of them <strong>lie within</strong> the Municipality of Richterswil. To do so, we will perform an operation, which belongs to the category of <em>Spatial subsetting</em>.</p>
 <div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" title="1">swimmSpots_richt &lt;-<span class="st"> </span>swimmSpots[richterswil, ,op =<span class="st"> </span>st_within]</a></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
+<div id="topological-relations" class="section level3">
+<h3><span class="header-section-number">5.2.1</span> Topological relations</h3>
+<p>Apart from the <em>square bracket ([])</em> operator from the base R package, R provides also other options to perform <em>Spatial subsetting</em> operations. These are</p>
 
+</div>
 </div>
 <!-- </div> -->
             </section>
