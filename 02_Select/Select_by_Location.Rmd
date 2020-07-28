@@ -6,11 +6,11 @@ library(dplyr)
 library(sf)
 library(ggplot2)
 ```
-One of the most commonly used operations in ArcGIS pro is the process of selecting features of a spatial object (layer) based on whether or not these relate spatially to another object (layer). This process is also referred as __spatial subsetting__. In ArcGIS pro this can be preformed in various ways using the `__Select by Location__ tool`. 
+One of the most commonly used operations in ArcGIS pro is the process of selecting features of a spatial object (layer) based on whether or not these relate spatially to another object (layer). This process is also referred as __spatial subsetting__. In ArcGIS pro this can be preformed in various ways using the `Select by Location tool`. 
 
-In __R__ the same operation is, on a first level, performed using the `__square bracket ([])__` operator from the base R package.
+In __R__ the same operation is, on a first level, performed using the `square bracket ([])` operator from the base R package.
 
-An example of spatial subsetting could be the following. Let's assume we have as a shapefile (polygon dataframe) with all the municipalities (Gemeinde) of the Canton of Zurich. Furthermore, we are also using a shapefile in the form of a point dataframe, which represents all the _"swimming spots"_ (Badenplätze) in the same spatial region (Canton of Zurich). So, ultimately, our goal is to find out the "swimming spots" that lie within a specific municipality of the Canton of Zurich. 
+An example of spatial subsetting could be the following. Let's assume we have as a shapefile (polygon dataframe) with all the municipalities (Gemeinde) of the Canton of Zurich. Furthermore, we are also using a shapefile in the form of a point dataframe, which represents all the __"swimming spots"__ (Badenplätze) in the same spatial region (Canton of Zurich). So, ultimately, our goal is to find out the __"swimming spots"__ that lie within a specific municipality of the Canton of Zurich. 
 
 
 ```{r echo=T}
@@ -29,7 +29,7 @@ names(richterswil)[5] = "Municipality"
 ggplot() + geom_sf(data = gemeinde_ZH) + geom_sf(data = richterswil,aes(fill = Municipality)) + geom_sf(data = swimmSpots,color = "blue") + ggtitle("Swimming spots in the Canton of Zurich") + theme_minimal()
 ```
 
-After importing and depicting the _swimming spots_ throughout the canton of Zurich, let's assume we want to check if and how many of them __lie within__ the Municipality of Richterswil. To do so, we will perform an operation, which belongs to the category of _Spatial subsetting_.
+After importing and depicting the __"swimming spots"__ throughout the canton of Zurich, let's assume we want to check if and how many of them __lie within__ the Municipality of Richterswil. To do so, we will perform an operation, which belongs to the category of __Spatial subsetting__.
 
 ```{r}
 swimmSpots_richt <- swimmSpots[richterswil, ,op = st_within]

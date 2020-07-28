@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4 Making Statics Maps | Burning Bridges</title>
-  <meta name="description" content="4 Making Statics Maps | Burning Bridges" />
+  <title>6.3 Line | Burning Bridges</title>
+  <meta name="description" content="6.3 Line | Burning Bridges" />
   <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4 Making Statics Maps | Burning Bridges" />
+  <meta property="og:title" content="6.3 Line | Burning Bridges" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4 Making Statics Maps | Burning Bridges" />
+  <meta name="twitter:title" content="6.3 Line | Burning Bridges" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="introduction-to-tmap.html"/>
-<link rel="next" href="static-maps-with-ggplot2.html"/>
+<link rel="prev" href="line-or-polygon.html"/>
+<link rel="next" href="point.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -210,18 +210,77 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="making-statics-maps" class="section level1">
-<h1><span class="header-section-number">4</span> Making Statics Maps</h1>
-<p>Probabbly the quickest way to visualize spatial data is with <code>base::plot()</code>. It can handle raster as well as vector data and usually needs not more than this one command, <code>plot()</code>. This can be great to get a first, quick look at the data but in my opinion, base plot will not get you very far. To make nice static maps, you are better served with <code>ggplot2</code> or with <code>tmap</code>. There are arguments for both packages, and you might just end up using both.</p>
-<p>Before you start making maps however, you will have to familiarize yourself with importing raster or vector data into R in the first place. For Vector data, you can read chapter <a href="https://geocompr.robinlovelace.net/spatial-class.html#vector-data">2.2 Vector data</a> from the book “Geocomputation with R”. The next chapter <a href="https://geocompr.robinlovelace.net/spatial-class.html#raster-data">2.3 Raster data</a> provides a very good overview on rasterdata in R</p> 
+<div id="line" class="section level2">
+<h2><span class="header-section-number">6.3</span> Line</h2>
+<div id="must-not-have-pseudo-nodes" class="section level3">
+<h3><span class="header-section-number">6.3.1</span> Must not have pseudo nodes</h3>
+<p><img src="06_Topology_Rules/images/0_3.jpg" /></p>
+</div>
+<div id="must-not-have-dangles" class="section level3">
+<h3><span class="header-section-number">6.3.2</span> Must not have dangles</h3>
+<p><img src="06_Topology_Rules/images/1_2.jpg" /></p>
+</div>
+<div id="must-not-self-overlap" class="section level3">
+<h3><span class="header-section-number">6.3.3</span> Must not self overlap</h3>
+<p><img src="06_Topology_Rules/images/1_3.jpg" /></p>
+</div>
+<div id="must-not-overlap-1" class="section level3">
+<h3><span class="header-section-number">6.3.4</span> Must not overlap</h3>
+<p><img src="06_Topology_Rules/images/2_2.jpg" /></p>
+</div>
+<div id="must-not-self-intersect" class="section level3">
+<h3><span class="header-section-number">6.3.5</span> Must not self-intersect</h3>
+<p><img src="06_Topology_Rules/images/2_3.jpg" /></p>
+</div>
+<div id="must-not-intersect" class="section level3">
+<h3><span class="header-section-number">6.3.6</span> Must not intersect</h3>
+<p><img src="06_Topology_Rules/images/3_2.jpg" /></p>
+</div>
+<div id="must-be-single-part" class="section level3">
+<h3><span class="header-section-number">6.3.7</span> Must be single part</h3>
+<p><img src="06_Topology_Rules/images/3_3.jpg" /></p>
+</div>
+<div id="must-not-intersect-with" class="section level3">
+<h3><span class="header-section-number">6.3.8</span> Must not intersect with</h3>
+<p><img src="06_Topology_Rules/images/4_2.jpg" /></p>
+</div>
+<div id="must-be-covered-by-feature-class-of-1" class="section level3">
+<h3><span class="header-section-number">6.3.9</span> Must be covered by feature class of</h3>
+<p><img src="06_Topology_Rules/images/4_3.jpg" /></p>
+</div>
+<div id="must-not-intersect-or-touch-interior" class="section level3">
+<h3><span class="header-section-number">6.3.10</span> Must not intersect or touch interior</h3>
+<p><img src="06_Topology_Rules/images/5_2.jpg" /></p>
+</div>
+<div id="must-be-covered-by-boundary-of" class="section level3">
+<h3><span class="header-section-number">6.3.11</span> Must be covered by boundary of</h3>
+<p><img src="06_Topology_Rules/images/5_3.jpg" /></p>
+</div>
+<div id="must-not-intersect-or-touch-interior-with" class="section level3">
+<h3><span class="header-section-number">6.3.12</span> Must not intersect or touch interior with</h3>
+<p><img src="06_Topology_Rules/images/6_2.jpg" /></p>
+</div>
+<div id="must-be-properly-inside" class="section level3">
+<h3><span class="header-section-number">6.3.13</span> Must be properly inside</h3>
+<p><img src="06_Topology_Rules/images/6_3.jpg" /></p>
+</div>
+<div id="must-not-overlap-with-1" class="section level3">
+<h3><span class="header-section-number">6.3.14</span> Must not overlap with</h3>
+<p><img src="06_Topology_Rules/images/7_2.jpg" /></p>
+</div>
+<div id="endpoint-must-be-covered-by" class="section level3">
+<h3><span class="header-section-number">6.3.15</span> Endpoint must be covered by</h3>
+<p><img src="06_Topology_Rules/images/7_3.jpg" /></p>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="introduction-to-tmap.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="static-maps-with-ggplot2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="line-or-polygon.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="point.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
