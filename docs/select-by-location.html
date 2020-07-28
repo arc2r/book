@@ -193,10 +193,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>After importing and depicting the <em>swimming spots</em> throughout the canton of Zurich, let’s assume we want to check if and how many of them <strong>lie within</strong> the Municipality of Richterswil. To do so, we will perform an operation, which belongs to the category of <em>Spatial subsetting</em>.</p>
 <div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" title="1">swimmSpots_richt &lt;-<span class="st"> </span>swimmSpots[richterswil, ,op =<span class="st"> </span>st_within]</a></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
-<p>The operation above is based on the following rule: <strong>x[y, ,operation]</strong>, where:<br />
-- <strong>x</strong> and <strong>y</strong> are the spatial objects for which we want to investigate if there is a spatial relationship (x is the target feature, while y is the source one)<br />
-- the second argument <strong>[, ,]</strong> within the brackets denotes the column number we want to retrieve from the spatial subsetting. In our example this argument was empty, which means we wanted to retrieve all rows for every <strong>attribute column</strong>.<br />
-- the third argument <strong>[op = ]</strong> specifies the spatial operation we want to perform. In the example above, the goal was to find out how many subset features of the target object <em>swimmSpots</em> lie withing the source spatial object <em>richterswil</em>. For that reason we chose the function <strong>st_within()</strong>. For other similar operations, <strong>sf package</strong> provides a plethora of functions. All these can be found in the following link <a href="https://www.rdocumentation.org/packages/sf/versions/0.4-3/topics/geos">Geometric operations on (pairs of) simple feature geometry sets</a>.</p>
+<p>The operation above is based on the following rule: <strong>x[y, ,operation]</strong>, where:</p>
+<style>
+
+div.note { background-color:#f0f0f0; border-radius: 5px; padding: 20px;}
+</style>
+<div class="note">
+<ul>
+<li><strong>x</strong> and <strong>y</strong> are the spatial objects for which we want to investigate if there is a spatial relationship (x is the target feature, while y is the source one)<br />
+</li>
+<li>the second argument <strong>[, ,]</strong> within the brackets denotes the column number we want to retrieve from the spatial subsetting. In our example this argument was empty, which means we wanted to retrieve all rows for every <strong>attribute column</strong>.<br />
+</li>
+<li>the third argument <strong>[op = ]</strong> specifies the spatial operation we want to perform. In the example above, the goal was to find out how many subset features of the target object <em>swimmSpots</em> lie withing the source spatial object <em>richterswil</em>. For that reason we chose the function <strong>st_within()</strong>.</li>
+</ul>
+</div>
+<p>Depending on what we want to examine, we choose the respective function.</p>
 
 </div>
 <!-- </div> -->
