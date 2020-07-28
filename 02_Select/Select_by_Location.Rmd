@@ -6,9 +6,9 @@ library(dplyr)
 library(sf)
 library(ggplot2)
 ```
-One of the most commonly used operations in ArcGIS pro is the process of selecting features of a spatial object (layer) based on whether or not these relate spatially to another object (layer). This process is also referred as _spatial subsetting_. In ArcGIS pro this can be preformed in various ways using the __Select by Location__ tool. 
+One of the most commonly used operations in ArcGIS pro is the process of selecting features of a spatial object (layer) based on whether or not these relate spatially to another object (layer). This process is also referred as __spatial subsetting__. In ArcGIS pro this can be preformed in various ways using the `__Select by Location__ tool`. 
 
-In __R__ the same operation is, on a first level, performed using the _square bracket ([])_ operator from the base R package.
+In __R__ the same operation is, on a first level, performed using the `__square bracket ([])__` operator from the base R package.
 
 An example of spatial subsetting could be the following. Let's assume we have as a shapefile (polygon dataframe) with all the municipalities (Gemeinde) of the Canton of Zurich. Furthermore, we are also using a shapefile in the form of a point dataframe, which represents all the _"swimming spots"_ (Badenplätze) in the same spatial region (Canton of Zurich). So, ultimately, our goal is to find out the "swimming spots" that lie within a specific municipality of the Canton of Zurich. 
 
@@ -39,7 +39,7 @@ swimmSpots_richt <- swimmSpots[richterswil, ,op = st_within]
 ggplot() + geom_sf(data = gemeinde_ZH) + geom_sf(data = swimmSpots,color = "blue") + geom_sf(data = richterswil, fill = "white") + geom_sf(data = swimmSpots_richt, color = "red") + ggtitle("Swimming spots in the Canton of Zurich") + theme_minimal() 
 ```
 
-The operation above is based on the following rule: __x[y, ,operation]__, where:  
+The operation above is based on the following rule: `x[y, ,operation]`, where:  
 
 <style>
 
@@ -54,5 +54,4 @@ div.note { background-color:#f0f0f0; border-radius: 5px; padding: 20px;}
 </div>
 
 Depending on what we want to examine, we choose the respective function.
-
 
