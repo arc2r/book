@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Burning Bridges</title>
-  <meta name="description" content="Burning Bridges" />
+  <title>3 Making Interactive Maps | Burning Bridges</title>
+  <meta name="description" content="3 Making Interactive Maps | Burning Bridges" />
   <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Burning Bridges" />
+  <meta property="og:title" content="3 Making Interactive Maps | Burning Bridges" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Burning Bridges" />
+  <meta name="twitter:title" content="3 Making Interactive Maps | Burning Bridges" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="foreword.html"/>
+<link rel="prev" href="foreword.html"/>
+<link rel="next" href="introduction-to-tmap.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -172,29 +172,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Burning Bridges</h1>
-<h2 class="subtitle"><em>An intro to spatial-R for ArcGIS users</em></h2>
-<p class="author"><em>Nils Ratnaweera</em></p>
-</div>
-<div id="abstract" class="section level1">
-<h1><span class="header-section-number">1</span> Abstract</h1>
-<p>This is a ressource for people coming from ArcGIS who want to do spatial stuff (Analysis, Visualization) in R. This ressource should provide some help on this journey.</p>
-<p>Who this book is for:</p>
+<div id="making-interactive-maps" class="section level1">
+<h1><span class="header-section-number">3</span> Making Interactive Maps</h1>
+<p>Probably one of the first things you want to do when working with a dataset is visualizing it spatially. This is basically always the first thing you do in ArcGIS. So how do you this in R?</p>
+<p>If your aim is to explore the data, to just get a feel for it, your map needs to:</p>
+<ol style="list-style-type: decimal">
+<li>allow pan and zoom</li>
+<li>display attribute information in popups</li>
+<li>provide a background map</li>
+<li>be easy to make</li>
+</ol>
+<p>Before you start making maps however, you will have to familiarize yourself with importing raster or vector data into R in the first place. For Vector data, you can read chapter <a href="https://geocompr.robinlovelace.net/spatial-class.html#vector-data">2.2 Vector data</a> from the book “Geocomputation with R”. The next chapter <a href="https://geocompr.robinlovelace.net/spatial-class.html#raster-data">2.3 Raster data</a> provides a very good overview on rasterdata in R</p>
+<p>There are many packages that provide these features.</p>
 <ul>
-<li>you’ve worked primarily with ArcGIS and would like to transition to R</li>
-<li>you have some experience with R</li>
-<li>you don’t mind working with the tidyverse</li>
+<li><a href="https://rstudio.github.io/leaflet/"><code>leaflet</code></a></li>
+<li><a href="https://r-spatial.github.io/mapview/"><code>mapview</code></a></li>
+<li><a href="https://github.com/mtennekes/tmap"><code>tmap</code></a></li>
 </ul>
-<p><img src="2999236c73d7f6b3561d742dc2471ff8.jpg" /></p>
+<p>In terms of simplicity, versatility and scalability <code>tmap</code> is one of the best in my option.</p> 
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="foreword.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="foreword.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="introduction-to-tmap.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -12,7 +12,7 @@ __R__ on the other hand offers quite easy and straightforward options to perform
 
 As a first step, we might want to import a shapefile. To do so, we can use __sf package__ to work with vector data in R. Important to know is that the **rgdal package** automatically loads when sf is loaded.
 
-In the code snippet below, we read the shapefile, which represents the parking spots for bicycles within the canton of Zurich. The dataset is publicly available for download in the following link: (https://opendata.swiss/en/dataset/veloparkierungsanlagen).
+In the code snippet below, we read the shapefile, which represents the __parking spots for bicycles__ within the canton of Zurich. The dataset is publicly available for download in the following link: (https://opendata.swiss/en/dataset/veloparkierungsanlagen).
 
 ```{r}
 library(sf)

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Burning Bridges</title>
-  <meta name="description" content="Burning Bridges" />
+  <title>5.1 Select by Attribute | Burning Bridges</title>
+  <meta name="description" content="5.1 Select by Attribute | Burning Bridges" />
   <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Burning Bridges" />
+  <meta property="og:title" content="5.1 Select by Attribute | Burning Bridges" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Burning Bridges" />
+  <meta name="twitter:title" content="5.1 Select by Attribute | Burning Bridges" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="foreword.html"/>
+<link rel="prev" href="chapter-overview.html"/>
+<link rel="next" href="select-by-location.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -172,29 +172,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Burning Bridges</h1>
-<h2 class="subtitle"><em>An intro to spatial-R for ArcGIS users</em></h2>
-<p class="author"><em>Nils Ratnaweera</em></p>
+<div id="select-by-attribute" class="section level2">
+<h2><span class="header-section-number">5.1</span> Select by Attribute</h2>
+<p>One of the popular approaches in ArcGIS pro for selecting features in a layer is by using an attribute query. The action is performed using the <code>Select By Attributes</code> tool.</p>
+<p><code>Select By Attributes</code> tool allows us to provide a SQL query expression to select features that match the selection criteria.</p>
+<p><strong>R</strong> on the other hand offers quite easy and straightforward options to perform similar operations. Let’s examine one of them.</p>
+<p>As a first step, we might want to import a shapefile. To do so, we can use <strong>sf package</strong> to work with vector data in R. Important to know is that the <strong>rgdal package</strong> automatically loads when sf is loaded.</p>
+<p>In the code snippet below, we read the shapefile, which represents the parking spots for bicycles within the canton of Zurich. The dataset is publicly available for download in the following link: (<a href="https://opendata.swiss/en/dataset/veloparkierungsanlagen" class="uri">https://opendata.swiss/en/dataset/veloparkierungsanlagen</a>).</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" title="1"><span class="kw">library</span>(sf)</a>
+<a class="sourceLine" id="cb75-2" title="2"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb75-3" title="3">parkBikes &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;sample_data/Kanton_Zuerich/Veloparkierungsanlagen/OGD_VELOPARKIERANLAGEN_P.shp&quot;</span>)</a></code></pre></div>
+<pre><code>## Reading layer `OGD_VELOPARKIERANLAGEN_P&#39; from data source `C:\Users\bako\Desktop\Projekte\All_thing_R_Spatial\github\spatialR_for_ArcGIS_Users\sample_data\Kanton_Zuerich\Veloparkierungsanlagen\OGD_VELOPARKIERANLAGEN_P.shp&#39; using driver `ESRI Shapefile&#39;
+## Simple feature collection with 511 features and 28 fields
+## geometry type:  POINT
+## dimension:      XY
+## bbox:           xmin: 2669965 ymin: 1229454 xmax: 2707390 ymax: 1280235
+## projected CRS:  CH1903+ / LV95</code></pre>
+<p>After importing the dataset, let’s say we want to filter it by selecting only the parking spots that lie within a specific municipality (Gemeinde) in the canton of Zurich. More specifically, we will select only the parking spots within the municipality of Winterthur.
+For the aforementioned operation, R offers the function <code>filter()</code>, which lies within the <strong>dplyr</strong> package.
+This functions works as follows: <code>filter(dataset, condition)</code></p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" title="1"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb77-2" title="2">parkBikes_winti &lt;-<span class="st"> </span><span class="kw">filter</span>(parkBikes,GEMEINDE <span class="op">==</span><span class="st"> &quot;Winterthur&quot;</span>)</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-30-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>The operation above produces the same outcome as the one depicted in the figure below <a href="select-by-attribute.html#fig:select">5.1</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:select"></span>
+<img src="images/selectAttr.png" alt="Select by Attributes in ArcGIS pro" width="500px" />
+<p class="caption">
+Figure 5.1: Select by Attributes in ArcGIS pro
+</p>
 </div>
-<div id="abstract" class="section level1">
-<h1><span class="header-section-number">1</span> Abstract</h1>
-<p>This is a ressource for people coming from ArcGIS who want to do spatial stuff (Analysis, Visualization) in R. This ressource should provide some help on this journey.</p>
-<p>Who this book is for:</p>
-<ul>
-<li>you’ve worked primarily with ArcGIS and would like to transition to R</li>
-<li>you have some experience with R</li>
-<li>you don’t mind working with the tidyverse</li>
-</ul>
-<p><img src="2999236c73d7f6b3561d742dc2471ff8.jpg" /></p>
+
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="foreword.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="chapter-overview.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="select-by-location.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

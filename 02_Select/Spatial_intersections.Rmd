@@ -33,13 +33,11 @@ tm_shape(kantons_aOi) + tm_polygons("#f0f0f0") +
   tm_shape(kantons_aOi) + tm_borders() + tm_layout(frame = F)
 ```
 
-
-<<<<<<< HEAD
 So, ultimately, as we can see above, the _st_intersection_ function creates a result where the point dataset is precisely "clipped" based on the area of interest.
 
 ### Buffer operation
 
-One of the most commonly used operations in ArcGIS pro is the one called _Buffer_. This operation provides a very convenient way of identifying areas of interest lying in the neighborhood of an existing spatial feature. In R the same action can be performed using the _st_buffer_ function in _sf_. 
+One of the most commonly used operations in ArcGIS pro is the one called `Buffer`. This operation provides a very convenient way of identifying areas of interest lying in the neighborhood of an existing spatial feature. In R the same action can be performed using the _st_buffer_ function in _sf_. 
 
 Below we introduce a line spatial feature that depicts all the __mountain bike routes__ in Switzerland.
 ```{r, echo=F}
@@ -75,6 +73,4 @@ tm_shape(canton_valais) + tm_polygons() +
   tm_shape(canton_valais) + tm_borders(col = "black") + tm_layout(frame = F)
 ```
 
-=======
 So, ultimately, as we can see above, the _st_intersection_ function creates a result where the point dataset is precisely "clipped" based on the area of interest. 
->>>>>>> 8d12a0f18210eaf813d444e49e16a4ebe2aa0ee7
