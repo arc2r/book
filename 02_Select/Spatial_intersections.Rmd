@@ -34,6 +34,7 @@ tm_shape(kantons_aOi) + tm_polygons("#f0f0f0") +
 ```
 
 
+<<<<<<< HEAD
 So, ultimately, as we can see above, the _st_intersection_ function creates a result where the point dataset is precisely "clipped" based on the area of interest.
 
 ### Buffer operation
@@ -74,3 +75,6 @@ tm_shape(canton_valais) + tm_polygons() +
   tm_shape(canton_valais) + tm_borders(col = "black") + tm_layout(frame = F)
 ```
 
+=======
+So, ultimately, as we can see above, the _st_intersection_ function creates a result where the point dataset is precisely "clipped" based on the area of interest. 
+>>>>>>> 8d12a0f18210eaf813d444e49e16a4ebe2aa0ee7

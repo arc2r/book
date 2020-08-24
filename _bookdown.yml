@@ -6,7 +6,11 @@ rmd_files: [
   "02_Select/Select_by_Attribute.Rmd",
   "02_Select/Select_by_Location.Rmd",
   "02_Select/Spatial_intersections.Rmd",
+<<<<<<< HEAD
   #"05_Geoprocessing_Tools/Spatial_Analyst.Rmd",
+=======
+  "05_Geoprocessing_Tools/Spatial_Analyst.Rmd",
+>>>>>>> 8d12a0f18210eaf813d444e49e16a4ebe2aa0ee7
   #"05_Geoprocessing_Tools/3D_Analyst.Rmd",
   #"05_Geoprocessing_Tools/Analysis.Rmd",
   #"05_Geoprocessing_Tools/Geocoding.Rmd",
