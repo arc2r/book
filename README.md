@@ -2,7 +2,7 @@
 Work in Progress: A resource for people transitioning from ArcGIS to R for spatial stuff
 
 
-## Some basic text formatting rules, for keeping the document consistent.
+### Some basic text formatting rules for keeping the document consistent.
 
 - formatting with __bold__, in the following cases:
     - package name (e.g __sf__)
