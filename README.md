@@ -12,5 +12,5 @@ Work in Progress: A resource for people transitioning from ArcGIS to R for spati
 - formatting with _italics_, in the following cases:
     - function name (e.g _st_buffer_)
     
-- formatting with this ´format´_, in the following cases:
-    - referring to a tool (e.g ´Select by attributes´) 
+- formatting with this `format`, in the following cases:
+    - referring to a tool (e.g `Select By Attributes`) 
