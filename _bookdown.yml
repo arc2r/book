@@ -5,6 +5,7 @@ rmd_files: [
   "02_Select/Chapter_overview.Rmd",
   "02_Select/Select_by_Attribute.Rmd",
   "02_Select/Select_by_Location.Rmd",
+  "02_Select/Spatial_intersections.Rmd",
   "05_Geoprocessing_Tools/Spatial_Analyst.Rmd",
   #"05_Geoprocessing_Tools/3D_Analyst.Rmd",
   #"05_Geoprocessing_Tools/Analysis.Rmd",

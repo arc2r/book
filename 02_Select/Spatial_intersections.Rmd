@@ -1,0 +1,37 @@
+## Spatial intersections
+
+### Clip operation
+```{r,echo=FALSE}
+knitr::opts_chunk$set(warning = F, message = F, tidy = T)
+```
+
+
+```{r}
+bahn_haltestelle_ch <- st_read("sample_data/other/Haltestelle_Bahn_CH.shp")
+kantonsgebiet <- st_read("sample_data/other/Kantonsgebiet.shp")
+
+tm_shape(kantonsgebiet) + tm_polygons("#f0f0f0") + 
+  tm_shape(bahn_haltestelle_ch) + tm_dots(col = "#e34a33",size = 0.1, alpha = 0.5) + 
+  tm_shape(kantonsgebiet) + tm_borders(col = "black") + tm_layout(frame = F)
+   
+```
+We want now to analyse the situation at a particular area. So we are going to create an index with the specific cantons we are interested in. 
+```{r}
+index <- kantonsgebiet$name == "Zürich" |
+  kantonsgebiet$name == "St. Gallen" |
+  kantonsgebiet$name == "Thurgau" |
+  kantonsgebiet$name == "Aargau"
+
+kantons_aOi <- kantonsgebiet[index,]
+
+hal_clipped <- st_intersection(kantons_aOi,bahn_haltestelle_ch)
+```
+Plot the result from the clipping operation
+```{r}
+tm_shape(kantons_aOi) + tm_polygons("#f0f0f0") + 
+  tm_shape(hal_clipped) + tm_dots(col = "#e34a33",size = 0.1, alpha = 0.5) + 
+  tm_shape(kantons_aOi) + tm_borders() + tm_layout(frame = F)
+```
+
+
+So, ultimately, as we can see above, the _st_intersection_ function creates a datasets where the point dataset is precisely "clipped" based on the area of interest. 
