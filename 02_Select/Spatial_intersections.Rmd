@@ -1,4 +1,4 @@
-## Spatial intersections
+## Spatial Intersections
 
 ### Clip operation
 ```{r,echo=FALSE}
@@ -34,4 +34,43 @@ tm_shape(kantons_aOi) + tm_polygons("#f0f0f0") +
 ```
 
 
-So, ultimately, as we can see above, the _st_intersection_ function creates a result where the point dataset is precisely "clipped" based on the area of interest. 
+So, ultimately, as we can see above, the _st_intersection_ function creates a result where the point dataset is precisely "clipped" based on the area of interest.
+
+### Buffer operation
+
+One of the most commonly used operations in ArcGIS pro is the one called _Buffer_. This operation provides a very convenient way of identifying areas of interest lying in the neighborhood of an existing spatial feature. In R the same action can be performed using the _st_buffer_ function in _sf_. 
+
+Below we introduce a line spatial feature that depicts all the __mountain bike routes__ in Switzerland.
+```{r, echo=F}
+mountainBikes_routes <- st_read("sample_data/other/mountainBikes_routes.shp")
+```
+
+```{r, echo=F}
+tm_shape(kantonsgebiet) + tm_polygons("#f0f0f0") + 
+  tm_shape(mountainBikes_routes) + tm_lines(col = "#e34a33") + 
+  tm_shape(kantonsgebiet) + tm_borders(col = "black") + tm_layout(frame = F)
+```
+
+We focus, as an area of interest, on the canton of Valais. Consequently, we might be interested in identifying all the areas in a radius of 1000 m around these bike routes.
+
+Selecting the canton of Valais
+```{r, echo=FALSE}
+index2 <- kantonsgebiet$name == "Valais"
+canton_valais <- kantonsgebiet[index2,]
+mountainBikes_routes_valais <- st_intersection(mountainBikes_routes,canton_valais)
+
+tm_shape(canton_valais) + tm_polygons("#f0f0f0") + 
+  tm_shape(mountainBikes_routes_valais) + tm_lines(col = "#e34a33") + 
+  tm_shape(canton_valais) + tm_borders(col = "black") + tm_layout(frame = F)
+```
+
+Apply a buffer of 1000m on each of the mountain bike routes within the canton of Valais
+```{r}
+routes_buffer <- st_buffer(mountainBikes_routes_valais,1000)
+
+tm_shape(canton_valais) + tm_polygons() + 
+  tm_shape(mountainBikes_routes_valais) + tm_lines(col = "#e34a33") +
+  tm_shape(routes_buffer) + tm_polygons(col = "blue", alpha = 0.2) + 
+  tm_shape(canton_valais) + tm_borders(col = "black") + tm_layout(frame = F)
+```
+
