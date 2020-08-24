@@ -7,7 +7,10 @@ Work in Progress: A resource for people transitioning from ArcGIS to R for spati
 - formatting with __bold__, in the following cases:
     - package name (e.g __sf__)
     - operation (e.g __spatial subsetting__)
-    - dataset name (e.g __parking spots in the canton of Zurich)
+    - dataset name (e.g __parking spots in the canton of Zurich__)
     
 - formatting with _italics_, in the following cases:
     - function name (e.g _st_buffer_)
+    
+- formatting with this ´format´_, in the following cases:
+    - referring to a tool (e.g ´Select by attributes´) 
