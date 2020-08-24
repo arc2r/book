@@ -1,12 +1,21 @@
 ```{r}
 library(sf)
 library(tidyverse)
+library(raster)
 ```
 
 
 # Spatial Analyst Toolbox
 
 ## Conditional Toolset
+
+
+
+
+
+
+
+
 ## Density Toolset
 
 ### Kernel Denisity

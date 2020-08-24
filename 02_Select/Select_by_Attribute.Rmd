@@ -4,7 +4,7 @@ knitr::opts_chunk$set(warning = F, message = F, tidy = T)
 ```
 
 
-One of the approaches we can follow in ArcGIS pro to select features in a layer is by using an attribute query. The action is performed using the `Select By Attributes` tool.
+One of the popular approaches in ArcGIS pro for selecting features in a layer is by using an attribute query. The action is performed using the `Select By Attributes` tool.
 
 `Select By Attributes` tool allows us to provide a SQL query expression to select features that match the selection criteria.
 

@@ -1,6 +1,6 @@
 # Making Statics Maps
 
-Probabbly the quickest way to visualize spatial data is with `base::plot()`. It can handle raster as well as vector data and usually needs not more than this one command, `plot()`. This can be great to get a first, quick look at the data but in my opinion, base plot will not get you very far. To make nice static maps, you are better served with `ggplot2` or with `tmap`. There are arguments for both packages, and you might just end up using both. 
+Probably the quickest way to visualize spatial data is with `base::plot()`. It can handle raster as well as vector data and usually needs not more than this one command, `plot()`. This can be great to get a first, quick look at the data but in my opinion, base plot will not get you very far. To make nice static maps, you are better served with `ggplot2` or with `tmap`. There are arguments for both packages, and you might just end up using both. 
 
 Before you start making maps however, you will have to familiarize yourself with importing raster or vector data into R in the first place. For Vector data, you can read chapter [2.2 Vector data](https://geocompr.robinlovelace.net/spatial-class.html#vector-data) from the book "Geocomputation with R". The next chapter [2.3 Raster data](https://geocompr.robinlovelace.net/spatial-class.html#raster-data) provides a very good overview on rasterdata in R
 
@@ -51,7 +51,7 @@ ggplot(eire) +
 
 ### Adding Raster Maps Files (geotiffs)
 
-While vector data is very easily implemented in ggplot2, rasterdata is a little harder. Its complicated enough with standard Raster Data, and even more so with raster maps.  There are two packages than facilatate the combination of rastermaps and ggplot: 
+While vector data is very easily implemented in ggplot2, rasterdata is a little harder. Its complicated enough with standard Raster Data, and even more so with raster maps.  There are two packages that facilitate the combination of rastermaps and ggplot: 
 
 - [`rasterVis`](https://oscarperpinan.github.io/rastervis/)
 - [`RStoolbox`](https://bleutner.github.io/RStoolbox/)
