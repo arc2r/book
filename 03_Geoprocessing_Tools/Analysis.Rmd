@@ -64,6 +64,15 @@ The operation above produces the same outcome as the one depicted in the figure 
 knitr::include_graphics("images/clipOperation.png")
 ```
 
+
+### Split
+
+### Split by Attributes
+
+### Table Select
+
+## Overlay Toolset
+
 ### Merge
 
 Let's assume that in the example above, instead of having four individual areas of interest, we are interested in having one common, unified area on which we focus our analysis. In other words, we have to __merge__ the existing four areas into one. In ArcGIS pro the respective tools for this action is either the `Merge` or the `Dissolve` tool.  
@@ -89,6 +98,77 @@ The operation above produces the same outcome as the one depicted in the figure 
 knitr::include_graphics("images/dissolve.png")
 ```
 
+
+### Erase
+
+### Union
+
+### Symmetrical Difference
+
+### Spatial Join
+
+
+
+
+
+Say you have two datasets:
+
+
+```{r, eval=FALSE}
+library(sf)
+library(tidyverse)
+zweitwohnung <- read_sf("sample_data/other/zweitwohnung_gemeinden.gpkg") %>%
+  dplyr::filter(kanton == "Valais / Wallis") %>%
+  select(NAME)
+
+bbox <- st_bbox(zweitwohnung) %>% st_as_sfc()
+
+points <- st_sample(bbox,500)
+
+ggplot(zweitwohnung) + geom_sf() + geom_sf(data = points)
+```
+
+In R, the function used to join two datastes is `st_join(x,y)`. If you have to different data types (e.g. Points and Polygons) the first question you have to ask yourself is: what data type should the output be? The datatype of `x` determins what the output datatype is. 
+So with the above data: Say for each point, we want to know the Name (`NAME`) of the "Geimeinde" in which it lies. This means the output is a point dataset. We therefore write:
+
+```{r, eval=FALSE}
+st_join(st_sf(points),zweitwohnung,join = st_within)
+```
+
+Note that points not located in a Gemeinde get the value `NA`. You have to specify the spatial relationship of your join method within the argument `join = `. This argument take a so called spatial predicate function. From the join_methods available in ArcGIS, here's the equivalant spatial predicate function:
+
+| ArcGIS Term                     | R Spatial Predicate     |
+|---------------------------------|-------------------------|
+| Intersect                       | st_intersect            |
+| Intersect 3D                    | (1)                     |
+| Within a distance               | st_is_within_distance   |
+| Within a distance geodesic      | ??                      |
+| Within a distance 3D            | (1)                     |
+| Contains                        | st_contains             |
+| Completely contains             | _st_contains_properly?_ |
+| Contains clementini             | ??                      |
+| Within                          | st_within               |
+| Completely within               |                         |
+| Within clementini               | ??                      |
+| Are identical to                | _st_equals?_            |
+| boundry touches                 | st_touches              |
+| Share a line segment            |                         |
+| Have their center in            |                         |
+| Closest                         | _st_nearest_feature?_   |
+| Closest geodesic                | ??                      |
+
+
+(1) All binary predicates only work on 2D Objects (see [this issue](https://github.com/r-spatial/sf/issues/907))
+
+### Intersect
+
+
+
+### Identity
+
+### Update
+
+## Proximity Toolset
 
 ### Buffer
 
@@ -136,82 +216,3 @@ The operation above produces the same outcome as the one depicted in the figure 
 ```{r buffer, fig.cap= "Buffer operation in ArcGIS pro",echo=F, out.width = "750px",fig.align='center'}
 knitr::include_graphics("images/buffer.png")
 ```
-
-### Split
-
-### Aplit by Attributes
-
-### Table Select
-
-## Overlay Toolset
-
-### Erase
-
-### Union
-
-### Symmetrical Difference
-
-### Spatial Join
-
-
-
-
-
-Say you have two datasets:
-
-
-```{r}
-library(sf)
-library(tidyverse)
-zweitwohnung <- read_sf("sample_data/other/zweitwohnung_gemeinden.gpkg") %>%
-  dplyr::filter(kanton == "Valais / Wallis") %>%
-  select(NAME)
-
-bbox <- st_bbox(zweitwohnung) %>% st_as_sfc()
-
-points <- st_sample(bbox,500)
-
-ggplot(zweitwohnung) + geom_sf() + geom_sf(data = points)
-```
-
-In R, the function used to join two datastes is `st_join(x,y)`. If you have to different data types (e.g. Points and Polygons) the first question you have to ask yourself is: what data type should the output be? The datatype of `x` determins what the output datatype is. 
-So with the above data: Say for each point, we want to know the Name (`NAME`) of the "Geimeinde" in which it lies. This means the output is a point dataset. We therefore write:
-
-```{r}
-st_join(st_sf(points),zweitwohnung,join = st_within)
-```
-
-Note that points not located in a Gemeinde get the value `NA`. You have to specify the spatial relationship of your join method within the argument `join = `. This argument take a so called spatial predicate function. From the join_methods available in ArcGIS, here's the equivalant spatial predicate function:
-
-| ArcGIS Term                     | R Spatial Predicate     |
-|---------------------------------|-------------------------|
-| Intersect                       | st_intersect            |
-| Intersect 3D                    | (1)                     |
-| Within a distance               | st_is_within_distance   |
-| Within a distance geodesic      | ??                      |
-| Within a distance 3D            | (1)                     |
-| Contains                        | st_contains             |
-| Completely contains             | _st_contains_properly?_ |
-| Contains clementini             | ??                      |
-| Within                          | st_within               |
-| Completely within               |                         |
-| Within clementini               | ??                      |
-| Are identical to                | _st_equals?_            |
-| boundry touches                 | st_touches              |
-| Share a line segment            |                         |
-| Have their center in            |                         |
-| Closest                         | _st_nearest_feature?_   |
-| Closest geodesic                | ??                      |
-
-
-(1) All binary predicates only work on 2D Objects (see [this issue](https://github.com/r-spatial/sf/issues/907))
-
-### Intersect
-
-
-
-### Identity
-
-### Update
-
-## Proximity Toolset
