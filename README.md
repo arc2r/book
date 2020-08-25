@@ -4,7 +4,7 @@ Work in Progress: A resource for people transitioning from ArcGIS to R for spati
 
 ### General rule
 
-- following the approach of presenting the __respective ArcGIS solutions__ to the sample examples
+- following the approach of presenting the __respective ArcGIS solutions__ to the sample R examples
     - consequently, providing the links to the esri resourses seems quite meaningfull
 
 
