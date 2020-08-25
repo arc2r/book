@@ -6,7 +6,7 @@ library(dplyr)
 library(sf)
 library(ggplot2)
 ```
-One of the most commonly used operations in ArcGIS pro is the process of selecting features of a spatial object (layer) based on whether or not these relate spatially to another object (layer). This process is also referred as __spatial subsetting__. In ArcGIS pro this can be preformed in various ways using the `Select by Location tool`. 
+One of the most commonly used operations in ArcGIS pro is the process of selecting features of a spatial object (layer) based on whether or not these relate spatially to another object (layer). This process is also referred as __spatial subsetting__. In ArcGIS pro this can be performed in various ways using the `Select by Location tool`. 
 
 In __R__ the same operation is, on a first level, performed using the `square bracket ([])` operator from the base R package.
 
