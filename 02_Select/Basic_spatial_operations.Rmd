@@ -1,6 +1,6 @@
-## Basic spatial operations
+# Basic spatial operations
 
-### Clip operation
+## Clip operation
 ```{r,echo=FALSE}
 knitr::opts_chunk$set(warning = F, message = F, tidy = T)
 ```
@@ -61,7 +61,7 @@ knitr::include_graphics("images/clipOperation.png")
 ```
 
 
-### Merge operation
+## Merge operation
 
 Let's assume that in the example above, instead of having four individual areas of interest, we are interested in having one common, unified area on which we focus our analysis. In other words, we have to __merge__ the existing four areas into one. In ArcGIS pro the respective tools for this action is either the `Merge` or the `Dissolve` tool.  
 In R on the other hand, this can be easily performed using the _st_union_ function in the __sf__ package. 
@@ -87,7 +87,7 @@ knitr::include_graphics("images/dissolve.png")
 ```
 
 
-### Buffer operation
+## Buffer operation
 
 One of the most commonly used operations in ArcGIS pro is the one called `Buffer`. This operation provides a very convenient way of identifying areas of interest lying in the neighborhood of an existing spatial feature. In R the same action can be performed using the _st_buffer_ function in __sf__. 
 
