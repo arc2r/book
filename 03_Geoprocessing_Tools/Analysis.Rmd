@@ -1,11 +1,141 @@
 
 # Analysis Toolbox
 
+```{r,echo=FALSE}
+knitr::opts_chunk$set(warning = F, message = F, tidy = T)
+```
+
 ## Extract Toolset
 
 ### Clip
 
-### Select
+Quite often in spatial analysis, we come across with cases, where we do not want to use all the available data there is. In other words, we want to focus on a specific area of interest, which dictates the need for __clipping__ the existing dataset based on it's relationship to some other existing spatial feature. In R this operation can be easily performed using the _st_intersection_ function in __sf__.
+  
+Let's assume in the example below that we want to clip the available dataset of all the __train stations in Switzerland__ by focusing our analysis on four specific cantons.
+
+
+
+```{r}
+
+# Point dataset depicting the train stations locations across Switzerland
+bahn_haltestelle_ch <- st_read("sample_data/other/Haltestelle_Bahn_CH.shp")
+
+# Dataset depictinG Switzerland on canton level
+kantonsgebiet <- st_read("sample_data/other/Kantonsgebiet.shp")
+
+tmap_mode(mode = c("plot")) # setting the plotting mode to static -- optimizing the process
+
+tm_shape(kantonsgebiet) + tm_polygons("#f0f0f0") + 
+  tm_shape(bahn_haltestelle_ch) + tm_dots(col = "#e34a33",size = 0.1, alpha = 0.5) + 
+  tm_shape(kantonsgebiet) + tm_borders(col = "black") + tm_layout(frame = F)
+   
+```
+
+
+As it was mentioned above, the aim is to analyse the situation at a particular area. So we are going to create an index with the specific cantons we are interested in.
+
+
+```{r}
+index <- kantonsgebiet$name == "Zürich" |
+  kantonsgebiet$name == "St. Gallen" |
+  kantonsgebiet$name == "Thurgau" |
+  kantonsgebiet$name == "Aargau"
+
+# Selecting the cantons based on the previously generated index
+kantons_aOi <- kantonsgebiet[index,]
+
+# Performing the clipping operation
+hal_clipped <- st_intersection(kantons_aOi,bahn_haltestelle_ch)
+```
+
+ - Plotting the result from the clipping operation
+```{r}
+tm_shape(kantons_aOi) + tm_polygons("#f0f0f0") + 
+  tm_shape(hal_clipped) + tm_dots(col = "#e34a33",size = 0.1, alpha = 0.5) + 
+  tm_shape(kantons_aOi) + tm_borders() + tm_layout(frame = F)
+```
+
+So, ultimately, as we can see above, the _st_intersection_ function creates a result where the point dataset is precisely "clipped" based on the area of interest
+
+
+The operation above produces the same outcome as the one depicted in the figure below \@ref(fig:clip).
+
+```{r clip, fig.cap= "Clip operation in ArcGIS pro",echo=F, out.width = "750px",fig.align='center'}
+knitr::include_graphics("images/clipOperation.png")
+```
+
+### Merge
+
+Let's assume that in the example above, instead of having four individual areas of interest, we are interested in having one common, unified area on which we focus our analysis. In other words, we have to __merge__ the existing four areas into one. In ArcGIS pro the respective tools for this action is either the `Merge` or the `Dissolve` tool.  
+In R on the other hand, this can be easily performed using the _st_union_ function in the __sf__ package. 
+
+```{r}
+# The area of interest from the previous example
+kantons_aOi
+
+# Merging the four areas into one
+aOi_merged <- st_union(kantons_aOi)
+```
+
+- Plot the merged area of interest
+
+```{r}
+tm_shape(aOi_merged) + tm_polygons("#f0f0f0") + tm_layout(frame = F)
+```
+
+The operation above produces the same outcome as the one depicted in the figure below \@ref(fig:dissolve).
+
+```{r dissolve, fig.cap= "Dissolve operation in ArcGIS pro",echo=F, out.width = "750px",fig.align='center'}
+knitr::include_graphics("images/dissolve.png")
+```
+
+
+### Buffer
+
+One of the most commonly used operations in ArcGIS pro is the one called `Buffer`. This operation provides a very convenient way of identifying areas of interest lying in the neighborhood of an existing spatial feature. In R the same action can be performed using the _st_buffer_ function in __sf__. 
+
+Below we introduce a line spatial feature that depicts all the __mountain bike routes__ in Switzerland.
+```{r, echo=F}
+mountainBikes_routes <- st_read("sample_data/other/mountainBikes_routes.shp")
+```
+
+```{r, echo=F}
+tm_shape(kantonsgebiet) + tm_polygons("#f0f0f0") + 
+  tm_shape(mountainBikes_routes) + tm_lines(col = "#e34a33") + 
+  tm_shape(kantonsgebiet) + tm_borders(col = "black") + tm_layout(frame = F)
+```
+
+We focus, as an area of interest, on the canton of Valais. Consequently, we might be interested in identifying all the areas in a radius of 1000 m around these bike routes.
+
+- Selecting the canton of Valais
+
+```{r, echo=FALSE}
+index2 <- kantonsgebiet$name == "Valais"
+canton_valais <- kantonsgebiet[index2,]
+mountainBikes_routes_valais <- st_intersection(mountainBikes_routes,canton_valais)
+
+tm_shape(canton_valais) + tm_polygons("#f0f0f0") + 
+  tm_shape(mountainBikes_routes_valais) + tm_lines(col = "#e34a33") + 
+  tm_shape(canton_valais) + tm_borders(col = "black") + tm_layout(frame = F)
+```
+
+- Apply a buffer of 1000m on each of the mountain bike routes within the canton of Valais
+
+```{r}
+routes_buffer <- st_buffer(mountainBikes_routes_valais,1000)
+
+tm_shape(canton_valais) + tm_polygons() + 
+  tm_shape(mountainBikes_routes_valais) + tm_lines(col = "#e34a33") +
+  tm_shape(routes_buffer) + tm_polygons(col = "blue", alpha = 0.2) + 
+  tm_shape(canton_valais) + tm_borders(col = "black") + tm_layout(frame = F)
+```
+
+
+The operation above produces the same outcome as the one depicted in the figure below \@ref(fig:buffer).
+
+```{r buffer, fig.cap= "Buffer operation in ArcGIS pro",echo=F, out.width = "750px",fig.align='center'}
+knitr::include_graphics("images/buffer.png")
+```
 
 ### Split
 
@@ -77,6 +207,8 @@ Note that points not located in a Gemeinde get the value `NA`. You have to speci
 (1) All binary predicates only work on 2D Objects (see [this issue](https://github.com/r-spatial/sf/issues/907))
 
 ### Intersect
+
+
 
 ### Identity
 

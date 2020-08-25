@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Burning Bridges</title>
-  <meta name="description" content="Burning Bridges" />
+  <title>5.2 Merge operation | Burning Bridges</title>
+  <meta name="description" content="5.2 Merge operation | Burning Bridges" />
   <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Burning Bridges" />
+  <meta property="og:title" content="5.2 Merge operation | Burning Bridges" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Burning Bridges" />
+  <meta name="twitter:title" content="5.2 Merge operation | Burning Bridges" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="foreword.html"/>
+<link rel="prev" href="clip-operation.html"/>
+<link rel="next" href="buffer-operation.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -171,29 +171,96 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Burning Bridges</h1>
-<h2 class="subtitle"><em>An intro to spatial-R for ArcGIS users</em></h2>
-<p class="author"><em>Nils Ratnaweera</em></p>
-</div>
-<div id="abstract" class="section level1">
-<h1><span class="header-section-number">1</span> Abstract</h1>
-<p>This is a ressource for people coming from ArcGIS who want to do spatial stuff (Analysis, Visualization) in R. This ressource should provide some help on this journey.</p>
-<p>Who this book is for:</p>
+<div id="merge-operation" class="section level2">
+<h2><span class="header-section-number">5.2</span> Merge operation</h2>
+<p>Let’s assume that in the example above, instead of having four individual areas of interest, we are interested in having one common, unified area on which we focus our analysis. In other words, we have to <strong>merge</strong> the existing four areas into one. In ArcGIS pro the respective tools for this action is either the <code>Merge</code> or the <code>Dissolve</code> tool.<br />
+In R on the other hand, this can be easily performed using the <em>st_union</em> function in the <strong>sf</strong> package.</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" title="1"><span class="co"># The area of interest from the previous example</span></a>
+<a class="sourceLine" id="cb90-2" title="2">kantons_aOi</a></code></pre></div>
+<pre><code>## Simple feature collection with 12 features and 22 fields (with 5 geometries empty)
+## geometry type:  MULTIPOLYGON
+## dimension:      XYZ
+## bbox:           xmin: 2620698 ymin: 1193269 xmax: 2768769 ymax: 1283504
+## z_range:        zmin: 260.666 zmax: 3246.858
+## projected CRS:  CH1903+ / LV95
+## First 10 features:
+##                                        uuid datum_aend datum_erst erstellung
+## 6    {05D55405-466B-4ECC-83C7-A906DEB0D607} 2017-12-04 2012-10-26       2012
+## 7    {FB7105B8-6D7C-4787-846E-17B2BC145C6E} 2018-11-22 2012-10-26       2012
+## 10   {E11CD2CA-2E2D-415C-8789-C10D7C26E441} 2016-12-09 2012-10-26       2012
+## 12   {87370D3F-DBBE-4D05-AF85-C358C3924B3D} 2018-11-22 2012-10-26       2012
+## 41   {99488953-65F6-4F86-8606-337113587F85} 2015-12-08 2012-10-26       2012
+## 47   {F1A07951-AC8B-4EBA-B48F-64BC8B92228C} 2015-12-08 2012-10-26       2012
+## 48   {784EB478-2D40-4620-80F8-ACC252A6FD02} 2015-12-08 2012-10-26       2012
+## NA                                     &lt;NA&gt;       &lt;NA&gt;       &lt;NA&gt;         NA
+## NA.1                                   &lt;NA&gt;       &lt;NA&gt;       &lt;NA&gt;         NA
+## NA.2                                   &lt;NA&gt;       &lt;NA&gt;       &lt;NA&gt;         NA
+##      erstellu_1 revision_j revision_m grund_aend herkunft herkunft_j herkunft_m
+## 6            10       2019          1        400      100       2018          1
+## 7            10       2019          1        400      500       2019          1
+## 10           10       2019          1        400      100       2017          1
+## 12           10       2019          1        400      500       2019          1
+## 41           10       2019          1        400      500       2015         12
+## 47           10       2019          1        400      500       2015         12
+## 48           10       2019          1        400      500       2015         12
+## NA           NA         NA         NA         NA       NA         NA         NA
+## NA.1         NA         NA         NA         NA       NA         NA         NA
+## NA.2         NA         NA         NA         NA       NA         NA         NA
+##      objektart kantonsnum see_flaech  revision_q kantonsfla kanton_tei
+## 6            0         17       7720 2018_Aufbau     202820          1
+## 7            0          1       6811 2018_Aufbau     172894          0
+## 10           0         19        870 2018_Aufbau     140380          1
+## 12           0         20      13121 2018_Aufbau      99433          1
+## 41           0         20          0 2018_Aufbau          0          2
+## 47           0         17          0 2018_Aufbau          0          2
+## 48           0         19          0 2018_Aufbau          0          2
+## NA          NA         NA         NA        &lt;NA&gt;         NA         NA
+## NA.1        NA         NA         NA        &lt;NA&gt;         NA         NA
+## NA.2        NA         NA         NA        &lt;NA&gt;         NA         NA
+##            name  icc einwohnerz Shape_Leng   Shape_Area
+## 6    St. Gallen   CH     504686 494074.195 2.028094e+09
+## 7        Zürich   CH    1504346 312972.523 1.728942e+09
+## 10       Aargau   CH     670988 328943.352 1.403783e+09
+## 12      Thurgau   CH     273801 287778.920 9.905920e+08
+## 41      Thurgau   CH          0   8640.269 3.737271e+06
+## 47   St. Gallen   CH          0   1481.811 1.054068e+05
+## 48       Aargau   CH          0    537.994 1.486573e+04
+## NA         &lt;NA&gt; &lt;NA&gt;         NA         NA           NA
+## NA.1       &lt;NA&gt; &lt;NA&gt;         NA         NA           NA
+## NA.2       &lt;NA&gt; &lt;NA&gt;         NA         NA           NA
+##                            geometry
+## 6    MULTIPOLYGON Z (((2703763 1...
+## 7    MULTIPOLYGON Z (((2673542 1...
+## 10   MULTIPOLYGON Z (((2673542 1...
+## 12   MULTIPOLYGON Z (((2701937 1...
+## 41   MULTIPOLYGON Z (((2751489 1...
+## 47   MULTIPOLYGON Z (((2744263 1...
+## 48   MULTIPOLYGON Z (((2675447 1...
+## NA             MULTIPOLYGON Z EMPTY
+## NA.1           MULTIPOLYGON Z EMPTY
+## NA.2           MULTIPOLYGON Z EMPTY</code></pre>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" title="1"><span class="co"># Merging the four areas into one</span></a>
+<a class="sourceLine" id="cb92-2" title="2">aOi_merged &lt;-<span class="st"> </span><span class="kw">st_union</span>(kantons_aOi)</a></code></pre></div>
 <ul>
-<li>you’ve worked primarily with ArcGIS and would like to transition to R</li>
-<li>you have some experience with R</li>
-<li>you don’t mind working with the tidyverse</li>
+<li>Plot the merged area of interest</li>
 </ul>
-<p><img src="2999236c73d7f6b3561d742dc2471ff8.jpg" /></p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" title="1"><span class="kw">tm_shape</span>(aOi_merged) <span class="op">+</span><span class="st"> </span><span class="kw">tm_polygons</span>(<span class="st">&quot;#f0f0f0&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">tm_layout</span>(<span class="dt">frame =</span> F)</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
+<p>The operation above produces the same outcome as the one depicted in the figure below <a href="merge-operation.html#fig:dissolve">4.3</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:dissolve"></span>
+<img src="images/dissolve.png" alt="Dissolve operation in ArcGIS pro" width="750px" />
+<p class="caption">
+Figure 4.3: Dissolve operation in ArcGIS pro
+</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="foreword.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="clip-operation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="buffer-operation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
