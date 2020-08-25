@@ -1,4 +1,4 @@
-## Spatial Intersections
+## Basic spatial operations
 
 ### Clip operation
 ```{r,echo=FALSE}
@@ -61,11 +61,35 @@ knitr::include_graphics("images/clipOperation.png")
 ```
 
 
+### Merge operation
+
+Let's assume that in the example above, instead of having four individual areas of interest, we are interested in having one common, unified area on which we focus our analysis. In other words, we have to __merge__ the existing four areas into one. In ArcGIS pro the respective tools for this action is either the `Merge` or the `Dissolve` tool.  
+In R on the other hand, this can be easily performed using the _st_union_ function in the __sf__ package. 
+
+```{r}
+# The area of interest from the previous example
+kantons_aOi
+
+# Merging the four areas into one
+aOi_merged <- st_union(kantons_aOi)
+```
+
+- Plot the merged area of interest
+
+```{r}
+tm_shape(aOi_merged) + tm_polygons("#f0f0f0") + tm_layout(frame = F)
+```
+
+The operation above produces the same outcome as the one depicted in the figure below \@ref(fig:dissolve).
+
+```{r dissolve, fig.cap= "Dissolve operation in ArcGIS pro",echo=F, out.width = "750px",fig.align='center'}
+knitr::include_graphics("images/dissolve.png")
+```
 
 
 ### Buffer operation
 
-One of the most commonly used operations in ArcGIS pro is the one called `Buffer`. This operation provides a very convenient way of identifying areas of interest lying in the neighborhood of an existing spatial feature. In R the same action can be performed using the _st_buffer_ function in _sf_. 
+One of the most commonly used operations in ArcGIS pro is the one called `Buffer`. This operation provides a very convenient way of identifying areas of interest lying in the neighborhood of an existing spatial feature. In R the same action can be performed using the _st_buffer_ function in __sf__. 
 
 Below we introduce a line spatial feature that depicts all the __mountain bike routes__ in Switzerland.
 ```{r, echo=F}
