@@ -10,12 +10,17 @@ knitr::opts_chunk$set(warning = F, message = F, tidy = T)
 bahn_haltestelle_ch <- st_read("sample_data/other/Haltestelle_Bahn_CH.shp")
 kantonsgebiet <- st_read("sample_data/other/Kantonsgebiet.shp")
 
+tmap_mode(mode = c("plot"))
 tm_shape(kantonsgebiet) + tm_polygons("#f0f0f0") + 
   tm_shape(bahn_haltestelle_ch) + tm_dots(col = "#e34a33",size = 0.1, alpha = 0.5) + 
   tm_shape(kantonsgebiet) + tm_borders(col = "black") + tm_layout(frame = F)
    
 ```
-We want now to analyse the situation at a particular area. So we are going to create an index with the specific cantons we are interested in. 
+
+
+We want now to analyse the situation at a particular area. So we are going to create an index with the specific cantons we are interested in.
+
+
 ```{r}
 index <- kantonsgebiet$name == "Zürich" |
   kantonsgebiet$name == "St. Gallen" |
@@ -32,12 +37,14 @@ tm_shape(kantons_aOi) + tm_polygons("#f0f0f0") +
   tm_shape(hal_clipped) + tm_dots(col = "#e34a33",size = 0.1, alpha = 0.5) + 
   tm_shape(kantons_aOi) + tm_borders() + tm_layout(frame = F)
 ```
+
+
 So, ultimately, as we can see above, the _st_intersection_ function creates a result where the point dataset is precisely "clipped" based on the area of interest
 
 
 The operation above produces the same outcome as the one depicted in the figure below \@ref(fig:clip).
 
-```{r clip, fig.cap= "Clip operation in ArcGIS pro",echo=F, out.width = "500px",fig.align='center'}
+```{r clip, fig.cap= "Clip operation in ArcGIS pro",echo=F, out.width = "750px",fig.align='center'}
 knitr::include_graphics("images/clipOperation.png")
 ```
 
@@ -61,7 +68,8 @@ tm_shape(kantonsgebiet) + tm_polygons("#f0f0f0") +
 
 We focus, as an area of interest, on the canton of Valais. Consequently, we might be interested in identifying all the areas in a radius of 1000 m around these bike routes.
 
-Selecting the canton of Valais
+- Selecting the canton of Valais
+
 ```{r, echo=FALSE}
 index2 <- kantonsgebiet$name == "Valais"
 canton_valais <- kantonsgebiet[index2,]
@@ -72,7 +80,8 @@ tm_shape(canton_valais) + tm_polygons("#f0f0f0") +
   tm_shape(canton_valais) + tm_borders(col = "black") + tm_layout(frame = F)
 ```
 
-Apply a buffer of 1000m on each of the mountain bike routes within the canton of Valais
+- Apply a buffer of 1000m on each of the mountain bike routes within the canton of Valais
+
 ```{r}
 routes_buffer <- st_buffer(mountainBikes_routes_valais,1000)
 
