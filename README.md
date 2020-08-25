@@ -2,6 +2,12 @@
 Work in Progress: A resource for people transitioning from ArcGIS to R for spatial stuff
 
 
+### General rule
+
+- following the approach of presenting the respective ArcGIS solutions to the sample examples
+    - consequently, providing the links to the esri resourses seems quite meaningfull
+
+
 ### Some basic text formatting rules for keeping the document consistent.
 
 - formatting with __bold__, in the following cases:
