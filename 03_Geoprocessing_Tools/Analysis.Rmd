@@ -31,7 +31,6 @@ tm_shape(kantonsgebiet) + tm_polygons("#f0f0f0") +
    
 ```
 
-
 As it was mentioned above, the aim is to analyse the situation at a particular area. So we are going to create an index with the specific cantons we are interested in.
 
 
@@ -75,11 +74,11 @@ knitr::include_graphics("images/clipOperation.png")
 
 ### Merge
 
-Let's assume that in the example above, instead of having four individual areas of interest, we are interested in having one common, unified area on which we focus our analysis. In other words, we have to __merge__ the existing four areas into one. In ArcGIS pro the respective tools for this action is either the `Merge` or the `Dissolve` tool.  
+Let's assume in the example below that instead of having four individual areas of interest, we are interested in having one common, unified area on which we focus our analysis. In other words, we have to __merge__ the existing four areas into one. In ArcGIS pro the respective tools for this action is either the `Merge` or the `Dissolve` tool.  
 In R on the other hand, this can be easily performed using the _st_union_ function in the __sf__ package. 
 
 ```{r}
-# The area of interest from the previous example
+# The area of interest from the previous example - section Clip
 kantons_aOi
 
 # Merging the four areas into one
