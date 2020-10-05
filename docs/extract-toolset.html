@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5.1 Extract Toolset | Burning Bridges</title>
   <meta name="description" content="5.1 Extract Toolset | Burning Bridges" />
-  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.20.6 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5.1 Extract Toolset | Burning Bridges" />
   <meta property="og:type" content="book" />
@@ -193,8 +193,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">5.1.1</span> Clip</h3>
 <p>Quite often in spatial analysis, we come across with cases, where we do not want to use all the available data there is. In other words, we want to focus on a specific area of interest, which dictates the need for <strong>clipping</strong> the existing dataset based on it’s relationship to some other existing spatial feature. In R this operation can be easily performed using the <em>st_intersection</em> function in <strong>sf</strong>.</p>
 <p>Let’s assume in the example below that we want to clip the available dataset of all the <strong>train stations in Switzerland</strong> by focusing our analysis on four specific cantons.</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" title="1"><span class="co"># Point dataset depicting the train stations locations across Switzerland</span></a>
-<a class="sourceLine" id="cb83-2" title="2">bahn_haltestelle_ch &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;sample_data/other/Haltestelle_Bahn_CH.shp&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1"><span class="co"># Point dataset depicting the train stations locations across Switzerland</span></a>
+<a class="sourceLine" id="cb68-2" title="2">bahn_haltestelle_ch &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;sample_data/other/Haltestelle_Bahn_CH.shp&quot;</span>)</a></code></pre></div>
 <pre><code>## Reading layer `Haltestelle_Bahn_CH&#39; from data source `C:\Users\bako\Desktop\Projekte\All_thing_R_Spatial\github\spatialR_for_ArcGIS_Users\sample_data\other\Haltestelle_Bahn_CH.shp&#39; using driver `ESRI Shapefile&#39;
 ## Simple feature collection with 3134 features and 16 fields
 ## geometry type:  POINT
@@ -202,8 +202,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## bbox:           xmin: 2488908 ymin: 1076850 xmax: 2817389 ymax: 1289090
 ## z_range:        zmin: 194.905 zmax: 3453.525
 ## projected CRS:  CH1903+ / LV95</code></pre>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" title="1"><span class="co"># Dataset depictinG Switzerland on canton level</span></a>
-<a class="sourceLine" id="cb85-2" title="2">kantonsgebiet &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;sample_data/other/Kantonsgebiet.shp&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" title="1"><span class="co"># Dataset depicting Switzerland on canton level</span></a>
+<a class="sourceLine" id="cb70-2" title="2">kantonsgebiet &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;sample_data/other/Kantonsgebiet.shp&quot;</span>)</a></code></pre></div>
 <pre><code>## Reading layer `Kantonsgebiet&#39; from data source `C:\Users\bako\Desktop\Projekte\All_thing_R_Spatial\github\spatialR_for_ArcGIS_Users\sample_data\other\Kantonsgebiet.shp&#39; using driver `ESRI Shapefile&#39;
 ## Simple feature collection with 56 features and 22 fields
 ## geometry type:  MULTIPOLYGON
@@ -211,36 +211,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## bbox:           xmin: 2485410 ymin: 1075268 xmax: 2833858 ymax: 1295934
 ## z_range:        zmin: 193.51 zmax: 4613.729
 ## projected CRS:  CH1903+ / LV95</code></pre>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" title="1"><span class="kw">tmap_mode</span>(<span class="dt">mode =</span> <span class="kw">c</span>(<span class="st">&quot;plot&quot;</span>)) <span class="co"># setting the plotting mode to static -- optimizing the process</span></a>
-<a class="sourceLine" id="cb87-2" title="2"></a>
-<a class="sourceLine" id="cb87-3" title="3"><span class="kw">tm_shape</span>(kantonsgebiet) <span class="op">+</span><span class="st"> </span><span class="kw">tm_polygons</span>(<span class="st">&quot;#f0f0f0&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb87-4" title="4"><span class="st">  </span><span class="kw">tm_shape</span>(bahn_haltestelle_ch) <span class="op">+</span><span class="st"> </span><span class="kw">tm_dots</span>(<span class="dt">col =</span> <span class="st">&quot;#e34a33&quot;</span>,<span class="dt">size =</span> <span class="fl">0.1</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb87-5" title="5"><span class="st">  </span><span class="kw">tm_shape</span>(kantonsgebiet) <span class="op">+</span><span class="st"> </span><span class="kw">tm_borders</span>(<span class="dt">col =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">tm_layout</span>(<span class="dt">frame =</span> F)</a></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1"><span class="kw">tmap_mode</span>(<span class="dt">mode =</span> <span class="kw">c</span>(<span class="st">&quot;plot&quot;</span>)) <span class="co"># setting the plotting mode to static -- optimizing the process</span></a>
+<a class="sourceLine" id="cb72-2" title="2"></a>
+<a class="sourceLine" id="cb72-3" title="3"><span class="kw">tm_shape</span>(kantonsgebiet) <span class="op">+</span><span class="st"> </span><span class="kw">tm_polygons</span>(<span class="st">&quot;#f0f0f0&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb72-4" title="4"><span class="st">  </span><span class="kw">tm_shape</span>(bahn_haltestelle_ch) <span class="op">+</span><span class="st"> </span><span class="kw">tm_dots</span>(<span class="dt">col =</span> <span class="st">&quot;#e34a33&quot;</span>,<span class="dt">size =</span> <span class="fl">0.1</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb72-5" title="5"><span class="st">  </span><span class="kw">tm_shape</span>(kantonsgebiet) <span class="op">+</span><span class="st"> </span><span class="kw">tm_borders</span>(<span class="dt">col =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">tm_layout</span>(<span class="dt">frame =</span> F)</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
 <p>As it was mentioned above, the aim is to analyse the situation at a particular area. So we are going to create an index with the specific cantons we are interested in.</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" title="1">index &lt;-<span class="st"> </span>kantonsgebiet<span class="op">$</span>name <span class="op">==</span><span class="st"> &quot;Zürich&quot; |</span></a>
-<a class="sourceLine" id="cb88-2" title="2"><span class="st">  kantonsgebiet$name == &quot;</span>St. Gallen<span class="st">&quot; |</span></a>
-<a class="sourceLine" id="cb88-3" title="3"><span class="st">  kantonsgebiet$name == &quot;</span>Thurgau<span class="st">&quot; |</span></a>
-<a class="sourceLine" id="cb88-4" title="4"><span class="st">  kantonsgebiet$name == &quot;</span>Aargau<span class="st">&quot;</span></a>
-<a class="sourceLine" id="cb88-5" title="5"></a>
-<a class="sourceLine" id="cb88-6" title="6"><span class="st"># Selecting the cantons based on the previously generated index</span></a>
-<a class="sourceLine" id="cb88-7" title="7"><span class="st">kantons_aOi &lt;- kantonsgebiet[index,]</span></a>
-<a class="sourceLine" id="cb88-8" title="8"></a>
-<a class="sourceLine" id="cb88-9" title="9"><span class="st"># Performing the clipping operation</span></a>
-<a class="sourceLine" id="cb88-10" title="10"><span class="st">hal_clipped &lt;- st_intersection(kantons_aOi,bahn_haltestelle_ch)</span></a></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" title="1">index &lt;-<span class="st"> </span>kantonsgebiet<span class="op">$</span>name <span class="op">==</span><span class="st"> &quot;Zürich&quot; |</span></a>
+<a class="sourceLine" id="cb73-2" title="2"><span class="st">  kantonsgebiet$name == &quot;</span>St. Gallen<span class="st">&quot; |</span></a>
+<a class="sourceLine" id="cb73-3" title="3"><span class="st">  kantonsgebiet$name == &quot;</span>Thurgau<span class="st">&quot; |</span></a>
+<a class="sourceLine" id="cb73-4" title="4"><span class="st">  kantonsgebiet$name == &quot;</span>Aargau<span class="st">&quot;</span></a>
+<a class="sourceLine" id="cb73-5" title="5"></a>
+<a class="sourceLine" id="cb73-6" title="6"><span class="st"># Selecting the cantons based on the previously generated index</span></a>
+<a class="sourceLine" id="cb73-7" title="7"><span class="st">kantons_aOi &lt;- kantonsgebiet[index,]</span></a>
+<a class="sourceLine" id="cb73-8" title="8"></a>
+<a class="sourceLine" id="cb73-9" title="9"><span class="st"># Performing the clipping operation</span></a>
+<a class="sourceLine" id="cb73-10" title="10"><span class="st">hal_clipped &lt;- st_intersection(kantons_aOi,bahn_haltestelle_ch)</span></a></code></pre></div>
 <ul>
 <li>Plotting the result from the clipping operation</li>
 </ul>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" title="1"><span class="kw">tm_shape</span>(kantons_aOi) <span class="op">+</span><span class="st"> </span><span class="kw">tm_polygons</span>(<span class="st">&quot;#f0f0f0&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb89-2" title="2"><span class="st">  </span><span class="kw">tm_shape</span>(hal_clipped) <span class="op">+</span><span class="st"> </span><span class="kw">tm_dots</span>(<span class="dt">col =</span> <span class="st">&quot;#e34a33&quot;</span>,<span class="dt">size =</span> <span class="fl">0.1</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb89-3" title="3"><span class="st">  </span><span class="kw">tm_shape</span>(kantons_aOi) <span class="op">+</span><span class="st"> </span><span class="kw">tm_borders</span>() <span class="op">+</span><span class="st"> </span><span class="kw">tm_layout</span>(<span class="dt">frame =</span> F)</a></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" title="1"><span class="kw">tm_shape</span>(kantons_aOi) <span class="op">+</span><span class="st"> </span><span class="kw">tm_polygons</span>(<span class="st">&quot;#f0f0f0&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb74-2" title="2"><span class="st">  </span><span class="kw">tm_shape</span>(hal_clipped) <span class="op">+</span><span class="st"> </span><span class="kw">tm_dots</span>(<span class="dt">col =</span> <span class="st">&quot;#e34a33&quot;</span>,<span class="dt">size =</span> <span class="fl">0.1</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb74-3" title="3"><span class="st">  </span><span class="kw">tm_shape</span>(kantons_aOi) <span class="op">+</span><span class="st"> </span><span class="kw">tm_borders</span>() <span class="op">+</span><span class="st"> </span><span class="kw">tm_layout</span>(<span class="dt">frame =</span> F)</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-40-1.png" width="672" /></p>
 <p>So, ultimately, as we can see above, the <em>st_intersection</em> function creates a result where the point dataset is precisely “clipped” based on the area of interest</p>
-<p>The operation above produces the same outcome as the one depicted in the figure below <a href="extract-toolset.html#fig:clip">4.2</a>.</p>
+<p>The operation above produces the same outcome as the one depicted in the figure below <a href="extract-toolset.html#fig:clip">5.1</a>.</p>
 <div class="figure" style="text-align: center"><span id="fig:clip"></span>
 <img src="images/clipOperation.png" alt="Clip operation in ArcGIS pro" width="750px" />
 <p class="caption">
-Figure 4.2: Clip operation in ArcGIS pro
+Figure 5.1: Clip operation in ArcGIS pro
 </p>
 </div>
 </div>

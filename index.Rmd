@@ -6,6 +6,12 @@ site: bookdown::bookdown_site
 ---
 
 
+```{r,echo=FALSE,message=FALSE,warning=FALSE}
+library(tidyverse)
+library(tiff)
+```
+
+
 # Abstract
 
 This is a ressource for people coming from ArcGIS who want to do spatial stuff (Analysis, Visualization) in R. This ressource should provide some help on this journey.

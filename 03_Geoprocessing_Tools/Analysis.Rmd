@@ -20,7 +20,7 @@ Let's assume in the example below that we want to clip the available dataset of 
 # Point dataset depicting the train stations locations across Switzerland
 bahn_haltestelle_ch <- st_read("sample_data/other/Haltestelle_Bahn_CH.shp")
 
-# Dataset depictinG Switzerland on canton level
+# Dataset depicting Switzerland on canton level
 kantonsgebiet <- st_read("sample_data/other/Kantonsgebiet.shp")
 
 tmap_mode(mode = c("plot")) # setting the plotting mode to static -- optimizing the process

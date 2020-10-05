@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5.3 Proximity Toolset | Burning Bridges</title>
   <meta name="description" content="5.3 Proximity Toolset | Burning Bridges" />
-  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.20.6 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5.3 Proximity Toolset | Burning Bridges" />
   <meta property="og:type" content="book" />
@@ -200,27 +200,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## bbox:           xmin: 2497570 ymin: 1077136 xmax: 2836678 ymax: 1296227
 ## z_range:        zmin: 197.367 zmax: 2860.725
 ## projected CRS:  CH1903+ / LV95</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
 <p>We focus, as an area of interest, on the canton of Valais. Consequently, we might be interested in identifying all the areas in a radius of 1000 m around these bike routes.</p>
 <ul>
 <li>Selecting the canton of Valais</li>
 </ul>
-<p><img src="_main_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
 <ul>
 <li>Apply a buffer of 1000m on each of the mountain bike routes within the canton of Valais</li>
 </ul>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" title="1">routes_buffer &lt;-<span class="st"> </span><span class="kw">st_buffer</span>(mountainBikes_routes_valais,<span class="dv">1000</span>)</a>
-<a class="sourceLine" id="cb97-2" title="2"></a>
-<a class="sourceLine" id="cb97-3" title="3"><span class="kw">tm_shape</span>(canton_valais) <span class="op">+</span><span class="st"> </span><span class="kw">tm_polygons</span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb97-4" title="4"><span class="st">  </span><span class="kw">tm_shape</span>(mountainBikes_routes_valais) <span class="op">+</span><span class="st"> </span><span class="kw">tm_lines</span>(<span class="dt">col =</span> <span class="st">&quot;#e34a33&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb97-5" title="5"><span class="st">  </span><span class="kw">tm_shape</span>(routes_buffer) <span class="op">+</span><span class="st"> </span><span class="kw">tm_polygons</span>(<span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.2</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb97-6" title="6"><span class="st">  </span><span class="kw">tm_shape</span>(canton_valais) <span class="op">+</span><span class="st"> </span><span class="kw">tm_borders</span>(<span class="dt">col =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">tm_layout</span>(<span class="dt">frame =</span> F)</a></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
-<p>The operation above produces the same outcome as the one depicted in the figure below <a href="proximity-toolset.html#fig:buffer">4.4</a>.</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" title="1">routes_buffer &lt;-<span class="st"> </span><span class="kw">st_buffer</span>(mountainBikes_routes_valais,<span class="dv">1000</span>)</a>
+<a class="sourceLine" id="cb82-2" title="2"></a>
+<a class="sourceLine" id="cb82-3" title="3"><span class="kw">tm_shape</span>(canton_valais) <span class="op">+</span><span class="st"> </span><span class="kw">tm_polygons</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb82-4" title="4"><span class="st">  </span><span class="kw">tm_shape</span>(mountainBikes_routes_valais) <span class="op">+</span><span class="st"> </span><span class="kw">tm_lines</span>(<span class="dt">col =</span> <span class="st">&quot;#e34a33&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb82-5" title="5"><span class="st">  </span><span class="kw">tm_shape</span>(routes_buffer) <span class="op">+</span><span class="st"> </span><span class="kw">tm_polygons</span>(<span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.2</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb82-6" title="6"><span class="st">  </span><span class="kw">tm_shape</span>(canton_valais) <span class="op">+</span><span class="st"> </span><span class="kw">tm_borders</span>(<span class="dt">col =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">tm_layout</span>(<span class="dt">frame =</span> F)</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
+<p>The operation above produces the same outcome as the one depicted in the figure below <a href="proximity-toolset.html#fig:buffer">5.3</a>.</p>
 <div class="figure" style="text-align: center"><span id="fig:buffer"></span>
 <img src="images/buffer.png" alt="Buffer operation in ArcGIS pro" width="750px" />
 <p class="caption">
-Figure 4.4: Buffer operation in ArcGIS pro
+Figure 5.3: Buffer operation in ArcGIS pro
 </p>
 </div>
 

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4.2 Select by Attribute | Burning Bridges</title>
   <meta name="description" content="4.2 Select by Attribute | Burning Bridges" />
-  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.20.6 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4.2 Select by Attribute | Burning Bridges" />
   <meta property="og:type" content="book" />
@@ -194,9 +194,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>R</strong> on the other hand offers quite easy and straightforward options to perform similar operations. Let’s examine one of them.</p>
 <p>As a first step, we might want to import a shapefile. To do so, we can use <strong>sf package</strong> to work with vector data in R. Important to know is that the <strong>rgdal package</strong> automatically loads when sf is loaded.</p>
 <p>In the code snippet below, we read the shapefile, which represents the <strong>parking spots for bicycles</strong> within the canton of Zurich. The dataset is publicly available for download in the following link: (<a href="https://opendata.swiss/en/dataset/veloparkierungsanlagen" class="uri">https://opendata.swiss/en/dataset/veloparkierungsanlagen</a>).</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" title="1"><span class="kw">library</span>(sf)</a>
-<a class="sourceLine" id="cb75-2" title="2"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb75-3" title="3">parkBikes &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;sample_data/Kanton_Zuerich/Veloparkierungsanlagen/OGD_VELOPARKIERANLAGEN_P.shp&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" title="1"><span class="kw">library</span>(sf)</a>
+<a class="sourceLine" id="cb60-2" title="2"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb60-3" title="3">parkBikes &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;sample_data/Kanton_Zuerich/Veloparkierungsanlagen/OGD_VELOPARKIERANLAGEN_P.shp&quot;</span>)</a></code></pre></div>
 <pre><code>## Reading layer `OGD_VELOPARKIERANLAGEN_P&#39; from data source `C:\Users\bako\Desktop\Projekte\All_thing_R_Spatial\github\spatialR_for_ArcGIS_Users\sample_data\Kanton_Zuerich\Veloparkierungsanlagen\OGD_VELOPARKIERANLAGEN_P.shp&#39; using driver `ESRI Shapefile&#39;
 ## Simple feature collection with 511 features and 28 fields
 ## geometry type:  POINT
@@ -206,9 +206,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>After importing the dataset, let’s say we want to filter it by selecting only the parking spots that lie within a specific municipality (Gemeinde) in the canton of Zurich. More specifically, we will select only the parking spots within the municipality of Winterthur.
 For the aforementioned operation, R offers the function <code>filter()</code>, which lies within the <strong>dplyr</strong> package.
 This functions works as follows: <code>filter(dataset, condition)</code></p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" title="1"><span class="kw">library</span>(dplyr)</a>
-<a class="sourceLine" id="cb77-2" title="2">parkBikes_winti &lt;-<span class="st"> </span><span class="kw">filter</span>(parkBikes,GEMEINDE <span class="op">==</span><span class="st"> &quot;Winterthur&quot;</span>)</a></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-30-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" title="1"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb62-2" title="2">parkBikes_winti &lt;-<span class="st"> </span><span class="kw">filter</span>(parkBikes,GEMEINDE <span class="op">==</span><span class="st"> &quot;Winterthur&quot;</span>)</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-31-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>The operation above produces the same outcome as the one depicted in the figure below <a href="select-by-attribute.html#fig:select">4.1</a>.</p>
 <div class="figure" style="text-align: center"><span id="fig:select"></span>
 <img src="images/selectAttr.png" alt="Select by Attributes in ArcGIS pro" width="500px" />

@@ -11,6 +11,8 @@ Before you start making maps however, you will have to familiarize yourself with
 library(sf)
 library(tidyverse)
 
+
+getwd()
 eire <- read_sf("sample_data/spData/eire.shp")
 ```
 
