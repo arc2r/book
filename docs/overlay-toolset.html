@@ -32,6 +32,7 @@
   
 <link rel="prev" href="extract-toolset.html"/>
 <link rel="next" href="proximity-toolset.html"/>
+<script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -49,7 +50,9 @@
 
 
 
-<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
 <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet-1.3.1/leaflet.js"></script>
 <link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
@@ -62,25 +65,26 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -89,9 +93,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -138,25 +142,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul class="summary">
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Abstract</a></li>
 <li class="chapter" data-level="2" data-path="foreword.html"><a href="foreword.html"><i class="fa fa-check"></i><b>2</b> Foreword</a></li>
-<li class="chapter" data-level="3" data-path="making-interactive-maps.html"><a href="making-interactive-maps.html"><i class="fa fa-check"></i><b>3</b> Making Interactive Maps</a><ul>
+<li class="chapter" data-level="3" data-path="making-interactive-maps.html"><a href="making-interactive-maps.html"><i class="fa fa-check"></i><b>3</b> Making Interactive Maps</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="introduction-to-tmap.html"><a href="introduction-to-tmap.html"><i class="fa fa-check"></i><b>3.1</b> Introduction to <code>tmap</code></a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="making-statics-maps.html"><a href="making-statics-maps.html"><i class="fa fa-check"></i><b>4</b> Making Statics Maps</a><ul>
-<li class="chapter" data-level="4.1" data-path="static-maps-with-ggplot2.html"><a href="static-maps-with-ggplot2.html"><i class="fa fa-check"></i><b>4.1</b> Static maps with <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="4" data-path="making-statics-maps.html"><a href="making-statics-maps.html"><i class="fa fa-check"></i><b>4</b> Making Statics Maps</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="static-maps-with-ggplot2.html"><a href="static-maps-with-ggplot2.html"><i class="fa fa-check"></i><b>4.1</b> Static maps with <code>ggplot2</code></a>
+<ul>
 <li class="chapter" data-level="4.1.1" data-path="static-maps-with-ggplot2.html"><a href="static-maps-with-ggplot2.html#basics"><i class="fa fa-check"></i><b>4.1.1</b> Basics</a></li>
 <li class="chapter" data-level="4.1.2" data-path="static-maps-with-ggplot2.html"><a href="static-maps-with-ggplot2.html#adding-raster-maps-files-geotiffs"><i class="fa fa-check"></i><b>4.1.2</b> Adding Raster Maps Files (geotiffs)</a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="select-by-attribute.html"><a href="select-by-attribute.html"><i class="fa fa-check"></i><b>4.2</b> Select by Attribute</a></li>
 <li class="chapter" data-level="4.3" data-path="select-by-location.html"><a href="select-by-location.html"><i class="fa fa-check"></i><b>4.3</b> Select by Location</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="analysis-toolbox.html"><a href="analysis-toolbox.html"><i class="fa fa-check"></i><b>5</b> Analysis Toolbox</a><ul>
-<li class="chapter" data-level="5.1" data-path="extract-toolset.html"><a href="extract-toolset.html"><i class="fa fa-check"></i><b>5.1</b> Extract Toolset</a><ul>
+<li class="chapter" data-level="5" data-path="analysis-toolbox.html"><a href="analysis-toolbox.html"><i class="fa fa-check"></i><b>5</b> Analysis Toolbox</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="extract-toolset.html"><a href="extract-toolset.html"><i class="fa fa-check"></i><b>5.1</b> Extract Toolset</a>
+<ul>
 <li class="chapter" data-level="5.1.1" data-path="extract-toolset.html"><a href="extract-toolset.html#clip"><i class="fa fa-check"></i><b>5.1.1</b> Clip</a></li>
 <li class="chapter" data-level="5.1.2" data-path="extract-toolset.html"><a href="extract-toolset.html#split"><i class="fa fa-check"></i><b>5.1.2</b> Split</a></li>
 <li class="chapter" data-level="5.1.3" data-path="extract-toolset.html"><a href="extract-toolset.html#split-by-attributes"><i class="fa fa-check"></i><b>5.1.3</b> Split by Attributes</a></li>
 <li class="chapter" data-level="5.1.4" data-path="extract-toolset.html"><a href="extract-toolset.html#table-select"><i class="fa fa-check"></i><b>5.1.4</b> Table Select</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="overlay-toolset.html"><a href="overlay-toolset.html"><i class="fa fa-check"></i><b>5.2</b> Overlay Toolset</a><ul>
+<li class="chapter" data-level="5.2" data-path="overlay-toolset.html"><a href="overlay-toolset.html"><i class="fa fa-check"></i><b>5.2</b> Overlay Toolset</a>
+<ul>
 <li class="chapter" data-level="5.2.1" data-path="overlay-toolset.html"><a href="overlay-toolset.html#merge"><i class="fa fa-check"></i><b>5.2.1</b> Merge</a></li>
 <li class="chapter" data-level="5.2.2" data-path="overlay-toolset.html"><a href="overlay-toolset.html#erase"><i class="fa fa-check"></i><b>5.2.2</b> Erase</a></li>
 <li class="chapter" data-level="5.2.3" data-path="overlay-toolset.html"><a href="overlay-toolset.html#union"><i class="fa fa-check"></i><b>5.2.3</b> Union</a></li>
@@ -166,7 +176,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2.7" data-path="overlay-toolset.html"><a href="overlay-toolset.html#identity"><i class="fa fa-check"></i><b>5.2.7</b> Identity</a></li>
 <li class="chapter" data-level="5.2.8" data-path="overlay-toolset.html"><a href="overlay-toolset.html#update"><i class="fa fa-check"></i><b>5.2.8</b> Update</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="proximity-toolset.html"><a href="proximity-toolset.html"><i class="fa fa-check"></i><b>5.3</b> Proximity Toolset</a><ul>
+<li class="chapter" data-level="5.3" data-path="proximity-toolset.html"><a href="proximity-toolset.html"><i class="fa fa-check"></i><b>5.3</b> Proximity Toolset</a>
+<ul>
 <li class="chapter" data-level="5.3.1" data-path="proximity-toolset.html"><a href="proximity-toolset.html#buffer"><i class="fa fa-check"></i><b>5.3.1</b> Buffer</a></li>
 </ul></li>
 </ul></li>
@@ -187,14 +198,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="overlay-toolset" class="section level2">
+<div id="overlay-toolset" class="section level2" number="5.2">
 <h2><span class="header-section-number">5.2</span> Overlay Toolset</h2>
-<div id="merge" class="section level3">
+<div id="merge" class="section level3" number="5.2.1">
 <h3><span class="header-section-number">5.2.1</span> Merge</h3>
 <p>Let’s assume in the example below that instead of having four individual areas of interest, we are interested in having one common, unified area on which we focus our analysis. In other words, we have to <strong>merge</strong> the existing four areas into one. In ArcGIS pro the respective tools for this action is either the <code>Merge</code> or the <code>Dissolve</code> tool.<br />
 In R on the other hand, this can be easily performed using the <em>st_union</em> function in the <strong>sf</strong> package.</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" title="1"><span class="co"># The area of interest from the previous example - section Clip</span></a>
-<a class="sourceLine" id="cb75-2" title="2">kantons_aOi</a></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="overlay-toolset.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The area of interest from the previous example - section Clip</span></span>
+<span id="cb75-2"><a href="overlay-toolset.html#cb75-2" aria-hidden="true" tabindex="-1"></a>kantons_aOi</span></code></pre></div>
 <pre><code>## Simple feature collection with 12 features and 22 fields (with 5 geometries empty)
 ## geometry type:  MULTIPOLYGON
 ## dimension:      XYZ
@@ -257,12 +268,12 @@ In R on the other hand, this can be easily performed using the <em>st_union</em>
 ## NA             MULTIPOLYGON Z EMPTY
 ## NA.1           MULTIPOLYGON Z EMPTY
 ## NA.2           MULTIPOLYGON Z EMPTY</code></pre>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" title="1"><span class="co"># Merging the four areas into one</span></a>
-<a class="sourceLine" id="cb77-2" title="2">aOi_merged &lt;-<span class="st"> </span><span class="kw">st_union</span>(kantons_aOi)</a></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="overlay-toolset.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Merging the four areas into one</span></span>
+<span id="cb77-2"><a href="overlay-toolset.html#cb77-2" aria-hidden="true" tabindex="-1"></a>aOi_merged <span class="ot">&lt;-</span> <span class="fu">st_union</span>(kantons_aOi)</span></code></pre></div>
 <ul>
 <li>Plot the merged area of interest</li>
 </ul>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" title="1"><span class="kw">tm_shape</span>(aOi_merged) <span class="op">+</span><span class="st"> </span><span class="kw">tm_polygons</span>(<span class="st">&quot;#f0f0f0&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">tm_layout</span>(<span class="dt">frame =</span> F)</a></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="overlay-toolset.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(aOi_merged) <span class="sc">+</span> <span class="fu">tm_polygons</span>(<span class="st">&quot;#f0f0f0&quot;</span>) <span class="sc">+</span> <span class="fu">tm_layout</span>(<span class="at">frame =</span> F)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
 <p>The operation above produces the same outcome as the one depicted in the figure below <a href="overlay-toolset.html#fig:dissolve">5.2</a>.</p>
 <div class="figure" style="text-align: center"><span id="fig:dissolve"></span>
@@ -272,32 +283,32 @@ Figure 5.2: Dissolve operation in ArcGIS pro
 </p>
 </div>
 </div>
-<div id="erase" class="section level3">
+<div id="erase" class="section level3" number="5.2.2">
 <h3><span class="header-section-number">5.2.2</span> Erase</h3>
 </div>
-<div id="union" class="section level3">
+<div id="union" class="section level3" number="5.2.3">
 <h3><span class="header-section-number">5.2.3</span> Union</h3>
 </div>
-<div id="symmetrical-difference" class="section level3">
+<div id="symmetrical-difference" class="section level3" number="5.2.4">
 <h3><span class="header-section-number">5.2.4</span> Symmetrical Difference</h3>
 </div>
-<div id="spatial-join" class="section level3">
+<div id="spatial-join" class="section level3" number="5.2.5">
 <h3><span class="header-section-number">5.2.5</span> Spatial Join</h3>
 <p>Say you have two datasets:</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" title="1"><span class="kw">library</span>(sf)</a>
-<a class="sourceLine" id="cb79-2" title="2"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb79-3" title="3">zweitwohnung &lt;-<span class="st"> </span><span class="kw">read_sf</span>(<span class="st">&quot;sample_data/other/zweitwohnung_gemeinden.gpkg&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb79-4" title="4"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">filter</span>(kanton <span class="op">==</span><span class="st"> &quot;Valais / Wallis&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb79-5" title="5"><span class="st">  </span><span class="kw">select</span>(NAME)</a>
-<a class="sourceLine" id="cb79-6" title="6"></a>
-<a class="sourceLine" id="cb79-7" title="7">bbox &lt;-<span class="st"> </span><span class="kw">st_bbox</span>(zweitwohnung) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">st_as_sfc</span>()</a>
-<a class="sourceLine" id="cb79-8" title="8"></a>
-<a class="sourceLine" id="cb79-9" title="9">points &lt;-<span class="st"> </span><span class="kw">st_sample</span>(bbox,<span class="dv">500</span>)</a>
-<a class="sourceLine" id="cb79-10" title="10"></a>
-<a class="sourceLine" id="cb79-11" title="11"><span class="kw">ggplot</span>(zweitwohnung) <span class="op">+</span><span class="st"> </span><span class="kw">geom_sf</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> points)</a></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="overlay-toolset.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb79-2"><a href="overlay-toolset.html#cb79-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb79-3"><a href="overlay-toolset.html#cb79-3" aria-hidden="true" tabindex="-1"></a>zweitwohnung <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(<span class="st">&quot;sample_data/other/zweitwohnung_gemeinden.gpkg&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb79-4"><a href="overlay-toolset.html#cb79-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(kanton <span class="sc">==</span> <span class="st">&quot;Valais / Wallis&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb79-5"><a href="overlay-toolset.html#cb79-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(NAME)</span>
+<span id="cb79-6"><a href="overlay-toolset.html#cb79-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-7"><a href="overlay-toolset.html#cb79-7" aria-hidden="true" tabindex="-1"></a>bbox <span class="ot">&lt;-</span> <span class="fu">st_bbox</span>(zweitwohnung) <span class="sc">%&gt;%</span> <span class="fu">st_as_sfc</span>()</span>
+<span id="cb79-8"><a href="overlay-toolset.html#cb79-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-9"><a href="overlay-toolset.html#cb79-9" aria-hidden="true" tabindex="-1"></a>points <span class="ot">&lt;-</span> <span class="fu">st_sample</span>(bbox,<span class="dv">500</span>)</span>
+<span id="cb79-10"><a href="overlay-toolset.html#cb79-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-11"><a href="overlay-toolset.html#cb79-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(zweitwohnung) <span class="sc">+</span> <span class="fu">geom_sf</span>() <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> points)</span></code></pre></div>
 <p>In R, the function used to join two datastes is <code>st_join(x,y)</code>. If you have to different data types (e.g. Points and Polygons) the first question you have to ask yourself is: what data type should the output be? The datatype of <code>x</code> determins what the output datatype is.
 So with the above data: Say for each point, we want to know the Name (<code>NAME</code>) of the “Geimeinde” in which it lies. This means the output is a point dataset. We therefore write:</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" title="1"><span class="kw">st_join</span>(<span class="kw">st_sf</span>(points),zweitwohnung,<span class="dt">join =</span> st_within)</a></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="overlay-toolset.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_join</span>(<span class="fu">st_sf</span>(points),zweitwohnung,<span class="at">join =</span> st_within)</span></code></pre></div>
 <p>Note that points not located in a Gemeinde get the value <code>NA</code>. You have to specify the spatial relationship of your join method within the argument <code>join =</code>. This argument take a so called spatial predicate function. From the join_methods available in ArcGIS, here’s the equivalant spatial predicate function:</p>
 <table>
 <thead>
@@ -381,13 +392,13 @@ So with the above data: Say for each point, we want to know the Name (<code>NAME
 <li>All binary predicates only work on 2D Objects (see <a href="https://github.com/r-spatial/sf/issues/907">this issue</a>)</li>
 </ol>
 </div>
-<div id="intersect" class="section level3">
+<div id="intersect" class="section level3" number="5.2.6">
 <h3><span class="header-section-number">5.2.6</span> Intersect</h3>
 </div>
-<div id="identity" class="section level3">
+<div id="identity" class="section level3" number="5.2.7">
 <h3><span class="header-section-number">5.2.7</span> Identity</h3>
 </div>
-<div id="update" class="section level3">
+<div id="update" class="section level3" number="5.2.8">
 <h3><span class="header-section-number">5.2.8</span> Update</h3>
 </div>
 </div>
