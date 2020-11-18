@@ -238,26 +238,113 @@ action is performed using the following tools:</p>
 <p>The question now is how we can perform similar operations with R.</p>
 <div id="reproject-vector-data-in-r" class="section level3" number="6.2.1">
 <h3><span class="header-section-number">6.2.1</span> Reproject vector data in R</h3>
-<p>For our example we will use the following data.</p>
+<p>For our example we will use the following dataset.</p>
 <ul>
-<li><strong>kantone.gpkg</strong>: Dataset that depicts the Cantonal structure in Switzerland</li>
-<li><strong>bezirke.gpkg</strong>: Dataset that depicts the Municipal structure in Switzerland</li>
+<li><strong>bezirke.gpkg</strong> -&gt; Dataset that depicts the Municipal structure in Switzerland</li>
 </ul>
 <p><strong>R</strong> and more specifically <strong>sf package</strong> offers options (functions) not only for
 transforming the coordinate system of a dataset, but also for identifying the
 current existing one. Let’s dive in :)</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="projections-and-transformations-toolset.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the datasets</span></span>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="projections-and-transformations-toolset.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the dataset</span></span>
 <span id="cb83-2"><a href="projections-and-transformations-toolset.html#cb83-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb83-3"><a href="projections-and-transformations-toolset.html#cb83-3" aria-hidden="true" tabindex="-1"></a>kantone <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(<span class="st">&quot;sample_data/other/kantone.gpkg&quot;</span>)</span>
-<span id="cb83-4"><a href="projections-and-transformations-toolset.html#cb83-4" aria-hidden="true" tabindex="-1"></a>bezirke <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(<span class="st">&quot;sample_data/other/bezirke.gpkg&quot;</span>) </span></code></pre></div>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="projections-and-transformations-toolset.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualising the data - Cantons</span></span>
+<span id="cb83-3"><a href="projections-and-transformations-toolset.html#cb83-3" aria-hidden="true" tabindex="-1"></a>bezirke <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(<span class="st">&quot;sample_data/other/bezirke.gpkg&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="projections-and-transformations-toolset.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualising the imported dataset</span></span>
 <span id="cb84-2"><a href="projections-and-transformations-toolset.html#cb84-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb84-3"><a href="projections-and-transformations-toolset.html#cb84-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> kantone)</span></code></pre></div>
+<span id="cb84-3"><a href="projections-and-transformations-toolset.html#cb84-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> bezirke)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-50-1.png" width="672" /></p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="projections-and-transformations-toolset.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualising the data - Bezirke</span></span>
-<span id="cb85-2"><a href="projections-and-transformations-toolset.html#cb85-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb85-3"><a href="projections-and-transformations-toolset.html#cb85-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> bezirke)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
+<p>In order to identify the current coordinate system of a dataset, <strong>sf package</strong>
+offers the function <em>st_crs</em>. The main usage of the function is to retrieve the
+coordinate reference system from an sf object.</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="projections-and-transformations-toolset.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="co"># retrieving the coordinate of the imported layer</span></span>
+<span id="cb85-2"><a href="projections-and-transformations-toolset.html#cb85-2" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(bezirke)</span></code></pre></div>
+<pre><code>## Coordinate Reference System: NA</code></pre>
+<p>As an output we received that there is no assigned coordinate system to this
+specific dataset. <em>st_set_crs</em> function helps us assigning a coordinate system
+to a dataset.</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="projections-and-transformations-toolset.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning the World Geodetic System (WGS84) as a coordinate system to our dataset</span></span>
+<span id="cb87-2"><a href="projections-and-transformations-toolset.html#cb87-2" aria-hidden="true" tabindex="-1"></a>bezirke <span class="ot">&lt;-</span> <span class="fu">st_set_crs</span>(bezirke, <span class="dv">4326</span>)</span></code></pre></div>
+<p>In the function above, the number 4326 represents the <strong>EPSG Geodetic Parameter Dataset (EPSG)</strong>
+of the respective coordinate system. <strong>EPSG</strong> is a public registry of geodetic
+datums, spatial reference systems, Earth ellipsoids, coordinate transformations
+and related units of measurement.</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="projections-and-transformations-toolset.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(bezirke)</span></code></pre></div>
+<pre><code>## Coordinate Reference System:
+##   User input: EPSG:4326 
+##   wkt:
+## GEOGCRS[&quot;WGS 84&quot;,
+##     DATUM[&quot;World Geodetic System 1984&quot;,
+##         ELLIPSOID[&quot;WGS 84&quot;,6378137,298.257223563,
+##             LENGTHUNIT[&quot;metre&quot;,1]]],
+##     PRIMEM[&quot;Greenwich&quot;,0,
+##         ANGLEUNIT[&quot;degree&quot;,0.0174532925199433]],
+##     CS[ellipsoidal,2],
+##         AXIS[&quot;geodetic latitude (Lat)&quot;,north,
+##             ORDER[1],
+##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433]],
+##         AXIS[&quot;geodetic longitude (Lon)&quot;,east,
+##             ORDER[2],
+##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433]],
+##     USAGE[
+##         SCOPE[&quot;unknown&quot;],
+##         AREA[&quot;World&quot;],
+##         BBOX[-90,-180,90,180]],
+##     ID[&quot;EPSG&quot;,4326]]</code></pre>
+<p>After rerunning the <em>st_crs</em> function, we are getting now that the assigned
+coordinate system of the dataset is World Geodetic System (WGS84).<br />
+As a next, we might want to transform the dataset to the Swiss coordinate system.
+The respective <strong>EPSG</strong> for code for the latest Swiss coordinate system
+(CH1903+LV95) is 2056. For this purpose we use the <em>st_transform</em> function of the <strong>sf package</strong>.</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="projections-and-transformations-toolset.html#cb90-1" aria-hidden="true" tabindex="-1"></a>bezirke_swiss <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(bezirke, <span class="dv">2056</span>)</span>
+<span id="cb90-2"><a href="projections-and-transformations-toolset.html#cb90-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-3"><a href="projections-and-transformations-toolset.html#cb90-3" aria-hidden="true" tabindex="-1"></a><span class="co"># retrieve the coordinate system</span></span>
+<span id="cb90-4"><a href="projections-and-transformations-toolset.html#cb90-4" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(bezirke_swiss)</span></code></pre></div>
+<pre><code>## Coordinate Reference System:
+##   User input: EPSG:2056 
+##   wkt:
+## PROJCRS[&quot;CH1903+ / LV95&quot;,
+##     BASEGEOGCRS[&quot;CH1903+&quot;,
+##         DATUM[&quot;CH1903+&quot;,
+##             ELLIPSOID[&quot;Bessel 1841&quot;,6377397.155,299.1528128,
+##                 LENGTHUNIT[&quot;metre&quot;,1]]],
+##         PRIMEM[&quot;Greenwich&quot;,0,
+##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433]],
+##         ID[&quot;EPSG&quot;,4150]],
+##     CONVERSION[&quot;Swiss Oblique Mercator 1995&quot;,
+##         METHOD[&quot;Hotine Oblique Mercator (variant B)&quot;,
+##             ID[&quot;EPSG&quot;,9815]],
+##         PARAMETER[&quot;Latitude of projection centre&quot;,46.9524055555556,
+##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],
+##             ID[&quot;EPSG&quot;,8811]],
+##         PARAMETER[&quot;Longitude of projection centre&quot;,7.43958333333333,
+##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],
+##             ID[&quot;EPSG&quot;,8812]],
+##         PARAMETER[&quot;Azimuth of initial line&quot;,90,
+##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],
+##             ID[&quot;EPSG&quot;,8813]],
+##         PARAMETER[&quot;Angle from Rectified to Skew Grid&quot;,90,
+##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],
+##             ID[&quot;EPSG&quot;,8814]],
+##         PARAMETER[&quot;Scale factor on initial line&quot;,1,
+##             SCALEUNIT[&quot;unity&quot;,1],
+##             ID[&quot;EPSG&quot;,8815]],
+##         PARAMETER[&quot;Easting at projection centre&quot;,2600000,
+##             LENGTHUNIT[&quot;metre&quot;,1],
+##             ID[&quot;EPSG&quot;,8816]],
+##         PARAMETER[&quot;Northing at projection centre&quot;,1200000,
+##             LENGTHUNIT[&quot;metre&quot;,1],
+##             ID[&quot;EPSG&quot;,8817]]],
+##     CS[Cartesian,2],
+##         AXIS[&quot;(E)&quot;,east,
+##             ORDER[1],
+##             LENGTHUNIT[&quot;metre&quot;,1]],
+##         AXIS[&quot;(N)&quot;,north,
+##             ORDER[2],
+##             LENGTHUNIT[&quot;metre&quot;,1]],
+##     USAGE[
+##         SCOPE[&quot;unknown&quot;],
+##         AREA[&quot;Europe - Liechtenstein and Switzerland&quot;],
+##         BBOX[45.82,5.96,47.81,10.49]],
+##     ID[&quot;EPSG&quot;,2056]]</code></pre>
 </div>
 <div id="reproject-raster-data-in-r" class="section level3" number="6.2.2">
 <h3><span class="header-section-number">6.2.2</span> Reproject raster data in R</h3>

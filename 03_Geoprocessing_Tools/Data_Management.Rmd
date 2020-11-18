@@ -18,38 +18,63 @@ The question now is how we can perform similar operations with R.
 
 ### Reproject vector data in R
 
-For our example we will use the following data.
+For our example we will use the following dataset.
 
-- **kantone.gpkg**: Dataset that depicts the Cantonal structure in Switzerland
-- **bezirke.gpkg**: Dataset that depicts the Municipal structure in Switzerland
+- **bezirke.gpkg** -> Dataset that depicts the Municipal structure in Switzerland
 
 **R** and more specifically **sf package** offers options (functions) not only for 
 transforming the coordinate system of a dataset, but also for identifying the
 current existing one. Let's dive in :)
 
 ```{r echo=TRUE, message=TRUE, warning=TRUE}
-# Importing the datasets
+# Importing the dataset
 library(sf)
-kantone <- read_sf("sample_data/other/kantone.gpkg")
 bezirke <- read_sf("sample_data/other/bezirke.gpkg") 
 ```
 
-
 ```{r echo=TRUE, message=TRUE, warning=TRUE}
-# Visualising the data - Cantons
-library(ggplot2)
-ggplot() + geom_sf(data = kantone)
-```
-
-```{r echo=TRUE, message=TRUE, warning=TRUE}
-# Visualising the data - Bezirke
+# Visualising the imported dataset
 library(ggplot2)
 ggplot() + geom_sf(data = bezirke)
 ```
 
 In order to identify the current coordinate system of a dataset, **sf package**
-offers the function `st_crs`. The main usage of the function is to retrieve th
-coordinate reference system from an sf object. 
+offers the function _st_crs_. The main usage of the function is to retrieve the
+coordinate reference system from an sf object.
+
+```{r echo=TRUE, message=TRUE, warning=TRUE}
+# retrieving the coordinate of the imported layer
+st_crs(bezirke)
+```
+As an output we received that there is no assigned coordinate system to this
+specific dataset. _st_set_crs_ function helps us assigning a coordinate system
+to a dataset.
+
+```{r echo=TRUE, message=TRUE, warning=TRUE}
+# Assigning the World Geodetic System (WGS84) as a coordinate system to our dataset
+bezirke <- st_set_crs(bezirke, 4326)
+```
+In the function above, the number 4326 represents the __EPSG Geodetic Parameter Dataset (EPSG)__
+of the respective coordinate system. **EPSG** is a public registry of geodetic
+datums, spatial reference systems, Earth ellipsoids, coordinate transformations
+and related units of measurement.  
+
+```{r echo=TRUE, message=TRUE, warning=TRUE}
+st_crs(bezirke)
+```
+After rerunning the _st_crs_ function, we are getting now that the assigned
+coordinate system of the dataset is World Geodetic System (WGS84).  
+As a next, we might want to transform the dataset to the Swiss coordinate system.
+The respective **EPSG** for code for the latest Swiss coordinate system
+(CH1903+LV95) is 2056. For this purpose we use the _st_transform_ function of the **sf package**.
+
+```{r echo=TRUE, message=TRUE, warning=TRUE}
+bezirke_swiss <- st_transform(bezirke, 2056)
+
+# retrieve the coordinate system
+st_crs(bezirke_swiss)
+```
+
 
 ### Reproject raster data in R
 
