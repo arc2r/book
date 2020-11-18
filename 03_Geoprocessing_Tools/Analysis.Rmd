@@ -106,10 +106,7 @@ knitr::include_graphics("images/dissolve.png")
 
 ### Spatial Join
 
-
-
-
-
+§
 Say you have two datasets:
 
 

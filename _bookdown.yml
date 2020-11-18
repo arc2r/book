@@ -7,6 +7,8 @@ rmd_files: [
   #"03_Geoprocessing_Tools/Spatial_Analyst.Rmd",
   #"03_Geoprocessing_Tools/3D_Analyst.Rmd",
   "03_Geoprocessing_Tools/Analysis.Rmd",
+  "03_Geoprocessing_Tools/Data_Management.Rmd",
+  
   #"03_Geoprocessing_Tools/Geocoding.Rmd",
   #"03_Geoprocessing_Tools/Image_Analysis.Rmd",
   #"03_Geoprocessing_Tools/Spatial_Statistics.Rmd",

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4.2 Select by Attribute | Burning Bridges</title>
   <meta name="description" content="4.2 Select by Attribute | Burning Bridges" />
-  <meta name="generator" content="bookdown 0.20.6 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4.2 Select by Attribute | Burning Bridges" />
   <meta property="og:type" content="book" />
@@ -181,6 +181,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.3.1" data-path="proximity-toolset.html"><a href="proximity-toolset.html#buffer"><i class="fa fa-check"></i><b>5.3.1</b> Buffer</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="6" data-path="data-management-toolbox.html"><a href="data-management-toolbox.html"><i class="fa fa-check"></i><b>6</b> Data Management Toolbox</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="joins-and-relates-toolset.html"><a href="joins-and-relates-toolset.html"><i class="fa fa-check"></i><b>6.1</b> Joins and Relates Toolset</a></li>
+<li class="chapter" data-level="6.2" data-path="projections-and-transformations-toolset.html"><a href="projections-and-transformations-toolset.html"><i class="fa fa-check"></i><b>6.2</b> Projections and Transformations Toolset</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="projections-and-transformations-toolset.html"><a href="projections-and-transformations-toolset.html#reproject-vector-data-in-r"><i class="fa fa-check"></i><b>6.2.1</b> Reproject vector data in R</a></li>
+<li class="chapter" data-level="6.2.2" data-path="projections-and-transformations-toolset.html"><a href="projections-and-transformations-toolset.html#reproject-raster-data-in-r"><i class="fa fa-check"></i><b>6.2.2</b> Reproject raster data in R</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="topology-toolset.html"><a href="topology-toolset.html"><i class="fa fa-check"></i><b>6.3</b> Topology Toolset</a></li>
+<li class="chapter" data-level="6.4" data-path="sampling-toolset.html"><a href="sampling-toolset.html"><i class="fa fa-check"></i><b>6.4</b> Sampling Toolset</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="sampling-toolset.html"><a href="sampling-toolset.html#generate-tessellation"><i class="fa fa-check"></i><b>6.4.1</b> Generate Tessellation</a></li>
+<li class="chapter" data-level="6.4.2" data-path="sampling-toolset.html"><a href="sampling-toolset.html#create-fishnet"><i class="fa fa-check"></i><b>6.4.2</b> Create Fishnet</a></li>
+<li class="chapter" data-level="6.4.3" data-path="sampling-toolset.html"><a href="sampling-toolset.html#create-random-points"><i class="fa fa-check"></i><b>6.4.3</b> Create Random Points</a></li>
+<li class="chapter" data-level="6.4.4" data-path="sampling-toolset.html"><a href="sampling-toolset.html#generate-points-along-lines"><i class="fa fa-check"></i><b>6.4.4</b> Generate Points Along Lines</a></li>
+<li class="chapter" data-level="6.4.5" data-path="sampling-toolset.html"><a href="sampling-toolset.html#generate-rectangles-along-lines"><i class="fa fa-check"></i><b>6.4.5</b> Generate Rectangles Along Lines</a></li>
+<li class="chapter" data-level="6.4.6" data-path="sampling-toolset.html"><a href="sampling-toolset.html#generate-transsects-along-lines"><i class="fa fa-check"></i><b>6.4.6</b> Generate Transsects Along Lines</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="raster-toolset.html"><a href="raster-toolset.html"><i class="fa fa-check"></i><b>6.5</b> Raster Toolset</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="raster-toolset.html"><a href="raster-toolset.html#mosaic-dataset-toolset"><i class="fa fa-check"></i><b>6.5.1</b> Mosaic Dataset Toolset</a></li>
+<li class="chapter" data-level="6.5.2" data-path="raster-toolset.html"><a href="raster-toolset.html#ortho-mapping-toolset"><i class="fa fa-check"></i><b>6.5.2</b> Ortho Mapping Toolset</a></li>
+<li class="chapter" data-level="6.5.3" data-path="raster-toolset.html"><a href="raster-toolset.html#raster-dataset-toolset"><i class="fa fa-check"></i><b>6.5.3</b> Raster Dataset Toolset</a></li>
+<li class="chapter" data-level="6.5.4" data-path="raster-toolset.html"><a href="raster-toolset.html#raster-processing-toolset"><i class="fa fa-check"></i><b>6.5.4</b> Raster Processing Toolset</a></li>
+<li class="chapter" data-level="6.5.5" data-path="raster-toolset.html"><a href="raster-toolset.html#raster-properties-toolset"><i class="fa fa-check"></i><b>6.5.5</b> Raster Properties Toolset</a></li>
+</ul></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -201,7 +228,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="select-by-attribute" class="section level2" number="4.2">
 <h2><span class="header-section-number">4.2</span> Select by Attribute</h2>
 <p>One of the popular approaches in ArcGIS pro for selecting features in a layer is by using an attribute query. The action is performed using the <code>Select By Attributes</code> tool.</p>
-<p><code>Select By Attributes</code> tool allows us to provide a SQL query expression to select features that match the selection criteria.</p>
+<p><code>Select By Attributes</code> tool allows us to provide an SQL query expression to select features that match the selection criteria.</p>
 <p><strong>R</strong> on the other hand offers quite easy and straightforward options to perform similar operations. Let’s examine one of them.</p>
 <p>As a first step, we might want to import a shapefile. To do so, we can use <strong>sf package</strong> to work with vector data in R. Important to know is that the <strong>rgdal package</strong> automatically loads when sf is loaded.</p>
 <p>In the code snippet below, we read the shapefile, which represents the <strong>parking spots for bicycles</strong> within the canton of Zurich. The dataset is publicly available for download in the following link: (<a href="https://opendata.swiss/en/dataset/veloparkierungsanlagen" class="uri">https://opendata.swiss/en/dataset/veloparkierungsanlagen</a>).</p>

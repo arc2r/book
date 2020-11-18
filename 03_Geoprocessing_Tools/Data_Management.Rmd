@@ -6,6 +6,69 @@
 
 ## Projections and Transformations Toolset
 
+Quite often in GIS, users found themselves before the necessity of transforming
+(reprojecting) the coordinate system of a dataset (vector or raster). In fact this
+is one of the most commonly used operations. In ArcGIS pro the aforementioned
+action is performed using the following tools:
+
+- `Project (Data Management)` -> Projects __spatial data__ from one coordinate system to another.
+- `Project Raster (Data Management)` -> Transforms a __raster dataset__ from one coordinate system to another.
+
+The question now is how we can perform similar operations with R. 
+
+### Reproject vector data in R
+
+For our example we will use the following data.
+
+- **kantone.gpkg**: Dataset that depicts the Cantonal structure in Switzerland
+- **bezirke.gpkg**: Dataset that depicts the Municipal structure in Switzerland
+
+**R** and more specifically **sf package** offers options (functions) not only for 
+transforming the coordinate system of a dataset, but also for identifying the
+current existing one. Let's dive in :)
+
+```{r echo=TRUE, message=TRUE, warning=TRUE}
+# Importing the datasets
+library(sf)
+kantone <- read_sf("sample_data/other/kantone.gpkg")
+bezirke <- read_sf("sample_data/other/bezirke.gpkg") 
+```
+
+
+```{r echo=TRUE, message=TRUE, warning=TRUE}
+# Visualising the data - Cantons
+library(ggplot2)
+ggplot() + geom_sf(data = kantone)
+```
+
+```{r echo=TRUE, message=TRUE, warning=TRUE}
+# Visualising the data - Bezirke
+library(ggplot2)
+ggplot() + geom_sf(data = bezirke)
+```
+
+In order to identify the current coordinate system of a dataset, **sf package**
+offers the function `st_crs`. The main usage of the function is to retrieve th
+coordinate reference system from an sf object. 
+
+### Reproject raster data in R
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Topology Toolset
 
 ## Sampling Toolset
