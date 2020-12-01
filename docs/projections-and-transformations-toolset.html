@@ -294,14 +294,14 @@ coordinate system of the dataset is World Geodetic System (WGS84).<br />
 As a next step, we might want to transform the dataset to the Swiss coordinate system.
 The respective <strong>EPSG</strong> for code for the latest Swiss coordinate system
 (CH1903+LV95) is 2056. For this purpose we use the <em>st_transform</em> function of the <strong>sf package</strong>.</p>
-<strong>Warning</strong>
+<p><span style="color:red"><strong>Important</strong></span></p>
 <details>
 <summary>
-Click to expand!
+<strong>&gt; Click to expand!</strong>
 </summary>
 <em>st_set_crs</em> function <strong>does not</strong> reproject the coordinates of the given dataset. In
 other words, it does not affect the actual <em>geometry</em> column of the sf object.
-<em>st_tranform</em> on the other hand indeed <strong>does reproject</strong> the dataset to another coordinate
+<em>st_tranform</em> on the other hand indeed <strong>does indeed reproject</strong> the dataset to another coordinate
 system.
 </details>
 <div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="projections-and-transformations-toolset.html#cb90-1" aria-hidden="true" tabindex="-1"></a>bezirke_swiss <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(bezirke, <span class="dv">2056</span>)</span>
@@ -358,6 +358,16 @@ system.
 </div>
 <div id="reproject-raster-data-in-r" class="section level3" number="6.2.2">
 <h3><span class="header-section-number">6.2.2</span> Reproject raster data in R</h3>
+<p>Working with Raster datasets in GIS of operations is of equal importance, as
+working with vector ones. One of the spatial properties of raster datasets is the
+the Coordinate Reference System (CRS). CRS is the specific system that “associates”
+the raster coordinates (which are just pairs of x/y values) to geographic locations.
+In ArcGIS pro the tool for projecting a raster dataset is called
+<em>Project Raster (Data Management)</em>. Let’s see how we can perform the same operation
+with R.</p>
+<p>We can use the <em>projectRaster()</em> function to reproject a raster into a new CRS.
+It is important to remember that raster reprojection only works when the raster
+object has already a defined CRS.</p>
 </div>
 </div>
             </section>

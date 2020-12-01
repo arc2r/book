@@ -68,14 +68,16 @@ As a next step, we might want to transform the dataset to the Swiss coordinate s
 The respective **EPSG** for code for the latest Swiss coordinate system
 (CH1903+LV95) is 2056. For this purpose we use the _st_transform_ function of the **sf package**.
 
-**Warning**
+<span style="color:red">**Important**</span>
+
 <details>
-  <summary>Click to expand!</summary>
+  <summary>**> Click to expand!**</summary>
   _st_set_crs_ function **does not** reproject the coordinates of the given dataset. In
   other words, it does not affect the actual _geometry_ column of the sf object.
   _st_tranform_ on the other hand indeed **does indeed reproject** the dataset to another coordinate
   system.
-  </details>
+  </details>  
+  
 
 ```{r echo=TRUE, message=TRUE, warning=TRUE}
 bezirke_swiss <- st_transform(bezirke, 2056)
@@ -87,15 +89,20 @@ st_crs(bezirke_swiss)
 
 ### Reproject raster data in R
 
+Working with Raster datasets in GIS of operations is of equal importance, as
+working with vector ones. One of the spatial properties of raster datasets is the 
+the Coordinate Reference System (CRS). CRS is the specific system that “associates”
+the raster coordinates (which are just pairs of x/y values) to geographic locations.
+In ArcGIS pro the tool for projecting a raster dataset is called
+_Project Raster (Data Management)_. Let's see how we can perform the same operation
+with R. 
 
 
 
 
-
-
-
-
-
+We can use the _projectRaster()_ function to reproject a raster into a new CRS.
+It is important to remember that raster reprojection only works when the raster
+object has already a defined CRS.
 
 
 
@@ -139,6 +146,57 @@ st_crs(bezirke_swiss)
 ### Raster Processing Toolset
 
 #### Clip Raster
+
+In GIS operations is quite common the necessity of "clipping" an area based on
+some specific region of interest. This is a quite useful and necessary procedure
+not only when we are dealing with vector datasets, but also when we have to work
+with raster ones. In ArcGIS pro the procedure of "cutting" a portion of a raster
+dataset, mosaic dataset, or an image service layer is performed using 
+`Clip Raster` tool.  
+In R, the respective operation can be performed using the _mask()_ function. For
+the example below, we are using the following datasets:
+
+- ARE_waedi -> vector dataset that depicts the public transport connection quality in the city of Wädenswil
+- recycle_Waedi -> raster dataset ..   
+
+
+```{r echo=TRUE}
+# Read raster dataset
+library(raster)
+library(stars)
+library(sf)
+library(dplyr)
+library(stars)
+
+# Insert a vector dataset that depicts the public transport connection quality in
+# the city of Wädenswil and plot it
+ARE_waedi <- read_sf("sample_data/Entsorgung_Waedenswil/ARE_waedenswil.shp")
+
+# Read the raster dataset and plot it
+recycle_Waedi <- raster("sample_data/Entsorgung_Waedenswil/abfall_raster.tif")
+```
+
+Plot the two datasets one over the other.
+```{r, echo=FALSE}
+plot(recycle_Waedi)
+plot(ARE_waedi, alpha = 0.5, add = TRUE)
+```
+
+In our case, the vector dataset serves as the clipping extent for the clipping operation.
+```{r Clip raster, echo=TRUE}
+recycle_Waedi_clip <- mask(recycle_Waedi,ARE_waedi)
+```
+
+
+_Visualising the clipped output_
+```{r echo=FALSE}
+# ggplot() +
+#   geom_stars(data = st_as_stars(recycle_Waedi_clip)) + 
+#   scale_fill_gradientn(colours=c("green","yellow","red"))
+
+plot(recycle_Waedi_clip)
+```
+
 
 #### Composite Bands
 

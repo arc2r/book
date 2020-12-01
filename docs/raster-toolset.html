@@ -241,6 +241,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">6.5.4</span> Raster Processing Toolset</h3>
 <div id="clip-raster" class="section level4" number="6.5.4.1">
 <h4><span class="header-section-number">6.5.4.1</span> Clip Raster</h4>
+<p>In GIS operations is quite common the necessity of “clipping” an area based on
+some specific region of interest. This is a quite useful and necessary procedure
+not only when we are dealing with vector datasets, but also when we have to work
+with raster ones. In ArcGIS pro the procedure of “cutting” a portion of a raster
+dataset, mosaic dataset, or an image service layer is performed using
+<code>Clip Raster</code> tool.<br />
+In R, the respective operation can be performed using the <em>mask()</em> function. For
+the example below, we are using the following datasets:</p>
+<ul>
+<li>ARE_waedi -&gt; vector dataset that depicts the public transport connection quality in the city of Wädenswil</li>
+<li>recycle_Waedi -&gt; raster dataset ..</li>
+</ul>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="raster-toolset.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read raster dataset</span></span>
+<span id="cb92-2"><a href="raster-toolset.html#cb92-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
+<span id="cb92-3"><a href="raster-toolset.html#cb92-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stars)</span>
+<span id="cb92-4"><a href="raster-toolset.html#cb92-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb92-5"><a href="raster-toolset.html#cb92-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb92-6"><a href="raster-toolset.html#cb92-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stars)</span>
+<span id="cb92-7"><a href="raster-toolset.html#cb92-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-8"><a href="raster-toolset.html#cb92-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Insert a vector dataset that depicts the public transport connection quality in</span></span>
+<span id="cb92-9"><a href="raster-toolset.html#cb92-9" aria-hidden="true" tabindex="-1"></a><span class="co"># the city of Wädenswil and plot it</span></span>
+<span id="cb92-10"><a href="raster-toolset.html#cb92-10" aria-hidden="true" tabindex="-1"></a>ARE_waedi <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(<span class="st">&quot;sample_data/Entsorgung_Waedenswil/ARE_waedenswil.shp&quot;</span>)</span>
+<span id="cb92-11"><a href="raster-toolset.html#cb92-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-12"><a href="raster-toolset.html#cb92-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the raster dataset and plot it</span></span>
+<span id="cb92-13"><a href="raster-toolset.html#cb92-13" aria-hidden="true" tabindex="-1"></a>recycle_Waedi <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="st">&quot;sample_data/Entsorgung_Waedenswil/abfall_raster.tif&quot;</span>)</span></code></pre></div>
+<p>Plot the two datasets one over the other.
+<img src="_main_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
+<p>In our case, the vector dataset serves as the clipping extent for the clipping operation.</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="raster-toolset.html#cb93-1" aria-hidden="true" tabindex="-1"></a>recycle_Waedi_clip <span class="ot">&lt;-</span> <span class="fu">mask</span>(recycle_Waedi,ARE_waedi)</span></code></pre></div>
+<p><em>Visualising the clipped output</em>
+<img src="_main_files/figure-html/unnamed-chunk-57-1.png" width="672" /></p>
 </div>
 <div id="composite-bands" class="section level4" number="6.5.4.2">
 <h4><span class="header-section-number">6.5.4.2</span> Composite Bands</h4>

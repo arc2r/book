@@ -14,7 +14,7 @@ library(tiff)
 
 # Abstract
 
-This is a ressource for people coming from ArcGIS who want to do spatial stuff (Analysis, Visualization) in R. This ressource should provide some help on this journey.
+This is a resource for people coming from ArcGIS who want to do spatial stuff (Analysis, Visualization) in R. This resource should provide some help on this journey.
 
 Who this book is for:
 
