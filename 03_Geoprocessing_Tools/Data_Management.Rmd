@@ -97,12 +97,48 @@ In ArcGIS pro the tool for projecting a raster dataset is called
 _Project Raster (Data Management)_. Let's see how we can perform the same operation
 with R. 
 
+```{r}
+# Importing the datasets
+library(raster)
+
+# Dataset derived from the spatial interpolation of all the available "recycling points"
+# in the city of Wädenwil
+raster_recycling <- raster("sample_data/Raster/raster_recycling.tif") # CRS -> CH1903+LV95
+
+# Dataset representing the public transport quality in the city of Wädenswil
+publicTransport <- raster("sample_data/Raster/publicTransport_waedi.tif") # CRS -> WGS84 
+```
 
 
+```{r}
+# Plot the raster dataset - World Geodetic System 1984 
+plot(publicTransport,las=1,
+     main = "Quality of public transport in the city of Wädenwil - CRS: WGS84",
+     cex.main=1,font.main=4)
+```
 
 We can use the _projectRaster()_ function to reproject a raster into a new CRS.
+The first argument of the aforementioned function is the raster dataset we want to reproject,
+while the second one is the dataset to whose projection we are targeting to. So, in
+our case, we are targeting to the coordinate system of the __raster_recycling__
+dataset.  
 It is important to remember that raster reprojection only works when the raster
 object has already a defined CRS.
+
+```{r}
+# Transform the coordinate system of the raster dataset publicTransport_CH
+# into the Swiss Coordinate system - CH1903+LV95
+publicTransport_CH = projectRaster(publicTransport, raster_recycling)
+```
+
+```{r}
+# Plot the raster dataset - Swiss Coordinate System CH1903+LV95 
+r <- plot(publicTransport_CH,las=1,
+     main = "Quality of public transport in the city of Wädenwil - CRS: CH1903+LV95",
+     cex.main=1,font.main=4)
+```
+
+
 
 
 

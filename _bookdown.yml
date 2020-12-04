@@ -8,16 +8,6 @@ rmd_files: [
   #"03_Geoprocessing_Tools/3D_Analyst.Rmd",
   "03_Geoprocessing_Tools/Analysis.Rmd",
   "03_Geoprocessing_Tools/Data_Management.Rmd",
-  
-  #"03_Geoprocessing_Tools/Geocoding.Rmd",
-  #"03_Geoprocessing_Tools/Image_Analysis.Rmd",
-  #"03_Geoprocessing_Tools/Spatial_Statistics.Rmd",
-  #"06_Topology_Rules/Chapter_overview.Rmd",
-  #"06_Topology_Rules/Polygon.Rmd",
-  #"06_Topology_Rules/Line_or_Polygon.Rmd",
-  #"06_Topology_Rules/Line.Rmd",
-  #"06_Topology_Rules/Point.Rmd",
-  #"07_Additional_Reading/Binary_Predicates.Rmd"
 ]
 delete_merged_file: TRUE
 output_dir: "docs"

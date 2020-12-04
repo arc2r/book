@@ -365,9 +365,35 @@ the raster coordinates (which are just pairs of x/y values) to geographic locati
 In ArcGIS pro the tool for projecting a raster dataset is called
 <em>Project Raster (Data Management)</em>. Let’s see how we can perform the same operation
 with R.</p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="projections-and-transformations-toolset.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the datasets</span></span>
+<span id="cb92-2"><a href="projections-and-transformations-toolset.html#cb92-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
+<span id="cb92-3"><a href="projections-and-transformations-toolset.html#cb92-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-4"><a href="projections-and-transformations-toolset.html#cb92-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Dataset derived from the spatial interpolation of all the available &quot;recycling points&quot;</span></span>
+<span id="cb92-5"><a href="projections-and-transformations-toolset.html#cb92-5" aria-hidden="true" tabindex="-1"></a><span class="co"># in the city of Wädenwil</span></span>
+<span id="cb92-6"><a href="projections-and-transformations-toolset.html#cb92-6" aria-hidden="true" tabindex="-1"></a>raster_recycling <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="st">&quot;sample_data/Raster/raster_recycling.tif&quot;</span>) <span class="co"># CRS -&gt; CH1903+LV95</span></span>
+<span id="cb92-7"><a href="projections-and-transformations-toolset.html#cb92-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-8"><a href="projections-and-transformations-toolset.html#cb92-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Dataset representing the public transport quality in the city of Wädenswil</span></span>
+<span id="cb92-9"><a href="projections-and-transformations-toolset.html#cb92-9" aria-hidden="true" tabindex="-1"></a>publicTransport <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="st">&quot;sample_data/Raster/publicTransport_waedi.tif&quot;</span>) <span class="co"># CRS -&gt; WGS84 </span></span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="projections-and-transformations-toolset.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the raster dataset - World Geodetic System 1984 </span></span>
+<span id="cb93-2"><a href="projections-and-transformations-toolset.html#cb93-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(publicTransport,<span class="at">las=</span><span class="dv">1</span>,</span>
+<span id="cb93-3"><a href="projections-and-transformations-toolset.html#cb93-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Quality of public transport in the city of Wädenwil - CRS: WGS84&quot;</span>,</span>
+<span id="cb93-4"><a href="projections-and-transformations-toolset.html#cb93-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex.main=</span><span class="dv">1</span>,<span class="at">font.main=</span><span class="dv">4</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
 <p>We can use the <em>projectRaster()</em> function to reproject a raster into a new CRS.
+The first argument of the aforementioned function is the raster dataset we want to reproject,
+while the second one is the dataset to whose projection we are targeting to. So, in
+our case, we are targeting to the coordinate system of the <strong>raster_recycling</strong>
+dataset.<br />
 It is important to remember that raster reprojection only works when the raster
 object has already a defined CRS.</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="projections-and-transformations-toolset.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transform the coordinate system of the raster dataset publicTransport_CH</span></span>
+<span id="cb94-2"><a href="projections-and-transformations-toolset.html#cb94-2" aria-hidden="true" tabindex="-1"></a><span class="co"># into the Swiss Coordinate system - CH1903+LV95</span></span>
+<span id="cb94-3"><a href="projections-and-transformations-toolset.html#cb94-3" aria-hidden="true" tabindex="-1"></a>publicTransport_CH <span class="ot">=</span> <span class="fu">projectRaster</span>(publicTransport, raster_recycling)</span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="projections-and-transformations-toolset.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the raster dataset - Swiss Coordinate System CH1903+LV95 </span></span>
+<span id="cb95-2"><a href="projections-and-transformations-toolset.html#cb95-2" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">plot</span>(publicTransport_CH,<span class="at">las=</span><span class="dv">1</span>,</span>
+<span id="cb95-3"><a href="projections-and-transformations-toolset.html#cb95-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Quality of public transport in the city of Wädenwil - CRS: CH1903+LV95&quot;</span>,</span>
+<span id="cb95-4"><a href="projections-and-transformations-toolset.html#cb95-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex.main=</span><span class="dv">1</span>,<span class="at">font.main=</span><span class="dv">4</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
 </div>
 </div>
             </section>

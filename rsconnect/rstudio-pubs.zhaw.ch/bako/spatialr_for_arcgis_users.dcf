@@ -5,8 +5,8 @@ account: bako
 server: rstudio-pubs.zhaw.ch
 hostUrl: https://rstudio-pubs.zhaw.ch/__api__
 appId: 76
-bundleId: 471
+bundleId: 475
 url: https://rstudio-pubs.zhaw.ch/content/76/
-when: 1606823203.67206
+when: 1607078985.43382
 asMultiple: FALSE
 asStatic: TRUE
