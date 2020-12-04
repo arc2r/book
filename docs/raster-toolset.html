@@ -250,8 +250,8 @@ dataset, mosaic dataset, or an image service layer is performed using
 In R, the respective operation can be performed using the <em>mask()</em> function. For
 the example below, we are using the following datasets:</p>
 <ul>
-<li>ARE_waedi -&gt; vector dataset that depicts the public transport connection quality in the city of Wädenswil</li>
-<li>recycle_Waedi -&gt; raster dataset ..</li>
+<li><strong>ARE_waedi</strong>: Vector dataset that depicts the public transport connection quality in the city of Wädenswil</li>
+<li><strong>raster_recycling</strong>: Dataset derived from the spatial interpolation of all the available “recycling points”in the city of Wädenwil</li>
 </ul>
 <div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="raster-toolset.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read raster dataset</span></span>
 <span id="cb96-2"><a href="raster-toolset.html#cb96-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
@@ -265,11 +265,11 @@ the example below, we are using the following datasets:</p>
 <span id="cb96-10"><a href="raster-toolset.html#cb96-10" aria-hidden="true" tabindex="-1"></a>ARE_waedi <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(<span class="st">&quot;sample_data/Entsorgung_Waedenswil/ARE_waedenswil.shp&quot;</span>)</span>
 <span id="cb96-11"><a href="raster-toolset.html#cb96-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb96-12"><a href="raster-toolset.html#cb96-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the raster dataset and plot it</span></span>
-<span id="cb96-13"><a href="raster-toolset.html#cb96-13" aria-hidden="true" tabindex="-1"></a>recycle_Waedi <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="st">&quot;sample_data/Entsorgung_Waedenswil/abfall_raster.tif&quot;</span>)</span></code></pre></div>
+<span id="cb96-13"><a href="raster-toolset.html#cb96-13" aria-hidden="true" tabindex="-1"></a>raster_recycling <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="st">&quot;sample_data/Entsorgung_Waedenswil/abfall_raster.tif&quot;</span>)</span></code></pre></div>
 <p>Plot the two datasets one over the other.
 <img src="_main_files/figure-html/unnamed-chunk-60-1.png" width="672" /></p>
 <p>In our case, the vector dataset serves as the clipping extent for the clipping operation.</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="raster-toolset.html#cb97-1" aria-hidden="true" tabindex="-1"></a>recycle_Waedi_clip <span class="ot">&lt;-</span> <span class="fu">mask</span>(recycle_Waedi,ARE_waedi)</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="raster-toolset.html#cb97-1" aria-hidden="true" tabindex="-1"></a>recycle_Waedi_clip <span class="ot">&lt;-</span> <span class="fu">mask</span>(raster_recycling,ARE_waedi)</span></code></pre></div>
 <p><em>Visualising the clipped output</em>
 <img src="_main_files/figure-html/unnamed-chunk-61-1.png" width="672" /></p>
 </div>

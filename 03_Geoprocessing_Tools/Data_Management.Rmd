@@ -133,7 +133,7 @@ publicTransport_CH = projectRaster(publicTransport, raster_recycling)
 
 ```{r}
 # Plot the raster dataset - Swiss Coordinate System CH1903+LV95 
-r <- plot(publicTransport_CH,las=1,
+plot(publicTransport_CH,las=1,
      main = "Quality of public transport in the city of Wädenwil - CRS: CH1903+LV95",
      cex.main=1,font.main=4)
 ```
@@ -192,8 +192,8 @@ dataset, mosaic dataset, or an image service layer is performed using
 In R, the respective operation can be performed using the _mask()_ function. For
 the example below, we are using the following datasets:
 
-- ARE_waedi -> vector dataset that depicts the public transport connection quality in the city of Wädenswil
-- recycle_Waedi -> raster dataset ..   
+- __ARE_waedi__: Vector dataset that depicts the public transport connection quality in the city of Wädenswil
+- __raster_recycling__: Dataset derived from the spatial interpolation of all the available "recycling points"in the city of Wädenwil  
 
 
 ```{r echo=TRUE}
@@ -209,18 +209,18 @@ library(stars)
 ARE_waedi <- read_sf("sample_data/Entsorgung_Waedenswil/ARE_waedenswil.shp")
 
 # Read the raster dataset and plot it
-recycle_Waedi <- raster("sample_data/Entsorgung_Waedenswil/abfall_raster.tif")
+raster_recycling <- raster("sample_data/Entsorgung_Waedenswil/abfall_raster.tif")
 ```
 
 Plot the two datasets one over the other.
 ```{r, echo=FALSE}
-plot(recycle_Waedi)
+plot(raster_recycling)
 plot(ARE_waedi, alpha = 0.5, add = TRUE)
 ```
 
 In our case, the vector dataset serves as the clipping extent for the clipping operation.
 ```{r Clip raster, echo=TRUE}
-recycle_Waedi_clip <- mask(recycle_Waedi,ARE_waedi)
+recycle_Waedi_clip <- mask(raster_recycling,ARE_waedi)
 ```
 
 
