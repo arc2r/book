@@ -4,9 +4,8 @@ fig:dissolve
 fig:buffer
 abstract
 foreword
-making-interactive-maps
-introduction-to-tmap
-making-statics-maps
+making-maps
+making-static-maps
 static-maps-with-ggplot2
 basics
 adding-raster-maps-files-geotiffs
@@ -14,6 +13,9 @@ with-colours
 singleband
 multiple-bands
 greyscale
+making-interactive-maps
+introduction-to-tmap
+basic-spatial-operations
 select-by-attribute
 select-by-location
 analysis-toolbox

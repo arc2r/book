@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>6.5 Raster Toolset | Burning Bridges</title>
-  <meta name="description" content="6.5 Raster Toolset | Burning Bridges" />
+  <title>4 Basic spatial operations | Burning Bridges</title>
+  <meta name="description" content="4 Basic spatial operations | Burning Bridges" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="6.5 Raster Toolset | Burning Bridges" />
+  <meta property="og:title" content="4 Basic spatial operations | Burning Bridges" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="6.5 Raster Toolset | Burning Bridges" />
+  <meta name="twitter:title" content="4 Basic spatial operations | Burning Bridges" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="sampling-toolset.html"/>
-
+<link rel="prev" href="making-interactive-maps.html"/>
+<link rel="next" href="select-by-attribute.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -216,104 +216,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="raster-toolset" class="section level2">
-<h2><span class="header-section-number">6.5</span> Raster Toolset</h2>
-<!-- Yes, these are toolsets within toolsets -->
-<div id="mosaic-dataset-toolset" class="section level3">
-<h3><span class="header-section-number">6.5.1</span> Mosaic Dataset Toolset</h3>
+<div id="basic-spatial-operations" class="section level1">
+<h1><span class="header-section-number">4</span> Basic spatial operations</h1>
+<!--chapter:end:02_Select/Basic_spatial_operations.Rmd-->
 </div>
-<div id="ortho-mapping-toolset" class="section level3">
-<h3><span class="header-section-number">6.5.2</span> Ortho Mapping Toolset</h3>
-</div>
-<div id="raster-dataset-toolset" class="section level3">
-<h3><span class="header-section-number">6.5.3</span> Raster Dataset Toolset</h3>
-</div>
-<div id="raster-processing-toolset" class="section level3">
-<h3><span class="header-section-number">6.5.4</span> Raster Processing Toolset</h3>
-<div id="clip-raster" class="section level4">
-<h4><span class="header-section-number">6.5.4.1</span> Clip Raster</h4>
-<p>In GIS operations is quite common the necessity of “clipping” an area based on
-some specific region of interest. This is a quite useful and necessary procedure
-not only when we are dealing with vector datasets, but also when we have to work
-with raster ones. In ArcGIS pro the procedure of “cutting” a portion of a raster
-dataset, mosaic dataset, or an image service layer is performed using
-<code>Clip Raster</code> tool.<br />
-In R, the respective operation can be performed using the <em>mask()</em> function. For
-the example below, we are using the following datasets:</p>
-<ul>
-<li><strong>ARE_waedi</strong>: Vector dataset that depicts the public transport connection quality in the city of Wädenswil</li>
-<li><strong>raster_recycling</strong>: Dataset derived from the spatial interpolation of all the available “recycling points”in the city of Wädenwil</li>
-</ul>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="raster-toolset.html#cb96-1"></a><span class="co"># Read raster dataset</span></span>
-<span id="cb96-2"><a href="raster-toolset.html#cb96-2"></a><span class="kw">library</span>(raster)</span>
-<span id="cb96-3"><a href="raster-toolset.html#cb96-3"></a><span class="kw">library</span>(stars)</span>
-<span id="cb96-4"><a href="raster-toolset.html#cb96-4"></a><span class="kw">library</span>(sf)</span>
-<span id="cb96-5"><a href="raster-toolset.html#cb96-5"></a><span class="kw">library</span>(dplyr)</span>
-<span id="cb96-6"><a href="raster-toolset.html#cb96-6"></a><span class="kw">library</span>(stars)</span>
-<span id="cb96-7"><a href="raster-toolset.html#cb96-7"></a></span>
-<span id="cb96-8"><a href="raster-toolset.html#cb96-8"></a><span class="co"># Insert a vector dataset that depicts the public transport connection quality in</span></span>
-<span id="cb96-9"><a href="raster-toolset.html#cb96-9"></a><span class="co"># the city of Wädenswil and plot it</span></span>
-<span id="cb96-10"><a href="raster-toolset.html#cb96-10"></a>ARE_waedi &lt;-<span class="st"> </span><span class="kw">read_sf</span>(<span class="st">&quot;sample_data/Entsorgung_Waedenswil/ARE_waedenswil.shp&quot;</span>)</span>
-<span id="cb96-11"><a href="raster-toolset.html#cb96-11"></a></span>
-<span id="cb96-12"><a href="raster-toolset.html#cb96-12"></a><span class="co"># Read the raster dataset and plot it</span></span>
-<span id="cb96-13"><a href="raster-toolset.html#cb96-13"></a>raster_recycling &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&quot;sample_data/Entsorgung_Waedenswil/abfall_raster.tif&quot;</span>)</span></code></pre></div>
-<p>Plot the two datasets one over the other.
-<img src="_main_files/figure-html/unnamed-chunk-60-1.png" width="672" /></p>
-<p>In our case, the vector dataset serves as the clipping extent for the clipping operation.</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="raster-toolset.html#cb97-1"></a>recycle_Waedi_clip &lt;-<span class="st"> </span><span class="kw">mask</span>(raster_recycling,ARE_waedi)</span></code></pre></div>
-<p><em>Visualising the clipped output</em>
-<img src="_main_files/figure-html/unnamed-chunk-61-1.png" width="672" />
-#### Focal Statistics</p>
-<p>Calculates focal (“moving window”) values for the neighborhood of focal cells
-using a matrix of weights, perhaps in combination with a function.</p>
-</div>
-<div id="reclassify-raster" class="section level4">
-<h4><span class="header-section-number">6.5.4.2</span> Reclassify raster</h4>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="raster-toolset.html#cb98-1"></a>DEM_ch &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&quot;sample_data/Raster/dhm_200.tif&quot;</span>)</span>
-<span id="cb98-2"><a href="raster-toolset.html#cb98-2"></a><span class="kw">plot</span>(DEM_ch)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
-</div>
-<div id="composite-bands" class="section level4">
-<h4><span class="header-section-number">6.5.4.3</span> Composite Bands</h4>
-</div>
-<div id="compute-pansharpen-weights" class="section level4">
-<h4><span class="header-section-number">6.5.4.4</span> Compute Pansharpen Weights</h4>
-</div>
-<div id="create-ortho-corrected-raster-dataset" class="section level4">
-<h4><span class="header-section-number">6.5.4.5</span> Create Ortho Corrected Raster Dataset</h4>
-</div>
-<div id="create-pansharpened-raster-dataset" class="section level4">
-<h4><span class="header-section-number">6.5.4.6</span> Create Pansharpened Raster Dataset</h4>
-</div>
-<div id="extract-subdataset" class="section level4">
-<h4><span class="header-section-number">6.5.4.7</span> Extract Subdataset</h4>
-</div>
-<div id="generate-table-from-raster-function" class="section level4">
-<h4><span class="header-section-number">6.5.4.8</span> Generate Table From Raster Function</h4>
-</div>
-<div id="raster-to-dted" class="section level4">
-<h4><span class="header-section-number">6.5.4.9</span> Raster To DTED</h4>
-</div>
-<div id="resample" class="section level4">
-<h4><span class="header-section-number">6.5.4.10</span> Resample</h4>
-</div>
-<div id="split-raster" class="section level4">
-<h4><span class="header-section-number">6.5.4.11</span> Split Raster</h4>
-</div>
-</div>
-<div id="raster-properties-toolset" class="section level3">
-<h3><span class="header-section-number">6.5.5</span> Raster Properties Toolset</h3>
-
-</div>
-</div>
-<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="sampling-toolset.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="making-interactive-maps.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="select-by-attribute.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

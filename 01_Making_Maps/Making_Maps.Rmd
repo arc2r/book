@@ -1,0 +1,6 @@
+# Making Maps
+
+Probably the quickest way to visualize spatial data is with `base::plot()`.
+It can handle raster as well as vector data and usually needs not more than this one command, plot().
+This can be great to get a first, quick look at the data but in my opinion, base plot will not get you very far. To make nice static maps, you are better served with `ggplot2` or with `tmap`.
+There are arguments for both packages, and you might just end up using both.
