@@ -52,6 +52,7 @@ ortho-mapping-toolset
 raster-dataset-toolset
 raster-processing-toolset
 clip-raster
+reclassify-raster
 composite-bands
 compute-pansharpen-weights
 create-ortho-corrected-raster-dataset
