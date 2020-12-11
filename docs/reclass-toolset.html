@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4 Basic spatial operations | Burning Bridges</title>
-  <meta name="description" content="4 Basic spatial operations | Burning Bridges" />
+  <title>5.1 Reclass Toolset | Burning Bridges</title>
+  <meta name="description" content="5.1 Reclass Toolset | Burning Bridges" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4 Basic spatial operations | Burning Bridges" />
+  <meta property="og:title" content="5.1 Reclass Toolset | Burning Bridges" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4 Basic spatial operations | Burning Bridges" />
+  <meta name="twitter:title" content="5.1 Reclass Toolset | Burning Bridges" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="making-interactive-maps.html"/>
-<link rel="next" href="select-by-attribute.html"/>
+<link rel="prev" href="spatial-analyst-toolbox.html"/>
+<link rel="next" href="d-analyst-toolbox.html"/>
 <script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -212,17 +212,67 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="basic-spatial-operations" class="section level1" number="4">
-<h1><span class="header-section-number">4</span> Basic spatial operations</h1>
-<!--chapter:end:02_Select/Basic_spatial_operations.Rmd-->
+<div id="reclass-toolset" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Reclass Toolset</h2>
+<!-- ### Lookup -->
+<!-- ### Reclass by ASCII File -->
+<!-- ### Reclass by Table -->
+<div id="reclassify" class="section level3" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> Reclassify</h3>
+<!-- ### Rescale by Function -->
+<!-- ### Slice -->
+<!-- ## Surface Toolset -->
 </div>
+<div id="slope-and-aspect" class="section level3" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> Slope and Aspect</h3>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="reclass-toolset.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
+<span id="cb72-2"><a href="reclass-toolset.html#cb72-2" aria-hidden="true" tabindex="-1"></a>swissAlti3d <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="st">&quot;sample_data/Raster/swissALTI3D2019.tif&quot;</span>)</span>
+<span id="cb72-3"><a href="reclass-toolset.html#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(swissAlti3d)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
+<p>In ArcGIS pro the tool used for computing the slope of a raster dataset with elevation
+data is called <code>Slope (3D Analyst)</code>. It identifies the steepness at each cell of a raster surface.
+The lower the slope value, the flatter the terrain; the higher the slope value, the steeper the terrain.<br />
+In R, <strong>raster package</strong> includes the function <em>terrain()</em>, which helps us compute
+<em>slope</em>, <em>aspect</em> and other terrain characteristics from a raster with elevation data.<br />
+Let’s start by computing the <em>slope</em> of the <strong>swissAlti3d</strong> raster dataset.</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="reclass-toolset.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Computing the slope of a raster dataset using the terrain() function</span></span>
+<span id="cb73-2"><a href="reclass-toolset.html#cb73-2" aria-hidden="true" tabindex="-1"></a>swissAlti3d_slope <span class="ot">&lt;-</span> <span class="fu">terrain</span>(swissAlti3d, <span class="at">opt=</span><span class="st">&quot;slope&quot;</span>, <span class="at">unit=</span><span class="st">&quot;degrees&quot;</span>)</span>
+<span id="cb73-3"><a href="reclass-toolset.html#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(swissAlti3d_slope)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
+<p>In the function above, we define the operation we want to perform as the second
+argument of the function (<em>opt = “slope”</em>). Furthermore, we also define the units
+of the final result.<br />
+Similarly, we compute the <em>aspect</em> of the given dataset, as follows:</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="reclass-toolset.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Computing the aspect of the terrain dataset</span></span>
+<span id="cb74-2"><a href="reclass-toolset.html#cb74-2" aria-hidden="true" tabindex="-1"></a>swissAlti3d_aspect <span class="ot">&lt;-</span> <span class="fu">terrain</span>(swissAlti3d, <span class="at">opt=</span><span class="st">&quot;aspect&quot;</span>, <span class="at">unit=</span><span class="st">&quot;degrees&quot;</span>)</span>
+<span id="cb74-3"><a href="reclass-toolset.html#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(swissAlti3d_aspect)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
+<p>So, R gives us the option to retrieve multiple terrain characteristics of a raster
+dataset, using only one function. The aforementioned spatial operation in ArcGIS pro
+could be performed using the tool <code>Aspect (Spatial Analyst)</code>.</p>
+<!-- ### Contour -->
+<!-- ### Contour List -->
+<!-- ### Contour with Barriers -->
+<!-- ### Curvature -->
+<!-- ### Cut Fill -->
+<!-- ### Hillshade -->
+<!-- ### Observer Points -->
+<!-- ### Slope -->
+<!-- ### Viewshed -->
+<!-- ### Viewshed 2 -->
+<!-- ### Visibility -->
+<!-- ## Zonal Toolset -->
+
+</div>
+</div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="making-interactive-maps.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="select-by-attribute.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="spatial-analyst-toolbox.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="d-analyst-toolbox.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

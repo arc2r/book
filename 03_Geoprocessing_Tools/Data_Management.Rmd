@@ -232,17 +232,6 @@ _Visualising the clipped output_
 
 plot(recycle_Waedi_clip)
 ```
-<!-- #### Focal Statistics -->
-
-<!-- Calculates focal ("moving window") values for the neighborhood of focal cells -->
-<!-- using a matrix of weights, perhaps in combination with a function. -->
-
-<!-- #### Reclassify raster -->
-
-<!-- ```{r} -->
-<!-- DEM_ch <- raster("sample_data/Raster/dhm_200.tif") -->
-<!-- plot(DEM_ch) -->
-<!-- ``` -->
 
 
 
@@ -261,25 +250,26 @@ plot(recycle_Waedi_clip)
 
 
 
-#### Composite Bands
 
-#### Compute Pansharpen Weights
+<!-- #### Composite Bands -->
 
-#### Create Ortho Corrected Raster Dataset
+<!-- #### Compute Pansharpen Weights -->
 
-#### Create Pansharpened Raster Dataset
+<!-- #### Create Ortho Corrected Raster Dataset -->
 
-#### Extract Subdataset
+<!-- #### Create Pansharpened Raster Dataset -->
 
-#### Generate Table From Raster Function
+<!-- #### Extract Subdataset -->
 
-#### Raster To DTED
+<!-- #### Generate Table From Raster Function -->
 
-#### Resample
+<!-- #### Raster To DTED -->
 
-#### Split Raster
+<!-- #### Resample -->
+
+<!-- #### Split Raster -->
 
 
-### Raster Properties Toolset
+<!-- ### Raster Properties Toolset -->
 
 
