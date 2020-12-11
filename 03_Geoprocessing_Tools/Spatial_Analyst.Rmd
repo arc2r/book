@@ -109,13 +109,6 @@ ggplot() +
 <!-- ### Lookup -->
 <!-- ### Reclass by ASCII File -->
 <!-- ### Reclass by Table -->
-### Reclassify
-
-
-
-
-
-
 <!-- ### Rescale by Function -->
 <!-- ### Slice -->
 
@@ -124,40 +117,94 @@ ggplot() +
 
 ### Slope and Aspect
 
+>In mathematics, the slope or gradient of a line describes its steepness, incline, or grade. A higher slope value indicates a steeper incl.  
+Source: "http://wiki.gis.com/wiki/index.php/Slope"
 
-```{r}
-library(raster)
-swissAlti3d <- raster("sample_data/Raster/swissALTI3D2019.tif")
-plot(swissAlti3d)
-```
-
+In GIS and specifically in terrain analysis, calculating the terrain _slope_ is of
+great importance, since it can play a significant role in various forms of technical
+analysis. The most common way of calculating the _slope_ is from a Digital Elevation Model (DEM).  
+  
 In ArcGIS pro the tool used for computing the slope of a raster dataset with elevation
-data is called `Slope (3D Analyst)`. It identifies the steepness at each cell of a raster surface.
+data is called `Slope (3D Analyst)`.It identifies the steepness at each cell of a raster surface.
 The lower the slope value, the flatter the terrain; the higher the slope value, the steeper the terrain.  
+  
 In R, __raster package__ includes the function _terrain()_, which helps us compute
 *slope*, *aspect* and other terrain characteristics from a raster with elevation data.  
-Let's start by computing the _slope_ of the **swissAlti3d** raster dataset.
+Let's start by computing the _slope_ of the **swissAlti3d** raster dataset.  
+
+```{r}
+# Importing a raster dataset
+# swissALTI3D2019.tif -- Source: https://geovite.ethz.ch
+
+library(raster)
+swissAlti3d <- raster("sample_data/Raster/swissALTI3D2019.tif")
+plot(swissAlti3d,
+     main = "swissALTI3D2019 - CRS: CH1903+LV95",
+     cex.main=1,font.main=4)
+```
+
+After importing and visualizing our raster dataset, we use the _terrain_ function
+to calculate the slope.  
 
 ```{r}
 # Computing the slope of a raster dataset using the terrain() function
 swissAlti3d_slope <- terrain(swissAlti3d, opt="slope", unit="degrees")
-plot(swissAlti3d_slope)
+plot(swissAlti3d_slope,
+     main = "Slope of swissALTI3D2019 in degrees (°)",
+     cex.main=1,font.main=4)
 ```
   
 In the function above, we define the operation we want to perform as the second
 argument of the function (_opt = "slope"_). Furthermore, we also define the units
 of the final result.  
-Similarly, we compute the _aspect_ of the given dataset, as follows:
+Similarly, we compute the _aspect_ of a given dataset. Basically as _aspect_ we can
+consider the compass direction that a _slope_ leans towards.  
+Let's compute now, using again the same function _terrain_, the _aspect_ of the
+same dataset __swissALTI3D2019__.   
 
 ```{r}
 # Computing the aspect of the terrain dataset
 swissAlti3d_aspect <- terrain(swissAlti3d, opt="aspect", unit="degrees")
-plot(swissAlti3d_aspect)
+plot(swissAlti3d_aspect,
+     main = "Aspect of swissALTI3D2019 in degrees (°)",
+     cex.main=1,font.main=4)
 ```  
   
 So, R gives us the option to retrieve multiple terrain characteristics of a raster
 dataset, using only one function. The aforementioned spatial operation in ArcGIS pro
 could be performed using the tool `Aspect (Spatial Analyst)`.
+
+
+### Reclassify
+
+```{r}
+summary(swissAlti3d_aspect)
+histinfo <- hist(swissAlti3d_aspect)
+histinfo$counts
+histinfo$breaks
+
+
+# hist(swissAlti3d_aspect,
+#      breaks = c(0, 22.5, 112.5, 202.5, 292.5, 360),
+#      main = "Histogram with custom breaks",
+#      xlab = "Aspect in Degrees °" )
+
+# create a reclassification matrix
+reclass_df <- c(0,180, 000000 ,180,360, 99999)
+
+# convert to Matrix
+reclass_m <- matrix(reclass_df,
+                ncol = 3,
+                byrow = TRUE)
+```
+
+Reclassify your raster dataset
+```{r}
+swissAlti3d_aspect_reclass <- reclassify(swissAlti3d_aspect,
+                     reclass_m)
+
+plot(swissAlti3d_aspect_reclass)
+```
 
 
 <!-- ### Contour -->
