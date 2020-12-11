@@ -104,19 +104,38 @@ ggplot() +
 <!-- ### Weighted Sum -->
 
 
-<!-- ## Reclass Toolset -->
+## Reclass Toolset
 
 <!-- ### Lookup -->
 <!-- ### Reclass by ASCII File -->
 <!-- ### Reclass by Table -->
-<!-- ### Reclassify -->
+### Reclassify
+
+
+
+
+
+
 <!-- ### Rescale by Function -->
 <!-- ### Slice -->
 
 
 <!-- ## Surface Toolset -->
 
-<!-- ### Aspect -->
+### Aspect
+
+Compute slope, aspect and other terrain characteristics from a raster with elevation data. The elevation data should be in map units (typically meter) for projected (planar) raster data. They should be in meters when the coordinate reference system (CRS) is longitude/latitude.
+
+```{r}
+library(raster)
+swissAlti3d <- raster("sample_data/Raster/swissALTI3D2019.tif")
+plot(swissAlti3d)
+
+# Computing the aspect of the terrain dataset
+swissAlti3d_aspect <- terrain(swissAlti3d, opt="slope", unit="degrees")
+plot(swissAlti3d_aspect)
+```
+
 <!-- ### Contour -->
 <!-- ### Contour List -->
 <!-- ### Contour with Barriers -->
