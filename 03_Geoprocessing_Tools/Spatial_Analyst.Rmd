@@ -132,7 +132,7 @@ swissAlti3d <- raster("sample_data/Raster/swissALTI3D2019.tif")
 plot(swissAlti3d)
 
 # Computing the aspect of the terrain dataset
-swissAlti3d_aspect <- terrain(swissAlti3d, opt="slope", unit="degrees")
+swissAlti3d_aspect <- terrain(swissAlti3d, opt="aspect", unit="degrees")
 plot(swissAlti3d_aspect)
 ```
 
