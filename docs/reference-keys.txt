@@ -21,8 +21,8 @@ select-by-location
 spatial-analyst-toolbox
 kernel-denisity
 reclass-toolset
-reclassify
 slope-and-aspect
+reclassify
 d-analyst-toolbox
 raster-interpolation-toolset
 idw

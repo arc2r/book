@@ -158,8 +158,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5" data-path="spatial-analyst-toolbox.html"><a href="spatial-analyst-toolbox.html"><i class="fa fa-check"></i><b>5</b> Spatial Analyst Toolbox</a><ul>
 <li class="chapter" data-level="5.0.1" data-path="spatial-analyst-toolbox.html"><a href="spatial-analyst-toolbox.html#kernel-denisity"><i class="fa fa-check"></i><b>5.0.1</b> Kernel Denisity</a></li>
 <li class="chapter" data-level="5.1" data-path="reclass-toolset.html"><a href="reclass-toolset.html"><i class="fa fa-check"></i><b>5.1</b> Reclass Toolset</a><ul>
-<li class="chapter" data-level="5.1.1" data-path="reclass-toolset.html"><a href="reclass-toolset.html#reclassify"><i class="fa fa-check"></i><b>5.1.1</b> Reclassify</a></li>
-<li class="chapter" data-level="5.1.2" data-path="reclass-toolset.html"><a href="reclass-toolset.html#slope-and-aspect"><i class="fa fa-check"></i><b>5.1.2</b> Slope and Aspect</a></li>
+<li class="chapter" data-level="5.1.1" data-path="reclass-toolset.html"><a href="reclass-toolset.html#slope-and-aspect"><i class="fa fa-check"></i><b>5.1.1</b> Slope and Aspect</a></li>
+<li class="chapter" data-level="5.1.2" data-path="reclass-toolset.html"><a href="reclass-toolset.html#reclassify"><i class="fa fa-check"></i><b>5.1.2</b> Reclassify</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="d-analyst-toolbox.html"><a href="d-analyst-toolbox.html"><i class="fa fa-check"></i><b>6</b> 3D Analyst Toolbox</a><ul>
@@ -221,29 +221,29 @@ action is performed using the following tools:</p>
 <p><strong>R</strong> and more specifically <strong>sf package</strong> offers options (functions) not only for
 transforming the coordinate system of a dataset, but also for identifying the
 current existing one. Let’s dive in :)</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="projections-and-transformations-toolset.html#cb100-1"></a><span class="co"># Importing the dataset</span></span>
-<span id="cb100-2"><a href="projections-and-transformations-toolset.html#cb100-2"></a><span class="kw">library</span>(sf)</span>
-<span id="cb100-3"><a href="projections-and-transformations-toolset.html#cb100-3"></a>bezirke &lt;-<span class="st"> </span><span class="kw">read_sf</span>(<span class="st">&quot;sample_data/other/bezirke.gpkg&quot;</span>) </span></code></pre></div>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="projections-and-transformations-toolset.html#cb101-1"></a><span class="co"># Visualising the imported dataset</span></span>
-<span id="cb101-2"><a href="projections-and-transformations-toolset.html#cb101-2"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb101-3"><a href="projections-and-transformations-toolset.html#cb101-3"></a><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bezirke)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-63-1.png" width="672" /></p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="projections-and-transformations-toolset.html#cb108-1"></a><span class="co"># Importing the dataset</span></span>
+<span id="cb108-2"><a href="projections-and-transformations-toolset.html#cb108-2"></a><span class="kw">library</span>(sf)</span>
+<span id="cb108-3"><a href="projections-and-transformations-toolset.html#cb108-3"></a>bezirke &lt;-<span class="st"> </span><span class="kw">read_sf</span>(<span class="st">&quot;sample_data/other/bezirke.gpkg&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="projections-and-transformations-toolset.html#cb109-1"></a><span class="co"># Visualising the imported dataset</span></span>
+<span id="cb109-2"><a href="projections-and-transformations-toolset.html#cb109-2"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb109-3"><a href="projections-and-transformations-toolset.html#cb109-3"></a><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bezirke)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-66-1.png" width="672" /></p>
 <p>In order to identify the current coordinate system of a dataset, <strong>sf package</strong>
 offers the function <em>st_crs</em>. The main usage of the function is to retrieve the
 coordinate reference system from an sf object.</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="projections-and-transformations-toolset.html#cb102-1"></a><span class="co"># retrieving the coordinate of the imported layer</span></span>
-<span id="cb102-2"><a href="projections-and-transformations-toolset.html#cb102-2"></a><span class="kw">st_crs</span>(bezirke)</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="projections-and-transformations-toolset.html#cb110-1"></a><span class="co"># retrieving the coordinate of the imported layer</span></span>
+<span id="cb110-2"><a href="projections-and-transformations-toolset.html#cb110-2"></a><span class="kw">st_crs</span>(bezirke)</span></code></pre></div>
 <pre><code>## Coordinate Reference System: NA</code></pre>
 <p>As an output we received that there is no assigned coordinate system to this
 specific dataset. <em>st_set_crs</em> function helps us assigning a coordinate system
 to a dataset.</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="projections-and-transformations-toolset.html#cb104-1"></a><span class="co"># Assigning the World Geodetic System (WGS84) as a coordinate system to our dataset</span></span>
-<span id="cb104-2"><a href="projections-and-transformations-toolset.html#cb104-2"></a>bezirke &lt;-<span class="st"> </span><span class="kw">st_set_crs</span>(bezirke, <span class="dv">4326</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="projections-and-transformations-toolset.html#cb112-1"></a><span class="co"># Assigning the World Geodetic System (WGS84) as a coordinate system to our dataset</span></span>
+<span id="cb112-2"><a href="projections-and-transformations-toolset.html#cb112-2"></a>bezirke &lt;-<span class="st"> </span><span class="kw">st_set_crs</span>(bezirke, <span class="dv">4326</span>)</span></code></pre></div>
 <p>In the function above, the number 4326 represents the <strong>EPSG Geodetic Parameter Dataset (EPSG)</strong>
 of the respective coordinate system. <strong>EPSG</strong> is a public registry of geodetic
 datums, spatial reference systems, Earth ellipsoids, coordinate transformations
 and related units of measurement.</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="projections-and-transformations-toolset.html#cb105-1"></a><span class="kw">st_crs</span>(bezirke)</span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="projections-and-transformations-toolset.html#cb113-1"></a><span class="kw">st_crs</span>(bezirke)</span></code></pre></div>
 <pre><code>## Coordinate Reference System:
 ##   User input: EPSG:4326 
 ##   wkt:
@@ -278,10 +278,10 @@ other words, it does not affect the actual <em>geometry</em> column of the sf ob
 <em>st_tranform</em> on the other hand indeed <strong>does indeed reproject</strong> the dataset to another coordinate
 system.
 </details>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="projections-and-transformations-toolset.html#cb107-1"></a>bezirke_swiss &lt;-<span class="st"> </span><span class="kw">st_transform</span>(bezirke, <span class="dv">2056</span>)</span>
-<span id="cb107-2"><a href="projections-and-transformations-toolset.html#cb107-2"></a></span>
-<span id="cb107-3"><a href="projections-and-transformations-toolset.html#cb107-3"></a><span class="co"># retrieve the coordinate system</span></span>
-<span id="cb107-4"><a href="projections-and-transformations-toolset.html#cb107-4"></a><span class="kw">st_crs</span>(bezirke_swiss)</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="projections-and-transformations-toolset.html#cb115-1"></a>bezirke_swiss &lt;-<span class="st"> </span><span class="kw">st_transform</span>(bezirke, <span class="dv">2056</span>)</span>
+<span id="cb115-2"><a href="projections-and-transformations-toolset.html#cb115-2"></a></span>
+<span id="cb115-3"><a href="projections-and-transformations-toolset.html#cb115-3"></a><span class="co"># retrieve the coordinate system</span></span>
+<span id="cb115-4"><a href="projections-and-transformations-toolset.html#cb115-4"></a><span class="kw">st_crs</span>(bezirke_swiss)</span></code></pre></div>
 <pre><code>## Coordinate Reference System:
 ##   User input: EPSG:2056 
 ##   wkt:
@@ -339,20 +339,20 @@ the raster coordinates (which are just pairs of x/y values) to geographic locati
 In ArcGIS pro the tool for projecting a raster dataset is called
 <em>Project Raster (Data Management)</em>. Let’s see how we can perform the same operation
 with R.</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="projections-and-transformations-toolset.html#cb109-1"></a><span class="co"># Importing the datasets</span></span>
-<span id="cb109-2"><a href="projections-and-transformations-toolset.html#cb109-2"></a><span class="kw">library</span>(raster)</span>
-<span id="cb109-3"><a href="projections-and-transformations-toolset.html#cb109-3"></a></span>
-<span id="cb109-4"><a href="projections-and-transformations-toolset.html#cb109-4"></a><span class="co"># Dataset derived from the spatial interpolation of all the available &quot;recycling points&quot;</span></span>
-<span id="cb109-5"><a href="projections-and-transformations-toolset.html#cb109-5"></a><span class="co"># in the city of Wädenwil</span></span>
-<span id="cb109-6"><a href="projections-and-transformations-toolset.html#cb109-6"></a>raster_recycling &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&quot;sample_data/Raster/raster_recycling.tif&quot;</span>) <span class="co"># CRS -&gt; CH1903+LV95</span></span>
-<span id="cb109-7"><a href="projections-and-transformations-toolset.html#cb109-7"></a></span>
-<span id="cb109-8"><a href="projections-and-transformations-toolset.html#cb109-8"></a><span class="co"># Dataset representing the public transport quality in the city of Wädenswil</span></span>
-<span id="cb109-9"><a href="projections-and-transformations-toolset.html#cb109-9"></a>publicTransport &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&quot;sample_data/Raster/publicTransport_waedi.tif&quot;</span>) <span class="co"># CRS -&gt; WGS84 </span></span></code></pre></div>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="projections-and-transformations-toolset.html#cb110-1"></a><span class="co"># Plot the raster dataset - World Geodetic System 1984 </span></span>
-<span id="cb110-2"><a href="projections-and-transformations-toolset.html#cb110-2"></a><span class="kw">plot</span>(publicTransport,<span class="dt">las=</span><span class="dv">1</span>,</span>
-<span id="cb110-3"><a href="projections-and-transformations-toolset.html#cb110-3"></a>     <span class="dt">main =</span> <span class="st">&quot;Quality of public transport in the city of Wädenwil - CRS: WGS84&quot;</span>,</span>
-<span id="cb110-4"><a href="projections-and-transformations-toolset.html#cb110-4"></a>     <span class="dt">cex.main=</span><span class="dv">1</span>,<span class="dt">font.main=</span><span class="dv">4</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-69-1.png" width="672" /></p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="projections-and-transformations-toolset.html#cb117-1"></a><span class="co"># Importing the datasets</span></span>
+<span id="cb117-2"><a href="projections-and-transformations-toolset.html#cb117-2"></a><span class="kw">library</span>(raster)</span>
+<span id="cb117-3"><a href="projections-and-transformations-toolset.html#cb117-3"></a></span>
+<span id="cb117-4"><a href="projections-and-transformations-toolset.html#cb117-4"></a><span class="co"># Dataset derived from the spatial interpolation of all the available &quot;recycling points&quot;</span></span>
+<span id="cb117-5"><a href="projections-and-transformations-toolset.html#cb117-5"></a><span class="co"># in the city of Wädenwil</span></span>
+<span id="cb117-6"><a href="projections-and-transformations-toolset.html#cb117-6"></a>raster_recycling &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&quot;sample_data/Raster/raster_recycling.tif&quot;</span>) <span class="co"># CRS -&gt; CH1903+LV95</span></span>
+<span id="cb117-7"><a href="projections-and-transformations-toolset.html#cb117-7"></a></span>
+<span id="cb117-8"><a href="projections-and-transformations-toolset.html#cb117-8"></a><span class="co"># Dataset representing the public transport quality in the city of Wädenswil</span></span>
+<span id="cb117-9"><a href="projections-and-transformations-toolset.html#cb117-9"></a>publicTransport &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&quot;sample_data/Raster/publicTransport_waedi.tif&quot;</span>) <span class="co"># CRS -&gt; WGS84 </span></span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="projections-and-transformations-toolset.html#cb118-1"></a><span class="co"># Plot the raster dataset - World Geodetic System 1984 </span></span>
+<span id="cb118-2"><a href="projections-and-transformations-toolset.html#cb118-2"></a><span class="kw">plot</span>(publicTransport,<span class="dt">las=</span><span class="dv">1</span>,</span>
+<span id="cb118-3"><a href="projections-and-transformations-toolset.html#cb118-3"></a>     <span class="dt">main =</span> <span class="st">&quot;Quality of public transport in the city of Wädenwil - CRS: WGS84&quot;</span>,</span>
+<span id="cb118-4"><a href="projections-and-transformations-toolset.html#cb118-4"></a>     <span class="dt">cex.main=</span><span class="dv">1</span>,<span class="dt">font.main=</span><span class="dv">4</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-72-1.png" width="672" /></p>
 <p>We can use the <em>projectRaster()</em> function to reproject a raster into a new CRS.
 The first argument of the aforementioned function is the raster dataset we want to reproject,
 while the second one is the dataset to whose projection we are targeting to. So, in
@@ -360,14 +360,14 @@ our case, we are targeting to the coordinate system of the <strong>raster_recycl
 dataset.<br />
 It is important to remember that raster reprojection only works when the raster
 object has already a defined CRS.</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="projections-and-transformations-toolset.html#cb111-1"></a><span class="co"># Transform the coordinate system of the raster dataset publicTransport_CH</span></span>
-<span id="cb111-2"><a href="projections-and-transformations-toolset.html#cb111-2"></a><span class="co"># into the Swiss Coordinate system - CH1903+LV95</span></span>
-<span id="cb111-3"><a href="projections-and-transformations-toolset.html#cb111-3"></a>publicTransport_CH =<span class="st"> </span><span class="kw">projectRaster</span>(publicTransport, raster_recycling)</span></code></pre></div>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="projections-and-transformations-toolset.html#cb112-1"></a><span class="co"># Plot the raster dataset - Swiss Coordinate System CH1903+LV95 </span></span>
-<span id="cb112-2"><a href="projections-and-transformations-toolset.html#cb112-2"></a><span class="kw">plot</span>(publicTransport_CH,<span class="dt">las=</span><span class="dv">1</span>,</span>
-<span id="cb112-3"><a href="projections-and-transformations-toolset.html#cb112-3"></a>     <span class="dt">main =</span> <span class="st">&quot;Quality of public transport in the city of Wädenwil - CRS: CH1903+LV95&quot;</span>,</span>
-<span id="cb112-4"><a href="projections-and-transformations-toolset.html#cb112-4"></a>     <span class="dt">cex.main=</span><span class="dv">1</span>,<span class="dt">font.main=</span><span class="dv">4</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-71-1.png" width="672" /></p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="projections-and-transformations-toolset.html#cb119-1"></a><span class="co"># Transform the coordinate system of the raster dataset publicTransport_CH</span></span>
+<span id="cb119-2"><a href="projections-and-transformations-toolset.html#cb119-2"></a><span class="co"># into the Swiss Coordinate system - CH1903+LV95</span></span>
+<span id="cb119-3"><a href="projections-and-transformations-toolset.html#cb119-3"></a>publicTransport_CH =<span class="st"> </span><span class="kw">projectRaster</span>(publicTransport, raster_recycling)</span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="projections-and-transformations-toolset.html#cb120-1"></a><span class="co"># Plot the raster dataset - Swiss Coordinate System CH1903+LV95 </span></span>
+<span id="cb120-2"><a href="projections-and-transformations-toolset.html#cb120-2"></a><span class="kw">plot</span>(publicTransport_CH,<span class="dt">las=</span><span class="dv">1</span>,</span>
+<span id="cb120-3"><a href="projections-and-transformations-toolset.html#cb120-3"></a>     <span class="dt">main =</span> <span class="st">&quot;Quality of public transport in the city of Wädenwil - CRS: CH1903+LV95&quot;</span>,</span>
+<span id="cb120-4"><a href="projections-and-transformations-toolset.html#cb120-4"></a>     <span class="dt">cex.main=</span><span class="dv">1</span>,<span class="dt">font.main=</span><span class="dv">4</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-74-1.png" width="672" /></p>
 <!-- ## Topology Toolset -->
 <!-- ## Sampling Toolset -->
 </div>
@@ -406,25 +406,25 @@ the example below, we are using the following datasets:</p>
 <li><strong>ARE_waedi</strong>: Vector dataset that depicts the public transport connection quality in the city of Wädenswil</li>
 <li><strong>raster_recycling</strong>: Dataset derived from the spatial interpolation of all the available “recycling points”in the city of Wädenwil</li>
 </ul>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="projections-and-transformations-toolset.html#cb113-1"></a><span class="co"># Read raster dataset</span></span>
-<span id="cb113-2"><a href="projections-and-transformations-toolset.html#cb113-2"></a><span class="kw">library</span>(raster)</span>
-<span id="cb113-3"><a href="projections-and-transformations-toolset.html#cb113-3"></a><span class="kw">library</span>(stars)</span>
-<span id="cb113-4"><a href="projections-and-transformations-toolset.html#cb113-4"></a><span class="kw">library</span>(sf)</span>
-<span id="cb113-5"><a href="projections-and-transformations-toolset.html#cb113-5"></a><span class="kw">library</span>(dplyr)</span>
-<span id="cb113-6"><a href="projections-and-transformations-toolset.html#cb113-6"></a><span class="kw">library</span>(stars)</span>
-<span id="cb113-7"><a href="projections-and-transformations-toolset.html#cb113-7"></a></span>
-<span id="cb113-8"><a href="projections-and-transformations-toolset.html#cb113-8"></a><span class="co"># Insert a vector dataset that depicts the public transport connection quality in</span></span>
-<span id="cb113-9"><a href="projections-and-transformations-toolset.html#cb113-9"></a><span class="co"># the city of Wädenswil and plot it</span></span>
-<span id="cb113-10"><a href="projections-and-transformations-toolset.html#cb113-10"></a>ARE_waedi &lt;-<span class="st"> </span><span class="kw">read_sf</span>(<span class="st">&quot;sample_data/Entsorgung_Waedenswil/ARE_waedenswil.shp&quot;</span>)</span>
-<span id="cb113-11"><a href="projections-and-transformations-toolset.html#cb113-11"></a></span>
-<span id="cb113-12"><a href="projections-and-transformations-toolset.html#cb113-12"></a><span class="co"># Read the raster dataset and plot it</span></span>
-<span id="cb113-13"><a href="projections-and-transformations-toolset.html#cb113-13"></a>raster_recycling &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&quot;sample_data/Entsorgung_Waedenswil/abfall_raster.tif&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="projections-and-transformations-toolset.html#cb121-1"></a><span class="co"># Read raster dataset</span></span>
+<span id="cb121-2"><a href="projections-and-transformations-toolset.html#cb121-2"></a><span class="kw">library</span>(raster)</span>
+<span id="cb121-3"><a href="projections-and-transformations-toolset.html#cb121-3"></a><span class="kw">library</span>(stars)</span>
+<span id="cb121-4"><a href="projections-and-transformations-toolset.html#cb121-4"></a><span class="kw">library</span>(sf)</span>
+<span id="cb121-5"><a href="projections-and-transformations-toolset.html#cb121-5"></a><span class="kw">library</span>(dplyr)</span>
+<span id="cb121-6"><a href="projections-and-transformations-toolset.html#cb121-6"></a><span class="kw">library</span>(stars)</span>
+<span id="cb121-7"><a href="projections-and-transformations-toolset.html#cb121-7"></a></span>
+<span id="cb121-8"><a href="projections-and-transformations-toolset.html#cb121-8"></a><span class="co"># Insert a vector dataset that depicts the public transport connection quality in</span></span>
+<span id="cb121-9"><a href="projections-and-transformations-toolset.html#cb121-9"></a><span class="co"># the city of Wädenswil and plot it</span></span>
+<span id="cb121-10"><a href="projections-and-transformations-toolset.html#cb121-10"></a>ARE_waedi &lt;-<span class="st"> </span><span class="kw">read_sf</span>(<span class="st">&quot;sample_data/Entsorgung_Waedenswil/ARE_waedenswil.shp&quot;</span>)</span>
+<span id="cb121-11"><a href="projections-and-transformations-toolset.html#cb121-11"></a></span>
+<span id="cb121-12"><a href="projections-and-transformations-toolset.html#cb121-12"></a><span class="co"># Read the raster dataset and plot it</span></span>
+<span id="cb121-13"><a href="projections-and-transformations-toolset.html#cb121-13"></a>raster_recycling &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&quot;sample_data/Entsorgung_Waedenswil/abfall_raster.tif&quot;</span>)</span></code></pre></div>
 <p>Plot the two datasets one over the other.
-<img src="_main_files/figure-html/unnamed-chunk-73-1.png" width="672" /></p>
+<img src="_main_files/figure-html/unnamed-chunk-76-1.png" width="672" /></p>
 <p>In our case, the vector dataset serves as the clipping extent for the clipping operation.</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="projections-and-transformations-toolset.html#cb114-1"></a>recycle_Waedi_clip &lt;-<span class="st"> </span><span class="kw">mask</span>(raster_recycling,ARE_waedi)</span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="projections-and-transformations-toolset.html#cb122-1"></a>recycle_Waedi_clip &lt;-<span class="st"> </span><span class="kw">mask</span>(raster_recycling,ARE_waedi)</span></code></pre></div>
 <p><em>Visualising the clipped output</em>
-<img src="_main_files/figure-html/unnamed-chunk-74-1.png" width="672" /></p>
+<img src="_main_files/figure-html/unnamed-chunk-77-1.png" width="672" /></p>
 <!-- #### Composite Bands -->
 <!-- #### Compute Pansharpen Weights -->
 <!-- #### Create Ortho Corrected Raster Dataset -->

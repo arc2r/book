@@ -177,34 +177,69 @@ could be performed using the tool `Aspect (Spatial Analyst)`.
 
 ### Reclassify
 
+In GIS quite often arises the necessity to reclassify a raster dataset. In other
+words, to create new classes with different range of values for the existing cell
+values of the dataset. This operation in ArcGIS Pro is performed using the
+`Reclassify (Spatial Analyst)` tool.  
+In R the respective operation is quite straightforward and is based on the use of
+the _reclassify_ function of the __raster__ package. For our example we use the
+raster dataset we computed previously, which depicts the _aspect_ of the __swissALTI3D2019__
+dataset.  
+
+As a first step, we can compute the histogram of our dataset.  
+
 ```{r}
 summary(swissAlti3d_aspect)
 histinfo <- hist(swissAlti3d_aspect)
-histinfo$counts
+
 histinfo$breaks
+```
 
+The number of breaks for our raster values are 19. The aim of ours is to create 4
+different classes with the following values:  
 
-# hist(swissAlti3d_aspect,
-#      breaks = c(0, 22.5, 112.5, 202.5, 292.5, 360),
-#      main = "Histogram with custom breaks",
-#      xlab = "Aspect in Degrees °" )
+- 0°-90° -> Class 1
+- 90°-180° -> Class 2
+- 180°-270° -> Class 3
+- 270°-360° -> Class 4  
+  
+To do so, we create below a reclassification matrix with the respective values.
 
+```{r}
 # create a reclassification matrix
-reclass_df <- c(0,180, 000000 ,180,360, 99999)
+reclass_df <- c(0,90,1,90,180,2,180,270,3,270,360,4)
 
 # convert to Matrix
 reclass_m <- matrix(reclass_df,
                 ncol = 3,
                 byrow = TRUE)
+
+reclass_m
 ```
 
-Reclassify your raster dataset
+After creating the respective matrix with the new classes, we are ready to
+call the _reclassify_ function. The function takes as a first argument the dataset
+set to be reclassified and as second the matrix, on which the reclassification is
+based on. 
+
 ```{r}
 swissAlti3d_aspect_reclass <- reclassify(swissAlti3d_aspect,
                      reclass_m)
 
-plot(swissAlti3d_aspect_reclass)
+plot(swissAlti3d_aspect_reclass, col = c("red", "green", "yellow","blue"),
+     main = "Aspect of swissALTI3D2019 in 4 classes",
+     cex.main=1,font.main=4, legend = FALSE)
+
+legend("topright",
+       legend = c("0°-90°", "90°-180°", "180°-270°","270°-360°"),
+       fill = c("red", "blue", "green", "yellow"),
+       border = FALSE,
+       bty = "n") # turn off legend border
 ```
+
+
+
+
 
 
 <!-- ### Contour -->
@@ -214,7 +249,6 @@ plot(swissAlti3d_aspect_reclass)
 <!-- ### Cut Fill -->
 <!-- ### Hillshade -->
 <!-- ### Observer Points -->
-<!-- ### Slope -->
 <!-- ### Viewshed -->
 <!-- ### Viewshed 2 -->
 <!-- ### Visibility -->
