@@ -2,7 +2,7 @@
 # Data Management Toolbox
 
 
-## Joins and Relates Toolset
+<!-- ## Joins and Relates Toolset -->
 
 ## Projections and Transformations Toolset
 
@@ -147,9 +147,9 @@ plot(publicTransport_CH,las=1,
 
 
 
-## Topology Toolset
+<!-- ## Topology Toolset -->
 
-## Sampling Toolset
+<!-- ## Sampling Toolset -->
 
 ### Generate Tessellation
 
@@ -160,26 +160,26 @@ plot(publicTransport_CH,las=1,
 - Triangle
 
 
-### Create Fishnet
+<!-- ### Create Fishnet -->
 
-### Create Random Points
+<!-- ### Create Random Points -->
 
-### Generate Points Along Lines
+<!-- ### Generate Points Along Lines -->
 
-### Generate Rectangles Along Lines
+<!-- ### Generate Rectangles Along Lines -->
 
-### Generate Transsects Along Lines
+<!-- ### Generate Transsects Along Lines -->
 
-## Raster Toolset
+<!-- ## Raster Toolset -->
 
-<!-- Yes, these are toolsets within toolsets -->
-### Mosaic Dataset Toolset
+<!-- <!-- Yes, these are toolsets within toolsets --> -->
+<!-- ### Mosaic Dataset Toolset -->
 
-### Ortho Mapping Toolset
+<!-- ### Ortho Mapping Toolset -->
 
-### Raster Dataset Toolset
+<!-- ### Raster Dataset Toolset -->
 
-### Raster Processing Toolset
+<!-- ### Raster Processing Toolset -->
 
 #### Clip Raster
 
@@ -232,17 +232,17 @@ _Visualising the clipped output_
 
 plot(recycle_Waedi_clip)
 ```
-#### Focal Statistics
+<!-- #### Focal Statistics -->
 
-Calculates focal ("moving window") values for the neighborhood of focal cells
-using a matrix of weights, perhaps in combination with a function.
+<!-- Calculates focal ("moving window") values for the neighborhood of focal cells -->
+<!-- using a matrix of weights, perhaps in combination with a function. -->
 
-#### Reclassify raster
+<!-- #### Reclassify raster -->
 
-```{r}
-DEM_ch <- raster("sample_data/Raster/dhm_200.tif")
-plot(DEM_ch)
-```
+<!-- ```{r} -->
+<!-- DEM_ch <- raster("sample_data/Raster/dhm_200.tif") -->
+<!-- plot(DEM_ch) -->
+<!-- ``` -->
 
 
 

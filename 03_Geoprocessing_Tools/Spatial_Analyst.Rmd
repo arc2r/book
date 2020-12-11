@@ -7,7 +7,7 @@ library(raster)
 
 # Spatial Analyst Toolbox
 
-## Conditional Toolset
+<!-- ## Conditional Toolset -->
 
 
 
@@ -16,7 +16,7 @@ library(raster)
 
 
 
-## Density Toolset
+<!-- ## Density Toolset -->
 
 ### Kernel Denisity
 
@@ -77,60 +77,60 @@ ggplot() +
 ```
 
 
-### Line Density
+<!-- ### Line Density -->
 
-### Point Density
+<!-- ### Point Density -->
 
-## Distance Toolset
+<!-- ## Distance Toolset -->
 
-## Extraction Toolset
+<!-- ## Extraction Toolset -->
 
-## Generalization Toolset
+<!-- ## Generalization Toolset -->
 
-## Interpolation Toolset
+<!-- ## Interpolation Toolset -->
 
-## Map Algebra Toolset
+<!-- ## Map Algebra Toolset -->
 
-## Math Toolset
+<!-- ## Math Toolset -->
 
-## Neighborhood Toolset
+<!-- ## Neighborhood Toolset -->
 
-## Overlay Toolset
+<!-- ## Overlay Toolset -->
 
-### Fuzzy Membership
-### Fuzzy Overlay
-### Locate Regions
-### Weighted Overlay
-### Weighted Sum
-
-
-## Reclass Toolset
-
-### Lookup
-### Reclass by ASCII File
-### Reclass by Table
-### Reclassify
-### Rescale by Function
-### Slice
+<!-- ### Fuzzy Membership -->
+<!-- ### Fuzzy Overlay -->
+<!-- ### Locate Regions -->
+<!-- ### Weighted Overlay -->
+<!-- ### Weighted Sum -->
 
 
-## Surface Toolset
+<!-- ## Reclass Toolset -->
 
-### Aspect
-### Contour
-### Contour List
-### Contour with Barriers
-### Curvature
-### Cut Fill
-### Hillshade
-### Observer Points
-### Slope
-### Viewshed
-### Viewshed 2
-### Visibility
+<!-- ### Lookup -->
+<!-- ### Reclass by ASCII File -->
+<!-- ### Reclass by Table -->
+<!-- ### Reclassify -->
+<!-- ### Rescale by Function -->
+<!-- ### Slice -->
 
 
-## Zonal Toolset
+<!-- ## Surface Toolset -->
+
+<!-- ### Aspect -->
+<!-- ### Contour -->
+<!-- ### Contour List -->
+<!-- ### Contour with Barriers -->
+<!-- ### Curvature -->
+<!-- ### Cut Fill -->
+<!-- ### Hillshade -->
+<!-- ### Observer Points -->
+<!-- ### Slope -->
+<!-- ### Viewshed -->
+<!-- ### Viewshed 2 -->
+<!-- ### Visibility -->
+
+
+<!-- ## Zonal Toolset -->
 
 
 

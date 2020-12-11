@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4.2 Select by Location | Burning Bridges</title>
-  <meta name="description" content="4.2 Select by Location | Burning Bridges" />
+  <title>5 Spatial Analyst Toolbox | Burning Bridges</title>
+  <meta name="description" content="5 Spatial Analyst Toolbox | Burning Bridges" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4.2 Select by Location | Burning Bridges" />
+  <meta property="og:title" content="5 Spatial Analyst Toolbox | Burning Bridges" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4.2 Select by Location | Burning Bridges" />
+  <meta name="twitter:title" content="5 Spatial Analyst Toolbox | Burning Bridges" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="select-by-attribute.html"/>
-<link rel="next" href="spatial-analyst-toolbox.html"/>
+<link rel="prev" href="select-by-location.html"/>
+<link rel="next" href="d-analyst-toolbox.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -198,59 +198,101 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="select-by-location" class="section level2">
-<h2><span class="header-section-number">4.2</span> Select by Location</h2>
-<p>One of the most commonly used operations in ArcGIS pro is the process of selecting features of a spatial object (layer) based on whether or not these relate spatially to another object (layer). This process is also referred as <strong>spatial subsetting</strong>. In ArcGIS pro this can be performed in various ways using the <code>Select by Location tool</code>.</p>
-<p>In <strong>R</strong> the same operation is, on a first level, performed using the <code>square bracket ([])</code> operator from the base R package.</p>
-<p>An example of spatial subsetting could be the following. Let’s assume we have as a shapefile (polygon dataframe) with all the municipalities (Gemeinde) of the Canton of Zurich. Furthermore, we are also using a shapefile in the form of a point dataframe, which represents all the <strong>“swimming spots”</strong> (Badenplätze) in the same spatial region (Canton of Zurich). So, ultimately, our goal is to find out the <strong>“swimming spots”</strong> that lie within a specific municipality of the Canton of Zurich.</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="select-by-location.html#cb63-1"></a><span class="co"># Minicipalities (Gemeinde) in Canton Zurich</span></span>
-<span id="cb63-2"><a href="select-by-location.html#cb63-2"></a>gemeinde_ZH &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;sample_data/Kanton_Zuerich/Gemeinde_ZH.shp&quot;</span>)</span></code></pre></div>
-<pre><code>## Reading layer `Gemeinde_ZH&#39; from data source `/Users/nikosbakogiannis/Documents/work_stuff/R_All_Spatial/spatialR_for_ArcGIS_Users/sample_data/Kanton_Zuerich/Gemeinde_ZH.shp&#39; using driver `ESRI Shapefile&#39;
-## Simple feature collection with 166 features and 7 fields
-## geometry type:  MULTIPOLYGON
-## dimension:      XY
-## bbox:           xmin: 2669245 ymin: 1223896 xmax: 2716900 ymax: 1283343
-## projected CRS:  CH1903+ / LV95</code></pre>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="select-by-location.html#cb65-1"></a><span class="co"># &quot;Swimming&quot; spots in the Canton of Zurich</span></span>
-<span id="cb65-2"><a href="select-by-location.html#cb65-2"></a>swimmSpots &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;sample_data/Kanton_Zuerich/Badeplaetze_ZH.shp&quot;</span>)</span></code></pre></div>
-<pre><code>## Reading layer `Badeplaetze_ZH&#39; from data source `/Users/nikosbakogiannis/Documents/work_stuff/R_All_Spatial/spatialR_for_ArcGIS_Users/sample_data/Kanton_Zuerich/Badeplaetze_ZH.shp&#39; using driver `ESRI Shapefile&#39;
-## Simple feature collection with 71 features and 6 fields
-## geometry type:  POINT
-## dimension:      XY
-## bbox:           xmin: 2671636 ymin: 1226720 xmax: 2710101 ymax: 1282760
-## projected CRS:  CH1903+ / LV95</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
-<p>After importing and depicting the <strong>“swimming spots”</strong> throughout the canton of Zurich, let’s assume we want to check if and how many of them <strong>lie within</strong> the Municipality of Richterswil. To do so, we will perform an operation, which belongs to the category of <strong>Spatial subsetting</strong>.</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="select-by-location.html#cb67-1"></a>swimmSpots_richt &lt;-<span class="st"> </span>swimmSpots[richterswil, ,op =<span class="st"> </span>st_within]</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
-<p>The operation above is based on the following rule: <code>x[y, ,operation]</code>, where:</p>
-<style>
-
-div.note { background-color:#f0f0f0; border-radius: 5px; padding: 20px;}
-</style>
-<div class="note">
+<div id="spatial-analyst-toolbox" class="section level1">
+<h1><span class="header-section-number">5</span> Spatial Analyst Toolbox</h1>
+<!-- ## Conditional Toolset -->
+<!-- ## Density Toolset -->
+<div id="kernel-denisity" class="section level3">
+<h3><span class="header-section-number">5.0.1</span> Kernel Denisity</h3>
+<p>There are several Function that can be tweaked to calculate KDE for <code>sf</code>-Point object:</p>
 <ul>
-<li><strong>x</strong> and <strong>y</strong> are the spatial objects for which we want to investigate if there is a spatial relationship (x is the target feature, while y is the source one)<br />
-</li>
-<li>the second argument <strong>[, ,]</strong> within the brackets denotes the column number we want to retrieve from the spatial subsetting. In our example this argument was empty, which means we wanted to retrieve all rows for every <strong>attribute column</strong>.<br />
-</li>
-<li>the third argument <strong>[op = ]</strong> specifies the spatial operation we want to perform. In the example above, the goal was to find out how many subset features of the target object <em>swimmSpots</em> lie withing the source spatial object <em>richterswil</em>. For that reason we chose the function <strong>st_within()</strong>.</li>
+<li><code>tmaptools::smooth_map()</code>: Depricated (is there a successor?)</li>
+<li><code>spatstat::density.ppp()</code>: Takes only objects of Class <code>ppp</code></li>
+<li><code>MASS::kde2d()</code>: Takes x/y coordinates as vectors and returns a matrix</li>
 </ul>
-</div>
-<p>Depending on what we want to examine, we choose the respective function.</p>
+<p>In this example, I take <code>MASS:kde2d()</code> and tweak it to take <code>sf</code> and return <code>raster</code>. First, let’s create some sample data:</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="spatial-analyst-toolbox.html#cb69-1"></a><span class="kw">set.seed</span>(<span class="dv">10</span>)</span>
+<span id="cb69-2"><a href="spatial-analyst-toolbox.html#cb69-2"></a>mypoints &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">rnorm</span>(<span class="dv">1000</span>),<span class="dt">y =</span> <span class="kw">rnorm</span>(<span class="dv">1000</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb69-3"><a href="spatial-analyst-toolbox.html#cb69-3"></a><span class="st">  </span><span class="kw">st_as_sf</span>(<span class="dt">coords =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb69-4"><a href="spatial-analyst-toolbox.html#cb69-4"></a></span>
+<span id="cb69-5"><a href="spatial-analyst-toolbox.html#cb69-5"></a><span class="kw">plot</span>(mypoints)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="spatial-analyst-toolbox.html#cb70-1"></a>my_kde &lt;-<span class="st"> </span><span class="cf">function</span>(points,cellsize, bandwith, <span class="dt">extent =</span> <span class="ot">NULL</span>){</span>
+<span id="cb70-2"><a href="spatial-analyst-toolbox.html#cb70-2"></a>  <span class="kw">require</span>(MASS)</span>
+<span id="cb70-3"><a href="spatial-analyst-toolbox.html#cb70-3"></a>  <span class="kw">require</span>(raster)</span>
+<span id="cb70-4"><a href="spatial-analyst-toolbox.html#cb70-4"></a>  <span class="kw">require</span>(sf)</span>
+<span id="cb70-5"><a href="spatial-analyst-toolbox.html#cb70-5"></a>  <span class="cf">if</span>(<span class="kw">is.null</span>(extent)){</span>
+<span id="cb70-6"><a href="spatial-analyst-toolbox.html#cb70-6"></a>    extent_vec &lt;-<span class="st"> </span><span class="kw">st_bbox</span>(points)[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>)]</span>
+<span id="cb70-7"><a href="spatial-analyst-toolbox.html#cb70-7"></a>  } <span class="cf">else</span>{</span>
+<span id="cb70-8"><a href="spatial-analyst-toolbox.html#cb70-8"></a>    extent_vec &lt;-<span class="st"> </span><span class="kw">st_bbox</span>(extent)[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>)]</span>
+<span id="cb70-9"><a href="spatial-analyst-toolbox.html#cb70-9"></a>  }</span>
+<span id="cb70-10"><a href="spatial-analyst-toolbox.html#cb70-10"></a>  </span>
+<span id="cb70-11"><a href="spatial-analyst-toolbox.html#cb70-11"></a>  n_y &lt;-<span class="st"> </span><span class="kw">ceiling</span>((extent_vec[<span class="dv">4</span>]<span class="op">-</span>extent_vec[<span class="dv">3</span>])<span class="op">/</span>cellsize)</span>
+<span id="cb70-12"><a href="spatial-analyst-toolbox.html#cb70-12"></a>  n_x &lt;-<span class="st"> </span><span class="kw">ceiling</span>((extent_vec[<span class="dv">2</span>]<span class="op">-</span>extent_vec[<span class="dv">1</span>])<span class="op">/</span>cellsize)</span>
+<span id="cb70-13"><a href="spatial-analyst-toolbox.html#cb70-13"></a>  </span>
+<span id="cb70-14"><a href="spatial-analyst-toolbox.html#cb70-14"></a>  extent_vec[<span class="dv">2</span>] &lt;-<span class="st"> </span>extent_vec[<span class="dv">1</span>]<span class="op">+</span>(n_x<span class="op">*</span>cellsize)<span class="op">-</span>cellsize</span>
+<span id="cb70-15"><a href="spatial-analyst-toolbox.html#cb70-15"></a>  extent_vec[<span class="dv">4</span>] &lt;-<span class="st"> </span>extent_vec[<span class="dv">3</span>]<span class="op">+</span>(n_y<span class="op">*</span>cellsize)<span class="op">-</span>cellsize</span>
+<span id="cb70-16"><a href="spatial-analyst-toolbox.html#cb70-16"></a></span>
+<span id="cb70-17"><a href="spatial-analyst-toolbox.html#cb70-17"></a>  coords &lt;-<span class="st"> </span><span class="kw">st_coordinates</span>(points)</span>
+<span id="cb70-18"><a href="spatial-analyst-toolbox.html#cb70-18"></a>  matrix &lt;-<span class="st"> </span><span class="kw">kde2d</span>(coords[,<span class="dv">1</span>],coords[,<span class="dv">2</span>],<span class="dt">h =</span> bandwith,<span class="dt">n =</span> <span class="kw">c</span>(n_x,n_y),<span class="dt">lims =</span> extent_vec)</span>
+<span id="cb70-19"><a href="spatial-analyst-toolbox.html#cb70-19"></a>  <span class="kw">raster</span>(matrix)</span>
+<span id="cb70-20"><a href="spatial-analyst-toolbox.html#cb70-20"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="spatial-analyst-toolbox.html#cb71-1"></a>mypoints_kde &lt;-<span class="st"> </span><span class="kw">my_kde</span>(mypoints,<span class="fl">0.01</span>,<span class="dv">1</span>)</span>
+<span id="cb71-2"><a href="spatial-analyst-toolbox.html#cb71-2"></a><span class="kw">library</span>(stars)</span>
+<span id="cb71-3"><a href="spatial-analyst-toolbox.html#cb71-3"></a></span>
+<span id="cb71-4"><a href="spatial-analyst-toolbox.html#cb71-4"></a><span class="kw">ggplot</span>() <span class="op">+</span></span>
+<span id="cb71-5"><a href="spatial-analyst-toolbox.html#cb71-5"></a><span class="st">  </span><span class="kw">geom_stars</span>(<span class="dt">data =</span> <span class="kw">st_as_stars</span>(mypoints_kde)) <span class="op">+</span></span>
+<span id="cb71-6"><a href="spatial-analyst-toolbox.html#cb71-6"></a><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> mypoints, <span class="dt">alpha =</span> <span class="fl">0.2</span>, <span class="dt">fill =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span></span>
+<span id="cb71-7"><a href="spatial-analyst-toolbox.html#cb71-7"></a><span class="st">  </span><span class="kw">scale_fill_viridis_c</span>() <span class="op">+</span></span>
+<span id="cb71-8"><a href="spatial-analyst-toolbox.html#cb71-8"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">fill =</span> <span class="st">&quot;KDE&quot;</span>) <span class="op">+</span></span>
+<span id="cb71-9"><a href="spatial-analyst-toolbox.html#cb71-9"></a><span class="st">  </span><span class="kw">theme_void</span>() </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-40-1.png" width="672" /></p>
+<!-- ### Line Density -->
+<!-- ### Point Density -->
+<!-- ## Distance Toolset -->
+<!-- ## Extraction Toolset -->
+<!-- ## Generalization Toolset -->
+<!-- ## Interpolation Toolset -->
+<!-- ## Map Algebra Toolset -->
+<!-- ## Math Toolset -->
+<!-- ## Neighborhood Toolset -->
+<!-- ## Overlay Toolset -->
+<!-- ### Fuzzy Membership -->
+<!-- ### Fuzzy Overlay -->
+<!-- ### Locate Regions -->
+<!-- ### Weighted Overlay -->
+<!-- ### Weighted Sum -->
+<!-- ## Reclass Toolset -->
+<!-- ### Lookup -->
+<!-- ### Reclass by ASCII File -->
+<!-- ### Reclass by Table -->
+<!-- ### Reclassify -->
+<!-- ### Rescale by Function -->
+<!-- ### Slice -->
+<!-- ## Surface Toolset -->
+<!-- ### Aspect -->
+<!-- ### Contour -->
+<!-- ### Contour List -->
+<!-- ### Contour with Barriers -->
+<!-- ### Curvature -->
+<!-- ### Cut Fill -->
+<!-- ### Hillshade -->
+<!-- ### Observer Points -->
+<!-- ### Slope -->
+<!-- ### Viewshed -->
+<!-- ### Viewshed 2 -->
+<!-- ### Visibility -->
+<!-- ## Zonal Toolset -->
 
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="select-by-location.html#cb68-1"></a><span class="kw">library</span>(sf)</span>
-<span id="cb68-2"><a href="select-by-location.html#cb68-2"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb68-3"><a href="select-by-location.html#cb68-3"></a><span class="kw">library</span>(raster)</span></code></pre></div>
 </div>
-<!-- </div> -->
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="select-by-attribute.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="spatial-analyst-toolbox.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="select-by-location.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="d-analyst-toolbox.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -64,13 +64,13 @@ knitr::include_graphics("images/clipOperation.png")
 ```
 
 
-### Split
+<!-- ### Split -->
 
-### Split by Attributes
+<!-- ### Split by Attributes -->
 
-### Table Select
+<!-- ### Table Select -->
 
-## Overlay Toolset
+<!-- ## Overlay Toolset -->
 
 ### Merge
 
@@ -98,15 +98,15 @@ knitr::include_graphics("images/dissolve.png")
 ```
 
 
-### Erase
+<!-- ### Erase -->
 
-### Union
+<!-- ### Union -->
 
-### Symmetrical Difference
+<!-- ### Symmetrical Difference -->
 
 ### Spatial Join
 
-§
+
 Say you have two datasets:
 
 
@@ -156,15 +156,15 @@ Note that points not located in a Gemeinde get the value `NA`. You have to speci
 
 (1) All binary predicates only work on 2D Objects (see [this issue](https://github.com/r-spatial/sf/issues/907))
 
-### Intersect
+<!-- ### Intersect -->
 
 
 
-### Identity
+<!-- ### Identity -->
 
-### Update
+<!-- ### Update -->
 
-## Proximity Toolset
+<!-- ## Proximity Toolset -->
 
 ### Buffer
 
