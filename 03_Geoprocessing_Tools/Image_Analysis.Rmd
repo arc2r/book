@@ -1,19 +1,35 @@
 # Image Analysis Toolbox
 
-## Map Algebra Toolset
+<!-- ## Map Algebra Toolset -->
+
 
 ### Raster Calulator
 
-## Math Toolset
+In GIS Softwares (ArcGIS pro, QGIS etc) `Raster Calculator` tool is one of the most
+commonly used tools for performing various operations with raster datasets.  
+Let's explore our options for performing similar tasks with R.  
 
-## Overlay Toolset
+```{r}
+library(raster)
+pop_2000 <- raster("sample_data/population_raster/gpw_v4_population_count_rev11_2000_2pt5_min.tif")
+pop_2010 <- raster("sample_data/population_raster/gpw_v4_population_count_rev11_2010_2pt5_min.tif")
 
-### Weighted Sum
+par(mfrow=c(1,2))
+plot(pop_2000)
+plot(pop_2010)
 
-## Statistical Toolset
+```
 
-### Cell Statistics
+<!-- ## Math Toolset -->
+
+<!-- ## Overlay Toolset -->
+
+<!-- ### Weighted Sum -->
+
+<!-- ## Statistical Toolset -->
+
+<!-- ### Cell Statistics -->
 
 ### Focal Statistics
 
-### Zonal Statistics
+<!-- ### Zonal Statistics -->

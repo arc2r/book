@@ -5,7 +5,7 @@
 knitr::opts_chunk$set(warning = F, message = F, tidy = T)
 ```
 
-## Extract Toolset
+<!-- ## Extract Toolset -->
 
 ### Clip
 
