@@ -38,4 +38,17 @@ Source: https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/
 In R the respective operation can be performed with the use of the _focal_ function of the __terra package__.
 As an example below, we will create our own raster object.  
 
+```{r}
+library(raster)
+library(terra)
+
+r <- raster(ncol=10, nrow=10)
+
+ncell(r)
+values(r) <- 1:ncell(r)
+# # inMemory(r)
+values(r)[1:10]
+plot(r, main='Raster with 100 cells')
+
+``` 
 <!-- ### Zonal Statistics -->
