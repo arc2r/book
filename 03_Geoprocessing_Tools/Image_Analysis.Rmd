@@ -49,6 +49,13 @@ values(r) <- 1:ncell(r)
 # # inMemory(r)
 values(r)[1:10]
 plot(r, main='Raster with 100 cells')
-
 ``` 
+
+Computing now the raster based on the focal statistics function
+
+```{r}
+f1 <- focal(r, w=matrix(1,nrow=3,ncol=3)  , fun=sum)
+plot(f1)
+```
+
 <!-- ### Zonal Statistics -->
