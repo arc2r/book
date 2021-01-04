@@ -58,4 +58,13 @@ f1 <- focal(r, w=matrix(1,nrow=3,ncol=3)  , fun=sum)
 plot(f1)
 ```
 
+Second version using the **terra** package.  
+```{r}
+library(terra)
+r_spat <- as(r, "SpatRaster")
+f2 <- terra::focal(r_spat,w=3,fun = "sum")
+plot(f2)
+```
+
+
 <!-- ### Zonal Statistics -->
