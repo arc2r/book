@@ -32,6 +32,7 @@
   
 <link rel="prev" href="select-by-attribute.html"/>
 <link rel="next" href="spatial-analyst-toolbox.html"/>
+<script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -49,7 +50,6 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
@@ -65,18 +65,17 @@
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -96,7 +95,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -143,42 +142,51 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul class="summary">
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Abstract</a></li>
 <li class="chapter" data-level="2" data-path="foreword.html"><a href="foreword.html"><i class="fa fa-check"></i><b>2</b> Foreword</a></li>
-<li class="chapter" data-level="3" data-path="making-maps.html"><a href="making-maps.html"><i class="fa fa-check"></i><b>3</b> Making Maps</a><ul>
-<li class="chapter" data-level="3.1" data-path="making-static-maps.html"><a href="making-static-maps.html"><i class="fa fa-check"></i><b>3.1</b> Making Static Maps</a><ul>
+<li class="chapter" data-level="3" data-path="making-maps.html"><a href="making-maps.html"><i class="fa fa-check"></i><b>3</b> Making Maps</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="making-static-maps.html"><a href="making-static-maps.html"><i class="fa fa-check"></i><b>3.1</b> Making Static Maps</a>
+<ul>
 <li class="chapter" data-level="3.1.1" data-path="making-static-maps.html"><a href="making-static-maps.html#static-maps-with-ggplot2"><i class="fa fa-check"></i><b>3.1.1</b> Static maps with <code>ggplot2</code></a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="making-interactive-maps.html"><a href="making-interactive-maps.html"><i class="fa fa-check"></i><b>3.2</b> Making Interactive Maps</a><ul>
+<li class="chapter" data-level="3.2" data-path="making-interactive-maps.html"><a href="making-interactive-maps.html"><i class="fa fa-check"></i><b>3.2</b> Making Interactive Maps</a>
+<ul>
 <li class="chapter" data-level="3.2.1" data-path="making-interactive-maps.html"><a href="making-interactive-maps.html#introduction-to-tmap"><i class="fa fa-check"></i><b>3.2.1</b> Introduction to <code>tmap</code></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="basic-spatial-operations.html"><a href="basic-spatial-operations.html"><i class="fa fa-check"></i><b>4</b> Basic spatial operations</a><ul>
+<li class="chapter" data-level="4" data-path="basic-spatial-operations.html"><a href="basic-spatial-operations.html"><i class="fa fa-check"></i><b>4</b> Basic spatial operations</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="select-by-attribute.html"><a href="select-by-attribute.html"><i class="fa fa-check"></i><b>4.1</b> Select by Attribute</a></li>
 <li class="chapter" data-level="4.2" data-path="select-by-location.html"><a href="select-by-location.html"><i class="fa fa-check"></i><b>4.2</b> Select by Location</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="spatial-analyst-toolbox.html"><a href="spatial-analyst-toolbox.html"><i class="fa fa-check"></i><b>5</b> Spatial Analyst Toolbox</a><ul>
+<li class="chapter" data-level="5" data-path="spatial-analyst-toolbox.html"><a href="spatial-analyst-toolbox.html"><i class="fa fa-check"></i><b>5</b> Spatial Analyst Toolbox</a>
+<ul>
 <li class="chapter" data-level="5.0.1" data-path="spatial-analyst-toolbox.html"><a href="spatial-analyst-toolbox.html#kernel-denisity"><i class="fa fa-check"></i><b>5.0.1</b> Kernel Denisity</a></li>
-<li class="chapter" data-level="5.1" data-path="reclass-toolset.html"><a href="reclass-toolset.html"><i class="fa fa-check"></i><b>5.1</b> Reclass Toolset</a><ul>
+<li class="chapter" data-level="5.1" data-path="reclass-toolset.html"><a href="reclass-toolset.html"><i class="fa fa-check"></i><b>5.1</b> Reclass Toolset</a>
+<ul>
 <li class="chapter" data-level="5.1.1" data-path="reclass-toolset.html"><a href="reclass-toolset.html#slope-and-aspect"><i class="fa fa-check"></i><b>5.1.1</b> Slope and Aspect</a></li>
 <li class="chapter" data-level="5.1.2" data-path="reclass-toolset.html"><a href="reclass-toolset.html#reclassify"><i class="fa fa-check"></i><b>5.1.2</b> Reclassify</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="d-analyst-toolbox.html"><a href="d-analyst-toolbox.html"><i class="fa fa-check"></i><b>6</b> 3D Analyst Toolbox</a><ul>
-<li class="chapter" data-level="6.1" data-path="raster-interpolation-toolset.html"><a href="raster-interpolation-toolset.html"><i class="fa fa-check"></i><b>6.1</b> Raster Interpolation Toolset</a><ul>
+<li class="chapter" data-level="6" data-path="d-analyst-toolbox.html"><a href="d-analyst-toolbox.html"><i class="fa fa-check"></i><b>6</b> 3D Analyst Toolbox</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="raster-interpolation-toolset.html"><a href="raster-interpolation-toolset.html"><i class="fa fa-check"></i><b>6.1</b> Raster Interpolation Toolset</a>
+<ul>
 <li class="chapter" data-level="6.1.1" data-path="raster-interpolation-toolset.html"><a href="raster-interpolation-toolset.html#idw"><i class="fa fa-check"></i><b>6.1.1</b> IDW</a></li>
 <li class="chapter" data-level="6.1.2" data-path="raster-interpolation-toolset.html"><a href="raster-interpolation-toolset.html#kriging"><i class="fa fa-check"></i><b>6.1.2</b> Kriging</a></li>
 <li class="chapter" data-level="6.1.3" data-path="raster-interpolation-toolset.html"><a href="raster-interpolation-toolset.html#natural-neighbor"><i class="fa fa-check"></i><b>6.1.3</b> Natural Neighbor</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="analysis-toolbox.html"><a href="analysis-toolbox.html"><i class="fa fa-check"></i><b>7</b> Analysis Toolbox</a><ul>
-<li class="chapter" data-level="7.1" data-path="extract-toolset.html"><a href="extract-toolset.html"><i class="fa fa-check"></i><b>7.1</b> Extract Toolset</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="extract-toolset.html"><a href="extract-toolset.html#clip"><i class="fa fa-check"></i><b>7.1.1</b> Clip</a></li>
-<li class="chapter" data-level="7.1.2" data-path="extract-toolset.html"><a href="extract-toolset.html#merge"><i class="fa fa-check"></i><b>7.1.2</b> Merge</a></li>
-<li class="chapter" data-level="7.1.3" data-path="extract-toolset.html"><a href="extract-toolset.html#spatial-join"><i class="fa fa-check"></i><b>7.1.3</b> Spatial Join</a></li>
-<li class="chapter" data-level="7.1.4" data-path="extract-toolset.html"><a href="extract-toolset.html#buffer"><i class="fa fa-check"></i><b>7.1.4</b> Buffer</a></li>
+<li class="chapter" data-level="7" data-path="analysis-toolbox.html"><a href="analysis-toolbox.html"><i class="fa fa-check"></i><b>7</b> Analysis Toolbox</a>
+<ul>
+<li class="chapter" data-level="7.0.1" data-path="analysis-toolbox.html"><a href="analysis-toolbox.html#clip"><i class="fa fa-check"></i><b>7.0.1</b> Clip</a></li>
+<li class="chapter" data-level="7.0.2" data-path="analysis-toolbox.html"><a href="analysis-toolbox.html#merge"><i class="fa fa-check"></i><b>7.0.2</b> Merge</a></li>
+<li class="chapter" data-level="7.0.3" data-path="analysis-toolbox.html"><a href="analysis-toolbox.html#spatial-join"><i class="fa fa-check"></i><b>7.0.3</b> Spatial Join</a></li>
+<li class="chapter" data-level="7.0.4" data-path="analysis-toolbox.html"><a href="analysis-toolbox.html#buffer"><i class="fa fa-check"></i><b>7.0.4</b> Buffer</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="data-management-toolbox.html"><a href="data-management-toolbox.html"><i class="fa fa-check"></i><b>8</b> Data Management Toolbox</a><ul>
-<li class="chapter" data-level="8.1" data-path="projections-and-transformations-toolset.html"><a href="projections-and-transformations-toolset.html"><i class="fa fa-check"></i><b>8.1</b> Projections and Transformations Toolset</a><ul>
+<li class="chapter" data-level="8" data-path="data-management-toolbox.html"><a href="data-management-toolbox.html"><i class="fa fa-check"></i><b>8</b> Data Management Toolbox</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="projections-and-transformations-toolset.html"><a href="projections-and-transformations-toolset.html"><i class="fa fa-check"></i><b>8.1</b> Projections and Transformations Toolset</a>
+<ul>
 <li class="chapter" data-level="8.1.1" data-path="projections-and-transformations-toolset.html"><a href="projections-and-transformations-toolset.html#reproject-vector-data-in-r"><i class="fa fa-check"></i><b>8.1.1</b> Reproject vector data in R</a></li>
 <li class="chapter" data-level="8.1.2" data-path="projections-and-transformations-toolset.html"><a href="projections-and-transformations-toolset.html#reproject-raster-data-in-r"><i class="fa fa-check"></i><b>8.1.2</b> Reproject raster data in R</a></li>
 <li class="chapter" data-level="8.1.3" data-path="projections-and-transformations-toolset.html"><a href="projections-and-transformations-toolset.html#generate-tessellation"><i class="fa fa-check"></i><b>8.1.3</b> Generate Tessellation</a></li>
@@ -201,22 +209,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="select-by-location" class="section level2">
+<div id="select-by-location" class="section level2" number="4.2">
 <h2><span class="header-section-number">4.2</span> Select by Location</h2>
 <p>One of the most commonly used operations in ArcGIS pro is the process of selecting features of a spatial object (layer) based on whether or not these relate spatially to another object (layer). This process is also referred as <strong>spatial subsetting</strong>. In ArcGIS pro this can be performed in various ways using the <code>Select by Location tool</code>.</p>
 <p>In <strong>R</strong> the same operation is, on a first level, performed using the <code>square bracket ([])</code> operator from the base R package.</p>
 <p>An example of spatial subsetting could be the following. Let’s assume we have as a shapefile (polygon dataframe) with all the municipalities (Gemeinde) of the Canton of Zurich. Furthermore, we are also using a shapefile in the form of a point dataframe, which represents all the <strong>“swimming spots”</strong> (Badenplätze) in the same spatial region (Canton of Zurich). So, ultimately, our goal is to find out the <strong>“swimming spots”</strong> that lie within a specific municipality of the Canton of Zurich.</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="select-by-location.html#cb63-1"></a><span class="co"># Minicipalities (Gemeinde) in Canton Zurich</span></span>
-<span id="cb63-2"><a href="select-by-location.html#cb63-2"></a>gemeinde_ZH &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;sample_data/Kanton_Zuerich/Gemeinde_ZH.shp&quot;</span>)</span></code></pre></div>
-<pre><code>## Reading layer `Gemeinde_ZH&#39; from data source `/Users/nikosbakogiannis/Documents/work_stuff/R_All_Spatial/spatialR_for_ArcGIS_Users/sample_data/Kanton_Zuerich/Gemeinde_ZH.shp&#39; using driver `ESRI Shapefile&#39;
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="select-by-location.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Minicipalities (Gemeinde) in Canton Zurich</span></span>
+<span id="cb63-2"><a href="select-by-location.html#cb63-2" aria-hidden="true" tabindex="-1"></a>gemeinde_ZH <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;sample_data/Kanton_Zuerich/Gemeinde_ZH.shp&quot;</span>)</span></code></pre></div>
+<pre><code>## Reading layer `Gemeinde_ZH&#39; from data source `C:\Users\bako\Desktop\Projekte\All_thing_R_Spatial\github\spatialR_for_ArcGIS_Users\sample_data\Kanton_Zuerich\Gemeinde_ZH.shp&#39; using driver `ESRI Shapefile&#39;
 ## Simple feature collection with 166 features and 7 fields
 ## geometry type:  MULTIPOLYGON
 ## dimension:      XY
 ## bbox:           xmin: 2669245 ymin: 1223896 xmax: 2716900 ymax: 1283343
 ## projected CRS:  CH1903+ / LV95</code></pre>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="select-by-location.html#cb65-1"></a><span class="co"># &quot;Swimming&quot; spots in the Canton of Zurich</span></span>
-<span id="cb65-2"><a href="select-by-location.html#cb65-2"></a>swimmSpots &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;sample_data/Kanton_Zuerich/Badeplaetze_ZH.shp&quot;</span>)</span></code></pre></div>
-<pre><code>## Reading layer `Badeplaetze_ZH&#39; from data source `/Users/nikosbakogiannis/Documents/work_stuff/R_All_Spatial/spatialR_for_ArcGIS_Users/sample_data/Kanton_Zuerich/Badeplaetze_ZH.shp&#39; using driver `ESRI Shapefile&#39;
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="select-by-location.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># &quot;Swimming&quot; spots in the Canton of Zurich</span></span>
+<span id="cb65-2"><a href="select-by-location.html#cb65-2" aria-hidden="true" tabindex="-1"></a>swimmSpots <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;sample_data/Kanton_Zuerich/Badeplaetze_ZH.shp&quot;</span>)</span></code></pre></div>
+<pre><code>## Reading layer `Badeplaetze_ZH&#39; from data source `C:\Users\bako\Desktop\Projekte\All_thing_R_Spatial\github\spatialR_for_ArcGIS_Users\sample_data\Kanton_Zuerich\Badeplaetze_ZH.shp&#39; using driver `ESRI Shapefile&#39;
 ## Simple feature collection with 71 features and 6 fields
 ## geometry type:  POINT
 ## dimension:      XY
@@ -224,7 +232,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## projected CRS:  CH1903+ / LV95</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
 <p>After importing and depicting the <strong>“swimming spots”</strong> throughout the canton of Zurich, let’s assume we want to check if and how many of them <strong>lie within</strong> the Municipality of Richterswil. To do so, we will perform an operation, which belongs to the category of <strong>Spatial subsetting</strong>.</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="select-by-location.html#cb67-1"></a>swimmSpots_richt &lt;-<span class="st"> </span>swimmSpots[richterswil, ,op =<span class="st"> </span>st_within]</span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="select-by-location.html#cb67-1" aria-hidden="true" tabindex="-1"></a>swimmSpots_richt <span class="ot">&lt;-</span> swimmSpots[richterswil, ,op <span class="ot">=</span> st_within]</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
 <p>The operation above is based on the following rule: <code>x[y, ,operation]</code>, where:</p>
 <style>
@@ -242,9 +250,9 @@ div.note { background-color:#f0f0f0; border-radius: 5px; padding: 20px;}
 </div>
 <p>Depending on what we want to examine, we choose the respective function.</p>
 
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="select-by-location.html#cb68-1"></a><span class="kw">library</span>(sf)</span>
-<span id="cb68-2"><a href="select-by-location.html#cb68-2"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb68-3"><a href="select-by-location.html#cb68-3"></a><span class="kw">library</span>(raster)</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="select-by-location.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb68-2"><a href="select-by-location.html#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb68-3"><a href="select-by-location.html#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span></code></pre></div>
 </div>
 <!-- </div> -->
             </section>

@@ -29,7 +29,6 @@ idw
 kriging
 natural-neighbor
 analysis-toolbox
-extract-toolset
 clip
 merge
 spatial-join

@@ -32,6 +32,7 @@
   
 <link rel="prev" href="data-management-toolbox.html"/>
 
+<script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -49,7 +50,6 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
@@ -65,18 +65,17 @@
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -96,7 +95,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -143,42 +142,51 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul class="summary">
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Abstract</a></li>
 <li class="chapter" data-level="2" data-path="foreword.html"><a href="foreword.html"><i class="fa fa-check"></i><b>2</b> Foreword</a></li>
-<li class="chapter" data-level="3" data-path="making-maps.html"><a href="making-maps.html"><i class="fa fa-check"></i><b>3</b> Making Maps</a><ul>
-<li class="chapter" data-level="3.1" data-path="making-static-maps.html"><a href="making-static-maps.html"><i class="fa fa-check"></i><b>3.1</b> Making Static Maps</a><ul>
+<li class="chapter" data-level="3" data-path="making-maps.html"><a href="making-maps.html"><i class="fa fa-check"></i><b>3</b> Making Maps</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="making-static-maps.html"><a href="making-static-maps.html"><i class="fa fa-check"></i><b>3.1</b> Making Static Maps</a>
+<ul>
 <li class="chapter" data-level="3.1.1" data-path="making-static-maps.html"><a href="making-static-maps.html#static-maps-with-ggplot2"><i class="fa fa-check"></i><b>3.1.1</b> Static maps with <code>ggplot2</code></a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="making-interactive-maps.html"><a href="making-interactive-maps.html"><i class="fa fa-check"></i><b>3.2</b> Making Interactive Maps</a><ul>
+<li class="chapter" data-level="3.2" data-path="making-interactive-maps.html"><a href="making-interactive-maps.html"><i class="fa fa-check"></i><b>3.2</b> Making Interactive Maps</a>
+<ul>
 <li class="chapter" data-level="3.2.1" data-path="making-interactive-maps.html"><a href="making-interactive-maps.html#introduction-to-tmap"><i class="fa fa-check"></i><b>3.2.1</b> Introduction to <code>tmap</code></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="basic-spatial-operations.html"><a href="basic-spatial-operations.html"><i class="fa fa-check"></i><b>4</b> Basic spatial operations</a><ul>
+<li class="chapter" data-level="4" data-path="basic-spatial-operations.html"><a href="basic-spatial-operations.html"><i class="fa fa-check"></i><b>4</b> Basic spatial operations</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="select-by-attribute.html"><a href="select-by-attribute.html"><i class="fa fa-check"></i><b>4.1</b> Select by Attribute</a></li>
 <li class="chapter" data-level="4.2" data-path="select-by-location.html"><a href="select-by-location.html"><i class="fa fa-check"></i><b>4.2</b> Select by Location</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="spatial-analyst-toolbox.html"><a href="spatial-analyst-toolbox.html"><i class="fa fa-check"></i><b>5</b> Spatial Analyst Toolbox</a><ul>
+<li class="chapter" data-level="5" data-path="spatial-analyst-toolbox.html"><a href="spatial-analyst-toolbox.html"><i class="fa fa-check"></i><b>5</b> Spatial Analyst Toolbox</a>
+<ul>
 <li class="chapter" data-level="5.0.1" data-path="spatial-analyst-toolbox.html"><a href="spatial-analyst-toolbox.html#kernel-denisity"><i class="fa fa-check"></i><b>5.0.1</b> Kernel Denisity</a></li>
-<li class="chapter" data-level="5.1" data-path="reclass-toolset.html"><a href="reclass-toolset.html"><i class="fa fa-check"></i><b>5.1</b> Reclass Toolset</a><ul>
+<li class="chapter" data-level="5.1" data-path="reclass-toolset.html"><a href="reclass-toolset.html"><i class="fa fa-check"></i><b>5.1</b> Reclass Toolset</a>
+<ul>
 <li class="chapter" data-level="5.1.1" data-path="reclass-toolset.html"><a href="reclass-toolset.html#slope-and-aspect"><i class="fa fa-check"></i><b>5.1.1</b> Slope and Aspect</a></li>
 <li class="chapter" data-level="5.1.2" data-path="reclass-toolset.html"><a href="reclass-toolset.html#reclassify"><i class="fa fa-check"></i><b>5.1.2</b> Reclassify</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="d-analyst-toolbox.html"><a href="d-analyst-toolbox.html"><i class="fa fa-check"></i><b>6</b> 3D Analyst Toolbox</a><ul>
-<li class="chapter" data-level="6.1" data-path="raster-interpolation-toolset.html"><a href="raster-interpolation-toolset.html"><i class="fa fa-check"></i><b>6.1</b> Raster Interpolation Toolset</a><ul>
+<li class="chapter" data-level="6" data-path="d-analyst-toolbox.html"><a href="d-analyst-toolbox.html"><i class="fa fa-check"></i><b>6</b> 3D Analyst Toolbox</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="raster-interpolation-toolset.html"><a href="raster-interpolation-toolset.html"><i class="fa fa-check"></i><b>6.1</b> Raster Interpolation Toolset</a>
+<ul>
 <li class="chapter" data-level="6.1.1" data-path="raster-interpolation-toolset.html"><a href="raster-interpolation-toolset.html#idw"><i class="fa fa-check"></i><b>6.1.1</b> IDW</a></li>
 <li class="chapter" data-level="6.1.2" data-path="raster-interpolation-toolset.html"><a href="raster-interpolation-toolset.html#kriging"><i class="fa fa-check"></i><b>6.1.2</b> Kriging</a></li>
 <li class="chapter" data-level="6.1.3" data-path="raster-interpolation-toolset.html"><a href="raster-interpolation-toolset.html#natural-neighbor"><i class="fa fa-check"></i><b>6.1.3</b> Natural Neighbor</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="analysis-toolbox.html"><a href="analysis-toolbox.html"><i class="fa fa-check"></i><b>7</b> Analysis Toolbox</a><ul>
-<li class="chapter" data-level="7.1" data-path="extract-toolset.html"><a href="extract-toolset.html"><i class="fa fa-check"></i><b>7.1</b> Extract Toolset</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="extract-toolset.html"><a href="extract-toolset.html#clip"><i class="fa fa-check"></i><b>7.1.1</b> Clip</a></li>
-<li class="chapter" data-level="7.1.2" data-path="extract-toolset.html"><a href="extract-toolset.html#merge"><i class="fa fa-check"></i><b>7.1.2</b> Merge</a></li>
-<li class="chapter" data-level="7.1.3" data-path="extract-toolset.html"><a href="extract-toolset.html#spatial-join"><i class="fa fa-check"></i><b>7.1.3</b> Spatial Join</a></li>
-<li class="chapter" data-level="7.1.4" data-path="extract-toolset.html"><a href="extract-toolset.html#buffer"><i class="fa fa-check"></i><b>7.1.4</b> Buffer</a></li>
+<li class="chapter" data-level="7" data-path="analysis-toolbox.html"><a href="analysis-toolbox.html"><i class="fa fa-check"></i><b>7</b> Analysis Toolbox</a>
+<ul>
+<li class="chapter" data-level="7.0.1" data-path="analysis-toolbox.html"><a href="analysis-toolbox.html#clip"><i class="fa fa-check"></i><b>7.0.1</b> Clip</a></li>
+<li class="chapter" data-level="7.0.2" data-path="analysis-toolbox.html"><a href="analysis-toolbox.html#merge"><i class="fa fa-check"></i><b>7.0.2</b> Merge</a></li>
+<li class="chapter" data-level="7.0.3" data-path="analysis-toolbox.html"><a href="analysis-toolbox.html#spatial-join"><i class="fa fa-check"></i><b>7.0.3</b> Spatial Join</a></li>
+<li class="chapter" data-level="7.0.4" data-path="analysis-toolbox.html"><a href="analysis-toolbox.html#buffer"><i class="fa fa-check"></i><b>7.0.4</b> Buffer</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="data-management-toolbox.html"><a href="data-management-toolbox.html"><i class="fa fa-check"></i><b>8</b> Data Management Toolbox</a><ul>
-<li class="chapter" data-level="8.1" data-path="projections-and-transformations-toolset.html"><a href="projections-and-transformations-toolset.html"><i class="fa fa-check"></i><b>8.1</b> Projections and Transformations Toolset</a><ul>
+<li class="chapter" data-level="8" data-path="data-management-toolbox.html"><a href="data-management-toolbox.html"><i class="fa fa-check"></i><b>8</b> Data Management Toolbox</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="projections-and-transformations-toolset.html"><a href="projections-and-transformations-toolset.html"><i class="fa fa-check"></i><b>8.1</b> Projections and Transformations Toolset</a>
+<ul>
 <li class="chapter" data-level="8.1.1" data-path="projections-and-transformations-toolset.html"><a href="projections-and-transformations-toolset.html#reproject-vector-data-in-r"><i class="fa fa-check"></i><b>8.1.1</b> Reproject vector data in R</a></li>
 <li class="chapter" data-level="8.1.2" data-path="projections-and-transformations-toolset.html"><a href="projections-and-transformations-toolset.html#reproject-raster-data-in-r"><i class="fa fa-check"></i><b>8.1.2</b> Reproject raster data in R</a></li>
 <li class="chapter" data-level="8.1.3" data-path="projections-and-transformations-toolset.html"><a href="projections-and-transformations-toolset.html#generate-tessellation"><i class="fa fa-check"></i><b>8.1.3</b> Generate Tessellation</a></li>
@@ -201,7 +209,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="projections-and-transformations-toolset" class="section level2">
+<div id="projections-and-transformations-toolset" class="section level2" number="8.1">
 <h2><span class="header-section-number">8.1</span> Projections and Transformations Toolset</h2>
 <p>Quite often in GIS, users found themselves before the necessity of transforming
 (reprojecting) the coordinate system of a dataset (vector or raster). In fact this
@@ -212,7 +220,7 @@ action is performed using the following tools:</p>
 <li><code>Project Raster (Data Management)</code> -&gt; Transforms a <strong>raster dataset</strong> from one coordinate system to another.</li>
 </ul>
 <p>The question now is how we can perform similar operations with R.</p>
-<div id="reproject-vector-data-in-r" class="section level3">
+<div id="reproject-vector-data-in-r" class="section level3" number="8.1.1">
 <h3><span class="header-section-number">8.1.1</span> Reproject vector data in R</h3>
 <p>For our example we will use the following dataset.</p>
 <ul>
@@ -221,29 +229,29 @@ action is performed using the following tools:</p>
 <p><strong>R</strong> and more specifically <strong>sf package</strong> offers options (functions) not only for
 transforming the coordinate system of a dataset, but also for identifying the
 current existing one. Let’s dive in :)</p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="projections-and-transformations-toolset.html#cb108-1"></a><span class="co"># Importing the dataset</span></span>
-<span id="cb108-2"><a href="projections-and-transformations-toolset.html#cb108-2"></a><span class="kw">library</span>(sf)</span>
-<span id="cb108-3"><a href="projections-and-transformations-toolset.html#cb108-3"></a>bezirke &lt;-<span class="st"> </span><span class="kw">read_sf</span>(<span class="st">&quot;sample_data/other/bezirke.gpkg&quot;</span>) </span></code></pre></div>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="projections-and-transformations-toolset.html#cb109-1"></a><span class="co"># Visualising the imported dataset</span></span>
-<span id="cb109-2"><a href="projections-and-transformations-toolset.html#cb109-2"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb109-3"><a href="projections-and-transformations-toolset.html#cb109-3"></a><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bezirke)</span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="projections-and-transformations-toolset.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the dataset</span></span>
+<span id="cb108-2"><a href="projections-and-transformations-toolset.html#cb108-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb108-3"><a href="projections-and-transformations-toolset.html#cb108-3" aria-hidden="true" tabindex="-1"></a>bezirke <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(<span class="st">&quot;sample_data/other/bezirke.gpkg&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="projections-and-transformations-toolset.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualising the imported dataset</span></span>
+<span id="cb109-2"><a href="projections-and-transformations-toolset.html#cb109-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb109-3"><a href="projections-and-transformations-toolset.html#cb109-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> bezirke)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-66-1.png" width="672" /></p>
 <p>In order to identify the current coordinate system of a dataset, <strong>sf package</strong>
 offers the function <em>st_crs</em>. The main usage of the function is to retrieve the
 coordinate reference system from an sf object.</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="projections-and-transformations-toolset.html#cb110-1"></a><span class="co"># retrieving the coordinate of the imported layer</span></span>
-<span id="cb110-2"><a href="projections-and-transformations-toolset.html#cb110-2"></a><span class="kw">st_crs</span>(bezirke)</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="projections-and-transformations-toolset.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="co"># retrieving the coordinate of the imported layer</span></span>
+<span id="cb110-2"><a href="projections-and-transformations-toolset.html#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(bezirke)</span></code></pre></div>
 <pre><code>## Coordinate Reference System: NA</code></pre>
 <p>As an output we received that there is no assigned coordinate system to this
 specific dataset. <em>st_set_crs</em> function helps us assigning a coordinate system
 to a dataset.</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="projections-and-transformations-toolset.html#cb112-1"></a><span class="co"># Assigning the World Geodetic System (WGS84) as a coordinate system to our dataset</span></span>
-<span id="cb112-2"><a href="projections-and-transformations-toolset.html#cb112-2"></a>bezirke &lt;-<span class="st"> </span><span class="kw">st_set_crs</span>(bezirke, <span class="dv">4326</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="projections-and-transformations-toolset.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning the World Geodetic System (WGS84) as a coordinate system to our dataset</span></span>
+<span id="cb112-2"><a href="projections-and-transformations-toolset.html#cb112-2" aria-hidden="true" tabindex="-1"></a>bezirke <span class="ot">&lt;-</span> <span class="fu">st_set_crs</span>(bezirke, <span class="dv">4326</span>)</span></code></pre></div>
 <p>In the function above, the number 4326 represents the <strong>EPSG Geodetic Parameter Dataset (EPSG)</strong>
 of the respective coordinate system. <strong>EPSG</strong> is a public registry of geodetic
 datums, spatial reference systems, Earth ellipsoids, coordinate transformations
 and related units of measurement.</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="projections-and-transformations-toolset.html#cb113-1"></a><span class="kw">st_crs</span>(bezirke)</span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="projections-and-transformations-toolset.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(bezirke)</span></code></pre></div>
 <pre><code>## Coordinate Reference System:
 ##   User input: EPSG:4326 
 ##   wkt:
@@ -272,16 +280,18 @@ The respective <strong>EPSG</strong> for code for the latest Swiss coordinate sy
 (CH1903+LV95) is 2056. For this purpose we use the <em>st_transform</em> function of the <strong>sf package</strong>.</p>
 <p><span style="color:red"><strong>Important</strong></span></p>
 <details>
-<summary><strong>&gt; Click to expand!</strong></summary>
+<summary>
+<strong>&gt; Click to expand!</strong>
+</summary>
 <em>st_set_crs</em> function <strong>does not</strong> reproject the coordinates of the given dataset. In
 other words, it does not affect the actual <em>geometry</em> column of the sf object.
 <em>st_tranform</em> on the other hand indeed <strong>does indeed reproject</strong> the dataset to another coordinate
 system.
 </details>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="projections-and-transformations-toolset.html#cb115-1"></a>bezirke_swiss &lt;-<span class="st"> </span><span class="kw">st_transform</span>(bezirke, <span class="dv">2056</span>)</span>
-<span id="cb115-2"><a href="projections-and-transformations-toolset.html#cb115-2"></a></span>
-<span id="cb115-3"><a href="projections-and-transformations-toolset.html#cb115-3"></a><span class="co"># retrieve the coordinate system</span></span>
-<span id="cb115-4"><a href="projections-and-transformations-toolset.html#cb115-4"></a><span class="kw">st_crs</span>(bezirke_swiss)</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="projections-and-transformations-toolset.html#cb115-1" aria-hidden="true" tabindex="-1"></a>bezirke_swiss <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(bezirke, <span class="dv">2056</span>)</span>
+<span id="cb115-2"><a href="projections-and-transformations-toolset.html#cb115-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb115-3"><a href="projections-and-transformations-toolset.html#cb115-3" aria-hidden="true" tabindex="-1"></a><span class="co"># retrieve the coordinate system</span></span>
+<span id="cb115-4"><a href="projections-and-transformations-toolset.html#cb115-4" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(bezirke_swiss)</span></code></pre></div>
 <pre><code>## Coordinate Reference System:
 ##   User input: EPSG:2056 
 ##   wkt:
@@ -330,7 +340,7 @@ system.
 ##         BBOX[45.82,5.96,47.81,10.49]],
 ##     ID[&quot;EPSG&quot;,2056]]</code></pre>
 </div>
-<div id="reproject-raster-data-in-r" class="section level3">
+<div id="reproject-raster-data-in-r" class="section level3" number="8.1.2">
 <h3><span class="header-section-number">8.1.2</span> Reproject raster data in R</h3>
 <p>Working with Raster datasets in GIS of operations is of equal importance, as
 working with vector ones. One of the spatial properties of raster datasets is the
@@ -339,19 +349,19 @@ the raster coordinates (which are just pairs of x/y values) to geographic locati
 In ArcGIS pro the tool for projecting a raster dataset is called
 <em>Project Raster (Data Management)</em>. Let’s see how we can perform the same operation
 with R.</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="projections-and-transformations-toolset.html#cb117-1"></a><span class="co"># Importing the datasets</span></span>
-<span id="cb117-2"><a href="projections-and-transformations-toolset.html#cb117-2"></a><span class="kw">library</span>(raster)</span>
-<span id="cb117-3"><a href="projections-and-transformations-toolset.html#cb117-3"></a></span>
-<span id="cb117-4"><a href="projections-and-transformations-toolset.html#cb117-4"></a><span class="co"># Dataset derived from the spatial interpolation of all the available &quot;recycling points&quot;</span></span>
-<span id="cb117-5"><a href="projections-and-transformations-toolset.html#cb117-5"></a><span class="co"># in the city of Wädenwil</span></span>
-<span id="cb117-6"><a href="projections-and-transformations-toolset.html#cb117-6"></a>raster_recycling &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&quot;sample_data/Raster/raster_recycling.tif&quot;</span>) <span class="co"># CRS -&gt; CH1903+LV95</span></span>
-<span id="cb117-7"><a href="projections-and-transformations-toolset.html#cb117-7"></a></span>
-<span id="cb117-8"><a href="projections-and-transformations-toolset.html#cb117-8"></a><span class="co"># Dataset representing the public transport quality in the city of Wädenswil</span></span>
-<span id="cb117-9"><a href="projections-and-transformations-toolset.html#cb117-9"></a>publicTransport &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&quot;sample_data/Raster/publicTransport_waedi.tif&quot;</span>) <span class="co"># CRS -&gt; WGS84 </span></span></code></pre></div>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="projections-and-transformations-toolset.html#cb118-1"></a><span class="co"># Plot the raster dataset - World Geodetic System 1984 </span></span>
-<span id="cb118-2"><a href="projections-and-transformations-toolset.html#cb118-2"></a><span class="kw">plot</span>(publicTransport,<span class="dt">las=</span><span class="dv">1</span>,</span>
-<span id="cb118-3"><a href="projections-and-transformations-toolset.html#cb118-3"></a>     <span class="dt">main =</span> <span class="st">&quot;Quality of public transport in the city of Wädenwil - CRS: WGS84&quot;</span>,</span>
-<span id="cb118-4"><a href="projections-and-transformations-toolset.html#cb118-4"></a>     <span class="dt">cex.main=</span><span class="dv">1</span>,<span class="dt">font.main=</span><span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="projections-and-transformations-toolset.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the datasets</span></span>
+<span id="cb117-2"><a href="projections-and-transformations-toolset.html#cb117-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
+<span id="cb117-3"><a href="projections-and-transformations-toolset.html#cb117-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-4"><a href="projections-and-transformations-toolset.html#cb117-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Dataset derived from the spatial interpolation of all the available &quot;recycling points&quot;</span></span>
+<span id="cb117-5"><a href="projections-and-transformations-toolset.html#cb117-5" aria-hidden="true" tabindex="-1"></a><span class="co"># in the city of Wädenwil</span></span>
+<span id="cb117-6"><a href="projections-and-transformations-toolset.html#cb117-6" aria-hidden="true" tabindex="-1"></a>raster_recycling <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="st">&quot;sample_data/Raster/raster_recycling.tif&quot;</span>) <span class="co"># CRS -&gt; CH1903+LV95</span></span>
+<span id="cb117-7"><a href="projections-and-transformations-toolset.html#cb117-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-8"><a href="projections-and-transformations-toolset.html#cb117-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Dataset representing the public transport quality in the city of Wädenswil</span></span>
+<span id="cb117-9"><a href="projections-and-transformations-toolset.html#cb117-9" aria-hidden="true" tabindex="-1"></a>publicTransport <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="st">&quot;sample_data/Raster/publicTransport_waedi.tif&quot;</span>) <span class="co"># CRS -&gt; WGS84 </span></span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="projections-and-transformations-toolset.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the raster dataset - World Geodetic System 1984 </span></span>
+<span id="cb118-2"><a href="projections-and-transformations-toolset.html#cb118-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(publicTransport,<span class="at">las=</span><span class="dv">1</span>,</span>
+<span id="cb118-3"><a href="projections-and-transformations-toolset.html#cb118-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Quality of public transport in the city of Wädenwil - CRS: WGS84&quot;</span>,</span>
+<span id="cb118-4"><a href="projections-and-transformations-toolset.html#cb118-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex.main=</span><span class="dv">1</span>,<span class="at">font.main=</span><span class="dv">4</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-72-1.png" width="672" /></p>
 <p>We can use the <em>projectRaster()</em> function to reproject a raster into a new CRS.
 The first argument of the aforementioned function is the raster dataset we want to reproject,
@@ -360,18 +370,18 @@ our case, we are targeting to the coordinate system of the <strong>raster_recycl
 dataset.<br />
 It is important to remember that raster reprojection only works when the raster
 object has already a defined CRS.</p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="projections-and-transformations-toolset.html#cb119-1"></a><span class="co"># Transform the coordinate system of the raster dataset publicTransport_CH</span></span>
-<span id="cb119-2"><a href="projections-and-transformations-toolset.html#cb119-2"></a><span class="co"># into the Swiss Coordinate system - CH1903+LV95</span></span>
-<span id="cb119-3"><a href="projections-and-transformations-toolset.html#cb119-3"></a>publicTransport_CH =<span class="st"> </span><span class="kw">projectRaster</span>(publicTransport, raster_recycling)</span></code></pre></div>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="projections-and-transformations-toolset.html#cb120-1"></a><span class="co"># Plot the raster dataset - Swiss Coordinate System CH1903+LV95 </span></span>
-<span id="cb120-2"><a href="projections-and-transformations-toolset.html#cb120-2"></a><span class="kw">plot</span>(publicTransport_CH,<span class="dt">las=</span><span class="dv">1</span>,</span>
-<span id="cb120-3"><a href="projections-and-transformations-toolset.html#cb120-3"></a>     <span class="dt">main =</span> <span class="st">&quot;Quality of public transport in the city of Wädenwil - CRS: CH1903+LV95&quot;</span>,</span>
-<span id="cb120-4"><a href="projections-and-transformations-toolset.html#cb120-4"></a>     <span class="dt">cex.main=</span><span class="dv">1</span>,<span class="dt">font.main=</span><span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="projections-and-transformations-toolset.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transform the coordinate system of the raster dataset publicTransport_CH</span></span>
+<span id="cb119-2"><a href="projections-and-transformations-toolset.html#cb119-2" aria-hidden="true" tabindex="-1"></a><span class="co"># into the Swiss Coordinate system - CH1903+LV95</span></span>
+<span id="cb119-3"><a href="projections-and-transformations-toolset.html#cb119-3" aria-hidden="true" tabindex="-1"></a>publicTransport_CH <span class="ot">=</span> <span class="fu">projectRaster</span>(publicTransport, raster_recycling)</span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="projections-and-transformations-toolset.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the raster dataset - Swiss Coordinate System CH1903+LV95 </span></span>
+<span id="cb120-2"><a href="projections-and-transformations-toolset.html#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(publicTransport_CH,<span class="at">las=</span><span class="dv">1</span>,</span>
+<span id="cb120-3"><a href="projections-and-transformations-toolset.html#cb120-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Quality of public transport in the city of Wädenwil - CRS: CH1903+LV95&quot;</span>,</span>
+<span id="cb120-4"><a href="projections-and-transformations-toolset.html#cb120-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex.main=</span><span class="dv">1</span>,<span class="at">font.main=</span><span class="dv">4</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-74-1.png" width="672" /></p>
 <!-- ## Topology Toolset -->
 <!-- ## Sampling Toolset -->
 </div>
-<div id="generate-tessellation" class="section level3">
+<div id="generate-tessellation" class="section level3" number="8.1.3">
 <h3><span class="header-section-number">8.1.3</span> Generate Tessellation</h3>
 <ul>
 <li>Hexagon</li>
@@ -392,7 +402,7 @@ object has already a defined CRS.</p>
 <!-- ### Ortho Mapping Toolset -->
 <!-- ### Raster Dataset Toolset -->
 <!-- ### Raster Processing Toolset -->
-<div id="clip-raster" class="section level4">
+<div id="clip-raster" class="section level4" number="8.1.3.1">
 <h4><span class="header-section-number">8.1.3.1</span> Clip Raster</h4>
 <p>In GIS operations is quite common the necessity of “clipping” an area based on
 some specific region of interest. This is a quite useful and necessary procedure
@@ -406,23 +416,23 @@ the example below, we are using the following datasets:</p>
 <li><strong>ARE_waedi</strong>: Vector dataset that depicts the public transport connection quality in the city of Wädenswil</li>
 <li><strong>raster_recycling</strong>: Dataset derived from the spatial interpolation of all the available “recycling points”in the city of Wädenwil</li>
 </ul>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="projections-and-transformations-toolset.html#cb121-1"></a><span class="co"># Read raster dataset</span></span>
-<span id="cb121-2"><a href="projections-and-transformations-toolset.html#cb121-2"></a><span class="kw">library</span>(raster)</span>
-<span id="cb121-3"><a href="projections-and-transformations-toolset.html#cb121-3"></a><span class="kw">library</span>(stars)</span>
-<span id="cb121-4"><a href="projections-and-transformations-toolset.html#cb121-4"></a><span class="kw">library</span>(sf)</span>
-<span id="cb121-5"><a href="projections-and-transformations-toolset.html#cb121-5"></a><span class="kw">library</span>(dplyr)</span>
-<span id="cb121-6"><a href="projections-and-transformations-toolset.html#cb121-6"></a><span class="kw">library</span>(stars)</span>
-<span id="cb121-7"><a href="projections-and-transformations-toolset.html#cb121-7"></a></span>
-<span id="cb121-8"><a href="projections-and-transformations-toolset.html#cb121-8"></a><span class="co"># Insert a vector dataset that depicts the public transport connection quality in</span></span>
-<span id="cb121-9"><a href="projections-and-transformations-toolset.html#cb121-9"></a><span class="co"># the city of Wädenswil and plot it</span></span>
-<span id="cb121-10"><a href="projections-and-transformations-toolset.html#cb121-10"></a>ARE_waedi &lt;-<span class="st"> </span><span class="kw">read_sf</span>(<span class="st">&quot;sample_data/Entsorgung_Waedenswil/ARE_waedenswil.shp&quot;</span>)</span>
-<span id="cb121-11"><a href="projections-and-transformations-toolset.html#cb121-11"></a></span>
-<span id="cb121-12"><a href="projections-and-transformations-toolset.html#cb121-12"></a><span class="co"># Read the raster dataset and plot it</span></span>
-<span id="cb121-13"><a href="projections-and-transformations-toolset.html#cb121-13"></a>raster_recycling &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&quot;sample_data/Entsorgung_Waedenswil/abfall_raster.tif&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="projections-and-transformations-toolset.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read raster dataset</span></span>
+<span id="cb121-2"><a href="projections-and-transformations-toolset.html#cb121-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
+<span id="cb121-3"><a href="projections-and-transformations-toolset.html#cb121-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stars)</span>
+<span id="cb121-4"><a href="projections-and-transformations-toolset.html#cb121-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb121-5"><a href="projections-and-transformations-toolset.html#cb121-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb121-6"><a href="projections-and-transformations-toolset.html#cb121-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stars)</span>
+<span id="cb121-7"><a href="projections-and-transformations-toolset.html#cb121-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-8"><a href="projections-and-transformations-toolset.html#cb121-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Insert a vector dataset that depicts the public transport connection quality in</span></span>
+<span id="cb121-9"><a href="projections-and-transformations-toolset.html#cb121-9" aria-hidden="true" tabindex="-1"></a><span class="co"># the city of Wädenswil and plot it</span></span>
+<span id="cb121-10"><a href="projections-and-transformations-toolset.html#cb121-10" aria-hidden="true" tabindex="-1"></a>ARE_waedi <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(<span class="st">&quot;sample_data/Entsorgung_Waedenswil/ARE_waedenswil.shp&quot;</span>)</span>
+<span id="cb121-11"><a href="projections-and-transformations-toolset.html#cb121-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-12"><a href="projections-and-transformations-toolset.html#cb121-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the raster dataset and plot it</span></span>
+<span id="cb121-13"><a href="projections-and-transformations-toolset.html#cb121-13" aria-hidden="true" tabindex="-1"></a>raster_recycling <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="st">&quot;sample_data/Entsorgung_Waedenswil/abfall_raster.tif&quot;</span>)</span></code></pre></div>
 <p>Plot the two datasets one over the other.
 <img src="_main_files/figure-html/unnamed-chunk-76-1.png" width="672" /></p>
 <p>In our case, the vector dataset serves as the clipping extent for the clipping operation.</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="projections-and-transformations-toolset.html#cb122-1"></a>recycle_Waedi_clip &lt;-<span class="st"> </span><span class="kw">mask</span>(raster_recycling,ARE_waedi)</span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="projections-and-transformations-toolset.html#cb122-1" aria-hidden="true" tabindex="-1"></a>recycle_Waedi_clip <span class="ot">&lt;-</span> <span class="fu">mask</span>(raster_recycling,ARE_waedi)</span></code></pre></div>
 <p><em>Visualising the clipped output</em>
 <img src="_main_files/figure-html/unnamed-chunk-77-1.png" width="672" /></p>
 <!-- #### Composite Bands -->

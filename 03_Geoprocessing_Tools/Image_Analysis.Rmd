@@ -32,4 +32,10 @@ plot(pop_2010)
 
 ### Focal Statistics
 
+>`Focal statistics` performs a neighbourhood operation that computes an output raster, where the value for each output cell is a function of the values of all the input cells that are in a specified neighborhood around that location. The function performed on the input is a statistic, such as the maximum, average, or sum of all values encountered in that neighborhood.
+Source: https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/how-focal-statistics-works.html
+
+In R the respective operation can be performed with the use of the _focal_ function of the __terra package__.
+As an example below, we will create our own raster object.  
+
 <!-- ### Zonal Statistics -->

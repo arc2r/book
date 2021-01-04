@@ -32,6 +32,7 @@
   
 <link rel="prev" href="d-analyst-toolbox.html"/>
 <link rel="next" href="analysis-toolbox.html"/>
+<script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -49,7 +50,6 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
@@ -65,18 +65,17 @@
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -96,7 +95,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -143,42 +142,51 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul class="summary">
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Abstract</a></li>
 <li class="chapter" data-level="2" data-path="foreword.html"><a href="foreword.html"><i class="fa fa-check"></i><b>2</b> Foreword</a></li>
-<li class="chapter" data-level="3" data-path="making-maps.html"><a href="making-maps.html"><i class="fa fa-check"></i><b>3</b> Making Maps</a><ul>
-<li class="chapter" data-level="3.1" data-path="making-static-maps.html"><a href="making-static-maps.html"><i class="fa fa-check"></i><b>3.1</b> Making Static Maps</a><ul>
+<li class="chapter" data-level="3" data-path="making-maps.html"><a href="making-maps.html"><i class="fa fa-check"></i><b>3</b> Making Maps</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="making-static-maps.html"><a href="making-static-maps.html"><i class="fa fa-check"></i><b>3.1</b> Making Static Maps</a>
+<ul>
 <li class="chapter" data-level="3.1.1" data-path="making-static-maps.html"><a href="making-static-maps.html#static-maps-with-ggplot2"><i class="fa fa-check"></i><b>3.1.1</b> Static maps with <code>ggplot2</code></a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="making-interactive-maps.html"><a href="making-interactive-maps.html"><i class="fa fa-check"></i><b>3.2</b> Making Interactive Maps</a><ul>
+<li class="chapter" data-level="3.2" data-path="making-interactive-maps.html"><a href="making-interactive-maps.html"><i class="fa fa-check"></i><b>3.2</b> Making Interactive Maps</a>
+<ul>
 <li class="chapter" data-level="3.2.1" data-path="making-interactive-maps.html"><a href="making-interactive-maps.html#introduction-to-tmap"><i class="fa fa-check"></i><b>3.2.1</b> Introduction to <code>tmap</code></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="basic-spatial-operations.html"><a href="basic-spatial-operations.html"><i class="fa fa-check"></i><b>4</b> Basic spatial operations</a><ul>
+<li class="chapter" data-level="4" data-path="basic-spatial-operations.html"><a href="basic-spatial-operations.html"><i class="fa fa-check"></i><b>4</b> Basic spatial operations</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="select-by-attribute.html"><a href="select-by-attribute.html"><i class="fa fa-check"></i><b>4.1</b> Select by Attribute</a></li>
 <li class="chapter" data-level="4.2" data-path="select-by-location.html"><a href="select-by-location.html"><i class="fa fa-check"></i><b>4.2</b> Select by Location</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="spatial-analyst-toolbox.html"><a href="spatial-analyst-toolbox.html"><i class="fa fa-check"></i><b>5</b> Spatial Analyst Toolbox</a><ul>
+<li class="chapter" data-level="5" data-path="spatial-analyst-toolbox.html"><a href="spatial-analyst-toolbox.html"><i class="fa fa-check"></i><b>5</b> Spatial Analyst Toolbox</a>
+<ul>
 <li class="chapter" data-level="5.0.1" data-path="spatial-analyst-toolbox.html"><a href="spatial-analyst-toolbox.html#kernel-denisity"><i class="fa fa-check"></i><b>5.0.1</b> Kernel Denisity</a></li>
-<li class="chapter" data-level="5.1" data-path="reclass-toolset.html"><a href="reclass-toolset.html"><i class="fa fa-check"></i><b>5.1</b> Reclass Toolset</a><ul>
+<li class="chapter" data-level="5.1" data-path="reclass-toolset.html"><a href="reclass-toolset.html"><i class="fa fa-check"></i><b>5.1</b> Reclass Toolset</a>
+<ul>
 <li class="chapter" data-level="5.1.1" data-path="reclass-toolset.html"><a href="reclass-toolset.html#slope-and-aspect"><i class="fa fa-check"></i><b>5.1.1</b> Slope and Aspect</a></li>
 <li class="chapter" data-level="5.1.2" data-path="reclass-toolset.html"><a href="reclass-toolset.html#reclassify"><i class="fa fa-check"></i><b>5.1.2</b> Reclassify</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="d-analyst-toolbox.html"><a href="d-analyst-toolbox.html"><i class="fa fa-check"></i><b>6</b> 3D Analyst Toolbox</a><ul>
-<li class="chapter" data-level="6.1" data-path="raster-interpolation-toolset.html"><a href="raster-interpolation-toolset.html"><i class="fa fa-check"></i><b>6.1</b> Raster Interpolation Toolset</a><ul>
+<li class="chapter" data-level="6" data-path="d-analyst-toolbox.html"><a href="d-analyst-toolbox.html"><i class="fa fa-check"></i><b>6</b> 3D Analyst Toolbox</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="raster-interpolation-toolset.html"><a href="raster-interpolation-toolset.html"><i class="fa fa-check"></i><b>6.1</b> Raster Interpolation Toolset</a>
+<ul>
 <li class="chapter" data-level="6.1.1" data-path="raster-interpolation-toolset.html"><a href="raster-interpolation-toolset.html#idw"><i class="fa fa-check"></i><b>6.1.1</b> IDW</a></li>
 <li class="chapter" data-level="6.1.2" data-path="raster-interpolation-toolset.html"><a href="raster-interpolation-toolset.html#kriging"><i class="fa fa-check"></i><b>6.1.2</b> Kriging</a></li>
 <li class="chapter" data-level="6.1.3" data-path="raster-interpolation-toolset.html"><a href="raster-interpolation-toolset.html#natural-neighbor"><i class="fa fa-check"></i><b>6.1.3</b> Natural Neighbor</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="analysis-toolbox.html"><a href="analysis-toolbox.html"><i class="fa fa-check"></i><b>7</b> Analysis Toolbox</a><ul>
-<li class="chapter" data-level="7.1" data-path="extract-toolset.html"><a href="extract-toolset.html"><i class="fa fa-check"></i><b>7.1</b> Extract Toolset</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="extract-toolset.html"><a href="extract-toolset.html#clip"><i class="fa fa-check"></i><b>7.1.1</b> Clip</a></li>
-<li class="chapter" data-level="7.1.2" data-path="extract-toolset.html"><a href="extract-toolset.html#merge"><i class="fa fa-check"></i><b>7.1.2</b> Merge</a></li>
-<li class="chapter" data-level="7.1.3" data-path="extract-toolset.html"><a href="extract-toolset.html#spatial-join"><i class="fa fa-check"></i><b>7.1.3</b> Spatial Join</a></li>
-<li class="chapter" data-level="7.1.4" data-path="extract-toolset.html"><a href="extract-toolset.html#buffer"><i class="fa fa-check"></i><b>7.1.4</b> Buffer</a></li>
+<li class="chapter" data-level="7" data-path="analysis-toolbox.html"><a href="analysis-toolbox.html"><i class="fa fa-check"></i><b>7</b> Analysis Toolbox</a>
+<ul>
+<li class="chapter" data-level="7.0.1" data-path="analysis-toolbox.html"><a href="analysis-toolbox.html#clip"><i class="fa fa-check"></i><b>7.0.1</b> Clip</a></li>
+<li class="chapter" data-level="7.0.2" data-path="analysis-toolbox.html"><a href="analysis-toolbox.html#merge"><i class="fa fa-check"></i><b>7.0.2</b> Merge</a></li>
+<li class="chapter" data-level="7.0.3" data-path="analysis-toolbox.html"><a href="analysis-toolbox.html#spatial-join"><i class="fa fa-check"></i><b>7.0.3</b> Spatial Join</a></li>
+<li class="chapter" data-level="7.0.4" data-path="analysis-toolbox.html"><a href="analysis-toolbox.html#buffer"><i class="fa fa-check"></i><b>7.0.4</b> Buffer</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="data-management-toolbox.html"><a href="data-management-toolbox.html"><i class="fa fa-check"></i><b>8</b> Data Management Toolbox</a><ul>
-<li class="chapter" data-level="8.1" data-path="projections-and-transformations-toolset.html"><a href="projections-and-transformations-toolset.html"><i class="fa fa-check"></i><b>8.1</b> Projections and Transformations Toolset</a><ul>
+<li class="chapter" data-level="8" data-path="data-management-toolbox.html"><a href="data-management-toolbox.html"><i class="fa fa-check"></i><b>8</b> Data Management Toolbox</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="projections-and-transformations-toolset.html"><a href="projections-and-transformations-toolset.html"><i class="fa fa-check"></i><b>8.1</b> Projections and Transformations Toolset</a>
+<ul>
 <li class="chapter" data-level="8.1.1" data-path="projections-and-transformations-toolset.html"><a href="projections-and-transformations-toolset.html#reproject-vector-data-in-r"><i class="fa fa-check"></i><b>8.1.1</b> Reproject vector data in R</a></li>
 <li class="chapter" data-level="8.1.2" data-path="projections-and-transformations-toolset.html"><a href="projections-and-transformations-toolset.html#reproject-raster-data-in-r"><i class="fa fa-check"></i><b>8.1.2</b> Reproject raster data in R</a></li>
 <li class="chapter" data-level="8.1.3" data-path="projections-and-transformations-toolset.html"><a href="projections-and-transformations-toolset.html#generate-tessellation"><i class="fa fa-check"></i><b>8.1.3</b> Generate Tessellation</a></li>
@@ -201,103 +209,103 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="raster-interpolation-toolset" class="section level2">
+<div id="raster-interpolation-toolset" class="section level2" number="6.1">
 <h2><span class="header-section-number">6.1</span> Raster Interpolation Toolset</h2>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="raster-interpolation-toolset.html#cb83-1"></a><span class="kw">library</span>(sp)</span>
-<span id="cb83-2"><a href="raster-interpolation-toolset.html#cb83-2"></a><span class="kw">library</span>(sf)</span>
-<span id="cb83-3"><a href="raster-interpolation-toolset.html#cb83-3"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb83-4"><a href="raster-interpolation-toolset.html#cb83-4"></a><span class="kw">library</span>(stars)</span>
-<span id="cb83-5"><a href="raster-interpolation-toolset.html#cb83-5"></a><span class="kw">data</span>(meuse)</span>
-<span id="cb83-6"><a href="raster-interpolation-toolset.html#cb83-6"></a></span>
-<span id="cb83-7"><a href="raster-interpolation-toolset.html#cb83-7"></a>meuse_sf &lt;-<span class="st"> </span>meuse <span class="op">%&gt;%</span></span>
-<span id="cb83-8"><a href="raster-interpolation-toolset.html#cb83-8"></a><span class="st">  </span><span class="kw">st_as_sf</span>(<span class="dt">coords =</span> <span class="kw">c</span>(<span class="st">&quot;x&quot;</span>,<span class="st">&quot;y&quot;</span>))</span></code></pre></div>
-<div id="idw" class="section level3">
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="raster-interpolation-toolset.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sp)</span>
+<span id="cb83-2"><a href="raster-interpolation-toolset.html#cb83-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb83-3"><a href="raster-interpolation-toolset.html#cb83-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb83-4"><a href="raster-interpolation-toolset.html#cb83-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stars)</span>
+<span id="cb83-5"><a href="raster-interpolation-toolset.html#cb83-5" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(meuse)</span>
+<span id="cb83-6"><a href="raster-interpolation-toolset.html#cb83-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-7"><a href="raster-interpolation-toolset.html#cb83-7" aria-hidden="true" tabindex="-1"></a>meuse_sf <span class="ot">&lt;-</span> meuse <span class="sc">%&gt;%</span></span>
+<span id="cb83-8"><a href="raster-interpolation-toolset.html#cb83-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="st">&quot;x&quot;</span>,<span class="st">&quot;y&quot;</span>))</span></code></pre></div>
+<div id="idw" class="section level3" number="6.1.1">
 <h3><span class="header-section-number">6.1.1</span> IDW</h3>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="raster-interpolation-toolset.html#cb84-1"></a>my_idw &lt;-<span class="st"> </span><span class="cf">function</span>(groundtruth,column,cellsize, <span class="dt">nmax =</span> <span class="ot">Inf</span>, <span class="dt">maxdist =</span> <span class="ot">Inf</span>, <span class="dt">idp =</span> <span class="dv">2</span>, <span class="dt">extent =</span> <span class="ot">NULL</span>){</span>
-<span id="cb84-2"><a href="raster-interpolation-toolset.html#cb84-2"></a>  <span class="kw">require</span>(gstat)</span>
-<span id="cb84-3"><a href="raster-interpolation-toolset.html#cb84-3"></a>  <span class="kw">require</span>(sf)</span>
-<span id="cb84-4"><a href="raster-interpolation-toolset.html#cb84-4"></a>  <span class="kw">require</span>(raster)</span>
-<span id="cb84-5"><a href="raster-interpolation-toolset.html#cb84-5"></a>  <span class="cf">if</span>(<span class="kw">is.null</span>(extent)){</span>
-<span id="cb84-6"><a href="raster-interpolation-toolset.html#cb84-6"></a>    extent &lt;-<span class="st"> </span>groundtruth</span>
-<span id="cb84-7"><a href="raster-interpolation-toolset.html#cb84-7"></a>  }</span>
-<span id="cb84-8"><a href="raster-interpolation-toolset.html#cb84-8"></a>  </span>
-<span id="cb84-9"><a href="raster-interpolation-toolset.html#cb84-9"></a>  samples &lt;-<span class="st"> </span><span class="kw">st_make_grid</span>(extent,cellsize,<span class="dt">what =</span> <span class="st">&quot;centers&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">st_as_sf</span>()</span>
-<span id="cb84-10"><a href="raster-interpolation-toolset.html#cb84-10"></a>  my_formula &lt;-<span class="st"> </span><span class="kw">formula</span>(<span class="kw">paste</span>(column,<span class="st">&quot;~1&quot;</span>))</span>
-<span id="cb84-11"><a href="raster-interpolation-toolset.html#cb84-11"></a>  idw_sf &lt;-<span class="st"> </span>gstat<span class="op">::</span><span class="kw">idw</span>(<span class="dt">formula =</span> my_formula,groundtruth,<span class="dt">newdata =</span> samples,<span class="dt">nmin =</span> <span class="dv">1</span>, <span class="dt">maxdist =</span> maxdist, <span class="dt">idp =</span> idp)</span>
-<span id="cb84-12"><a href="raster-interpolation-toolset.html#cb84-12"></a>  </span>
-<span id="cb84-13"><a href="raster-interpolation-toolset.html#cb84-13"></a>  idw_matrix &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="kw">st_coordinates</span>(idw_sf),idw_sf<span class="op">$</span>var1.pred)</span>
-<span id="cb84-14"><a href="raster-interpolation-toolset.html#cb84-14"></a>  </span>
-<span id="cb84-15"><a href="raster-interpolation-toolset.html#cb84-15"></a>  </span>
-<span id="cb84-16"><a href="raster-interpolation-toolset.html#cb84-16"></a>  ras &lt;-<span class="st"> </span>raster<span class="op">::</span><span class="kw">rasterFromXYZ</span>(idw_matrix)</span>
-<span id="cb84-17"><a href="raster-interpolation-toolset.html#cb84-17"></a>  </span>
-<span id="cb84-18"><a href="raster-interpolation-toolset.html#cb84-18"></a>  <span class="cf">if</span>(<span class="kw">all</span>(<span class="kw">grepl</span>(<span class="st">&quot;polygon&quot;</span>,<span class="kw">st_geometry_type</span>(extent),<span class="dt">ignore.case =</span> <span class="ot">TRUE</span>))){</span>
-<span id="cb84-19"><a href="raster-interpolation-toolset.html#cb84-19"></a>    ras &lt;-<span class="st"> </span>raster<span class="op">::</span><span class="kw">mask</span>(ras,<span class="kw">st_as_sf</span>(<span class="kw">st_zm</span>(extent)))</span>
-<span id="cb84-20"><a href="raster-interpolation-toolset.html#cb84-20"></a>  }</span>
-<span id="cb84-21"><a href="raster-interpolation-toolset.html#cb84-21"></a>  ras</span>
-<span id="cb84-22"><a href="raster-interpolation-toolset.html#cb84-22"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="raster-interpolation-toolset.html#cb85-1"></a>meuse_idw &lt;-<span class="st"> </span><span class="kw">my_idw</span>(meuse_sf,<span class="st">&quot;copper&quot;</span>,<span class="dt">cellsize =</span> <span class="dv">10</span>,<span class="dt">idp =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="raster-interpolation-toolset.html#cb84-1" aria-hidden="true" tabindex="-1"></a>my_idw <span class="ot">&lt;-</span> <span class="cf">function</span>(groundtruth,column,cellsize, <span class="at">nmax =</span> <span class="cn">Inf</span>, <span class="at">maxdist =</span> <span class="cn">Inf</span>, <span class="at">idp =</span> <span class="dv">2</span>, <span class="at">extent =</span> <span class="cn">NULL</span>){</span>
+<span id="cb84-2"><a href="raster-interpolation-toolset.html#cb84-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(gstat)</span>
+<span id="cb84-3"><a href="raster-interpolation-toolset.html#cb84-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(sf)</span>
+<span id="cb84-4"><a href="raster-interpolation-toolset.html#cb84-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(raster)</span>
+<span id="cb84-5"><a href="raster-interpolation-toolset.html#cb84-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">is.null</span>(extent)){</span>
+<span id="cb84-6"><a href="raster-interpolation-toolset.html#cb84-6" aria-hidden="true" tabindex="-1"></a>    extent <span class="ot">&lt;-</span> groundtruth</span>
+<span id="cb84-7"><a href="raster-interpolation-toolset.html#cb84-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb84-8"><a href="raster-interpolation-toolset.html#cb84-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb84-9"><a href="raster-interpolation-toolset.html#cb84-9" aria-hidden="true" tabindex="-1"></a>  samples <span class="ot">&lt;-</span> <span class="fu">st_make_grid</span>(extent,cellsize,<span class="at">what =</span> <span class="st">&quot;centers&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_sf</span>()</span>
+<span id="cb84-10"><a href="raster-interpolation-toolset.html#cb84-10" aria-hidden="true" tabindex="-1"></a>  my_formula <span class="ot">&lt;-</span> <span class="fu">formula</span>(<span class="fu">paste</span>(column,<span class="st">&quot;~1&quot;</span>))</span>
+<span id="cb84-11"><a href="raster-interpolation-toolset.html#cb84-11" aria-hidden="true" tabindex="-1"></a>  idw_sf <span class="ot">&lt;-</span> gstat<span class="sc">::</span><span class="fu">idw</span>(<span class="at">formula =</span> my_formula,groundtruth,<span class="at">newdata =</span> samples,<span class="at">nmin =</span> <span class="dv">1</span>, <span class="at">maxdist =</span> maxdist, <span class="at">idp =</span> idp)</span>
+<span id="cb84-12"><a href="raster-interpolation-toolset.html#cb84-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb84-13"><a href="raster-interpolation-toolset.html#cb84-13" aria-hidden="true" tabindex="-1"></a>  idw_matrix <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="fu">st_coordinates</span>(idw_sf),idw_sf<span class="sc">$</span>var1.pred)</span>
+<span id="cb84-14"><a href="raster-interpolation-toolset.html#cb84-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb84-15"><a href="raster-interpolation-toolset.html#cb84-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb84-16"><a href="raster-interpolation-toolset.html#cb84-16" aria-hidden="true" tabindex="-1"></a>  ras <span class="ot">&lt;-</span> raster<span class="sc">::</span><span class="fu">rasterFromXYZ</span>(idw_matrix)</span>
+<span id="cb84-17"><a href="raster-interpolation-toolset.html#cb84-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb84-18"><a href="raster-interpolation-toolset.html#cb84-18" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">all</span>(<span class="fu">grepl</span>(<span class="st">&quot;polygon&quot;</span>,<span class="fu">st_geometry_type</span>(extent),<span class="at">ignore.case =</span> <span class="cn">TRUE</span>))){</span>
+<span id="cb84-19"><a href="raster-interpolation-toolset.html#cb84-19" aria-hidden="true" tabindex="-1"></a>    ras <span class="ot">&lt;-</span> raster<span class="sc">::</span><span class="fu">mask</span>(ras,<span class="fu">st_as_sf</span>(<span class="fu">st_zm</span>(extent)))</span>
+<span id="cb84-20"><a href="raster-interpolation-toolset.html#cb84-20" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb84-21"><a href="raster-interpolation-toolset.html#cb84-21" aria-hidden="true" tabindex="-1"></a>  ras</span>
+<span id="cb84-22"><a href="raster-interpolation-toolset.html#cb84-22" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="raster-interpolation-toolset.html#cb85-1" aria-hidden="true" tabindex="-1"></a>meuse_idw <span class="ot">&lt;-</span> <span class="fu">my_idw</span>(meuse_sf,<span class="st">&quot;copper&quot;</span>,<span class="at">cellsize =</span> <span class="dv">10</span>,<span class="at">idp =</span> <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [inverse distance weighted interpolation]</code></pre>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="raster-interpolation-toolset.html#cb87-1"></a><span class="kw">ggplot</span>() <span class="op">+</span></span>
-<span id="cb87-2"><a href="raster-interpolation-toolset.html#cb87-2"></a><span class="st">  </span><span class="kw">geom_stars</span>(<span class="dt">data =</span> <span class="kw">st_as_stars</span>(meuse_idw)) <span class="op">+</span></span>
-<span id="cb87-3"><a href="raster-interpolation-toolset.html#cb87-3"></a><span class="st">  </span><span class="kw">scale_fill_viridis_c</span>() <span class="op">+</span></span>
-<span id="cb87-4"><a href="raster-interpolation-toolset.html#cb87-4"></a><span class="st">  </span><span class="kw">theme_void</span>() <span class="op">+</span></span>
-<span id="cb87-5"><a href="raster-interpolation-toolset.html#cb87-5"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">fill =</span> <span class="st">&quot;copper&quot;</span>) <span class="op">+</span></span>
-<span id="cb87-6"><a href="raster-interpolation-toolset.html#cb87-6"></a><span class="st">  </span><span class="kw">coord_equal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="raster-interpolation-toolset.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb87-2"><a href="raster-interpolation-toolset.html#cb87-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_stars</span>(<span class="at">data =</span> <span class="fu">st_as_stars</span>(meuse_idw)) <span class="sc">+</span></span>
+<span id="cb87-3"><a href="raster-interpolation-toolset.html#cb87-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>() <span class="sc">+</span></span>
+<span id="cb87-4"><a href="raster-interpolation-toolset.html#cb87-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb87-5"><a href="raster-interpolation-toolset.html#cb87-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">fill =</span> <span class="st">&quot;copper&quot;</span>) <span class="sc">+</span></span>
+<span id="cb87-6"><a href="raster-interpolation-toolset.html#cb87-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_equal</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
 </div>
-<div id="kriging" class="section level3">
+<div id="kriging" class="section level3" number="6.1.2">
 <h3><span class="header-section-number">6.1.2</span> Kriging</h3>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="raster-interpolation-toolset.html#cb88-1"></a>my_krige &lt;-<span class="st"> </span><span class="cf">function</span>(groundtruth,column,cellsize, <span class="dt">nmax =</span> <span class="ot">Inf</span>, <span class="dt">maxdist =</span> <span class="ot">Inf</span>, <span class="dt">extent =</span> <span class="ot">NULL</span>){</span>
-<span id="cb88-2"><a href="raster-interpolation-toolset.html#cb88-2"></a>  <span class="kw">require</span>(gstat)</span>
-<span id="cb88-3"><a href="raster-interpolation-toolset.html#cb88-3"></a>  <span class="kw">require</span>(sf)</span>
-<span id="cb88-4"><a href="raster-interpolation-toolset.html#cb88-4"></a>  <span class="kw">require</span>(raster)</span>
-<span id="cb88-5"><a href="raster-interpolation-toolset.html#cb88-5"></a>  <span class="cf">if</span>(<span class="kw">is.null</span>(extent)){</span>
-<span id="cb88-6"><a href="raster-interpolation-toolset.html#cb88-6"></a>    extent &lt;-<span class="st"> </span>groundtruth</span>
-<span id="cb88-7"><a href="raster-interpolation-toolset.html#cb88-7"></a>  }</span>
-<span id="cb88-8"><a href="raster-interpolation-toolset.html#cb88-8"></a>  </span>
-<span id="cb88-9"><a href="raster-interpolation-toolset.html#cb88-9"></a>  samples &lt;-<span class="st"> </span><span class="kw">st_make_grid</span>(extent,cellsize,<span class="dt">what =</span> <span class="st">&quot;centers&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">st_as_sf</span>()</span>
-<span id="cb88-10"><a href="raster-interpolation-toolset.html#cb88-10"></a>  my_formula &lt;-<span class="st"> </span><span class="kw">formula</span>(<span class="kw">paste</span>(column,<span class="st">&quot;~1&quot;</span>))</span>
-<span id="cb88-11"><a href="raster-interpolation-toolset.html#cb88-11"></a>  idw_sf &lt;-<span class="st"> </span>gstat<span class="op">::</span><span class="kw">krige</span>(<span class="dt">formula =</span> my_formula,groundtruth,<span class="dt">newdata =</span> samples,<span class="dt">nmin =</span> <span class="dv">1</span>, <span class="dt">maxdist =</span> maxdist)</span>
-<span id="cb88-12"><a href="raster-interpolation-toolset.html#cb88-12"></a>  </span>
-<span id="cb88-13"><a href="raster-interpolation-toolset.html#cb88-13"></a>  idw_matrix &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="kw">st_coordinates</span>(idw_sf),idw_sf<span class="op">$</span>var1.pred)</span>
-<span id="cb88-14"><a href="raster-interpolation-toolset.html#cb88-14"></a>  </span>
-<span id="cb88-15"><a href="raster-interpolation-toolset.html#cb88-15"></a>  </span>
-<span id="cb88-16"><a href="raster-interpolation-toolset.html#cb88-16"></a>  ras &lt;-<span class="st"> </span>raster<span class="op">::</span><span class="kw">rasterFromXYZ</span>(idw_matrix)</span>
-<span id="cb88-17"><a href="raster-interpolation-toolset.html#cb88-17"></a>  </span>
-<span id="cb88-18"><a href="raster-interpolation-toolset.html#cb88-18"></a>  <span class="cf">if</span>(<span class="kw">all</span>(<span class="kw">grepl</span>(<span class="st">&quot;polygon&quot;</span>,<span class="kw">st_geometry_type</span>(extent),<span class="dt">ignore.case =</span> <span class="ot">TRUE</span>))){</span>
-<span id="cb88-19"><a href="raster-interpolation-toolset.html#cb88-19"></a>    ras &lt;-<span class="st"> </span>raster<span class="op">::</span><span class="kw">mask</span>(ras,<span class="kw">st_as_sf</span>(<span class="kw">st_zm</span>(extent)))</span>
-<span id="cb88-20"><a href="raster-interpolation-toolset.html#cb88-20"></a>  }</span>
-<span id="cb88-21"><a href="raster-interpolation-toolset.html#cb88-21"></a>  ras</span>
-<span id="cb88-22"><a href="raster-interpolation-toolset.html#cb88-22"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="raster-interpolation-toolset.html#cb89-1"></a>meuse_krige &lt;-<span class="st"> </span><span class="kw">my_krige</span>(meuse_sf,<span class="st">&quot;copper&quot;</span>,<span class="dt">cellsize =</span> <span class="dv">10</span>,<span class="dt">nmax =</span> <span class="dv">30</span>, <span class="dt">maxdist =</span> <span class="dv">500</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="raster-interpolation-toolset.html#cb88-1" aria-hidden="true" tabindex="-1"></a>my_krige <span class="ot">&lt;-</span> <span class="cf">function</span>(groundtruth,column,cellsize, <span class="at">nmax =</span> <span class="cn">Inf</span>, <span class="at">maxdist =</span> <span class="cn">Inf</span>, <span class="at">extent =</span> <span class="cn">NULL</span>){</span>
+<span id="cb88-2"><a href="raster-interpolation-toolset.html#cb88-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(gstat)</span>
+<span id="cb88-3"><a href="raster-interpolation-toolset.html#cb88-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(sf)</span>
+<span id="cb88-4"><a href="raster-interpolation-toolset.html#cb88-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(raster)</span>
+<span id="cb88-5"><a href="raster-interpolation-toolset.html#cb88-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">is.null</span>(extent)){</span>
+<span id="cb88-6"><a href="raster-interpolation-toolset.html#cb88-6" aria-hidden="true" tabindex="-1"></a>    extent <span class="ot">&lt;-</span> groundtruth</span>
+<span id="cb88-7"><a href="raster-interpolation-toolset.html#cb88-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb88-8"><a href="raster-interpolation-toolset.html#cb88-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb88-9"><a href="raster-interpolation-toolset.html#cb88-9" aria-hidden="true" tabindex="-1"></a>  samples <span class="ot">&lt;-</span> <span class="fu">st_make_grid</span>(extent,cellsize,<span class="at">what =</span> <span class="st">&quot;centers&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_sf</span>()</span>
+<span id="cb88-10"><a href="raster-interpolation-toolset.html#cb88-10" aria-hidden="true" tabindex="-1"></a>  my_formula <span class="ot">&lt;-</span> <span class="fu">formula</span>(<span class="fu">paste</span>(column,<span class="st">&quot;~1&quot;</span>))</span>
+<span id="cb88-11"><a href="raster-interpolation-toolset.html#cb88-11" aria-hidden="true" tabindex="-1"></a>  idw_sf <span class="ot">&lt;-</span> gstat<span class="sc">::</span><span class="fu">krige</span>(<span class="at">formula =</span> my_formula,groundtruth,<span class="at">newdata =</span> samples,<span class="at">nmin =</span> <span class="dv">1</span>, <span class="at">maxdist =</span> maxdist)</span>
+<span id="cb88-12"><a href="raster-interpolation-toolset.html#cb88-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb88-13"><a href="raster-interpolation-toolset.html#cb88-13" aria-hidden="true" tabindex="-1"></a>  idw_matrix <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="fu">st_coordinates</span>(idw_sf),idw_sf<span class="sc">$</span>var1.pred)</span>
+<span id="cb88-14"><a href="raster-interpolation-toolset.html#cb88-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb88-15"><a href="raster-interpolation-toolset.html#cb88-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb88-16"><a href="raster-interpolation-toolset.html#cb88-16" aria-hidden="true" tabindex="-1"></a>  ras <span class="ot">&lt;-</span> raster<span class="sc">::</span><span class="fu">rasterFromXYZ</span>(idw_matrix)</span>
+<span id="cb88-17"><a href="raster-interpolation-toolset.html#cb88-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb88-18"><a href="raster-interpolation-toolset.html#cb88-18" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">all</span>(<span class="fu">grepl</span>(<span class="st">&quot;polygon&quot;</span>,<span class="fu">st_geometry_type</span>(extent),<span class="at">ignore.case =</span> <span class="cn">TRUE</span>))){</span>
+<span id="cb88-19"><a href="raster-interpolation-toolset.html#cb88-19" aria-hidden="true" tabindex="-1"></a>    ras <span class="ot">&lt;-</span> raster<span class="sc">::</span><span class="fu">mask</span>(ras,<span class="fu">st_as_sf</span>(<span class="fu">st_zm</span>(extent)))</span>
+<span id="cb88-20"><a href="raster-interpolation-toolset.html#cb88-20" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb88-21"><a href="raster-interpolation-toolset.html#cb88-21" aria-hidden="true" tabindex="-1"></a>  ras</span>
+<span id="cb88-22"><a href="raster-interpolation-toolset.html#cb88-22" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="raster-interpolation-toolset.html#cb89-1" aria-hidden="true" tabindex="-1"></a>meuse_krige <span class="ot">&lt;-</span> <span class="fu">my_krige</span>(meuse_sf,<span class="st">&quot;copper&quot;</span>,<span class="at">cellsize =</span> <span class="dv">10</span>,<span class="at">nmax =</span> <span class="dv">30</span>, <span class="at">maxdist =</span> <span class="dv">500</span>)</span></code></pre></div>
 <pre><code>## [inverse distance weighted interpolation]</code></pre>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="raster-interpolation-toolset.html#cb91-1"></a><span class="kw">ggplot</span>() <span class="op">+</span></span>
-<span id="cb91-2"><a href="raster-interpolation-toolset.html#cb91-2"></a><span class="st">  </span><span class="kw">geom_stars</span>(<span class="dt">data =</span> <span class="kw">st_as_stars</span>(meuse_krige)) <span class="op">+</span></span>
-<span id="cb91-3"><a href="raster-interpolation-toolset.html#cb91-3"></a><span class="st">  </span><span class="kw">scale_fill_viridis_c</span>(<span class="dt">na.value =</span> <span class="ot">NA</span>) <span class="op">+</span></span>
-<span id="cb91-4"><a href="raster-interpolation-toolset.html#cb91-4"></a><span class="st">  </span><span class="kw">theme_void</span>() <span class="op">+</span></span>
-<span id="cb91-5"><a href="raster-interpolation-toolset.html#cb91-5"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">fill =</span> <span class="st">&quot;copper&quot;</span>) <span class="op">+</span></span>
-<span id="cb91-6"><a href="raster-interpolation-toolset.html#cb91-6"></a><span class="st">  </span><span class="kw">coord_equal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="raster-interpolation-toolset.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb91-2"><a href="raster-interpolation-toolset.html#cb91-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_stars</span>(<span class="at">data =</span> <span class="fu">st_as_stars</span>(meuse_krige)) <span class="sc">+</span></span>
+<span id="cb91-3"><a href="raster-interpolation-toolset.html#cb91-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">na.value =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb91-4"><a href="raster-interpolation-toolset.html#cb91-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb91-5"><a href="raster-interpolation-toolset.html#cb91-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">fill =</span> <span class="st">&quot;copper&quot;</span>) <span class="sc">+</span></span>
+<span id="cb91-6"><a href="raster-interpolation-toolset.html#cb91-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_equal</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
 </div>
-<div id="natural-neighbor" class="section level3">
+<div id="natural-neighbor" class="section level3" number="6.1.3">
 <h3><span class="header-section-number">6.1.3</span> Natural Neighbor</h3>
 <p>Nearest Neighbor:</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="raster-interpolation-toolset.html#cb92-1"></a>meuse_thiessen &lt;-<span class="st"> </span><span class="kw">st_voronoi</span>(<span class="kw">st_union</span>(meuse_sf))</span>
-<span id="cb92-2"><a href="raster-interpolation-toolset.html#cb92-2"></a>meuse_thiessen &lt;-<span class="st"> </span><span class="kw">st_cast</span>(meuse_thiessen)</span>
-<span id="cb92-3"><a href="raster-interpolation-toolset.html#cb92-3"></a>meuse_bbox &lt;-<span class="st"> </span>meuse_sf <span class="op">%&gt;%</span></span>
-<span id="cb92-4"><a href="raster-interpolation-toolset.html#cb92-4"></a><span class="st">  </span><span class="kw">st_bbox</span>() <span class="op">%&gt;%</span></span>
-<span id="cb92-5"><a href="raster-interpolation-toolset.html#cb92-5"></a><span class="st">  </span><span class="kw">st_as_sfc</span>()</span>
-<span id="cb92-6"><a href="raster-interpolation-toolset.html#cb92-6"></a></span>
-<span id="cb92-7"><a href="raster-interpolation-toolset.html#cb92-7"></a>meuse_thiessen &lt;-<span class="st"> </span><span class="kw">st_intersection</span>(meuse_thiessen,meuse_bbox)</span>
-<span id="cb92-8"><a href="raster-interpolation-toolset.html#cb92-8"></a></span>
-<span id="cb92-9"><a href="raster-interpolation-toolset.html#cb92-9"></a>meuse_thiessen &lt;-<span class="st"> </span><span class="kw">st_as_sf</span>(meuse_thiessen)</span>
-<span id="cb92-10"><a href="raster-interpolation-toolset.html#cb92-10"></a>meuse_thiessen &lt;-<span class="st"> </span><span class="kw">st_join</span>(meuse_thiessen,meuse_sf)</span>
-<span id="cb92-11"><a href="raster-interpolation-toolset.html#cb92-11"></a></span>
-<span id="cb92-12"><a href="raster-interpolation-toolset.html#cb92-12"></a><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></span>
-<span id="cb92-13"><a href="raster-interpolation-toolset.html#cb92-13"></a><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> meuse_thiessen, <span class="kw">aes</span>(<span class="dt">fill =</span> copper)) <span class="op">+</span></span>
-<span id="cb92-14"><a href="raster-interpolation-toolset.html#cb92-14"></a><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> meuse_sf) <span class="op">+</span></span>
-<span id="cb92-15"><a href="raster-interpolation-toolset.html#cb92-15"></a><span class="st">  </span><span class="kw">scale_fill_viridis_c</span>() <span class="op">+</span></span>
-<span id="cb92-16"><a href="raster-interpolation-toolset.html#cb92-16"></a><span class="st">  </span><span class="kw">theme_void</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="raster-interpolation-toolset.html#cb92-1" aria-hidden="true" tabindex="-1"></a>meuse_thiessen <span class="ot">&lt;-</span> <span class="fu">st_voronoi</span>(<span class="fu">st_union</span>(meuse_sf))</span>
+<span id="cb92-2"><a href="raster-interpolation-toolset.html#cb92-2" aria-hidden="true" tabindex="-1"></a>meuse_thiessen <span class="ot">&lt;-</span> <span class="fu">st_cast</span>(meuse_thiessen)</span>
+<span id="cb92-3"><a href="raster-interpolation-toolset.html#cb92-3" aria-hidden="true" tabindex="-1"></a>meuse_bbox <span class="ot">&lt;-</span> meuse_sf <span class="sc">%&gt;%</span></span>
+<span id="cb92-4"><a href="raster-interpolation-toolset.html#cb92-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_bbox</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb92-5"><a href="raster-interpolation-toolset.html#cb92-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_as_sfc</span>()</span>
+<span id="cb92-6"><a href="raster-interpolation-toolset.html#cb92-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-7"><a href="raster-interpolation-toolset.html#cb92-7" aria-hidden="true" tabindex="-1"></a>meuse_thiessen <span class="ot">&lt;-</span> <span class="fu">st_intersection</span>(meuse_thiessen,meuse_bbox)</span>
+<span id="cb92-8"><a href="raster-interpolation-toolset.html#cb92-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-9"><a href="raster-interpolation-toolset.html#cb92-9" aria-hidden="true" tabindex="-1"></a>meuse_thiessen <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(meuse_thiessen)</span>
+<span id="cb92-10"><a href="raster-interpolation-toolset.html#cb92-10" aria-hidden="true" tabindex="-1"></a>meuse_thiessen <span class="ot">&lt;-</span> <span class="fu">st_join</span>(meuse_thiessen,meuse_sf)</span>
+<span id="cb92-11"><a href="raster-interpolation-toolset.html#cb92-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-12"><a href="raster-interpolation-toolset.html#cb92-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb92-13"><a href="raster-interpolation-toolset.html#cb92-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> meuse_thiessen, <span class="fu">aes</span>(<span class="at">fill =</span> copper)) <span class="sc">+</span></span>
+<span id="cb92-14"><a href="raster-interpolation-toolset.html#cb92-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> meuse_sf) <span class="sc">+</span></span>
+<span id="cb92-15"><a href="raster-interpolation-toolset.html#cb92-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>() <span class="sc">+</span></span>
+<span id="cb92-16"><a href="raster-interpolation-toolset.html#cb92-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
 <!-- ### Spline -->
 
