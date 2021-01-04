@@ -6,10 +6,12 @@ rmd_files: [
   "02_Select/Basic_spatial_operations.Rmd",
   "02_Select/Select_by_Attribute.Rmd",
   "02_Select/Select_by_Location.Rmd",
+  "03_Geoprocessing_Tools/Data_Management.Rmd",
   "03_Geoprocessing_Tools/Spatial_Analyst.Rmd",
   "03_Geoprocessing_Tools/3D_Analyst.Rmd",
+  "03_Geoprocessing_Tools/Image_Analysis.Rmd",
   "03_Geoprocessing_Tools/Analysis.Rmd",
-  "03_Geoprocessing_Tools/Data_Management.Rmd",
+  
 ]
 delete_merged_file: TRUE
 output_dir: "docs"

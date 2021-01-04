@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4.1 Select by Attribute | Burning Bridges</title>
-  <meta name="description" content="4.1 Select by Attribute | Burning Bridges" />
+  <title>8 Image Analysis Toolbox | Burning Bridges</title>
+  <meta name="description" content="8 Image Analysis Toolbox | Burning Bridges" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4.1 Select by Attribute | Burning Bridges" />
+  <meta property="og:title" content="8 Image Analysis Toolbox | Burning Bridges" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4.1 Select by Attribute | Burning Bridges" />
+  <meta name="twitter:title" content="8 Image Analysis Toolbox | Burning Bridges" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="basic-spatial-operations.html"/>
-<link rel="next" href="select-by-location.html"/>
+<link rel="prev" href="raster-interpolation-toolset.html"/>
+<link rel="next" href="analysis-toolbox.html"/>
 <script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -214,44 +214,73 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="select-by-attribute" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Select by Attribute</h2>
-<p>One of the popular approaches in ArcGIS pro for selecting features in a layer is by using an attribute query. The action is performed using the <code>Select By Attributes</code> tool.</p>
-<p><code>Select By Attributes</code> tool allows us to provide an SQL query expression to select features that match the selection criteria.</p>
-<p><strong>R</strong> on the other hand offers quite easy and straightforward options to perform similar operations. Let’s examine one of them.</p>
-<p>As a first step, we might want to import a shapefile. To do so, we can use <strong>sf package</strong> to work with vector data in R. Important to know is that the <strong>rgdal package</strong> automatically loads when sf is loaded.</p>
-<p>In the code snippet below, we read the shapefile, which represents the <strong>parking spots for bicycles</strong> within the canton of Zurich. The dataset is publicly available for download in the following link: (<a href="https://opendata.swiss/en/dataset/veloparkierungsanlagen" class="uri">https://opendata.swiss/en/dataset/veloparkierungsanlagen</a>).</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="select-by-attribute.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb60-2"><a href="select-by-attribute.html#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb60-3"><a href="select-by-attribute.html#cb60-3" aria-hidden="true" tabindex="-1"></a>parkBikes <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;sample_data/Kanton_Zuerich/Veloparkierungsanlagen/OGD_VELOPARKIERANLAGEN_P.shp&quot;</span>)</span></code></pre></div>
-<pre><code>## Reading layer `OGD_VELOPARKIERANLAGEN_P&#39; from data source `C:\Users\bako\Desktop\Projekte\All_thing_R_Spatial\github\spatialR_for_ArcGIS_Users\sample_data\Kanton_Zuerich\Veloparkierungsanlagen\OGD_VELOPARKIERANLAGEN_P.shp&#39; using driver `ESRI Shapefile&#39;
-## Simple feature collection with 511 features and 28 fields
-## geometry type:  POINT
-## dimension:      XY
-## bbox:           xmin: 2669965 ymin: 1229454 xmax: 2707390 ymax: 1280235
-## projected CRS:  CH1903+ / LV95</code></pre>
-<p>After importing the dataset, let’s say we want to filter it by selecting only the parking spots that lie within a specific municipality (Gemeinde) in the canton of Zurich. More specifically, we will select only the parking spots within the municipality of Winterthur.
-For the aforementioned operation, R offers the function <code>filter()</code>, which lies within the <strong>dplyr</strong> package.
-This functions works as follows: <code>filter(dataset, condition)</code></p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="select-by-attribute.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb62-2"><a href="select-by-attribute.html#cb62-2" aria-hidden="true" tabindex="-1"></a>parkBikes_winti <span class="ot">&lt;-</span> <span class="fu">filter</span>(parkBikes,GEMEINDE <span class="sc">==</span> <span class="st">&quot;Winterthur&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-31-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>The operation above produces the same outcome as the one depicted in the figure below <a href="select-by-attribute.html#fig:select">4.1</a>.</p>
-<div class="figure" style="text-align: center"><span id="fig:select"></span>
-<img src="images/selectAttr.png" alt="Select by Attributes in ArcGIS pro" width="500px" />
-<p class="caption">
-Figure 4.1: Select by Attributes in ArcGIS pro
-</p>
+<div id="image-analysis-toolbox" class="section level1" number="8">
+<h1><span class="header-section-number">8</span> Image Analysis Toolbox</h1>
+<!-- ## Map Algebra Toolset -->
+<div id="raster-calulator" class="section level3" number="8.0.1">
+<h3><span class="header-section-number">8.0.1</span> Raster Calulator</h3>
+<p>In GIS Softwares (ArcGIS pro, QGIS etc) <code>Raster Calculator</code> is one of the most
+commonly used tools for performing various operations with raster datasets.<br />
+Let’s explore our options for performing similar tasks with R.</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="image-analysis-toolbox.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
+<span id="cb108-2"><a href="image-analysis-toolbox.html#cb108-2" aria-hidden="true" tabindex="-1"></a>pop_2000 <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="st">&quot;sample_data/population_raster/gpw_v4_population_count_rev11_2000_2pt5_min.tif&quot;</span>)</span>
+<span id="cb108-3"><a href="image-analysis-toolbox.html#cb108-3" aria-hidden="true" tabindex="-1"></a>pop_2010 <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="st">&quot;sample_data/population_raster/gpw_v4_population_count_rev11_2010_2pt5_min.tif&quot;</span>)</span>
+<span id="cb108-4"><a href="image-analysis-toolbox.html#cb108-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb108-5"><a href="image-analysis-toolbox.html#cb108-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb108-6"><a href="image-analysis-toolbox.html#cb108-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pop_2000)</span>
+<span id="cb108-7"><a href="image-analysis-toolbox.html#cb108-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pop_2010)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-66-1.png" width="672" /></p>
+<!-- ## Math Toolset -->
+<!-- ## Overlay Toolset -->
+<!-- ### Weighted Sum -->
+<!-- ## Statistical Toolset -->
+<!-- ### Cell Statistics -->
 </div>
+<div id="focal-statistics" class="section level3" number="8.0.2">
+<h3><span class="header-section-number">8.0.2</span> Focal Statistics</h3>
+<blockquote>
+<p><code>Focal statistics</code> performs a neighbourhood operation that computes an output raster, where the value for each output cell is a function of the values of all the input cells that are in a specified neighborhood around that location. The function performed on the input is a statistic, such as the maximum, average, or sum of all values encountered in that neighborhood.
+Source: <a href="https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/how-focal-statistics-works.html" class="uri">https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/how-focal-statistics-works.html</a></p>
+</blockquote>
+<p>In R in order to apply functions focally to rasters, important is to define the neighbouring cells.
+In other words to define the moving window for each of these functions. As an example below,
+we will create our own raster object.</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="image-analysis-toolbox.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
+<span id="cb109-2"><a href="image-analysis-toolbox.html#cb109-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb109-3"><a href="image-analysis-toolbox.html#cb109-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-4"><a href="image-analysis-toolbox.html#cb109-4" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="at">ncol=</span><span class="dv">10</span>, <span class="at">nrow=</span><span class="dv">10</span>)</span>
+<span id="cb109-5"><a href="image-analysis-toolbox.html#cb109-5" aria-hidden="true" tabindex="-1"></a><span class="fu">values</span>(r) <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncell</span>(r)</span>
+<span id="cb109-6"><a href="image-analysis-toolbox.html#cb109-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(r, <span class="at">main=</span><span class="st">&#39;Raster with 100 cells&#39;</span>, <span class="at">cex.main =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-67-1.png" width="672" /></p>
+<p>We will recompute now the raster based on the <em>focal</em> function of the <strong>raster</strong> package. In the function
+below, the neighbourhood for which we apply the statistic is represented by the argument <em>w</em>, while the
+statistic by the argument <em>fun</em>.</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="image-analysis-toolbox.html#cb110-1" aria-hidden="true" tabindex="-1"></a>f1 <span class="ot">&lt;-</span> <span class="fu">focal</span>(r, <span class="at">w=</span><span class="fu">matrix</span>(<span class="dv">1</span>,<span class="at">nrow=</span><span class="dv">3</span>,<span class="at">ncol=</span><span class="dv">3</span>),<span class="at">fun=</span>sum)</span>
+<span id="cb110-2"><a href="image-analysis-toolbox.html#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(f1, <span class="at">main =</span> <span class="st">&quot;Raster after applying the focal function - raster package&quot;</span>, <span class="at">cex.main =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-68-1.png" width="672" /></p>
+<p>The operation above can be also performed with the use of the <em>focal</em> function of the <strong>terra</strong> package.</p>
+<ul>
+<li><em>w</em> represents the moving window of the function. The window can be defined as one (for a square)
+or two numbers (row, col); or with an odd-sized weights matrix. More details can be found here: <a href="https://rdrr.io/cran/terra/man/focal.html" class="uri">https://rdrr.io/cran/terra/man/focal.html</a></li>
+<li><em>fun</em> represents the specified statistic for the identified neighbourhood (e.g mean,sum etc)</li>
+</ul>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="image-analysis-toolbox.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb111-2"><a href="image-analysis-toolbox.html#cb111-2" aria-hidden="true" tabindex="-1"></a>r_spat <span class="ot">&lt;-</span> <span class="fu">as</span>(r, <span class="st">&quot;SpatRaster&quot;</span>)</span>
+<span id="cb111-3"><a href="image-analysis-toolbox.html#cb111-3" aria-hidden="true" tabindex="-1"></a>f2 <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">focal</span>(r_spat,<span class="at">w=</span><span class="dv">3</span>,<span class="at">fun =</span> <span class="st">&quot;sum&quot;</span>)</span>
+<span id="cb111-4"><a href="image-analysis-toolbox.html#cb111-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(f2, <span class="at">main =</span> <span class="st">&quot;Raster after applying the focal function - terra package&quot;</span>, <span class="at">cex.main =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-69-1.png" width="672" />
+s</p>
+<!-- ### Zonal Statistics -->
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="basic-spatial-operations.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="select-by-location.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="raster-interpolation-toolset.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="analysis-toolbox.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
