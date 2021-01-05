@@ -19,6 +19,9 @@ basic-spatial-operations
 select-by-attribute
 select-by-location
 data-management-toolbox
+joins-and-relates-toolset
+left-join
+full-join
 projections-and-transformations-toolset
 reproject-vector-data-in-r
 reproject-raster-data-in-r
@@ -35,6 +38,7 @@ idw
 kriging
 natural-neighbor
 image-analysis-toolbox
+map-algebra-toolset
 raster-calulator
 focal-statistics
 zonal-statistics

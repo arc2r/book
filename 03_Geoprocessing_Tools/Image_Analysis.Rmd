@@ -1,6 +1,6 @@
 # Image Analysis Toolbox
 
-<!-- ## Map Algebra Toolset -->
+## Map Algebra Toolset
 
 
 ### Raster Calulator

@@ -2,7 +2,51 @@
 # Data Management Toolbox
 
 
-<!-- ## Joins and Relates Toolset -->
+## Joins and Relates Toolset
+
+### Left join
+
+A `left join` in R serves as a merge operation between two data frames. The merge
+returns all the rows from the table from the left side and any matching rows from the second table.
+We demonstrate the use of this merge operation with an example below.
+
+```{r}
+library(dplyr)
+library(readr)
+
+# Import the first dataframe - the one that will be on the left side
+wetter <- read_table("sample_data/prepro/order_52252_data.txt")
+
+# Import the second dataframe
+wetter_legende <- read_delim("sample_data/prepro/order_52252_legend.csv",
+                             delim = ";", 
+                             locale = locale(encoding = "UTF-8"))
+
+head(wetter)
+head(wetter_legende)
+```
+
+The left join operation between the two data frames is based on the common column
+named _stn_ and defined as function's third argument.   
+
+```{r}
+# Perform the left join and visualise the output
+wetter_joined <- left_join(wetter,wetter_legende,by = "stn")
+head(wetter_joined)
+```
+
+### Full join
+
+Similarly for a `full join` between the two data frames, we can simply use the base R
+operation named _merge_. In other words, with _merge_ we combine all the rows and columns
+of the two data frames. Below the afforementioned operation is demonstrated.
+
+```{r}
+# Full join between the data frames wetter and wetter_legende
+wetter_full <- merge(wetter,wetter_legende)
+head(wetter_full)
+```
+
 
 ## Projections and Transformations Toolset
 

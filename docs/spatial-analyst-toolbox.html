@@ -160,11 +160,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="data-management-toolbox.html"><a href="data-management-toolbox.html"><i class="fa fa-check"></i><b>5</b> Data Management Toolbox</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="projections-and-transformations-toolset.html"><a href="projections-and-transformations-toolset.html"><i class="fa fa-check"></i><b>5.1</b> Projections and Transformations Toolset</a>
+<li class="chapter" data-level="5.1" data-path="joins-and-relates-toolset.html"><a href="joins-and-relates-toolset.html"><i class="fa fa-check"></i><b>5.1</b> Joins and Relates Toolset</a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="projections-and-transformations-toolset.html"><a href="projections-and-transformations-toolset.html#reproject-vector-data-in-r"><i class="fa fa-check"></i><b>5.1.1</b> Reproject vector data in R</a></li>
-<li class="chapter" data-level="5.1.2" data-path="projections-and-transformations-toolset.html"><a href="projections-and-transformations-toolset.html#reproject-raster-data-in-r"><i class="fa fa-check"></i><b>5.1.2</b> Reproject raster data in R</a></li>
-<li class="chapter" data-level="5.1.3" data-path="projections-and-transformations-toolset.html"><a href="projections-and-transformations-toolset.html#generate-tessellation"><i class="fa fa-check"></i><b>5.1.3</b> Generate Tessellation</a></li>
+<li class="chapter" data-level="5.1.1" data-path="joins-and-relates-toolset.html"><a href="joins-and-relates-toolset.html#left-join"><i class="fa fa-check"></i><b>5.1.1</b> Left join</a></li>
+<li class="chapter" data-level="5.1.2" data-path="joins-and-relates-toolset.html"><a href="joins-and-relates-toolset.html#full-join"><i class="fa fa-check"></i><b>5.1.2</b> Full join</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="projections-and-transformations-toolset.html"><a href="projections-and-transformations-toolset.html"><i class="fa fa-check"></i><b>5.2</b> Projections and Transformations Toolset</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="projections-and-transformations-toolset.html"><a href="projections-and-transformations-toolset.html#reproject-vector-data-in-r"><i class="fa fa-check"></i><b>5.2.1</b> Reproject vector data in R</a></li>
+<li class="chapter" data-level="5.2.2" data-path="projections-and-transformations-toolset.html"><a href="projections-and-transformations-toolset.html#reproject-raster-data-in-r"><i class="fa fa-check"></i><b>5.2.2</b> Reproject raster data in R</a></li>
+<li class="chapter" data-level="5.2.3" data-path="projections-and-transformations-toolset.html"><a href="projections-and-transformations-toolset.html#generate-tessellation"><i class="fa fa-check"></i><b>5.2.3</b> Generate Tessellation</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="spatial-analyst-toolbox.html"><a href="spatial-analyst-toolbox.html"><i class="fa fa-check"></i><b>6</b> Spatial Analyst Toolbox</a>
@@ -187,9 +192,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="8" data-path="image-analysis-toolbox.html"><a href="image-analysis-toolbox.html"><i class="fa fa-check"></i><b>8</b> Image Analysis Toolbox</a>
 <ul>
-<li class="chapter" data-level="8.0.1" data-path="image-analysis-toolbox.html"><a href="image-analysis-toolbox.html#raster-calulator"><i class="fa fa-check"></i><b>8.0.1</b> Raster Calulator</a></li>
-<li class="chapter" data-level="8.0.2" data-path="image-analysis-toolbox.html"><a href="image-analysis-toolbox.html#focal-statistics"><i class="fa fa-check"></i><b>8.0.2</b> Focal Statistics</a></li>
-<li class="chapter" data-level="8.0.3" data-path="image-analysis-toolbox.html"><a href="image-analysis-toolbox.html#zonal-statistics"><i class="fa fa-check"></i><b>8.0.3</b> Zonal Statistics</a></li>
+<li class="chapter" data-level="8.1" data-path="map-algebra-toolset.html"><a href="map-algebra-toolset.html"><i class="fa fa-check"></i><b>8.1</b> Map Algebra Toolset</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="map-algebra-toolset.html"><a href="map-algebra-toolset.html#raster-calulator"><i class="fa fa-check"></i><b>8.1.1</b> Raster Calulator</a></li>
+<li class="chapter" data-level="8.1.2" data-path="map-algebra-toolset.html"><a href="map-algebra-toolset.html#focal-statistics"><i class="fa fa-check"></i><b>8.1.2</b> Focal Statistics</a></li>
+<li class="chapter" data-level="8.1.3" data-path="map-algebra-toolset.html"><a href="map-algebra-toolset.html#zonal-statistics"><i class="fa fa-check"></i><b>8.1.3</b> Zonal Statistics</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="analysis-toolbox.html"><a href="analysis-toolbox.html"><i class="fa fa-check"></i><b>9</b> Analysis Toolbox</a>
 <ul>
@@ -228,42 +236,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>MASS::kde2d()</code>: Takes x/y coordinates as vectors and returns a matrix</li>
 </ul>
 <p>In this example, I take <code>MASS:kde2d()</code> and tweak it to take <code>sf</code> and return <code>raster</code>. First, let’s create some sample data:</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="spatial-analyst-toolbox.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">10</span>)</span>
-<span id="cb84-2"><a href="spatial-analyst-toolbox.html#cb84-2" aria-hidden="true" tabindex="-1"></a>mypoints <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>),<span class="at">y =</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb84-3"><a href="spatial-analyst-toolbox.html#cb84-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb84-4"><a href="spatial-analyst-toolbox.html#cb84-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb84-5"><a href="spatial-analyst-toolbox.html#cb84-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mypoints)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="spatial-analyst-toolbox.html#cb85-1" aria-hidden="true" tabindex="-1"></a>my_kde <span class="ot">&lt;-</span> <span class="cf">function</span>(points,cellsize, bandwith, <span class="at">extent =</span> <span class="cn">NULL</span>){</span>
-<span id="cb85-2"><a href="spatial-analyst-toolbox.html#cb85-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(MASS)</span>
-<span id="cb85-3"><a href="spatial-analyst-toolbox.html#cb85-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(raster)</span>
-<span id="cb85-4"><a href="spatial-analyst-toolbox.html#cb85-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(sf)</span>
-<span id="cb85-5"><a href="spatial-analyst-toolbox.html#cb85-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">is.null</span>(extent)){</span>
-<span id="cb85-6"><a href="spatial-analyst-toolbox.html#cb85-6" aria-hidden="true" tabindex="-1"></a>    extent_vec <span class="ot">&lt;-</span> <span class="fu">st_bbox</span>(points)[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>)]</span>
-<span id="cb85-7"><a href="spatial-analyst-toolbox.html#cb85-7" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span>{</span>
-<span id="cb85-8"><a href="spatial-analyst-toolbox.html#cb85-8" aria-hidden="true" tabindex="-1"></a>    extent_vec <span class="ot">&lt;-</span> <span class="fu">st_bbox</span>(extent)[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>)]</span>
-<span id="cb85-9"><a href="spatial-analyst-toolbox.html#cb85-9" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb85-10"><a href="spatial-analyst-toolbox.html#cb85-10" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb85-11"><a href="spatial-analyst-toolbox.html#cb85-11" aria-hidden="true" tabindex="-1"></a>  n_y <span class="ot">&lt;-</span> <span class="fu">ceiling</span>((extent_vec[<span class="dv">4</span>]<span class="sc">-</span>extent_vec[<span class="dv">3</span>])<span class="sc">/</span>cellsize)</span>
-<span id="cb85-12"><a href="spatial-analyst-toolbox.html#cb85-12" aria-hidden="true" tabindex="-1"></a>  n_x <span class="ot">&lt;-</span> <span class="fu">ceiling</span>((extent_vec[<span class="dv">2</span>]<span class="sc">-</span>extent_vec[<span class="dv">1</span>])<span class="sc">/</span>cellsize)</span>
-<span id="cb85-13"><a href="spatial-analyst-toolbox.html#cb85-13" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb85-14"><a href="spatial-analyst-toolbox.html#cb85-14" aria-hidden="true" tabindex="-1"></a>  extent_vec[<span class="dv">2</span>] <span class="ot">&lt;-</span> extent_vec[<span class="dv">1</span>]<span class="sc">+</span>(n_x<span class="sc">*</span>cellsize)<span class="sc">-</span>cellsize</span>
-<span id="cb85-15"><a href="spatial-analyst-toolbox.html#cb85-15" aria-hidden="true" tabindex="-1"></a>  extent_vec[<span class="dv">4</span>] <span class="ot">&lt;-</span> extent_vec[<span class="dv">3</span>]<span class="sc">+</span>(n_y<span class="sc">*</span>cellsize)<span class="sc">-</span>cellsize</span>
-<span id="cb85-16"><a href="spatial-analyst-toolbox.html#cb85-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb85-17"><a href="spatial-analyst-toolbox.html#cb85-17" aria-hidden="true" tabindex="-1"></a>  coords <span class="ot">&lt;-</span> <span class="fu">st_coordinates</span>(points)</span>
-<span id="cb85-18"><a href="spatial-analyst-toolbox.html#cb85-18" aria-hidden="true" tabindex="-1"></a>  matrix <span class="ot">&lt;-</span> <span class="fu">kde2d</span>(coords[,<span class="dv">1</span>],coords[,<span class="dv">2</span>],<span class="at">h =</span> bandwith,<span class="at">n =</span> <span class="fu">c</span>(n_x,n_y),<span class="at">lims =</span> extent_vec)</span>
-<span id="cb85-19"><a href="spatial-analyst-toolbox.html#cb85-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">raster</span>(matrix)</span>
-<span id="cb85-20"><a href="spatial-analyst-toolbox.html#cb85-20" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="spatial-analyst-toolbox.html#cb86-1" aria-hidden="true" tabindex="-1"></a>mypoints_kde <span class="ot">&lt;-</span> <span class="fu">my_kde</span>(mypoints,<span class="fl">0.01</span>,<span class="dv">1</span>)</span>
-<span id="cb86-2"><a href="spatial-analyst-toolbox.html#cb86-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stars)</span>
-<span id="cb86-3"><a href="spatial-analyst-toolbox.html#cb86-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb86-4"><a href="spatial-analyst-toolbox.html#cb86-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb86-5"><a href="spatial-analyst-toolbox.html#cb86-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_stars</span>(<span class="at">data =</span> <span class="fu">st_as_stars</span>(mypoints_kde)) <span class="sc">+</span></span>
-<span id="cb86-6"><a href="spatial-analyst-toolbox.html#cb86-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> mypoints, <span class="at">alpha =</span> <span class="fl">0.2</span>, <span class="at">fill =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
-<span id="cb86-7"><a href="spatial-analyst-toolbox.html#cb86-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>() <span class="sc">+</span></span>
-<span id="cb86-8"><a href="spatial-analyst-toolbox.html#cb86-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">fill =</span> <span class="st">&quot;KDE&quot;</span>) <span class="sc">+</span></span>
-<span id="cb86-9"><a href="spatial-analyst-toolbox.html#cb86-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() </span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="spatial-analyst-toolbox.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">10</span>)</span>
+<span id="cb92-2"><a href="spatial-analyst-toolbox.html#cb92-2" aria-hidden="true" tabindex="-1"></a>mypoints <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>),<span class="at">y =</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb92-3"><a href="spatial-analyst-toolbox.html#cb92-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb92-4"><a href="spatial-analyst-toolbox.html#cb92-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-5"><a href="spatial-analyst-toolbox.html#cb92-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mypoints)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="spatial-analyst-toolbox.html#cb93-1" aria-hidden="true" tabindex="-1"></a>my_kde <span class="ot">&lt;-</span> <span class="cf">function</span>(points,cellsize, bandwith, <span class="at">extent =</span> <span class="cn">NULL</span>){</span>
+<span id="cb93-2"><a href="spatial-analyst-toolbox.html#cb93-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(MASS)</span>
+<span id="cb93-3"><a href="spatial-analyst-toolbox.html#cb93-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(raster)</span>
+<span id="cb93-4"><a href="spatial-analyst-toolbox.html#cb93-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(sf)</span>
+<span id="cb93-5"><a href="spatial-analyst-toolbox.html#cb93-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">is.null</span>(extent)){</span>
+<span id="cb93-6"><a href="spatial-analyst-toolbox.html#cb93-6" aria-hidden="true" tabindex="-1"></a>    extent_vec <span class="ot">&lt;-</span> <span class="fu">st_bbox</span>(points)[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>)]</span>
+<span id="cb93-7"><a href="spatial-analyst-toolbox.html#cb93-7" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span>{</span>
+<span id="cb93-8"><a href="spatial-analyst-toolbox.html#cb93-8" aria-hidden="true" tabindex="-1"></a>    extent_vec <span class="ot">&lt;-</span> <span class="fu">st_bbox</span>(extent)[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>)]</span>
+<span id="cb93-9"><a href="spatial-analyst-toolbox.html#cb93-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb93-10"><a href="spatial-analyst-toolbox.html#cb93-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb93-11"><a href="spatial-analyst-toolbox.html#cb93-11" aria-hidden="true" tabindex="-1"></a>  n_y <span class="ot">&lt;-</span> <span class="fu">ceiling</span>((extent_vec[<span class="dv">4</span>]<span class="sc">-</span>extent_vec[<span class="dv">3</span>])<span class="sc">/</span>cellsize)</span>
+<span id="cb93-12"><a href="spatial-analyst-toolbox.html#cb93-12" aria-hidden="true" tabindex="-1"></a>  n_x <span class="ot">&lt;-</span> <span class="fu">ceiling</span>((extent_vec[<span class="dv">2</span>]<span class="sc">-</span>extent_vec[<span class="dv">1</span>])<span class="sc">/</span>cellsize)</span>
+<span id="cb93-13"><a href="spatial-analyst-toolbox.html#cb93-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb93-14"><a href="spatial-analyst-toolbox.html#cb93-14" aria-hidden="true" tabindex="-1"></a>  extent_vec[<span class="dv">2</span>] <span class="ot">&lt;-</span> extent_vec[<span class="dv">1</span>]<span class="sc">+</span>(n_x<span class="sc">*</span>cellsize)<span class="sc">-</span>cellsize</span>
+<span id="cb93-15"><a href="spatial-analyst-toolbox.html#cb93-15" aria-hidden="true" tabindex="-1"></a>  extent_vec[<span class="dv">4</span>] <span class="ot">&lt;-</span> extent_vec[<span class="dv">3</span>]<span class="sc">+</span>(n_y<span class="sc">*</span>cellsize)<span class="sc">-</span>cellsize</span>
+<span id="cb93-16"><a href="spatial-analyst-toolbox.html#cb93-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb93-17"><a href="spatial-analyst-toolbox.html#cb93-17" aria-hidden="true" tabindex="-1"></a>  coords <span class="ot">&lt;-</span> <span class="fu">st_coordinates</span>(points)</span>
+<span id="cb93-18"><a href="spatial-analyst-toolbox.html#cb93-18" aria-hidden="true" tabindex="-1"></a>  matrix <span class="ot">&lt;-</span> <span class="fu">kde2d</span>(coords[,<span class="dv">1</span>],coords[,<span class="dv">2</span>],<span class="at">h =</span> bandwith,<span class="at">n =</span> <span class="fu">c</span>(n_x,n_y),<span class="at">lims =</span> extent_vec)</span>
+<span id="cb93-19"><a href="spatial-analyst-toolbox.html#cb93-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">raster</span>(matrix)</span>
+<span id="cb93-20"><a href="spatial-analyst-toolbox.html#cb93-20" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="spatial-analyst-toolbox.html#cb94-1" aria-hidden="true" tabindex="-1"></a>mypoints_kde <span class="ot">&lt;-</span> <span class="fu">my_kde</span>(mypoints,<span class="fl">0.01</span>,<span class="dv">1</span>)</span>
+<span id="cb94-2"><a href="spatial-analyst-toolbox.html#cb94-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stars)</span>
+<span id="cb94-3"><a href="spatial-analyst-toolbox.html#cb94-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-4"><a href="spatial-analyst-toolbox.html#cb94-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb94-5"><a href="spatial-analyst-toolbox.html#cb94-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_stars</span>(<span class="at">data =</span> <span class="fu">st_as_stars</span>(mypoints_kde)) <span class="sc">+</span></span>
+<span id="cb94-6"><a href="spatial-analyst-toolbox.html#cb94-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> mypoints, <span class="at">alpha =</span> <span class="fl">0.2</span>, <span class="at">fill =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb94-7"><a href="spatial-analyst-toolbox.html#cb94-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>() <span class="sc">+</span></span>
+<span id="cb94-8"><a href="spatial-analyst-toolbox.html#cb94-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">fill =</span> <span class="st">&quot;KDE&quot;</span>) <span class="sc">+</span></span>
+<span id="cb94-9"><a href="spatial-analyst-toolbox.html#cb94-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
 <!-- ### Line Density -->
 <!-- ### Point Density -->
 <!-- ## Distance Toolset -->
