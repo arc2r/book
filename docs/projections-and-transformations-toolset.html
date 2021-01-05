@@ -30,7 +30,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="joins-and-relates-toolset.html"/>
+<link rel="prev" href="joins-toolset.html"/>
 <link rel="next" href="spatial-analyst-toolbox.html"/>
 <script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
@@ -160,10 +160,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="data-management-toolbox.html"><a href="data-management-toolbox.html"><i class="fa fa-check"></i><b>5</b> Data Management Toolbox</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="joins-and-relates-toolset.html"><a href="joins-and-relates-toolset.html"><i class="fa fa-check"></i><b>5.1</b> Joins and Relates Toolset</a>
+<li class="chapter" data-level="5.1" data-path="joins-toolset.html"><a href="joins-toolset.html"><i class="fa fa-check"></i><b>5.1</b> Joins Toolset</a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="joins-and-relates-toolset.html"><a href="joins-and-relates-toolset.html#left-join"><i class="fa fa-check"></i><b>5.1.1</b> Left join</a></li>
-<li class="chapter" data-level="5.1.2" data-path="joins-and-relates-toolset.html"><a href="joins-and-relates-toolset.html#full-join"><i class="fa fa-check"></i><b>5.1.2</b> Full join</a></li>
+<li class="chapter" data-level="5.1.1" data-path="joins-toolset.html"><a href="joins-toolset.html#inner-join"><i class="fa fa-check"></i><b>5.1.1</b> Inner join</a></li>
+<li class="chapter" data-level="5.1.2" data-path="joins-toolset.html"><a href="joins-toolset.html#outer-join"><i class="fa fa-check"></i><b>5.1.2</b> Outer join</a></li>
+<li class="chapter" data-level="5.1.3" data-path="joins-toolset.html"><a href="joins-toolset.html#left-right-join"><i class="fa fa-check"></i><b>5.1.3</b> Left / Right join</a></li>
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="projections-and-transformations-toolset.html"><a href="projections-and-transformations-toolset.html"><i class="fa fa-check"></i><b>5.2</b> Projections and Transformations Toolset</a>
 <ul>
@@ -249,7 +250,7 @@ current existing one. Let’s dive in :)</p>
 <div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="projections-and-transformations-toolset.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualising the imported dataset</span></span>
 <span id="cb77-2"><a href="projections-and-transformations-toolset.html#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb77-3"><a href="projections-and-transformations-toolset.html#cb77-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> bezirke)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
 <p>In order to identify the current coordinate system of a dataset, <strong>sf package</strong>
 offers the function <em>st_crs</em>. The main usage of the function is to retrieve the
 coordinate reference system from an sf object.</p>
@@ -376,7 +377,7 @@ with R.</p>
 <span id="cb86-2"><a href="projections-and-transformations-toolset.html#cb86-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(publicTransport,<span class="at">las=</span><span class="dv">1</span>,</span>
 <span id="cb86-3"><a href="projections-and-transformations-toolset.html#cb86-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Quality of public transport in the city of Wädenwil - CRS: WGS84&quot;</span>,</span>
 <span id="cb86-4"><a href="projections-and-transformations-toolset.html#cb86-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex.main=</span><span class="dv">1</span>,<span class="at">font.main=</span><span class="dv">4</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
 <p>We can use the <em>projectRaster()</em> function to reproject a raster into a new CRS.
 The first argument of the aforementioned function is the raster dataset we want to reproject,
 while the second one is the dataset to whose projection we are targeting to. So, in
@@ -391,7 +392,7 @@ object has already a defined CRS.</p>
 <span id="cb88-2"><a href="projections-and-transformations-toolset.html#cb88-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(publicTransport_CH,<span class="at">las=</span><span class="dv">1</span>,</span>
 <span id="cb88-3"><a href="projections-and-transformations-toolset.html#cb88-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Quality of public transport in the city of Wädenwil - CRS: CH1903+LV95&quot;</span>,</span>
 <span id="cb88-4"><a href="projections-and-transformations-toolset.html#cb88-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex.main=</span><span class="dv">1</span>,<span class="at">font.main=</span><span class="dv">4</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-50-1.png" width="672" /></p>
 <!-- ## Topology Toolset -->
 <!-- ## Sampling Toolset -->
 </div>
@@ -444,11 +445,11 @@ the example below, we are using the following datasets:</p>
 <span id="cb89-12"><a href="projections-and-transformations-toolset.html#cb89-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the raster dataset and plot it</span></span>
 <span id="cb89-13"><a href="projections-and-transformations-toolset.html#cb89-13" aria-hidden="true" tabindex="-1"></a>raster_recycling <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="st">&quot;sample_data/Entsorgung_Waedenswil/abfall_raster.tif&quot;</span>)</span></code></pre></div>
 <p>Plot the two datasets one over the other.
-<img src="_main_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
+<img src="_main_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
 <p>In our case, the vector dataset serves as the clipping extent for the clipping operation.</p>
 <div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="projections-and-transformations-toolset.html#cb90-1" aria-hidden="true" tabindex="-1"></a>recycle_Waedi_clip <span class="ot">&lt;-</span> <span class="fu">mask</span>(raster_recycling,ARE_waedi)</span></code></pre></div>
 <p><em>Visualising the clipped output</em>
-<img src="_main_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
+<img src="_main_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
 <!-- #### Composite Bands -->
 <!-- #### Compute Pansharpen Weights -->
 <!-- #### Create Ortho Corrected Raster Dataset -->
@@ -472,7 +473,7 @@ the example below, we are using the following datasets:</p>
           </div>
         </div>
       </div>
-<a href="joins-and-relates-toolset.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="joins-toolset.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="spatial-analyst-toolbox.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

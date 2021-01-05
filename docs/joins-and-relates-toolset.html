@@ -162,7 +162,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="5.1" data-path="joins-and-relates-toolset.html"><a href="joins-and-relates-toolset.html"><i class="fa fa-check"></i><b>5.1</b> Joins and Relates Toolset</a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="joins-and-relates-toolset.html"><a href="joins-and-relates-toolset.html#left-join"><i class="fa fa-check"></i><b>5.1.1</b> Left join</a></li>
+<li class="chapter" data-level="5.1.1" data-path="joins-and-relates-toolset.html"><a href="joins-and-relates-toolset.html#inner-join"><i class="fa fa-check"></i><b>5.1.1</b> Inner join</a></li>
 <li class="chapter" data-level="5.1.2" data-path="joins-and-relates-toolset.html"><a href="joins-and-relates-toolset.html#full-join"><i class="fa fa-check"></i><b>5.1.2</b> Full join</a></li>
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="projections-and-transformations-toolset.html"><a href="projections-and-transformations-toolset.html"><i class="fa fa-check"></i><b>5.2</b> Projections and Transformations Toolset</a>
@@ -225,23 +225,54 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="joins-and-relates-toolset" class="section level2" number="5.1">
 <h2><span class="header-section-number">5.1</span> Joins and Relates Toolset</h2>
-<div id="left-join" class="section level3" number="5.1.1">
-<h3><span class="header-section-number">5.1.1</span> Left join</h3>
-<p>A <code>left join</code> in R serves as a merge operation between two data frames. The merge
-returns all the rows from the table from the left side and any matching rows from the second table.
-We demonstrate the use of this merge operation with an example below.</p>
+<p>In R we have two main options for merging two data frames. On the one hand there is
+the base R function called <em>merge</em>. The arguments of the <em>merge()</em> function offers the
+option to perform natural joins. In other words joins such as inner join, left join, right join etc.
+On the other hand we can come up with similar results by using the <em>join</em> functions that
+lie within the <strong>dplyr</strong> package.<br />
+In the examples below, we choose to use the later case.</p>
+<p>Before we begin with our examples, we have to make clear the differences among the various
+forms of join operations.</p>
+<ul>
+<li><em>Natural join or Inner Join</em> reflects on keeping only rows that match from the two data frames.</li>
+<li><em>Full outer join or Outer Join</em> reflects on keeping all rows from both data frames.</li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:joins"></span>
+<img src="images/joins.png" alt="Join operations" width="500px" />
+<p class="caption">
+Figure 5.1: Join operations
+</p>
+</div>
+<div id="inner-join" class="section level3" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> Inner join</h3>
+<p><code>Inner Join</code> in R is the most common type of join. It is an operation that returns the rows
+when the matching condition is fulfilled. Below we demonstrate it with an example.</p>
 <div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="joins-and-relates-toolset.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb68-2"><a href="joins-and-relates-toolset.html#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb68-3"><a href="joins-and-relates-toolset.html#cb68-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-4"><a href="joins-and-relates-toolset.html#cb68-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Import the first dataframe - the one that will be on the left side</span></span>
-<span id="cb68-5"><a href="joins-and-relates-toolset.html#cb68-5" aria-hidden="true" tabindex="-1"></a>wetter <span class="ot">&lt;-</span> <span class="fu">read_table</span>(<span class="st">&quot;sample_data/prepro/order_52252_data.txt&quot;</span>)</span>
-<span id="cb68-6"><a href="joins-and-relates-toolset.html#cb68-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-7"><a href="joins-and-relates-toolset.html#cb68-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Import the second dataframe</span></span>
-<span id="cb68-8"><a href="joins-and-relates-toolset.html#cb68-8" aria-hidden="true" tabindex="-1"></a>wetter_legende <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;sample_data/prepro/order_52252_legend.csv&quot;</span>,</span>
-<span id="cb68-9"><a href="joins-and-relates-toolset.html#cb68-9" aria-hidden="true" tabindex="-1"></a>                             <span class="at">delim =</span> <span class="st">&quot;;&quot;</span>, </span>
-<span id="cb68-10"><a href="joins-and-relates-toolset.html#cb68-10" aria-hidden="true" tabindex="-1"></a>                             <span class="at">locale =</span> <span class="fu">locale</span>(<span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>))</span>
-<span id="cb68-11"><a href="joins-and-relates-toolset.html#cb68-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-12"><a href="joins-and-relates-toolset.html#cb68-12" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(wetter)</span></code></pre></div>
+<span id="cb68-2"><a href="joins-and-relates-toolset.html#cb68-2" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">TeamID =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">11</span>),</span>
+<span id="cb68-3"><a href="joins-and-relates-toolset.html#cb68-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">TeamName =</span> <span class="fu">c</span>(<span class="st">&quot;new york knicks&quot;</span>,<span class="st">&quot;los angeles lakers&quot;</span>,<span class="st">&quot;milwaukee bucks&quot;</span>,<span class="st">&quot;boston celtics&quot;</span>),</span>
+<span id="cb68-4"><a href="joins-and-relates-toolset.html#cb68-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Championships =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">17</span>,<span class="dv">1</span>,<span class="dv">17</span>))</span>
+<span id="cb68-5"><a href="joins-and-relates-toolset.html#cb68-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-6"><a href="joins-and-relates-toolset.html#cb68-6" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">TeamID =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">11</span>,<span class="dv">8</span>),</span>
+<span id="cb68-7"><a href="joins-and-relates-toolset.html#cb68-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">TeamName =</span> <span class="fu">c</span>(<span class="st">&quot;new york knicks&quot;</span>,<span class="st">&quot;philadelphia 76ers&quot;</span>,<span class="st">&quot;boston celtics&quot;</span>,<span class="st">&quot;los angeles clippers&quot;</span>),</span>
+<span id="cb68-8"><a href="joins-and-relates-toolset.html#cb68-8" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Championships =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">17</span>,<span class="dv">0</span>))</span>
+<span id="cb68-9"><a href="joins-and-relates-toolset.html#cb68-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-10"><a href="joins-and-relates-toolset.html#cb68-10" aria-hidden="true" tabindex="-1"></a>df_innerJoin <span class="ot">&lt;-</span> df1 <span class="sc">%&gt;%</span> <span class="fu">inner_join</span>(df2, <span class="at">by =</span> <span class="cn">NULL</span>)</span>
+<span id="cb68-11"><a href="joins-and-relates-toolset.html#cb68-11" aria-hidden="true" tabindex="-1"></a>df_innerJoin</span></code></pre></div>
+<pre><code>##   TeamID        TeamName Championships
+## 1      1 new york knicks             2
+## 2     11  boston celtics            17</code></pre>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="joins-and-relates-toolset.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb70-2"><a href="joins-and-relates-toolset.html#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb70-3"><a href="joins-and-relates-toolset.html#cb70-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-4"><a href="joins-and-relates-toolset.html#cb70-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Import the first dataframe - the one that will be on the left side</span></span>
+<span id="cb70-5"><a href="joins-and-relates-toolset.html#cb70-5" aria-hidden="true" tabindex="-1"></a>wetter <span class="ot">&lt;-</span> <span class="fu">read_table</span>(<span class="st">&quot;sample_data/prepro/order_52252_data.txt&quot;</span>)</span>
+<span id="cb70-6"><a href="joins-and-relates-toolset.html#cb70-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-7"><a href="joins-and-relates-toolset.html#cb70-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Import the second dataframe</span></span>
+<span id="cb70-8"><a href="joins-and-relates-toolset.html#cb70-8" aria-hidden="true" tabindex="-1"></a>wetter_legende <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;sample_data/prepro/order_52252_legend.csv&quot;</span>,</span>
+<span id="cb70-9"><a href="joins-and-relates-toolset.html#cb70-9" aria-hidden="true" tabindex="-1"></a>                             <span class="at">delim =</span> <span class="st">&quot;;&quot;</span>, </span>
+<span id="cb70-10"><a href="joins-and-relates-toolset.html#cb70-10" aria-hidden="true" tabindex="-1"></a>                             <span class="at">locale =</span> <span class="fu">locale</span>(<span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>))</span>
+<span id="cb70-11"><a href="joins-and-relates-toolset.html#cb70-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-12"><a href="joins-and-relates-toolset.html#cb70-12" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(wetter)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 3
 ##   stn         time tre200h0
 ##   &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;
@@ -251,7 +282,7 @@ We demonstrate the use of this merge operation with an example below.</p>
 ## 4 ABO   2000010103     -2.4
 ## 5 ABO   2000010104     -2.5
 ## 6 ABO   2000010105     -3</code></pre>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="joins-and-relates-toolset.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(wetter_legende)</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="joins-and-relates-toolset.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(wetter_legende)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 7
 ##   stn   Name      Parameter Datenquelle  `Laenge/Breite` Koordinaten Meereshoehe
 ##   &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;           &lt;chr&gt;             &lt;dbl&gt;
@@ -263,9 +294,9 @@ We demonstrate the use of this merge operation with an example below.</p>
 ## 6 CHU   Chur      tre200h0  MeteoSchweiz 9°32&#39;/46°52&#39;    759465/193~         556</code></pre>
 <p>The left join operation between the two data frames is based on the common column
 named <em>stn</em> and defined as function’s third argument.</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="joins-and-relates-toolset.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform the left join and visualise the output</span></span>
-<span id="cb72-2"><a href="joins-and-relates-toolset.html#cb72-2" aria-hidden="true" tabindex="-1"></a>wetter_joined <span class="ot">&lt;-</span> <span class="fu">left_join</span>(wetter,wetter_legende,<span class="at">by =</span> <span class="st">&quot;stn&quot;</span>)</span>
-<span id="cb72-3"><a href="joins-and-relates-toolset.html#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(wetter_joined)</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="joins-and-relates-toolset.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform the left join and visualise the output</span></span>
+<span id="cb74-2"><a href="joins-and-relates-toolset.html#cb74-2" aria-hidden="true" tabindex="-1"></a>wetter_joined <span class="ot">&lt;-</span> <span class="fu">left_join</span>(wetter,wetter_legende,<span class="at">by =</span> <span class="st">&quot;stn&quot;</span>)</span>
+<span id="cb74-3"><a href="joins-and-relates-toolset.html#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(wetter_joined)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 9
 ##   stn     time tre200h0 Name  Parameter Datenquelle `Laenge/Breite` Koordinaten
 ##   &lt;chr&gt;  &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt;           &lt;chr&gt;      
@@ -282,9 +313,9 @@ named <em>stn</em> and defined as function’s third argument.</p>
 <p>Similarly for a <code>full join</code> between the two data frames, we can simply use the base R
 operation named <em>merge</em>. In other words, with <em>merge</em> we combine all the rows and columns
 of the two data frames. Below the afforementioned operation is demonstrated.</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="joins-and-relates-toolset.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Full join between the data frames wetter and wetter_legende</span></span>
-<span id="cb74-2"><a href="joins-and-relates-toolset.html#cb74-2" aria-hidden="true" tabindex="-1"></a>wetter_full <span class="ot">&lt;-</span> <span class="fu">merge</span>(wetter,wetter_legende)</span>
-<span id="cb74-3"><a href="joins-and-relates-toolset.html#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(wetter_full)</span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="joins-and-relates-toolset.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Full join between the data frames wetter and wetter_legende</span></span>
+<span id="cb76-2"><a href="joins-and-relates-toolset.html#cb76-2" aria-hidden="true" tabindex="-1"></a>wetter_full <span class="ot">&lt;-</span> <span class="fu">merge</span>(wetter,wetter_legende)</span>
+<span id="cb76-3"><a href="joins-and-relates-toolset.html#cb76-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(wetter_full)</span></code></pre></div>
 <pre><code>##   stn       time tre200h0      Name Parameter  Datenquelle Laenge/Breite
 ## 1 ABO 2000010107     -4.4 Adelboden  tre200h0 MeteoSchweiz  7°34&#39;/46°30&#39;
 ## 2 ABO 2000010106     -3.7 Adelboden  tre200h0 MeteoSchweiz  7°34&#39;/46°30&#39;

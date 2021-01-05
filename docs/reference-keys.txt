@@ -1,4 +1,5 @@
 fig:select
+fig:joins
 fig:clip
 fig:dissolve
 fig:buffer
@@ -19,9 +20,10 @@ basic-spatial-operations
 select-by-attribute
 select-by-location
 data-management-toolbox
-joins-and-relates-toolset
-left-join
-full-join
+joins-toolset
+inner-join
+outer-join
+left-right-join
 projections-and-transformations-toolset
 reproject-vector-data-in-r
 reproject-raster-data-in-r
