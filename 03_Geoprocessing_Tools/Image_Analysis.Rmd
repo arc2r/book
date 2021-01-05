@@ -41,7 +41,6 @@ we will create our own raster object.
 
 ```{r}
 library(raster)
-library(terra)
 
 r <- raster(ncol=10, nrow=10)
 values(r) <- 1:ncell(r)
@@ -69,6 +68,31 @@ r_spat <- as(r, "SpatRaster")
 f2 <- terra::focal(r_spat,w=3,fun = "sum")
 plot(f2, main = "Raster after applying the focal function - terra package", cex.main = 1)
 ```
-s
 
-<!-- ### Zonal Statistics -->
+### Zonal Statistics
+
+`Zonal Statistics` tool in ArcGIS pro is used for calculating the statistics
+on values of a raster within the zones of another dataset. In R we are able to produce
+similar results with the use of _zonal_ function of the __raster__ package. 
+x
+```{r}
+r <- raster(ncols=10, nrows=10)
+# generating random numbers that will used as values in our raster layer (r) - input values raster
+values(r) <- runif(ncell(r)) * 1:ncell(r)
+
+z <- r
+# generating integer values for the raster layer z, which will be used as the zone raster
+values(z) <- rep(1:5, each=20) 
+
+# Zonal statistics - Summarize
+zonal(r, z, "sum")
+
+# Zonal statistics - Mean
+zonal(r, z, "mean")
+
+# Zonal statistics - Minimum
+zonal(r, z, "min")
+```
+
+
+

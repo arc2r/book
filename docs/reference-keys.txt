@@ -37,6 +37,7 @@ natural-neighbor
 image-analysis-toolbox
 raster-calulator
 focal-statistics
+zonal-statistics
 analysis-toolbox
 clip
 merge

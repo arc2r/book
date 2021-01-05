@@ -189,6 +189,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="8.0.1" data-path="image-analysis-toolbox.html"><a href="image-analysis-toolbox.html#raster-calulator"><i class="fa fa-check"></i><b>8.0.1</b> Raster Calulator</a></li>
 <li class="chapter" data-level="8.0.2" data-path="image-analysis-toolbox.html"><a href="image-analysis-toolbox.html#focal-statistics"><i class="fa fa-check"></i><b>8.0.2</b> Focal Statistics</a></li>
+<li class="chapter" data-level="8.0.3" data-path="image-analysis-toolbox.html"><a href="image-analysis-toolbox.html#zonal-statistics"><i class="fa fa-check"></i><b>8.0.3</b> Zonal Statistics</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="analysis-toolbox.html"><a href="analysis-toolbox.html"><i class="fa fa-check"></i><b>9</b> Analysis Toolbox</a>
 <ul>
@@ -246,11 +247,10 @@ Source: <a href="https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial
 In other words to define the moving window for each of these functions. As an example below,
 we will create our own raster object.</p>
 <div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="image-analysis-toolbox.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
-<span id="cb109-2"><a href="image-analysis-toolbox.html#cb109-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
-<span id="cb109-3"><a href="image-analysis-toolbox.html#cb109-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-4"><a href="image-analysis-toolbox.html#cb109-4" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="at">ncol=</span><span class="dv">10</span>, <span class="at">nrow=</span><span class="dv">10</span>)</span>
-<span id="cb109-5"><a href="image-analysis-toolbox.html#cb109-5" aria-hidden="true" tabindex="-1"></a><span class="fu">values</span>(r) <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncell</span>(r)</span>
-<span id="cb109-6"><a href="image-analysis-toolbox.html#cb109-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(r, <span class="at">main=</span><span class="st">&#39;Raster with 100 cells&#39;</span>, <span class="at">cex.main =</span> <span class="dv">1</span>)</span></code></pre></div>
+<span id="cb109-2"><a href="image-analysis-toolbox.html#cb109-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-3"><a href="image-analysis-toolbox.html#cb109-3" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="at">ncol=</span><span class="dv">10</span>, <span class="at">nrow=</span><span class="dv">10</span>)</span>
+<span id="cb109-4"><a href="image-analysis-toolbox.html#cb109-4" aria-hidden="true" tabindex="-1"></a><span class="fu">values</span>(r) <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncell</span>(r)</span>
+<span id="cb109-5"><a href="image-analysis-toolbox.html#cb109-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(r, <span class="at">main=</span><span class="st">&#39;Raster with 100 cells&#39;</span>, <span class="at">cex.main =</span> <span class="dv">1</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-67-1.png" width="672" /></p>
 <p>We will recompute now the raster based on the <em>focal</em> function of the <strong>raster</strong> package. In the function
 below, the neighbourhood for which we apply the statistic is represented by the argument <em>w</em>, while the
@@ -268,9 +268,46 @@ or two numbers (row, col); or with an odd-sized weights matrix. More details can
 <span id="cb111-2"><a href="image-analysis-toolbox.html#cb111-2" aria-hidden="true" tabindex="-1"></a>r_spat <span class="ot">&lt;-</span> <span class="fu">as</span>(r, <span class="st">&quot;SpatRaster&quot;</span>)</span>
 <span id="cb111-3"><a href="image-analysis-toolbox.html#cb111-3" aria-hidden="true" tabindex="-1"></a>f2 <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">focal</span>(r_spat,<span class="at">w=</span><span class="dv">3</span>,<span class="at">fun =</span> <span class="st">&quot;sum&quot;</span>)</span>
 <span id="cb111-4"><a href="image-analysis-toolbox.html#cb111-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(f2, <span class="at">main =</span> <span class="st">&quot;Raster after applying the focal function - terra package&quot;</span>, <span class="at">cex.main =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-69-1.png" width="672" />
-s</p>
-<!-- ### Zonal Statistics -->
+<p><img src="_main_files/figure-html/unnamed-chunk-69-1.png" width="672" /></p>
+</div>
+<div id="zonal-statistics" class="section level3" number="8.0.3">
+<h3><span class="header-section-number">8.0.3</span> Zonal Statistics</h3>
+<p><code>Zonal Statistics</code> tool in ArcGIS pro is used for calculating the statistics
+on values of a raster within the zones of another dataset. In R we are able to produce
+similar results with the use of <em>zonal</em> function of the <strong>raster</strong> package.
+x</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="image-analysis-toolbox.html#cb112-1" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="at">ncols=</span><span class="dv">10</span>, <span class="at">nrows=</span><span class="dv">10</span>)</span>
+<span id="cb112-2"><a href="image-analysis-toolbox.html#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="co"># generating random numbers that will used as values in our raster layer (r) - input values raster</span></span>
+<span id="cb112-3"><a href="image-analysis-toolbox.html#cb112-3" aria-hidden="true" tabindex="-1"></a><span class="fu">values</span>(r) <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="fu">ncell</span>(r)) <span class="sc">*</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncell</span>(r)</span>
+<span id="cb112-4"><a href="image-analysis-toolbox.html#cb112-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb112-5"><a href="image-analysis-toolbox.html#cb112-5" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> r</span>
+<span id="cb112-6"><a href="image-analysis-toolbox.html#cb112-6" aria-hidden="true" tabindex="-1"></a><span class="co"># generating integer values for the raster layer z, which will be used as the zone raster</span></span>
+<span id="cb112-7"><a href="image-analysis-toolbox.html#cb112-7" aria-hidden="true" tabindex="-1"></a><span class="fu">values</span>(z) <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">each=</span><span class="dv">20</span>) </span>
+<span id="cb112-8"><a href="image-analysis-toolbox.html#cb112-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb112-9"><a href="image-analysis-toolbox.html#cb112-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Zonal statistics - Summarize</span></span>
+<span id="cb112-10"><a href="image-analysis-toolbox.html#cb112-10" aria-hidden="true" tabindex="-1"></a><span class="fu">zonal</span>(r, z, <span class="st">&quot;sum&quot;</span>)</span></code></pre></div>
+<pre><code>##      zone       sum
+## [1,]    1  99.58052
+## [2,]    2 305.81367
+## [3,]    3 475.71375
+## [4,]    4 707.51735
+## [5,]    5 796.50114</code></pre>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="image-analysis-toolbox.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Zonal statistics - Mean</span></span>
+<span id="cb114-2"><a href="image-analysis-toolbox.html#cb114-2" aria-hidden="true" tabindex="-1"></a><span class="fu">zonal</span>(r, z, <span class="st">&quot;mean&quot;</span>)</span></code></pre></div>
+<pre><code>##      zone      mean
+## [1,]    1  4.979026
+## [2,]    2 15.290684
+## [3,]    3 23.785688
+## [4,]    4 35.375867
+## [5,]    5 39.825057</code></pre>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="image-analysis-toolbox.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Zonal statistics - Minimum</span></span>
+<span id="cb116-2"><a href="image-analysis-toolbox.html#cb116-2" aria-hidden="true" tabindex="-1"></a><span class="fu">zonal</span>(r, z, <span class="st">&quot;min&quot;</span>)</span></code></pre></div>
+<pre><code>##      zone       min
+## [1,]    1 0.1487266
+## [2,]    2 1.9187318
+## [3,]    3 3.1954170
+## [4,]    4 4.5574448
+## [5,]    5 2.8274044</code></pre>
 
 </div>
 </div>
