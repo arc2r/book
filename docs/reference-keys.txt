@@ -32,6 +32,7 @@ clip-raster
 spatial-analyst-toolbox
 kernel-denisity
 reclass-toolset
+surface-toolset
 slope-and-aspect
 reclassify
 d-analyst-toolbox

@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="spatial-analyst-toolbox.html"/>
-<link rel="next" href="d-analyst-toolbox.html"/>
+<link rel="next" href="surface-toolset.html"/>
 <script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -176,10 +176,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6" data-path="spatial-analyst-toolbox.html"><a href="spatial-analyst-toolbox.html"><i class="fa fa-check"></i><b>6</b> Spatial Analyst Toolbox</a>
 <ul>
 <li class="chapter" data-level="6.0.1" data-path="spatial-analyst-toolbox.html"><a href="spatial-analyst-toolbox.html#kernel-denisity"><i class="fa fa-check"></i><b>6.0.1</b> Kernel Denisity</a></li>
-<li class="chapter" data-level="6.1" data-path="reclass-toolset.html"><a href="reclass-toolset.html"><i class="fa fa-check"></i><b>6.1</b> Reclass Toolset</a>
+<li class="chapter" data-level="6.1" data-path="reclass-toolset.html"><a href="reclass-toolset.html"><i class="fa fa-check"></i><b>6.1</b> Reclass Toolset</a></li>
+<li class="chapter" data-level="6.2" data-path="surface-toolset.html"><a href="surface-toolset.html"><i class="fa fa-check"></i><b>6.2</b> Surface Toolset</a>
 <ul>
-<li class="chapter" data-level="6.1.1" data-path="reclass-toolset.html"><a href="reclass-toolset.html#slope-and-aspect"><i class="fa fa-check"></i><b>6.1.1</b> Slope and Aspect</a></li>
-<li class="chapter" data-level="6.1.2" data-path="reclass-toolset.html"><a href="reclass-toolset.html#reclassify"><i class="fa fa-check"></i><b>6.1.2</b> Reclassify</a></li>
+<li class="chapter" data-level="6.2.1" data-path="surface-toolset.html"><a href="surface-toolset.html#slope-and-aspect"><i class="fa fa-check"></i><b>6.2.1</b> Slope and Aspect</a></li>
+<li class="chapter" data-level="6.2.2" data-path="surface-toolset.html"><a href="surface-toolset.html#reclassify"><i class="fa fa-check"></i><b>6.2.2</b> Reclassify</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="d-analyst-toolbox.html"><a href="d-analyst-toolbox.html"><i class="fa fa-check"></i><b>7</b> 3D Analyst Toolbox</a>
@@ -231,141 +232,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- ### Reclass by Table -->
 <!-- ### Rescale by Function -->
 <!-- ### Slice -->
-<!-- ## Surface Toolset -->
-<div id="slope-and-aspect" class="section level3" number="6.1.1">
-<h3><span class="header-section-number">6.1.1</span> Slope and Aspect</h3>
-<blockquote>
-<p>In mathematics, the slope or gradient of a line describes its steepness, incline, or grade. A higher slope value indicates a steeper incl.<br />
-Source: “<a href="http://wiki.gis.com/wiki/index.php/Slope" class="uri">http://wiki.gis.com/wiki/index.php/Slope</a>”</p>
-</blockquote>
-<p>In GIS and specifically in terrain analysis, calculating the terrain <em>slope</em> is of
-great importance, since it can play a significant role in various forms of technical
-analysis. The most common way of calculating the <em>slope</em> is from a Digital Elevation Model (DEM).</p>
-<p>In ArcGIS pro the tool used for computing the slope of a raster dataset with elevation
-data is called <code>Slope (3D Analyst)</code>.It identifies the steepness at each cell of a raster surface.
-The lower the slope value, the flatter the terrain; the higher the slope value, the steeper the terrain.</p>
-<p>In R, <strong>raster package</strong> includes the function <em>terrain()</em>, which helps us compute
-<em>slope</em>, <em>aspect</em> and other terrain characteristics from a raster with elevation data.<br />
-Let’s start by computing the <em>slope</em> of the <strong>swissAlti3d</strong> raster dataset.</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="reclass-toolset.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing a raster dataset</span></span>
-<span id="cb95-2"><a href="reclass-toolset.html#cb95-2" aria-hidden="true" tabindex="-1"></a><span class="co"># swissALTI3D2019.tif -- Source: https://geovite.ethz.ch</span></span>
-<span id="cb95-3"><a href="reclass-toolset.html#cb95-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb95-4"><a href="reclass-toolset.html#cb95-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
-<span id="cb95-5"><a href="reclass-toolset.html#cb95-5" aria-hidden="true" tabindex="-1"></a>swissAlti3d <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="st">&quot;sample_data/Raster/swissALTI3D2019.tif&quot;</span>)</span>
-<span id="cb95-6"><a href="reclass-toolset.html#cb95-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(swissAlti3d,</span>
-<span id="cb95-7"><a href="reclass-toolset.html#cb95-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;swissALTI3D2019 - CRS: CH1903+LV95&quot;</span>,</span>
-<span id="cb95-8"><a href="reclass-toolset.html#cb95-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex.main=</span><span class="dv">1</span>,<span class="at">font.main=</span><span class="dv">4</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
-<p>After importing and visualizing our raster dataset, we use the <em>terrain</em> function
-to calculate the slope.</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="reclass-toolset.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Computing the slope of a raster dataset using the terrain() function</span></span>
-<span id="cb96-2"><a href="reclass-toolset.html#cb96-2" aria-hidden="true" tabindex="-1"></a>swissAlti3d_slope <span class="ot">&lt;-</span> <span class="fu">terrain</span>(swissAlti3d, <span class="at">opt=</span><span class="st">&quot;slope&quot;</span>, <span class="at">unit=</span><span class="st">&quot;degrees&quot;</span>)</span>
-<span id="cb96-3"><a href="reclass-toolset.html#cb96-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(swissAlti3d_slope,</span>
-<span id="cb96-4"><a href="reclass-toolset.html#cb96-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Slope of swissALTI3D2019 in degrees (°)&quot;</span>,</span>
-<span id="cb96-5"><a href="reclass-toolset.html#cb96-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex.main=</span><span class="dv">1</span>,<span class="at">font.main=</span><span class="dv">4</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-59-1.png" width="672" /></p>
-<p>In the function above, we define the operation we want to perform as the second
-argument of the function (<em>opt = “slope”</em>). Furthermore, we also define the units
-of the final result.<br />
-Similarly, we compute the <em>aspect</em> of a given dataset. Basically as <em>aspect</em> we can
-consider the compass direction that a <em>slope</em> leans towards.<br />
-Let’s compute now, using again the same function <em>terrain</em>, the <em>aspect</em> of the
-same dataset <strong>swissALTI3D2019</strong>.</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="reclass-toolset.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Computing the aspect of the terrain dataset</span></span>
-<span id="cb97-2"><a href="reclass-toolset.html#cb97-2" aria-hidden="true" tabindex="-1"></a>swissAlti3d_aspect <span class="ot">&lt;-</span> <span class="fu">terrain</span>(swissAlti3d, <span class="at">opt=</span><span class="st">&quot;aspect&quot;</span>, <span class="at">unit=</span><span class="st">&quot;degrees&quot;</span>)</span>
-<span id="cb97-3"><a href="reclass-toolset.html#cb97-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(swissAlti3d_aspect,</span>
-<span id="cb97-4"><a href="reclass-toolset.html#cb97-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Aspect of swissALTI3D2019 in degrees (°)&quot;</span>,</span>
-<span id="cb97-5"><a href="reclass-toolset.html#cb97-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex.main=</span><span class="dv">1</span>,<span class="at">font.main=</span><span class="dv">4</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-60-1.png" width="672" /></p>
-<p>So, R gives us the option to retrieve multiple terrain characteristics of a raster
-dataset, using only one function. The aforementioned spatial operation in ArcGIS pro
-could be performed using the tool <code>Aspect (Spatial Analyst)</code>.</p>
 </div>
-<div id="reclassify" class="section level3" number="6.1.2">
-<h3><span class="header-section-number">6.1.2</span> Reclassify</h3>
-<p>In GIS quite often arises the necessity to reclassify a raster dataset. In other
-words, to create new classes with different range of values for the existing cell
-values of the dataset. This operation in ArcGIS Pro is performed using the
-<code>Reclassify (Spatial Analyst)</code> tool.<br />
-In R the respective operation is quite straightforward and is based on the use of
-the <em>reclassify</em> function of the <strong>raster</strong> package. For our example we use the
-raster dataset we computed previously, which depicts the <em>aspect</em> of the <strong>swissALTI3D2019</strong>
-dataset.</p>
-<p>As a first step, we can compute the histogram of our dataset.</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="reclass-toolset.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(swissAlti3d_aspect)</span></code></pre></div>
-<pre><code>##             aspect
-## Min.        0.0000
-## 1st Qu.   104.1014
-## Median    163.3606
-## 3rd Qu.   258.6777
-## Max.      359.9991
-## NA&#39;s    12652.0000</code></pre>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="reclass-toolset.html#cb100-1" aria-hidden="true" tabindex="-1"></a>histinfo <span class="ot">&lt;-</span> <span class="fu">hist</span>(swissAlti3d_aspect)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-61-1.png" width="672" /></p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="reclass-toolset.html#cb101-1" aria-hidden="true" tabindex="-1"></a>histinfo<span class="sc">$</span>breaks</span></code></pre></div>
-<pre><code>##  [1]   0  20  40  60  80 100 120 140 160 180 200 220 240 260 280 300 320 340 360</code></pre>
-<p>The number of breaks for our raster values are 19. The aim of ours is to create 4
-different classes with the following values:</p>
-<ul>
-<li>0°-90° -&gt; Class 1</li>
-<li>90°-180° -&gt; Class 2</li>
-<li>180°-270° -&gt; Class 3</li>
-<li>270°-360° -&gt; Class 4</li>
-</ul>
-<p>To do so, we create below a reclassification matrix with the respective values.</p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="reclass-toolset.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a reclassification matrix</span></span>
-<span id="cb103-2"><a href="reclass-toolset.html#cb103-2" aria-hidden="true" tabindex="-1"></a>reclass_df <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">90</span>,<span class="dv">1</span>,<span class="dv">90</span>,<span class="dv">180</span>,<span class="dv">2</span>,<span class="dv">180</span>,<span class="dv">270</span>,<span class="dv">3</span>,<span class="dv">270</span>,<span class="dv">360</span>,<span class="dv">4</span>)</span>
-<span id="cb103-3"><a href="reclass-toolset.html#cb103-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-4"><a href="reclass-toolset.html#cb103-4" aria-hidden="true" tabindex="-1"></a><span class="co"># convert to Matrix</span></span>
-<span id="cb103-5"><a href="reclass-toolset.html#cb103-5" aria-hidden="true" tabindex="-1"></a>reclass_m <span class="ot">&lt;-</span> <span class="fu">matrix</span>(reclass_df,</span>
-<span id="cb103-6"><a href="reclass-toolset.html#cb103-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">ncol =</span> <span class="dv">3</span>,</span>
-<span id="cb103-7"><a href="reclass-toolset.html#cb103-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb103-8"><a href="reclass-toolset.html#cb103-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-9"><a href="reclass-toolset.html#cb103-9" aria-hidden="true" tabindex="-1"></a>reclass_m</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    0   90    1
-## [2,]   90  180    2
-## [3,]  180  270    3
-## [4,]  270  360    4</code></pre>
-<p>After creating the respective matrix with the new classes, we are ready to
-call the <em>reclassify</em> function. The function takes as a first argument the dataset
-set to be reclassified and as second the matrix, on which the reclassification is
-based on.</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="reclass-toolset.html#cb105-1" aria-hidden="true" tabindex="-1"></a>swissAlti3d_aspect_reclass <span class="ot">&lt;-</span> <span class="fu">reclassify</span>(swissAlti3d_aspect,</span>
-<span id="cb105-2"><a href="reclass-toolset.html#cb105-2" aria-hidden="true" tabindex="-1"></a>                     reclass_m)</span>
-<span id="cb105-3"><a href="reclass-toolset.html#cb105-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb105-4"><a href="reclass-toolset.html#cb105-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(swissAlti3d_aspect_reclass, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;yellow&quot;</span>,<span class="st">&quot;blue&quot;</span>),</span>
-<span id="cb105-5"><a href="reclass-toolset.html#cb105-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Aspect of swissALTI3D2019 in 4 classes&quot;</span>,</span>
-<span id="cb105-6"><a href="reclass-toolset.html#cb105-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex.main=</span><span class="dv">1</span>,<span class="at">font.main=</span><span class="dv">4</span>, <span class="at">legend =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb105-7"><a href="reclass-toolset.html#cb105-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb105-8"><a href="reclass-toolset.html#cb105-8" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>,</span>
-<span id="cb105-9"><a href="reclass-toolset.html#cb105-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;0°-90°&quot;</span>, <span class="st">&quot;90°-180°&quot;</span>, <span class="st">&quot;180°-270°&quot;</span>,<span class="st">&quot;270°-360°&quot;</span>),</span>
-<span id="cb105-10"><a href="reclass-toolset.html#cb105-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;yellow&quot;</span>),</span>
-<span id="cb105-11"><a href="reclass-toolset.html#cb105-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">border =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb105-12"><a href="reclass-toolset.html#cb105-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>) <span class="co"># turn off legend border</span></span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-63-1.png" width="672" /></p>
-<!-- ### Contour -->
-<!-- ### Contour List -->
-<!-- ### Contour with Barriers -->
-<!-- ### Curvature -->
-<!-- ### Cut Fill -->
-<!-- ### Hillshade -->
-<!-- ### Observer Points -->
-<!-- ### Viewshed -->
-<!-- ### Viewshed 2 -->
-<!-- ### Visibility -->
-<!-- ## Zonal Toolset -->
-
-</div>
-</div>
-<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
 <a href="spatial-analyst-toolbox.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="d-analyst-toolbox.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="surface-toolset.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

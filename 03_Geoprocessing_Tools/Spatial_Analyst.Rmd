@@ -113,7 +113,7 @@ ggplot() +
 <!-- ### Slice -->
 
 
-<!-- ## Surface Toolset -->
+## Surface Toolset
 
 ### Slope and Aspect
 
