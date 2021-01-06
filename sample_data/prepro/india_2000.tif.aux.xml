@@ -1,0 +1,15 @@
+<PAMDataset>
+  <Metadata>
+    <MDI key="DataType">Generic</MDI>
+  </Metadata>
+  <PAMRasterBand band="1">
+    <Metadata>
+      <MDI key="RepresentationType">ATHEMATIC</MDI>
+      <MDI key="STATISTICS_MAXIMUM">858492.6875</MDI>
+      <MDI key="STATISTICS_MEAN">6263.6551112529</MDI>
+      <MDI key="STATISTICS_MINIMUM">0</MDI>
+      <MDI key="STATISTICS_STDDEV">13426.216549981</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">33.19</MDI>
+    </Metadata>
+  </PAMRasterBand>
+</PAMDataset>
