@@ -232,8 +232,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">9.0.1</span> Clip</h3>
 <p>Quite often in spatial analysis, we come across with cases, where we do not want to use all the available data there is. In other words, we want to focus on a specific area of interest, which dictates the need for <strong>clipping</strong> the existing dataset based on it’s relationship to some other existing spatial feature. In R this operation can be easily performed using the <em>st_intersection</em> function in <strong>sf</strong>.</p>
 <p>Let’s assume in the example below that we want to clip the available dataset of all the <strong>train stations in Switzerland</strong> by focusing our analysis on four specific cantons.</p>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="analysis-toolbox.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Point dataset depicting the train stations locations across Switzerland</span></span>
-<span id="cb128-2"><a href="analysis-toolbox.html#cb128-2" aria-hidden="true" tabindex="-1"></a>bahn_haltestelle_ch <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;sample_data/other/Haltestelle_Bahn_CH.shp&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="analysis-toolbox.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb128-2"><a href="analysis-toolbox.html#cb128-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Point dataset depicting the train stations locations across Switzerland</span></span>
+<span id="cb128-3"><a href="analysis-toolbox.html#cb128-3" aria-hidden="true" tabindex="-1"></a>bahn_haltestelle_ch <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;sample_data/other/Haltestelle_Bahn_CH.shp&quot;</span>)</span></code></pre></div>
 <pre><code>## Reading layer `Haltestelle_Bahn_CH&#39; from data source `C:\Users\bako\Desktop\Projekte\All_thing_R_Spatial\github\spatialR_for_ArcGIS_Users\sample_data\other\Haltestelle_Bahn_CH.shp&#39; using driver `ESRI Shapefile&#39;
 ## Simple feature collection with 3134 features and 16 fields
 ## geometry type:  POINT
@@ -292,69 +293,41 @@ Figure 9.1: Clip operation in ArcGIS pro
 <p>Let’s assume in the example below that instead of having four individual areas of interest, we are interested in having one common, unified area on which we focus our analysis. In other words, we have to <strong>merge</strong> the existing four areas into one. In ArcGIS pro the respective tools for this action is either the <code>Merge</code> or the <code>Dissolve</code> tool.<br />
 In R on the other hand, this can be easily performed using the <em>st_union</em> function in the <strong>sf</strong> package.</p>
 <div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="analysis-toolbox.html#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The area of interest from the previous example - section Clip</span></span>
-<span id="cb135-2"><a href="analysis-toolbox.html#cb135-2" aria-hidden="true" tabindex="-1"></a>kantons_aOi</span></code></pre></div>
-<pre><code>## Simple feature collection with 12 features and 22 fields (with 5 geometries empty)
+<span id="cb135-2"><a href="analysis-toolbox.html#cb135-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(kantons_aOi)</span></code></pre></div>
+<pre><code>## Simple feature collection with 6 features and 22 fields
 ## geometry type:  MULTIPOLYGON
 ## dimension:      XYZ
 ## bbox:           xmin: 2620698 ymin: 1193269 xmax: 2768769 ymax: 1283504
 ## z_range:        zmin: 260.666 zmax: 3246.858
 ## projected CRS:  CH1903+ / LV95
-## First 10 features:
-##                                        uuid datum_aend datum_erst erstellung
-## 6    {05D55405-466B-4ECC-83C7-A906DEB0D607} 2017-12-04 2012-10-26       2012
-## 7    {FB7105B8-6D7C-4787-846E-17B2BC145C6E} 2018-11-22 2012-10-26       2012
-## 10   {E11CD2CA-2E2D-415C-8789-C10D7C26E441} 2016-12-09 2012-10-26       2012
-## 12   {87370D3F-DBBE-4D05-AF85-C358C3924B3D} 2018-11-22 2012-10-26       2012
-## 41   {99488953-65F6-4F86-8606-337113587F85} 2015-12-08 2012-10-26       2012
-## 47   {F1A07951-AC8B-4EBA-B48F-64BC8B92228C} 2015-12-08 2012-10-26       2012
-## 48   {784EB478-2D40-4620-80F8-ACC252A6FD02} 2015-12-08 2012-10-26       2012
-## NA                                     &lt;NA&gt;       &lt;NA&gt;       &lt;NA&gt;         NA
-## NA.1                                   &lt;NA&gt;       &lt;NA&gt;       &lt;NA&gt;         NA
-## NA.2                                   &lt;NA&gt;       &lt;NA&gt;       &lt;NA&gt;         NA
-##      erstellu_1 revision_j revision_m grund_aend herkunft herkunft_j herkunft_m
-## 6            10       2019          1        400      100       2018          1
-## 7            10       2019          1        400      500       2019          1
-## 10           10       2019          1        400      100       2017          1
-## 12           10       2019          1        400      500       2019          1
-## 41           10       2019          1        400      500       2015         12
-## 47           10       2019          1        400      500       2015         12
-## 48           10       2019          1        400      500       2015         12
-## NA           NA         NA         NA         NA       NA         NA         NA
-## NA.1         NA         NA         NA         NA       NA         NA         NA
-## NA.2         NA         NA         NA         NA       NA         NA         NA
-##      objektart kantonsnum see_flaech  revision_q kantonsfla kanton_tei
-## 6            0         17       7720 2018_Aufbau     202820          1
-## 7            0          1       6811 2018_Aufbau     172894          0
-## 10           0         19        870 2018_Aufbau     140380          1
-## 12           0         20      13121 2018_Aufbau      99433          1
-## 41           0         20          0 2018_Aufbau          0          2
-## 47           0         17          0 2018_Aufbau          0          2
-## 48           0         19          0 2018_Aufbau          0          2
-## NA          NA         NA         NA        &lt;NA&gt;         NA         NA
-## NA.1        NA         NA         NA        &lt;NA&gt;         NA         NA
-## NA.2        NA         NA         NA        &lt;NA&gt;         NA         NA
-##            name  icc einwohnerz Shape_Leng   Shape_Area
-## 6    St. Gallen   CH     504686 494074.195 2.028094e+09
-## 7        Zürich   CH    1504346 312972.523 1.728942e+09
-## 10       Aargau   CH     670988 328943.352 1.403783e+09
-## 12      Thurgau   CH     273801 287778.920 9.905920e+08
-## 41      Thurgau   CH          0   8640.269 3.737271e+06
-## 47   St. Gallen   CH          0   1481.811 1.054068e+05
-## 48       Aargau   CH          0    537.994 1.486573e+04
-## NA         &lt;NA&gt; &lt;NA&gt;         NA         NA           NA
-## NA.1       &lt;NA&gt; &lt;NA&gt;         NA         NA           NA
-## NA.2       &lt;NA&gt; &lt;NA&gt;         NA         NA           NA
-##                            geometry
-## 6    MULTIPOLYGON Z (((2703763 1...
-## 7    MULTIPOLYGON Z (((2673542 1...
-## 10   MULTIPOLYGON Z (((2673542 1...
-## 12   MULTIPOLYGON Z (((2701937 1...
-## 41   MULTIPOLYGON Z (((2751489 1...
-## 47   MULTIPOLYGON Z (((2744263 1...
-## 48   MULTIPOLYGON Z (((2675447 1...
-## NA             MULTIPOLYGON Z EMPTY
-## NA.1           MULTIPOLYGON Z EMPTY
-## NA.2           MULTIPOLYGON Z EMPTY</code></pre>
+##                                      uuid datum_aend datum_erst erstellung
+## 6  {05D55405-466B-4ECC-83C7-A906DEB0D607} 2017-12-04 2012-10-26       2012
+## 7  {FB7105B8-6D7C-4787-846E-17B2BC145C6E} 2018-11-22 2012-10-26       2012
+## 10 {E11CD2CA-2E2D-415C-8789-C10D7C26E441} 2016-12-09 2012-10-26       2012
+## 12 {87370D3F-DBBE-4D05-AF85-C358C3924B3D} 2018-11-22 2012-10-26       2012
+## 41 {99488953-65F6-4F86-8606-337113587F85} 2015-12-08 2012-10-26       2012
+## 47 {F1A07951-AC8B-4EBA-B48F-64BC8B92228C} 2015-12-08 2012-10-26       2012
+##    erstellu_1 revision_j revision_m grund_aend herkunft herkunft_j herkunft_m
+## 6          10       2019          1        400      100       2018          1
+## 7          10       2019          1        400      500       2019          1
+## 10         10       2019          1        400      100       2017          1
+## 12         10       2019          1        400      500       2019          1
+## 41         10       2019          1        400      500       2015         12
+## 47         10       2019          1        400      500       2015         12
+##    objektart kantonsnum see_flaech  revision_q kantonsfla kanton_tei       name
+## 6          0         17       7720 2018_Aufbau     202820          1 St. Gallen
+## 7          0          1       6811 2018_Aufbau     172894          0     Zürich
+## 10         0         19        870 2018_Aufbau     140380          1     Aargau
+## 12         0         20      13121 2018_Aufbau      99433          1    Thurgau
+## 41         0         20          0 2018_Aufbau          0          2    Thurgau
+## 47         0         17          0 2018_Aufbau          0          2 St. Gallen
+##    icc einwohnerz Shape_Leng   Shape_Area                       geometry
+## 6   CH     504686 494074.195 2028094302.5 MULTIPOLYGON Z (((2703763 1...
+## 7   CH    1504346 312972.523 1728941805.8 MULTIPOLYGON Z (((2673542 1...
+## 10  CH     670988 328943.352 1403783344.8 MULTIPOLYGON Z (((2673542 1...
+## 12  CH     273801 287778.920  990592017.5 MULTIPOLYGON Z (((2701937 1...
+## 41  CH          0   8640.269    3737271.5 MULTIPOLYGON Z (((2751489 1...
+## 47  CH          0   1481.811     105406.8 MULTIPOLYGON Z (((2744263 1...</code></pre>
 <div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="analysis-toolbox.html#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Merging the four areas into one</span></span>
 <span id="cb137-2"><a href="analysis-toolbox.html#cb137-2" aria-hidden="true" tabindex="-1"></a>aOi_merged <span class="ot">&lt;-</span> <span class="fu">st_union</span>(kantons_aOi)</span></code></pre></div>
 <ul>

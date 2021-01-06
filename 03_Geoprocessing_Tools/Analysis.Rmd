@@ -16,7 +16,7 @@ Let's assume in the example below that we want to clip the available dataset of 
 
 
 ```{r}
-
+library(sf)
 # Point dataset depicting the train stations locations across Switzerland
 bahn_haltestelle_ch <- st_read("sample_data/other/Haltestelle_Bahn_CH.shp")
 
@@ -79,7 +79,7 @@ In R on the other hand, this can be easily performed using the _st_union_ functi
 
 ```{r}
 # The area of interest from the previous example - section Clip
-kantons_aOi
+head(kantons_aOi)
 
 # Merging the four areas into one
 aOi_merged <- st_union(kantons_aOi)

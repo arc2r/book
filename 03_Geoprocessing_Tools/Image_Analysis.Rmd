@@ -109,7 +109,7 @@ plot(f2, main = "Raster after applying the focal function - terra package", cex.
 `Zonal Statistics` tool in ArcGIS pro is used for calculating the statistics
 on values of a raster within the zones of another dataset. In R we are able to produce
 similar results with the use of _zonal_ function of the __raster__ package. 
-x
+
 ```{r}
 r <- raster(ncols=10, nrows=10)
 # generating random numbers that will used as values in our raster layer (r) - input values raster

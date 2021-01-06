@@ -309,8 +309,7 @@ or two numbers (row, col); or with an odd-sized weights matrix. More details can
 <h3><span class="header-section-number">8.1.3</span> Zonal Statistics</h3>
 <p><code>Zonal Statistics</code> tool in ArcGIS pro is used for calculating the statistics
 on values of a raster within the zones of another dataset. In R we are able to produce
-similar results with the use of <em>zonal</em> function of the <strong>raster</strong> package.
-x</p>
+similar results with the use of <em>zonal</em> function of the <strong>raster</strong> package.</p>
 <div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="map-algebra-toolset.html#cb122-1" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="at">ncols=</span><span class="dv">10</span>, <span class="at">nrows=</span><span class="dv">10</span>)</span>
 <span id="cb122-2"><a href="map-algebra-toolset.html#cb122-2" aria-hidden="true" tabindex="-1"></a><span class="co"># generating random numbers that will used as values in our raster layer (r) - input values raster</span></span>
 <span id="cb122-3"><a href="map-algebra-toolset.html#cb122-3" aria-hidden="true" tabindex="-1"></a><span class="fu">values</span>(r) <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="fu">ncell</span>(r)) <span class="sc">*</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncell</span>(r)</span>
