@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="map-algebra-toolset.html"/>
-
+<link rel="next" href="clip.html"/>
 <script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -203,10 +203,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9" data-path="analysis-toolbox.html"><a href="analysis-toolbox.html"><i class="fa fa-check"></i><b>9</b> Analysis Toolbox</a>
 <ul>
-<li class="chapter" data-level="9.0.1" data-path="analysis-toolbox.html"><a href="analysis-toolbox.html#clip"><i class="fa fa-check"></i><b>9.0.1</b> Clip</a></li>
-<li class="chapter" data-level="9.0.2" data-path="analysis-toolbox.html"><a href="analysis-toolbox.html#merge"><i class="fa fa-check"></i><b>9.0.2</b> Merge</a></li>
-<li class="chapter" data-level="9.0.3" data-path="analysis-toolbox.html"><a href="analysis-toolbox.html#spatial-join"><i class="fa fa-check"></i><b>9.0.3</b> Spatial Join</a></li>
-<li class="chapter" data-level="9.0.4" data-path="analysis-toolbox.html"><a href="analysis-toolbox.html#buffer"><i class="fa fa-check"></i><b>9.0.4</b> Buffer</a></li>
+<li class="chapter" data-level="9.1" data-path="clip.html"><a href="clip.html"><i class="fa fa-check"></i><b>9.1</b> Clip</a></li>
+<li class="chapter" data-level="9.2" data-path="merge.html"><a href="merge.html"><i class="fa fa-check"></i><b>9.2</b> Merge</a></li>
+<li class="chapter" data-level="9.3" data-path="spatial-join.html"><a href="spatial-join.html"><i class="fa fa-check"></i><b>9.3</b> Spatial Join</a></li>
+<li class="chapter" data-level="9.4" data-path="buffer.html"><a href="buffer.html"><i class="fa fa-check"></i><b>9.4</b> Buffer</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="topology-rules.html"><a href="topology-rules.html"><i class="fa fa-check"></i><b>10</b> Topology Rules</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="polygon.html"><a href="polygon.html"><i class="fa fa-check"></i><b>10.1</b> Polygon</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="polygon.html"><a href="polygon.html#must-not-overlap"><i class="fa fa-check"></i><b>10.1.1</b> Must not overlap</a></li>
+<li class="chapter" data-level="10.1.2" data-path="polygon.html"><a href="polygon.html#must-not-have-gaps"><i class="fa fa-check"></i><b>10.1.2</b> Must not have gaps</a></li>
+<li class="chapter" data-level="10.1.3" data-path="polygon.html"><a href="polygon.html#contains-point"><i class="fa fa-check"></i><b>10.1.3</b> Contains point</a></li>
+<li class="chapter" data-level="10.1.4" data-path="polygon.html"><a href="polygon.html#contains-one-point"><i class="fa fa-check"></i><b>10.1.4</b> Contains one Point</a></li>
+<li class="chapter" data-level="10.1.5" data-path="polygon.html"><a href="polygon.html#must-be-covered-by-feature-class-of"><i class="fa fa-check"></i><b>10.1.5</b> Must be covered by feature class of</a></li>
+<li class="chapter" data-level="10.1.6" data-path="polygon.html"><a href="polygon.html#boundary-must-be-covered-by"><i class="fa fa-check"></i><b>10.1.6</b> Boundary must be covered by</a></li>
+<li class="chapter" data-level="10.1.7" data-path="polygon.html"><a href="polygon.html#must-not-overlap-with"><i class="fa fa-check"></i><b>10.1.7</b> Must not overlap with</a></li>
+<li class="chapter" data-level="10.1.8" data-path="polygon.html"><a href="polygon.html#must-be-covered-by"><i class="fa fa-check"></i><b>10.1.8</b> Must be covered by</a></li>
+<li class="chapter" data-level="10.1.9" data-path="polygon.html"><a href="polygon.html#area-boundary-must-be-covered-by-boundary-of"><i class="fa fa-check"></i><b>10.1.9</b> Area boundary must be covered by boundary of</a></li>
+<li class="chapter" data-level="10.1.10" data-path="polygon.html"><a href="polygon.html#must-cover-each-other"><i class="fa fa-check"></i><b>10.1.10</b> Must cover each other</a></li>
+</ul></li>
 </ul></li>
 </ul>
 
@@ -228,272 +244,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="analysis-toolbox" class="section level1" number="9">
 <h1><span class="header-section-number">9</span> Analysis Toolbox</h1>
 <!-- ## Extract Toolset -->
-<div id="clip" class="section level3" number="9.0.1">
-<h3><span class="header-section-number">9.0.1</span> Clip</h3>
-<p>Quite often in spatial analysis, we come across with cases, where we do not want to use all the available data there is. In other words, we want to focus on a specific area of interest, which dictates the need for <strong>clipping</strong> the existing dataset based on it’s relationship to some other existing spatial feature. In R this operation can be easily performed using the <em>st_intersection</em> function in <strong>sf</strong>.</p>
-<p>Let’s assume in the example below that we want to clip the available dataset of all the <strong>train stations in Switzerland</strong> by focusing our analysis on four specific cantons.</p>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="analysis-toolbox.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb128-2"><a href="analysis-toolbox.html#cb128-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Point dataset depicting the train stations locations across Switzerland</span></span>
-<span id="cb128-3"><a href="analysis-toolbox.html#cb128-3" aria-hidden="true" tabindex="-1"></a>bahn_haltestelle_ch <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;sample_data/other/Haltestelle_Bahn_CH.shp&quot;</span>)</span></code></pre></div>
-<pre><code>## Reading layer `Haltestelle_Bahn_CH&#39; from data source `C:\Users\bako\Desktop\Projekte\All_thing_R_Spatial\github\spatialR_for_ArcGIS_Users\sample_data\other\Haltestelle_Bahn_CH.shp&#39; using driver `ESRI Shapefile&#39;
-## Simple feature collection with 3134 features and 16 fields
-## geometry type:  POINT
-## dimension:      XYZ
-## bbox:           xmin: 2488908 ymin: 1076850 xmax: 2817389 ymax: 1289090
-## z_range:        zmin: 194.905 zmax: 3453.525
-## projected CRS:  CH1903+ / LV95</code></pre>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="analysis-toolbox.html#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dataset depicting Switzerland on canton level</span></span>
-<span id="cb130-2"><a href="analysis-toolbox.html#cb130-2" aria-hidden="true" tabindex="-1"></a>kantonsgebiet <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;sample_data/other/Kantonsgebiet.shp&quot;</span>)</span></code></pre></div>
-<pre><code>## Reading layer `Kantonsgebiet&#39; from data source `C:\Users\bako\Desktop\Projekte\All_thing_R_Spatial\github\spatialR_for_ArcGIS_Users\sample_data\other\Kantonsgebiet.shp&#39; using driver `ESRI Shapefile&#39;
-## Simple feature collection with 56 features and 22 fields
-## geometry type:  MULTIPOLYGON
-## dimension:      XYZ
-## bbox:           xmin: 2485410 ymin: 1075268 xmax: 2833858 ymax: 1295934
-## z_range:        zmin: 193.51 zmax: 4613.729
-## projected CRS:  CH1903+ / LV95</code></pre>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="analysis-toolbox.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tmap_mode</span>(<span class="at">mode =</span> <span class="fu">c</span>(<span class="st">&quot;plot&quot;</span>)) <span class="co"># setting the plotting mode to static -- optimizing the process</span></span>
-<span id="cb132-2"><a href="analysis-toolbox.html#cb132-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb132-3"><a href="analysis-toolbox.html#cb132-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(kantonsgebiet) <span class="sc">+</span> <span class="fu">tm_polygons</span>(<span class="st">&quot;#f0f0f0&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb132-4"><a href="analysis-toolbox.html#cb132-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_shape</span>(bahn_haltestelle_ch) <span class="sc">+</span> <span class="fu">tm_dots</span>(<span class="at">col =</span> <span class="st">&quot;#e34a33&quot;</span>,<span class="at">size =</span> <span class="fl">0.1</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb132-5"><a href="analysis-toolbox.html#cb132-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_shape</span>(kantonsgebiet) <span class="sc">+</span> <span class="fu">tm_borders</span>(<span class="at">col =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span> <span class="fu">tm_layout</span>(<span class="at">frame =</span> F)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-78-1.png" width="672" /></p>
-<p>As it was mentioned above, the aim is to analyse the situation at a particular area. So we are going to create an index with the specific cantons we are interested in.</p>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="analysis-toolbox.html#cb133-1" aria-hidden="true" tabindex="-1"></a>index <span class="ot">&lt;-</span> kantonsgebiet<span class="sc">$</span>name <span class="sc">==</span> <span class="st">&quot;Zürich&quot;</span> <span class="sc">|</span></span>
-<span id="cb133-2"><a href="analysis-toolbox.html#cb133-2" aria-hidden="true" tabindex="-1"></a>  kantonsgebiet<span class="sc">$</span>name <span class="sc">==</span> <span class="st">&quot;St. Gallen&quot;</span> <span class="sc">|</span></span>
-<span id="cb133-3"><a href="analysis-toolbox.html#cb133-3" aria-hidden="true" tabindex="-1"></a>  kantonsgebiet<span class="sc">$</span>name <span class="sc">==</span> <span class="st">&quot;Thurgau&quot;</span> <span class="sc">|</span></span>
-<span id="cb133-4"><a href="analysis-toolbox.html#cb133-4" aria-hidden="true" tabindex="-1"></a>  kantonsgebiet<span class="sc">$</span>name <span class="sc">==</span> <span class="st">&quot;Aargau&quot;</span></span>
-<span id="cb133-5"><a href="analysis-toolbox.html#cb133-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb133-6"><a href="analysis-toolbox.html#cb133-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecting the cantons based on the previously generated index</span></span>
-<span id="cb133-7"><a href="analysis-toolbox.html#cb133-7" aria-hidden="true" tabindex="-1"></a>kantons_aOi <span class="ot">&lt;-</span> kantonsgebiet[index,]</span>
-<span id="cb133-8"><a href="analysis-toolbox.html#cb133-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb133-9"><a href="analysis-toolbox.html#cb133-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Performing the clipping operation</span></span>
-<span id="cb133-10"><a href="analysis-toolbox.html#cb133-10" aria-hidden="true" tabindex="-1"></a>hal_clipped <span class="ot">&lt;-</span> <span class="fu">st_intersection</span>(kantons_aOi,bahn_haltestelle_ch)</span></code></pre></div>
-<ul>
-<li>Plotting the result from the clipping operation</li>
-</ul>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="analysis-toolbox.html#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(kantons_aOi) <span class="sc">+</span> <span class="fu">tm_polygons</span>(<span class="st">&quot;#f0f0f0&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb134-2"><a href="analysis-toolbox.html#cb134-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_shape</span>(hal_clipped) <span class="sc">+</span> <span class="fu">tm_dots</span>(<span class="at">col =</span> <span class="st">&quot;#e34a33&quot;</span>,<span class="at">size =</span> <span class="fl">0.1</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb134-3"><a href="analysis-toolbox.html#cb134-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_shape</span>(kantons_aOi) <span class="sc">+</span> <span class="fu">tm_borders</span>() <span class="sc">+</span> <span class="fu">tm_layout</span>(<span class="at">frame =</span> F)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-80-1.png" width="672" /></p>
-<p>So, ultimately, as we can see above, the <em>st_intersection</em> function creates a result where the point dataset is precisely “clipped” based on the area of interest</p>
-<p>The operation above produces the same outcome as the one depicted in the figure below <a href="analysis-toolbox.html#fig:clip">9.1</a>.</p>
-<div class="figure" style="text-align: center"><span id="fig:clip"></span>
-<img src="images/clipOperation.png" alt="Clip operation in ArcGIS pro" width="750px" />
-<p class="caption">
-Figure 9.1: Clip operation in ArcGIS pro
-</p>
-</div>
-<!-- ### Split -->
-<!-- ### Split by Attributes -->
-<!-- ### Table Select -->
-<!-- ## Overlay Toolset -->
-</div>
-<div id="merge" class="section level3" number="9.0.2">
-<h3><span class="header-section-number">9.0.2</span> Merge</h3>
-<p>Let’s assume in the example below that instead of having four individual areas of interest, we are interested in having one common, unified area on which we focus our analysis. In other words, we have to <strong>merge</strong> the existing four areas into one. In ArcGIS pro the respective tools for this action is either the <code>Merge</code> or the <code>Dissolve</code> tool.<br />
-In R on the other hand, this can be easily performed using the <em>st_union</em> function in the <strong>sf</strong> package.</p>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="analysis-toolbox.html#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The area of interest from the previous example - section Clip</span></span>
-<span id="cb135-2"><a href="analysis-toolbox.html#cb135-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(kantons_aOi)</span></code></pre></div>
-<pre><code>## Simple feature collection with 6 features and 22 fields
-## geometry type:  MULTIPOLYGON
-## dimension:      XYZ
-## bbox:           xmin: 2620698 ymin: 1193269 xmax: 2768769 ymax: 1283504
-## z_range:        zmin: 260.666 zmax: 3246.858
-## projected CRS:  CH1903+ / LV95
-##                                      uuid datum_aend datum_erst erstellung
-## 6  {05D55405-466B-4ECC-83C7-A906DEB0D607} 2017-12-04 2012-10-26       2012
-## 7  {FB7105B8-6D7C-4787-846E-17B2BC145C6E} 2018-11-22 2012-10-26       2012
-## 10 {E11CD2CA-2E2D-415C-8789-C10D7C26E441} 2016-12-09 2012-10-26       2012
-## 12 {87370D3F-DBBE-4D05-AF85-C358C3924B3D} 2018-11-22 2012-10-26       2012
-## 41 {99488953-65F6-4F86-8606-337113587F85} 2015-12-08 2012-10-26       2012
-## 47 {F1A07951-AC8B-4EBA-B48F-64BC8B92228C} 2015-12-08 2012-10-26       2012
-##    erstellu_1 revision_j revision_m grund_aend herkunft herkunft_j herkunft_m
-## 6          10       2019          1        400      100       2018          1
-## 7          10       2019          1        400      500       2019          1
-## 10         10       2019          1        400      100       2017          1
-## 12         10       2019          1        400      500       2019          1
-## 41         10       2019          1        400      500       2015         12
-## 47         10       2019          1        400      500       2015         12
-##    objektart kantonsnum see_flaech  revision_q kantonsfla kanton_tei       name
-## 6          0         17       7720 2018_Aufbau     202820          1 St. Gallen
-## 7          0          1       6811 2018_Aufbau     172894          0     Zürich
-## 10         0         19        870 2018_Aufbau     140380          1     Aargau
-## 12         0         20      13121 2018_Aufbau      99433          1    Thurgau
-## 41         0         20          0 2018_Aufbau          0          2    Thurgau
-## 47         0         17          0 2018_Aufbau          0          2 St. Gallen
-##    icc einwohnerz Shape_Leng   Shape_Area                       geometry
-## 6   CH     504686 494074.195 2028094302.5 MULTIPOLYGON Z (((2703763 1...
-## 7   CH    1504346 312972.523 1728941805.8 MULTIPOLYGON Z (((2673542 1...
-## 10  CH     670988 328943.352 1403783344.8 MULTIPOLYGON Z (((2673542 1...
-## 12  CH     273801 287778.920  990592017.5 MULTIPOLYGON Z (((2701937 1...
-## 41  CH          0   8640.269    3737271.5 MULTIPOLYGON Z (((2751489 1...
-## 47  CH          0   1481.811     105406.8 MULTIPOLYGON Z (((2744263 1...</code></pre>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="analysis-toolbox.html#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Merging the four areas into one</span></span>
-<span id="cb137-2"><a href="analysis-toolbox.html#cb137-2" aria-hidden="true" tabindex="-1"></a>aOi_merged <span class="ot">&lt;-</span> <span class="fu">st_union</span>(kantons_aOi)</span></code></pre></div>
-<ul>
-<li>Plot the merged area of interest</li>
-</ul>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="analysis-toolbox.html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(aOi_merged) <span class="sc">+</span> <span class="fu">tm_polygons</span>(<span class="st">&quot;#f0f0f0&quot;</span>) <span class="sc">+</span> <span class="fu">tm_layout</span>(<span class="at">frame =</span> F)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-82-1.png" width="672" /></p>
-<p>The operation above produces the same outcome as the one depicted in the figure below <a href="analysis-toolbox.html#fig:dissolve">9.2</a>.</p>
-<div class="figure" style="text-align: center"><span id="fig:dissolve"></span>
-<img src="images/dissolve.png" alt="Dissolve operation in ArcGIS pro" width="750px" />
-<p class="caption">
-Figure 9.2: Dissolve operation in ArcGIS pro
-</p>
-</div>
-<!-- ### Erase -->
-<!-- ### Union -->
-<!-- ### Symmetrical Difference -->
-</div>
-<div id="spatial-join" class="section level3" number="9.0.3">
-<h3><span class="header-section-number">9.0.3</span> Spatial Join</h3>
-<p>Say you have two datasets:</p>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="analysis-toolbox.html#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb139-2"><a href="analysis-toolbox.html#cb139-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb139-3"><a href="analysis-toolbox.html#cb139-3" aria-hidden="true" tabindex="-1"></a>zweitwohnung <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(<span class="st">&quot;sample_data/other/zweitwohnung_gemeinden.gpkg&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb139-4"><a href="analysis-toolbox.html#cb139-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(kanton <span class="sc">==</span> <span class="st">&quot;Valais / Wallis&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb139-5"><a href="analysis-toolbox.html#cb139-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(NAME)</span>
-<span id="cb139-6"><a href="analysis-toolbox.html#cb139-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb139-7"><a href="analysis-toolbox.html#cb139-7" aria-hidden="true" tabindex="-1"></a>bbox <span class="ot">&lt;-</span> <span class="fu">st_bbox</span>(zweitwohnung) <span class="sc">%&gt;%</span> <span class="fu">st_as_sfc</span>()</span>
-<span id="cb139-8"><a href="analysis-toolbox.html#cb139-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb139-9"><a href="analysis-toolbox.html#cb139-9" aria-hidden="true" tabindex="-1"></a>points <span class="ot">&lt;-</span> <span class="fu">st_sample</span>(bbox,<span class="dv">500</span>)</span>
-<span id="cb139-10"><a href="analysis-toolbox.html#cb139-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb139-11"><a href="analysis-toolbox.html#cb139-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(zweitwohnung) <span class="sc">+</span> <span class="fu">geom_sf</span>() <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> points)</span></code></pre></div>
-<p>In R, the function used to join two datastes is <code>st_join(x,y)</code>. If you have to different data types (e.g. Points and Polygons) the first question you have to ask yourself is: what data type should the output be? The datatype of <code>x</code> determins what the output datatype is.
-So with the above data: Say for each point, we want to know the Name (<code>NAME</code>) of the “Geimeinde” in which it lies. This means the output is a point dataset. We therefore write:</p>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="analysis-toolbox.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_join</span>(<span class="fu">st_sf</span>(points),zweitwohnung,<span class="at">join =</span> st_within)</span></code></pre></div>
-<p>Note that points not located in a Gemeinde get the value <code>NA</code>. You have to specify the spatial relationship of your join method within the argument <code>join =</code>. This argument take a so called spatial predicate function. From the join_methods available in ArcGIS, here’s the equivalant spatial predicate function:</p>
-<table>
-<thead>
-<tr class="header">
-<th>ArcGIS Term</th>
-<th>R Spatial Predicate</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Intersect</td>
-<td>st_intersect</td>
-</tr>
-<tr class="even">
-<td>Intersect 3D</td>
-<td>(1)</td>
-</tr>
-<tr class="odd">
-<td>Within a distance</td>
-<td>st_is_within_distance</td>
-</tr>
-<tr class="even">
-<td>Within a distance geodesic</td>
-<td>??</td>
-</tr>
-<tr class="odd">
-<td>Within a distance 3D</td>
-<td>(1)</td>
-</tr>
-<tr class="even">
-<td>Contains</td>
-<td>st_contains</td>
-</tr>
-<tr class="odd">
-<td>Completely contains</td>
-<td><em>st_contains_properly?</em></td>
-</tr>
-<tr class="even">
-<td>Contains clementini</td>
-<td>??</td>
-</tr>
-<tr class="odd">
-<td>Within</td>
-<td>st_within</td>
-</tr>
-<tr class="even">
-<td>Completely within</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Within clementini</td>
-<td>??</td>
-</tr>
-<tr class="even">
-<td>Are identical to</td>
-<td><em>st_equals?</em></td>
-</tr>
-<tr class="odd">
-<td>boundry touches</td>
-<td>st_touches</td>
-</tr>
-<tr class="even">
-<td>Share a line segment</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Have their center in</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Closest</td>
-<td><em>st_nearest_feature?</em></td>
-</tr>
-<tr class="odd">
-<td>Closest geodesic</td>
-<td>??</td>
-</tr>
-</tbody>
-</table>
-<ol style="list-style-type: decimal">
-<li>All binary predicates only work on 2D Objects (see <a href="https://github.com/r-spatial/sf/issues/907">this issue</a>)</li>
-</ol>
-<!-- ### Intersect -->
-<!-- ### Identity -->
-<!-- ### Update -->
-<!-- ## Proximity Toolset -->
-</div>
-<div id="buffer" class="section level3" number="9.0.4">
-<h3><span class="header-section-number">9.0.4</span> Buffer</h3>
-<p>One of the most commonly used operations in ArcGIS pro is the one called <code>Buffer</code>. This operation provides a very convenient way of identifying areas of interest lying in the neighborhood of an existing spatial feature. In R the same action can be performed using the <em>st_buffer</em> function in <strong>sf</strong>.</p>
-<p>Below we introduce a line spatial feature that depicts all the <strong>mountain bike routes</strong> in Switzerland.</p>
-<pre><code>## Reading layer `mountainBikes_routes&#39; from data source `C:\Users\bako\Desktop\Projekte\All_thing_R_Spatial\github\spatialR_for_ArcGIS_Users\sample_data\other\mountainBikes_routes.shp&#39; using driver `ESRI Shapefile&#39;
-## Simple feature collection with 286 features and 29 fields
-## geometry type:  LINESTRING
-## dimension:      XYZ
-## bbox:           xmin: 2497570 ymin: 1077136 xmax: 2836678 ymax: 1296227
-## z_range:        zmin: 197.367 zmax: 2860.725
-## projected CRS:  CH1903+ / LV95</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-86-1.png" width="672" /></p>
-<p>We focus, as an area of interest, on the canton of Valais. Consequently, we might be interested in identifying all the areas in a radius of 1000 m around these bike routes.</p>
-<ul>
-<li>Selecting the canton of Valais</li>
-</ul>
-<p><img src="_main_files/figure-html/unnamed-chunk-87-1.png" width="672" /></p>
-<ul>
-<li>Apply a buffer of 1000m on each of the mountain bike routes within the canton of Valais</li>
-</ul>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="analysis-toolbox.html#cb142-1" aria-hidden="true" tabindex="-1"></a>routes_buffer <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(mountainBikes_routes_valais,<span class="dv">1000</span>)</span>
-<span id="cb142-2"><a href="analysis-toolbox.html#cb142-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb142-3"><a href="analysis-toolbox.html#cb142-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(canton_valais) <span class="sc">+</span> <span class="fu">tm_polygons</span>() <span class="sc">+</span> </span>
-<span id="cb142-4"><a href="analysis-toolbox.html#cb142-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_shape</span>(mountainBikes_routes_valais) <span class="sc">+</span> <span class="fu">tm_lines</span>(<span class="at">col =</span> <span class="st">&quot;#e34a33&quot;</span>) <span class="sc">+</span></span>
-<span id="cb142-5"><a href="analysis-toolbox.html#cb142-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_shape</span>(routes_buffer) <span class="sc">+</span> <span class="fu">tm_polygons</span>(<span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span> </span>
-<span id="cb142-6"><a href="analysis-toolbox.html#cb142-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_shape</span>(canton_valais) <span class="sc">+</span> <span class="fu">tm_borders</span>(<span class="at">col =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span> <span class="fu">tm_layout</span>(<span class="at">frame =</span> F)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-88-1.png" width="672" /></p>
-<p>The operation above produces the same outcome as the one depicted in the figure below <a href="analysis-toolbox.html#fig:buffer">9.3</a>.</p>
-<div class="figure" style="text-align: center"><span id="fig:buffer"></span>
-<img src="images/buffer.png" alt="Buffer operation in ArcGIS pro" width="750px" />
-<p class="caption">
-Figure 9.3: Buffer operation in ArcGIS pro
-</p>
-</div>
-
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="map-algebra-toolset.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="map-algebra-toolset.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="clip.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

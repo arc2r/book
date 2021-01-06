@@ -50,3 +50,15 @@ clip
 merge
 spatial-join
 buffer
+topology-rules
+polygon
+must-not-overlap
+must-not-have-gaps
+contains-point
+contains-one-point
+must-be-covered-by-feature-class-of
+boundary-must-be-covered-by
+must-not-overlap-with
+must-be-covered-by
+area-boundary-must-be-covered-by-boundary-of
+must-cover-each-other

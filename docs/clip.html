@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5.1 Joins Toolset | Burning Bridges</title>
-  <meta name="description" content="5.1 Joins Toolset | Burning Bridges" />
+  <title>9.1 Clip | Burning Bridges</title>
+  <meta name="description" content="9.1 Clip | Burning Bridges" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5.1 Joins Toolset | Burning Bridges" />
+  <meta property="og:title" content="9.1 Clip | Burning Bridges" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5.1 Joins Toolset | Burning Bridges" />
+  <meta name="twitter:title" content="9.1 Clip | Burning Bridges" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="data-management-toolbox.html"/>
-<link rel="next" href="projections-and-transformations-toolset.html"/>
+<link rel="prev" href="analysis-toolbox.html"/>
+<link rel="next" href="merge.html"/>
 <script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -241,87 +241,73 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="joins-toolset" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> Joins Toolset</h2>
-<p>In R we have two main options for merging two data frames. On the one hand there is
-the base R function called <em>merge</em>. The arguments of the <em>merge()</em> function offers the
-option to perform natural joins. In other words joins such as inner join, left join, right join etc.
-On the other hand we can come up with similar results by using the <em>join</em> functions that
-lie within the <strong>dplyr</strong> package.<br />
-In the examples below, we choose to use the later case.</p>
-<p>Before we begin with our examples, we have to make clear the differences among the various
-forms of join operations.</p>
+<div id="clip" class="section level2" number="9.1">
+<h2><span class="header-section-number">9.1</span> Clip</h2>
+<p>Quite often in spatial analysis, we come across with cases, where we do not want to use all the available data there is. In other words, we want to focus on a specific area of interest, which dictates the need for <strong>clipping</strong> the existing dataset based on it’s relationship to some other existing spatial feature. In R this operation can be easily performed using the <em>st_intersection</em> function in <strong>sf</strong>.</p>
+<p>Let’s assume in the example below that we want to clip the available dataset of all the <strong>train stations in Switzerland</strong> by focusing our analysis on four specific cantons.</p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="clip.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb128-2"><a href="clip.html#cb128-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Point dataset depicting the train stations locations across Switzerland</span></span>
+<span id="cb128-3"><a href="clip.html#cb128-3" aria-hidden="true" tabindex="-1"></a>bahn_haltestelle_ch <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;sample_data/other/Haltestelle_Bahn_CH.shp&quot;</span>)</span></code></pre></div>
+<pre><code>## Reading layer `Haltestelle_Bahn_CH&#39; from data source `C:\Users\bako\Desktop\Projekte\All_thing_R_Spatial\github\spatialR_for_ArcGIS_Users\sample_data\other\Haltestelle_Bahn_CH.shp&#39; using driver `ESRI Shapefile&#39;
+## Simple feature collection with 3134 features and 16 fields
+## geometry type:  POINT
+## dimension:      XYZ
+## bbox:           xmin: 2488908 ymin: 1076850 xmax: 2817389 ymax: 1289090
+## z_range:        zmin: 194.905 zmax: 3453.525
+## projected CRS:  CH1903+ / LV95</code></pre>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="clip.html#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dataset depicting Switzerland on canton level</span></span>
+<span id="cb130-2"><a href="clip.html#cb130-2" aria-hidden="true" tabindex="-1"></a>kantonsgebiet <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;sample_data/other/Kantonsgebiet.shp&quot;</span>)</span></code></pre></div>
+<pre><code>## Reading layer `Kantonsgebiet&#39; from data source `C:\Users\bako\Desktop\Projekte\All_thing_R_Spatial\github\spatialR_for_ArcGIS_Users\sample_data\other\Kantonsgebiet.shp&#39; using driver `ESRI Shapefile&#39;
+## Simple feature collection with 56 features and 22 fields
+## geometry type:  MULTIPOLYGON
+## dimension:      XYZ
+## bbox:           xmin: 2485410 ymin: 1075268 xmax: 2833858 ymax: 1295934
+## z_range:        zmin: 193.51 zmax: 4613.729
+## projected CRS:  CH1903+ / LV95</code></pre>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="clip.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tmap_mode</span>(<span class="at">mode =</span> <span class="fu">c</span>(<span class="st">&quot;plot&quot;</span>)) <span class="co"># setting the plotting mode to static -- optimizing the process</span></span>
+<span id="cb132-2"><a href="clip.html#cb132-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb132-3"><a href="clip.html#cb132-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(kantonsgebiet) <span class="sc">+</span> <span class="fu">tm_polygons</span>(<span class="st">&quot;#f0f0f0&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb132-4"><a href="clip.html#cb132-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_shape</span>(bahn_haltestelle_ch) <span class="sc">+</span> <span class="fu">tm_dots</span>(<span class="at">col =</span> <span class="st">&quot;#e34a33&quot;</span>,<span class="at">size =</span> <span class="fl">0.1</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb132-5"><a href="clip.html#cb132-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_shape</span>(kantonsgebiet) <span class="sc">+</span> <span class="fu">tm_borders</span>(<span class="at">col =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span> <span class="fu">tm_layout</span>(<span class="at">frame =</span> F)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-78-1.png" width="672" /></p>
+<p>As it was mentioned above, the aim is to analyse the situation at a particular area. So we are going to create an index with the specific cantons we are interested in.</p>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="clip.html#cb133-1" aria-hidden="true" tabindex="-1"></a>index <span class="ot">&lt;-</span> kantonsgebiet<span class="sc">$</span>name <span class="sc">==</span> <span class="st">&quot;Zürich&quot;</span> <span class="sc">|</span></span>
+<span id="cb133-2"><a href="clip.html#cb133-2" aria-hidden="true" tabindex="-1"></a>  kantonsgebiet<span class="sc">$</span>name <span class="sc">==</span> <span class="st">&quot;St. Gallen&quot;</span> <span class="sc">|</span></span>
+<span id="cb133-3"><a href="clip.html#cb133-3" aria-hidden="true" tabindex="-1"></a>  kantonsgebiet<span class="sc">$</span>name <span class="sc">==</span> <span class="st">&quot;Thurgau&quot;</span> <span class="sc">|</span></span>
+<span id="cb133-4"><a href="clip.html#cb133-4" aria-hidden="true" tabindex="-1"></a>  kantonsgebiet<span class="sc">$</span>name <span class="sc">==</span> <span class="st">&quot;Aargau&quot;</span></span>
+<span id="cb133-5"><a href="clip.html#cb133-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb133-6"><a href="clip.html#cb133-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecting the cantons based on the previously generated index</span></span>
+<span id="cb133-7"><a href="clip.html#cb133-7" aria-hidden="true" tabindex="-1"></a>kantons_aOi <span class="ot">&lt;-</span> kantonsgebiet[index,]</span>
+<span id="cb133-8"><a href="clip.html#cb133-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb133-9"><a href="clip.html#cb133-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Performing the clipping operation</span></span>
+<span id="cb133-10"><a href="clip.html#cb133-10" aria-hidden="true" tabindex="-1"></a>hal_clipped <span class="ot">&lt;-</span> <span class="fu">st_intersection</span>(kantons_aOi,bahn_haltestelle_ch)</span></code></pre></div>
 <ul>
-<li><em>Natural join or Inner Join</em> reflects on keeping only rows that match from the two data frames.</li>
-<li><em>Full outer join or Outer Join</em> reflects on keeping all rows from both data frames.</li>
+<li>Plotting the result from the clipping operation</li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:joins"></span>
-<img src="images/joins.png" alt="Join operations" width="500px" />
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="clip.html#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(kantons_aOi) <span class="sc">+</span> <span class="fu">tm_polygons</span>(<span class="st">&quot;#f0f0f0&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb134-2"><a href="clip.html#cb134-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_shape</span>(hal_clipped) <span class="sc">+</span> <span class="fu">tm_dots</span>(<span class="at">col =</span> <span class="st">&quot;#e34a33&quot;</span>,<span class="at">size =</span> <span class="fl">0.1</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb134-3"><a href="clip.html#cb134-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_shape</span>(kantons_aOi) <span class="sc">+</span> <span class="fu">tm_borders</span>() <span class="sc">+</span> <span class="fu">tm_layout</span>(<span class="at">frame =</span> F)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-80-1.png" width="672" /></p>
+<p>So, ultimately, as we can see above, the <em>st_intersection</em> function creates a result where the point dataset is precisely “clipped” based on the area of interest</p>
+<p>The operation above produces the same outcome as the one depicted in the figure below <a href="clip.html#fig:clip">9.1</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:clip"></span>
+<img src="images/clipOperation.png" alt="Clip operation in ArcGIS pro" width="750px" />
 <p class="caption">
-Figure 5.1: Join operations
+Figure 9.1: Clip operation in ArcGIS pro
 </p>
 </div>
-<div id="inner-join" class="section level3" number="5.1.1">
-<h3><span class="header-section-number">5.1.1</span> Inner join</h3>
-<p><code>Inner Join</code> in R is the most common type of join. It is an operation that returns the rows
-when the matching condition is fulfilled. Below we demonstrate it with an example.</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="joins-toolset.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb68-2"><a href="joins-toolset.html#cb68-2" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">TeamID =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">11</span>),</span>
-<span id="cb68-3"><a href="joins-toolset.html#cb68-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">TeamName =</span> <span class="fu">c</span>(<span class="st">&quot;new york knicks&quot;</span>,<span class="st">&quot;los angeles lakers&quot;</span>,<span class="st">&quot;milwaukee bucks&quot;</span>,<span class="st">&quot;boston celtics&quot;</span>),</span>
-<span id="cb68-4"><a href="joins-toolset.html#cb68-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Championships =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">17</span>,<span class="dv">1</span>,<span class="dv">17</span>))</span>
-<span id="cb68-5"><a href="joins-toolset.html#cb68-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-6"><a href="joins-toolset.html#cb68-6" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">TeamID =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">11</span>,<span class="dv">8</span>),</span>
-<span id="cb68-7"><a href="joins-toolset.html#cb68-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">TeamName =</span> <span class="fu">c</span>(<span class="st">&quot;new york knicks&quot;</span>,<span class="st">&quot;philadelphia 76ers&quot;</span>,<span class="st">&quot;boston celtics&quot;</span>,<span class="st">&quot;los angeles clippers&quot;</span>),</span>
-<span id="cb68-8"><a href="joins-toolset.html#cb68-8" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Championships =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">17</span>,<span class="dv">0</span>))</span>
-<span id="cb68-9"><a href="joins-toolset.html#cb68-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-10"><a href="joins-toolset.html#cb68-10" aria-hidden="true" tabindex="-1"></a>df_innerJoin <span class="ot">&lt;-</span> df1 <span class="sc">%&gt;%</span> <span class="fu">inner_join</span>(df2, <span class="at">by =</span> <span class="cn">NULL</span>)</span>
-<span id="cb68-11"><a href="joins-toolset.html#cb68-11" aria-hidden="true" tabindex="-1"></a>df_innerJoin</span></code></pre></div>
-<pre><code>##   TeamID        TeamName Championships
-## 1      1 new york knicks             2
-## 2     11  boston celtics            17</code></pre>
-</div>
-<div id="outer-join" class="section level3" number="5.1.2">
-<h3><span class="header-section-number">5.1.2</span> Outer join</h3>
-<p><code>Outer join</code> in R using simply returns all rows from both data frames. This is very well depicted in
-<a href="joins-toolset.html#fig:joins">5.1</a>.</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="joins-toolset.html#cb70-1" aria-hidden="true" tabindex="-1"></a>df_fullJoin <span class="ot">&lt;-</span> <span class="fu">full_join</span>(df1,df2)</span>
-<span id="cb70-2"><a href="joins-toolset.html#cb70-2" aria-hidden="true" tabindex="-1"></a>df_fullJoin</span></code></pre></div>
-<pre><code>##   TeamID             TeamName Championships
-## 1      1      new york knicks             2
-## 2      4   los angeles lakers            17
-## 3      6      milwaukee bucks             1
-## 4     11       boston celtics            17
-## 5      2   philadelphia 76ers             3
-## 6      8 los angeles clippers             0</code></pre>
-</div>
-<div id="left-right-join" class="section level3" number="5.1.3">
-<h3><span class="header-section-number">5.1.3</span> Left / Right join</h3>
-<p>The <code>left join</code> in R returns all records from the data frame on the left, as well as
-and the matched records from the one at the right.</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="joins-toolset.html#cb72-1" aria-hidden="true" tabindex="-1"></a>df_leftJoin <span class="ot">&lt;-</span> <span class="fu">left_join</span>(df1,df2)</span>
-<span id="cb72-2"><a href="joins-toolset.html#cb72-2" aria-hidden="true" tabindex="-1"></a>df_leftJoin</span></code></pre></div>
-<pre><code>##   TeamID           TeamName Championships
-## 1      1    new york knicks             2
-## 2      4 los angeles lakers            17
-## 3      6    milwaukee bucks             1
-## 4     11     boston celtics            17</code></pre>
-<p>Similarly works also the <code>right join</code>.</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="joins-toolset.html#cb74-1" aria-hidden="true" tabindex="-1"></a>df_rightJoin <span class="ot">&lt;-</span> <span class="fu">right_join</span>(df1,df2)</span>
-<span id="cb74-2"><a href="joins-toolset.html#cb74-2" aria-hidden="true" tabindex="-1"></a>df_rightJoin</span></code></pre></div>
-<pre><code>##   TeamID             TeamName Championships
-## 1      1      new york knicks             2
-## 2     11       boston celtics            17
-## 3      2   philadelphia 76ers             3
-## 4      8 los angeles clippers             0</code></pre>
-</div>
+<!-- ### Split -->
+<!-- ### Split by Attributes -->
+<!-- ### Table Select -->
+<!-- ## Overlay Toolset -->
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="data-management-toolbox.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="projections-and-transformations-toolset.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="analysis-toolbox.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="merge.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

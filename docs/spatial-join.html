@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5.1 Joins Toolset | Burning Bridges</title>
-  <meta name="description" content="5.1 Joins Toolset | Burning Bridges" />
+  <title>9.3 Spatial Join | Burning Bridges</title>
+  <meta name="description" content="9.3 Spatial Join | Burning Bridges" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5.1 Joins Toolset | Burning Bridges" />
+  <meta property="og:title" content="9.3 Spatial Join | Burning Bridges" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5.1 Joins Toolset | Burning Bridges" />
+  <meta name="twitter:title" content="9.3 Spatial Join | Burning Bridges" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="data-management-toolbox.html"/>
-<link rel="next" href="projections-and-transformations-toolset.html"/>
+<link rel="prev" href="merge.html"/>
+<link rel="next" href="buffer.html"/>
 <script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -241,87 +241,117 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="joins-toolset" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> Joins Toolset</h2>
-<p>In R we have two main options for merging two data frames. On the one hand there is
-the base R function called <em>merge</em>. The arguments of the <em>merge()</em> function offers the
-option to perform natural joins. In other words joins such as inner join, left join, right join etc.
-On the other hand we can come up with similar results by using the <em>join</em> functions that
-lie within the <strong>dplyr</strong> package.<br />
-In the examples below, we choose to use the later case.</p>
-<p>Before we begin with our examples, we have to make clear the differences among the various
-forms of join operations.</p>
-<ul>
-<li><em>Natural join or Inner Join</em> reflects on keeping only rows that match from the two data frames.</li>
-<li><em>Full outer join or Outer Join</em> reflects on keeping all rows from both data frames.</li>
-</ul>
-<div class="figure" style="text-align: center"><span id="fig:joins"></span>
-<img src="images/joins.png" alt="Join operations" width="500px" />
-<p class="caption">
-Figure 5.1: Join operations
-</p>
-</div>
-<div id="inner-join" class="section level3" number="5.1.1">
-<h3><span class="header-section-number">5.1.1</span> Inner join</h3>
-<p><code>Inner Join</code> in R is the most common type of join. It is an operation that returns the rows
-when the matching condition is fulfilled. Below we demonstrate it with an example.</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="joins-toolset.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb68-2"><a href="joins-toolset.html#cb68-2" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">TeamID =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">11</span>),</span>
-<span id="cb68-3"><a href="joins-toolset.html#cb68-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">TeamName =</span> <span class="fu">c</span>(<span class="st">&quot;new york knicks&quot;</span>,<span class="st">&quot;los angeles lakers&quot;</span>,<span class="st">&quot;milwaukee bucks&quot;</span>,<span class="st">&quot;boston celtics&quot;</span>),</span>
-<span id="cb68-4"><a href="joins-toolset.html#cb68-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Championships =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">17</span>,<span class="dv">1</span>,<span class="dv">17</span>))</span>
-<span id="cb68-5"><a href="joins-toolset.html#cb68-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-6"><a href="joins-toolset.html#cb68-6" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">TeamID =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">11</span>,<span class="dv">8</span>),</span>
-<span id="cb68-7"><a href="joins-toolset.html#cb68-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">TeamName =</span> <span class="fu">c</span>(<span class="st">&quot;new york knicks&quot;</span>,<span class="st">&quot;philadelphia 76ers&quot;</span>,<span class="st">&quot;boston celtics&quot;</span>,<span class="st">&quot;los angeles clippers&quot;</span>),</span>
-<span id="cb68-8"><a href="joins-toolset.html#cb68-8" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Championships =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">17</span>,<span class="dv">0</span>))</span>
-<span id="cb68-9"><a href="joins-toolset.html#cb68-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-10"><a href="joins-toolset.html#cb68-10" aria-hidden="true" tabindex="-1"></a>df_innerJoin <span class="ot">&lt;-</span> df1 <span class="sc">%&gt;%</span> <span class="fu">inner_join</span>(df2, <span class="at">by =</span> <span class="cn">NULL</span>)</span>
-<span id="cb68-11"><a href="joins-toolset.html#cb68-11" aria-hidden="true" tabindex="-1"></a>df_innerJoin</span></code></pre></div>
-<pre><code>##   TeamID        TeamName Championships
-## 1      1 new york knicks             2
-## 2     11  boston celtics            17</code></pre>
-</div>
-<div id="outer-join" class="section level3" number="5.1.2">
-<h3><span class="header-section-number">5.1.2</span> Outer join</h3>
-<p><code>Outer join</code> in R using simply returns all rows from both data frames. This is very well depicted in
-<a href="joins-toolset.html#fig:joins">5.1</a>.</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="joins-toolset.html#cb70-1" aria-hidden="true" tabindex="-1"></a>df_fullJoin <span class="ot">&lt;-</span> <span class="fu">full_join</span>(df1,df2)</span>
-<span id="cb70-2"><a href="joins-toolset.html#cb70-2" aria-hidden="true" tabindex="-1"></a>df_fullJoin</span></code></pre></div>
-<pre><code>##   TeamID             TeamName Championships
-## 1      1      new york knicks             2
-## 2      4   los angeles lakers            17
-## 3      6      milwaukee bucks             1
-## 4     11       boston celtics            17
-## 5      2   philadelphia 76ers             3
-## 6      8 los angeles clippers             0</code></pre>
-</div>
-<div id="left-right-join" class="section level3" number="5.1.3">
-<h3><span class="header-section-number">5.1.3</span> Left / Right join</h3>
-<p>The <code>left join</code> in R returns all records from the data frame on the left, as well as
-and the matched records from the one at the right.</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="joins-toolset.html#cb72-1" aria-hidden="true" tabindex="-1"></a>df_leftJoin <span class="ot">&lt;-</span> <span class="fu">left_join</span>(df1,df2)</span>
-<span id="cb72-2"><a href="joins-toolset.html#cb72-2" aria-hidden="true" tabindex="-1"></a>df_leftJoin</span></code></pre></div>
-<pre><code>##   TeamID           TeamName Championships
-## 1      1    new york knicks             2
-## 2      4 los angeles lakers            17
-## 3      6    milwaukee bucks             1
-## 4     11     boston celtics            17</code></pre>
-<p>Similarly works also the <code>right join</code>.</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="joins-toolset.html#cb74-1" aria-hidden="true" tabindex="-1"></a>df_rightJoin <span class="ot">&lt;-</span> <span class="fu">right_join</span>(df1,df2)</span>
-<span id="cb74-2"><a href="joins-toolset.html#cb74-2" aria-hidden="true" tabindex="-1"></a>df_rightJoin</span></code></pre></div>
-<pre><code>##   TeamID             TeamName Championships
-## 1      1      new york knicks             2
-## 2     11       boston celtics            17
-## 3      2   philadelphia 76ers             3
-## 4      8 los angeles clippers             0</code></pre>
-</div>
+<div id="spatial-join" class="section level2" number="9.3">
+<h2><span class="header-section-number">9.3</span> Spatial Join</h2>
+<p>Say you have two datasets:</p>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="spatial-join.html#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb139-2"><a href="spatial-join.html#cb139-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb139-3"><a href="spatial-join.html#cb139-3" aria-hidden="true" tabindex="-1"></a>zweitwohnung <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(<span class="st">&quot;sample_data/other/zweitwohnung_gemeinden.gpkg&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb139-4"><a href="spatial-join.html#cb139-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(kanton <span class="sc">==</span> <span class="st">&quot;Valais / Wallis&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb139-5"><a href="spatial-join.html#cb139-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(NAME)</span>
+<span id="cb139-6"><a href="spatial-join.html#cb139-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb139-7"><a href="spatial-join.html#cb139-7" aria-hidden="true" tabindex="-1"></a>bbox <span class="ot">&lt;-</span> <span class="fu">st_bbox</span>(zweitwohnung) <span class="sc">%&gt;%</span> <span class="fu">st_as_sfc</span>()</span>
+<span id="cb139-8"><a href="spatial-join.html#cb139-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb139-9"><a href="spatial-join.html#cb139-9" aria-hidden="true" tabindex="-1"></a>points <span class="ot">&lt;-</span> <span class="fu">st_sample</span>(bbox,<span class="dv">500</span>)</span>
+<span id="cb139-10"><a href="spatial-join.html#cb139-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb139-11"><a href="spatial-join.html#cb139-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(zweitwohnung) <span class="sc">+</span> <span class="fu">geom_sf</span>() <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> points)</span></code></pre></div>
+<p>In R, the function used to join two datastes is <code>st_join(x,y)</code>. If you have to different data types (e.g. Points and Polygons) the first question you have to ask yourself is: what data type should the output be? The datatype of <code>x</code> determins what the output datatype is.
+So with the above data: Say for each point, we want to know the Name (<code>NAME</code>) of the “Geimeinde” in which it lies. This means the output is a point dataset. We therefore write:</p>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="spatial-join.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_join</span>(<span class="fu">st_sf</span>(points),zweitwohnung,<span class="at">join =</span> st_within)</span></code></pre></div>
+<p>Note that points not located in a Gemeinde get the value <code>NA</code>. You have to specify the spatial relationship of your join method within the argument <code>join =</code>. This argument take a so called spatial predicate function. From the join_methods available in ArcGIS, here’s the equivalant spatial predicate function:</p>
+<table>
+<thead>
+<tr class="header">
+<th>ArcGIS Term</th>
+<th>R Spatial Predicate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Intersect</td>
+<td>st_intersect</td>
+</tr>
+<tr class="even">
+<td>Intersect 3D</td>
+<td>(1)</td>
+</tr>
+<tr class="odd">
+<td>Within a distance</td>
+<td>st_is_within_distance</td>
+</tr>
+<tr class="even">
+<td>Within a distance geodesic</td>
+<td>??</td>
+</tr>
+<tr class="odd">
+<td>Within a distance 3D</td>
+<td>(1)</td>
+</tr>
+<tr class="even">
+<td>Contains</td>
+<td>st_contains</td>
+</tr>
+<tr class="odd">
+<td>Completely contains</td>
+<td><em>st_contains_properly?</em></td>
+</tr>
+<tr class="even">
+<td>Contains clementini</td>
+<td>??</td>
+</tr>
+<tr class="odd">
+<td>Within</td>
+<td>st_within</td>
+</tr>
+<tr class="even">
+<td>Completely within</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Within clementini</td>
+<td>??</td>
+</tr>
+<tr class="even">
+<td>Are identical to</td>
+<td><em>st_equals?</em></td>
+</tr>
+<tr class="odd">
+<td>boundry touches</td>
+<td>st_touches</td>
+</tr>
+<tr class="even">
+<td>Share a line segment</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Have their center in</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Closest</td>
+<td><em>st_nearest_feature?</em></td>
+</tr>
+<tr class="odd">
+<td>Closest geodesic</td>
+<td>??</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: decimal">
+<li>All binary predicates only work on 2D Objects (see <a href="https://github.com/r-spatial/sf/issues/907">this issue</a>)</li>
+</ol>
+<!-- ### Intersect -->
+<!-- ### Identity -->
+<!-- ### Update -->
+<!-- ## Proximity Toolset -->
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="data-management-toolbox.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="projections-and-transformations-toolset.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="merge.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="buffer.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

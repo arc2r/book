@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5.1 Joins Toolset | Burning Bridges</title>
-  <meta name="description" content="5.1 Joins Toolset | Burning Bridges" />
+  <title>9.2 Merge | Burning Bridges</title>
+  <meta name="description" content="9.2 Merge | Burning Bridges" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5.1 Joins Toolset | Burning Bridges" />
+  <meta property="og:title" content="9.2 Merge | Burning Bridges" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5.1 Joins Toolset | Burning Bridges" />
+  <meta name="twitter:title" content="9.2 Merge | Burning Bridges" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="data-management-toolbox.html"/>
-<link rel="next" href="projections-and-transformations-toolset.html"/>
+<link rel="prev" href="clip.html"/>
+<link rel="next" href="spatial-join.html"/>
 <script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -241,87 +241,71 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="joins-toolset" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> Joins Toolset</h2>
-<p>In R we have two main options for merging two data frames. On the one hand there is
-the base R function called <em>merge</em>. The arguments of the <em>merge()</em> function offers the
-option to perform natural joins. In other words joins such as inner join, left join, right join etc.
-On the other hand we can come up with similar results by using the <em>join</em> functions that
-lie within the <strong>dplyr</strong> package.<br />
-In the examples below, we choose to use the later case.</p>
-<p>Before we begin with our examples, we have to make clear the differences among the various
-forms of join operations.</p>
+<div id="merge" class="section level2" number="9.2">
+<h2><span class="header-section-number">9.2</span> Merge</h2>
+<p>Let’s assume in the example below that instead of having four individual areas of interest, we are interested in having one common, unified area on which we focus our analysis. In other words, we have to <strong>merge</strong> the existing four areas into one. In ArcGIS pro the respective tools for this action is either the <code>Merge</code> or the <code>Dissolve</code> tool.<br />
+In R on the other hand, this can be easily performed using the <em>st_union</em> function in the <strong>sf</strong> package.</p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="merge.html#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The area of interest from the previous example - section Clip</span></span>
+<span id="cb135-2"><a href="merge.html#cb135-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(kantons_aOi)</span></code></pre></div>
+<pre><code>## Simple feature collection with 6 features and 22 fields
+## geometry type:  MULTIPOLYGON
+## dimension:      XYZ
+## bbox:           xmin: 2620698 ymin: 1193269 xmax: 2768769 ymax: 1283504
+## z_range:        zmin: 260.666 zmax: 3246.858
+## projected CRS:  CH1903+ / LV95
+##                                      uuid datum_aend datum_erst erstellung
+## 6  {05D55405-466B-4ECC-83C7-A906DEB0D607} 2017-12-04 2012-10-26       2012
+## 7  {FB7105B8-6D7C-4787-846E-17B2BC145C6E} 2018-11-22 2012-10-26       2012
+## 10 {E11CD2CA-2E2D-415C-8789-C10D7C26E441} 2016-12-09 2012-10-26       2012
+## 12 {87370D3F-DBBE-4D05-AF85-C358C3924B3D} 2018-11-22 2012-10-26       2012
+## 41 {99488953-65F6-4F86-8606-337113587F85} 2015-12-08 2012-10-26       2012
+## 47 {F1A07951-AC8B-4EBA-B48F-64BC8B92228C} 2015-12-08 2012-10-26       2012
+##    erstellu_1 revision_j revision_m grund_aend herkunft herkunft_j herkunft_m
+## 6          10       2019          1        400      100       2018          1
+## 7          10       2019          1        400      500       2019          1
+## 10         10       2019          1        400      100       2017          1
+## 12         10       2019          1        400      500       2019          1
+## 41         10       2019          1        400      500       2015         12
+## 47         10       2019          1        400      500       2015         12
+##    objektart kantonsnum see_flaech  revision_q kantonsfla kanton_tei       name
+## 6          0         17       7720 2018_Aufbau     202820          1 St. Gallen
+## 7          0          1       6811 2018_Aufbau     172894          0     Zürich
+## 10         0         19        870 2018_Aufbau     140380          1     Aargau
+## 12         0         20      13121 2018_Aufbau      99433          1    Thurgau
+## 41         0         20          0 2018_Aufbau          0          2    Thurgau
+## 47         0         17          0 2018_Aufbau          0          2 St. Gallen
+##    icc einwohnerz Shape_Leng   Shape_Area                       geometry
+## 6   CH     504686 494074.195 2028094302.5 MULTIPOLYGON Z (((2703763 1...
+## 7   CH    1504346 312972.523 1728941805.8 MULTIPOLYGON Z (((2673542 1...
+## 10  CH     670988 328943.352 1403783344.8 MULTIPOLYGON Z (((2673542 1...
+## 12  CH     273801 287778.920  990592017.5 MULTIPOLYGON Z (((2701937 1...
+## 41  CH          0   8640.269    3737271.5 MULTIPOLYGON Z (((2751489 1...
+## 47  CH          0   1481.811     105406.8 MULTIPOLYGON Z (((2744263 1...</code></pre>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="merge.html#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Merging the four areas into one</span></span>
+<span id="cb137-2"><a href="merge.html#cb137-2" aria-hidden="true" tabindex="-1"></a>aOi_merged <span class="ot">&lt;-</span> <span class="fu">st_union</span>(kantons_aOi)</span></code></pre></div>
 <ul>
-<li><em>Natural join or Inner Join</em> reflects on keeping only rows that match from the two data frames.</li>
-<li><em>Full outer join or Outer Join</em> reflects on keeping all rows from both data frames.</li>
+<li>Plot the merged area of interest</li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:joins"></span>
-<img src="images/joins.png" alt="Join operations" width="500px" />
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="merge.html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(aOi_merged) <span class="sc">+</span> <span class="fu">tm_polygons</span>(<span class="st">&quot;#f0f0f0&quot;</span>) <span class="sc">+</span> <span class="fu">tm_layout</span>(<span class="at">frame =</span> F)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-82-1.png" width="672" /></p>
+<p>The operation above produces the same outcome as the one depicted in the figure below <a href="merge.html#fig:dissolve">9.2</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:dissolve"></span>
+<img src="images/dissolve.png" alt="Dissolve operation in ArcGIS pro" width="750px" />
 <p class="caption">
-Figure 5.1: Join operations
+Figure 9.2: Dissolve operation in ArcGIS pro
 </p>
 </div>
-<div id="inner-join" class="section level3" number="5.1.1">
-<h3><span class="header-section-number">5.1.1</span> Inner join</h3>
-<p><code>Inner Join</code> in R is the most common type of join. It is an operation that returns the rows
-when the matching condition is fulfilled. Below we demonstrate it with an example.</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="joins-toolset.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb68-2"><a href="joins-toolset.html#cb68-2" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">TeamID =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">11</span>),</span>
-<span id="cb68-3"><a href="joins-toolset.html#cb68-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">TeamName =</span> <span class="fu">c</span>(<span class="st">&quot;new york knicks&quot;</span>,<span class="st">&quot;los angeles lakers&quot;</span>,<span class="st">&quot;milwaukee bucks&quot;</span>,<span class="st">&quot;boston celtics&quot;</span>),</span>
-<span id="cb68-4"><a href="joins-toolset.html#cb68-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Championships =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">17</span>,<span class="dv">1</span>,<span class="dv">17</span>))</span>
-<span id="cb68-5"><a href="joins-toolset.html#cb68-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-6"><a href="joins-toolset.html#cb68-6" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">TeamID =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">11</span>,<span class="dv">8</span>),</span>
-<span id="cb68-7"><a href="joins-toolset.html#cb68-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">TeamName =</span> <span class="fu">c</span>(<span class="st">&quot;new york knicks&quot;</span>,<span class="st">&quot;philadelphia 76ers&quot;</span>,<span class="st">&quot;boston celtics&quot;</span>,<span class="st">&quot;los angeles clippers&quot;</span>),</span>
-<span id="cb68-8"><a href="joins-toolset.html#cb68-8" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Championships =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">17</span>,<span class="dv">0</span>))</span>
-<span id="cb68-9"><a href="joins-toolset.html#cb68-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-10"><a href="joins-toolset.html#cb68-10" aria-hidden="true" tabindex="-1"></a>df_innerJoin <span class="ot">&lt;-</span> df1 <span class="sc">%&gt;%</span> <span class="fu">inner_join</span>(df2, <span class="at">by =</span> <span class="cn">NULL</span>)</span>
-<span id="cb68-11"><a href="joins-toolset.html#cb68-11" aria-hidden="true" tabindex="-1"></a>df_innerJoin</span></code></pre></div>
-<pre><code>##   TeamID        TeamName Championships
-## 1      1 new york knicks             2
-## 2     11  boston celtics            17</code></pre>
-</div>
-<div id="outer-join" class="section level3" number="5.1.2">
-<h3><span class="header-section-number">5.1.2</span> Outer join</h3>
-<p><code>Outer join</code> in R using simply returns all rows from both data frames. This is very well depicted in
-<a href="joins-toolset.html#fig:joins">5.1</a>.</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="joins-toolset.html#cb70-1" aria-hidden="true" tabindex="-1"></a>df_fullJoin <span class="ot">&lt;-</span> <span class="fu">full_join</span>(df1,df2)</span>
-<span id="cb70-2"><a href="joins-toolset.html#cb70-2" aria-hidden="true" tabindex="-1"></a>df_fullJoin</span></code></pre></div>
-<pre><code>##   TeamID             TeamName Championships
-## 1      1      new york knicks             2
-## 2      4   los angeles lakers            17
-## 3      6      milwaukee bucks             1
-## 4     11       boston celtics            17
-## 5      2   philadelphia 76ers             3
-## 6      8 los angeles clippers             0</code></pre>
-</div>
-<div id="left-right-join" class="section level3" number="5.1.3">
-<h3><span class="header-section-number">5.1.3</span> Left / Right join</h3>
-<p>The <code>left join</code> in R returns all records from the data frame on the left, as well as
-and the matched records from the one at the right.</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="joins-toolset.html#cb72-1" aria-hidden="true" tabindex="-1"></a>df_leftJoin <span class="ot">&lt;-</span> <span class="fu">left_join</span>(df1,df2)</span>
-<span id="cb72-2"><a href="joins-toolset.html#cb72-2" aria-hidden="true" tabindex="-1"></a>df_leftJoin</span></code></pre></div>
-<pre><code>##   TeamID           TeamName Championships
-## 1      1    new york knicks             2
-## 2      4 los angeles lakers            17
-## 3      6    milwaukee bucks             1
-## 4     11     boston celtics            17</code></pre>
-<p>Similarly works also the <code>right join</code>.</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="joins-toolset.html#cb74-1" aria-hidden="true" tabindex="-1"></a>df_rightJoin <span class="ot">&lt;-</span> <span class="fu">right_join</span>(df1,df2)</span>
-<span id="cb74-2"><a href="joins-toolset.html#cb74-2" aria-hidden="true" tabindex="-1"></a>df_rightJoin</span></code></pre></div>
-<pre><code>##   TeamID             TeamName Championships
-## 1      1      new york knicks             2
-## 2     11       boston celtics            17
-## 3      2   philadelphia 76ers             3
-## 4      8 los angeles clippers             0</code></pre>
-</div>
+<!-- ### Erase -->
+<!-- ### Union -->
+<!-- ### Symmetrical Difference -->
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="data-management-toolbox.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="projections-and-transformations-toolset.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="clip.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="spatial-join.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

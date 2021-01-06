@@ -11,6 +11,8 @@ rmd_files: [
   "03_Geoprocessing_Tools/3D_Analyst.Rmd",
   "03_Geoprocessing_Tools/Image_Analysis.Rmd",
   "03_Geoprocessing_Tools/Analysis.Rmd",
+  "04_Topology_Rules/Chapter_overview.Rmd",
+  "04_Topology_Rules/Polygon.Rmd"
   
 ]
 delete_merged_file: TRUE
