@@ -9,7 +9,7 @@ the base R function called _merge_. The arguments of the _merge()_ function offe
 option to perform natural joins. In other words joins such as inner join, left join, right join etc.
 On the other hand we can come up with similar results by using the _join_ functions that
 lie within the __dplyr__ package.  
-In the examples below, we choose to use the later case.  
+In the examples below, we choose to use the latter case.  
 
 Before we begin with our examples, we have to make clear the differences among the various
 forms of join operations.  
