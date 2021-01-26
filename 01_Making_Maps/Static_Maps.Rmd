@@ -1,12 +1,11 @@
-# Making Statics Maps
-
-Probably the quickest way to visualize spatial data is with `base::plot()`. It can handle raster as well as vector data and usually needs not more than this one command, `plot()`. This can be great to get a first, quick look at the data but in my opinion, base plot will not get you very far. To make nice static maps, you are better served with `ggplot2` or with `tmap`. There are arguments for both packages, and you might just end up using both. 
+## Making Static Maps
 
 Before you start making maps however, you will have to familiarize yourself with importing raster or vector data into R in the first place. For Vector data, you can read chapter [2.2 Vector data](https://geocompr.robinlovelace.net/spatial-class.html#vector-data) from the book "Geocomputation with R". The next chapter [2.3 Raster data](https://geocompr.robinlovelace.net/spatial-class.html#raster-data) provides a very good overview on rasterdata in R
 
-## Static maps with `ggplot2`
 
-### Basics
+### Static maps with `ggplot2`
+
+#### Basics
 ```{r}
 library(sf)
 library(tidyverse)
@@ -51,7 +50,7 @@ ggplot(eire) +
   theme(legend.position = "bottom")
 ```
 
-### Adding Raster Maps Files (geotiffs)
+#### Adding Raster Maps Files (geotiffs)
 
 While vector data is very easily implemented in ggplot2, rasterdata is a little harder. Its complicated enough with standard Raster Data, and even more so with raster maps.  There are two packages that facilitate the combination of rastermaps and ggplot: 
 
@@ -83,11 +82,7 @@ rastermap_to_dataframe <- function(path) {
 }
 ```
 
-
-
-
-
-#### With Colours
+##### With Colours
 
 Tif files with colours can either be single band or include multiple bands in a single tif file. These need to be treated differently. Let's take two variants of the [swiss raster map 1:50k](https://shop.swisstopo.admin.ch/de/products/maps/digital_maps/digital/srm10) map. One is a single band dataset, the other a 3-band dataset.
 
@@ -108,7 +103,7 @@ map_1b <- raster(path_1b)
 map_3b <- brick(path_3b)
 ```
 
-##### Singleband
+###### Singleband
 
 A singleband RasterLayer can be regarded as vector of numeric values arranged in a matrix with some additional metadata. The metadata can be view with `str()`, the values can be obtained with `getValues()`.
 
@@ -167,7 +162,7 @@ ggplot() +
 
 The big drawback of using `ggplot2` in this way: you cannot add a second layer with a `fill` aesthetic, since `ggplot2` only allows one per plot.
 
-##### Multiple bands
+###### Multiple bands
 
 
 
@@ -216,7 +211,7 @@ map_3b_lowres <- raster::aggregate(map_3b, fact = 5)
 
 
 
-#### Greyscale
+##### Greyscale
 
 In greyscale maps, `raster` cannot find a associated colortable to match the values to rgb or hex colours.
 ```{r}

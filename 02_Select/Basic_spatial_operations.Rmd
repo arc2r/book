@@ -1,5 +1,6 @@
 # Basic spatial operations
 
+
 ## Clip operation
 ```{r,echo=FALSE}
 knitr::opts_chunk$set(warning = F, message = F, tidy = T)
@@ -133,3 +134,4 @@ The operation above produces the same outcome as the one depicted in the figure 
 ```{r buffer, fig.cap= "Buffer operation in ArcGIS pro",echo=F, out.width = "750px",fig.align='center'}
 knitr::include_graphics("images/buffer.png")
 ```
+=======

@@ -1,5 +1,4 @@
-# Making Interactive Maps
-
+## Making Interactive Maps
 
 Probably one of the first things you want to do when working with a dataset is visualizing it spatially. This is basically always the first thing you do in ArcGIS. So how do you this in R?
 
@@ -20,7 +19,7 @@ There are many packages that provide these features.
 
 In terms of simplicity, versatility and scalability `tmap` is one of the best in my option. 
 
-## Introduction to `tmap`
+### Introduction to `tmap`
 
 To see how it works, import the usual libraries and the North Carolina Sample data.
 

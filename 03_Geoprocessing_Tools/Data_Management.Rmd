@@ -1,8 +1,73 @@
 
 # Data Management Toolbox
 
+Data Management toolbox in ArcGIS pro provides the users a variety of tools for managing,
+maintaining and developing datasets that come in all possible forms (feature classes / datasets, raster datasets). Below we present all the different options that R offers for performing such operations.
 
-## Joins and Relates Toolset
+## Joins Toolset
+
+In R we have two main options for merging two data frames. On the one hand there is 
+the base R function called _merge_. The arguments of the _merge()_ function offers the
+option to perform natural joins. In other words joins such as inner join, left join, right join etc.
+On the other hand we can come up with similar results by using the _join_ functions that
+lie within the __dplyr__ package.  
+In the examples below, we choose to use the latter case.  
+
+Before we begin with our examples, we have to make clear the differences among the various
+forms of join operations.  
+
+  - _Natural join or Inner Join_ reflects on keeping only rows that match from the two data frames.
+  - _Full outer join or Outer Join_ reflects on keeping all rows from both data frames.  
+  
+```{r joins, fig.cap= "Join operations",echo=F, out.width = "500px",fig.align='center'}
+knitr::include_graphics("images/joins.png")
+```
+      
+### Inner join
+
+`Inner Join` in R is the most common type of join. It is an operation that returns the rows
+when the matching condition is fulfilled. Below we demonstrate it with an example.
+
+```{r}
+library(dplyr)
+df1 <- data.frame(TeamID = c(1,4,6,11),
+                  TeamName = c("new york knicks","los angeles lakers","milwaukee bucks","boston celtics"),
+                  Championships = c(2,17,1,17))
+
+df2 <- data.frame(TeamID = c(1,2,11,8),
+                  TeamName = c("new york knicks","philadelphia 76ers","boston celtics","los angeles clippers"),
+                  Championships = c(2,3,17,0))
+
+df_innerJoin <- df1 %>% inner_join(df2, by = NULL)
+df_innerJoin
+```
+
+### Outer join
+
+`Outer join` in R using simply returns all rows from both data frames. This is very well depicted in
+\@ref(fig:joins).
+
+```{r}
+df_fullJoin <- full_join(df1,df2)
+df_fullJoin
+```
+
+### Left / Right join
+
+The `left join` in R returns all records from the data frame on the left, as well as
+and the matched records from the one at the right.  
+
+```{r}
+df_leftJoin <- left_join(df1,df2)
+df_leftJoin
+```  
+Similarly works also the `right join`.
+
+```{r}
+df_rightJoin <- right_join(df1,df2)
+df_rightJoin
+```
+
 
 ## Projections and Transformations Toolset
 
@@ -147,9 +212,9 @@ plot(publicTransport_CH,las=1,
 
 
 
-## Topology Toolset
+<!-- ## Topology Toolset -->
 
-## Sampling Toolset
+<!-- ## Sampling Toolset -->
 
 ### Generate Tessellation
 
@@ -160,26 +225,26 @@ plot(publicTransport_CH,las=1,
 - Triangle
 
 
-### Create Fishnet
+<!-- ### Create Fishnet -->
 
-### Create Random Points
+<!-- ### Create Random Points -->
 
-### Generate Points Along Lines
+<!-- ### Generate Points Along Lines -->
 
-### Generate Rectangles Along Lines
+<!-- ### Generate Rectangles Along Lines -->
 
-### Generate Transsects Along Lines
+<!-- ### Generate Transsects Along Lines -->
 
-## Raster Toolset
+<!-- ## Raster Toolset -->
 
-<!-- Yes, these are toolsets within toolsets -->
-### Mosaic Dataset Toolset
+<!-- <!-- Yes, these are toolsets within toolsets --> -->
+<!-- ### Mosaic Dataset Toolset -->
 
-### Ortho Mapping Toolset
+<!-- ### Ortho Mapping Toolset -->
 
-### Raster Dataset Toolset
+<!-- ### Raster Dataset Toolset -->
 
-### Raster Processing Toolset
+<!-- ### Raster Processing Toolset -->
 
 #### Clip Raster
 
@@ -232,17 +297,6 @@ _Visualising the clipped output_
 
 plot(recycle_Waedi_clip)
 ```
-#### Focal Statistics
-
-Calculates focal ("moving window") values for the neighborhood of focal cells
-using a matrix of weights, perhaps in combination with a function.
-
-#### Reclassify raster
-
-```{r}
-DEM_ch <- raster("sample_data/Raster/dhm_200.tif")
-plot(DEM_ch)
-```
 
 
 
@@ -261,25 +315,26 @@ plot(DEM_ch)
 
 
 
-#### Composite Bands
 
-#### Compute Pansharpen Weights
+<!-- #### Composite Bands -->
 
-#### Create Ortho Corrected Raster Dataset
+<!-- #### Compute Pansharpen Weights -->
 
-#### Create Pansharpened Raster Dataset
+<!-- #### Create Ortho Corrected Raster Dataset -->
 
-#### Extract Subdataset
+<!-- #### Create Pansharpened Raster Dataset -->
 
-#### Generate Table From Raster Function
+<!-- #### Extract Subdataset -->
 
-#### Raster To DTED
+<!-- #### Generate Table From Raster Function -->
 
-#### Resample
+<!-- #### Raster To DTED -->
 
-#### Split Raster
+<!-- #### Resample -->
+
+<!-- #### Split Raster -->
 
 
-### Raster Properties Toolset
+<!-- ### Raster Properties Toolset -->
 
 
