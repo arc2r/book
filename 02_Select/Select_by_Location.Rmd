@@ -14,6 +14,7 @@ An example of spatial subsetting could be the following. Let's assume we have as
 
 
 ```{r echo=T}
+
 # Minicipalities (Gemeinde) in Canton Zurich
 gemeinde_ZH <- st_read("sample_data/Kanton_Zuerich/Gemeinde_ZH.shp")
 
