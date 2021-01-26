@@ -10,15 +10,9 @@ library(raster)
 ## Conditional Toolset
 
 
-
-
-
-
-
-
 ## Density Toolset
 
-### Kernel Denisity
+### Kernel Density
 
 
 There are several Function that can be tweaked to calculate KDE for `sf`-Point object:
