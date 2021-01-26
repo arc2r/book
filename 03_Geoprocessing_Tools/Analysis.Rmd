@@ -93,7 +93,7 @@ tm_shape(aOi_merged) + tm_polygons("#f0f0f0") + tm_layout(frame = F)
 
 The operation above produces the same outcome as the one depicted in the figure below \@ref(fig:dissolve).
 
-```{r dissolve, fig.cap= "Dissolve operation in ArcGIS pro",echo=F, out.width = "750px",fig.align='center'}
+```{r, fig.cap= "Dissolve operation in ArcGIS pro",echo=F, out.width = "750px",fig.align='center'}
 knitr::include_graphics("images/dissolve.png")
 ```
 
