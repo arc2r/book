@@ -11,10 +11,10 @@
   "Packages": {
     "BH": {
       "Package": "BH",
-      "Version": "1.72.0-3",
+      "Version": "1.75.0-0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "8f9ce74c6417d61f0782cbae5fd2b7b0"
+      "Hash": "e4c04affc2cac20c8fec18385cd14691"
     },
     "DBI": {
       "Package": "DBI",
@@ -128,6 +128,13 @@
       "Repository": "CRAN",
       "Hash": "1bf627f1f77313e345f71e779b658578"
     },
+    "brio": {
+      "Package": "brio",
+      "Version": "1.1.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "570a24963009b9cce0869a0463c83580"
+    },
     "broom": {
       "Package": "broom",
       "Version": "0.7.2",
@@ -179,17 +186,17 @@
     },
     "colorspace": {
       "Package": "colorspace",
-      "Version": "1.4-1",
+      "Version": "2.0-0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "6b436e95723d1f0e861224dd9b094dfb"
+      "Hash": "abea3384649ef37f60ef51ce002f3547"
     },
     "cpp11": {
       "Package": "cpp11",
-      "Version": "0.2.3",
+      "Version": "0.2.5",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "f9df472593124299aef98fba2c96dfd3"
+      "Hash": "8b9a10255e862eb99e38fa8b0caa6c0d"
     },
     "crayon": {
       "Package": "crayon",
@@ -233,6 +240,13 @@
       "Repository": "CRAN",
       "Hash": "fe1a3788cf243db3eca07ae661860793"
     },
+    "diffobj": {
+      "Package": "diffobj",
+      "Version": "0.3.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "16533929cf545f3c9b796780cccf5eff"
+    },
     "digest": {
       "Package": "digest",
       "Version": "0.6.27",
@@ -242,10 +256,10 @@
     },
     "dplyr": {
       "Package": "dplyr",
-      "Version": "1.0.2",
+      "Version": "1.0.3",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "d0509913b27ea898189ee664b6030dc2"
+      "Hash": "365f8c3650ab95582e600f160fd5fb88"
     },
     "e1071": {
       "Package": "e1071",
@@ -298,10 +312,10 @@
     },
     "generics": {
       "Package": "generics",
-      "Version": "0.0.2",
+      "Version": "0.1.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "b8cff1d1391fd1ad8b65877f4c7f2e53"
+      "Hash": "4d243a9c10b00589889fe32314ffd902"
     },
     "ggplot2": {
       "Package": "ggplot2",
@@ -354,10 +368,10 @@
     },
     "hms": {
       "Package": "hms",
-      "Version": "0.5.3",
+      "Version": "1.0.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "726671f634529d470545f9fd1a9d1869"
+      "Hash": "bf552cdd96f5969873afdac7311c7d0d"
     },
     "htmltools": {
       "Package": "htmltools",
@@ -368,10 +382,10 @@
     },
     "htmlwidgets": {
       "Package": "htmlwidgets",
-      "Version": "1.5.2",
+      "Version": "1.5.3",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "0aaf56b7960bb066646e1868cadcaf07"
+      "Hash": "6fdaa86d0700f8b3e92ee3c445a5a10d"
     },
     "httr": {
       "Package": "httr",
@@ -389,10 +403,10 @@
     },
     "isoband": {
       "Package": "isoband",
-      "Version": "0.2.2",
+      "Version": "0.2.3",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "6e58bd3d6b3dd82a944cd6f05ade228f"
+      "Hash": "53647fb507373700028b2ce6cd30751a"
     },
     "jsonlite": {
       "Package": "jsonlite",
@@ -557,10 +571,10 @@
     },
     "pkgbuild": {
       "Package": "pkgbuild",
-      "Version": "1.1.0",
+      "Version": "1.2.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "404684bc4e3685007f9720adf13b06c1"
+      "Hash": "725fcc30222d4d11ec68efb8ff11a9af"
     },
     "pkgconfig": {
       "Package": "pkgconfig",
@@ -599,10 +613,10 @@
     },
     "processx": {
       "Package": "processx",
-      "Version": "3.4.4",
+      "Version": "3.4.5",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "03446ed0b8129916f73676726cb3c48f"
+      "Hash": "22aab6098cb14edd0a5973a8438b569b"
     },
     "progress": {
       "Package": "progress",
@@ -613,10 +627,10 @@
     },
     "ps": {
       "Package": "ps",
-      "Version": "1.4.0",
+      "Version": "1.5.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "f5d7d94cc097aa9dade988e3e6715067"
+      "Hash": "ebaed51a03411fd5cfc1e12d9079b353"
     },
     "purrr": {
       "Package": "purrr",
@@ -653,12 +667,19 @@
       "Repository": "CRAN",
       "Hash": "c66b930d20bb6d858cd18e1cebcfae5c"
     },
-    "renv": {
-      "Package": "renv",
-      "Version": "0.12.3",
+    "rematch2": {
+      "Package": "rematch2",
+      "Version": "2.1.2",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "b5510c50c7f31d453c385c7b460af2b9"
+      "Hash": "76c9e04c712a05848ae7a23d2f170a40"
+    },
+    "renv": {
+      "Package": "renv",
+      "Version": "0.12.5",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "5c0cdb37f063c58cdab3c7e9fbb8bd2c"
     },
     "reprex": {
       "Package": "reprex",
@@ -781,10 +802,10 @@
     },
     "testthat": {
       "Package": "testthat",
-      "Version": "2.3.2",
+      "Version": "3.0.1",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "0829b987b8961fb07f3b1b64a2fbc495"
+      "Hash": "17826764cb92d8b5aae6619896e5a161"
     },
     "tibble": {
       "Package": "tibble",
@@ -823,10 +844,10 @@
     },
     "tinytex": {
       "Package": "tinytex",
-      "Version": "0.26",
+      "Version": "0.29",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "db6477efcfbffcd9b3758c3c2882cf58"
+      "Hash": "f0b0ba735febac9a8344253ae6fa93f5"
     },
     "tmap": {
       "Package": "tmap",
@@ -876,6 +897,13 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "ce4f6271baa94776db692f1cb2055bee"
+    },
+    "waldo": {
+      "Package": "waldo",
+      "Version": "0.2.3",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "181d1a31b1ba2009ef20926f2ee0570c"
     },
     "whisker": {
       "Package": "whisker",
