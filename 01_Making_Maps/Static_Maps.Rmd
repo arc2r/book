@@ -88,7 +88,7 @@ Tif files with colours can either be single band or include multiple bands in a 
 
 ```{r}
 library(raster)
-library(rdgal)
+library(rgdal)
 
 path_1b <- "sample_data/SMR_Musterdaten/SMR50_LV95_KOMB_Mosaic.tif"
 path_3b <- "sample_data/SMR_Musterdaten/SMR50_LV95_KREL_10L_Mosaic.tif"
