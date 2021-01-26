@@ -59,7 +59,7 @@ So, ultimately, as we can see above, the _st_intersection_ function creates a re
 
 The operation above produces the same outcome as the one depicted in the figure below \@ref(fig:clip).
 
-```{r clip, fig.cap= "Clip operation in ArcGIS pro",echo=F, out.width = "750px",fig.align='center'}
+```{r fig.cap= "Clip operation in ArcGIS pro",echo=F, out.width = "750px",fig.align='center'}
 knitr::include_graphics("images/clipOperation.png")
 ```
 
