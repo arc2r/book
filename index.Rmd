@@ -8,7 +8,6 @@ site: bookdown::bookdown_site
 
 ```{r,echo=FALSE,message=FALSE,warning=FALSE}
 library(tidyverse)
-library(tiff)
 ```
 
 
