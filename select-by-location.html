@@ -256,7 +256,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>An example of spatial subsetting could be the following. Let’s assume we have as a shapefile (polygon dataframe) with all the municipalities (Gemeinde) of the Canton of Zurich. Furthermore, we are also using a shapefile in the form of a point dataframe, which represents all the <strong>“swimming spots”</strong> (Badenplätze) in the same spatial region (Canton of Zurich). So, ultimately, our goal is to find out the <strong>“swimming spots”</strong> that lie within a specific municipality of the Canton of Zurich.</p>
 <div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="select-by-location.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Minicipalities (Gemeinde) in Canton Zurich</span></span>
 <span id="cb78-2"><a href="select-by-location.html#cb78-2" aria-hidden="true" tabindex="-1"></a>gemeinde_ZH <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;sample_data/Kanton_Zuerich/Gemeinde_ZH.shp&quot;</span>)</span></code></pre></div>
-<pre><code>## Reading layer `Gemeinde_ZH&#39; from data source `/Users/runner/work/spatialR_for_ArcGIS_Users/spatialR_for_ArcGIS_Users/sample_data/Kanton_Zuerich/Gemeinde_ZH.shp&#39; using driver `ESRI Shapefile&#39;
+<pre><code>## Reading layer `Gemeinde_ZH&#39; from data source `/Users/runner/work/book/book/sample_data/Kanton_Zuerich/Gemeinde_ZH.shp&#39; using driver `ESRI Shapefile&#39;
 ## Simple feature collection with 166 features and 7 fields
 ## geometry type:  MULTIPOLYGON
 ## dimension:      XY
@@ -264,7 +264,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## projected CRS:  CH1903+ / LV95</code></pre>
 <div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="select-by-location.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co"># &quot;Swimming&quot; spots in the Canton of Zurich</span></span>
 <span id="cb80-2"><a href="select-by-location.html#cb80-2" aria-hidden="true" tabindex="-1"></a>swimmSpots <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;sample_data/Kanton_Zuerich/Badeplaetze_ZH.shp&quot;</span>)</span></code></pre></div>
-<pre><code>## Reading layer `Badeplaetze_ZH&#39; from data source `/Users/runner/work/spatialR_for_ArcGIS_Users/spatialR_for_ArcGIS_Users/sample_data/Kanton_Zuerich/Badeplaetze_ZH.shp&#39; using driver `ESRI Shapefile&#39;
+<pre><code>## Reading layer `Badeplaetze_ZH&#39; from data source `/Users/runner/work/book/book/sample_data/Kanton_Zuerich/Badeplaetze_ZH.shp&#39; using driver `ESRI Shapefile&#39;
 ## Simple feature collection with 71 features and 6 fields
 ## geometry type:  POINT
 ## dimension:      XY

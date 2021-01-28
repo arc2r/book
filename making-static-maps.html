@@ -262,7 +262,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-2"><a href="making-static-maps.html#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="making-static-maps.html#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="making-static-maps.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
-<pre><code>## [1] &quot;/Users/runner/work/spatialR_for_ArcGIS_Users/spatialR_for_ArcGIS_Users&quot;</code></pre>
+<pre><code>## [1] &quot;/Users/runner/work/book/book&quot;</code></pre>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="making-static-maps.html#cb5-1" aria-hidden="true" tabindex="-1"></a>eire <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(<span class="st">&quot;sample_data/spData/eire.shp&quot;</span>)</span></code></pre></div>
 <p>The most basic plot consists of a <code>ggplot()</code> initiation and a single layer. In case of <code>sf</code> data, you can add a layer with <code>geom_sf()</code>. If the coordinate system is unknown, the axes will be labelled with the numerical values of the coorindates.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="making-static-maps.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(eire)</span></code></pre></div>
@@ -351,7 +351,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## resolution : 2.5, 2.5  (x, y)
 ## extent     : 2599000, 2601000, 1196000, 1198000  (xmin, xmax, ymin, ymax)
 ## crs        : NA 
-## source     : /Users/runner/work/spatialR_for_ArcGIS_Users/spatialR_for_ArcGIS_Users/sample_data/SMR_Musterdaten/SMR50_LV95_KOMB_Mosaic.tif 
+## source     : /Users/runner/work/book/book/sample_data/SMR_Musterdaten/SMR50_LV95_KOMB_Mosaic.tif 
 ## names      : SMR50_LV95_KOMB_Mosaic 
 ## values     : 0, 255  (min, max)</code></pre>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="making-static-maps.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">raster</span>(path_3b)</span></code></pre></div>
@@ -361,7 +361,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## resolution : 5, 5  (x, y)
 ## extent     : 2599000, 2601000, 1196000, 1198000  (xmin, xmax, ymin, ymax)
 ## crs        : NA 
-## source     : /Users/runner/work/spatialR_for_ArcGIS_Users/spatialR_for_ArcGIS_Users/sample_data/SMR_Musterdaten/SMR50_LV95_KREL_10L_Mosaic.tif 
+## source     : /Users/runner/work/book/book/sample_data/SMR_Musterdaten/SMR50_LV95_KREL_10L_Mosaic.tif 
 ## names      : SMR50_LV95_KREL_10L_Mosaic 
 ## values     : 0, 255  (min, max)</code></pre>
 <p>As you can see in the output of <code>raster(path_3b)</code>, only one of the 3 bands was imported with <code>raster::raster</code>. In the case of multiband rasters, it’s better to use <code>raster::brick</code>:</p>
@@ -373,7 +373,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="making-static-maps.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(map_1b)</span></code></pre></div>
 <pre><code>## Formal class &#39;RasterLayer&#39; [package &quot;raster&quot;] with 12 slots
 ##   ..@ file    :Formal class &#39;.RasterFile&#39; [package &quot;raster&quot;] with 13 slots
-##   .. .. ..@ name        : chr &quot;/Users/runner/work/spatialR_for_ArcGIS_Users/spatialR_for_ArcGIS_Users/sample_data/SMR_Musterdaten/SMR50_LV95_KOMB_Mosaic.tif&quot;
+##   .. .. ..@ name        : chr &quot;/Users/runner/work/book/book/sample_data/SMR_Musterdaten/SMR50_LV95_KOMB_Mosaic.tif&quot;
 ##   .. .. ..@ datanotation: chr &quot;INT1U&quot;
 ##   .. .. ..@ byteorder   : chr &quot;little&quot;
 ##   .. .. ..@ nodatavalue : num -Inf
@@ -479,7 +479,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## resolution : 5, 5  (x, y)
 ## extent     : 2599000, 2601000, 1196000, 1198000  (xmin, xmax, ymin, ymax)
 ## crs        : NA 
-## source     : /Users/runner/work/spatialR_for_ArcGIS_Users/spatialR_for_ArcGIS_Users/sample_data/SMR_Musterdaten/SMR50_LV95_KREL_10L_Mosaic.tif 
+## source     : /Users/runner/work/book/book/sample_data/SMR_Musterdaten/SMR50_LV95_KREL_10L_Mosaic.tif 
 ## names      : SMR50_LV95_KREL_10L_Mosaic.1, SMR50_LV95_KREL_10L_Mosaic.2, SMR50_LV95_KREL_10L_Mosaic.3 
 ## min values :                            0,                            0,                            0 
 ## max values :                          255,                          255,                          255</code></pre>
@@ -490,7 +490,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## resolution : 5, 5  (x, y)
 ## extent     : 2599000, 2601000, 1196000, 1198000  (xmin, xmax, ymin, ymax)
 ## crs        : NA 
-## source     : /Users/runner/work/spatialR_for_ArcGIS_Users/spatialR_for_ArcGIS_Users/sample_data/SMR_Musterdaten/SMR50_LV95_KREL_10L_Mosaic.tif 
+## source     : /Users/runner/work/book/book/sample_data/SMR_Musterdaten/SMR50_LV95_KREL_10L_Mosaic.tif 
 ## names      : SMR50_LV95_KREL_10L_Mosaic.1 
 ## values     : 0, 255  (min, max)</code></pre>
 <p>As with the singleband raster, we can extract the Values (this time RGB-Values) of each layer with <code>getValues()</code>.</p>

@@ -255,7 +255,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Let’s assume in the example below that we want to clip the available dataset of all the <strong>train stations in Switzerland</strong> by focusing our analysis on four specific cantons.</p>
 <div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="clip-operation.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Point dataset depicting the train stations locations across Switzerland</span></span>
 <span id="cb62-2"><a href="clip-operation.html#cb62-2" aria-hidden="true" tabindex="-1"></a>bahn_haltestelle_ch <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;sample_data/other/Haltestelle_Bahn_CH.shp&quot;</span>)</span></code></pre></div>
-<pre><code>## Reading layer `Haltestelle_Bahn_CH&#39; from data source `/Users/runner/work/spatialR_for_ArcGIS_Users/spatialR_for_ArcGIS_Users/sample_data/other/Haltestelle_Bahn_CH.shp&#39; using driver `ESRI Shapefile&#39;
+<pre><code>## Reading layer `Haltestelle_Bahn_CH&#39; from data source `/Users/runner/work/book/book/sample_data/other/Haltestelle_Bahn_CH.shp&#39; using driver `ESRI Shapefile&#39;
 ## Simple feature collection with 3134 features and 16 fields
 ## geometry type:  POINT
 ## dimension:      XYZ
@@ -264,7 +264,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## projected CRS:  CH1903+ / LV95</code></pre>
 <div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="clip-operation.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dataset depictinG Switzerland on canton level</span></span>
 <span id="cb64-2"><a href="clip-operation.html#cb64-2" aria-hidden="true" tabindex="-1"></a>kantonsgebiet <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;sample_data/other/Kantonsgebiet.shp&quot;</span>)</span></code></pre></div>
-<pre><code>## Reading layer `Kantonsgebiet&#39; from data source `/Users/runner/work/spatialR_for_ArcGIS_Users/spatialR_for_ArcGIS_Users/sample_data/other/Kantonsgebiet.shp&#39; using driver `ESRI Shapefile&#39;
+<pre><code>## Reading layer `Kantonsgebiet&#39; from data source `/Users/runner/work/book/book/sample_data/other/Kantonsgebiet.shp&#39; using driver `ESRI Shapefile&#39;
 ## Simple feature collection with 56 features and 22 fields
 ## geometry type:  MULTIPOLYGON
 ## dimension:      XYZ
