@@ -1,4 +1,7 @@
-## Making Static Maps
+## Static Maps
+
+### Prerequisit
+
 
 Before you start making maps however, you will have to familiarize yourself with importing raster or vector data into R in the first place. For Vector data, you can read chapter [2.2 Vector data](https://geocompr.robinlovelace.net/spatial-class.html#vector-data) from the book "Geocomputation with R". The next chapter [2.3 Raster data](https://geocompr.robinlovelace.net/spatial-class.html#raster-data) provides a very good overview on rasterdata in R
 

@@ -1,6 +1,28 @@
 # Making Maps
 
-Probably the quickest way to visualize spatial data is with `base::plot()`.
-It can handle raster as well as vector data and usually needs not more than this one command, plot().
-This can be great to get a first, quick look at the data but in my opinion, base plot will not get you very far. To make nice static maps, you are better served with `ggplot2` or with `tmap`.
-There are arguments for both packages, and you might just end up using both.
+In ArcGIS, the fundamental approach to working with data is through a visual interface. The first thing that happens when you import a dataset into an ArcGIS project is that you get an interactive map visualizing that data. In R on the other hand, when you import a dataset into your project you have only created a *connection* to that dataset, and maby it will be read into your computer's memory. To visualize your data (which you should do frequently), you need an extra step. This difference between R and ArcGIS is probabbly what makes ArcGIS so approachable and R so intimidating for beginners. But making a quick visualisation of your geodata is very easy in R, it sometimes just takes a simple line of code. 
+In R, we have to differentiate two different types of outputs: *Static* maps which can be printed on paper and *dynamic maps* which you can interact with. Static maps are usually stored in JPG, Tiff of PDF Format which dynamic maps are renderd using html, and javascript. In the beginning, you dont have to worry about these formats because RStudio automatically displays the maps in the correct pane ("Plot" for static maps and "Viewer" for dynamic maps).
+
+A dynamic map is what you get "for free" in ArcGIS within your "Map Window", a Static map is what you would get when you export a "Layout" to jpg or pdf to use in a report.
+
+
+
+```{r}
+# list.files("01_Making_Maps", ".Rmd",full.names = TRUE) %>%
+#   # head(1) -> x
+#   map(function(x){
+#     fi <- readLines(x)
+#     second <- str_starts(fi, "##\\s")
+#     fi[second]
+#   }) %>%
+#   unlist()
+```
+
+
+<!-- However, beautiful and highly customized visualisations can become quite challenging. That is not to say that it cannot be achieved, there are plenty of beautiful examples of maps out there, created purely in R. Check out [Cédric Sherer's Website](https://www.cedricscherer.com/top/dataviz/#mapchallenge) for some beautiful examples.  -->
+
+
+<!-- Probably the quickest way to visualize spatial data is with `base::plot()`. -->
+<!-- It can handle raster as well as vector data and usually needs not more than this one command, plot(). -->
+<!-- This can be great to get a first, quick look at the data but in my opinion, base plot will not get you very far. To make nice static maps, you are better served with `ggplot2` or with `tmap`. -->
+<!-- There are arguments for both packages, and you might just end up using both. -->
