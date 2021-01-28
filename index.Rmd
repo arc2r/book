@@ -1,6 +1,6 @@
 ---
-title: "Burning Bridges"
-subtitle: "An intro to spatial-R for ArcGIS users"
+title: "All things R Spatial"
+subtitle: "arc2r: An introduction to spatial-R for recovering ArcGIS users"
 author: "Nils Ratnaweera"
 site: bookdown::bookdown_site
 ---
@@ -8,12 +8,15 @@ site: bookdown::bookdown_site
 
 ```{r,echo=FALSE,message=FALSE,warning=FALSE}
 library(tidyverse)
+
+now <- Sys.time()
+tz <- Sys.timezone()
 ```
 
 
-# Abstract
+# Introduction {}
 
-This is a resource for people coming from ArcGIS who want to do spatial stuff (Analysis, Visualization) in R. This resource should provide some help on this journey.
+This is a resource for people wanting to learn spatial-R (Analysis, Visualization) in R and are coming with a background in ArcGIS. This resource should provide some help on this journey.
 
 Who this book is for:
 
@@ -21,22 +24,20 @@ Who this book is for:
 - you have some experience with R
 - you don't mind working with the tidyverse
 
-![](2999236c73d7f6b3561d742dc2471ff8.jpg)
+
+This book leans heavily on how the Toolboxes and Toolsets are documented in ArcGIS Pro. Is is not a book to read from cover to cover, but to look up specific things of which you only know the ArcGIS terminology for. This book is a work in progress, the current version is from the `r now` (`r tz`). *We highly appriciate contributions* to this book: If you have anything to add, please [file an issue or make a pull request](https://github.com/arc2r/book).  
+
+![Leaving the world of proprietary software behind you is a liberating experiance. Artwork by [Samantha Mash](samanthamash.com)](samanthamash.jpg)
+
+
+We had long since thought about the necessity of a resource which helps ArcGIS users transition to R or Python. Nils had tweeted about this (see below) without getting much reception, and and one point just decided to start his own resource. Since [our research group](gis.lsfm.zhaw.ch/) teaches and introduction to GIS and an advanced GIS course mostly based on ArcGIS, we decided to pick up where Nils hat started and develop the resource in with internal funding of our University. 
+
+There are already a great many spatial-R Resources out there, and the goal is *not* to rewrite everything that has already been written. The aim of this book is just to provide a resource for people looking to do spatial stuff in R, but only know the ArcGIS-Term for it. When you transition from a proprietary Software like ArcGIS to [FOSS](https://en.wikipedia.org/wiki/Free_and_open-source_software), you have to relearn many of the concepts because the proprietary software usually does not adhere to common standards.
+
+
+![[Nils' Tweet](https://twitter.com/NRatnaweera/status/1187759876472213504) might not have recieved much attention, but it did spark a conversation within our group](tweet1.jpg)
 
 
 
-
-# Foreword
-
-I had long since thought about the necessity of a resource which helps ArcGIS users transition to R or Python. I had [tweeted this](https://twitter.com/NRatnaweera/status/1187759876472213504) without getting much reception, and and one point just decided to start my own resource. 
-
-![](tweet1.jpg)
-
-
-I, like many, learned GIS in University using ArcGIS. It took me a considerable amount of time to learn that there are alternatives to ArcGIS, but not much longer to realize that I'm more attracted to these alternatives than to ArcGIS. When you transition from a proprietary Software like ArcGIS to FOSS, you have to relearn many of the concepts because the proprietary software usually does not adhere to common standards. 
-
-There are already a great many spatial-R Resources out there, and I'm not planning to rewrite everything that has been written. My aim is just to provide a resource for people looking to do spatial stuff in R, but only know the ArcGIS-Term for it. This might mean that for some topics, I will simply provide a link to an existing resource. 
-
-  
 
 
