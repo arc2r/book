@@ -8,5 +8,8 @@ Suggests:
   terra,
   tidyverse,
   rgdal,
-  tiff
+  tiff,
+  bookdown,
+  rmarkdown,
+  tmap
 Remotes:
