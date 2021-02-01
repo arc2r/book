@@ -8,7 +8,7 @@ library(ggplot2)
 ```
 One of the most commonly used operations in ArcGIS pro is the process of selecting features of a spatial object (layer) based on whether or not these relate spatially to another object (layer). This process is also referred as __spatial subsetting__. In ArcGIS pro this can be performed in various ways using the `Select by Location tool`. 
 
-In __R__ the same operation is, on a first level, performed using the `square bracket ([])` operator from the base R package.
+In `R` the same operation is, on a first level, performed using the square bracket (`[]`) operator from the base R package.
 
 An example of spatial subsetting could be the following. Let's assume we have as a shapefile (polygon dataframe) with all the municipalities (Gemeinde) of the Canton of Zurich. Furthermore, we are also using a shapefile in the form of a point dataframe, which represents all the __"swimming spots"__ (Badenplätze) in the same spatial region (Canton of Zurich). So, ultimately, our goal is to find out the __"swimming spots"__ that lie within a specific municipality of the Canton of Zurich. 
 
@@ -49,8 +49,8 @@ div.note { background-color:#f0f0f0; border-radius: 5px; padding: 20px;}
 <div class = "note">
 
 -  __x__ and __y__ are the spatial objects for which we want to investigate if there is a spatial relationship (x is the target feature, while y is the source one)  
--  the second argument __[, ,]__ within the brackets denotes the column number we want to retrieve from the spatial subsetting. In our example this argument was empty, which means we wanted to retrieve all rows for every __attribute column__.  
--  the third argument __[op = ]__ specifies the spatial operation we want to perform. In the example above, the goal was to find out how many subset features of the target object _swimmSpots_ lie withing the source spatial object _richterswil_. For that reason we chose the function __st_within()__.
+-  the second argument `[, ,]` within the brackets denotes the column number we want to retrieve from the spatial subsetting. In our example this argument was empty, which means we wanted to retrieve all rows for every __attribute column__.  
+-  the third argument `[op = ]` specifies the spatial operation we want to perform. In the example above, the goal was to find out how many subset features of the target object _swimmSpots_ lie withing the source spatial object _richterswil_. For that reason we chose the function `st_within()`.
 
 </div>
 

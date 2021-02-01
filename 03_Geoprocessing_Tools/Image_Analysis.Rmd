@@ -42,7 +42,7 @@ diff_rasters <- function(b1, b2){
 ```
 
 Since, we created the function for subtracting one raster from another, we use now
-the function _overlay_ of the __raster__ package for producing the new raster output.  
+the function _overlay_ of the `raster` package for producing the new raster output.  
 
 ```{r}
 # Compute the raster that depicts the difference in population in these 10 years
@@ -84,9 +84,9 @@ values(r) <- 1:ncell(r)
 plot(r, main='Raster with 100 cells', cex.main = 1)
 ``` 
 
-We will recompute now the raster based on the _focal_ function of the  __raster__ package. In the function
-below, the neighbourhood for which we apply the statistic is represented by the argument *w*, while the 
-statistic by the argument *fun*. 
+We will recompute now the raster based on the `focal` function of the  `raster` package. In the function
+below, the neighbourhood for which we apply the statistic is represented by the argument `w`, while the 
+statistic by the argument `fun`. 
 
 ```{r} 
 f1 <- focal(r, w=matrix(1,nrow=3,ncol=3),fun=sum)
@@ -95,9 +95,9 @@ plot(f1, main = "Raster after applying the focal function - raster package", cex
 
 The operation above can be also performed with the use of the _focal_ function of the __terra__ package.  
 
-  - *w* represents the moving window of the function. The window can be defined as one (for a square)
+  - `w` represents the moving window of the function. The window can be defined as one (for a square)
     or two numbers (row, col); or with an odd-sized weights matrix. More details can be found here: https://rdrr.io/cran/terra/man/focal.html
-  - *fun* represents the specified statistic for the identified neighbourhood (e.g mean,sum etc)
+  - `fun` represents the specified statistic for the identified neighbourhood (e.g mean,sum etc)
   
 ```{r}
 library(terra)
@@ -110,7 +110,7 @@ plot(f2, main = "Raster after applying the focal function - terra package", cex.
 
 `Zonal Statistics` tool in ArcGIS pro is used for calculating the statistics
 on values of a raster within the zones of another dataset. In R we are able to produce
-similar results with the use of _zonal_ function of the __raster__ package. 
+similar results with the use of `zonal` function of the `raster` package. 
 
 ```{r}
 r <- raster(ncols=10, nrows=10)

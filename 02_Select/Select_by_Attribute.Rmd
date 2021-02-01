@@ -8,9 +8,9 @@ One of the popular approaches in ArcGIS pro for selecting features in a layer is
 
 `Select By Attributes` tool allows us to provide an SQL query expression to select features that match the selection criteria.
 
-__R__ on the other hand offers quite easy and straightforward options to perform similar operations. Let's examine one of them.
+`R` on the other hand offers quite easy and straightforward options to perform similar operations. Let's examine one of them.
 
-As a first step, we might want to import a shapefile. To do so, we can use __sf package__ to work with vector data in R. Important to know is that the **rgdal package** automatically loads when sf is loaded.
+As a first step, we might want to import a shapefile. To do so, we can use `sf` package to work with vector data in R. Important to know is that the `rgdal` package automatically loads when sf is loaded.
 
 In the code snippet below, we read the shapefile, which represents the __parking spots for bicycles__ within the canton of Zurich. The dataset is publicly available for download in the following link: (https://opendata.swiss/en/dataset/veloparkierungsanlagen).
 
@@ -21,7 +21,7 @@ parkBikes <- st_read("sample_data/Kanton_Zuerich/Veloparkierungsanlagen/OGD_VELO
 ```
 
 After importing the dataset, let's say we want to filter it by selecting only the parking spots that lie within a specific municipality (Gemeinde) in the canton of Zurich. More specifically, we will select only the parking spots within the municipality of Winterthur.
-For the aforementioned operation, R offers the function `filter()`, which lies within the __dplyr__ package.
+For the aforementioned operation, R offers the function `filter()`, which lies within the `dplyr` package.
 This functions works as follows: `filter(dataset, condition)`
 
 ```{r}

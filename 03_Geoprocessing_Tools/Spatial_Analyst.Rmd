@@ -121,7 +121,7 @@ In ArcGIS pro the tool used for computing the slope of a raster dataset with ele
 data is called `Slope (3D Analyst)`.It identifies the steepness at each cell of a raster surface.
 The lower the slope value, the flatter the terrain; the higher the slope value, the steeper the terrain.  
   
-In R, __raster package__ includes the function _terrain()_, which helps us compute
+In `R`, `raster` package includes the function `terrain()`, which helps us compute
 *slope*, *aspect* and other terrain characteristics from a raster with elevation data.  
 Let's start by computing the _slope_ of the **swissAlti3d** raster dataset.  
 
@@ -136,7 +136,7 @@ plot(swissAlti3d,
      cex.main=1,font.main=4)
 ```
 
-After importing and visualizing our raster dataset, we use the _terrain_ function
+After importing and visualizing our raster dataset, we use the `terrain` function
 to calculate the slope.  
 
 ```{r}
@@ -150,9 +150,9 @@ plot(swissAlti3d_slope,
 In the function above, we define the operation we want to perform as the second
 argument of the function (_opt = "slope"_). Furthermore, we also define the units
 of the final result.  
-Similarly, we compute the _aspect_ of a given dataset. Basically as _aspect_ we can
-consider the compass direction that a _slope_ leans towards.  
-Let's compute now, using again the same function _terrain_, the _aspect_ of the
+Similarly, we compute the `aspect` of a given dataset. Basically as `aspect` we can
+consider the compass direction that a `slope` leans towards.  
+Let's compute now, using again the same function `terrain`, the `aspect` of the
 same dataset __swissALTI3D2019__.   
 
 ```{r}
@@ -175,8 +175,8 @@ words, to create new classes with different range of values for the existing cel
 values of the dataset. This operation in ArcGIS Pro is performed using the
 `Reclassify (Spatial Analyst)` tool.  
 In R the respective operation is quite straightforward and is based on the use of
-the _reclassify_ function of the __raster__ package. For our example we use the
-raster dataset we computed previously, which depicts the _aspect_ of the __swissALTI3D2019__
+the `reclassify` function of the `raster` package. For our example we use the
+raster dataset we computed previously, which depicts the `aspect` of the __swissALTI3D2019__
 dataset.  
 
 As a first step, we can compute the histogram of our dataset.  
@@ -211,7 +211,7 @@ reclass_m
 ```
 
 After creating the respective matrix with the new classes, we are ready to
-call the _reclassify_ function. The function takes as a first argument the dataset
+call the `reclassify` function. The function takes as a first argument the dataset
 set to be reclassified and as second the matrix, on which the reclassification is
 based on. 
 

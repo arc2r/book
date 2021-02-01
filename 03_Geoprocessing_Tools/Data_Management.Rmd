@@ -7,10 +7,10 @@ maintaining and developing datasets that come in all possible forms (feature cla
 ## Joins Toolset
 
 In R we have two main options for merging two data frames. On the one hand there is 
-the base R function called _merge_. The arguments of the _merge()_ function offers the
+the base R function called _merge_. The arguments of the `merge()` function offers the
 option to perform natural joins. In other words joins such as inner join, left join, right join etc.
 On the other hand we can come up with similar results by using the _join_ functions that
-lie within the __dplyr__ package.  
+lie within the `dplyr` package.  
 In the examples below, we choose to use the latter case.  
 
 Before we begin with our examples, we have to make clear the differences among the various
@@ -131,7 +131,7 @@ After rerunning the _st_crs_ function, we are getting now that the assigned
 coordinate system of the dataset is World Geodetic System (WGS84).  
 As a next step, we might want to transform the dataset to the Swiss coordinate system.
 The respective **EPSG** for code for the latest Swiss coordinate system
-(CH1903+LV95) is 2056. For this purpose we use the _st_transform_ function of the **sf package**.
+(CH1903+LV95) is 2056. For this purpose we use the `st_transform` function of the **sf package**.
 
 <span style="color:red">**Important**</span>
 
@@ -182,7 +182,7 @@ plot(publicTransport,las=1,
      cex.main=1,font.main=4)
 ```
 
-We can use the _projectRaster()_ function to reproject a raster into a new CRS.
+We can use the `projectRaster()` function to reproject a raster into a new CRS.
 The first argument of the aforementioned function is the raster dataset we want to reproject,
 while the second one is the dataset to whose projection we are targeting to. So, in
 our case, we are targeting to the coordinate system of the __raster_recycling__
