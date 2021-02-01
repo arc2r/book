@@ -32,13 +32,12 @@ jobs:
       - name: Install packages
         run: |
           R -e 'install.packages("remotes")'
+          R -e 'remotes::install_github("arc2r/data",dependencies = TRUE, upgrade = "always")'
 
       - name: Build site
         run: Rscript -e 'bookdown::render_book("index.Rmd", quiet = TRUE)'
-        run: Rscript -e 'remotes::install_github("arc2r/data",dependencies = TRUE, upgrade = "always")'
 
-    
-      - name: GitHub Pages action
+      - name: Push output to gh-pages branch
         uses: peaceiris/actions-gh-pages@v3.6.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
