@@ -32,7 +32,8 @@ jobs:
       - name: Install packages
         run: |
           R -e 'install.packages("remotes")'
-          R -e 'remotes::install_github("arc2r/data",dependencies = TRUE, upgrade = "always")'
+          R -e 'remotes::install_deps()'
+          R -e 'remotes::install_github("arc2r/arc2r",dependencies = TRUE, upgrade = "always")'
 
       - name: Build site
         run: Rscript -e 'bookdown::render_book("index.Rmd", quiet = TRUE)'
