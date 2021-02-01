@@ -22,12 +22,12 @@ jobs:
         run: |
           brew install pandoc
 
-      - name: Cache Renv packages
-        uses: actions/cache@v2
-        with:
-          path: $HOME/.local/share/renv
-          key: r-${{ hashFiles('renv.lock') }}
-          restore-keys: r-
+      # - name: Cache Renv packages
+      #   uses: actions/cache@v2
+      #   with:
+      #     path: $HOME/.local/share/renv
+      #     key: r-${{ hashFiles('renv.lock') }}
+      #     restore-keys: r-
 
       - name: Cache bookdown results
         uses: actions/cache@v2
@@ -38,17 +38,13 @@ jobs:
 
       - name: Install packages
         run: |
-          R -e 'install.packages("renv")'
-          R -e 'renv::restore()'
+          R -e 'install.packages("remotes")'
 
       - name: Build site
         run: Rscript -e 'bookdown::render_book("index.Rmd", quiet = TRUE)'
+        run: Rscript -e 'remotes::install_github("arc2r/data",dependencies = TRUE, upgrade = "always")'
 
-      # - name: Deploy site
-      #   run: |
-      #     git config --local user.email "actions@github.com"
-      #     git config --local user.name "GitHub Actions"
-      #     
+    
       - name: GitHub Pages action
         uses: peaceiris/actions-gh-pages@v3.6.1
         with:
