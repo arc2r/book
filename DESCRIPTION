@@ -1,10 +1,11 @@
 Package: arc2r-book 
 Title: All things R Spatial or A guide to spatial R for Recovering ArcGIS Users
 Version: 0.0.0.9000
+Depends: R (>= 2.10)
 Imports: 
-  arc2r
   bookdown,
   rmarkdown
+Suggests:
+  arc2r
 Remotes:
   arc2r/arc2r
-Depends: R (>= 2.10)
