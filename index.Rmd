@@ -1,7 +1,7 @@
 ---
 title: "All things R Spatial"
 subtitle: "arc2r: An introduction to spatial-R for recovering ArcGIS users"
-author: "Nils Ratnaweera"
+author: "Nils Ratnaweera and Nikolaos Bakogiannis"
 site: bookdown::bookdown_site
 ---
 
@@ -16,14 +16,9 @@ tz <- Sys.timezone()
 
 # Introduction {}
 
-This is a resource for people wanting to learn spatial-R (Analysis, Visualization) in R and are coming with a background in ArcGIS. This resource should provide some help on this journey.
+This is a resource for people wanting to learn spatial-R (Analysis, Visualization) in R and are coming with a background in ArcGIS. This resource should provide some help on this journey. We assume you have some prior experience with `R`. If this is not the case, we recommend you familiarize yourself with `R` first. 
 
-Who this book is for:
-
-- you've worked primarily with ArcGIS and would like to transition to R
-- you have some experience with R
-- you don't mind working with the tidyverse
-
+We are big fans of using `magrittr`'s pipe function `%>%` and heavily use it throughout this book. In addition for vector data, we use packages from the `tidyverse` (especially `filter()`, `mutate()` and `summarise()`.)
 
 This book leans heavily on how the Toolboxes and Toolsets are documented in ArcGIS Pro. Is is not a book to read from cover to cover, but to look up specific things of which you only know the ArcGIS terminology for. This book is a work in progress, the current version is from the `r now` (`r tz`). *We highly appriciate contributions* to this book: If you have anything to add, please [file an issue or make a pull request](https://github.com/arc2r/book).  
 
