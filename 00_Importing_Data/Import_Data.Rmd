@@ -1,4 +1,11 @@
 ## Import Data
 
-@todo Write Chapter Import data
-@body We dont have a section of how data can be imported. we need to add this, specifically since the appraoch is so different between shapefiles and raster.
+In ArcGIS, you add a new dataset to your project using the "Add Data" button in the "Map" Pane.  
+
+
+```{r}
+
+
+
+```
+
