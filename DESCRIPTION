@@ -1,15 +1,9 @@
 Package: arc2r-book 
 Title: All things R Spatial or A guide to spatial R for Recovering ArcGIS Users
 Version: 0.0.0.9000
-Suggests: 
-  sf,
-  sp,
-  raster,
-  terra,
-  tidyverse,
-  rgdal,
-  tiff,
+Imports: 
+  arc2rData
   bookdown,
-  rmarkdown,
-  tmap
+  rmarkdown
 Remotes:
+  arc2r/data
