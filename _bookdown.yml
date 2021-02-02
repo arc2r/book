@@ -1,6 +1,9 @@
 rmd_files: [
   "index.Rmd",
   "00_Data/Data.Rmd",
+  "00_Data/import_r_vs_arcgis.Rmd",
+  "00_Data/import_vector.Rmd",
+  "00_Data/import_raster.Rmd",
   "01_Making_Maps/Making_Maps.Rmd",
   "01_Making_Maps/Static_Maps.Rmd",
   "01_Making_Maps/Dynamic_Maps.Rmd",
@@ -18,4 +21,5 @@ rmd_files: [
 ]
 delete_merged_file: TRUE
 output_dir: "docs"
-# after_chapter_script: R/clear_vars_and_pkgs.R
+# after_chapter_script: R/after_chapter.R
+# before_chapter_script: R/before_chapter.R
