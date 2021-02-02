@@ -26,17 +26,22 @@ The same holds true when importing geodata in R: depending on the *type* of geod
 
 ### Importing vector data with `sf`
 
-First, let's load the library `sf`. Read chapter PLACEHOLDER If you haven't installed it yet. @todo replace placeholder
+First, let's load the library `sf`. Read chapter PLACEHOLDER If you haven't installed it yet.
+@todo replace placeholder
 
 ```{r}
 library(sf)
 ```
 
-As mentioned, `sf` is a great packge to facilitate handling vector data in R. "sf" stands for *s*imple *f*eatures, which is an open standard developed by the Open Geospatial Consortium (OGC). You will recognize many of these feature types from your everyday GIS-experience (see figure) @todo add figure reference
+As mentioned, `sf` is a great packge to facilitate handling vector data in R. "sf" stands for *s*imple *f*eatures, which is an open standard developed by the Open Geospatial Consortium (OGC). You will recognize many of these feature types from your everyday GIS-experience (see figure) 
+@todo add figure reference
 
-![The 7 (of 17) most important simple feature types. Image from https://geocompr.robinlovelace.net](images/sf-classes.png) @todo added reference with bibtex
+ @todo added reference with bibtex
+![The 7 (of 17) most important simple feature types. Image from https://geocompr.robinlovelace.net](images/sf-classes.png)
 
-To import a vector dataset into `R`, we can use the function `read_sf` as in the example below. @todo how does the user get access to this dataset? @body make this available through the packgage?
+To import a vector dataset into `R`, we can use the function `read_sf` as in the example below. 
+@todo how does the user get access to this dataset? 
+@body make this available through the packgage?
 ```{r}
 
 ARE_waedenswil <- read_sf("sample_data/Entsorgung_Waedenswil/ARE_waedenswil.shp")
@@ -87,7 +92,6 @@ plot(dhm_200)
 
 
 @todo add terra method to import rasters
-
 @todo add method for rasters with multiple layers
 
 ```{r}
