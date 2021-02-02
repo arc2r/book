@@ -18,4 +18,4 @@ rmd_files: [
 ]
 delete_merged_file: TRUE
 output_dir: "docs"
-after_chapter_script: R/clear_vars_and_pkgs.R
+# after_chapter_script: R/clear_vars_and_pkgs.R
