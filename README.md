@@ -1,5 +1,8 @@
 # spatialR_for_ArcGIS_Users
 
+
+[![Actions Status](https://github.com/arc2r/book/workflows/bookdown/badge.svg)](https://github.com/arc2r/book/actions)
+
 Work in Progress: A resource for people transitioning from ArcGIS to R for spatial stuff
 
 
