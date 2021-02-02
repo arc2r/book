@@ -1,114 +1,15 @@
 # Data
 
-
-## Data Formats
+```{r, include=FALSE}
+source("R/before_chapter.R", local = knitr::knit_global())
+```
 
 As an ArcGIS user, you are probabbly very familiar with the two major geodata formats, raster data and vector data. In the case of vector data, we typically use *shapefiles* and geodatabases with *feature classes*. For raster data, we use *geotiff* or *ESRI GRID* files inside geodatabases. As you work with OpenSource GIS Tools and Data, you will come across a much richer ecosystem of data formats. 
 
 @todo add some examples of geodata-formats (gpkg, sqlite, )
 
 
-## Importing Data
-
-In ArcGIS, you add a new dataset to your project using the "Add Data" button in the "Map" Pane. ArcGIS then helps you in various ways that `R` will not. For example, Arc GIS:
-
-- ... only displays files with extensions that can contain geodata (e.g. `.tif`, `.shp` etc)
-- ... recognizes files that come in a multifile format with a common prefix (e.g. shapefiles) and displays it as a single dataset
-- ... let's you visually examine the content of .gdb-files
-- ... displays the datatype / geometrytype of a dataset as a little icon
-- ... automatically uses the correct mechanims to import a dataset  <!-- (so you dont have to care whether it is raster, vector, multiband or singleband format) -->
-
-`R` provides less help when importing a dataset which can be seen as a disadvantage, but in many cases is much more preferable. `R` *interferes less* and *asssumes an informed user* who has good knowledge of the data. Just like when importing datasets using `read.csv`, `read.delim` and so on, you need to prior knowledge of your data to import it correctly: You need to know the delemiter used to seperate columns, and the encoding used to store the information. 
-
-<!-- Similar, importing geodata into R requires specific functions depending on the dataset, and sometimes specific arguments depending on the characteristics of you dataset.  -->
-
-The same holds true when importing geodata in R: depending on the *type* of geodata, we need different packages to handle the data and different functions to import it. For handeling vector data, the package `sf` now has replaced its predecessor `sp`. `sf` is so powerful and simple, that it has helped bring GIS workflows to non-GIS R users. For handeling raster data, the package `raster` is still in heavy use but is in the process of being replaced by it's sucessor, `terra`.
-
-### Importing vector data with `sf`
-
-First, let's load the library `sf`. Read chapter PLACEHOLDER If you haven't installed it yet.
-@todo replace placeholder
-
-```{r}
-library(sf)
-```
-
-As mentioned, `sf` is a great packge to facilitate handling vector data in R. "sf" stands for *s*imple *f*eatures, which is an open standard developed by the Open Geospatial Consortium (OGC). You will recognize many of these feature types from your everyday GIS-experience (see figure) 
-@todo add figure reference
-
- @todo added reference with bibtex
-![The 7 (of 17) most important simple feature types. Image from https://geocompr.robinlovelace.net](images/sf-classes.png)
-
-To import a vector dataset into `R`, we can use the function `read_sf` as in the example below. 
-@todo how does the user get access to this dataset? 
-@body make this available through the packgage?
-```{r}
-
-ARE_waedenswil <- read_sf("sample_data/Entsorgung_Waedenswil/ARE_waedenswil.shp")
-
-ARE_waedenswil
-```
-
-Much of the beauty in `sf` comes from it's simplicity: As you see from importing the shapefile, it is very much like a `data.frame`, a structure that you are probabbly know very well. In fact, it *is* a data.frame, as you can see here:
-
-```{r}
-is.data.frame(ARE_waedenswil)
-```
-
-`sf` provides methods for various generics, e.g. you can use `plot()` on the object for a simple visualisation.
-
-```{r}
-plot(ARE_waedenswil)
-```
 
 
 
-### Importing Raster with `raster` or `terra`
 
-To import raster data, we need a different packge. Currently, `raster` is the go-to package to deal with raster datasets. However, this package is currently in the process of being replaced with a successor, `terra`. We will showcase both methods here.
-
-
-
-```{r}
-library(raster)
-
-dhm_200 <- raster("sample_data/Raster/dhm_200.tif")
-
-dhm_200
-
-```
-
-
-```{r}
-class(dhm_200)
-```
-
-`RaysterLayer`s also come with a plot method to visualize the dataset spatially:
-
-```{r}
-plot(dhm_200)
-```
-
-
-
-@todo add terra method to import rasters
-@todo add method for rasters with multiple layers
-
-```{r}
-
-
-# path_1b <- "sample_data/SMR_Musterdaten/SMR50_LV95_KOMB_Mosaic.tif"
-# path_3b <- "sample_data/SMR_Musterdaten/SMR50_LV95_KREL_10L_Mosaic.tif"
-# 
-# raster(path_1b)
-# raster(path_3b)
-```
-
-
-
-As you can see in the output of `raster(path_3b)`, only one of the 3 bands was imported with `raster::raster`. In the case of multiband rasters, it's better to use `raster::brick`:
-
-```{r}
-# smr50_komb_mosaic <- raster(path_1b)
-# smr50_krel_mosaic <- brick(path_3b)
-```
