@@ -13,6 +13,8 @@ now <- Sys.time()
 tz <- Sys.timezone()
 ```
 
+[![Actions Status](https://github.com/arc2r/book/workflows/bookdown/badge.svg)](https://github.com/arc2r/book/actions)
+
 
 # Introduction {}
 
