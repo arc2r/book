@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>All things R Spatial</title>
-  <meta name="description" content="All things R Spatial" />
+  <title>5.4 Select by Attribute | All things R Spatial</title>
+  <meta name="description" content="5.4 Select by Attribute | All things R Spatial" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="All things R Spatial" />
+  <meta property="og:title" content="5.4 Select by Attribute | All things R Spatial" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="All things R Spatial" />
+  <meta name="twitter:title" content="5.4 Select by Attribute | All things R Spatial" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="Data.html"/>
+<link rel="prev" href="Basic_spatial_operations.html"/>
+<link rel="next" href="Select_by_Location.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -261,28 +261,35 @@ Developped by the Research Group for Geoinformatics @ ZHAW</a></li>
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">All things R Spatial</h1>
-<h2 class="subtitle"><em>arc2r: An introduction to spatial-R for recovering ArcGIS users</em></h2>
-<p class="author"><em>Nils Ratnaweera and Nikolaos Bakogiannis</em></p>
+<div id="select-by-attribute" class="section level2" number="5.4">
+<h2><span class="header-section-number">5.4</span> Select by Attribute</h2>
+<p>One of the popular approaches in ArcGIS pro for selecting features in a layer is by using an attribute query. The action is performed using the <code>Select By Attributes</code> tool.</p>
+<p><code>Select By Attributes</code> tool allows us to provide an SQL query expression to select features that match the selection criteria.</p>
+<p><code>R</code> on the other hand offers quite easy and straightforward options to perform similar operations. Let’s examine one of them.</p>
+<p>As a first step, we might want to import a shapefile. To do so, we can use <code>sf</code> package to work with vector data in R. Important to know is that the <code>rgdal</code> package automatically loads when sf is loaded.</p>
+<p>In the code snippet below, we read the shapefile, which represents the <strong>parking spots for bicycles</strong> within the canton of Zurich. The dataset is publicly available for download in the following link: (<a href="https://opendata.swiss/en/dataset/veloparkierungsanlagen" class="uri">https://opendata.swiss/en/dataset/veloparkierungsanlagen</a>).</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="Select_by_Attribute.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb43-2"><a href="Select_by_Attribute.html#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb43-3"><a href="Select_by_Attribute.html#cb43-3" aria-hidden="true" tabindex="-1"></a>parkBikes <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;sample_data/Kanton_Zuerich/Veloparkierungsanlagen/OGD_VELOPARKIERANLAGEN_P.shp&quot;</span>)</span>
+<span id="cb43-4"><a href="Select_by_Attribute.html#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Reading layer `OGD_VELOPARKIERANLAGEN_P&#39; from data source `/Users/runner/work/book/book/sample_data/Kanton_Zuerich/Veloparkierungsanlagen/OGD_VELOPARKIERANLAGEN_P.shp&#39; using driver `ESRI Shapefile&#39;</span></span>
+<span id="cb43-5"><a href="Select_by_Attribute.html#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Simple feature collection with 511 features and 28 fields</span></span>
+<span id="cb43-6"><a href="Select_by_Attribute.html#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="do">## geometry type:  POINT</span></span>
+<span id="cb43-7"><a href="Select_by_Attribute.html#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="do">## dimension:      XY</span></span>
+<span id="cb43-8"><a href="Select_by_Attribute.html#cb43-8" aria-hidden="true" tabindex="-1"></a><span class="do">## bbox:           xmin: 2669965 ymin: 1229454 xmax: 2707390 ymax: 1280235</span></span>
+<span id="cb43-9"><a href="Select_by_Attribute.html#cb43-9" aria-hidden="true" tabindex="-1"></a><span class="do">## projected CRS:  CH1903+ / LV95</span></span></code></pre></div>
+<p>After importing the dataset, let’s say we want to filter it by selecting only the parking spots that lie within a specific municipality (Gemeinde) in the canton of Zurich. More specifically, we will select only the parking spots within the municipality of Winterthur.
+For the aforementioned operation, R offers the function <code>filter()</code>, which lies within the <code>dplyr</code> package.
+This functions works as follows: <code>filter(dataset, condition)</code></p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="Select_by_Attribute.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb44-2"><a href="Select_by_Attribute.html#cb44-2" aria-hidden="true" tabindex="-1"></a>parkBikes_winti <span class="ot">&lt;-</span> <span class="fu">filter</span>(parkBikes,GEMEINDE <span class="sc">==</span> <span class="st">&quot;Winterthur&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-56-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>The operation above produces the same outcome as the one depicted in the figure below <a href="Select_by_Attribute.html#fig:select">5.4</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:select"></span>
+<img src="images/selectAttr.png" alt="Select by Attributes in ArcGIS pro" width="500px" />
+<p class="caption">
+Figure 5.4: Select by Attributes in ArcGIS pro
+</p>
 </div>
-<p><a href="https://github.com/arc2r/book/actions"><img src="https://github.com/arc2r/book/workflows/bookdown/badge.svg" alt="Actions Status" /></a></p>
-<div id="introduction" class="section level1" number="1">
-<h1><span class="header-section-number">1</span> Introduction</h1>
-<p>This is a resource for people wanting to learn spatial-R (Analysis, Visualization) in R and are coming with a background in ArcGIS. This resource should provide some help on this journey. We assume you have some prior experience with <code>R</code>. If this is not the case, we recommend you familiarize yourself with <code>R</code> first.</p>
-<p>We are big fans of using <code>magrittr</code>’s pipe function <code>%&gt;%</code> and heavily use it throughout this book. In addition for vector data, we use packages from the <code>tidyverse</code> (especially <code>filter()</code>, <code>mutate()</code> and <code>summarise()</code>.)</p>
-<p>This book leans heavily on how the Toolboxes and Toolsets are documented in ArcGIS Pro. Is is not a book to read from cover to cover, but to look up specific things of which you only know the ArcGIS terminology for. This book is a work in progress, the current version is from the 2021-02-02 15:55:34 (UTC). <em>We highly appriciate contributions</em> to this book: If you have anything to add, please <a href="https://github.com/arc2r/book">file an issue or make a pull request</a>.</p>
-<p>We had long since thought about the necessity of a resource which helps ArcGIS users transition to R or Python. Nils had tweeted about this (see below) without getting much reception, and and one point just decided to start his own resource. Since <a href="gis.lsfm.zhaw.ch/">our research group</a> teaches and introduction to GIS and an advanced GIS course mostly based on ArcGIS, we decided to pick up where Nils hat started and develop the resource in with internal funding of our University.</p>
-<p>There are already a great many spatial-R Resources out there, and the goal is <em>not</em> to rewrite everything that has already been written. The aim of this book is just to provide a resource for people looking to do spatial stuff in R, but only know the ArcGIS-Term for it. When you transition from a proprietary Software like ArcGIS to <a href="https://en.wikipedia.org/wiki/Free_and_open-source_software">FOSS</a>, you have to relearn many of the concepts because the proprietary software usually does not adhere to common standards.</p>
-<div class="figure">
-<img src="tweet1.jpg" alt="" />
-<p class="caption"><a href="https://twitter.com/NRatnaweera/status/1187759876472213504">Nils’ Tweet</a> might not have recieved much attention, but it did spark a conversation within our group</p>
-</div>
-</div>
-<div id="how-to-use-this-book" class="section level1" number="2">
-<h1><span class="header-section-number">2</span> How to use this book</h1>
-<p><span class="citation">@todo</span> add instructions on how to use the book
-<span class="citation">@body</span> details on the <code>arc2r</code> package and the coding environment</p>
 
 </div>
             </section>
@@ -290,8 +297,8 @@ Developped by the Research Group for Geoinformatics @ ZHAW</a></li>
           </div>
         </div>
       </div>
-
-<a href="Data.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="Basic_spatial_operations.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="Select_by_Location.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

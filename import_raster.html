@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>All things R Spatial</title>
-  <meta name="description" content="All things R Spatial" />
+  <title>3.3 Importing raster data with raster or terra | All things R Spatial</title>
+  <meta name="description" content="3.3 Importing raster data with raster or terra | All things R Spatial" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="All things R Spatial" />
+  <meta property="og:title" content="3.3 Importing raster data with raster or terra | All things R Spatial" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="All things R Spatial" />
+  <meta name="twitter:title" content="3.3 Importing raster data with raster or terra | All things R Spatial" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="Data.html"/>
+<link rel="prev" href="import_vector.html"/>
+<link rel="next" href="Making_Maps.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -261,37 +261,54 @@ Developped by the Research Group for Geoinformatics @ ZHAW</a></li>
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">All things R Spatial</h1>
-<h2 class="subtitle"><em>arc2r: An introduction to spatial-R for recovering ArcGIS users</em></h2>
-<p class="author"><em>Nils Ratnaweera and Nikolaos Bakogiannis</em></p>
-</div>
-<p><a href="https://github.com/arc2r/book/actions"><img src="https://github.com/arc2r/book/workflows/bookdown/badge.svg" alt="Actions Status" /></a></p>
-<div id="introduction" class="section level1" number="1">
-<h1><span class="header-section-number">1</span> Introduction</h1>
-<p>This is a resource for people wanting to learn spatial-R (Analysis, Visualization) in R and are coming with a background in ArcGIS. This resource should provide some help on this journey. We assume you have some prior experience with <code>R</code>. If this is not the case, we recommend you familiarize yourself with <code>R</code> first.</p>
-<p>We are big fans of using <code>magrittr</code>’s pipe function <code>%&gt;%</code> and heavily use it throughout this book. In addition for vector data, we use packages from the <code>tidyverse</code> (especially <code>filter()</code>, <code>mutate()</code> and <code>summarise()</code>.)</p>
-<p>This book leans heavily on how the Toolboxes and Toolsets are documented in ArcGIS Pro. Is is not a book to read from cover to cover, but to look up specific things of which you only know the ArcGIS terminology for. This book is a work in progress, the current version is from the 2021-02-02 15:55:34 (UTC). <em>We highly appriciate contributions</em> to this book: If you have anything to add, please <a href="https://github.com/arc2r/book">file an issue or make a pull request</a>.</p>
-<p>We had long since thought about the necessity of a resource which helps ArcGIS users transition to R or Python. Nils had tweeted about this (see below) without getting much reception, and and one point just decided to start his own resource. Since <a href="gis.lsfm.zhaw.ch/">our research group</a> teaches and introduction to GIS and an advanced GIS course mostly based on ArcGIS, we decided to pick up where Nils hat started and develop the resource in with internal funding of our University.</p>
-<p>There are already a great many spatial-R Resources out there, and the goal is <em>not</em> to rewrite everything that has already been written. The aim of this book is just to provide a resource for people looking to do spatial stuff in R, but only know the ArcGIS-Term for it. When you transition from a proprietary Software like ArcGIS to <a href="https://en.wikipedia.org/wiki/Free_and_open-source_software">FOSS</a>, you have to relearn many of the concepts because the proprietary software usually does not adhere to common standards.</p>
-<div class="figure">
-<img src="tweet1.jpg" alt="" />
-<p class="caption"><a href="https://twitter.com/NRatnaweera/status/1187759876472213504">Nils’ Tweet</a> might not have recieved much attention, but it did spark a conversation within our group</p>
-</div>
-</div>
-<div id="how-to-use-this-book" class="section level1" number="2">
-<h1><span class="header-section-number">2</span> How to use this book</h1>
-<p><span class="citation">@todo</span> add instructions on how to use the book
-<span class="citation">@body</span> details on the <code>arc2r</code> package and the coding environment</p>
+<div id="importing-raster-data-with-raster-or-terra" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Importing raster data with <code>raster</code> or <code>terra</code></h2>
+<p>To import raster data, we need a different packge. Currently, <code>raster</code> is the go-to package to deal with raster datasets. However, this package is currently in the process of being replaced with a successor, <code>terra</code>. We will showcase both methods here.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="import_raster.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
+<span id="cb5-2"><a href="import_raster.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Loading required package: sp</span></span>
+<span id="cb5-3"><a href="import_raster.html#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="import_raster.html#cb5-4" aria-hidden="true" tabindex="-1"></a>dhm_200 <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="st">&quot;sample_data/Raster/dhm_200.tif&quot;</span>)</span>
+<span id="cb5-5"><a href="import_raster.html#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning in showSRID(uprojargs, format = &quot;PROJ&quot;, multiline = &quot;NO&quot;, prefer_proj</span></span>
+<span id="cb5-6"><a href="import_raster.html#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="do">## = prefer_proj): Discarded datum Unknown based on Bessel 1841 ellipsoid in Proj4</span></span>
+<span id="cb5-7"><a href="import_raster.html#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="do">## definition</span></span>
+<span id="cb5-8"><a href="import_raster.html#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="import_raster.html#cb5-9" aria-hidden="true" tabindex="-1"></a>dhm_200</span>
+<span id="cb5-10"><a href="import_raster.html#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="do">## class      : RasterLayer </span></span>
+<span id="cb5-11"><a href="import_raster.html#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="do">## dimensions : 1141, 1926, 2197566  (nrow, ncol, ncell)</span></span>
+<span id="cb5-12"><a href="import_raster.html#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="do">## resolution : 200, 200  (x, y)</span></span>
+<span id="cb5-13"><a href="import_raster.html#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="do">## extent     : 479900, 865100, 73900, 302100  (xmin, xmax, ymin, ymax)</span></span>
+<span id="cb5-14"><a href="import_raster.html#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="do">## crs        : +proj=somerc +lat_0=46.9524055555556 +lon_0=7.43958333333333 +k_0=1 +x_0=2600000 +y_0=1200000 +ellps=bessel +units=m +no_defs </span></span>
+<span id="cb5-15"><a href="import_raster.html#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="do">## source     : /Users/runner/work/book/book/sample_data/Raster/dhm_200.tif </span></span>
+<span id="cb5-16"><a href="import_raster.html#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="do">## names      : dhm_200</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="import_raster.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(dhm_200)</span>
+<span id="cb6-2"><a href="import_raster.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;RasterLayer&quot;</span></span>
+<span id="cb6-3"><a href="import_raster.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="do">## attr(,&quot;package&quot;)</span></span>
+<span id="cb6-4"><a href="import_raster.html#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;raster&quot;</span></span></code></pre></div>
+<p><code>RaysterLayer</code>s also come with a plot method to visualize the dataset spatially:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="import_raster.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dhm_200)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p><span class="citation">@todo</span> add terra method to import rasters
+<span class="citation">@todo</span> add method for rasters with multiple layers</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="import_raster.html#cb8-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-2"><a href="import_raster.html#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="import_raster.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># path_1b &lt;- &quot;sample_data/SMR_Musterdaten/SMR50_LV95_KOMB_Mosaic.tif&quot;</span></span>
+<span id="cb8-4"><a href="import_raster.html#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># path_3b &lt;- &quot;sample_data/SMR_Musterdaten/SMR50_LV95_KREL_10L_Mosaic.tif&quot;</span></span>
+<span id="cb8-5"><a href="import_raster.html#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb8-6"><a href="import_raster.html#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># raster(path_1b)</span></span>
+<span id="cb8-7"><a href="import_raster.html#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># raster(path_3b)</span></span></code></pre></div>
+<p>As you can see in the output of <code>raster(path_3b)</code>, only one of the 3 bands was imported with <code>raster::raster</code>. In the case of multiband rasters, it’s better to use <code>raster::brick</code>:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="import_raster.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># smr50_komb_mosaic &lt;- raster(path_1b)</span></span>
+<span id="cb9-2"><a href="import_raster.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># smr50_krel_mosaic &lt;- brick(path_3b)</span></span></code></pre></div>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="Data.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="import_vector.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="Making_Maps.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

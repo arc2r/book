@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>All things R Spatial</title>
-  <meta name="description" content="All things R Spatial" />
+  <title>5.5 Select by Location | All things R Spatial</title>
+  <meta name="description" content="5.5 Select by Location | All things R Spatial" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="All things R Spatial" />
+  <meta property="og:title" content="5.5 Select by Location | All things R Spatial" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="All things R Spatial" />
+  <meta name="twitter:title" content="5.5 Select by Location | All things R Spatial" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="Data.html"/>
+<link rel="prev" href="Select_by_Attribute.html"/>
+<link rel="next" href="Data_Management.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -261,37 +261,58 @@ Developped by the Research Group for Geoinformatics @ ZHAW</a></li>
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">All things R Spatial</h1>
-<h2 class="subtitle"><em>arc2r: An introduction to spatial-R for recovering ArcGIS users</em></h2>
-<p class="author"><em>Nils Ratnaweera and Nikolaos Bakogiannis</em></p>
-</div>
-<p><a href="https://github.com/arc2r/book/actions"><img src="https://github.com/arc2r/book/workflows/bookdown/badge.svg" alt="Actions Status" /></a></p>
-<div id="introduction" class="section level1" number="1">
-<h1><span class="header-section-number">1</span> Introduction</h1>
-<p>This is a resource for people wanting to learn spatial-R (Analysis, Visualization) in R and are coming with a background in ArcGIS. This resource should provide some help on this journey. We assume you have some prior experience with <code>R</code>. If this is not the case, we recommend you familiarize yourself with <code>R</code> first.</p>
-<p>We are big fans of using <code>magrittr</code>’s pipe function <code>%&gt;%</code> and heavily use it throughout this book. In addition for vector data, we use packages from the <code>tidyverse</code> (especially <code>filter()</code>, <code>mutate()</code> and <code>summarise()</code>.)</p>
-<p>This book leans heavily on how the Toolboxes and Toolsets are documented in ArcGIS Pro. Is is not a book to read from cover to cover, but to look up specific things of which you only know the ArcGIS terminology for. This book is a work in progress, the current version is from the 2021-02-02 15:55:34 (UTC). <em>We highly appriciate contributions</em> to this book: If you have anything to add, please <a href="https://github.com/arc2r/book">file an issue or make a pull request</a>.</p>
-<p>We had long since thought about the necessity of a resource which helps ArcGIS users transition to R or Python. Nils had tweeted about this (see below) without getting much reception, and and one point just decided to start his own resource. Since <a href="gis.lsfm.zhaw.ch/">our research group</a> teaches and introduction to GIS and an advanced GIS course mostly based on ArcGIS, we decided to pick up where Nils hat started and develop the resource in with internal funding of our University.</p>
-<p>There are already a great many spatial-R Resources out there, and the goal is <em>not</em> to rewrite everything that has already been written. The aim of this book is just to provide a resource for people looking to do spatial stuff in R, but only know the ArcGIS-Term for it. When you transition from a proprietary Software like ArcGIS to <a href="https://en.wikipedia.org/wiki/Free_and_open-source_software">FOSS</a>, you have to relearn many of the concepts because the proprietary software usually does not adhere to common standards.</p>
-<div class="figure">
-<img src="tweet1.jpg" alt="" />
-<p class="caption"><a href="https://twitter.com/NRatnaweera/status/1187759876472213504">Nils’ Tweet</a> might not have recieved much attention, but it did spark a conversation within our group</p>
-</div>
-</div>
-<div id="how-to-use-this-book" class="section level1" number="2">
-<h1><span class="header-section-number">2</span> How to use this book</h1>
-<p><span class="citation">@todo</span> add instructions on how to use the book
-<span class="citation">@body</span> details on the <code>arc2r</code> package and the coding environment</p>
+<div id="select-by-location" class="section level2" number="5.5">
+<h2><span class="header-section-number">5.5</span> Select by Location</h2>
+<p>One of the most commonly used operations in ArcGIS pro is the process of selecting features of a spatial object (layer) based on whether or not these relate spatially to another object (layer). This process is also referred as <strong>spatial subsetting</strong>. In ArcGIS pro this can be performed in various ways using the <code>Select by Location tool</code>.</p>
+<p>In <code>R</code> the same operation is, on a first level, performed using the square bracket (<code>[]</code>) operator from the base R package.</p>
+<p>An example of spatial subsetting could be the following. Let’s assume we have as a shapefile (polygon dataframe) with all the municipalities (Gemeinde) of the Canton of Zurich. Furthermore, we are also using a shapefile in the form of a point dataframe, which represents all the <strong>“swimming spots”</strong> (Badenplätze) in the same spatial region (Canton of Zurich). So, ultimately, our goal is to find out the <strong>“swimming spots”</strong> that lie within a specific municipality of the Canton of Zurich.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="Select_by_Location.html#cb45-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-2"><a href="Select_by_Location.html#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Minicipalities (Gemeinde) in Canton Zurich</span></span>
+<span id="cb45-3"><a href="Select_by_Location.html#cb45-3" aria-hidden="true" tabindex="-1"></a>gemeinde_ZH <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;sample_data/Kanton_Zuerich/Gemeinde_ZH.shp&quot;</span>)</span>
+<span id="cb45-4"><a href="Select_by_Location.html#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Reading layer `Gemeinde_ZH&#39; from data source `/Users/runner/work/book/book/sample_data/Kanton_Zuerich/Gemeinde_ZH.shp&#39; using driver `ESRI Shapefile&#39;</span></span>
+<span id="cb45-5"><a href="Select_by_Location.html#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Simple feature collection with 166 features and 7 fields</span></span>
+<span id="cb45-6"><a href="Select_by_Location.html#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="do">## geometry type:  MULTIPOLYGON</span></span>
+<span id="cb45-7"><a href="Select_by_Location.html#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="do">## dimension:      XY</span></span>
+<span id="cb45-8"><a href="Select_by_Location.html#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="do">## bbox:           xmin: 2669245 ymin: 1223896 xmax: 2716900 ymax: 1283343</span></span>
+<span id="cb45-9"><a href="Select_by_Location.html#cb45-9" aria-hidden="true" tabindex="-1"></a><span class="do">## projected CRS:  CH1903+ / LV95</span></span>
+<span id="cb45-10"><a href="Select_by_Location.html#cb45-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-11"><a href="Select_by_Location.html#cb45-11" aria-hidden="true" tabindex="-1"></a><span class="co"># &quot;Swimming&quot; spots in the Canton of Zurich</span></span>
+<span id="cb45-12"><a href="Select_by_Location.html#cb45-12" aria-hidden="true" tabindex="-1"></a>swimmSpots <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;sample_data/Kanton_Zuerich/Badeplaetze_ZH.shp&quot;</span>)</span>
+<span id="cb45-13"><a href="Select_by_Location.html#cb45-13" aria-hidden="true" tabindex="-1"></a><span class="do">## Reading layer `Badeplaetze_ZH&#39; from data source `/Users/runner/work/book/book/sample_data/Kanton_Zuerich/Badeplaetze_ZH.shp&#39; using driver `ESRI Shapefile&#39;</span></span>
+<span id="cb45-14"><a href="Select_by_Location.html#cb45-14" aria-hidden="true" tabindex="-1"></a><span class="do">## Simple feature collection with 71 features and 6 fields</span></span>
+<span id="cb45-15"><a href="Select_by_Location.html#cb45-15" aria-hidden="true" tabindex="-1"></a><span class="do">## geometry type:  POINT</span></span>
+<span id="cb45-16"><a href="Select_by_Location.html#cb45-16" aria-hidden="true" tabindex="-1"></a><span class="do">## dimension:      XY</span></span>
+<span id="cb45-17"><a href="Select_by_Location.html#cb45-17" aria-hidden="true" tabindex="-1"></a><span class="do">## bbox:           xmin: 2671636 ymin: 1226720 xmax: 2710101 ymax: 1282760</span></span>
+<span id="cb45-18"><a href="Select_by_Location.html#cb45-18" aria-hidden="true" tabindex="-1"></a><span class="do">## projected CRS:  CH1903+ / LV95</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-59-1.png" width="672" /></p>
+<p>After importing and depicting the <strong>“swimming spots”</strong> throughout the canton of Zurich, let’s assume we want to check if and how many of them <strong>lie within</strong> the Municipality of Richterswil. To do so, we will perform an operation, which belongs to the category of <strong>Spatial subsetting</strong>.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="Select_by_Location.html#cb46-1" aria-hidden="true" tabindex="-1"></a>swimmSpots_richt <span class="ot">&lt;-</span> swimmSpots[richterswil, ,op <span class="ot">=</span> st_within]</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-61-1.png" width="672" /></p>
+<p>The operation above is based on the following rule: <code>x[y, ,operation]</code>, where:</p>
+<style>
 
+div.note { background-color:#f0f0f0; border-radius: 5px; padding: 20px;}
+</style>
+<div class="note">
+<ul>
+<li><strong>x</strong> and <strong>y</strong> are the spatial objects for which we want to investigate if there is a spatial relationship (x is the target feature, while y is the source one)<br />
+</li>
+<li>the second argument <code>[, ,]</code> within the brackets denotes the column number we want to retrieve from the spatial subsetting. In our example this argument was empty, which means we wanted to retrieve all rows for every <strong>attribute column</strong>.<br />
+</li>
+<li>the third argument <code>[op = ]</code> specifies the spatial operation we want to perform. In the example above, the goal was to find out how many subset features of the target object <em>swimmSpots</em> lie withing the source spatial object <em>richterswil</em>. For that reason we chose the function <code>st_within()</code>.</li>
+</ul>
+</div>
+<p>Depending on what we want to examine, we choose the respective function.</p>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="Data.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="Select_by_Attribute.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="Data_Management.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

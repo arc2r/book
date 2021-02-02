@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4.1 Static Maps | All things R Spatial</title>
+  <meta name="description" content="4.1 Static Maps | All things R Spatial" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4.1 Static Maps | All things R Spatial" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4.1 Static Maps | All things R Spatial" />
+  
+  
+  
+
+<meta name="author" content="Nils Ratnaweera and Nikolaos Bakogiannis" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="Making_Maps.html"/>
+<link rel="next" href="Dynamic_Maps.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script>
+<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.0.4.1/leaflet-providers-plugin.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="https://arc2r.github.io/arc2r">Package Website</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="index.html"><a href="index.html#how-to-use-this-book"><i class="fa fa-check"></i><b>2</b> How to use this book</a></li>
+<li class="chapter" data-level="3" data-path="Data.html"><a href="Data.html"><i class="fa fa-check"></i><b>3</b> Data</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="import_r_vs_arcgis.html"><a href="import_r_vs_arcgis.html"><i class="fa fa-check"></i><b>3.1</b> Importing Data: R vs. ArcGIS</a></li>
+<li class="chapter" data-level="3.2" data-path="import_vector.html"><a href="import_vector.html"><i class="fa fa-check"></i><b>3.2</b> Importing vector data with <code>sf</code></a></li>
+<li class="chapter" data-level="3.3" data-path="import_raster.html"><a href="import_raster.html"><i class="fa fa-check"></i><b>3.3</b> Importing raster data with <code>raster</code> or <code>terra</code></a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="Making_Maps.html"><a href="Making_Maps.html"><i class="fa fa-check"></i><b>4</b> Making Maps</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="Static_Maps.html"><a href="Static_Maps.html"><i class="fa fa-check"></i><b>4.1</b> Static Maps</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="Static_Maps.html"><a href="Static_Maps.html#prerequisit"><i class="fa fa-check"></i><b>4.1.1</b> Prerequisit</a></li>
+<li class="chapter" data-level="4.1.2" data-path="Static_Maps.html"><a href="Static_Maps.html#static-maps-with-ggplot2"><i class="fa fa-check"></i><b>4.1.2</b> Static maps with <code>ggplot2</code></a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="Dynamic_Maps.html"><a href="Dynamic_Maps.html"><i class="fa fa-check"></i><b>4.2</b> Interactive Maps</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="Dynamic_Maps.html"><a href="Dynamic_Maps.html#introduction-to-tmap"><i class="fa fa-check"></i><b>4.2.1</b> Introduction to <code>tmap</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="Basic_spatial_operations.html"><a href="Basic_spatial_operations.html"><i class="fa fa-check"></i><b>5</b> Basic spatial operations</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="Basic_spatial_operations.html"><a href="Basic_spatial_operations.html#clip-operation"><i class="fa fa-check"></i><b>5.1</b> Clip operation</a></li>
+<li class="chapter" data-level="5.2" data-path="Basic_spatial_operations.html"><a href="Basic_spatial_operations.html#merge-operation"><i class="fa fa-check"></i><b>5.2</b> Merge operation</a></li>
+<li class="chapter" data-level="5.3" data-path="Basic_spatial_operations.html"><a href="Basic_spatial_operations.html#buffer-operation"><i class="fa fa-check"></i><b>5.3</b> Buffer operation</a></li>
+<li class="chapter" data-level="5.4" data-path="Select_by_Attribute.html"><a href="Select_by_Attribute.html"><i class="fa fa-check"></i><b>5.4</b> Select by Attribute</a></li>
+<li class="chapter" data-level="5.5" data-path="Select_by_Location.html"><a href="Select_by_Location.html"><i class="fa fa-check"></i><b>5.5</b> Select by Location</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="Data_Management.html"><a href="Data_Management.html"><i class="fa fa-check"></i><b>6</b> Data Management Toolbox</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="Data_Management.html"><a href="Data_Management.html#joins-toolset"><i class="fa fa-check"></i><b>6.1</b> Joins Toolset</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="Data_Management.html"><a href="Data_Management.html#inner-join"><i class="fa fa-check"></i><b>6.1.1</b> Inner join</a></li>
+<li class="chapter" data-level="6.1.2" data-path="Data_Management.html"><a href="Data_Management.html#outer-join"><i class="fa fa-check"></i><b>6.1.2</b> Outer join</a></li>
+<li class="chapter" data-level="6.1.3" data-path="Data_Management.html"><a href="Data_Management.html#left-right-join"><i class="fa fa-check"></i><b>6.1.3</b> Left / Right join</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="Data_Management.html"><a href="Data_Management.html#projections-and-transformations-toolset"><i class="fa fa-check"></i><b>6.2</b> Projections and Transformations Toolset</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="Data_Management.html"><a href="Data_Management.html#reproject-vector-data-in-r"><i class="fa fa-check"></i><b>6.2.1</b> Reproject vector data in R</a></li>
+<li class="chapter" data-level="6.2.2" data-path="Data_Management.html"><a href="Data_Management.html#reproject-raster-data-in-r"><i class="fa fa-check"></i><b>6.2.2</b> Reproject raster data in R</a></li>
+<li class="chapter" data-level="6.2.3" data-path="Data_Management.html"><a href="Data_Management.html#generate-tessellation"><i class="fa fa-check"></i><b>6.2.3</b> Generate Tessellation</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html"><i class="fa fa-check"></i><b>7</b> Spatial Analyst Toolbox</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#conditional-toolset"><i class="fa fa-check"></i><b>7.1</b> Conditional Toolset</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#kernel-density"><i class="fa fa-check"></i><b>7.1.1</b> Kernel Density</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#reclass-toolset"><i class="fa fa-check"></i><b>7.2</b> Reclass Toolset</a></li>
+<li class="chapter" data-level="7.3" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#surface-toolset"><i class="fa fa-check"></i><b>7.3</b> Surface Toolset</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#slope-and-aspect"><i class="fa fa-check"></i><b>7.3.1</b> Slope and Aspect</a></li>
+<li class="chapter" data-level="7.3.2" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#reclassify"><i class="fa fa-check"></i><b>7.3.2</b> Reclassify</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="3D_Analyst.html"><a href="3D_Analyst.html"><i class="fa fa-check"></i><b>8</b> 3D Analyst Toolbox</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="3D_Analyst.html"><a href="3D_Analyst.html#raster-interpolation-toolset"><i class="fa fa-check"></i><b>8.1</b> Raster Interpolation Toolset</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="3D_Analyst.html"><a href="3D_Analyst.html#idw"><i class="fa fa-check"></i><b>8.1.1</b> IDW</a></li>
+<li class="chapter" data-level="8.1.2" data-path="3D_Analyst.html"><a href="3D_Analyst.html#kriging"><i class="fa fa-check"></i><b>8.1.2</b> Kriging</a></li>
+<li class="chapter" data-level="8.1.3" data-path="3D_Analyst.html"><a href="3D_Analyst.html#natural-neighbor"><i class="fa fa-check"></i><b>8.1.3</b> Natural Neighbor</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="Image_Analysis.html"><a href="Image_Analysis.html"><i class="fa fa-check"></i><b>9</b> Image Analysis Toolbox</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="Image_Analysis.html"><a href="Image_Analysis.html#map-algebra-toolset"><i class="fa fa-check"></i><b>9.1</b> Map Algebra Toolset</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="Image_Analysis.html"><a href="Image_Analysis.html#raster-calulator"><i class="fa fa-check"></i><b>9.1.1</b> Raster Calulator</a></li>
+<li class="chapter" data-level="9.1.2" data-path="Image_Analysis.html"><a href="Image_Analysis.html#focal-statistics"><i class="fa fa-check"></i><b>9.1.2</b> Focal Statistics</a></li>
+<li class="chapter" data-level="9.1.3" data-path="Image_Analysis.html"><a href="Image_Analysis.html#zonal-statistics"><i class="fa fa-check"></i><b>9.1.3</b> Zonal Statistics</a></li>
+<li class="chapter" data-level="9.1.4" data-path="Image_Analysis.html"><a href="Image_Analysis.html#zonal-statistics-1"><i class="fa fa-check"></i><b>9.1.4</b> Zonal Statistics</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="Analysis.html"><a href="Analysis.html"><i class="fa fa-check"></i><b>10</b> Analysis Toolbox</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="Analysis.html"><a href="Analysis.html#clip"><i class="fa fa-check"></i><b>10.1</b> Clip</a></li>
+<li class="chapter" data-level="10.2" data-path="Analysis.html"><a href="Analysis.html#merge"><i class="fa fa-check"></i><b>10.2</b> Merge</a></li>
+<li class="chapter" data-level="10.3" data-path="Analysis.html"><a href="Analysis.html#spatial-join"><i class="fa fa-check"></i><b>10.3</b> Spatial Join</a></li>
+<li class="chapter" data-level="10.4" data-path="Analysis.html"><a href="Analysis.html#buffer"><i class="fa fa-check"></i><b>10.4</b> Buffer</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="Chapter_overview.html"><a href="Chapter_overview.html"><i class="fa fa-check"></i><b>11</b> Topology Rules</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="Polygon.html"><a href="Polygon.html"><i class="fa fa-check"></i><b>11.1</b> Polygon</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="Polygon.html"><a href="Polygon.html#must-not-overlap"><i class="fa fa-check"></i><b>11.1.1</b> Must not overlap</a></li>
+<li class="chapter" data-level="11.1.2" data-path="Polygon.html"><a href="Polygon.html#must-not-have-gaps"><i class="fa fa-check"></i><b>11.1.2</b> Must not have gaps</a></li>
+<li class="chapter" data-level="11.1.3" data-path="Polygon.html"><a href="Polygon.html#contains-point"><i class="fa fa-check"></i><b>11.1.3</b> Contains point</a></li>
+<li class="chapter" data-level="11.1.4" data-path="Polygon.html"><a href="Polygon.html#contains-one-point"><i class="fa fa-check"></i><b>11.1.4</b> Contains one Point</a></li>
+<li class="chapter" data-level="11.1.5" data-path="Polygon.html"><a href="Polygon.html#must-be-covered-by-feature-class-of"><i class="fa fa-check"></i><b>11.1.5</b> Must be covered by feature class of</a></li>
+<li class="chapter" data-level="11.1.6" data-path="Polygon.html"><a href="Polygon.html#boundary-must-be-covered-by"><i class="fa fa-check"></i><b>11.1.6</b> Boundary must be covered by</a></li>
+<li class="chapter" data-level="11.1.7" data-path="Polygon.html"><a href="Polygon.html#must-not-overlap-with"><i class="fa fa-check"></i><b>11.1.7</b> Must not overlap with</a></li>
+<li class="chapter" data-level="11.1.8" data-path="Polygon.html"><a href="Polygon.html#must-be-covered-by"><i class="fa fa-check"></i><b>11.1.8</b> Must be covered by</a></li>
+<li class="chapter" data-level="11.1.9" data-path="Polygon.html"><a href="Polygon.html#area-boundary-must-be-covered-by-boundary-of"><i class="fa fa-check"></i><b>11.1.9</b> Area boundary must be covered by boundary of</a></li>
+<li class="chapter" data-level="11.1.10" data-path="Polygon.html"><a href="Polygon.html#must-cover-each-other"><i class="fa fa-check"></i><b>11.1.10</b> Must cover each other</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://www.zhaw.ch/de/lsfm/institute-zentren/iunr/ecosystems-and-biodiversity/geoinformatik/">
+Developped by the Research Group for Geoinformatics @ ZHAW</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">All things R Spatial</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="static-maps" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Static Maps</h2>
+<div id="prerequisit" class="section level3" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Prerequisit</h3>
+<p>Before you start making maps however, you will have to familiarize yourself with importing raster or vector data into R in the first place. For Vector data, you can read chapter <a href="https://geocompr.robinlovelace.net/spatial-class.html#vector-data">2.2 Vector data</a> from the book “Geocomputation with R”. The next chapter <a href="https://geocompr.robinlovelace.net/spatial-class.html#raster-data">2.3 Raster data</a> provides a very good overview on rasterdata in R</p>
+</div>
+<div id="static-maps-with-ggplot2" class="section level3" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> Static maps with <code>ggplot2</code></h3>
+<div id="basics" class="section level4" number="4.1.2.1">
+<h4><span class="header-section-number">4.1.2.1</span> Basics</h4>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="Static_Maps.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb11-2"><a href="Static_Maps.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Linking to GEOS 3.8.1, GDAL 3.1.4, PROJ 6.3.1</span></span>
+<span id="cb11-3"><a href="Static_Maps.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb11-4"><a href="Static_Maps.html#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="do">## ── [1mAttaching packages[22m ─────────────────────────────────────── tidyverse 1.3.0 ──</span></span>
+<span id="cb11-5"><a href="Static_Maps.html#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [32m✔[39m [34mggplot2[39m 3.3.3     [32m✔[39m [34mpurrr  [39m 0.3.4</span></span>
+<span id="cb11-6"><a href="Static_Maps.html#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [32m✔[39m [34mtibble [39m 3.0.6     [32m✔[39m [34mdplyr  [39m 1.0.3</span></span>
+<span id="cb11-7"><a href="Static_Maps.html#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [32m✔[39m [34mtidyr  [39m 1.1.2     [32m✔[39m [34mstringr[39m 1.4.0</span></span>
+<span id="cb11-8"><a href="Static_Maps.html#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [32m✔[39m [34mreadr  [39m 1.4.0     [32m✔[39m [34mforcats[39m 0.5.1</span></span>
+<span id="cb11-9"><a href="Static_Maps.html#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="do">## ── [1mConflicts[22m ────────────────────────────────────────── tidyverse_conflicts() ──</span></span>
+<span id="cb11-10"><a href="Static_Maps.html#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [31m✖[39m [34mtidyr[39m::[32mextract()[39m masks [34mraster[39m::extract()</span></span>
+<span id="cb11-11"><a href="Static_Maps.html#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [31m✖[39m [34mdplyr[39m::[32mfilter()[39m  masks [34mstats[39m::filter()</span></span>
+<span id="cb11-12"><a href="Static_Maps.html#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="do">## [31m✖[39m [34mdplyr[39m::[32mlag()[39m     masks [34mstats[39m::lag()</span></span>
+<span id="cb11-13"><a href="Static_Maps.html#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="do">## [31m✖[39m [34mdplyr[39m::[32mselect()[39m  masks [34mraster[39m::select()</span></span>
+<span id="cb11-14"><a href="Static_Maps.html#cb11-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-15"><a href="Static_Maps.html#cb11-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-16"><a href="Static_Maps.html#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span>
+<span id="cb11-17"><a href="Static_Maps.html#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;/Users/runner/work/book/book&quot;</span></span>
+<span id="cb11-18"><a href="Static_Maps.html#cb11-18" aria-hidden="true" tabindex="-1"></a>eire <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(<span class="st">&quot;sample_data/spData/eire.shp&quot;</span>)</span></code></pre></div>
+<p>The most basic plot consists of a <code>ggplot()</code> initiation and a single layer. In case of <code>sf</code> data, you can add a layer with <code>geom_sf()</code>. If the coordinate system is unknown, the axes will be labelled with the numerical values of the coorindates.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="Static_Maps.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(eire)</span>
+<span id="cb12-2"><a href="Static_Maps.html#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Coordinate Reference System: NA</span></span>
+<span id="cb12-3"><a href="Static_Maps.html#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(eire) <span class="sc">+</span> </span>
+<span id="cb12-4"><a href="Static_Maps.html#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p>However, if the coordinate system <em>is</em> known, the WGS84 Coordinates are labelled and used as the major and minor grid lines.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="Static_Maps.html#cb13-1" aria-hidden="true" tabindex="-1"></a>eire <span class="ot">&lt;-</span> <span class="fu">st_set_crs</span>(eire, <span class="st">&quot;+proj=utm +zone=30 +ellps=airy +units=km&quot;</span>)</span>
+<span id="cb13-2"><a href="Static_Maps.html#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="Static_Maps.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(eire) <span class="sc">+</span> </span>
+<span id="cb13-4"><a href="Static_Maps.html#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p>As always in <code>ggplot</code>, if you want to use a column from your dataset as an input for, say, colour, you need to specify this with <code>aes()</code>:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="Static_Maps.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(eire) <span class="sc">+</span> </span>
+<span id="cb14-2"><a href="Static_Maps.html#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> INCOME))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p>There are various ways to beautify this simple plot:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="Static_Maps.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(eire) <span class="sc">+</span> </span>
+<span id="cb15-2"><a href="Static_Maps.html#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> <span class="fu">log</span>(INCOME)), <span class="at">colour =</span> <span class="st">&quot;grey&quot;</span>) <span class="sc">+</span></span>
+<span id="cb15-3"><a href="Static_Maps.html#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Counties of the Irish Republic&quot;</span>, </span>
+<span id="cb15-4"><a href="Static_Maps.html#cb15-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="fu">expression</span>(<span class="st">&quot;Distribution of Income (log&quot;</span>[<span class="dv">10</span>]<span class="sc">*</span><span class="st">&quot;)&quot;</span>),</span>
+<span id="cb15-5"><a href="Static_Maps.html#cb15-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
+<span id="cb15-6"><a href="Static_Maps.html#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>() <span class="sc">+</span></span>
+<span id="cb15-7"><a href="Static_Maps.html#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb15-8"><a href="Static_Maps.html#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+</div>
+<div id="adding-raster-maps-files-geotiffs" class="section level4" number="4.1.2.2">
+<h4><span class="header-section-number">4.1.2.2</span> Adding Raster Maps Files (geotiffs)</h4>
+<p>While vector data is very easily implemented in ggplot2, rasterdata is a little harder. Its complicated enough with standard Raster Data, and even more so with raster maps. There are two packages that facilitate the combination of rastermaps and ggplot:</p>
+<ul>
+<li><a href="https://oscarperpinan.github.io/rastervis/"><code>rasterVis</code></a></li>
+<li><a href="https://bleutner.github.io/RStoolbox/"><code>RStoolbox</code></a></li>
+</ul>
+<p>However, we will do without these packages to learn more on how rasters work and be as flexible as possible.</p>
+<p>If you don’t have the time or patience to read through the explanation, the following function takes a path to a raster and returns a dataframe with x/y coordinates as well as a column with the hex colours for the according cell.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="Static_Maps.html#cb16-1" aria-hidden="true" tabindex="-1"></a>rastermap_to_dataframe <span class="ot">&lt;-</span> <span class="cf">function</span>(path) {</span>
+<span id="cb16-2"><a href="Static_Maps.html#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(tiff)</span>
+<span id="cb16-3"><a href="Static_Maps.html#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(raster)</span>
+<span id="cb16-4"><a href="Static_Maps.html#cb16-4" aria-hidden="true" tabindex="-1"></a>  raster_file <span class="ot">&lt;-</span> raster<span class="sc">::</span><span class="fu">brick</span>(path)</span>
+<span id="cb16-5"><a href="Static_Maps.html#cb16-5" aria-hidden="true" tabindex="-1"></a>  bands_n <span class="ot">&lt;-</span> <span class="fu">nbands</span>(raster_file)</span>
+<span id="cb16-6"><a href="Static_Maps.html#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(bands_n <span class="sc">==</span> <span class="dv">1</span>){</span>
+<span id="cb16-7"><a href="Static_Maps.html#cb16-7" aria-hidden="true" tabindex="-1"></a>    raster_indexed <span class="ot">&lt;-</span> <span class="fu">readTIFF</span>(path,<span class="at">indexed =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb16-8"><a href="Static_Maps.html#cb16-8" aria-hidden="true" tabindex="-1"></a>    raster_colormap <span class="ot">&lt;-</span> <span class="fu">attr</span>(raster_indexed,<span class="st">&quot;color.map&quot;</span>)</span>
+<span id="cb16-9"><a href="Static_Maps.html#cb16-9" aria-hidden="true" tabindex="-1"></a>    raster_colormap_hex <span class="ot">&lt;-</span> <span class="fu">rgb</span>(raster_colormap[<span class="dv">1</span>,],raster_colormap[<span class="dv">2</span>,],raster_colormap[<span class="dv">3</span>,])</span>
+<span id="cb16-10"><a href="Static_Maps.html#cb16-10" aria-hidden="true" tabindex="-1"></a>    raster_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">coordinates</span>(raster_file), <span class="at">values =</span> raster_colormap_hex[<span class="fu">getValues</span>(raster_file)<span class="sc">+</span><span class="dv">1</span>])</span>
+<span id="cb16-11"><a href="Static_Maps.html#cb16-11" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span>(bands_n <span class="sc">==</span> <span class="dv">3</span>){</span>
+<span id="cb16-12"><a href="Static_Maps.html#cb16-12" aria-hidden="true" tabindex="-1"></a>    raster_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb16-13"><a href="Static_Maps.html#cb16-13" aria-hidden="true" tabindex="-1"></a>      <span class="fu">coordinates</span>(raster_file),</span>
+<span id="cb16-14"><a href="Static_Maps.html#cb16-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">values =</span> <span class="fu">rgb</span>(<span class="fu">values</span>(raster_file[[<span class="dv">1</span>]]),<span class="fu">values</span>(raster_file[[<span class="dv">2</span>]]),<span class="fu">values</span>(raster_file[[<span class="dv">3</span>]]),<span class="at">maxColorValue =</span> <span class="dv">255</span>)</span>
+<span id="cb16-15"><a href="Static_Maps.html#cb16-15" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb16-16"><a href="Static_Maps.html#cb16-16" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb16-17"><a href="Static_Maps.html#cb16-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(raster_df)</span>
+<span id="cb16-18"><a href="Static_Maps.html#cb16-18" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div id="with-colours" class="section level5" number="4.1.2.2.1">
+<h5><span class="header-section-number">4.1.2.2.1</span> With Colours</h5>
+<p>Tif files with colours can either be single band or include multiple bands in a single tif file. These need to be treated differently. Let’s take two variants of the <a href="https://shop.swisstopo.admin.ch/de/products/maps/digital_maps/digital/srm10">swiss raster map 1:50k</a> map. One is a single band dataset, the other a 3-band dataset.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="Static_Maps.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
+<span id="cb17-2"><a href="Static_Maps.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rgdal)</span>
+<span id="cb17-3"><a href="Static_Maps.html#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="do">## rgdal: version: 1.5-21, (SVN revision 1105)</span></span>
+<span id="cb17-4"><a href="Static_Maps.html#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Geospatial Data Abstraction Library extensions to R successfully loaded</span></span>
+<span id="cb17-5"><a href="Static_Maps.html#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Loaded GDAL runtime: GDAL 3.1.4, released 2020/10/20</span></span>
+<span id="cb17-6"><a href="Static_Maps.html#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Path to GDAL shared files: /Users/runner/work/_temp/Library/sf/gdal</span></span>
+<span id="cb17-7"><a href="Static_Maps.html#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="do">## GDAL binary built with GEOS: TRUE </span></span>
+<span id="cb17-8"><a href="Static_Maps.html#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Loaded PROJ runtime: Rel. 6.3.1, February 10th, 2020, [PJ_VERSION: 631]</span></span>
+<span id="cb17-9"><a href="Static_Maps.html#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Path to PROJ shared files: /Users/runner/work/_temp/Library/rgdal/proj</span></span>
+<span id="cb17-10"><a href="Static_Maps.html#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="do">## Linking to sp version:1.4-5</span></span>
+<span id="cb17-11"><a href="Static_Maps.html#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="do">## To mute warnings of possible GDAL/OSR exportToProj4() degradation,</span></span>
+<span id="cb17-12"><a href="Static_Maps.html#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="do">## use options(&quot;rgdal_show_exportToProj4_warnings&quot;=&quot;none&quot;) before loading rgdal.</span></span>
+<span id="cb17-13"><a href="Static_Maps.html#cb17-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-14"><a href="Static_Maps.html#cb17-14" aria-hidden="true" tabindex="-1"></a>path_1b <span class="ot">&lt;-</span> <span class="st">&quot;sample_data/SMR_Musterdaten/SMR50_LV95_KOMB_Mosaic.tif&quot;</span></span>
+<span id="cb17-15"><a href="Static_Maps.html#cb17-15" aria-hidden="true" tabindex="-1"></a>path_3b <span class="ot">&lt;-</span> <span class="st">&quot;sample_data/SMR_Musterdaten/SMR50_LV95_KREL_10L_Mosaic.tif&quot;</span></span>
+<span id="cb17-16"><a href="Static_Maps.html#cb17-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-17"><a href="Static_Maps.html#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="fu">raster</span>(path_1b)</span>
+<span id="cb17-18"><a href="Static_Maps.html#cb17-18" aria-hidden="true" tabindex="-1"></a><span class="do">## class      : RasterLayer </span></span>
+<span id="cb17-19"><a href="Static_Maps.html#cb17-19" aria-hidden="true" tabindex="-1"></a><span class="do">## dimensions : 800, 800, 640000  (nrow, ncol, ncell)</span></span>
+<span id="cb17-20"><a href="Static_Maps.html#cb17-20" aria-hidden="true" tabindex="-1"></a><span class="do">## resolution : 2.5, 2.5  (x, y)</span></span>
+<span id="cb17-21"><a href="Static_Maps.html#cb17-21" aria-hidden="true" tabindex="-1"></a><span class="do">## extent     : 2599000, 2601000, 1196000, 1198000  (xmin, xmax, ymin, ymax)</span></span>
+<span id="cb17-22"><a href="Static_Maps.html#cb17-22" aria-hidden="true" tabindex="-1"></a><span class="do">## crs        : NA </span></span>
+<span id="cb17-23"><a href="Static_Maps.html#cb17-23" aria-hidden="true" tabindex="-1"></a><span class="do">## source     : /Users/runner/work/book/book/sample_data/SMR_Musterdaten/SMR50_LV95_KOMB_Mosaic.tif </span></span>
+<span id="cb17-24"><a href="Static_Maps.html#cb17-24" aria-hidden="true" tabindex="-1"></a><span class="do">## names      : SMR50_LV95_KOMB_Mosaic </span></span>
+<span id="cb17-25"><a href="Static_Maps.html#cb17-25" aria-hidden="true" tabindex="-1"></a><span class="do">## values     : 0, 255  (min, max)</span></span>
+<span id="cb17-26"><a href="Static_Maps.html#cb17-26" aria-hidden="true" tabindex="-1"></a><span class="fu">raster</span>(path_3b)</span>
+<span id="cb17-27"><a href="Static_Maps.html#cb17-27" aria-hidden="true" tabindex="-1"></a><span class="do">## class      : RasterLayer </span></span>
+<span id="cb17-28"><a href="Static_Maps.html#cb17-28" aria-hidden="true" tabindex="-1"></a><span class="do">## band       : 1  (of  3  bands)</span></span>
+<span id="cb17-29"><a href="Static_Maps.html#cb17-29" aria-hidden="true" tabindex="-1"></a><span class="do">## dimensions : 400, 400, 160000  (nrow, ncol, ncell)</span></span>
+<span id="cb17-30"><a href="Static_Maps.html#cb17-30" aria-hidden="true" tabindex="-1"></a><span class="do">## resolution : 5, 5  (x, y)</span></span>
+<span id="cb17-31"><a href="Static_Maps.html#cb17-31" aria-hidden="true" tabindex="-1"></a><span class="do">## extent     : 2599000, 2601000, 1196000, 1198000  (xmin, xmax, ymin, ymax)</span></span>
+<span id="cb17-32"><a href="Static_Maps.html#cb17-32" aria-hidden="true" tabindex="-1"></a><span class="do">## crs        : NA </span></span>
+<span id="cb17-33"><a href="Static_Maps.html#cb17-33" aria-hidden="true" tabindex="-1"></a><span class="do">## source     : /Users/runner/work/book/book/sample_data/SMR_Musterdaten/SMR50_LV95_KREL_10L_Mosaic.tif </span></span>
+<span id="cb17-34"><a href="Static_Maps.html#cb17-34" aria-hidden="true" tabindex="-1"></a><span class="do">## names      : SMR50_LV95_KREL_10L_Mosaic </span></span>
+<span id="cb17-35"><a href="Static_Maps.html#cb17-35" aria-hidden="true" tabindex="-1"></a><span class="do">## values     : 0, 255  (min, max)</span></span></code></pre></div>
+<p>As you can see in the output of <code>raster(path_3b)</code>, only one of the 3 bands was imported with <code>raster::raster</code>. In the case of multiband rasters, it’s better to use <code>raster::brick</code>:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="Static_Maps.html#cb18-1" aria-hidden="true" tabindex="-1"></a>map_1b <span class="ot">&lt;-</span> <span class="fu">raster</span>(path_1b)</span>
+<span id="cb18-2"><a href="Static_Maps.html#cb18-2" aria-hidden="true" tabindex="-1"></a>map_3b <span class="ot">&lt;-</span> <span class="fu">brick</span>(path_3b)</span></code></pre></div>
+<div id="singleband" class="section level6" number="4.1.2.2.1.1">
+<h6><span class="header-section-number">4.1.2.2.1.1</span> Singleband</h6>
+<p>A singleband RasterLayer can be regarded as vector of numeric values arranged in a matrix with some additional metadata. The metadata can be view with <code>str()</code>, the values can be obtained with <code>getValues()</code>.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="Static_Maps.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(map_1b)</span>
+<span id="cb19-2"><a href="Static_Maps.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Formal class &#39;RasterLayer&#39; [package &quot;raster&quot;] with 12 slots</span></span>
+<span id="cb19-3"><a href="Static_Maps.html#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..@ file    :Formal class &#39;.RasterFile&#39; [package &quot;raster&quot;] with 13 slots</span></span>
+<span id="cb19-4"><a href="Static_Maps.html#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="do">##   .. .. ..@ name        : chr &quot;/Users/runner/work/book/book/sample_data/SMR_Musterdaten/SMR50_LV95_KOMB_Mosaic.tif&quot;</span></span>
+<span id="cb19-5"><a href="Static_Maps.html#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="do">##   .. .. ..@ datanotation: chr &quot;INT1U&quot;</span></span>
+<span id="cb19-6"><a href="Static_Maps.html#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="do">##   .. .. ..@ byteorder   : chr &quot;little&quot;</span></span>
+<span id="cb19-7"><a href="Static_Maps.html#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="do">##   .. .. ..@ nodatavalue : num -Inf</span></span>
+<span id="cb19-8"><a href="Static_Maps.html#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="do">##   .. .. ..@ NAchanged   : logi FALSE</span></span>
+<span id="cb19-9"><a href="Static_Maps.html#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="do">##   .. .. ..@ nbands      : int 1</span></span>
+<span id="cb19-10"><a href="Static_Maps.html#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="do">##   .. .. ..@ bandorder   : chr &quot;BIL&quot;</span></span>
+<span id="cb19-11"><a href="Static_Maps.html#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="do">##   .. .. ..@ offset      : int 0</span></span>
+<span id="cb19-12"><a href="Static_Maps.html#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="do">##   .. .. ..@ toptobottom : logi TRUE</span></span>
+<span id="cb19-13"><a href="Static_Maps.html#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="do">##   .. .. ..@ blockrows   : int 1</span></span>
+<span id="cb19-14"><a href="Static_Maps.html#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="do">##   .. .. ..@ blockcols   : int 800</span></span>
+<span id="cb19-15"><a href="Static_Maps.html#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="do">##   .. .. ..@ driver      : chr &quot;gdal&quot;</span></span>
+<span id="cb19-16"><a href="Static_Maps.html#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="do">##   .. .. ..@ open        : logi FALSE</span></span>
+<span id="cb19-17"><a href="Static_Maps.html#cb19-17" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..@ data    :Formal class &#39;.SingleLayerData&#39; [package &quot;raster&quot;] with 13 slots</span></span>
+<span id="cb19-18"><a href="Static_Maps.html#cb19-18" aria-hidden="true" tabindex="-1"></a><span class="do">##   .. .. ..@ values    : logi(0) </span></span>
+<span id="cb19-19"><a href="Static_Maps.html#cb19-19" aria-hidden="true" tabindex="-1"></a><span class="do">##   .. .. ..@ offset    : num 0</span></span>
+<span id="cb19-20"><a href="Static_Maps.html#cb19-20" aria-hidden="true" tabindex="-1"></a><span class="do">##   .. .. ..@ gain      : num 1</span></span>
+<span id="cb19-21"><a href="Static_Maps.html#cb19-21" aria-hidden="true" tabindex="-1"></a><span class="do">##   .. .. ..@ inmemory  : logi FALSE</span></span>
+<span id="cb19-22"><a href="Static_Maps.html#cb19-22" aria-hidden="true" tabindex="-1"></a><span class="do">##   .. .. ..@ fromdisk  : logi TRUE</span></span>
+<span id="cb19-23"><a href="Static_Maps.html#cb19-23" aria-hidden="true" tabindex="-1"></a><span class="do">##   .. .. ..@ isfactor  : logi FALSE</span></span>
+<span id="cb19-24"><a href="Static_Maps.html#cb19-24" aria-hidden="true" tabindex="-1"></a><span class="do">##   .. .. ..@ attributes: list()</span></span>
+<span id="cb19-25"><a href="Static_Maps.html#cb19-25" aria-hidden="true" tabindex="-1"></a><span class="do">##   .. .. ..@ haveminmax: logi TRUE</span></span>
+<span id="cb19-26"><a href="Static_Maps.html#cb19-26" aria-hidden="true" tabindex="-1"></a><span class="do">##   .. .. ..@ min       : num 0</span></span>
+<span id="cb19-27"><a href="Static_Maps.html#cb19-27" aria-hidden="true" tabindex="-1"></a><span class="do">##   .. .. ..@ max       : num 255</span></span>
+<span id="cb19-28"><a href="Static_Maps.html#cb19-28" aria-hidden="true" tabindex="-1"></a><span class="do">##   .. .. ..@ band      : int 1</span></span>
+<span id="cb19-29"><a href="Static_Maps.html#cb19-29" aria-hidden="true" tabindex="-1"></a><span class="do">##   .. .. ..@ unit      : chr &quot;&quot;</span></span>
+<span id="cb19-30"><a href="Static_Maps.html#cb19-30" aria-hidden="true" tabindex="-1"></a><span class="do">##   .. .. ..@ names     : chr &quot;SMR50_LV95_KOMB_Mosaic&quot;</span></span>
+<span id="cb19-31"><a href="Static_Maps.html#cb19-31" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..@ legend  :Formal class &#39;.RasterLegend&#39; [package &quot;raster&quot;] with 5 slots</span></span>
+<span id="cb19-32"><a href="Static_Maps.html#cb19-32" aria-hidden="true" tabindex="-1"></a><span class="do">##   .. .. ..@ type      : chr(0) </span></span>
+<span id="cb19-33"><a href="Static_Maps.html#cb19-33" aria-hidden="true" tabindex="-1"></a><span class="do">##   .. .. ..@ values    : logi(0) </span></span>
+<span id="cb19-34"><a href="Static_Maps.html#cb19-34" aria-hidden="true" tabindex="-1"></a><span class="do">##   .. .. ..@ color     : logi(0) </span></span>
+<span id="cb19-35"><a href="Static_Maps.html#cb19-35" aria-hidden="true" tabindex="-1"></a><span class="do">##   .. .. ..@ names     : logi(0) </span></span>
+<span id="cb19-36"><a href="Static_Maps.html#cb19-36" aria-hidden="true" tabindex="-1"></a><span class="do">##   .. .. ..@ colortable: chr [1:256] &quot;#000000&quot; &quot;#FFFFFF&quot; &quot;#D6EBD8&quot; &quot;#BDDFB5&quot; ...</span></span>
+<span id="cb19-37"><a href="Static_Maps.html#cb19-37" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..@ title   : chr(0) </span></span>
+<span id="cb19-38"><a href="Static_Maps.html#cb19-38" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..@ extent  :Formal class &#39;Extent&#39; [package &quot;raster&quot;] with 4 slots</span></span>
+<span id="cb19-39"><a href="Static_Maps.html#cb19-39" aria-hidden="true" tabindex="-1"></a><span class="do">##   .. .. ..@ xmin: num 2599000</span></span>
+<span id="cb19-40"><a href="Static_Maps.html#cb19-40" aria-hidden="true" tabindex="-1"></a><span class="do">##   .. .. ..@ xmax: num 2601000</span></span>
+<span id="cb19-41"><a href="Static_Maps.html#cb19-41" aria-hidden="true" tabindex="-1"></a><span class="do">##   .. .. ..@ ymin: num 1196000</span></span>
+<span id="cb19-42"><a href="Static_Maps.html#cb19-42" aria-hidden="true" tabindex="-1"></a><span class="do">##   .. .. ..@ ymax: num 1198000</span></span>
+<span id="cb19-43"><a href="Static_Maps.html#cb19-43" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..@ rotated : logi FALSE</span></span>
+<span id="cb19-44"><a href="Static_Maps.html#cb19-44" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..@ rotation:Formal class &#39;.Rotation&#39; [package &quot;raster&quot;] with 2 slots</span></span>
+<span id="cb19-45"><a href="Static_Maps.html#cb19-45" aria-hidden="true" tabindex="-1"></a><span class="do">##   .. .. ..@ geotrans: num(0) </span></span>
+<span id="cb19-46"><a href="Static_Maps.html#cb19-46" aria-hidden="true" tabindex="-1"></a><span class="do">##   .. .. ..@ transfun:function ()  </span></span>
+<span id="cb19-47"><a href="Static_Maps.html#cb19-47" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..@ ncols   : int 800</span></span>
+<span id="cb19-48"><a href="Static_Maps.html#cb19-48" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..@ nrows   : int 800</span></span>
+<span id="cb19-49"><a href="Static_Maps.html#cb19-49" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..@ crs     :Formal class &#39;CRS&#39; [package &quot;sp&quot;] with 1 slot</span></span>
+<span id="cb19-50"><a href="Static_Maps.html#cb19-50" aria-hidden="true" tabindex="-1"></a><span class="do">##   .. .. ..@ projargs: chr NA</span></span>
+<span id="cb19-51"><a href="Static_Maps.html#cb19-51" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..@ history : list()</span></span>
+<span id="cb19-52"><a href="Static_Maps.html#cb19-52" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..@ z       : list()</span></span>
+<span id="cb19-53"><a href="Static_Maps.html#cb19-53" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">getValues</span>(map_1b),<span class="dv">50</span>)</span>
+<span id="cb19-54"><a href="Static_Maps.html#cb19-54" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] 37 37 37 37 37 37 37 37 37 37 37 37 37 37 37 37 37 37 37 37 37 37 37 37 37</span></span>
+<span id="cb19-55"><a href="Static_Maps.html#cb19-55" aria-hidden="true" tabindex="-1"></a><span class="do">## [26] 37 37 37 37 37 37 37 37 37 37 37 37 37 37 37 37 37 37 37 37 37 37 37 37 37</span></span>
+<span id="cb19-56"><a href="Static_Maps.html#cb19-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-57"><a href="Static_Maps.html#cb19-57" aria-hidden="true" tabindex="-1"></a><span class="fu">extent</span>(map_1b)</span>
+<span id="cb19-58"><a href="Static_Maps.html#cb19-58" aria-hidden="true" tabindex="-1"></a><span class="do">## class      : Extent </span></span>
+<span id="cb19-59"><a href="Static_Maps.html#cb19-59" aria-hidden="true" tabindex="-1"></a><span class="do">## xmin       : 2599000 </span></span>
+<span id="cb19-60"><a href="Static_Maps.html#cb19-60" aria-hidden="true" tabindex="-1"></a><span class="do">## xmax       : 2601000 </span></span>
+<span id="cb19-61"><a href="Static_Maps.html#cb19-61" aria-hidden="true" tabindex="-1"></a><span class="do">## ymin       : 1196000 </span></span>
+<span id="cb19-62"><a href="Static_Maps.html#cb19-62" aria-hidden="true" tabindex="-1"></a><span class="do">## ymax       : 1198000</span></span></code></pre></div>
+<p>The first 50 cells of this <code>RasterLayer</code> contain the value <code>37</code>. This value <code>37</code> is associated with a specific colour, which can be viewd in the <code>colortable</code> of the <code>RasterLayer</code>.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="Static_Maps.html#cb20-1" aria-hidden="true" tabindex="-1"></a>coltab <span class="ot">&lt;-</span> <span class="fu">colortable</span>(map_1b)</span>
+<span id="cb20-2"><a href="Static_Maps.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(coltab)</span>
+<span id="cb20-3"><a href="Static_Maps.html#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;#000000&quot; &quot;#FFFFFF&quot; &quot;#D6EBD8&quot; &quot;#BDDFB5&quot; &quot;#A5CF91&quot; &quot;#53A935&quot;</span></span>
+<span id="cb20-4"><a href="Static_Maps.html#cb20-4" aria-hidden="true" tabindex="-1"></a>scales<span class="sc">::</span><span class="fu">show_col</span>(coltab,<span class="at">labels =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<p>In order to plot this <code>RasterLayer</code> in ggplot, we need to convert it into a dataframe. You can imagine that this is converting the wide matrix into a very long table with three columns: x and y coordinates of the lower left corner of each cell and a value specifying what the cell holds.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="Static_Maps.html#cb21-1" aria-hidden="true" tabindex="-1"></a>map_1b_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">coordinates</span>(map_1b),<span class="at">values =</span> <span class="fu">getValues</span>(map_1b))</span>
+<span id="cb21-2"><a href="Static_Maps.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(map_1b_df)</span>
+<span id="cb21-3"><a href="Static_Maps.html#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="do">##         x       y values</span></span>
+<span id="cb21-4"><a href="Static_Maps.html#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 2599001 1197999     37</span></span>
+<span id="cb21-5"><a href="Static_Maps.html#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 2599004 1197999     37</span></span>
+<span id="cb21-6"><a href="Static_Maps.html#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 2599006 1197999     37</span></span>
+<span id="cb21-7"><a href="Static_Maps.html#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 2599009 1197999     37</span></span>
+<span id="cb21-8"><a href="Static_Maps.html#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 2599011 1197999     37</span></span>
+<span id="cb21-9"><a href="Static_Maps.html#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 2599014 1197999     37</span></span></code></pre></div>
+<p>We can now use the <code>values</code> column in <code>ggplot2</code> to specify the <code>fill</code> aesthetic. If we then pass the colortable as our fill values, the colours will be matched correctly. However we need two additional tricks:</p>
+<ul>
+<li>name the colourtable to make sure the correct colours are correct to the according values</li>
+<li>wrap the <code>values</code> column in <code>factor()</code> so that the <code>ggplot2</code> does not mistake the numeric values as a continuous scale:</li>
+</ul>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="Static_Maps.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(coltab) <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">255</span> <span class="co"># 1:256 would be wrong by 1</span></span>
+<span id="cb22-2"><a href="Static_Maps.html#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="Static_Maps.html#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb22-4"><a href="Static_Maps.html#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_raster</span>(<span class="at">data =</span> map_1b_df, <span class="fu">aes</span>(x,y, <span class="at">fill =</span> <span class="fu">factor</span>(values))) <span class="sc">+</span></span>
+<span id="cb22-5"><a href="Static_Maps.html#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> coltab) <span class="sc">+</span></span>
+<span id="cb22-6"><a href="Static_Maps.html#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb22-7"><a href="Static_Maps.html#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_equal</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<p>Note that there are thee ways to plot this type of data in <code>ggplot2</code>: <code>geom_rect</code>, <code>geom_tile</code> and <code>geom_raster</code>. The latter is “a high performance special case for when all the tiles are the same size” (see <a href="https://ggplot2.tidyverse.org/reference/geom_tile.html">the docs</a>.</p>
+<p>Alternatively, you can add the hex colourcode to the dataframe and use <code>scale_fill_identitiy()</code>.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="Static_Maps.html#cb23-1" aria-hidden="true" tabindex="-1"></a>map_1b_df <span class="ot">&lt;-</span> <span class="fu">mutate</span>(map_1b_df, <span class="at">colorvalue =</span> coltab[values<span class="sc">+</span><span class="dv">1</span>])</span>
+<span id="cb23-2"><a href="Static_Maps.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb23-3"><a href="Static_Maps.html#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_raster</span>(<span class="at">data =</span> map_1b_df, <span class="fu">aes</span>(x,y, <span class="at">fill =</span> colorvalue)) <span class="sc">+</span></span>
+<span id="cb23-4"><a href="Static_Maps.html#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_identity</span>() <span class="sc">+</span></span>
+<span id="cb23-5"><a href="Static_Maps.html#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb23-6"><a href="Static_Maps.html#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_equal</span>()</span></code></pre></div>
+<p>The big drawback of using <code>ggplot2</code> in this way: you cannot add a second layer with a <code>fill</code> aesthetic, since <code>ggplot2</code> only allows one per plot.</p>
+</div>
+<div id="multiple-bands" class="section level6" number="4.1.2.2.1.2">
+<h6><span class="header-section-number">4.1.2.2.1.2</span> Multiple bands</h6>
+<p>In case of a 3-Band Raster Brick, each layer holds a value of 0 to 255 representing colours in the RGB colour model. Usually, the first layer represents <strong>R</strong>ed, the second <strong>G</strong>reen and the third <strong>B</strong>lue. We can subset the <code>RasterBrick</code> into the individual <code>RasterLayers</code> using double brackets (<code>[[1]]</code> for the first layer).</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="Static_Maps.html#cb24-1" aria-hidden="true" tabindex="-1"></a>map_3b</span>
+<span id="cb24-2"><a href="Static_Maps.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="do">## class      : RasterBrick </span></span>
+<span id="cb24-3"><a href="Static_Maps.html#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="do">## dimensions : 400, 400, 160000, 3  (nrow, ncol, ncell, nlayers)</span></span>
+<span id="cb24-4"><a href="Static_Maps.html#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="do">## resolution : 5, 5  (x, y)</span></span>
+<span id="cb24-5"><a href="Static_Maps.html#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="do">## extent     : 2599000, 2601000, 1196000, 1198000  (xmin, xmax, ymin, ymax)</span></span>
+<span id="cb24-6"><a href="Static_Maps.html#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="do">## crs        : NA </span></span>
+<span id="cb24-7"><a href="Static_Maps.html#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="do">## source     : /Users/runner/work/book/book/sample_data/SMR_Musterdaten/SMR50_LV95_KREL_10L_Mosaic.tif </span></span>
+<span id="cb24-8"><a href="Static_Maps.html#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="do">## names      : SMR50_LV95_KREL_10L_Mosaic.1, SMR50_LV95_KREL_10L_Mosaic.2, SMR50_LV95_KREL_10L_Mosaic.3 </span></span>
+<span id="cb24-9"><a href="Static_Maps.html#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="do">## min values :                            0,                            0,                            0 </span></span>
+<span id="cb24-10"><a href="Static_Maps.html#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="do">## max values :                          255,                          255,                          255</span></span>
+<span id="cb24-11"><a href="Static_Maps.html#cb24-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-12"><a href="Static_Maps.html#cb24-12" aria-hidden="true" tabindex="-1"></a>map_3b[[<span class="dv">1</span>]]</span>
+<span id="cb24-13"><a href="Static_Maps.html#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="do">## class      : RasterLayer </span></span>
+<span id="cb24-14"><a href="Static_Maps.html#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="do">## band       : 1  (of  3  bands)</span></span>
+<span id="cb24-15"><a href="Static_Maps.html#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="do">## dimensions : 400, 400, 160000  (nrow, ncol, ncell)</span></span>
+<span id="cb24-16"><a href="Static_Maps.html#cb24-16" aria-hidden="true" tabindex="-1"></a><span class="do">## resolution : 5, 5  (x, y)</span></span>
+<span id="cb24-17"><a href="Static_Maps.html#cb24-17" aria-hidden="true" tabindex="-1"></a><span class="do">## extent     : 2599000, 2601000, 1196000, 1198000  (xmin, xmax, ymin, ymax)</span></span>
+<span id="cb24-18"><a href="Static_Maps.html#cb24-18" aria-hidden="true" tabindex="-1"></a><span class="do">## crs        : NA </span></span>
+<span id="cb24-19"><a href="Static_Maps.html#cb24-19" aria-hidden="true" tabindex="-1"></a><span class="do">## source     : /Users/runner/work/book/book/sample_data/SMR_Musterdaten/SMR50_LV95_KREL_10L_Mosaic.tif </span></span>
+<span id="cb24-20"><a href="Static_Maps.html#cb24-20" aria-hidden="true" tabindex="-1"></a><span class="do">## names      : SMR50_LV95_KREL_10L_Mosaic.1 </span></span>
+<span id="cb24-21"><a href="Static_Maps.html#cb24-21" aria-hidden="true" tabindex="-1"></a><span class="do">## values     : 0, 255  (min, max)</span></span></code></pre></div>
+<p>As with the singleband raster, we can extract the Values (this time RGB-Values) of each layer with <code>getValues()</code>.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="Static_Maps.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">values</span>(map_3b[[<span class="dv">1</span>]]),<span class="dv">50</span>)</span>
+<span id="cb25-2"><a href="Static_Maps.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]  27  27  31  27  67 124 124 124 124 123 123 123 122 123 122  66  27  57  97</span></span>
+<span id="cb25-3"><a href="Static_Maps.html#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [20] 113 123 123 124 100  68  68  68  68  68  68  68  36  27  27  27  27  38 117</span></span>
+<span id="cb25-4"><a href="Static_Maps.html#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [39] 105  97  97 100 111 119  54  27  27  27  27  66</span></span></code></pre></div>
+<p>Again like with the single band raster, we now transform the Raster into a dataframe, this time storing the rgb values in columns (instead of the hex values as before).</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="Static_Maps.html#cb26-1" aria-hidden="true" tabindex="-1"></a>map_3b_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb26-2"><a href="Static_Maps.html#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coordinates</span>(map_3b),</span>
+<span id="cb26-3"><a href="Static_Maps.html#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">r =</span> <span class="fu">values</span>(map_3b[[<span class="dv">1</span>]]), </span>
+<span id="cb26-4"><a href="Static_Maps.html#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">g =</span> <span class="fu">values</span>(map_3b[[<span class="dv">2</span>]]),</span>
+<span id="cb26-5"><a href="Static_Maps.html#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">b =</span> <span class="fu">values</span>(map_3b[[<span class="dv">3</span>]]))</span>
+<span id="cb26-6"><a href="Static_Maps.html#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="Static_Maps.html#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(map_3b_df)</span>
+<span id="cb26-8"><a href="Static_Maps.html#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="do">##         x       y   r   g   b</span></span>
+<span id="cb26-9"><a href="Static_Maps.html#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 2599002 1197998  27  26  35</span></span>
+<span id="cb26-10"><a href="Static_Maps.html#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 2599008 1197998  27  26  35</span></span>
+<span id="cb26-11"><a href="Static_Maps.html#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 2599012 1197998  31  28  36</span></span>
+<span id="cb26-12"><a href="Static_Maps.html#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 2599018 1197998  27  26  35</span></span>
+<span id="cb26-13"><a href="Static_Maps.html#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 2599022 1197998  67  59  58</span></span>
+<span id="cb26-14"><a href="Static_Maps.html#cb26-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 2599028 1197998 124 114 110</span></span></code></pre></div>
+<p>With the function <code>rbg()</code> we can transform values into hex-codes.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="Static_Maps.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rgb</span>(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="at">maxColorValue =</span> <span class="dv">255</span>)</span>
+<span id="cb27-2"><a href="Static_Maps.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;#0A0A0A&quot;</span></span>
+<span id="cb27-3"><a href="Static_Maps.html#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="Static_Maps.html#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb27-5"><a href="Static_Maps.html#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_raster</span>(<span class="at">data =</span> map_3b_df, <span class="fu">aes</span>(x,y,<span class="at">fill =</span> <span class="fu">rgb</span>(r,g,b,<span class="at">maxColorValue =</span> <span class="dv">255</span>))) <span class="sc">+</span> </span>
+<span id="cb27-6"><a href="Static_Maps.html#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_identity</span>() <span class="sc">+</span></span>
+<span id="cb27-7"><a href="Static_Maps.html#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_equal</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<p>Tipp: if your file is to large and ggplot has trouble plotting it fast, you can use <code>aggregate</code> to reduce the resolution</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="Static_Maps.html#cb28-1" aria-hidden="true" tabindex="-1"></a>map_3b_lowres <span class="ot">&lt;-</span> raster<span class="sc">::</span><span class="fu">aggregate</span>(map_3b, <span class="at">fact =</span> <span class="dv">5</span>)</span></code></pre></div>
+</div>
+</div>
+<div id="greyscale" class="section level5" number="4.1.2.2.2">
+<h5><span class="header-section-number">4.1.2.2.2</span> Greyscale</h5>
+<p>In greyscale maps, <code>raster</code> cannot find a associated colortable to match the values to rgb or hex colours.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="Static_Maps.html#cb29-1" aria-hidden="true" tabindex="-1"></a>map_grey_path <span class="ot">&lt;-</span> <span class="st">&quot;sample_data/SMR_Musterdaten/SMR50_LV95_KGRS_Mosaic.tif&quot;</span></span>
+<span id="cb29-2"><a href="Static_Maps.html#cb29-2" aria-hidden="true" tabindex="-1"></a>map_grey <span class="ot">&lt;-</span> <span class="fu">raster</span>(map_grey_path)</span>
+<span id="cb29-3"><a href="Static_Maps.html#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="Static_Maps.html#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">getValues</span>(map_grey))</span>
+<span id="cb29-5"><a href="Static_Maps.html#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 31 31 31 31 31 31</span></span>
+<span id="cb29-6"><a href="Static_Maps.html#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">colortable</span>(map_grey))</span>
+<span id="cb29-7"><a href="Static_Maps.html#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;#000000&quot; &quot;#FFFFFF&quot; &quot;#F4F4F4&quot; &quot;#E7E7E7&quot; &quot;#D3D2D3&quot; &quot;#CAC9CA&quot;</span></span></code></pre></div>
+<p>However, the package <code>tiff</code> <em>can</em> find the rgb values of a tiff, we just need to set <code>indexed = TRUE</code> and get the <code>color.map</code> attribute of the output:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="Static_Maps.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tiff)</span>
+<span id="cb30-2"><a href="Static_Maps.html#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="Static_Maps.html#cb30-3" aria-hidden="true" tabindex="-1"></a>index <span class="ot">&lt;-</span> <span class="fu">readTIFF</span>(map_grey_path,<span class="at">indexed =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb30-4"><a href="Static_Maps.html#cb30-4" aria-hidden="true" tabindex="-1"></a>colormap <span class="ot">&lt;-</span> <span class="fu">attr</span>(index,<span class="st">&quot;color.map&quot;</span>)</span>
+<span id="cb30-5"><a href="Static_Maps.html#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-6"><a href="Static_Maps.html#cb30-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-7"><a href="Static_Maps.html#cb30-7" aria-hidden="true" tabindex="-1"></a>colormap[,<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>] <span class="co"># only showing the first 8 columns (of 256)</span></span>
+<span id="cb30-8"><a href="Static_Maps.html#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1] [,2]      [,3]      [,4]      [,5]      [,6]      [,7]      [,8]</span></span>
+<span id="cb30-9"><a href="Static_Maps.html#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    0    1 0.9568627 0.9058824 0.8274510 0.7921569 0.7843137 0.7725490</span></span>
+<span id="cb30-10"><a href="Static_Maps.html#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]    0    1 0.9568627 0.9058824 0.8235294 0.7882353 0.7803922 0.7686275</span></span>
+<span id="cb30-11"><a href="Static_Maps.html#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]    0    1 0.9568627 0.9058824 0.8274510 0.7921569 0.7843137 0.7725490</span></span></code></pre></div>
+<p>This is an index with three rows (<strong>R</strong>ed, <strong>G</strong>reen and <strong>B</strong>lue) and 265 columns (with are the Values from <code>getValues()</code>). We can now use <code>rgb()</code> to turn this matrix into a vector of 265 hex colours:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="Static_Maps.html#cb31-1" aria-hidden="true" tabindex="-1"></a>coltab <span class="ot">&lt;-</span> <span class="fu">rgb</span>(colormap[<span class="dv">1</span>,],colormap[<span class="dv">2</span>,],colormap[<span class="dv">3</span>,])</span>
+<span id="cb31-2"><a href="Static_Maps.html#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="Static_Maps.html#cb31-3" aria-hidden="true" tabindex="-1"></a>scales<span class="sc">::</span><span class="fu">show_col</span>(coltab,<span class="at">labels =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
+<p>Like before, we now turn the <code>RasterLayer</code> into a dataframe and use the <code>Values</code> and the newly created colortable to assign the correct values:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="Static_Maps.html#cb32-1" aria-hidden="true" tabindex="-1"></a>map_grey_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">coordinates</span>(map_grey),<span class="at">values =</span> <span class="fu">getValues</span>(map_grey))</span>
+<span id="cb32-2"><a href="Static_Maps.html#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="Static_Maps.html#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-4"><a href="Static_Maps.html#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(coltab) <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">255</span></span>
+<span id="cb32-5"><a href="Static_Maps.html#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-6"><a href="Static_Maps.html#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb32-7"><a href="Static_Maps.html#cb32-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_raster</span>(<span class="at">data =</span> map_grey_df, <span class="fu">aes</span>(x,y, <span class="at">fill =</span> <span class="fu">factor</span>(values))) <span class="sc">+</span></span>
+<span id="cb32-8"><a href="Static_Maps.html#cb32-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> coltab) <span class="sc">+</span></span>
+<span id="cb32-9"><a href="Static_Maps.html#cb32-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb32-10"><a href="Static_Maps.html#cb32-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_equal</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
+
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="Making_Maps.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="Dynamic_Maps.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

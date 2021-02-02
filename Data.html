@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>All things R Spatial</title>
-  <meta name="description" content="All things R Spatial" />
+  <title>3 Data | All things R Spatial</title>
+  <meta name="description" content="3 Data | All things R Spatial" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="All things R Spatial" />
+  <meta property="og:title" content="3 Data | All things R Spatial" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="All things R Spatial" />
+  <meta name="twitter:title" content="3 Data | All things R Spatial" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="Data.html"/>
+<link rel="prev" href="index.html"/>
+<link rel="next" href="import_r_vs_arcgis.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -261,37 +261,18 @@ Developped by the Research Group for Geoinformatics @ ZHAW</a></li>
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">All things R Spatial</h1>
-<h2 class="subtitle"><em>arc2r: An introduction to spatial-R for recovering ArcGIS users</em></h2>
-<p class="author"><em>Nils Ratnaweera and Nikolaos Bakogiannis</em></p>
-</div>
-<p><a href="https://github.com/arc2r/book/actions"><img src="https://github.com/arc2r/book/workflows/bookdown/badge.svg" alt="Actions Status" /></a></p>
-<div id="introduction" class="section level1" number="1">
-<h1><span class="header-section-number">1</span> Introduction</h1>
-<p>This is a resource for people wanting to learn spatial-R (Analysis, Visualization) in R and are coming with a background in ArcGIS. This resource should provide some help on this journey. We assume you have some prior experience with <code>R</code>. If this is not the case, we recommend you familiarize yourself with <code>R</code> first.</p>
-<p>We are big fans of using <code>magrittr</code>’s pipe function <code>%&gt;%</code> and heavily use it throughout this book. In addition for vector data, we use packages from the <code>tidyverse</code> (especially <code>filter()</code>, <code>mutate()</code> and <code>summarise()</code>.)</p>
-<p>This book leans heavily on how the Toolboxes and Toolsets are documented in ArcGIS Pro. Is is not a book to read from cover to cover, but to look up specific things of which you only know the ArcGIS terminology for. This book is a work in progress, the current version is from the 2021-02-02 15:55:34 (UTC). <em>We highly appriciate contributions</em> to this book: If you have anything to add, please <a href="https://github.com/arc2r/book">file an issue or make a pull request</a>.</p>
-<p>We had long since thought about the necessity of a resource which helps ArcGIS users transition to R or Python. Nils had tweeted about this (see below) without getting much reception, and and one point just decided to start his own resource. Since <a href="gis.lsfm.zhaw.ch/">our research group</a> teaches and introduction to GIS and an advanced GIS course mostly based on ArcGIS, we decided to pick up where Nils hat started and develop the resource in with internal funding of our University.</p>
-<p>There are already a great many spatial-R Resources out there, and the goal is <em>not</em> to rewrite everything that has already been written. The aim of this book is just to provide a resource for people looking to do spatial stuff in R, but only know the ArcGIS-Term for it. When you transition from a proprietary Software like ArcGIS to <a href="https://en.wikipedia.org/wiki/Free_and_open-source_software">FOSS</a>, you have to relearn many of the concepts because the proprietary software usually does not adhere to common standards.</p>
-<div class="figure">
-<img src="tweet1.jpg" alt="" />
-<p class="caption"><a href="https://twitter.com/NRatnaweera/status/1187759876472213504">Nils’ Tweet</a> might not have recieved much attention, but it did spark a conversation within our group</p>
-</div>
-</div>
-<div id="how-to-use-this-book" class="section level1" number="2">
-<h1><span class="header-section-number">2</span> How to use this book</h1>
-<p><span class="citation">@todo</span> add instructions on how to use the book
-<span class="citation">@body</span> details on the <code>arc2r</code> package and the coding environment</p>
+<div id="data" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Data</h1>
+<p>As an ArcGIS user, you are probabbly very familiar with the two major geodata formats, raster data and vector data. In the case of vector data, we typically use <em>shapefiles</em> and geodatabases with <em>feature classes</em>. For raster data, we use <em>geotiff</em> or <em>ESRI GRID</em> files inside geodatabases. As you work with OpenSource GIS Tools and Data, you will come across a much richer ecosystem of data formats.</p>
+<p><span class="citation">@todo</span> add some examples of geodata-formats (gpkg, sqlite, )</p>
 
-</div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="Data.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="import_r_vs_arcgis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

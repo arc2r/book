@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>All things R Spatial</title>
-  <meta name="description" content="All things R Spatial" />
+  <title>3.2 Importing vector data with sf | All things R Spatial</title>
+  <meta name="description" content="3.2 Importing vector data with sf | All things R Spatial" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="All things R Spatial" />
+  <meta property="og:title" content="3.2 Importing vector data with sf | All things R Spatial" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="All things R Spatial" />
+  <meta name="twitter:title" content="3.2 Importing vector data with sf | All things R Spatial" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="Data.html"/>
+<link rel="prev" href="import_r_vs_arcgis.html"/>
+<link rel="next" href="import_raster.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -261,28 +261,50 @@ Developped by the Research Group for Geoinformatics @ ZHAW</a></li>
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">All things R Spatial</h1>
-<h2 class="subtitle"><em>arc2r: An introduction to spatial-R for recovering ArcGIS users</em></h2>
-<p class="author"><em>Nils Ratnaweera and Nikolaos Bakogiannis</em></p>
-</div>
-<p><a href="https://github.com/arc2r/book/actions"><img src="https://github.com/arc2r/book/workflows/bookdown/badge.svg" alt="Actions Status" /></a></p>
-<div id="introduction" class="section level1" number="1">
-<h1><span class="header-section-number">1</span> Introduction</h1>
-<p>This is a resource for people wanting to learn spatial-R (Analysis, Visualization) in R and are coming with a background in ArcGIS. This resource should provide some help on this journey. We assume you have some prior experience with <code>R</code>. If this is not the case, we recommend you familiarize yourself with <code>R</code> first.</p>
-<p>We are big fans of using <code>magrittr</code>’s pipe function <code>%&gt;%</code> and heavily use it throughout this book. In addition for vector data, we use packages from the <code>tidyverse</code> (especially <code>filter()</code>, <code>mutate()</code> and <code>summarise()</code>.)</p>
-<p>This book leans heavily on how the Toolboxes and Toolsets are documented in ArcGIS Pro. Is is not a book to read from cover to cover, but to look up specific things of which you only know the ArcGIS terminology for. This book is a work in progress, the current version is from the 2021-02-02 15:55:34 (UTC). <em>We highly appriciate contributions</em> to this book: If you have anything to add, please <a href="https://github.com/arc2r/book">file an issue or make a pull request</a>.</p>
-<p>We had long since thought about the necessity of a resource which helps ArcGIS users transition to R or Python. Nils had tweeted about this (see below) without getting much reception, and and one point just decided to start his own resource. Since <a href="gis.lsfm.zhaw.ch/">our research group</a> teaches and introduction to GIS and an advanced GIS course mostly based on ArcGIS, we decided to pick up where Nils hat started and develop the resource in with internal funding of our University.</p>
-<p>There are already a great many spatial-R Resources out there, and the goal is <em>not</em> to rewrite everything that has already been written. The aim of this book is just to provide a resource for people looking to do spatial stuff in R, but only know the ArcGIS-Term for it. When you transition from a proprietary Software like ArcGIS to <a href="https://en.wikipedia.org/wiki/Free_and_open-source_software">FOSS</a>, you have to relearn many of the concepts because the proprietary software usually does not adhere to common standards.</p>
-<div class="figure">
-<img src="tweet1.jpg" alt="" />
-<p class="caption"><a href="https://twitter.com/NRatnaweera/status/1187759876472213504">Nils’ Tweet</a> might not have recieved much attention, but it did spark a conversation within our group</p>
-</div>
-</div>
-<div id="how-to-use-this-book" class="section level1" number="2">
-<h1><span class="header-section-number">2</span> How to use this book</h1>
-<p><span class="citation">@todo</span> add instructions on how to use the book
-<span class="citation">@body</span> details on the <code>arc2r</code> package and the coding environment</p>
+<div id="importing-vector-data-with-sf" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Importing vector data with <code>sf</code></h2>
+<p>First, let’s load the library <code>sf</code>. Read chapter PLACEHOLDER If you haven’t installed it yet.
+<span class="citation">@todo</span> replace placeholder</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="import_vector.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb1-2"><a href="import_vector.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Linking to GEOS 3.8.1, GDAL 3.1.4, PROJ 6.3.1</span></span></code></pre></div>
+<p>As mentioned, <code>sf</code> is a great packge to facilitate handling vector data in R. “sf” stands for <em>s</em>imple <em>f</em>eatures, which is an open standard developed by the Open Geospatial Consortium (OGC). You will recognize many of these feature types from your everyday GIS-experience (see figure)
+<span class="citation">@todo</span> add figure reference</p>
+<p><span class="citation">@todo</span> added reference with bibtex
+<img src="images/sf-classes.png" alt="The 7 (of 17) most important simple feature types. Image from https://geocompr.robinlovelace.net" /></p>
+<p>To import a vector dataset into <code>R</code>, we can use the function <code>read_sf</code> as in the example below.
+<span class="citation">@todo</span> how does the user get access to this dataset?
+<span class="citation">@body</span> make this available through the packgage?</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="import_vector.html#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-2"><a href="import_vector.html#cb2-2" aria-hidden="true" tabindex="-1"></a>ARE_waedenswil <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(<span class="st">&quot;sample_data/Entsorgung_Waedenswil/ARE_waedenswil.shp&quot;</span>)</span>
+<span id="cb2-3"><a href="import_vector.html#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="import_vector.html#cb2-4" aria-hidden="true" tabindex="-1"></a>ARE_waedenswil</span>
+<span id="cb2-5"><a href="import_vector.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Simple feature collection with 13 features and 5 fields</span></span>
+<span id="cb2-6"><a href="import_vector.html#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="do">## geometry type:  MULTIPOLYGON</span></span>
+<span id="cb2-7"><a href="import_vector.html#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="do">## dimension:      XY</span></span>
+<span id="cb2-8"><a href="import_vector.html#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="do">## bbox:           xmin: 2689594 ymin: 1228563 xmax: 2694829 ymax: 1234095</span></span>
+<span id="cb2-9"><a href="import_vector.html#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="do">## projected CRS:  CH1903+ / LV95</span></span>
+<span id="cb2-10"><a href="import_vector.html#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m# A tibble: 13 x 6[39m</span></span>
+<span id="cb2-11"><a href="import_vector.html#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="do">##       ID KLASSE KLASSE_DE   KLASSE_FR   KLASSE_NUM                      geometry</span></span>
+<span id="cb2-12"><a href="import_vector.html#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="do">##    [3m[90m&lt;int&gt;[39m[23m [3m[90m&lt;chr&gt;[39m[23m  [3m[90m&lt;chr&gt;[39m[23m       [3m[90m&lt;chr&gt;[39m[23m            [3m[90m&lt;dbl&gt;[39m[23m            [3m[90m&lt;MULTIPOLYGON [m]&gt;[39m[23m</span></span>
+<span id="cb2-13"><a href="import_vector.html#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m 1[39m    69 D      D - gering… D - faible…          4 (((2692378 1233048, 2692373 …</span></span>
+<span id="cb2-14"><a href="import_vector.html#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m 2[39m  [4m1[24m371 D      D - gering… D - faible…          4 (((2689720 1232195, 2689767 …</span></span>
+<span id="cb2-15"><a href="import_vector.html#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m 3[39m  [4m3[24m578 D      D - gering… D - faible…          4 (((2692766 1232135, 2692690 …</span></span>
+<span id="cb2-16"><a href="import_vector.html#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m 4[39m  [4m3[24m591 D      D - gering… D - faible…          4 (((2691861 1232707, 2691907 …</span></span>
+<span id="cb2-17"><a href="import_vector.html#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m 5[39m  [4m3[24m696 A      A - sehr g… A - très b…          1 (((2693943 1231286, 2693834 …</span></span>
+<span id="cb2-18"><a href="import_vector.html#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m 6[39m  [4m3[24m901 B      B - gute E… B - bonne …          2 (((2693183 1231097, 2693113 …</span></span>
+<span id="cb2-19"><a href="import_vector.html#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m 7[39m  [4m4[24m137 B      B - gute E… B - bonne …          2 (((2690970 1232339, 2690947 …</span></span>
+<span id="cb2-20"><a href="import_vector.html#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m 8[39m  [4m4[24m161 B      B - gute E… B - bonne …          2 (((2691724 1232478, 2691701 …</span></span>
+<span id="cb2-21"><a href="import_vector.html#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m 9[39m  [4m4[24m225 B      B - gute E… B - bonne …          2 (((2692266 1232198, 2692243 …</span></span>
+<span id="cb2-22"><a href="import_vector.html#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m10[39m  [4m4[24m401 C      C - mittel… C - desser…          3 (((2694681 1230763, 2694659 …</span></span>
+<span id="cb2-23"><a href="import_vector.html#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m11[39m  [4m5[24m208 C      C - mittel… C - desser…          3 (((2693064 1229206, 2693041 …</span></span>
+<span id="cb2-24"><a href="import_vector.html#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m12[39m  [4m5[24m319 C      C - mittel… C - desser…          3 (((2690879 1233702, 2690856 …</span></span>
+<span id="cb2-25"><a href="import_vector.html#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m13[39m  [4m5[24m514 C      C - mittel… C - desser…          3 (((2693168 1229907, 2693145 …</span></span></code></pre></div>
+<p>Much of the beauty in <code>sf</code> comes from it’s simplicity: As you see from importing the shapefile, it is very much like a <code>data.frame</code>, a structure that you are probabbly know very well. In fact, it <em>is</em> a data.frame, as you can see here:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="import_vector.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.data.frame</span>(ARE_waedenswil)</span>
+<span id="cb3-2"><a href="import_vector.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] TRUE</span></span></code></pre></div>
+<p><code>sf</code> provides methods for various generics, e.g. you can use <code>plot()</code> on the object for a simple visualisation.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="import_vector.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ARE_waedenswil)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 
 </div>
             </section>
@@ -290,8 +312,8 @@ Developped by the Research Group for Geoinformatics @ ZHAW</a></li>
           </div>
         </div>
       </div>
-
-<a href="Data.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="import_r_vs_arcgis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="import_raster.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
