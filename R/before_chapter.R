@@ -1,3 +1,5 @@
+
+
 # Source: https://github.com/rstudio/bookdown/issues/418#issuecomment-314265432
 
 # detach packages
@@ -6,4 +8,7 @@ packages = packages[packages != "bookdown"]
 packages = sapply(packages, function(p) paste0("package:", p))
 lapply(packages, detach, character.only = TRUE, unload = TRUE)
 # clear environment
-rm(list = ls())
+rm(list = ls(all = TRUE))
+
+
+knitr::opts_chunk$set(collapse = TRUE)
