@@ -6,8 +6,8 @@ source("R/before_chapter.R", local = knitr::knit_global())
 
 As an ArcGIS user, you are probabbly very familiar with the two major geodata formats, raster data and vector data. In the case of vector data, we typically use *shapefiles* and geodatabases with *feature classes*. For raster data, we use *geotiff* or *ESRI GRID* files inside geodatabases. As you work with OpenSource GIS Tools and Data, you will come across a much richer ecosystem of data formats. 
 
-@todo add some examples of geodata-formats (gpkg, sqlite)
-@body link to switchfromshapefile.org
+//todo add some examples of geodata-formats (gpkg, sqlite)
+//body link to switchfromshapefile.org
 
 
 
