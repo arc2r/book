@@ -1,6 +1,6 @@
 ## Importing Data: R vs. ArcGIS
 
-In ArcGIS, you add a new dataset to your project using the "Add Data" button in the "Map" Pane. ArcGIS then helps you in various ways that `R` will not. For example, ArcGIS:
+In ArcGIS, you add a new dataset to your project using the "Add Data" button in the "Map" Pane. ArcGIS then "helps" you in various ways that `R` will not. For example, ArcGIS:
 
 - ... only displays files with extensions that can contain geodata (e.g. `.tif`, `.shp` etc)
 - ... recognizes files that come in a multifile format with a common prefix (e.g. shapefiles) and displays it as a single dataset
