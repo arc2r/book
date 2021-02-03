@@ -1,258 +1,144 @@
 ## Static Maps
 
-### Static maps with `ggplot2`
 
-#### Basics
+As we saw in chapter [Data], we can quickly visualize geodata by simply calling `plot` on the dataset. 
+
+
 ```{r}
+library(arc2r) 
 library(sf)
-library(tidyverse)
+library(raster)
 
+plot(gemeinde_zh["bezirksnam"])
 
-getwd()
-eire <- read_sf("sample_data/spData/eire.shp")
+plot(swissAlti3D)
+
 ```
 
-The most basic plot consists of a `ggplot()` initiation and a single layer. In case of `sf` data, you can add a layer with `geom_sf()`. If the coordinate system is unknown, the axes will be labelled with the numerical values of the coorindates.
+
+This is fine for quick view of the data, but as you want to add more layers, legend etc. using `base::plot()` becomes complicated. There are many alternative methods to visualizing spatial data, we will showcase our favourite methods here.
+
+
+### Package `ggplot2`
+
+If you are familiar with `ggplot2` you can rejoice: Plotting `sf` objects has become *very* easy with this package. If you do not know this package yet, we recommend you familiarize yourself with it first before diving into this chapter. We will continue to work with the datasets used above
+
+#### `sf` objects
 ```{r}
-st_crs(eire)
-ggplot(eire) + 
+
+library(ggplot2)
+
+ggplot(gemeinde_zh) +
   geom_sf()
+
 ```
 
-However, if the coordinate system *is* known, the WGS84 Coordinates are labelled and used as the major and minor grid lines.
-
+In its most basic form, we can visualize the geometry of our `sf` object.As always in `ggplot2`, if you want to use a column from your dataset as an input for, say, colour, you need to specify this with `aes()`:
 ```{r}
-eire <- st_set_crs(eire, "+proj=utm +zone=30 +ellps=airy +units=km")
-
-ggplot(eire) + 
-  geom_sf()
+ggplot(gemeinde_zh) + 
+  geom_sf(aes(fill = bezirksnam))
 ```
 
-As always in `ggplot`, if you want to use a column from your dataset as an input for, say, colour, you need to specify this with `aes()`:
+
+To change the default graticules from WGS84 to a custom Coordinate System, we can use the argument `datum` in `coord_sf` and call the EPSG Code of our desired coordinate system.
+
+//todo add chapter on CRS
+//body ArcGIS Users are usually not familiar with ESPG Codes, we should provide an introduction somewhere and reference this here.
+
 ```{r}
-ggplot(eire) + 
-  geom_sf(aes(fill = INCOME))
+ggplot(gemeinde_zh) + 
+  geom_sf(aes(fill = bezirksnam)) +
+  coord_sf(datum = 2056)
+  
 ```
 
-There are various ways to beautify this simple plot:
+How we can use our standard `ggplot2` methods to polish this plot:
 
 ```{r}
-ggplot(eire) + 
-  geom_sf(aes(fill = log(INCOME)), colour = "grey") +
-  labs(title = "Counties of the Irish Republic", 
-       subtitle = expression("Distribution of Income (log"[10]*")"),
-       fill = "") +
-  scale_fill_viridis_c() +
+ggplot(gemeinde_zh) + 
+  geom_sf(aes(fill = bezirksnam), colour = "white") +
+  labs(title = "Gemeinden des Kantons Zürich nach Bezirk",fill = "") +
   theme_void() +
   theme(legend.position = "bottom")
-```
 
-#### Adding Raster Maps Files (geotiffs)
-
-While vector data is very easily implemented in ggplot2, rasterdata is a little harder. Its complicated enough with standard Raster Data, and even more so with raster maps.  There are two packages that facilitate the combination of rastermaps and ggplot: 
-
-- [`rasterVis`](https://oscarperpinan.github.io/rastervis/)
-- [`RStoolbox`](https://bleutner.github.io/RStoolbox/)
-
-However, we will do without these packages to learn more on how rasters work and be as flexible as possible.
-
-If you don't have the time or patience to read through the explanation, the following function takes a path to a raster and returns a dataframe with x/y coordinates as well as a column with the hex colours for the according cell.
-
-```{r}
-rastermap_to_dataframe <- function(path) {
-  require(tiff)
-  require(raster)
-  raster_file <- raster::brick(path)
-  bands_n <- nbands(raster_file)
-  if(bands_n == 1){
-    raster_indexed <- readTIFF(path,indexed = TRUE)
-    raster_colormap <- attr(raster_indexed,"color.map")
-    raster_colormap_hex <- rgb(raster_colormap[1,],raster_colormap[2,],raster_colormap[3,])
-    raster_df <- data.frame(coordinates(raster_file), values = raster_colormap_hex[getValues(raster_file)+1])
-  } else if(bands_n == 3){
-    raster_df <- data.frame(
-      coordinates(raster_file),
-      values = rgb(values(raster_file[[1]]),values(raster_file[[2]]),values(raster_file[[3]]),maxColorValue = 255)
-    )
-  }
-  return(raster_df)
-}
-```
-
-##### With Colours
-
-Tif files with colours can either be single band or include multiple bands in a single tif file. These need to be treated differently. Let's take two variants of the [swiss raster map 1:50k](https://shop.swisstopo.admin.ch/de/products/maps/digital_maps/digital/srm10) map. One is a single band dataset, the other a 3-band dataset.
-
-```{r}
-library(raster)
-library(rgdal)
-
-path_1b <- "sample_data/SMR_Musterdaten/SMR50_LV95_KOMB_Mosaic.tif"
-path_3b <- "sample_data/SMR_Musterdaten/SMR50_LV95_KREL_10L_Mosaic.tif"
-
-raster(path_1b)
-raster(path_3b)
-```
-
-As you can see in the output of `raster(path_3b)`, only one of the 3 bands was imported with `raster::raster`. In the case of multiband rasters, it's better to use `raster::brick`:
-
-```{r}
-map_1b <- raster(path_1b)
-map_3b <- brick(path_3b)
-```
-
-###### Singleband
-
-A singleband RasterLayer can be regarded as vector of numeric values arranged in a matrix with some additional metadata. The metadata can be view with `str()`, the values can be obtained with `getValues()`.
-
-```{r}
-str(map_1b)
-head(getValues(map_1b),50)
-
-extent(map_1b)
-```
-
-The first 50 cells of this `RasterLayer` contain the value `37`. This value `37` is associated with a specific colour, which can be viewd in the `colortable` of the `RasterLayer`.
-
-```{r}
-coltab <- colortable(map_1b)
-head(coltab)
-scales::show_col(coltab,labels = FALSE)
 ```
 
 
-In order to plot this `RasterLayer` in ggplot, we need to convert it into a dataframe. You can imagine that this is converting the wide matrix into a very long table with three columns: x and y coordinates of the lower left corner of each cell and a value specifying what the cell holds. 
+#### `raster` objects
 
-```{r}
-map_1b_df <- data.frame(coordinates(map_1b),values = getValues(map_1b))
-head(map_1b_df)
-```
+//todo use a raster object with the same extent as the sf object
 
-We can now use the `values` column in `ggplot2` to specify the `fill` aesthetic. If we then pass the colortable as our fill values, the colours will be matched correctly. However we need two additional tricks:
-
-- name the colourtable to make sure the correct colours are correct to the according values
-- wrap the `values` column in `factor()` so that the `ggplot2` does not mistake the numeric values as a continuous scale:
+While `sf` objects are very easily integrated in ggplot2, raster data is a little harder. There are various ways to plot a raster object with `ggplot2`. A simple, adhoc approach is converting the `RasterLayer` object into a `data.frame` and then plotting it with `geom_raster`. 
 
 
 ```{r}
-names(coltab) <- 0:255 # 1:256 would be wrong by 1
 
-ggplot() +
-  geom_raster(data = map_1b_df, aes(x,y, fill = factor(values))) +
-  scale_fill_manual(values = coltab) +
-  theme(legend.position = "none") +
-  coord_equal()
+swissAlti3D_df <- as.data.frame(swissAlti3D,xy = TRUE) # xy = TRUE adds the x and y coordinates to our dataframe as columns
+
+# Note the column names of our dataframe
+head(swissAlti3D_df)
+
+
+ggplot(swissAlti3D_df, aes(x, y, fill = SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_1196)) +
+  geom_raster()
 
 ```
 
-Note that there are thee ways to plot this type of data in `ggplot2`: `geom_rect`, `geom_tile` and `geom_raster`. The latter is "a high performance special case for when all the tiles are the same size" (see [the docs](https://ggplot2.tidyverse.org/reference/geom_tile.html).
+Note that this approach, `ggplot` is not aware of the coordinate system assigned to our dataset. The `x` and `y` coordinates from our dataframe are assumed to be in a cartesian coordinate system. This implies two things: 
 
+1. This approach only works with datasets in a projected coordinate system (where the raster is assumed to be on a plane)
+2. We have to specify that the coordinate system in the two direction are equal with `cord_equal()` (`coord_sf()` will not work if we don't have any `sf` objects)
 
-Alternatively, you can add the hex colourcode to the dataframe and use `scale_fill_identitiy()`.
-```{r, eval = FALSE}
-map_1b_df <- mutate(map_1b_df, colorvalue = coltab[values+1])
-ggplot() +
-  geom_raster(data = map_1b_df, aes(x,y, fill = colorvalue)) +
-  scale_fill_identity() +
-  theme(legend.position = "none") +
-  coord_equal()
-```
-
-The big drawback of using `ggplot2` in this way: you cannot add a second layer with a `fill` aesthetic, since `ggplot2` only allows one per plot.
-
-###### Multiple bands
-
-
-
-In case of a 3-Band Raster Brick, each layer holds a value of 0 to 255 representing colours in the RGB colour model. Usually, the first layer represents **R**ed, the second **G**reen and the third **B**lue. We can subset the `RasterBrick` into the individual `RasterLayers` using double brackets (`[[1]]` for the first layer).
+//todo add example of WGS84 raster
 
 ```{r}
-map_3b
 
-map_3b[[1]]
+ggplot(swissAlti3D_df, aes(x, y, fill = SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_1196)) +
+  geom_raster() +
+  scale_fill_viridis_c() +
+  theme_void() +
+  coord_equal() +
+  theme(legend.position = "bottom")
+
 ```
 
-As with the singleband raster, we can extract the Values (this time RGB-Values) of each layer with `getValues()`.
+
+//todo combine sf and raster
+//body add an example of how sf and raster can be layered. This needs an additional dataset.
+
+
+
+### Package `tmap`
+
+While `ggplot2` was extended to work with spatial data, the package `tmap` was specifically designed to create maps. The developer created this package leaning on the "grammar of graphics" approach which is also implemented in `ggplot2`, so many of the concepts are the same (e.g. the concept of "layers" and using the `+`-sign). One main difference is that `tmap` does not use NSE, so column names always need to be quoted.
 
 ```{r}
-head(values(map_3b[[1]]),50)
+library(tmap)
+tmap_mode("plot") # <- to create static plots
+
+
+tm_shape(gemeinde_zh) + 
+  tm_polygons(col = "bezirksnam") 
+
 ```
 
-Again like with the single band raster, we now transform the Raster into a dataframe, this time storing the rgb values in columns (instead of the hex values as before).
+
+The fact that `tmap` is designed for maps makes it much easier to add map elements, such as a North Arrow. 
 
 ```{r}
-map_3b_df <- data.frame(
-  coordinates(map_3b),
-  r = values(map_3b[[1]]), 
-  g = values(map_3b[[2]]),
-  b = values(map_3b[[3]]))
-
-head(map_3b_df)
+tm_shape(gemeinde_zh) + 
+  tm_polygons(col = "bezirksnam")  +
+  tm_compass()
 ```
 
 
-With the function `rbg()` we can transform values into hex-codes.
-```{r}
-rgb(10,10,10,maxColorValue = 255)
-
-ggplot() + 
-  geom_raster(data = map_3b_df, aes(x,y,fill = rgb(r,g,b,maxColorValue = 255))) + 
-  scale_fill_identity() +
-  coord_equal()
-```
-
-Tipp: if your file is to large and ggplot has trouble plotting it fast, you can use `aggregate` to reduce the resolution
+It also means that visualizing a `RasterLayer` is built in to the package:
 
 ```{r}
-map_3b_lowres <- raster::aggregate(map_3b, fact = 5)
+tm_shape(swissAlti3D) +
+  tm_raster()
+
 ```
 
-
-
-##### Greyscale
-
-In greyscale maps, `raster` cannot find a associated colortable to match the values to rgb or hex colours.
-```{r}
-map_grey_path <- "sample_data/SMR_Musterdaten/SMR50_LV95_KGRS_Mosaic.tif"
-map_grey <- raster(map_grey_path)
-
-head(getValues(map_grey))
-head(colortable(map_grey))
-```
-
-However, the package `tiff` _can_ find the rgb values of a tiff, we just need to set `indexed = TRUE` and get the `color.map` attribute of the output:
-
-```{r}
-library(tiff)
-
-index <- readTIFF(map_grey_path,indexed = TRUE)
-colormap <- attr(index,"color.map")
-
-
-colormap[,1:8] # only showing the first 8 columns (of 256)
-```
-
-This is an index with three rows (**R**ed, **G**reen and **B**lue) and 265 columns (with are the Values from `getValues()`). We can now use `rgb()` to turn this matrix into a vector of 265 hex colours:
-
-```{r}
-coltab <- rgb(colormap[1,],colormap[2,],colormap[3,])
-
-scales::show_col(coltab,labels = FALSE)
-```
-
-Like before, we now turn the `RasterLayer` into a dataframe and use the `Values` and the newly created colortable to assign the correct values:
-
-```{r}
-map_grey_df <- data.frame(coordinates(map_grey),values = getValues(map_grey))
-
-
-names(coltab) <- 0:255
-
-ggplot() +
-  geom_raster(data = map_grey_df, aes(x,y, fill = factor(values))) +
-  scale_fill_manual(values = coltab) +
-  theme(legend.position = "none") +
-  coord_equal()
-```
-
+The most amazing thing about `tmap` probably is `tmap_mode("view")`. Run this code and then the two chunks above, you will be amazed. Learn more about this in chapter [Interactive Maps].
 
