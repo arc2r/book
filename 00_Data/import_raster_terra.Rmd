@@ -1,0 +1,26 @@
+## Importing raster data with `terra` 
+
+
+With the `terra` package, data is imported using the function `rast`. 
+
+```{r}
+library(terra)
+
+swissalti3d <- terra::rast("sample_data/swissalti3D/SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_1196.tif")
+
+```
+
+Just like before, calling the object in our console will give us the class name and some meta information on the dataset. 
+
+```{r}
+swissalti3d
+```
+
+And calling  `plot` on our object visualizes it spatially. 
+
+```{r}
+plot(swissalti3d)
+```
+
+
+//todo add method for rasters with multiple layers

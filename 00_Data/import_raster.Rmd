@@ -1,17 +1,16 @@
-## Importing raster data with `raster` or `terra`
+## Importing raster data with `raster`
 
 ```{r, include=FALSE}
 source("R/before_chapter.R", local = knitr::knit_global())
 ```
 
-To import raster data, we need a package that can specifically handle raster datasets. The package `raster` has for a long time been the go-to package for this. However, this package is currently in the process of being replaced with a successor, `terra`. We will showcase both methods here, starting with the `raster` package. Download the sample dataset [here](https://github.com/arc2r/book/raw/master/sample_data/swissalti3D/SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_1196.zip) and unzip it into your project folder. 
+To import raster data, we need a package that can specifically handle raster datasets. The package `raster` has for a long time been the go-to package for this. However, this package is currently in the process of being replaced with a successor, `terra`. Since `raster` is still in heavy use, we will show you how you handle raster data with this package.
 
-This dataset is a freely available sample for the swissALTI3D data. The full sample, including files at different resolutions, can be downloaded from [here](https://cms.geo.admin.ch/Topo/swissalti3d/swissalti3dgeotifflv95.zip).
+## Single band raster
 
+Download the sample dataset [here](https://github.com/arc2r/book/raw/master/sample_data/swissalti3D/SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_1196.zip) and unzip it into your project folder. This dataset is a freely available sample for the swissALTI3D data. The full sample, including files at different resolutions, can be downloaded from [here](https://cms.geo.admin.ch/Topo/swissalti3d/swissalti3dgeotifflv95.zip).
 
-### The `raster` package
-
-Now load the library `raster` the function `raster` to import the tif-file included in the zip file. Make sure you have set the path to your tif-file correctly. 
+Now load the library `raster` the function `raster` to import the tif-file included in the zip file. Make sure you have set the path to your tif-file correctly.
 
 ```{r}
 library(raster)
@@ -20,44 +19,18 @@ swissalti3d <- raster("sample_data/swissalti3D/SWISSALTI3D_10_TIFF_CHLV95_LN02_2
 
 ```
 
-The dataset is now imported into your project and ready to be viewed, analysed and processed. If we call the object in our console, we can see that the dataset was imported as a `RasterLayer` and can see some important statistics which you would typically find via Layer Properties -> Source in ArcGIS.
+The dataset is now imported into your project and ready to be viewed, analysed and processed. If we call the object in our console, we can see that the dataset was imported as a `RasterLayer` and can see some important statistics which you would typically find via Layer Properties -\> Source in ArcGIS.
 
 ```{r}
 swissalti3d
 ```
 
-To visualize the dataset, we can simply  call `plot` on our new object. 
+To visualize the dataset, we can simply call `plot` on our new object.
 
 ```{r}
 plot(swissalti3d)
 ```
 
+## Multiband Raster
 
-
-### The `terra` package
-
-
-With the `terra` package, data is imported using the function `rast`. 
-
-```{r}
-library(terra)
-
-swissalti3d <- terra::rast("sample_data/swissalti3D/SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_1196.tif")
-
-```
-
-Just like before, calling the object in our console will give us the class name and some meta information on the dataset. 
-
-```{r}
-swissalti3d
-```
-
-And calling  `plot` on our object visualizes it spatially. 
-
-```{r}
-plot(swissalti3d)
-```
-
-
-@todo add method for rasters with multiple layers
-
+//todo explain how to import multiband raster
