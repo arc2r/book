@@ -1,7 +1,6 @@
 rmd_files: [
   "index.Rmd",
   "00_Data/Data.Rmd",
-  "00_Data/import_r_vs_arcgis.Rmd",
   "00_Data/import_vector.Rmd",
   "00_Data/import_raster.Rmd",
   "01_Making_Maps/Making_Maps.Rmd",
