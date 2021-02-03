@@ -9,6 +9,15 @@ A dynamic map is what you get "for free" in ArcGIS within your "Map Window", a S
 **Prerequisite: ** Before you start making maps, you will have to familiarize yourself with importing raster or vector data into R. Read chapter [Data] to get up to speed. 
 
 
+<!-- Probably one of the first things you want to do when working with a dataset is visualizing it spatially. This is basically always the first thing you do in ArcGIS. So how do you this in R? -->
+
+<!-- If your aim is to explore the data, to just get a feel for it, your map needs to: -->
+
+<!-- 1. allow pan and zoom -->
+<!-- 2. display attribute information in popups -->
+<!-- 3. provide a background map -->
+<!-- 4. be easy to make -->
+
 <!-- However, beautiful and highly customized visualisations can become quite challenging. That is not to say that it cannot be achieved, there are plenty of beautiful examples of maps out there, created purely in R. Check out [Cédric Sherer's Website](https://www.cedricscherer.com/top/dataviz/#mapchallenge) for some beautiful examples.  -->
 
 

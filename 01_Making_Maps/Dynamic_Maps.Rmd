@@ -1,26 +1,41 @@
 ## Interactive Maps
 
-Probably one of the first things you want to do when working with a dataset is visualizing it spatially. This is basically always the first thing you do in ArcGIS. So how do you this in R?
-
-If your aim is to explore the data, to just get a feel for it, your map needs to:
-
-1. allow pan and zoom
-2. display attribute information in popups
-3. provide a background map
-4. be easy to make
-
-Before you start making maps however, you will have to familiarize yourself with importing raster or vector data into R in the first place. For Vector data, you can read chapter [2.2 Vector data](https://geocompr.robinlovelace.net/spatial-class.html#vector-data) from the book "Geocomputation with R". The next chapter [2.3 Raster data](https://geocompr.robinlovelace.net/spatial-class.html#raster-data) provides a very good overview on rasterdata in R
-
-There are many packages that provide these features. 
+As introduced in chapter [Making Maps], an interactive Map is the fundamental building block of ArcGIS. In R, we need to do some extra work to create such an interactive map, but this extra work sometimes means just one line of code. There are multiple packages that simplify creating maps:
 
 - [`leaflet`](https://rstudio.github.io/leaflet/)
 - [`mapview`](https://r-spatial.github.io/mapview/)
 - [`tmap`](https://github.com/mtennekes/tmap)
+- [`plotly`](https://plotly.com/r/)
 
-In terms of simplicity, versatility and scalability `tmap` is one of the best in my option. 
+`mapview` and `tmap` both build on the package `leaflet`, which in turn builds on [leaflet](https://leafletjs.com/), an open source JavaScript Library for interactive maps. There really is not much need to learn `leaflet`, since using `mapview` or `tmap` is much simpler. The package `plotly` builds on [plotly](https://plotly.com/), a very versatile graphics library that provides an API for `R`, `Python` and `Julia`. It is an amazing tool, but we will focus more on `mapview` and `tmap`.
 
-### Introduction to `tmap`
 
+
+### Package `mapview`
+
+The package `mapview` is highly automated and you get a very decent map when calling the function `mapview::mapview` on your geodata, without any additional arguments.
+
+```{r}
+library(arc2r)
+library(sf)
+library(raster)
+library(mapview)
+```
+
+```{r}
+mapview(gemeindegrenzen_zh)
+```
+
+
+
+
+### Package `tmap`
+
+
+//todo replace dataset with a swiss dataset
+
+
+//todo add prerequisite chapter static map on tmap
 To see how it works, import the usual libraries and the North Carolina Sample data.
 
 
