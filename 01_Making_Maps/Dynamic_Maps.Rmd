@@ -7,13 +7,17 @@ As introduced in chapter [Making Maps], an interactive Map is the fundamental bu
 - [`tmap`](https://github.com/mtennekes/tmap)
 - [`plotly`](https://plotly.com/r/)
 
-`mapview` and `tmap` both build on the package `leaflet`, which in turn builds on [leaflet](https://leafletjs.com/), an open source JavaScript Library for interactive maps. There really is not much need to learn `leaflet`, since using `mapview` or `tmap` is much simpler. The package `plotly` builds on [plotly](https://plotly.com/), a very versatile graphics library that provides an API for `R`, `Python` and `Julia`. It is an amazing tool, but we will focus more on `mapview` and `tmap`.
+`mapview` and `tmap` both build on the package `leaflet`, which in turn builds on [leaflet](https://leafletjs.com/), an open source JavaScript Library for interactive maps. There really is not much need to learn `leaflet`, since using `mapview` or `tmap` is much simpler. 
+
+The package `plotly` builds on [plotly](https://plotly.com/), a very versatile graphics library that provides an API for `R`, `Python` and `Julia`. It is an amazing tool, but we will focus more on `mapview` and `tmap`.
 
 
 
 ### Package `mapview`
 
-The package `mapview` is highly automated and you get a very decent map when calling the function `mapview::mapview` on your geodata, without any additional arguments.
+The package `mapview` is highly automated and you get a very decent map when calling the function `mapview::mapview` on your geodata, without any additional arguments. The aim of the package is to be quick and easy:
+
+> It’s main goal is to fill the gap of quick [...] interactive plotting to examine and visually investigate both aspects of spatial data, the geometries and their attributes.
 
 ```{r}
 library(arc2r)
