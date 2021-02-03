@@ -276,7 +276,7 @@ Developped by the Research Group for Geoinformatics @ ZHAW</a></li>
 <span id="cb11-3"><a href="Static_Maps.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb11-4"><a href="Static_Maps.html#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="do">## ── [1mAttaching packages[22m ─────────────────────────────────────── tidyverse 1.3.0 ──</span></span>
 <span id="cb11-5"><a href="Static_Maps.html#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [32m✔[39m [34mggplot2[39m 3.3.3     [32m✔[39m [34mpurrr  [39m 0.3.4</span></span>
-<span id="cb11-6"><a href="Static_Maps.html#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [32m✔[39m [34mtibble [39m 3.0.6     [32m✔[39m [34mdplyr  [39m 1.0.3</span></span>
+<span id="cb11-6"><a href="Static_Maps.html#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [32m✔[39m [34mtibble [39m 3.0.6     [32m✔[39m [34mdplyr  [39m 1.0.4</span></span>
 <span id="cb11-7"><a href="Static_Maps.html#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [32m✔[39m [34mtidyr  [39m 1.1.2     [32m✔[39m [34mstringr[39m 1.4.0</span></span>
 <span id="cb11-8"><a href="Static_Maps.html#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [32m✔[39m [34mreadr  [39m 1.4.0     [32m✔[39m [34mforcats[39m 0.5.1</span></span>
 <span id="cb11-9"><a href="Static_Maps.html#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="do">## ── [1mConflicts[22m ────────────────────────────────────────── tidyverse_conflicts() ──</span></span>
@@ -348,39 +348,40 @@ Developped by the Research Group for Geoinformatics @ ZHAW</a></li>
 <p>Tif files with colours can either be single band or include multiple bands in a single tif file. These need to be treated differently. Let’s take two variants of the <a href="https://shop.swisstopo.admin.ch/de/products/maps/digital_maps/digital/srm10">swiss raster map 1:50k</a> map. One is a single band dataset, the other a 3-band dataset.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="Static_Maps.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
 <span id="cb17-2"><a href="Static_Maps.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rgdal)</span>
-<span id="cb17-3"><a href="Static_Maps.html#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="do">## rgdal: version: 1.5-21, (SVN revision 1105)</span></span>
+<span id="cb17-3"><a href="Static_Maps.html#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="do">## rgdal: version: 1.5-22, (SVN revision 1119)</span></span>
 <span id="cb17-4"><a href="Static_Maps.html#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Geospatial Data Abstraction Library extensions to R successfully loaded</span></span>
-<span id="cb17-5"><a href="Static_Maps.html#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Loaded GDAL runtime: GDAL 3.1.4, released 2020/10/20</span></span>
+<span id="cb17-5"><a href="Static_Maps.html#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Loaded GDAL runtime: GDAL 3.2.1, released 2020/12/29</span></span>
 <span id="cb17-6"><a href="Static_Maps.html#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Path to GDAL shared files: /Users/runner/work/_temp/Library/sf/gdal</span></span>
 <span id="cb17-7"><a href="Static_Maps.html#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="do">## GDAL binary built with GEOS: TRUE </span></span>
-<span id="cb17-8"><a href="Static_Maps.html#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Loaded PROJ runtime: Rel. 6.3.1, February 10th, 2020, [PJ_VERSION: 631]</span></span>
-<span id="cb17-9"><a href="Static_Maps.html#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Path to PROJ shared files: /Users/runner/work/_temp/Library/rgdal/proj</span></span>
-<span id="cb17-10"><a href="Static_Maps.html#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="do">## Linking to sp version:1.4-5</span></span>
-<span id="cb17-11"><a href="Static_Maps.html#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="do">## To mute warnings of possible GDAL/OSR exportToProj4() degradation,</span></span>
-<span id="cb17-12"><a href="Static_Maps.html#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="do">## use options(&quot;rgdal_show_exportToProj4_warnings&quot;=&quot;none&quot;) before loading rgdal.</span></span>
-<span id="cb17-13"><a href="Static_Maps.html#cb17-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-14"><a href="Static_Maps.html#cb17-14" aria-hidden="true" tabindex="-1"></a>path_1b <span class="ot">&lt;-</span> <span class="st">&quot;sample_data/SMR_Musterdaten/SMR50_LV95_KOMB_Mosaic.tif&quot;</span></span>
-<span id="cb17-15"><a href="Static_Maps.html#cb17-15" aria-hidden="true" tabindex="-1"></a>path_3b <span class="ot">&lt;-</span> <span class="st">&quot;sample_data/SMR_Musterdaten/SMR50_LV95_KREL_10L_Mosaic.tif&quot;</span></span>
-<span id="cb17-16"><a href="Static_Maps.html#cb17-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-17"><a href="Static_Maps.html#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="fu">raster</span>(path_1b)</span>
-<span id="cb17-18"><a href="Static_Maps.html#cb17-18" aria-hidden="true" tabindex="-1"></a><span class="do">## class      : RasterLayer </span></span>
-<span id="cb17-19"><a href="Static_Maps.html#cb17-19" aria-hidden="true" tabindex="-1"></a><span class="do">## dimensions : 800, 800, 640000  (nrow, ncol, ncell)</span></span>
-<span id="cb17-20"><a href="Static_Maps.html#cb17-20" aria-hidden="true" tabindex="-1"></a><span class="do">## resolution : 2.5, 2.5  (x, y)</span></span>
-<span id="cb17-21"><a href="Static_Maps.html#cb17-21" aria-hidden="true" tabindex="-1"></a><span class="do">## extent     : 2599000, 2601000, 1196000, 1198000  (xmin, xmax, ymin, ymax)</span></span>
-<span id="cb17-22"><a href="Static_Maps.html#cb17-22" aria-hidden="true" tabindex="-1"></a><span class="do">## crs        : NA </span></span>
-<span id="cb17-23"><a href="Static_Maps.html#cb17-23" aria-hidden="true" tabindex="-1"></a><span class="do">## source     : /Users/runner/work/book/book/sample_data/SMR_Musterdaten/SMR50_LV95_KOMB_Mosaic.tif </span></span>
-<span id="cb17-24"><a href="Static_Maps.html#cb17-24" aria-hidden="true" tabindex="-1"></a><span class="do">## names      : SMR50_LV95_KOMB_Mosaic </span></span>
-<span id="cb17-25"><a href="Static_Maps.html#cb17-25" aria-hidden="true" tabindex="-1"></a><span class="do">## values     : 0, 255  (min, max)</span></span>
-<span id="cb17-26"><a href="Static_Maps.html#cb17-26" aria-hidden="true" tabindex="-1"></a><span class="fu">raster</span>(path_3b)</span>
-<span id="cb17-27"><a href="Static_Maps.html#cb17-27" aria-hidden="true" tabindex="-1"></a><span class="do">## class      : RasterLayer </span></span>
-<span id="cb17-28"><a href="Static_Maps.html#cb17-28" aria-hidden="true" tabindex="-1"></a><span class="do">## band       : 1  (of  3  bands)</span></span>
-<span id="cb17-29"><a href="Static_Maps.html#cb17-29" aria-hidden="true" tabindex="-1"></a><span class="do">## dimensions : 400, 400, 160000  (nrow, ncol, ncell)</span></span>
-<span id="cb17-30"><a href="Static_Maps.html#cb17-30" aria-hidden="true" tabindex="-1"></a><span class="do">## resolution : 5, 5  (x, y)</span></span>
-<span id="cb17-31"><a href="Static_Maps.html#cb17-31" aria-hidden="true" tabindex="-1"></a><span class="do">## extent     : 2599000, 2601000, 1196000, 1198000  (xmin, xmax, ymin, ymax)</span></span>
-<span id="cb17-32"><a href="Static_Maps.html#cb17-32" aria-hidden="true" tabindex="-1"></a><span class="do">## crs        : NA </span></span>
-<span id="cb17-33"><a href="Static_Maps.html#cb17-33" aria-hidden="true" tabindex="-1"></a><span class="do">## source     : /Users/runner/work/book/book/sample_data/SMR_Musterdaten/SMR50_LV95_KREL_10L_Mosaic.tif </span></span>
-<span id="cb17-34"><a href="Static_Maps.html#cb17-34" aria-hidden="true" tabindex="-1"></a><span class="do">## names      : SMR50_LV95_KREL_10L_Mosaic </span></span>
-<span id="cb17-35"><a href="Static_Maps.html#cb17-35" aria-hidden="true" tabindex="-1"></a><span class="do">## values     : 0, 255  (min, max)</span></span></code></pre></div>
+<span id="cb17-8"><a href="Static_Maps.html#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Loaded PROJ runtime: Rel. 7.2.1, January 1st, 2021, [PJ_VERSION: 721]</span></span>
+<span id="cb17-9"><a href="Static_Maps.html#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Path to PROJ shared files: /Users/runner/Library/Application Support/proj:/usr/local/opt/proj/share/proj:/usr/local/Cellar/proj/7.2.1/share/proj</span></span>
+<span id="cb17-10"><a href="Static_Maps.html#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="do">## PROJ CDN enabled: FALSE</span></span>
+<span id="cb17-11"><a href="Static_Maps.html#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="do">## Linking to sp version:1.4-5</span></span>
+<span id="cb17-12"><a href="Static_Maps.html#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="do">## To mute warnings of possible GDAL/OSR exportToProj4() degradation,</span></span>
+<span id="cb17-13"><a href="Static_Maps.html#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="do">## use options(&quot;rgdal_show_exportToProj4_warnings&quot;=&quot;none&quot;) before loading rgdal.</span></span>
+<span id="cb17-14"><a href="Static_Maps.html#cb17-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-15"><a href="Static_Maps.html#cb17-15" aria-hidden="true" tabindex="-1"></a>path_1b <span class="ot">&lt;-</span> <span class="st">&quot;sample_data/SMR_Musterdaten/SMR50_LV95_KOMB_Mosaic.tif&quot;</span></span>
+<span id="cb17-16"><a href="Static_Maps.html#cb17-16" aria-hidden="true" tabindex="-1"></a>path_3b <span class="ot">&lt;-</span> <span class="st">&quot;sample_data/SMR_Musterdaten/SMR50_LV95_KREL_10L_Mosaic.tif&quot;</span></span>
+<span id="cb17-17"><a href="Static_Maps.html#cb17-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-18"><a href="Static_Maps.html#cb17-18" aria-hidden="true" tabindex="-1"></a><span class="fu">raster</span>(path_1b)</span>
+<span id="cb17-19"><a href="Static_Maps.html#cb17-19" aria-hidden="true" tabindex="-1"></a><span class="do">## class      : RasterLayer </span></span>
+<span id="cb17-20"><a href="Static_Maps.html#cb17-20" aria-hidden="true" tabindex="-1"></a><span class="do">## dimensions : 800, 800, 640000  (nrow, ncol, ncell)</span></span>
+<span id="cb17-21"><a href="Static_Maps.html#cb17-21" aria-hidden="true" tabindex="-1"></a><span class="do">## resolution : 2.5, 2.5  (x, y)</span></span>
+<span id="cb17-22"><a href="Static_Maps.html#cb17-22" aria-hidden="true" tabindex="-1"></a><span class="do">## extent     : 2599000, 2601000, 1196000, 1198000  (xmin, xmax, ymin, ymax)</span></span>
+<span id="cb17-23"><a href="Static_Maps.html#cb17-23" aria-hidden="true" tabindex="-1"></a><span class="do">## crs        : NA </span></span>
+<span id="cb17-24"><a href="Static_Maps.html#cb17-24" aria-hidden="true" tabindex="-1"></a><span class="do">## source     : /Users/runner/work/book/book/sample_data/SMR_Musterdaten/SMR50_LV95_KOMB_Mosaic.tif </span></span>
+<span id="cb17-25"><a href="Static_Maps.html#cb17-25" aria-hidden="true" tabindex="-1"></a><span class="do">## names      : SMR50_LV95_KOMB_Mosaic </span></span>
+<span id="cb17-26"><a href="Static_Maps.html#cb17-26" aria-hidden="true" tabindex="-1"></a><span class="do">## values     : 0, 255  (min, max)</span></span>
+<span id="cb17-27"><a href="Static_Maps.html#cb17-27" aria-hidden="true" tabindex="-1"></a><span class="fu">raster</span>(path_3b)</span>
+<span id="cb17-28"><a href="Static_Maps.html#cb17-28" aria-hidden="true" tabindex="-1"></a><span class="do">## class      : RasterLayer </span></span>
+<span id="cb17-29"><a href="Static_Maps.html#cb17-29" aria-hidden="true" tabindex="-1"></a><span class="do">## band       : 1  (of  3  bands)</span></span>
+<span id="cb17-30"><a href="Static_Maps.html#cb17-30" aria-hidden="true" tabindex="-1"></a><span class="do">## dimensions : 400, 400, 160000  (nrow, ncol, ncell)</span></span>
+<span id="cb17-31"><a href="Static_Maps.html#cb17-31" aria-hidden="true" tabindex="-1"></a><span class="do">## resolution : 5, 5  (x, y)</span></span>
+<span id="cb17-32"><a href="Static_Maps.html#cb17-32" aria-hidden="true" tabindex="-1"></a><span class="do">## extent     : 2599000, 2601000, 1196000, 1198000  (xmin, xmax, ymin, ymax)</span></span>
+<span id="cb17-33"><a href="Static_Maps.html#cb17-33" aria-hidden="true" tabindex="-1"></a><span class="do">## crs        : NA </span></span>
+<span id="cb17-34"><a href="Static_Maps.html#cb17-34" aria-hidden="true" tabindex="-1"></a><span class="do">## source     : /Users/runner/work/book/book/sample_data/SMR_Musterdaten/SMR50_LV95_KREL_10L_Mosaic.tif </span></span>
+<span id="cb17-35"><a href="Static_Maps.html#cb17-35" aria-hidden="true" tabindex="-1"></a><span class="do">## names      : SMR50_LV95_KREL_10L_Mosaic </span></span>
+<span id="cb17-36"><a href="Static_Maps.html#cb17-36" aria-hidden="true" tabindex="-1"></a><span class="do">## values     : 0, 255  (min, max)</span></span></code></pre></div>
 <p>As you can see in the output of <code>raster(path_3b)</code>, only one of the 3 bands was imported with <code>raster::raster</code>. In the case of multiband rasters, it’s better to use <code>raster::brick</code>:</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="Static_Maps.html#cb18-1" aria-hidden="true" tabindex="-1"></a>map_1b <span class="ot">&lt;-</span> <span class="fu">raster</span>(path_1b)</span>
 <span id="cb18-2"><a href="Static_Maps.html#cb18-2" aria-hidden="true" tabindex="-1"></a>map_3b <span class="ot">&lt;-</span> <span class="fu">brick</span>(path_3b)</span></code></pre></div>

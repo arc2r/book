@@ -264,16 +264,16 @@ Developped by the Research Group for Geoinformatics @ ZHAW</a></li>
 <div id="importing-vector-data-with-sf" class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> Importing vector data with <code>sf</code></h2>
 <p>First, let’s load the library <code>sf</code>. Read chapter PLACEHOLDER If you haven’t installed it yet.
-<span class="citation">@todo</span> replace placeholder</p>
+//todo replace placeholder</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="import_vector.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
 <span id="cb1-2"><a href="import_vector.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Linking to GEOS 3.8.1, GDAL 3.1.4, PROJ 6.3.1</span></span></code></pre></div>
 <p>As mentioned, <code>sf</code> is a great packge to facilitate handling vector data in R. “sf” stands for <em>s</em>imple <em>f</em>eatures, which is an open standard developed by the Open Geospatial Consortium (OGC). You will recognize many of these feature types from your everyday GIS-experience (see figure)
-<span class="citation">@todo</span> add figure reference</p>
-<p><span class="citation">@todo</span> added reference with bibtex
+//todo add figure reference</p>
+<p>//todo added reference with bibtex
 <img src="images/sf-classes.png" alt="The 7 (of 17) most important simple feature types. Image from https://geocompr.robinlovelace.net" /></p>
 <p>To import a vector dataset into <code>R</code>, we can use the function <code>read_sf</code> as in the example below.
-<span class="citation">@todo</span> how does the user get access to this dataset?
-<span class="citation">@body</span> make this available through the packgage?</p>
+//todo how does the user get access to this dataset?
+//body make this available through the packgage?</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="import_vector.html#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-2"><a href="import_vector.html#cb2-2" aria-hidden="true" tabindex="-1"></a>ARE_waedenswil <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(<span class="st">&quot;sample_data/Entsorgung_Waedenswil/ARE_waedenswil.shp&quot;</span>)</span>
 <span id="cb2-3"><a href="import_vector.html#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
