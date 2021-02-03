@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3.2 Importing vector data with sf | All things R Spatial</title>
-  <meta name="description" content="3.2 Importing vector data with sf | All things R Spatial" />
+  <title>3.1 Importing vector data with sf | All things R Spatial</title>
+  <meta name="description" content="3.1 Importing vector data with sf | All things R Spatial" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3.2 Importing vector data with sf | All things R Spatial" />
+  <meta property="og:title" content="3.1 Importing vector data with sf | All things R Spatial" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3.2 Importing vector data with sf | All things R Spatial" />
+  <meta name="twitter:title" content="3.1 Importing vector data with sf | All things R Spatial" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="import_r_vs_arcgis.html"/>
-<link rel="next" href="import_raster.html"/>
+<link rel="prev" href="Data.html"/>
+<link rel="next" href="import_raster_raster.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -60,6 +60,16 @@
 <script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script>
 <script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
 <script src="libs/leaflet-providers-plugin-2.0.4.1/leaflet-providers-plugin.js"></script>
+<script src="libs/FlatGeoBuf-3.3.3/fgb.js"></script>
+<script src="libs/FlatGeoBuf-3.3.3/flatgeobuf-geojson.min.js"></script>
+<script src="libs/chromajs-2.1.0/chroma.min.js"></script>
+<link id="gemeindegrenzen_zh-1-attachment" rel="attachment" href="libs/gemeindegrenzen_zh-0.0.1/gemeindegrenzen_zh_layer.fgb"/>
+<link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
+<script src="libs/HomeButton-0.0.1/home-button.js"></script>
+<script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
+<script src="libs/clipboard-0.0.1/setClipboardText.js"></script>
+<link href="libs/mapviewCSS-0.0.1/mapview-popup.css" rel="stylesheet" />
+<link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -146,20 +156,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="index.html"><a href="index.html#how-to-use-this-book"><i class="fa fa-check"></i><b>2</b> How to use this book</a></li>
 <li class="chapter" data-level="3" data-path="Data.html"><a href="Data.html"><i class="fa fa-check"></i><b>3</b> Data</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="import_r_vs_arcgis.html"><a href="import_r_vs_arcgis.html"><i class="fa fa-check"></i><b>3.1</b> Importing Data: R vs. ArcGIS</a></li>
-<li class="chapter" data-level="3.2" data-path="import_vector.html"><a href="import_vector.html"><i class="fa fa-check"></i><b>3.2</b> Importing vector data with <code>sf</code></a></li>
-<li class="chapter" data-level="3.3" data-path="import_raster.html"><a href="import_raster.html"><i class="fa fa-check"></i><b>3.3</b> Importing raster data with <code>raster</code> or <code>terra</code></a></li>
+<li class="chapter" data-level="3.1" data-path="import_vector.html"><a href="import_vector.html"><i class="fa fa-check"></i><b>3.1</b> Importing vector data with <code>sf</code></a></li>
+<li class="chapter" data-level="3.2" data-path="import_raster_raster.html"><a href="import_raster_raster.html"><i class="fa fa-check"></i><b>3.2</b> Importing raster data with <code>raster</code></a></li>
+<li class="chapter" data-level="3.3" data-path="import_raster_raster.html"><a href="import_raster_raster.html#single-band-raster"><i class="fa fa-check"></i><b>3.3</b> Single band raster</a></li>
+<li class="chapter" data-level="3.4" data-path="import_raster_raster.html"><a href="import_raster_raster.html#multiband-raster"><i class="fa fa-check"></i><b>3.4</b> Multiband Raster</a></li>
+<li class="chapter" data-level="3.5" data-path="import_raster_terra.html"><a href="import_raster_terra.html"><i class="fa fa-check"></i><b>3.5</b> Importing raster data with <code>terra</code></a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="Making_Maps.html"><a href="Making_Maps.html"><i class="fa fa-check"></i><b>4</b> Making Maps</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="Static_Maps.html"><a href="Static_Maps.html"><i class="fa fa-check"></i><b>4.1</b> Static Maps</a>
 <ul>
-<li class="chapter" data-level="4.1.1" data-path="Static_Maps.html"><a href="Static_Maps.html#prerequisit"><i class="fa fa-check"></i><b>4.1.1</b> Prerequisit</a></li>
-<li class="chapter" data-level="4.1.2" data-path="Static_Maps.html"><a href="Static_Maps.html#static-maps-with-ggplot2"><i class="fa fa-check"></i><b>4.1.2</b> Static maps with <code>ggplot2</code></a></li>
+<li class="chapter" data-level="4.1.1" data-path="Static_Maps.html"><a href="Static_Maps.html#package-ggplot2"><i class="fa fa-check"></i><b>4.1.1</b> Package <code>ggplot2</code></a></li>
+<li class="chapter" data-level="4.1.2" data-path="Static_Maps.html"><a href="Static_Maps.html#package-tmap"><i class="fa fa-check"></i><b>4.1.2</b> Package <code>tmap</code></a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="Dynamic_Maps.html"><a href="Dynamic_Maps.html"><i class="fa fa-check"></i><b>4.2</b> Interactive Maps</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="Dynamic_Maps.html"><a href="Dynamic_Maps.html#introduction-to-tmap"><i class="fa fa-check"></i><b>4.2.1</b> Introduction to <code>tmap</code></a></li>
+<li class="chapter" data-level="4.2.1" data-path="Dynamic_Maps.html"><a href="Dynamic_Maps.html#package-mapview"><i class="fa fa-check"></i><b>4.2.1</b> Package <code>mapview</code></a></li>
+<li class="chapter" data-level="4.2.2" data-path="Dynamic_Maps.html"><a href="Dynamic_Maps.html#package-tmap-1"><i class="fa fa-check"></i><b>4.2.2</b> Package <code>tmap</code></a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="Basic_spatial_operations.html"><a href="Basic_spatial_operations.html"><i class="fa fa-check"></i><b>5</b> Basic spatial operations</a>
@@ -261,49 +274,53 @@ Developped by the Research Group for Geoinformatics @ ZHAW</a></li>
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="importing-vector-data-with-sf" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> Importing vector data with <code>sf</code></h2>
-<p>First, let’s load the library <code>sf</code>. Read chapter PLACEHOLDER If you haven’t installed it yet.
-//todo replace placeholder</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="import_vector.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb1-2"><a href="import_vector.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Linking to GEOS 3.8.1, GDAL 3.1.4, PROJ 6.3.1</span></span></code></pre></div>
-<p>As mentioned, <code>sf</code> is a great packge to facilitate handling vector data in R. “sf” stands for <em>s</em>imple <em>f</em>eatures, which is an open standard developed by the Open Geospatial Consortium (OGC). You will recognize many of these feature types from your everyday GIS-experience (see figure)
-//todo add figure reference</p>
-<p>//todo added reference with bibtex
-<img src="images/sf-classes.png" alt="The 7 (of 17) most important simple feature types. Image from https://geocompr.robinlovelace.net" /></p>
+<div id="importing-vector-data-with-sf" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Importing vector data with <code>sf</code></h2>
+<p>Most vector data that you use in everyday GIS work are what are called “simple features”. Simple features are an open standard developed by the Open Geospatial Consortium (OGC). The most common feature types are displayed in figure @ref{fig:sf_types}.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="import_vector.html#cb1-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;images/sf-classes.png&quot;</span>)</span></code></pre></div>
+<div class="figure">
+<img src="images/sf-classes.png" alt="The 7 (of 17) most important simple feature types. Image from https://geocompr.robinlovelace.net" width="300" />
+<p class="caption">
+(#fig:sf_types)The 7 (of 17) most important simple feature types. Image from <a href="https://geocompr.robinlovelace.net" class="uri">https://geocompr.robinlovelace.net</a>
+</p>
+</div>
+<p>//todo added reference with bibtex</p>
+<p>To handle these simple features in <code>R</code>, we need the library <code>sf</code>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="import_vector.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb2-2"><a href="import_vector.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Linking to GEOS 3.8.1, GDAL 3.1.4, PROJ 6.3.1</span></span></code></pre></div>
 <p>To import a vector dataset into <code>R</code>, we can use the function <code>read_sf</code> as in the example below.
 //todo how does the user get access to this dataset?
-//body make this available through the packgage?</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="import_vector.html#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-2"><a href="import_vector.html#cb2-2" aria-hidden="true" tabindex="-1"></a>ARE_waedenswil <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(<span class="st">&quot;sample_data/Entsorgung_Waedenswil/ARE_waedenswil.shp&quot;</span>)</span>
-<span id="cb2-3"><a href="import_vector.html#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="import_vector.html#cb2-4" aria-hidden="true" tabindex="-1"></a>ARE_waedenswil</span>
-<span id="cb2-5"><a href="import_vector.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Simple feature collection with 13 features and 5 fields</span></span>
-<span id="cb2-6"><a href="import_vector.html#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="do">## geometry type:  MULTIPOLYGON</span></span>
-<span id="cb2-7"><a href="import_vector.html#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="do">## dimension:      XY</span></span>
-<span id="cb2-8"><a href="import_vector.html#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="do">## bbox:           xmin: 2689594 ymin: 1228563 xmax: 2694829 ymax: 1234095</span></span>
-<span id="cb2-9"><a href="import_vector.html#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="do">## projected CRS:  CH1903+ / LV95</span></span>
-<span id="cb2-10"><a href="import_vector.html#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m# A tibble: 13 x 6[39m</span></span>
-<span id="cb2-11"><a href="import_vector.html#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="do">##       ID KLASSE KLASSE_DE   KLASSE_FR   KLASSE_NUM                      geometry</span></span>
-<span id="cb2-12"><a href="import_vector.html#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="do">##    [3m[90m&lt;int&gt;[39m[23m [3m[90m&lt;chr&gt;[39m[23m  [3m[90m&lt;chr&gt;[39m[23m       [3m[90m&lt;chr&gt;[39m[23m            [3m[90m&lt;dbl&gt;[39m[23m            [3m[90m&lt;MULTIPOLYGON [m]&gt;[39m[23m</span></span>
-<span id="cb2-13"><a href="import_vector.html#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m 1[39m    69 D      D - gering… D - faible…          4 (((2692378 1233048, 2692373 …</span></span>
-<span id="cb2-14"><a href="import_vector.html#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m 2[39m  [4m1[24m371 D      D - gering… D - faible…          4 (((2689720 1232195, 2689767 …</span></span>
-<span id="cb2-15"><a href="import_vector.html#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m 3[39m  [4m3[24m578 D      D - gering… D - faible…          4 (((2692766 1232135, 2692690 …</span></span>
-<span id="cb2-16"><a href="import_vector.html#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m 4[39m  [4m3[24m591 D      D - gering… D - faible…          4 (((2691861 1232707, 2691907 …</span></span>
-<span id="cb2-17"><a href="import_vector.html#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m 5[39m  [4m3[24m696 A      A - sehr g… A - très b…          1 (((2693943 1231286, 2693834 …</span></span>
-<span id="cb2-18"><a href="import_vector.html#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m 6[39m  [4m3[24m901 B      B - gute E… B - bonne …          2 (((2693183 1231097, 2693113 …</span></span>
-<span id="cb2-19"><a href="import_vector.html#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m 7[39m  [4m4[24m137 B      B - gute E… B - bonne …          2 (((2690970 1232339, 2690947 …</span></span>
-<span id="cb2-20"><a href="import_vector.html#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m 8[39m  [4m4[24m161 B      B - gute E… B - bonne …          2 (((2691724 1232478, 2691701 …</span></span>
-<span id="cb2-21"><a href="import_vector.html#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m 9[39m  [4m4[24m225 B      B - gute E… B - bonne …          2 (((2692266 1232198, 2692243 …</span></span>
-<span id="cb2-22"><a href="import_vector.html#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m10[39m  [4m4[24m401 C      C - mittel… C - desser…          3 (((2694681 1230763, 2694659 …</span></span>
-<span id="cb2-23"><a href="import_vector.html#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m11[39m  [4m5[24m208 C      C - mittel… C - desser…          3 (((2693064 1229206, 2693041 …</span></span>
-<span id="cb2-24"><a href="import_vector.html#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m12[39m  [4m5[24m319 C      C - mittel… C - desser…          3 (((2690879 1233702, 2690856 …</span></span>
-<span id="cb2-25"><a href="import_vector.html#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m13[39m  [4m5[24m514 C      C - mittel… C - desser…          3 (((2693168 1229907, 2693145 …</span></span></code></pre></div>
-<p>Much of the beauty in <code>sf</code> comes from it’s simplicity: As you see from importing the shapefile, it is very much like a <code>data.frame</code>, a structure that you are probabbly know very well. In fact, it <em>is</em> a data.frame, as you can see here:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="import_vector.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.data.frame</span>(ARE_waedenswil)</span>
-<span id="cb3-2"><a href="import_vector.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] TRUE</span></span></code></pre></div>
+//body make this available through the package?</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="import_vector.html#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-2"><a href="import_vector.html#cb3-2" aria-hidden="true" tabindex="-1"></a>ARE_waedenswil <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(<span class="st">&quot;sample_data/Entsorgung_Waedenswil/ARE_waedenswil.shp&quot;</span>)</span>
+<span id="cb3-3"><a href="import_vector.html#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="import_vector.html#cb3-4" aria-hidden="true" tabindex="-1"></a>ARE_waedenswil</span>
+<span id="cb3-5"><a href="import_vector.html#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Simple feature collection with 13 features and 5 fields</span></span>
+<span id="cb3-6"><a href="import_vector.html#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="do">## geometry type:  MULTIPOLYGON</span></span>
+<span id="cb3-7"><a href="import_vector.html#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="do">## dimension:      XY</span></span>
+<span id="cb3-8"><a href="import_vector.html#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="do">## bbox:           xmin: 2689594 ymin: 1228563 xmax: 2694829 ymax: 1234095</span></span>
+<span id="cb3-9"><a href="import_vector.html#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="do">## projected CRS:  CH1903+ / LV95</span></span>
+<span id="cb3-10"><a href="import_vector.html#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m# A tibble: 13 x 6[39m</span></span>
+<span id="cb3-11"><a href="import_vector.html#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="do">##       ID KLASSE KLASSE_DE   KLASSE_FR   KLASSE_NUM                      geometry</span></span>
+<span id="cb3-12"><a href="import_vector.html#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="do">##    [3m[90m&lt;int&gt;[39m[23m [3m[90m&lt;chr&gt;[39m[23m  [3m[90m&lt;chr&gt;[39m[23m       [3m[90m&lt;chr&gt;[39m[23m            [3m[90m&lt;dbl&gt;[39m[23m            [3m[90m&lt;MULTIPOLYGON [m]&gt;[39m[23m</span></span>
+<span id="cb3-13"><a href="import_vector.html#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m 1[39m    69 D      D - gering… D - faible…          4 (((2692378 1233048, 2692373 …</span></span>
+<span id="cb3-14"><a href="import_vector.html#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m 2[39m  [4m1[24m371 D      D - gering… D - faible…          4 (((2689720 1232195, 2689767 …</span></span>
+<span id="cb3-15"><a href="import_vector.html#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m 3[39m  [4m3[24m578 D      D - gering… D - faible…          4 (((2692766 1232135, 2692690 …</span></span>
+<span id="cb3-16"><a href="import_vector.html#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m 4[39m  [4m3[24m591 D      D - gering… D - faible…          4 (((2691861 1232707, 2691907 …</span></span>
+<span id="cb3-17"><a href="import_vector.html#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m 5[39m  [4m3[24m696 A      A - sehr g… A - très b…          1 (((2693943 1231286, 2693834 …</span></span>
+<span id="cb3-18"><a href="import_vector.html#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m 6[39m  [4m3[24m901 B      B - gute E… B - bonne …          2 (((2693183 1231097, 2693113 …</span></span>
+<span id="cb3-19"><a href="import_vector.html#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m 7[39m  [4m4[24m137 B      B - gute E… B - bonne …          2 (((2690970 1232339, 2690947 …</span></span>
+<span id="cb3-20"><a href="import_vector.html#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m 8[39m  [4m4[24m161 B      B - gute E… B - bonne …          2 (((2691724 1232478, 2691701 …</span></span>
+<span id="cb3-21"><a href="import_vector.html#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m 9[39m  [4m4[24m225 B      B - gute E… B - bonne …          2 (((2692266 1232198, 2692243 …</span></span>
+<span id="cb3-22"><a href="import_vector.html#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m10[39m  [4m4[24m401 C      C - mittel… C - desser…          3 (((2694681 1230763, 2694659 …</span></span>
+<span id="cb3-23"><a href="import_vector.html#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m11[39m  [4m5[24m208 C      C - mittel… C - desser…          3 (((2693064 1229206, 2693041 …</span></span>
+<span id="cb3-24"><a href="import_vector.html#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m12[39m  [4m5[24m319 C      C - mittel… C - desser…          3 (((2690879 1233702, 2690856 …</span></span>
+<span id="cb3-25"><a href="import_vector.html#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="do">## [90m13[39m  [4m5[24m514 C      C - mittel… C - desser…          3 (((2693168 1229907, 2693145 …</span></span></code></pre></div>
+<p>And you are done! The shapefile is now imported into your <code>R</code> Session and you can start working with it. Much of the beauty in <code>sf</code> comes from it’s simplicity: As you see from importing the shapefile, it is very much like a <code>data.frame</code>, a structure that you are probably know very well. In fact, it <em>is</em> a data.frame, as you can see here:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="import_vector.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.data.frame</span>(ARE_waedenswil)</span>
+<span id="cb4-2"><a href="import_vector.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] TRUE</span></span></code></pre></div>
 <p><code>sf</code> provides methods for various generics, e.g. you can use <code>plot()</code> on the object for a simple visualisation.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="import_vector.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ARE_waedenswil)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="import_vector.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ARE_waedenswil)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 
 </div>
@@ -312,8 +329,8 @@ Developped by the Research Group for Geoinformatics @ ZHAW</a></li>
           </div>
         </div>
       </div>
-<a href="import_r_vs_arcgis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="import_raster.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="Data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="import_raster_raster.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -60,6 +60,16 @@
 <script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script>
 <script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
 <script src="libs/leaflet-providers-plugin-2.0.4.1/leaflet-providers-plugin.js"></script>
+<script src="libs/FlatGeoBuf-3.3.3/fgb.js"></script>
+<script src="libs/FlatGeoBuf-3.3.3/flatgeobuf-geojson.min.js"></script>
+<script src="libs/chromajs-2.1.0/chroma.min.js"></script>
+<link id="gemeindegrenzen_zh-1-attachment" rel="attachment" href="libs/gemeindegrenzen_zh-0.0.1/gemeindegrenzen_zh_layer.fgb"/>
+<link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
+<script src="libs/HomeButton-0.0.1/home-button.js"></script>
+<script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
+<script src="libs/clipboard-0.0.1/setClipboardText.js"></script>
+<link href="libs/mapviewCSS-0.0.1/mapview-popup.css" rel="stylesheet" />
+<link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -146,20 +156,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="index.html"><a href="index.html#how-to-use-this-book"><i class="fa fa-check"></i><b>2</b> How to use this book</a></li>
 <li class="chapter" data-level="3" data-path="Data.html"><a href="Data.html"><i class="fa fa-check"></i><b>3</b> Data</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="import_r_vs_arcgis.html"><a href="import_r_vs_arcgis.html"><i class="fa fa-check"></i><b>3.1</b> Importing Data: R vs. ArcGIS</a></li>
-<li class="chapter" data-level="3.2" data-path="import_vector.html"><a href="import_vector.html"><i class="fa fa-check"></i><b>3.2</b> Importing vector data with <code>sf</code></a></li>
-<li class="chapter" data-level="3.3" data-path="import_raster.html"><a href="import_raster.html"><i class="fa fa-check"></i><b>3.3</b> Importing raster data with <code>raster</code> or <code>terra</code></a></li>
+<li class="chapter" data-level="3.1" data-path="import_vector.html"><a href="import_vector.html"><i class="fa fa-check"></i><b>3.1</b> Importing vector data with <code>sf</code></a></li>
+<li class="chapter" data-level="3.2" data-path="import_raster_raster.html"><a href="import_raster_raster.html"><i class="fa fa-check"></i><b>3.2</b> Importing raster data with <code>raster</code></a></li>
+<li class="chapter" data-level="3.3" data-path="import_raster_raster.html"><a href="import_raster_raster.html#single-band-raster"><i class="fa fa-check"></i><b>3.3</b> Single band raster</a></li>
+<li class="chapter" data-level="3.4" data-path="import_raster_raster.html"><a href="import_raster_raster.html#multiband-raster"><i class="fa fa-check"></i><b>3.4</b> Multiband Raster</a></li>
+<li class="chapter" data-level="3.5" data-path="import_raster_terra.html"><a href="import_raster_terra.html"><i class="fa fa-check"></i><b>3.5</b> Importing raster data with <code>terra</code></a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="Making_Maps.html"><a href="Making_Maps.html"><i class="fa fa-check"></i><b>4</b> Making Maps</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="Static_Maps.html"><a href="Static_Maps.html"><i class="fa fa-check"></i><b>4.1</b> Static Maps</a>
 <ul>
-<li class="chapter" data-level="4.1.1" data-path="Static_Maps.html"><a href="Static_Maps.html#prerequisit"><i class="fa fa-check"></i><b>4.1.1</b> Prerequisit</a></li>
-<li class="chapter" data-level="4.1.2" data-path="Static_Maps.html"><a href="Static_Maps.html#static-maps-with-ggplot2"><i class="fa fa-check"></i><b>4.1.2</b> Static maps with <code>ggplot2</code></a></li>
+<li class="chapter" data-level="4.1.1" data-path="Static_Maps.html"><a href="Static_Maps.html#package-ggplot2"><i class="fa fa-check"></i><b>4.1.1</b> Package <code>ggplot2</code></a></li>
+<li class="chapter" data-level="4.1.2" data-path="Static_Maps.html"><a href="Static_Maps.html#package-tmap"><i class="fa fa-check"></i><b>4.1.2</b> Package <code>tmap</code></a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="Dynamic_Maps.html"><a href="Dynamic_Maps.html"><i class="fa fa-check"></i><b>4.2</b> Interactive Maps</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="Dynamic_Maps.html"><a href="Dynamic_Maps.html#introduction-to-tmap"><i class="fa fa-check"></i><b>4.2.1</b> Introduction to <code>tmap</code></a></li>
+<li class="chapter" data-level="4.2.1" data-path="Dynamic_Maps.html"><a href="Dynamic_Maps.html#package-mapview"><i class="fa fa-check"></i><b>4.2.1</b> Package <code>mapview</code></a></li>
+<li class="chapter" data-level="4.2.2" data-path="Dynamic_Maps.html"><a href="Dynamic_Maps.html#package-tmap-1"><i class="fa fa-check"></i><b>4.2.2</b> Package <code>tmap</code></a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="Basic_spatial_operations.html"><a href="Basic_spatial_operations.html"><i class="fa fa-check"></i><b>5</b> Basic spatial operations</a>
@@ -267,108 +280,108 @@ Developped by the Research Group for Geoinformatics @ ZHAW</a></li>
 <h3><span class="header-section-number">11.1.1</span> Must not overlap</h3>
 <p><img src="06_Topology_Rules/images/0_0.jpg" /></p>
 <p>In context of DE-9IM, this is a simple case. The polygon interiors should not overlap <em>at all</em>, everything else does not matter. Interior-Interior is the first of the 9 intersections, so the the intersection matrix as a code string would be: <strong>2********</strong>. In the case of the example below:</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="Polygon.html#cb96-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-2"><a href="Polygon.html#cb96-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">10</span>)</span>
-<span id="cb96-3"><a href="Polygon.html#cb96-3" aria-hidden="true" tabindex="-1"></a>nrows <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb96-4"><a href="Polygon.html#cb96-4" aria-hidden="true" tabindex="-1"></a>circs <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb96-5"><a href="Polygon.html#cb96-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span>nrows,</span>
-<span id="cb96-6"><a href="Polygon.html#cb96-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">rnorm</span>(nrows),</span>
-<span id="cb96-7"><a href="Polygon.html#cb96-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">rnorm</span>(nrows)</span>
-<span id="cb96-8"><a href="Polygon.html#cb96-8" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
-<span id="cb96-9"><a href="Polygon.html#cb96-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb96-10"><a href="Polygon.html#cb96-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_buffer</span>(<span class="fl">0.25</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="Polygon.html#cb97-1" aria-hidden="true" tabindex="-1"></a>circsplot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(circs) <span class="sc">+</span> </span>
-<span id="cb97-2"><a href="Polygon.html#cb97-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>,<span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
-<span id="cb97-3"><a href="Polygon.html#cb97-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> id)) <span class="sc">+</span></span>
-<span id="cb97-4"><a href="Polygon.html#cb97-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span>
-<span id="cb97-5"><a href="Polygon.html#cb97-5" aria-hidden="true" tabindex="-1"></a>circsplot</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-118-1.png" width="672" /></p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="Polygon.html#cb88-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb88-2"><a href="Polygon.html#cb88-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">10</span>)</span>
+<span id="cb88-3"><a href="Polygon.html#cb88-3" aria-hidden="true" tabindex="-1"></a>nrows <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb88-4"><a href="Polygon.html#cb88-4" aria-hidden="true" tabindex="-1"></a>circs <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb88-5"><a href="Polygon.html#cb88-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span>nrows,</span>
+<span id="cb88-6"><a href="Polygon.html#cb88-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">rnorm</span>(nrows),</span>
+<span id="cb88-7"><a href="Polygon.html#cb88-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">rnorm</span>(nrows)</span>
+<span id="cb88-8"><a href="Polygon.html#cb88-8" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb88-9"><a href="Polygon.html#cb88-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb88-10"><a href="Polygon.html#cb88-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_buffer</span>(<span class="fl">0.25</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="Polygon.html#cb89-1" aria-hidden="true" tabindex="-1"></a>circsplot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(circs) <span class="sc">+</span> </span>
+<span id="cb89-2"><a href="Polygon.html#cb89-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>,<span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb89-3"><a href="Polygon.html#cb89-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> id)) <span class="sc">+</span></span>
+<span id="cb89-4"><a href="Polygon.html#cb89-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span>
+<span id="cb89-5"><a href="Polygon.html#cb89-5" aria-hidden="true" tabindex="-1"></a>circsplot</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-108-1.png" width="672" /></p>
 <p>This gives us a sparse matrix as an output, which is esentially a list with the same length as the <code>x</code>, where each position is a vector of integers with the indicies of the features in <code>y</code> (which may equal to <code>x</code>) where the pattern matches.</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="Polygon.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_relate</span>(circs,<span class="at">pattern =</span> <span class="st">&quot;2********&quot;</span>)</span>
-<span id="cb98-2"><a href="Polygon.html#cb98-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Sparse geometry binary predicate list of length 10, where the predicate was `relate_pattern&#39;</span></span>
-<span id="cb98-3"><a href="Polygon.html#cb98-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  1: 1, 2, 5</span></span>
-<span id="cb98-4"><a href="Polygon.html#cb98-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  2: 1, 2, 4, 5, 10</span></span>
-<span id="cb98-5"><a href="Polygon.html#cb98-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  3: 3</span></span>
-<span id="cb98-6"><a href="Polygon.html#cb98-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  4: 2, 4</span></span>
-<span id="cb98-7"><a href="Polygon.html#cb98-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  5: 1, 2, 5</span></span>
-<span id="cb98-8"><a href="Polygon.html#cb98-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  6: 6</span></span>
-<span id="cb98-9"><a href="Polygon.html#cb98-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  7: 7</span></span>
-<span id="cb98-10"><a href="Polygon.html#cb98-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  8: 8</span></span>
-<span id="cb98-11"><a href="Polygon.html#cb98-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  9: 9</span></span>
-<span id="cb98-12"><a href="Polygon.html#cb98-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  10: 2, 10</span></span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="Polygon.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_relate</span>(circs,<span class="at">pattern =</span> <span class="st">&quot;2********&quot;</span>)</span>
+<span id="cb90-2"><a href="Polygon.html#cb90-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Sparse geometry binary predicate list of length 10, where the predicate was `relate_pattern&#39;</span></span>
+<span id="cb90-3"><a href="Polygon.html#cb90-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  1: 1, 2, 5</span></span>
+<span id="cb90-4"><a href="Polygon.html#cb90-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  2: 1, 2, 4, 5, 10</span></span>
+<span id="cb90-5"><a href="Polygon.html#cb90-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  3: 3</span></span>
+<span id="cb90-6"><a href="Polygon.html#cb90-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  4: 2, 4</span></span>
+<span id="cb90-7"><a href="Polygon.html#cb90-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  5: 1, 2, 5</span></span>
+<span id="cb90-8"><a href="Polygon.html#cb90-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  6: 6</span></span>
+<span id="cb90-9"><a href="Polygon.html#cb90-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  7: 7</span></span>
+<span id="cb90-10"><a href="Polygon.html#cb90-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  8: 8</span></span>
+<span id="cb90-11"><a href="Polygon.html#cb90-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  9: 9</span></span>
+<span id="cb90-12"><a href="Polygon.html#cb90-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  10: 2, 10</span></span></code></pre></div>
 <p>Setting <code>sparse = FALSE</code> returns a crossmatrix of all combinations.W</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="Polygon.html#cb99-1" aria-hidden="true" tabindex="-1"></a>crossmatrix <span class="ot">&lt;-</span> <span class="fu">st_relate</span>(circs,<span class="at">pattern =</span> <span class="st">&quot;2********&quot;</span>,<span class="at">sparse =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb99-2"><a href="Polygon.html#cb99-2" aria-hidden="true" tabindex="-1"></a>crossmatrix[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>] <span class="co"># only showing 6 since this prints nicely</span></span>
-<span id="cb99-3"><a href="Polygon.html#cb99-3" aria-hidden="true" tabindex="-1"></a><span class="do">##       [,1]  [,2]  [,3]  [,4]  [,5]  [,6]</span></span>
-<span id="cb99-4"><a href="Polygon.html#cb99-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]  TRUE  TRUE FALSE FALSE  TRUE FALSE</span></span>
-<span id="cb99-5"><a href="Polygon.html#cb99-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]  TRUE  TRUE FALSE  TRUE  TRUE FALSE</span></span>
-<span id="cb99-6"><a href="Polygon.html#cb99-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,] FALSE FALSE  TRUE FALSE FALSE FALSE</span></span>
-<span id="cb99-7"><a href="Polygon.html#cb99-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [4,] FALSE  TRUE FALSE  TRUE FALSE FALSE</span></span>
-<span id="cb99-8"><a href="Polygon.html#cb99-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [5,]  TRUE  TRUE FALSE FALSE  TRUE FALSE</span></span>
-<span id="cb99-9"><a href="Polygon.html#cb99-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [6,] FALSE FALSE FALSE FALSE FALSE  TRUE</span></span>
-<span id="cb99-10"><a href="Polygon.html#cb99-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-11"><a href="Polygon.html#cb99-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove the diagonals since it&#39;s simply each feature tested against itself</span></span>
-<span id="cb99-12"><a href="Polygon.html#cb99-12" aria-hidden="true" tabindex="-1"></a><span class="fu">diag</span>(crossmatrix) <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
-<span id="cb99-13"><a href="Polygon.html#cb99-13" aria-hidden="true" tabindex="-1"></a>error <span class="ot">&lt;-</span> <span class="fu">which</span>(crossmatrix,<span class="at">arr.ind =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb99-14"><a href="Polygon.html#cb99-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.vector</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb99-15"><a href="Polygon.html#cb99-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unique</span>()</span>
-<span id="cb99-16"><a href="Polygon.html#cb99-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-17"><a href="Polygon.html#cb99-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-18"><a href="Polygon.html#cb99-18" aria-hidden="true" tabindex="-1"></a>circsplot <span class="sc">+</span></span>
-<span id="cb99-19"><a href="Polygon.html#cb99-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> circs[error,], <span class="at">fill =</span> <span class="st">&quot;red&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-120-1.png" width="672" /></p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="Polygon.html#cb91-1" aria-hidden="true" tabindex="-1"></a>crossmatrix <span class="ot">&lt;-</span> <span class="fu">st_relate</span>(circs,<span class="at">pattern =</span> <span class="st">&quot;2********&quot;</span>,<span class="at">sparse =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb91-2"><a href="Polygon.html#cb91-2" aria-hidden="true" tabindex="-1"></a>crossmatrix[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>] <span class="co"># only showing 6 since this prints nicely</span></span>
+<span id="cb91-3"><a href="Polygon.html#cb91-3" aria-hidden="true" tabindex="-1"></a><span class="do">##       [,1]  [,2]  [,3]  [,4]  [,5]  [,6]</span></span>
+<span id="cb91-4"><a href="Polygon.html#cb91-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]  TRUE  TRUE FALSE FALSE  TRUE FALSE</span></span>
+<span id="cb91-5"><a href="Polygon.html#cb91-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]  TRUE  TRUE FALSE  TRUE  TRUE FALSE</span></span>
+<span id="cb91-6"><a href="Polygon.html#cb91-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,] FALSE FALSE  TRUE FALSE FALSE FALSE</span></span>
+<span id="cb91-7"><a href="Polygon.html#cb91-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [4,] FALSE  TRUE FALSE  TRUE FALSE FALSE</span></span>
+<span id="cb91-8"><a href="Polygon.html#cb91-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [5,]  TRUE  TRUE FALSE FALSE  TRUE FALSE</span></span>
+<span id="cb91-9"><a href="Polygon.html#cb91-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [6,] FALSE FALSE FALSE FALSE FALSE  TRUE</span></span>
+<span id="cb91-10"><a href="Polygon.html#cb91-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-11"><a href="Polygon.html#cb91-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove the diagonals since it&#39;s simply each feature tested against itself</span></span>
+<span id="cb91-12"><a href="Polygon.html#cb91-12" aria-hidden="true" tabindex="-1"></a><span class="fu">diag</span>(crossmatrix) <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb91-13"><a href="Polygon.html#cb91-13" aria-hidden="true" tabindex="-1"></a>error <span class="ot">&lt;-</span> <span class="fu">which</span>(crossmatrix,<span class="at">arr.ind =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb91-14"><a href="Polygon.html#cb91-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.vector</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb91-15"><a href="Polygon.html#cb91-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unique</span>()</span>
+<span id="cb91-16"><a href="Polygon.html#cb91-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-17"><a href="Polygon.html#cb91-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-18"><a href="Polygon.html#cb91-18" aria-hidden="true" tabindex="-1"></a>circsplot <span class="sc">+</span></span>
+<span id="cb91-19"><a href="Polygon.html#cb91-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> circs[error,], <span class="at">fill =</span> <span class="st">&quot;red&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-110-1.png" width="672" /></p>
 </div>
 <div id="must-not-have-gaps" class="section level3" number="11.1.2">
 <h3><span class="header-section-number">11.1.2</span> Must not have gaps</h3>
 <p><img src="06_Topology_Rules/images/0_0.jpg" /></p>
 <p>Lets cosider the North Carolina Dataset for this question.</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="Polygon.html#cb100-1" aria-hidden="true" tabindex="-1"></a>nc <span class="ot">=</span> <span class="fu">st_read</span>(<span class="fu">system.file</span>(<span class="st">&quot;shape/nc.shp&quot;</span>, <span class="at">package=</span><span class="st">&quot;sf&quot;</span>), <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb100-2"><a href="Polygon.html#cb100-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb100-3"><a href="Polygon.html#cb100-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(nc) <span class="sc">+</span> </span>
-<span id="cb100-4"><a href="Polygon.html#cb100-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>() <span class="sc">+</span></span>
-<span id="cb100-5"><a href="Polygon.html#cb100-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-121-1.png" width="672" /></p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="Polygon.html#cb92-1" aria-hidden="true" tabindex="-1"></a>nc <span class="ot">=</span> <span class="fu">st_read</span>(<span class="fu">system.file</span>(<span class="st">&quot;shape/nc.shp&quot;</span>, <span class="at">package=</span><span class="st">&quot;sf&quot;</span>), <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb92-2"><a href="Polygon.html#cb92-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-3"><a href="Polygon.html#cb92-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(nc) <span class="sc">+</span> </span>
+<span id="cb92-4"><a href="Polygon.html#cb92-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>() <span class="sc">+</span></span>
+<span id="cb92-5"><a href="Polygon.html#cb92-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-111-1.png" width="672" /></p>
 <p>The first task is to dissolve all adjecent polygons together</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="Polygon.html#cb101-1" aria-hidden="true" tabindex="-1"></a>nc_union <span class="ot">&lt;-</span> <span class="fu">st_union</span>(nc)</span>
-<span id="cb101-2"><a href="Polygon.html#cb101-2" aria-hidden="true" tabindex="-1"></a>nc_union</span>
-<span id="cb101-3"><a href="Polygon.html#cb101-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Geometry set for 1 feature </span></span>
-<span id="cb101-4"><a href="Polygon.html#cb101-4" aria-hidden="true" tabindex="-1"></a><span class="do">## geometry type:  MULTIPOLYGON</span></span>
-<span id="cb101-5"><a href="Polygon.html#cb101-5" aria-hidden="true" tabindex="-1"></a><span class="do">## dimension:      XY</span></span>
-<span id="cb101-6"><a href="Polygon.html#cb101-6" aria-hidden="true" tabindex="-1"></a><span class="do">## bbox:           xmin: -84.32385 ymin: 33.88199 xmax: -75.45698 ymax: 36.58965</span></span>
-<span id="cb101-7"><a href="Polygon.html#cb101-7" aria-hidden="true" tabindex="-1"></a><span class="do">## geographic CRS: NAD27</span></span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="Polygon.html#cb93-1" aria-hidden="true" tabindex="-1"></a>nc_union <span class="ot">&lt;-</span> <span class="fu">st_union</span>(nc)</span>
+<span id="cb93-2"><a href="Polygon.html#cb93-2" aria-hidden="true" tabindex="-1"></a>nc_union</span>
+<span id="cb93-3"><a href="Polygon.html#cb93-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Geometry set for 1 feature </span></span>
+<span id="cb93-4"><a href="Polygon.html#cb93-4" aria-hidden="true" tabindex="-1"></a><span class="do">## geometry type:  MULTIPOLYGON</span></span>
+<span id="cb93-5"><a href="Polygon.html#cb93-5" aria-hidden="true" tabindex="-1"></a><span class="do">## dimension:      XY</span></span>
+<span id="cb93-6"><a href="Polygon.html#cb93-6" aria-hidden="true" tabindex="-1"></a><span class="do">## bbox:           xmin: -84.32385 ymin: 33.88199 xmax: -75.45698 ymax: 36.58965</span></span>
+<span id="cb93-7"><a href="Polygon.html#cb93-7" aria-hidden="true" tabindex="-1"></a><span class="do">## geographic CRS: NAD27</span></span></code></pre></div>
 <p>If the output is a multipolygon as it is the case here, it’s bad news, there are gaps. To check which parts are disconnected from each other, we can cast the multipolygon to a polygon (in ArcGIS Terms “Multipart to singlepart”), add a rowname for each part and colour it by rowname.</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="Polygon.html#cb102-1" aria-hidden="true" tabindex="-1"></a>nc_singlepart <span class="ot">&lt;-</span> nc_union <span class="sc">%&gt;%</span></span>
-<span id="cb102-2"><a href="Polygon.html#cb102-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_cast</span>(<span class="st">&quot;POLYGON&quot;</span>)<span class="sc">%&gt;%</span></span>
-<span id="cb102-3"><a href="Polygon.html#cb102-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_sf</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb102-4"><a href="Polygon.html#cb102-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">n</span>())</span>
-<span id="cb102-5"><a href="Polygon.html#cb102-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb102-6"><a href="Polygon.html#cb102-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(nc_singlepart) <span class="sc">+</span></span>
-<span id="cb102-7"><a href="Polygon.html#cb102-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> <span class="fu">factor</span>(id))) <span class="sc">+</span></span>
-<span id="cb102-8"><a href="Polygon.html#cb102-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">fill =</span> <span class="st">&quot;id&quot;</span>) <span class="sc">+</span></span>
-<span id="cb102-9"><a href="Polygon.html#cb102-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-123-1.png" width="672" /></p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="Polygon.html#cb94-1" aria-hidden="true" tabindex="-1"></a>nc_singlepart <span class="ot">&lt;-</span> nc_union <span class="sc">%&gt;%</span></span>
+<span id="cb94-2"><a href="Polygon.html#cb94-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_cast</span>(<span class="st">&quot;POLYGON&quot;</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb94-3"><a href="Polygon.html#cb94-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_sf</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb94-4"><a href="Polygon.html#cb94-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">n</span>())</span>
+<span id="cb94-5"><a href="Polygon.html#cb94-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-6"><a href="Polygon.html#cb94-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(nc_singlepart) <span class="sc">+</span></span>
+<span id="cb94-7"><a href="Polygon.html#cb94-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> <span class="fu">factor</span>(id))) <span class="sc">+</span></span>
+<span id="cb94-8"><a href="Polygon.html#cb94-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">fill =</span> <span class="st">&quot;id&quot;</span>) <span class="sc">+</span></span>
+<span id="cb94-9"><a href="Polygon.html#cb94-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-113-1.png" width="672" /></p>
 <p>But maybe we can live with these Islands in the state of North Carolina, since this is in fact an accurate representation of reality (the gaps are a result of the Atlantic Ocean). We must now check whether the individual geometries have holes. Here we can make use of the way polygons are defined in <code>sf</code>:</p>
 <blockquote>
 <p>geometry with a positive area (two-dimensional); sequence of points form a closed, non-self intersecting ring; the first ring denotes the exterior ring, zero or more subsequent rings denote holes in this exterior ring</p>
 </blockquote>
 <p>This means that the length of each Polygon geometry must be 1. A length of 2 or more would mean that there are one (or more) holes in the geometry. We can do this with any of the functions from the <code>apply</code> family, I prefer <code>purrr</code>:</p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="Polygon.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map_lgl</span>(nc_singlepart<span class="sc">$</span>geometry,<span class="sc">~</span><span class="fu">length</span>(.x)<span class="sc">==</span> <span class="dv">1</span>)</span>
-<span id="cb103-2"><a href="Polygon.html#cb103-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] TRUE TRUE TRUE TRUE TRUE TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="Polygon.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map_lgl</span>(nc_singlepart<span class="sc">$</span>geometry,<span class="sc">~</span><span class="fu">length</span>(.x)<span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb95-2"><a href="Polygon.html#cb95-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] TRUE TRUE TRUE TRUE TRUE TRUE</span></span></code></pre></div>
 <p>Let’s see what happens if we cut a hole into the polygons</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="Polygon.html#cb104-1" aria-hidden="true" tabindex="-1"></a>holes <span class="ot">&lt;-</span> nc_singlepart <span class="sc">%&gt;%</span></span>
-<span id="cb104-2"><a href="Polygon.html#cb104-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_union</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb104-3"><a href="Polygon.html#cb104-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_centroid</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb104-4"><a href="Polygon.html#cb104-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_buffer</span>(<span class="fl">0.5</span>)</span>
-<span id="cb104-5"><a href="Polygon.html#cb104-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb104-6"><a href="Polygon.html#cb104-6" aria-hidden="true" tabindex="-1"></a>nc_holes <span class="ot">&lt;-</span> <span class="fu">st_difference</span>(nc_singlepart,holes)</span>
-<span id="cb104-7"><a href="Polygon.html#cb104-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb104-8"><a href="Polygon.html#cb104-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(nc_holes) <span class="sc">+</span> </span>
-<span id="cb104-9"><a href="Polygon.html#cb104-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>() <span class="sc">+</span></span>
-<span id="cb104-10"><a href="Polygon.html#cb104-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-125-1.png" width="672" /></p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="Polygon.html#cb105-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb105-2"><a href="Polygon.html#cb105-2" aria-hidden="true" tabindex="-1"></a><span class="fu">map_lgl</span>(nc_holes<span class="sc">$</span>geometry,<span class="sc">~</span><span class="fu">length</span>(.x)<span class="sc">==</span> <span class="dv">1</span>)</span>
-<span id="cb105-3"><a href="Polygon.html#cb105-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="Polygon.html#cb96-1" aria-hidden="true" tabindex="-1"></a>holes <span class="ot">&lt;-</span> nc_singlepart <span class="sc">%&gt;%</span></span>
+<span id="cb96-2"><a href="Polygon.html#cb96-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_union</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb96-3"><a href="Polygon.html#cb96-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_centroid</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb96-4"><a href="Polygon.html#cb96-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_buffer</span>(<span class="fl">0.5</span>)</span>
+<span id="cb96-5"><a href="Polygon.html#cb96-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-6"><a href="Polygon.html#cb96-6" aria-hidden="true" tabindex="-1"></a>nc_holes <span class="ot">&lt;-</span> <span class="fu">st_difference</span>(nc_singlepart,holes)</span>
+<span id="cb96-7"><a href="Polygon.html#cb96-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-8"><a href="Polygon.html#cb96-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(nc_holes) <span class="sc">+</span> </span>
+<span id="cb96-9"><a href="Polygon.html#cb96-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>() <span class="sc">+</span></span>
+<span id="cb96-10"><a href="Polygon.html#cb96-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-115-1.png" width="672" /></p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="Polygon.html#cb97-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-2"><a href="Polygon.html#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="fu">map_lgl</span>(nc_holes<span class="sc">$</span>geometry,<span class="sc">~</span><span class="fu">length</span>(.x)<span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb97-3"><a href="Polygon.html#cb97-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE</span></span></code></pre></div>
 </div>
 <div id="contains-point" class="section level3" number="11.1.3">
 <h3><span class="header-section-number">11.1.3</span> Contains point</h3>

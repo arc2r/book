@@ -60,6 +60,16 @@
 <script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script>
 <script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
 <script src="libs/leaflet-providers-plugin-2.0.4.1/leaflet-providers-plugin.js"></script>
+<script src="libs/FlatGeoBuf-3.3.3/fgb.js"></script>
+<script src="libs/FlatGeoBuf-3.3.3/flatgeobuf-geojson.min.js"></script>
+<script src="libs/chromajs-2.1.0/chroma.min.js"></script>
+<link id="gemeindegrenzen_zh-1-attachment" rel="attachment" href="libs/gemeindegrenzen_zh-0.0.1/gemeindegrenzen_zh_layer.fgb"/>
+<link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
+<script src="libs/HomeButton-0.0.1/home-button.js"></script>
+<script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
+<script src="libs/clipboard-0.0.1/setClipboardText.js"></script>
+<link href="libs/mapviewCSS-0.0.1/mapview-popup.css" rel="stylesheet" />
+<link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -146,20 +156,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="index.html"><a href="index.html#how-to-use-this-book"><i class="fa fa-check"></i><b>2</b> How to use this book</a></li>
 <li class="chapter" data-level="3" data-path="Data.html"><a href="Data.html"><i class="fa fa-check"></i><b>3</b> Data</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="import_r_vs_arcgis.html"><a href="import_r_vs_arcgis.html"><i class="fa fa-check"></i><b>3.1</b> Importing Data: R vs. ArcGIS</a></li>
-<li class="chapter" data-level="3.2" data-path="import_vector.html"><a href="import_vector.html"><i class="fa fa-check"></i><b>3.2</b> Importing vector data with <code>sf</code></a></li>
-<li class="chapter" data-level="3.3" data-path="import_raster.html"><a href="import_raster.html"><i class="fa fa-check"></i><b>3.3</b> Importing raster data with <code>raster</code> or <code>terra</code></a></li>
+<li class="chapter" data-level="3.1" data-path="import_vector.html"><a href="import_vector.html"><i class="fa fa-check"></i><b>3.1</b> Importing vector data with <code>sf</code></a></li>
+<li class="chapter" data-level="3.2" data-path="import_raster_raster.html"><a href="import_raster_raster.html"><i class="fa fa-check"></i><b>3.2</b> Importing raster data with <code>raster</code></a></li>
+<li class="chapter" data-level="3.3" data-path="import_raster_raster.html"><a href="import_raster_raster.html#single-band-raster"><i class="fa fa-check"></i><b>3.3</b> Single band raster</a></li>
+<li class="chapter" data-level="3.4" data-path="import_raster_raster.html"><a href="import_raster_raster.html#multiband-raster"><i class="fa fa-check"></i><b>3.4</b> Multiband Raster</a></li>
+<li class="chapter" data-level="3.5" data-path="import_raster_terra.html"><a href="import_raster_terra.html"><i class="fa fa-check"></i><b>3.5</b> Importing raster data with <code>terra</code></a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="Making_Maps.html"><a href="Making_Maps.html"><i class="fa fa-check"></i><b>4</b> Making Maps</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="Static_Maps.html"><a href="Static_Maps.html"><i class="fa fa-check"></i><b>4.1</b> Static Maps</a>
 <ul>
-<li class="chapter" data-level="4.1.1" data-path="Static_Maps.html"><a href="Static_Maps.html#prerequisit"><i class="fa fa-check"></i><b>4.1.1</b> Prerequisit</a></li>
-<li class="chapter" data-level="4.1.2" data-path="Static_Maps.html"><a href="Static_Maps.html#static-maps-with-ggplot2"><i class="fa fa-check"></i><b>4.1.2</b> Static maps with <code>ggplot2</code></a></li>
+<li class="chapter" data-level="4.1.1" data-path="Static_Maps.html"><a href="Static_Maps.html#package-ggplot2"><i class="fa fa-check"></i><b>4.1.1</b> Package <code>ggplot2</code></a></li>
+<li class="chapter" data-level="4.1.2" data-path="Static_Maps.html"><a href="Static_Maps.html#package-tmap"><i class="fa fa-check"></i><b>4.1.2</b> Package <code>tmap</code></a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="Dynamic_Maps.html"><a href="Dynamic_Maps.html"><i class="fa fa-check"></i><b>4.2</b> Interactive Maps</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="Dynamic_Maps.html"><a href="Dynamic_Maps.html#introduction-to-tmap"><i class="fa fa-check"></i><b>4.2.1</b> Introduction to <code>tmap</code></a></li>
+<li class="chapter" data-level="4.2.1" data-path="Dynamic_Maps.html"><a href="Dynamic_Maps.html#package-mapview"><i class="fa fa-check"></i><b>4.2.1</b> Package <code>mapview</code></a></li>
+<li class="chapter" data-level="4.2.2" data-path="Dynamic_Maps.html"><a href="Dynamic_Maps.html#package-tmap-1"><i class="fa fa-check"></i><b>4.2.2</b> Package <code>tmap</code></a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="Basic_spatial_operations.html"><a href="Basic_spatial_operations.html"><i class="fa fa-check"></i><b>5</b> Basic spatial operations</a>
@@ -271,12 +284,12 @@ Developped by the Research Group for Geoinformatics @ ZHAW</a></li>
 <h1><span class="header-section-number">1</span> Introduction</h1>
 <p>This is a resource for people wanting to learn spatial-R (Analysis, Visualization) in R and are coming with a background in ArcGIS. This resource should provide some help on this journey. We assume you have some prior experience with <code>R</code>. If this is not the case, we recommend you familiarize yourself with <code>R</code> first.</p>
 <p>We are big fans of using <code>magrittr</code>’s pipe function <code>%&gt;%</code> and heavily use it throughout this book. In addition for vector data, we use packages from the <code>tidyverse</code> (especially <code>filter()</code>, <code>mutate()</code> and <code>summarise()</code>.)</p>
-<p>This book leans heavily on how the Toolboxes and Toolsets are documented in ArcGIS Pro. Is is not a book to read from cover to cover, but to look up specific things of which you only know the ArcGIS terminology for. This book is a work in progress, the current version is from the 2021-02-03 05:48:23 (UTC). <em>We highly appriciate contributions</em> to this book: If you have anything to add, please <a href="https://github.com/arc2r/book">file an issue or make a pull request</a>.</p>
+<p>This book leans heavily on how the Toolboxes and Toolsets are documented in ArcGIS Pro. Is is not a book to read from cover to cover, but to look up specific things of which you only know the ArcGIS terminology for. This book is a work in progress, the current version is from the 2021-02-03 17:46:27 (UTC). <em>We highly appreciate contributions</em> to this book: If you have anything to add, please <a href="https://github.com/arc2r/book">file an issue or make a pull request</a>.</p>
 <p>We had long since thought about the necessity of a resource which helps ArcGIS users transition to R or Python. Nils had tweeted about this (see below) without getting much reception, and and one point just decided to start his own resource. Since <a href="gis.lsfm.zhaw.ch/">our research group</a> teaches and introduction to GIS and an advanced GIS course mostly based on ArcGIS, we decided to pick up where Nils hat started and develop the resource in with internal funding of our University.</p>
 <p>There are already a great many spatial-R Resources out there, and the goal is <em>not</em> to rewrite everything that has already been written. The aim of this book is just to provide a resource for people looking to do spatial stuff in R, but only know the ArcGIS-Term for it. When you transition from a proprietary Software like ArcGIS to <a href="https://en.wikipedia.org/wiki/Free_and_open-source_software">FOSS</a>, you have to relearn many of the concepts because the proprietary software usually does not adhere to common standards.</p>
 <div class="figure">
 <img src="tweet1.jpg" alt="" />
-<p class="caption"><a href="https://twitter.com/NRatnaweera/status/1187759876472213504">Nils’ Tweet</a> might not have recieved much attention, but it did spark a conversation within our group</p>
+<p class="caption"><a href="https://twitter.com/NRatnaweera/status/1187759876472213504">Nils’ Tweet</a> might not have received much attention, but it did spark a conversation within our group</p>
 </div>
 </div>
 <div id="how-to-use-this-book" class="section level1" number="2">
