@@ -16,7 +16,7 @@ library(sf)
 
 To import a vector dataset into `R`, we can use the function `read_sf` as in the example below. 
 //todo how does the user get access to this dataset? 
-//body make this available through the packgage?
+//body make this available through the package?
 ```{r}
 
 ARE_waedenswil <- read_sf("sample_data/Entsorgung_Waedenswil/ARE_waedenswil.shp")
@@ -24,7 +24,7 @@ ARE_waedenswil <- read_sf("sample_data/Entsorgung_Waedenswil/ARE_waedenswil.shp"
 ARE_waedenswil
 ```
 
-And you are done! The shapefile is now imported into your `R` Session and you can start working with it. Much of the beauty in `sf` comes from it's simplicity: As you see from importing the shapefile, it is very much like a `data.frame`, a structure that you are probabbly know very well. In fact, it *is* a data.frame, as you can see here:
+And you are done! The shapefile is now imported into your `R` Session and you can start working with it. Much of the beauty in `sf` comes from it's simplicity: As you see from importing the shapefile, it is very much like a `data.frame`, a structure that you are probably know very well. In fact, it *is* a data.frame, as you can see here:
 
 ```{r}
 is.data.frame(ARE_waedenswil)

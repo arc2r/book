@@ -4,50 +4,60 @@
 source("R/before_chapter.R", local = knitr::knit_global())
 ```
 
-To import raster data, we need a different packge. Currently, `raster` is the go-to package to deal with raster datasets. However, this package is currently in the process of being replaced with a successor, `terra`. We will showcase both methods here.
+To import raster data, we need a package that can specifically handle raster datasets. The package `raster` has for a long time been the go-to package for this. However, this package is currently in the process of being replaced with a successor, `terra`. We will showcase both methods here, starting with the `raster` package. Download the sample dataset [here](https://github.com/arc2r/book/raw/master/sample_data/swissalti3D/SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_1196.zip) and unzip it into your project folder. 
+
+This dataset is a freely available sample for the swissALTI3D data. The full sample, including files at different resolutions, can be downloaded from [here](https://cms.geo.admin.ch/Topo/swissalti3d/swissalti3dgeotifflv95.zip).
 
 
+### The `raster` package
+
+Now load the library `raster` the function `raster` to import the tif-file included in the zip file. Make sure you have set the path to your tif-file correctly. 
 
 ```{r}
 library(raster)
 
-dhm_200 <- raster("sample_data/Raster/dhm_200.tif")
-
-dhm_200
+swissalti3d <- raster("sample_data/swissalti3D/SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_1196.tif")
 
 ```
 
+The dataset is now imported into your project and ready to be viewed, analysed and processed. If we call the object in our console, we can see that the dataset was imported as a `RasterLayer` and can see some important statistics which you would typically find via Layer Properties -> Source in ArcGIS.
 
 ```{r}
-class(dhm_200)
+swissalti3d
 ```
 
-`RaysterLayer`s also come with a plot method to visualize the dataset spatially:
+To visualize the dataset, we can simply  call `plot` on our new object. 
 
 ```{r}
-plot(dhm_200)
+plot(swissalti3d)
 ```
 
 
 
-@todo add terra method to import rasters
+### The `terra` package
+
+
+With the `terra` package, data is imported using the function `rast`. 
+
+```{r}
+library(terra)
+
+swissalti3d <- terra::rast("sample_data/swissalti3D/SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_1196.tif")
+
+```
+
+Just like before, calling the object in our console will give us the class name and some meta information on the dataset. 
+
+```{r}
+swissalti3d
+```
+
+And calling  `plot` on our object visualizes it spatially. 
+
+```{r}
+plot(swissalti3d)
+```
+
+
 @todo add method for rasters with multiple layers
 
-```{r}
-
-
-# path_1b <- "sample_data/SMR_Musterdaten/SMR50_LV95_KOMB_Mosaic.tif"
-# path_3b <- "sample_data/SMR_Musterdaten/SMR50_LV95_KREL_10L_Mosaic.tif"
-# 
-# raster(path_1b)
-# raster(path_3b)
-```
-
-
-
-As you can see in the output of `raster(path_3b)`, only one of the 3 bands was imported with `raster::raster`. In the case of multiband rasters, it's better to use `raster::brick`:
-
-```{r}
-# smr50_komb_mosaic <- raster(path_1b)
-# smr50_krel_mosaic <- brick(path_3b)
-```
