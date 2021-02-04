@@ -3,7 +3,7 @@
 Most vector data that you use in everyday GIS work are what are called "simple features". Simple features are an open standard developed by the Open Geospatial Consortium (OGC). The most common feature types are displayed in figure \@ref{fig:sf_types}.
 
 
-```{r sf_types, fig.cap="The 7 (of 17) most important simple feature types. Image from https://geocompr.robinlovelace.net"}
+```{r sf_types, echo = FALSE, fig.cap="The 7 (of 17) most important simple feature types. Image from https://geocompr.robinlovelace.net"}
 knitr::include_graphics("images/sf-classes.png")
 ```
 //todo added reference with bibtex
