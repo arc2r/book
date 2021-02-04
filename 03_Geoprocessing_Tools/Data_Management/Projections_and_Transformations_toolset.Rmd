@@ -2,15 +2,54 @@
 
 If there is anything special about spatial, it's the Coordinate Reference System. We will not get into the topic of CRS and Projections here, but it is advisable to get up to speed on this topic if you are dealing with geodata. From this toolset, we will cover the following tools:
 
+- **Define Projection**
 - **Project**
 - **Project Raster**
-- **Define Projection**
 - **Rescale** (Resizes a raster by the specified x and y scale factors)
 
 
 ### Define Projection
 
 > Overwrites the coordinate system information (map projection and datum) stored with a dataset. This tool is intended for datasets that have an unknown or incorrect coordinate system defined.
+
+If your dataset comes *without* an assigned CRS, things can get hairy. Usually, you can make an informed guess as to which CRS the dataset is associated with, but in the end only the data producer can tell you. Let's take the dataset `bezirke` from the package `arc2r`. As you can see, the `CRS` field in the data's header is `NA`. 
+
+```{r}
+library(arc2r)
+library(sf)
+
+bezirke
+```
+
+Calling the function `st_crs()` on `bezirke` confirms this.
+
+```{r}
+st_crs(bezirke)
+```
+
+In ArcGIS, we would use the Tool "Define projection". In `R`, we use the function `st_crs(dataset) <- value`, where `value` is the CRS of our dataset. It can be either
+
+1. A string accepted by GDAL (type `character`)
+2. A valid EPSG value (type `integer`) *or*
+3. An object of class crs
+
+We find option two to be the simplest approach. 
+<!--
+# todo how do we know this?
+#   body gloss over this?
+-->
+Since we know the dataset `bezirke` is in the new swiss coordinate system (CH1903+ / LV95), we can find out the EPSG code (e.g. by consulting [epsg.io](http://epsg.io/)).
+We will not get into options 1 and 3 and only 
+
+```{r}
+st_crs(bezirke) <- 2056
+```
+
+If we look at our header again, we see that we have a new field 
+
+```{r}
+bezirke
+```
 
 
 
@@ -23,9 +62,6 @@ For our example we will use the dataset `bezirke` from the package `arc2r`.
 **R** and more specifically **sf package** offers options (functions) not only for transforming the coordinate system of a dataset, but also for identifying the current existing one. Let's dive in :)
 
 ```{r echo=TRUE, message=TRUE, warning=TRUE}
-library(arc2r)
-library(sf)
-
 
 bezirke
 ```
@@ -148,7 +184,9 @@ plot(publicTransport_CH,las=1,
 
 
 
+### Rescale
 
+//todo write this chapter
 
 
 
