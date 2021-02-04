@@ -1,4 +1,7 @@
 ## Select by Attribute
+
+//todo does this stay here or move to Analysis -> Extract -> Select?
+
 ```{r,echo=FALSE}
 knitr::opts_chunk$set(warning = F, message = F, tidy = T)
 ```

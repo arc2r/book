@@ -19,14 +19,8 @@ Using the tools via these buttons (\@ref{fig:selection}) have two effects.
 This second effect is cause for many confusing errors, either because the user forgot that a selection was active or the there were zero elements matching the specified criteria and so the operation was performed on an empty dataset.
 For this reason, this type of "*floating* selection" is not very useful and was never implemented in `R`. 
 
-**However**, two of the three described buttons (\@ref{fig:selection}) have corresponding tools within the toolbox "Analysis Tools" (named *Select by Location* and *Select by Attribute*). Using the tools via the toolbox is distinctly different from using the buttons in the following ways
-
-1. Selected features are *not* highlighted visually
-2. Selected features are exported into a new dataset, and the original data is unchanged
-
-This implementation of selection *is* supported in `R`. We will dive into this in the chapters PLACEHOLDER and PLACEHOLDER. 
-//todo remove placeholder
-Interactive selection (button "Select" in \@ref{fig:selection}) is not reproducible and therefore not supported in `R`. <!-- There might by ways in which an interactive sleection is translated into code, but it might be too confusing to go into this here -->
+**However**, two of the three described methods to select data are supported in `R`, but with a different approach. The selected data leaves the original data unchanged, but must assigned to a new `R` object^[or, if you are familiar with pipes, piped into a new operation].
+Interactive selection (button "Select" in \@ref{fig:selection}) is *a priori* not reproducible and therefore not supported in `R`.
 
 
 ```{block2, type = "rmdnote"}
