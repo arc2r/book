@@ -29,7 +29,9 @@ We had long since thought about the necessity of a resource which helps ArcGIS u
 There are already a great many spatial-R Resources out there, and the goal is *not* to rewrite everything that has already been written. The aim of this book is just to provide a resource for people looking to do spatial stuff in R, but only know the ArcGIS-Term for it. When you transition from a proprietary Software like ArcGIS to [FOSS](https://en.wikipedia.org/wiki/Free_and_open-source_software), you have to relearn many of the concepts because the proprietary software usually does not adhere to common standards.
 
 
-![[Nils' Tweet](https://twitter.com/NRatnaweera/status/1187759876472213504) might not have received much attention, but it did spark a conversation within our group](tweet1.jpg)
+```{r, fig.cap="[Nils' Tweet](https://twitter.com/NRatnaweera/status/1187759876472213504) might not have received much attention, but it did spark a conversation within our group",fig.width="50%"}
+knitr::include_graphics("images/tweet1.jpg")
+```
 
 
 
