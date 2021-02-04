@@ -2,9 +2,9 @@ fig:unnamed-chunk-2
 fig:selection
 fig:select
 fig:joins
-fig:unnamed-chunk-86
-fig:unnamed-chunk-89
-fig:unnamed-chunk-96
+fig:unnamed-chunk-87
+fig:unnamed-chunk-90
+fig:unnamed-chunk-97
 what-this-book-is-about
 how-it-started
 what-might-make-your-journey-difficult
@@ -35,10 +35,10 @@ inner-join
 outer-join
 left-right-join
 projections-and-transformations-toolset
-reproject-vector-data-in-r
-reproject-raster-data-in-r
-generate-tessellation
-clip-raster
+define-projection
+project
+project-raster
+rescale
 spatial-analyst-toolbox
 conditional-toolset
 kernel-density
