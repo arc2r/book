@@ -288,37 +288,37 @@ Developped by the Research Group for Geoinformatics @ ZHAW</a></li>
 <p>In GIS Softwares (ArcGIS pro, QGIS etc) <code>Raster Calculator</code> is one of the most
 commonly used tools for performing various operations with raster datasets.</p>
 <p>For the example below we will work with 2 datasets that depict India’s population at two different timestamps. Our goal is to produce an output raster that demonstrates the evolvement of country’s population in this 10 years timespan. Naturally in ArcGIS pro, the aforementioned operation would be performed with the use of <code>Raster Calculator</code>. Let’s explore our options with R.</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="Image_Analysis.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the data for our example</span></span>
-<span id="cb66-2"><a href="Image_Analysis.html#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
-<span id="cb66-3"><a href="Image_Analysis.html#cb66-3" aria-hidden="true" tabindex="-1"></a><span class="co"># India&#39;s population in 2000</span></span>
-<span id="cb66-4"><a href="Image_Analysis.html#cb66-4" aria-hidden="true" tabindex="-1"></a>india_2000 <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="st">&quot;sample_data/population_raster/india_2000.tif&quot;</span>)</span>
-<span id="cb66-5"><a href="Image_Analysis.html#cb66-5" aria-hidden="true" tabindex="-1"></a><span class="co"># India&#39;s population in 2010</span></span>
-<span id="cb66-6"><a href="Image_Analysis.html#cb66-6" aria-hidden="true" tabindex="-1"></a>india_2010 <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="st">&quot;sample_data/population_raster/india_2010.tif&quot;</span>)</span>
-<span id="cb66-7"><a href="Image_Analysis.html#cb66-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb66-8"><a href="Image_Analysis.html#cb66-8" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb66-9"><a href="Image_Analysis.html#cb66-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(india_2000)</span>
-<span id="cb66-10"><a href="Image_Analysis.html#cb66-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(india_2010)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-76-1.png" width="672" /></p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="Image_Analysis.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the data for our example</span></span>
+<span id="cb64-2"><a href="Image_Analysis.html#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
+<span id="cb64-3"><a href="Image_Analysis.html#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="co"># India&#39;s population in 2000</span></span>
+<span id="cb64-4"><a href="Image_Analysis.html#cb64-4" aria-hidden="true" tabindex="-1"></a>india_2000 <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="st">&quot;sample_data/population_raster/india_2000.tif&quot;</span>)</span>
+<span id="cb64-5"><a href="Image_Analysis.html#cb64-5" aria-hidden="true" tabindex="-1"></a><span class="co"># India&#39;s population in 2010</span></span>
+<span id="cb64-6"><a href="Image_Analysis.html#cb64-6" aria-hidden="true" tabindex="-1"></a>india_2010 <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="st">&quot;sample_data/population_raster/india_2010.tif&quot;</span>)</span>
+<span id="cb64-7"><a href="Image_Analysis.html#cb64-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-8"><a href="Image_Analysis.html#cb64-8" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb64-9"><a href="Image_Analysis.html#cb64-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(india_2000)</span>
+<span id="cb64-10"><a href="Image_Analysis.html#cb64-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(india_2010)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-74-1.png" width="672" /></p>
 <p>Let’s compute now the difference between the two rasters. To do so, there are various
 options. As first we can create a function that performs a simple subtraction of two
 rasters.</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="Image_Analysis.html#cb67-1" aria-hidden="true" tabindex="-1"></a>diff_rasters <span class="ot">&lt;-</span> <span class="cf">function</span>(b1, b2){</span>
-<span id="cb67-2"><a href="Image_Analysis.html#cb67-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># this function calculates the difference between two rasters of the same CRS and extent</span></span>
-<span id="cb67-3"><a href="Image_Analysis.html#cb67-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># input: 2 raster layers of the same extent, crs that can be subtracted</span></span>
-<span id="cb67-4"><a href="Image_Analysis.html#cb67-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># output: a single different raster of the same extent, crs of the input rasters</span></span>
-<span id="cb67-5"><a href="Image_Analysis.html#cb67-5" aria-hidden="true" tabindex="-1"></a>  diff <span class="ot">&lt;-</span> b2 <span class="sc">-</span> b1</span>
-<span id="cb67-6"><a href="Image_Analysis.html#cb67-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(diff)</span>
-<span id="cb67-7"><a href="Image_Analysis.html#cb67-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="Image_Analysis.html#cb65-1" aria-hidden="true" tabindex="-1"></a>diff_rasters <span class="ot">&lt;-</span> <span class="cf">function</span>(b1, b2){</span>
+<span id="cb65-2"><a href="Image_Analysis.html#cb65-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># this function calculates the difference between two rasters of the same CRS and extent</span></span>
+<span id="cb65-3"><a href="Image_Analysis.html#cb65-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># input: 2 raster layers of the same extent, crs that can be subtracted</span></span>
+<span id="cb65-4"><a href="Image_Analysis.html#cb65-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># output: a single different raster of the same extent, crs of the input rasters</span></span>
+<span id="cb65-5"><a href="Image_Analysis.html#cb65-5" aria-hidden="true" tabindex="-1"></a>  diff <span class="ot">&lt;-</span> b2 <span class="sc">-</span> b1</span>
+<span id="cb65-6"><a href="Image_Analysis.html#cb65-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(diff)</span>
+<span id="cb65-7"><a href="Image_Analysis.html#cb65-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Since, we created the function for subtracting one raster from another, we use now
 the function <em>overlay</em> of the <code>raster</code> package for producing the new raster output.</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="Image_Analysis.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the raster that depicts the difference in population in these 10 years</span></span>
-<span id="cb68-2"><a href="Image_Analysis.html#cb68-2" aria-hidden="true" tabindex="-1"></a>pop2010_2000 <span class="ot">&lt;-</span> <span class="fu">overlay</span>(india_2000, india_2010,</span>
-<span id="cb68-3"><a href="Image_Analysis.html#cb68-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">fun =</span> diff_rasters)</span>
-<span id="cb68-4"><a href="Image_Analysis.html#cb68-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-5"><a href="Image_Analysis.html#cb68-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pop2010_2000,</span>
-<span id="cb68-6"><a href="Image_Analysis.html#cb68-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;India&#39;s population difference in the timespan of 10 years&quot;</span>,</span>
-<span id="cb68-7"><a href="Image_Analysis.html#cb68-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex.main =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-78-1.png" width="672" /></p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="Image_Analysis.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the raster that depicts the difference in population in these 10 years</span></span>
+<span id="cb66-2"><a href="Image_Analysis.html#cb66-2" aria-hidden="true" tabindex="-1"></a>pop2010_2000 <span class="ot">&lt;-</span> <span class="fu">overlay</span>(india_2000, india_2010,</span>
+<span id="cb66-3"><a href="Image_Analysis.html#cb66-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">fun =</span> diff_rasters)</span>
+<span id="cb66-4"><a href="Image_Analysis.html#cb66-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-5"><a href="Image_Analysis.html#cb66-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pop2010_2000,</span>
+<span id="cb66-6"><a href="Image_Analysis.html#cb66-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;India&#39;s population difference in the timespan of 10 years&quot;</span>,</span>
+<span id="cb66-7"><a href="Image_Analysis.html#cb66-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex.main =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-76-1.png" width="672" /></p>
 <!-- ## Math Toolset -->
 <!-- ## Overlay Toolset -->
 <!-- ### Weighted Sum -->
@@ -337,69 +337,69 @@ Source: <a href="https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial
 <p>In R in order to apply functions focally to rasters, important is to define the neighbouring cells.
 In other words to define the moving window for each of these functions. As an example below,
 we will create our own raster object.</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="Image_Analysis.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
-<span id="cb69-2"><a href="Image_Analysis.html#cb69-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-3"><a href="Image_Analysis.html#cb69-3" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="at">ncol=</span><span class="dv">10</span>, <span class="at">nrow=</span><span class="dv">10</span>)</span>
-<span id="cb69-4"><a href="Image_Analysis.html#cb69-4" aria-hidden="true" tabindex="-1"></a><span class="fu">values</span>(r) <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncell</span>(r)</span>
-<span id="cb69-5"><a href="Image_Analysis.html#cb69-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(r, <span class="at">main=</span><span class="st">&#39;Raster with 100 cells&#39;</span>, <span class="at">cex.main =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-79-1.png" width="672" /></p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="Image_Analysis.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
+<span id="cb67-2"><a href="Image_Analysis.html#cb67-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-3"><a href="Image_Analysis.html#cb67-3" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="at">ncol=</span><span class="dv">10</span>, <span class="at">nrow=</span><span class="dv">10</span>)</span>
+<span id="cb67-4"><a href="Image_Analysis.html#cb67-4" aria-hidden="true" tabindex="-1"></a><span class="fu">values</span>(r) <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncell</span>(r)</span>
+<span id="cb67-5"><a href="Image_Analysis.html#cb67-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(r, <span class="at">main=</span><span class="st">&#39;Raster with 100 cells&#39;</span>, <span class="at">cex.main =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-77-1.png" width="672" /></p>
 <p>We will recompute now the raster based on the <code>focal</code> function of the <code>raster</code> package. In the function
 below, the neighbourhood for which we apply the statistic is represented by the argument <code>w</code>, while the
 statistic by the argument <code>fun</code>.</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="Image_Analysis.html#cb70-1" aria-hidden="true" tabindex="-1"></a>f1 <span class="ot">&lt;-</span> <span class="fu">focal</span>(r, <span class="at">w=</span><span class="fu">matrix</span>(<span class="dv">1</span>,<span class="at">nrow=</span><span class="dv">3</span>,<span class="at">ncol=</span><span class="dv">3</span>),<span class="at">fun=</span>sum)</span>
-<span id="cb70-2"><a href="Image_Analysis.html#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(f1, <span class="at">main =</span> <span class="st">&quot;Raster after applying the focal function - raster package&quot;</span>, <span class="at">cex.main =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-80-1.png" width="672" /></p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="Image_Analysis.html#cb68-1" aria-hidden="true" tabindex="-1"></a>f1 <span class="ot">&lt;-</span> <span class="fu">focal</span>(r, <span class="at">w=</span><span class="fu">matrix</span>(<span class="dv">1</span>,<span class="at">nrow=</span><span class="dv">3</span>,<span class="at">ncol=</span><span class="dv">3</span>),<span class="at">fun=</span>sum)</span>
+<span id="cb68-2"><a href="Image_Analysis.html#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(f1, <span class="at">main =</span> <span class="st">&quot;Raster after applying the focal function - raster package&quot;</span>, <span class="at">cex.main =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-78-1.png" width="672" /></p>
 <p>The operation above can be also performed with the use of the <em>focal</em> function of the <strong>terra</strong> package.</p>
 <ul>
 <li><code>w</code> represents the moving window of the function. The window can be defined as one (for a square)
 or two numbers (row, col); or with an odd-sized weights matrix. More details can be found here: <a href="https://rdrr.io/cran/terra/man/focal.html" class="uri">https://rdrr.io/cran/terra/man/focal.html</a></li>
 <li><code>fun</code> represents the specified statistic for the identified neighbourhood (e.g mean,sum etc)</li>
 </ul>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="Image_Analysis.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
-<span id="cb71-2"><a href="Image_Analysis.html#cb71-2" aria-hidden="true" tabindex="-1"></a>r_spat <span class="ot">&lt;-</span> <span class="fu">as</span>(r, <span class="st">&quot;SpatRaster&quot;</span>)</span>
-<span id="cb71-3"><a href="Image_Analysis.html#cb71-3" aria-hidden="true" tabindex="-1"></a>f2 <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">focal</span>(r_spat,<span class="at">w=</span><span class="dv">3</span>,<span class="at">fun =</span> <span class="st">&quot;sum&quot;</span>)</span>
-<span id="cb71-4"><a href="Image_Analysis.html#cb71-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(f2, <span class="at">main =</span> <span class="st">&quot;Raster after applying the focal function - terra package&quot;</span>, <span class="at">cex.main =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-81-1.png" width="672" /></p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="Image_Analysis.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb69-2"><a href="Image_Analysis.html#cb69-2" aria-hidden="true" tabindex="-1"></a>r_spat <span class="ot">&lt;-</span> <span class="fu">as</span>(r, <span class="st">&quot;SpatRaster&quot;</span>)</span>
+<span id="cb69-3"><a href="Image_Analysis.html#cb69-3" aria-hidden="true" tabindex="-1"></a>f2 <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">focal</span>(r_spat,<span class="at">w=</span><span class="dv">3</span>,<span class="at">fun =</span> <span class="st">&quot;sum&quot;</span>)</span>
+<span id="cb69-4"><a href="Image_Analysis.html#cb69-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(f2, <span class="at">main =</span> <span class="st">&quot;Raster after applying the focal function - terra package&quot;</span>, <span class="at">cex.main =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-79-1.png" width="672" /></p>
 </div>
 <div id="zonal-statistics-1" class="section level3" number="8.1.4">
 <h3><span class="header-section-number">8.1.4</span> Zonal Statistics</h3>
 <p><code>Zonal Statistics</code> tool in ArcGIS pro is used for calculating the statistics
 on values of a raster within the zones of another dataset. In R we are able to produce
 similar results with the use of <code>zonal</code> function of the <code>raster</code> package.</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="Image_Analysis.html#cb72-1" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="at">ncols=</span><span class="dv">10</span>, <span class="at">nrows=</span><span class="dv">10</span>)</span>
-<span id="cb72-2"><a href="Image_Analysis.html#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="co"># generating random numbers that will used as values in our raster layer (r) - input values raster</span></span>
-<span id="cb72-3"><a href="Image_Analysis.html#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="fu">values</span>(r) <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="fu">ncell</span>(r)) <span class="sc">*</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncell</span>(r)</span>
-<span id="cb72-4"><a href="Image_Analysis.html#cb72-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-5"><a href="Image_Analysis.html#cb72-5" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> r</span>
-<span id="cb72-6"><a href="Image_Analysis.html#cb72-6" aria-hidden="true" tabindex="-1"></a><span class="co"># generating integer values for the raster layer z, which will be used as the zone raster</span></span>
-<span id="cb72-7"><a href="Image_Analysis.html#cb72-7" aria-hidden="true" tabindex="-1"></a><span class="fu">values</span>(z) <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">each=</span><span class="dv">20</span>) </span>
-<span id="cb72-8"><a href="Image_Analysis.html#cb72-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-9"><a href="Image_Analysis.html#cb72-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Zonal statistics - Summarize</span></span>
-<span id="cb72-10"><a href="Image_Analysis.html#cb72-10" aria-hidden="true" tabindex="-1"></a><span class="fu">zonal</span>(r, z, <span class="st">&quot;sum&quot;</span>)</span>
-<span id="cb72-11"><a href="Image_Analysis.html#cb72-11" aria-hidden="true" tabindex="-1"></a><span class="do">##      zone       sum</span></span>
-<span id="cb72-12"><a href="Image_Analysis.html#cb72-12" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    1  99.58052</span></span>
-<span id="cb72-13"><a href="Image_Analysis.html#cb72-13" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]    2 305.81367</span></span>
-<span id="cb72-14"><a href="Image_Analysis.html#cb72-14" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]    3 475.71375</span></span>
-<span id="cb72-15"><a href="Image_Analysis.html#cb72-15" aria-hidden="true" tabindex="-1"></a><span class="do">## [4,]    4 707.51735</span></span>
-<span id="cb72-16"><a href="Image_Analysis.html#cb72-16" aria-hidden="true" tabindex="-1"></a><span class="do">## [5,]    5 796.50114</span></span>
-<span id="cb72-17"><a href="Image_Analysis.html#cb72-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-18"><a href="Image_Analysis.html#cb72-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Zonal statistics - Mean</span></span>
-<span id="cb72-19"><a href="Image_Analysis.html#cb72-19" aria-hidden="true" tabindex="-1"></a><span class="fu">zonal</span>(r, z, <span class="st">&quot;mean&quot;</span>)</span>
-<span id="cb72-20"><a href="Image_Analysis.html#cb72-20" aria-hidden="true" tabindex="-1"></a><span class="do">##      zone      mean</span></span>
-<span id="cb72-21"><a href="Image_Analysis.html#cb72-21" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    1  4.979026</span></span>
-<span id="cb72-22"><a href="Image_Analysis.html#cb72-22" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]    2 15.290684</span></span>
-<span id="cb72-23"><a href="Image_Analysis.html#cb72-23" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]    3 23.785688</span></span>
-<span id="cb72-24"><a href="Image_Analysis.html#cb72-24" aria-hidden="true" tabindex="-1"></a><span class="do">## [4,]    4 35.375867</span></span>
-<span id="cb72-25"><a href="Image_Analysis.html#cb72-25" aria-hidden="true" tabindex="-1"></a><span class="do">## [5,]    5 39.825057</span></span>
-<span id="cb72-26"><a href="Image_Analysis.html#cb72-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-27"><a href="Image_Analysis.html#cb72-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Zonal statistics - Minimum</span></span>
-<span id="cb72-28"><a href="Image_Analysis.html#cb72-28" aria-hidden="true" tabindex="-1"></a><span class="fu">zonal</span>(r, z, <span class="st">&quot;min&quot;</span>)</span>
-<span id="cb72-29"><a href="Image_Analysis.html#cb72-29" aria-hidden="true" tabindex="-1"></a><span class="do">##      zone       min</span></span>
-<span id="cb72-30"><a href="Image_Analysis.html#cb72-30" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    1 0.1487266</span></span>
-<span id="cb72-31"><a href="Image_Analysis.html#cb72-31" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]    2 1.9187318</span></span>
-<span id="cb72-32"><a href="Image_Analysis.html#cb72-32" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]    3 3.1954170</span></span>
-<span id="cb72-33"><a href="Image_Analysis.html#cb72-33" aria-hidden="true" tabindex="-1"></a><span class="do">## [4,]    4 4.5574448</span></span>
-<span id="cb72-34"><a href="Image_Analysis.html#cb72-34" aria-hidden="true" tabindex="-1"></a><span class="do">## [5,]    5 2.8274044</span></span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="Image_Analysis.html#cb70-1" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="at">ncols=</span><span class="dv">10</span>, <span class="at">nrows=</span><span class="dv">10</span>)</span>
+<span id="cb70-2"><a href="Image_Analysis.html#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="co"># generating random numbers that will used as values in our raster layer (r) - input values raster</span></span>
+<span id="cb70-3"><a href="Image_Analysis.html#cb70-3" aria-hidden="true" tabindex="-1"></a><span class="fu">values</span>(r) <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="fu">ncell</span>(r)) <span class="sc">*</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncell</span>(r)</span>
+<span id="cb70-4"><a href="Image_Analysis.html#cb70-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-5"><a href="Image_Analysis.html#cb70-5" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> r</span>
+<span id="cb70-6"><a href="Image_Analysis.html#cb70-6" aria-hidden="true" tabindex="-1"></a><span class="co"># generating integer values for the raster layer z, which will be used as the zone raster</span></span>
+<span id="cb70-7"><a href="Image_Analysis.html#cb70-7" aria-hidden="true" tabindex="-1"></a><span class="fu">values</span>(z) <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">each=</span><span class="dv">20</span>) </span>
+<span id="cb70-8"><a href="Image_Analysis.html#cb70-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-9"><a href="Image_Analysis.html#cb70-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Zonal statistics - Summarize</span></span>
+<span id="cb70-10"><a href="Image_Analysis.html#cb70-10" aria-hidden="true" tabindex="-1"></a><span class="fu">zonal</span>(r, z, <span class="st">&quot;sum&quot;</span>)</span>
+<span id="cb70-11"><a href="Image_Analysis.html#cb70-11" aria-hidden="true" tabindex="-1"></a><span class="do">##      zone       sum</span></span>
+<span id="cb70-12"><a href="Image_Analysis.html#cb70-12" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    1  99.58052</span></span>
+<span id="cb70-13"><a href="Image_Analysis.html#cb70-13" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]    2 305.81367</span></span>
+<span id="cb70-14"><a href="Image_Analysis.html#cb70-14" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]    3 475.71375</span></span>
+<span id="cb70-15"><a href="Image_Analysis.html#cb70-15" aria-hidden="true" tabindex="-1"></a><span class="do">## [4,]    4 707.51735</span></span>
+<span id="cb70-16"><a href="Image_Analysis.html#cb70-16" aria-hidden="true" tabindex="-1"></a><span class="do">## [5,]    5 796.50114</span></span>
+<span id="cb70-17"><a href="Image_Analysis.html#cb70-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-18"><a href="Image_Analysis.html#cb70-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Zonal statistics - Mean</span></span>
+<span id="cb70-19"><a href="Image_Analysis.html#cb70-19" aria-hidden="true" tabindex="-1"></a><span class="fu">zonal</span>(r, z, <span class="st">&quot;mean&quot;</span>)</span>
+<span id="cb70-20"><a href="Image_Analysis.html#cb70-20" aria-hidden="true" tabindex="-1"></a><span class="do">##      zone      mean</span></span>
+<span id="cb70-21"><a href="Image_Analysis.html#cb70-21" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    1  4.979026</span></span>
+<span id="cb70-22"><a href="Image_Analysis.html#cb70-22" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]    2 15.290684</span></span>
+<span id="cb70-23"><a href="Image_Analysis.html#cb70-23" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]    3 23.785688</span></span>
+<span id="cb70-24"><a href="Image_Analysis.html#cb70-24" aria-hidden="true" tabindex="-1"></a><span class="do">## [4,]    4 35.375867</span></span>
+<span id="cb70-25"><a href="Image_Analysis.html#cb70-25" aria-hidden="true" tabindex="-1"></a><span class="do">## [5,]    5 39.825057</span></span>
+<span id="cb70-26"><a href="Image_Analysis.html#cb70-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-27"><a href="Image_Analysis.html#cb70-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Zonal statistics - Minimum</span></span>
+<span id="cb70-28"><a href="Image_Analysis.html#cb70-28" aria-hidden="true" tabindex="-1"></a><span class="fu">zonal</span>(r, z, <span class="st">&quot;min&quot;</span>)</span>
+<span id="cb70-29"><a href="Image_Analysis.html#cb70-29" aria-hidden="true" tabindex="-1"></a><span class="do">##      zone       min</span></span>
+<span id="cb70-30"><a href="Image_Analysis.html#cb70-30" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    1 0.1487266</span></span>
+<span id="cb70-31"><a href="Image_Analysis.html#cb70-31" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]    2 1.9187318</span></span>
+<span id="cb70-32"><a href="Image_Analysis.html#cb70-32" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]    3 3.1954170</span></span>
+<span id="cb70-33"><a href="Image_Analysis.html#cb70-33" aria-hidden="true" tabindex="-1"></a><span class="do">## [4,]    4 4.5574448</span></span>
+<span id="cb70-34"><a href="Image_Analysis.html#cb70-34" aria-hidden="true" tabindex="-1"></a><span class="do">## [5,]    5 2.8274044</span></span></code></pre></div>
 
 </div>
 </div>

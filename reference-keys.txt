@@ -2,9 +2,9 @@ fig:unnamed-chunk-2
 fig:selection
 fig:select
 fig:joins
-fig:unnamed-chunk-87
-fig:unnamed-chunk-90
-fig:unnamed-chunk-97
+fig:unnamed-chunk-85
+fig:unnamed-chunk-88
+fig:unnamed-chunk-95
 what-this-book-is-about
 how-it-started
 what-might-make-your-journey-difficult
