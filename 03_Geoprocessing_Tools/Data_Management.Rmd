@@ -2,334 +2,43 @@
 # Data Management Toolbox
 
 Data Management toolbox in ArcGIS pro provides the users a variety of tools for managing,
-maintaining and developing datasets that come in all possible forms (feature classes / datasets, raster datasets). Below we present all the different options that R offers for performing such operations.
+maintaining and developing datasets that come in all possible forms (feature classes / datasets, raster datasets). It consists of 32 toolsets as listed below. Many of the toolsets are rarely used, we will focus on the most commonly used tools. 
+
+
+- [ ] 3D Objects
+- [ ] Archiving
+- [ ] Attachments
+- [ ] Attribute Rules
+- [ ] Contingent Values
+- [ ] Data Comparison
+- [ ] Distributed Geodatabase
+- [ ] Domains
+- [ ] Feature Binning
+- [ ] Feature Class
+- [ ] Features
+- [ ] Fields
+- [ ] File Geodatabase
+- [ ] General
+- [ ] Generalization
+- [ ] Geodatabase Administration
+- [ ] Indexes
+- [x] Joins and Relates
+- [ ] LAS Dataset
+- [ ] Layers and Table Views
+- [ ] Package
+- [ ] Photos
+- [x] Projections and Transformations
+- [ ] Raster
+- [ ] Relationship Classes
+- [ ] Sampling
+- [ ] Subtypes
+- [ ] Table
+- [ ] Tile Cache
+- [ ] Topology
+- [ ] Versions
+- [ ] Workspace
 
-## Joins Toolset
 
-In R we have two main options for merging two data frames. On the one hand there is 
-the base R function called _merge_. The arguments of the `merge()` function offers the
-option to perform natural joins. In other words joins such as inner join, left join, right join etc.
-On the other hand we can come up with similar results by using the _join_ functions that
-lie within the `dplyr` package.  
-In the examples below, we choose to use the latter case.  
-
-Before we begin with our examples, we have to make clear the differences among the various
-forms of join operations.  
-
-  - _Natural join or Inner Join_ reflects on keeping only rows that match from the two data frames.
-  - _Full outer join or Outer Join_ reflects on keeping all rows from both data frames.  
-  
-```{r joins, fig.cap= "Join operations",echo=F, out.width = "500px",fig.align='center'}
-knitr::include_graphics("images/joins.png")
-```
-      
-### Inner join
-
-`Inner Join` in R is the most common type of join. It is an operation that returns the rows
-when the matching condition is fulfilled. Below we demonstrate it with an example.
-
-```{r}
-library(dplyr)
-df1 <- data.frame(TeamID = c(1,4,6,11),
-                  TeamName = c("new york knicks","los angeles lakers","milwaukee bucks","boston celtics"),
-                  Championships = c(2,17,1,17))
-
-df2 <- data.frame(TeamID = c(1,2,11,8),
-                  TeamName = c("new york knicks","philadelphia 76ers","boston celtics","los angeles clippers"),
-                  Championships = c(2,3,17,0))
-
-df_innerJoin <- df1 %>% inner_join(df2, by = NULL)
-df_innerJoin
-```
-
-### Outer join
-
-`Outer join` in R using simply returns all rows from both data frames. This is very well depicted in
-\@ref(fig:joins).
-
-```{r}
-df_fullJoin <- full_join(df1,df2)
-df_fullJoin
-```
-
-### Left / Right join
-
-The `left join` in R returns all records from the data frame on the left, as well as
-and the matched records from the one at the right.  
-
-```{r}
-df_leftJoin <- left_join(df1,df2)
-df_leftJoin
-```  
-Similarly works also the `right join`.
-
-```{r}
-df_rightJoin <- right_join(df1,df2)
-df_rightJoin
-```
-
-
-## Projections and Transformations Toolset
-
-Quite often in GIS, users found themselves before the necessity of transforming
-(reprojecting) the coordinate system of a dataset (vector or raster). In fact this
-is one of the most commonly used operations. In ArcGIS pro the aforementioned
-action is performed using the following tools:
-
-- `Project (Data Management)` -> Projects __spatial data__ from one coordinate system to another.
-- `Project Raster (Data Management)` -> Transforms a __raster dataset__ from one coordinate system to another.
-
-The question now is how we can perform similar operations with R. 
-
-### Reproject vector data in R
-
-For our example we will use the following dataset.
-
-- **bezirke.gpkg** -> Dataset that depicts the Municipal structure in Switzerland
-
-**R** and more specifically **sf package** offers options (functions) not only for 
-transforming the coordinate system of a dataset, but also for identifying the
-current existing one. Let's dive in :)
-
-```{r echo=TRUE, message=TRUE, warning=TRUE}
-# Importing the dataset
-library(sf)
-bezirke <- read_sf("sample_data/other/bezirke.gpkg") 
-```
-
-```{r echo=TRUE, message=TRUE, warning=TRUE}
-# Visualising the imported dataset
-library(ggplot2)
-ggplot() + geom_sf(data = bezirke)
-```
-
-In order to identify the current coordinate system of a dataset, **sf package**
-offers the function _st_crs_. The main usage of the function is to retrieve the
-coordinate reference system from an sf object.
-
-```{r echo=TRUE, message=TRUE, warning=TRUE}
-# retrieving the coordinate of the imported layer
-st_crs(bezirke)
-```
-As an output we received that there is no assigned coordinate system to this
-specific dataset. _st_set_crs_ function helps us assigning a coordinate system
-to a dataset.
-
-```{r echo=TRUE, message=TRUE, warning=TRUE}
-# Assigning the World Geodetic System (WGS84) as a coordinate system to our dataset
-bezirke <- st_set_crs(bezirke, 4326)
-```
-In the function above, the number 4326 represents the __EPSG Geodetic Parameter Dataset (EPSG)__
-of the respective coordinate system. **EPSG** is a public registry of geodetic
-datums, spatial reference systems, Earth ellipsoids, coordinate transformations
-and related units of measurement.  
-
-```{r echo=TRUE, message=TRUE, warning=TRUE}
-st_crs(bezirke)
-```
-After rerunning the _st_crs_ function, we are getting now that the assigned
-coordinate system of the dataset is World Geodetic System (WGS84).  
-As a next step, we might want to transform the dataset to the Swiss coordinate system.
-The respective **EPSG** for code for the latest Swiss coordinate system
-(CH1903+LV95) is 2056. For this purpose we use the `st_transform` function of the **sf package**.
-
-
-```{block2, type = "rmdnote"}
- _st_set_crs_ function **does not** reproject the coordinates of the given dataset. In other words, it does not affect the actual _geometry_ column of the sf object. _st_tranform_ on the other hand indeed **does indeed reproject** the dataset to another coordinate
-```
-
-
-```{r echo=TRUE, message=TRUE, warning=TRUE}
-bezirke_swiss <- st_transform(bezirke, 2056)
-
-# retrieve the coordinate system
-st_crs(bezirke_swiss)
-```
-
-
-### Reproject raster data in R
-
-Working with Raster datasets in GIS of operations is of equal importance, as
-working with vector ones. One of the spatial properties of raster datasets is the 
-the Coordinate Reference System (CRS). CRS is the specific system that “associates”
-the raster coordinates (which are just pairs of x/y values) to geographic locations.
-In ArcGIS pro the tool for projecting a raster dataset is called
-_Project Raster (Data Management)_. Let's see how we can perform the same operation
-with R. 
-
-```{r}
-# Importing the datasets
-library(raster)
-
-# Dataset derived from the spatial interpolation of all the available "recycling points"
-# in the city of Wädenwil
-raster_recycling <- raster("sample_data/Raster/raster_recycling.tif") # CRS -> CH1903+LV95
-
-# Dataset representing the public transport quality in the city of Wädenswil
-publicTransport <- raster("sample_data/Raster/publicTransport_waedi.tif") # CRS -> WGS84 
-```
-
-
-```{r}
-# Plot the raster dataset - World Geodetic System 1984 
-plot(publicTransport,las=1,
-     main = "Quality of public transport in the city of Wädenwil - CRS: WGS84",
-     cex.main=1,font.main=4)
-```
-
-We can use the `projectRaster()` function to reproject a raster into a new CRS.
-The first argument of the aforementioned function is the raster dataset we want to reproject,
-while the second one is the dataset to whose projection we are targeting to. So, in
-our case, we are targeting to the coordinate system of the __raster_recycling__
-dataset.  
-It is important to remember that raster reprojection only works when the raster
-object has already a defined CRS.
-
-```{r}
-# Transform the coordinate system of the raster dataset publicTransport_CH
-# into the Swiss Coordinate system - CH1903+LV95
-publicTransport_CH = projectRaster(publicTransport, raster_recycling)
-```
-
-```{r}
-# Plot the raster dataset - Swiss Coordinate System CH1903+LV95 
-plot(publicTransport_CH,las=1,
-     main = "Quality of public transport in the city of Wädenwil - CRS: CH1903+LV95",
-     cex.main=1,font.main=4)
-```
-
-
-
-
-
-
-
-
-
-
-<!-- ## Topology Toolset -->
-
-<!-- ## Sampling Toolset -->
-
-### Generate Tessellation
-
-- Hexagon
-- Tranverse Hexagon
-- Square
-- Diamond
-- Triangle
-
-
-<!-- ### Create Fishnet -->
-
-<!-- ### Create Random Points -->
-
-<!-- ### Generate Points Along Lines -->
-
-<!-- ### Generate Rectangles Along Lines -->
-
-<!-- ### Generate Transsects Along Lines -->
-
-<!-- ## Raster Toolset -->
-
-<!-- <!-- Yes, these are toolsets within toolsets --> -->
-<!-- ### Mosaic Dataset Toolset -->
-
-<!-- ### Ortho Mapping Toolset -->
-
-<!-- ### Raster Dataset Toolset -->
-
-<!-- ### Raster Processing Toolset -->
-
-#### Clip Raster
-
-In GIS operations is quite common the necessity of "clipping" an area based on
-some specific region of interest. This is a quite useful and necessary procedure
-not only when we are dealing with vector datasets, but also when we have to work
-with raster ones. In ArcGIS pro the procedure of "cutting" a portion of a raster
-dataset, mosaic dataset, or an image service layer is performed using 
-`Clip Raster` tool.  
-In R, the respective operation can be performed using the _mask()_ function. For
-the example below, we are using the following datasets:
-
-- __ARE_waedi__: Vector dataset that depicts the public transport connection quality in the city of Wädenswil
-- __raster_recycling__: Dataset derived from the spatial interpolation of all the available "recycling points"in the city of Wädenwil  
-
-
-```{r echo=TRUE}
-# Read raster dataset
-library(raster)
-library(stars)
-library(sf)
-library(dplyr)
-library(stars)
-
-# Insert a vector dataset that depicts the public transport connection quality in
-# the city of Wädenswil and plot it
-ARE_waedi <- read_sf("sample_data/Entsorgung_Waedenswil/ARE_waedenswil.shp")
-
-# Read the raster dataset and plot it
-raster_recycling <- raster("sample_data/Entsorgung_Waedenswil/abfall_raster.tif")
-```
-
-Plot the two datasets one over the other.
-```{r, echo=FALSE}
-plot(raster_recycling)
-plot(ARE_waedi, alpha = 0.5, add = TRUE)
-```
-
-In our case, the vector dataset serves as the clipping extent for the clipping operation.
-```{r Clip raster, echo=TRUE}
-recycle_Waedi_clip <- mask(raster_recycling,ARE_waedi)
-```
-
-
-_Visualising the clipped output_
-```{r echo=FALSE}
-# ggplot() +
-#   geom_stars(data = st_as_stars(recycle_Waedi_clip)) + 
-#   scale_fill_gradientn(colours=c("green","yellow","red"))
-
-plot(recycle_Waedi_clip)
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- #### Composite Bands -->
-
-<!-- #### Compute Pansharpen Weights -->
-
-<!-- #### Create Ortho Corrected Raster Dataset -->
-
-<!-- #### Create Pansharpened Raster Dataset -->
-
-<!-- #### Extract Subdataset -->
-
-<!-- #### Generate Table From Raster Function -->
-
-<!-- #### Raster To DTED -->
-
-<!-- #### Resample -->
-
-<!-- #### Split Raster -->
 
 
 <!-- ### Raster Properties Toolset -->
-
-
