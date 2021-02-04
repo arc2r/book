@@ -2,9 +2,9 @@ fig:unnamed-chunk-2
 fig:selection
 fig:select
 fig:joins
-fig:unnamed-chunk-84
-fig:unnamed-chunk-87
-fig:unnamed-chunk-94
+fig:unnamed-chunk-86
+fig:unnamed-chunk-89
+fig:unnamed-chunk-96
 what-this-book-is-about
 how-it-started
 what-might-make-your-journey-difficult
@@ -26,7 +26,7 @@ interactive-maps
 package-mapview
 package-tmap-1
 further-ressources
-selection
+chapter-selection
 select-by-attribute
 select-by-location
 data-management-toolbox

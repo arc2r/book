@@ -137,6 +137,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 
 <body>
@@ -188,17 +189,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="Data_Management.html"><a href="Data_Management.html"><i class="fa fa-check"></i><b>5</b> Data Management Toolbox</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="Data_Management.html"><a href="Data_Management.html#joins-toolset"><i class="fa fa-check"></i><b>5.1</b> Joins Toolset</a>
+<li class="chapter" data-level="5.1" data-path="Join_toolset.html"><a href="Join_toolset.html"><i class="fa fa-check"></i><b>5.1</b> Joins Toolset</a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="Data_Management.html"><a href="Data_Management.html#inner-join"><i class="fa fa-check"></i><b>5.1.1</b> Inner join</a></li>
-<li class="chapter" data-level="5.1.2" data-path="Data_Management.html"><a href="Data_Management.html#outer-join"><i class="fa fa-check"></i><b>5.1.2</b> Outer join</a></li>
-<li class="chapter" data-level="5.1.3" data-path="Data_Management.html"><a href="Data_Management.html#left-right-join"><i class="fa fa-check"></i><b>5.1.3</b> Left / Right join</a></li>
+<li class="chapter" data-level="5.1.1" data-path="Join_toolset.html"><a href="Join_toolset.html#inner-join"><i class="fa fa-check"></i><b>5.1.1</b> Inner join</a></li>
+<li class="chapter" data-level="5.1.2" data-path="Join_toolset.html"><a href="Join_toolset.html#outer-join"><i class="fa fa-check"></i><b>5.1.2</b> Outer join</a></li>
+<li class="chapter" data-level="5.1.3" data-path="Join_toolset.html"><a href="Join_toolset.html#left-right-join"><i class="fa fa-check"></i><b>5.1.3</b> Left / Right join</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="Data_Management.html"><a href="Data_Management.html#projections-and-transformations-toolset"><i class="fa fa-check"></i><b>5.2</b> Projections and Transformations Toolset</a>
+<li class="chapter" data-level="5.2" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html"><i class="fa fa-check"></i><b>5.2</b> Projections and Transformations Toolset</a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="Data_Management.html"><a href="Data_Management.html#reproject-vector-data-in-r"><i class="fa fa-check"></i><b>5.2.1</b> Reproject vector data in R</a></li>
-<li class="chapter" data-level="5.2.2" data-path="Data_Management.html"><a href="Data_Management.html#reproject-raster-data-in-r"><i class="fa fa-check"></i><b>5.2.2</b> Reproject raster data in R</a></li>
-<li class="chapter" data-level="5.2.3" data-path="Data_Management.html"><a href="Data_Management.html#generate-tessellation"><i class="fa fa-check"></i><b>5.2.3</b> Generate Tessellation</a></li>
+<li class="chapter" data-level="5.2.1" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html#reproject-vector-data-in-r"><i class="fa fa-check"></i><b>5.2.1</b> Reproject vector data in R</a></li>
+<li class="chapter" data-level="5.2.2" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html#reproject-raster-data-in-r"><i class="fa fa-check"></i><b>5.2.2</b> Reproject raster data in R</a></li>
+<li class="chapter" data-level="5.2.3" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html#generate-tessellation"><i class="fa fa-check"></i><b>5.2.3</b> Generate Tessellation</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html"><i class="fa fa-check"></i><b>6</b> Spatial Analyst Toolbox</a>
@@ -287,7 +288,7 @@ Developped by the Research Group for Geoinformatics @ ZHAW</a></li>
 <h1><span class="header-section-number">1</span> What this book is about</h1>
 <p>This is a resource for people wanting to learn spatial-R (Analysis, Visualization) in R and are coming with a background in ArcGIS. This resource should provide some help on this journey. We assume you have some prior experience with <code>R</code>. If this is not the case, we recommend you familiarize yourself with <code>R</code> first.</p>
 <p>We are big fans of using <code>magrittr</code>’s pipe function <code>%&gt;%</code> and heavily use it throughout this book. In addition for vector data, we use packages from the <code>tidyverse</code> (especially <code>filter()</code>, <code>mutate()</code> and <code>summarise()</code>.)</p>
-<p>This book leans heavily on how the Toolboxes and Toolsets are documented in ArcGIS Pro. Is is not a book to read from cover to cover, but to look up specific things of which you only know the ArcGIS terminology for. This book is a work in progress, the current version is from the 2021-02-04 11:02:27 (UTC). <em>We highly appreciate contributions</em> to this book: If you have anything to add, please <a href="https://github.com/arc2r/book">file an issue or make a pull request</a>.</p>
+<p>This book leans heavily on how the Toolboxes and Toolsets are documented in ArcGIS Pro. Is is not a book to read from cover to cover, but to look up specific things of which you only know the ArcGIS terminology for. This book is a work in progress, the current version is from the 2021-02-04 12:53:01 (UTC). <em>We highly appreciate contributions</em> to this book: If you have anything to add, please <a href="https://github.com/arc2r/book">file an issue or make a pull request</a>.</p>
 <div id="how-it-started" class="section level2" number="1.1">
 <h2><span class="header-section-number">1.1</span> How it started</h2>
 <p>We had long since thought about the necessity of a resource which helps ArcGIS users transition to R or Python. Nils had tweeted about this (see below) without getting much reception, and and one point just decided to start his own resource. Since <a href="gis.lsfm.zhaw.ch/">our research group</a> teaches and introduction to GIS and an advanced GIS course mostly based on ArcGIS, we decided to pick up where Nils hat started and develop the resource in with internal funding of our University.</p>
@@ -354,13 +355,13 @@ gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": false,
-"facebook": true,
-"twitter": true,
+"facebook": false,
+"twitter": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["github", "twitter", "linkedin"]
 },
 "fontsettings": {
 "theme": "white",
@@ -382,8 +383,7 @@ gitbook.start({
 "download": null,
 "toc": {
 "collapse": "section"
-},
-"css": "css/style.css"
+}
 });
 });
 </script>

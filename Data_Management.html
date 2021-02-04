@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="Select_by_Location.html"/>
-<link rel="next" href="Spatial_Analyst.html"/>
+<link rel="next" href="Join_toolset.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -137,6 +137,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 
 <body>
@@ -188,17 +189,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="Data_Management.html"><a href="Data_Management.html"><i class="fa fa-check"></i><b>5</b> Data Management Toolbox</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="Data_Management.html"><a href="Data_Management.html#joins-toolset"><i class="fa fa-check"></i><b>5.1</b> Joins Toolset</a>
+<li class="chapter" data-level="5.1" data-path="Join_toolset.html"><a href="Join_toolset.html"><i class="fa fa-check"></i><b>5.1</b> Joins Toolset</a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="Data_Management.html"><a href="Data_Management.html#inner-join"><i class="fa fa-check"></i><b>5.1.1</b> Inner join</a></li>
-<li class="chapter" data-level="5.1.2" data-path="Data_Management.html"><a href="Data_Management.html#outer-join"><i class="fa fa-check"></i><b>5.1.2</b> Outer join</a></li>
-<li class="chapter" data-level="5.1.3" data-path="Data_Management.html"><a href="Data_Management.html#left-right-join"><i class="fa fa-check"></i><b>5.1.3</b> Left / Right join</a></li>
+<li class="chapter" data-level="5.1.1" data-path="Join_toolset.html"><a href="Join_toolset.html#inner-join"><i class="fa fa-check"></i><b>5.1.1</b> Inner join</a></li>
+<li class="chapter" data-level="5.1.2" data-path="Join_toolset.html"><a href="Join_toolset.html#outer-join"><i class="fa fa-check"></i><b>5.1.2</b> Outer join</a></li>
+<li class="chapter" data-level="5.1.3" data-path="Join_toolset.html"><a href="Join_toolset.html#left-right-join"><i class="fa fa-check"></i><b>5.1.3</b> Left / Right join</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="Data_Management.html"><a href="Data_Management.html#projections-and-transformations-toolset"><i class="fa fa-check"></i><b>5.2</b> Projections and Transformations Toolset</a>
+<li class="chapter" data-level="5.2" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html"><i class="fa fa-check"></i><b>5.2</b> Projections and Transformations Toolset</a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="Data_Management.html"><a href="Data_Management.html#reproject-vector-data-in-r"><i class="fa fa-check"></i><b>5.2.1</b> Reproject vector data in R</a></li>
-<li class="chapter" data-level="5.2.2" data-path="Data_Management.html"><a href="Data_Management.html#reproject-raster-data-in-r"><i class="fa fa-check"></i><b>5.2.2</b> Reproject raster data in R</a></li>
-<li class="chapter" data-level="5.2.3" data-path="Data_Management.html"><a href="Data_Management.html#generate-tessellation"><i class="fa fa-check"></i><b>5.2.3</b> Generate Tessellation</a></li>
+<li class="chapter" data-level="5.2.1" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html#reproject-vector-data-in-r"><i class="fa fa-check"></i><b>5.2.1</b> Reproject vector data in R</a></li>
+<li class="chapter" data-level="5.2.2" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html#reproject-raster-data-in-r"><i class="fa fa-check"></i><b>5.2.2</b> Reproject raster data in R</a></li>
+<li class="chapter" data-level="5.2.3" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html#generate-tessellation"><i class="fa fa-check"></i><b>5.2.3</b> Generate Tessellation</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html"><i class="fa fa-check"></i><b>6</b> Spatial Analyst Toolbox</a>
@@ -280,316 +281,73 @@ Developped by the Research Group for Geoinformatics @ ZHAW</a></li>
 <div id="data-management-toolbox" class="section level1" number="5">
 <h1><span class="header-section-number">5</span> Data Management Toolbox</h1>
 <p>Data Management toolbox in ArcGIS pro provides the users a variety of tools for managing,
-maintaining and developing datasets that come in all possible forms (feature classes / datasets, raster datasets). Below we present all the different options that R offers for performing such operations.</p>
-<div id="joins-toolset" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> Joins Toolset</h2>
-<p>In R we have two main options for merging two data frames. On the one hand there is
-the base R function called <em>merge</em>. The arguments of the <code>merge()</code> function offers the
-option to perform natural joins. In other words joins such as inner join, left join, right join etc.
-On the other hand we can come up with similar results by using the <em>join</em> functions that
-lie within the <code>dplyr</code> package.<br />
-In the examples below, we choose to use the latter case.</p>
-<p>Before we begin with our examples, we have to make clear the differences among the various
-forms of join operations.</p>
-<ul>
-<li><em>Natural join or Inner Join</em> reflects on keeping only rows that match from the two data frames.</li>
-<li><em>Full outer join or Outer Join</em> reflects on keeping all rows from both data frames.</li>
+maintaining and developing datasets that come in all possible forms (feature classes / datasets, raster datasets). It consists of 32 toolsets as listed below. Many of the toolsets are rarely used, we will focus on the most commonly used tools.</p>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" />
+3D Objects</li>
+<li><input type="checkbox" disabled="" />
+Archiving</li>
+<li><input type="checkbox" disabled="" />
+Attachments</li>
+<li><input type="checkbox" disabled="" />
+Attribute Rules</li>
+<li><input type="checkbox" disabled="" />
+Contingent Values</li>
+<li><input type="checkbox" disabled="" />
+Data Comparison</li>
+<li><input type="checkbox" disabled="" />
+Distributed Geodatabase</li>
+<li><input type="checkbox" disabled="" />
+Domains</li>
+<li><input type="checkbox" disabled="" />
+Feature Binning</li>
+<li><input type="checkbox" disabled="" />
+Feature Class</li>
+<li><input type="checkbox" disabled="" />
+Features</li>
+<li><input type="checkbox" disabled="" />
+Fields</li>
+<li><input type="checkbox" disabled="" />
+File Geodatabase</li>
+<li><input type="checkbox" disabled="" />
+General</li>
+<li><input type="checkbox" disabled="" />
+Generalization</li>
+<li><input type="checkbox" disabled="" />
+Geodatabase Administration</li>
+<li><input type="checkbox" disabled="" />
+Indexes</li>
+<li><input type="checkbox" disabled="" checked="" />
+Joins and Relates</li>
+<li><input type="checkbox" disabled="" />
+LAS Dataset</li>
+<li><input type="checkbox" disabled="" />
+Layers and Table Views</li>
+<li><input type="checkbox" disabled="" />
+Package</li>
+<li><input type="checkbox" disabled="" />
+Photos</li>
+<li><input type="checkbox" disabled="" checked="" />
+Projections and Transformations</li>
+<li><input type="checkbox" disabled="" />
+Raster</li>
+<li><input type="checkbox" disabled="" />
+Relationship Classes</li>
+<li><input type="checkbox" disabled="" />
+Sampling</li>
+<li><input type="checkbox" disabled="" />
+Subtypes</li>
+<li><input type="checkbox" disabled="" />
+Table</li>
+<li><input type="checkbox" disabled="" />
+Tile Cache</li>
+<li><input type="checkbox" disabled="" />
+Topology</li>
+<li><input type="checkbox" disabled="" />
+Versions</li>
+<li><input type="checkbox" disabled="" />
+Workspace</li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:joins"></span>
-<img src="images/joins.png" alt="Join operations" width="500px" />
-<p class="caption">
-Figure 5.1: Join operations
-</p>
-</div>
-<div id="inner-join" class="section level3" number="5.1.1">
-<h3><span class="header-section-number">5.1.1</span> Inner join</h3>
-<p><code>Inner Join</code> in R is the most common type of join. It is an operation that returns the rows
-when the matching condition is fulfilled. Below we demonstrate it with an example.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="Data_Management.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb30-2"><a href="Data_Management.html#cb30-2" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">TeamID =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">11</span>),</span>
-<span id="cb30-3"><a href="Data_Management.html#cb30-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">TeamName =</span> <span class="fu">c</span>(<span class="st">&quot;new york knicks&quot;</span>,<span class="st">&quot;los angeles lakers&quot;</span>,<span class="st">&quot;milwaukee bucks&quot;</span>,<span class="st">&quot;boston celtics&quot;</span>),</span>
-<span id="cb30-4"><a href="Data_Management.html#cb30-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Championships =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">17</span>,<span class="dv">1</span>,<span class="dv">17</span>))</span>
-<span id="cb30-5"><a href="Data_Management.html#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-6"><a href="Data_Management.html#cb30-6" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">TeamID =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">11</span>,<span class="dv">8</span>),</span>
-<span id="cb30-7"><a href="Data_Management.html#cb30-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">TeamName =</span> <span class="fu">c</span>(<span class="st">&quot;new york knicks&quot;</span>,<span class="st">&quot;philadelphia 76ers&quot;</span>,<span class="st">&quot;boston celtics&quot;</span>,<span class="st">&quot;los angeles clippers&quot;</span>),</span>
-<span id="cb30-8"><a href="Data_Management.html#cb30-8" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Championships =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">17</span>,<span class="dv">0</span>))</span>
-<span id="cb30-9"><a href="Data_Management.html#cb30-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-10"><a href="Data_Management.html#cb30-10" aria-hidden="true" tabindex="-1"></a>df_innerJoin <span class="ot">&lt;-</span> df1 <span class="sc">%&gt;%</span> <span class="fu">inner_join</span>(df2, <span class="at">by =</span> <span class="cn">NULL</span>)</span>
-<span id="cb30-11"><a href="Data_Management.html#cb30-11" aria-hidden="true" tabindex="-1"></a>df_innerJoin</span>
-<span id="cb30-12"><a href="Data_Management.html#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="do">##   TeamID        TeamName Championships</span></span>
-<span id="cb30-13"><a href="Data_Management.html#cb30-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 1      1 new york knicks             2</span></span>
-<span id="cb30-14"><a href="Data_Management.html#cb30-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 2     11  boston celtics            17</span></span></code></pre></div>
-</div>
-<div id="outer-join" class="section level3" number="5.1.2">
-<h3><span class="header-section-number">5.1.2</span> Outer join</h3>
-<p><code>Outer join</code> in R using simply returns all rows from both data frames. This is very well depicted in
-<a href="Data_Management.html#fig:joins">5.1</a>.</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="Data_Management.html#cb31-1" aria-hidden="true" tabindex="-1"></a>df_fullJoin <span class="ot">&lt;-</span> <span class="fu">full_join</span>(df1,df2)</span>
-<span id="cb31-2"><a href="Data_Management.html#cb31-2" aria-hidden="true" tabindex="-1"></a>df_fullJoin</span>
-<span id="cb31-3"><a href="Data_Management.html#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   TeamID             TeamName Championships</span></span>
-<span id="cb31-4"><a href="Data_Management.html#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 1      1      new york knicks             2</span></span>
-<span id="cb31-5"><a href="Data_Management.html#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 2      4   los angeles lakers            17</span></span>
-<span id="cb31-6"><a href="Data_Management.html#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 3      6      milwaukee bucks             1</span></span>
-<span id="cb31-7"><a href="Data_Management.html#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 4     11       boston celtics            17</span></span>
-<span id="cb31-8"><a href="Data_Management.html#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 5      2   philadelphia 76ers             3</span></span>
-<span id="cb31-9"><a href="Data_Management.html#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 6      8 los angeles clippers             0</span></span></code></pre></div>
-</div>
-<div id="left-right-join" class="section level3" number="5.1.3">
-<h3><span class="header-section-number">5.1.3</span> Left / Right join</h3>
-<p>The <code>left join</code> in R returns all records from the data frame on the left, as well as
-and the matched records from the one at the right.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="Data_Management.html#cb32-1" aria-hidden="true" tabindex="-1"></a>df_leftJoin <span class="ot">&lt;-</span> <span class="fu">left_join</span>(df1,df2)</span>
-<span id="cb32-2"><a href="Data_Management.html#cb32-2" aria-hidden="true" tabindex="-1"></a>df_leftJoin</span>
-<span id="cb32-3"><a href="Data_Management.html#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   TeamID           TeamName Championships</span></span>
-<span id="cb32-4"><a href="Data_Management.html#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 1      1    new york knicks             2</span></span>
-<span id="cb32-5"><a href="Data_Management.html#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 2      4 los angeles lakers            17</span></span>
-<span id="cb32-6"><a href="Data_Management.html#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 3      6    milwaukee bucks             1</span></span>
-<span id="cb32-7"><a href="Data_Management.html#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 4     11     boston celtics            17</span></span></code></pre></div>
-<p>Similarly works also the <code>right join</code>.</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="Data_Management.html#cb33-1" aria-hidden="true" tabindex="-1"></a>df_rightJoin <span class="ot">&lt;-</span> <span class="fu">right_join</span>(df1,df2)</span>
-<span id="cb33-2"><a href="Data_Management.html#cb33-2" aria-hidden="true" tabindex="-1"></a>df_rightJoin</span>
-<span id="cb33-3"><a href="Data_Management.html#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   TeamID             TeamName Championships</span></span>
-<span id="cb33-4"><a href="Data_Management.html#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 1      1      new york knicks             2</span></span>
-<span id="cb33-5"><a href="Data_Management.html#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 2     11       boston celtics            17</span></span>
-<span id="cb33-6"><a href="Data_Management.html#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 3      2   philadelphia 76ers             3</span></span>
-<span id="cb33-7"><a href="Data_Management.html#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 4      8 los angeles clippers             0</span></span></code></pre></div>
-</div>
-</div>
-<div id="projections-and-transformations-toolset" class="section level2" number="5.2">
-<h2><span class="header-section-number">5.2</span> Projections and Transformations Toolset</h2>
-<p>Quite often in GIS, users found themselves before the necessity of transforming
-(reprojecting) the coordinate system of a dataset (vector or raster). In fact this
-is one of the most commonly used operations. In ArcGIS pro the aforementioned
-action is performed using the following tools:</p>
-<ul>
-<li><code>Project (Data Management)</code> -&gt; Projects <strong>spatial data</strong> from one coordinate system to another.</li>
-<li><code>Project Raster (Data Management)</code> -&gt; Transforms a <strong>raster dataset</strong> from one coordinate system to another.</li>
-</ul>
-<p>The question now is how we can perform similar operations with R.</p>
-<div id="reproject-vector-data-in-r" class="section level3" number="5.2.1">
-<h3><span class="header-section-number">5.2.1</span> Reproject vector data in R</h3>
-<p>For our example we will use the following dataset.</p>
-<ul>
-<li><strong>bezirke.gpkg</strong> -&gt; Dataset that depicts the Municipal structure in Switzerland</li>
-</ul>
-<p><strong>R</strong> and more specifically <strong>sf package</strong> offers options (functions) not only for
-transforming the coordinate system of a dataset, but also for identifying the
-current existing one. Let’s dive in :)</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="Data_Management.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the dataset</span></span>
-<span id="cb34-2"><a href="Data_Management.html#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb34-3"><a href="Data_Management.html#cb34-3" aria-hidden="true" tabindex="-1"></a>bezirke <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(<span class="st">&quot;sample_data/other/bezirke.gpkg&quot;</span>) </span></code></pre></div>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="Data_Management.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualising the imported dataset</span></span>
-<span id="cb35-2"><a href="Data_Management.html#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb35-3"><a href="Data_Management.html#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> bezirke)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
-<p>In order to identify the current coordinate system of a dataset, <strong>sf package</strong>
-offers the function <em>st_crs</em>. The main usage of the function is to retrieve the
-coordinate reference system from an sf object.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="Data_Management.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># retrieving the coordinate of the imported layer</span></span>
-<span id="cb36-2"><a href="Data_Management.html#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(bezirke)</span>
-<span id="cb36-3"><a href="Data_Management.html#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Coordinate Reference System: NA</span></span></code></pre></div>
-<p>As an output we received that there is no assigned coordinate system to this
-specific dataset. <em>st_set_crs</em> function helps us assigning a coordinate system
-to a dataset.</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="Data_Management.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning the World Geodetic System (WGS84) as a coordinate system to our dataset</span></span>
-<span id="cb37-2"><a href="Data_Management.html#cb37-2" aria-hidden="true" tabindex="-1"></a>bezirke <span class="ot">&lt;-</span> <span class="fu">st_set_crs</span>(bezirke, <span class="dv">4326</span>)</span></code></pre></div>
-<p>In the function above, the number 4326 represents the <strong>EPSG Geodetic Parameter Dataset (EPSG)</strong>
-of the respective coordinate system. <strong>EPSG</strong> is a public registry of geodetic
-datums, spatial reference systems, Earth ellipsoids, coordinate transformations
-and related units of measurement.</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="Data_Management.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(bezirke)</span>
-<span id="cb38-2"><a href="Data_Management.html#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Coordinate Reference System:</span></span>
-<span id="cb38-3"><a href="Data_Management.html#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   User input: EPSG:4326 </span></span>
-<span id="cb38-4"><a href="Data_Management.html#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="do">##   wkt:</span></span>
-<span id="cb38-5"><a href="Data_Management.html#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="do">## GEOGCRS[&quot;WGS 84&quot;,</span></span>
-<span id="cb38-6"><a href="Data_Management.html#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="do">##     DATUM[&quot;World Geodetic System 1984&quot;,</span></span>
-<span id="cb38-7"><a href="Data_Management.html#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="do">##         ELLIPSOID[&quot;WGS 84&quot;,6378137,298.257223563,</span></span>
-<span id="cb38-8"><a href="Data_Management.html#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="do">##             LENGTHUNIT[&quot;metre&quot;,1]]],</span></span>
-<span id="cb38-9"><a href="Data_Management.html#cb38-9" aria-hidden="true" tabindex="-1"></a><span class="do">##     PRIMEM[&quot;Greenwich&quot;,0,</span></span>
-<span id="cb38-10"><a href="Data_Management.html#cb38-10" aria-hidden="true" tabindex="-1"></a><span class="do">##         ANGLEUNIT[&quot;degree&quot;,0.0174532925199433]],</span></span>
-<span id="cb38-11"><a href="Data_Management.html#cb38-11" aria-hidden="true" tabindex="-1"></a><span class="do">##     CS[ellipsoidal,2],</span></span>
-<span id="cb38-12"><a href="Data_Management.html#cb38-12" aria-hidden="true" tabindex="-1"></a><span class="do">##         AXIS[&quot;geodetic latitude (Lat)&quot;,north,</span></span>
-<span id="cb38-13"><a href="Data_Management.html#cb38-13" aria-hidden="true" tabindex="-1"></a><span class="do">##             ORDER[1],</span></span>
-<span id="cb38-14"><a href="Data_Management.html#cb38-14" aria-hidden="true" tabindex="-1"></a><span class="do">##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433]],</span></span>
-<span id="cb38-15"><a href="Data_Management.html#cb38-15" aria-hidden="true" tabindex="-1"></a><span class="do">##         AXIS[&quot;geodetic longitude (Lon)&quot;,east,</span></span>
-<span id="cb38-16"><a href="Data_Management.html#cb38-16" aria-hidden="true" tabindex="-1"></a><span class="do">##             ORDER[2],</span></span>
-<span id="cb38-17"><a href="Data_Management.html#cb38-17" aria-hidden="true" tabindex="-1"></a><span class="do">##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433]],</span></span>
-<span id="cb38-18"><a href="Data_Management.html#cb38-18" aria-hidden="true" tabindex="-1"></a><span class="do">##     USAGE[</span></span>
-<span id="cb38-19"><a href="Data_Management.html#cb38-19" aria-hidden="true" tabindex="-1"></a><span class="do">##         SCOPE[&quot;unknown&quot;],</span></span>
-<span id="cb38-20"><a href="Data_Management.html#cb38-20" aria-hidden="true" tabindex="-1"></a><span class="do">##         AREA[&quot;World&quot;],</span></span>
-<span id="cb38-21"><a href="Data_Management.html#cb38-21" aria-hidden="true" tabindex="-1"></a><span class="do">##         BBOX[-90,-180,90,180]],</span></span>
-<span id="cb38-22"><a href="Data_Management.html#cb38-22" aria-hidden="true" tabindex="-1"></a><span class="do">##     ID[&quot;EPSG&quot;,4326]]</span></span></code></pre></div>
-<p>After rerunning the <em>st_crs</em> function, we are getting now that the assigned
-coordinate system of the dataset is World Geodetic System (WGS84).<br />
-As a next step, we might want to transform the dataset to the Swiss coordinate system.
-The respective <strong>EPSG</strong> for code for the latest Swiss coordinate system
-(CH1903+LV95) is 2056. For this purpose we use the <code>st_transform</code> function of the <strong>sf package</strong>.</p>
-<p><span style="color:red"><strong>Important</strong></span></p>
-<details>
-<summary>
-<strong>&gt; Click to expand!</strong>
-</summary>
-<em>st_set_crs</em> function <strong>does not</strong> reproject the coordinates of the given dataset. In
-other words, it does not affect the actual <em>geometry</em> column of the sf object.
-<em>st_tranform</em> on the other hand indeed <strong>does indeed reproject</strong> the dataset to another coordinate
-system.
-</details>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="Data_Management.html#cb39-1" aria-hidden="true" tabindex="-1"></a>bezirke_swiss <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(bezirke, <span class="dv">2056</span>)</span>
-<span id="cb39-2"><a href="Data_Management.html#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-3"><a href="Data_Management.html#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># retrieve the coordinate system</span></span>
-<span id="cb39-4"><a href="Data_Management.html#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(bezirke_swiss)</span>
-<span id="cb39-5"><a href="Data_Management.html#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Coordinate Reference System:</span></span>
-<span id="cb39-6"><a href="Data_Management.html#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="do">##   User input: EPSG:2056 </span></span>
-<span id="cb39-7"><a href="Data_Management.html#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="do">##   wkt:</span></span>
-<span id="cb39-8"><a href="Data_Management.html#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="do">## PROJCRS[&quot;CH1903+ / LV95&quot;,</span></span>
-<span id="cb39-9"><a href="Data_Management.html#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="do">##     BASEGEOGCRS[&quot;CH1903+&quot;,</span></span>
-<span id="cb39-10"><a href="Data_Management.html#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="do">##         DATUM[&quot;CH1903+&quot;,</span></span>
-<span id="cb39-11"><a href="Data_Management.html#cb39-11" aria-hidden="true" tabindex="-1"></a><span class="do">##             ELLIPSOID[&quot;Bessel 1841&quot;,6377397.155,299.1528128,</span></span>
-<span id="cb39-12"><a href="Data_Management.html#cb39-12" aria-hidden="true" tabindex="-1"></a><span class="do">##                 LENGTHUNIT[&quot;metre&quot;,1]]],</span></span>
-<span id="cb39-13"><a href="Data_Management.html#cb39-13" aria-hidden="true" tabindex="-1"></a><span class="do">##         PRIMEM[&quot;Greenwich&quot;,0,</span></span>
-<span id="cb39-14"><a href="Data_Management.html#cb39-14" aria-hidden="true" tabindex="-1"></a><span class="do">##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433]],</span></span>
-<span id="cb39-15"><a href="Data_Management.html#cb39-15" aria-hidden="true" tabindex="-1"></a><span class="do">##         ID[&quot;EPSG&quot;,4150]],</span></span>
-<span id="cb39-16"><a href="Data_Management.html#cb39-16" aria-hidden="true" tabindex="-1"></a><span class="do">##     CONVERSION[&quot;Swiss Oblique Mercator 1995&quot;,</span></span>
-<span id="cb39-17"><a href="Data_Management.html#cb39-17" aria-hidden="true" tabindex="-1"></a><span class="do">##         METHOD[&quot;Hotine Oblique Mercator (variant B)&quot;,</span></span>
-<span id="cb39-18"><a href="Data_Management.html#cb39-18" aria-hidden="true" tabindex="-1"></a><span class="do">##             ID[&quot;EPSG&quot;,9815]],</span></span>
-<span id="cb39-19"><a href="Data_Management.html#cb39-19" aria-hidden="true" tabindex="-1"></a><span class="do">##         PARAMETER[&quot;Latitude of projection centre&quot;,46.9524055555556,</span></span>
-<span id="cb39-20"><a href="Data_Management.html#cb39-20" aria-hidden="true" tabindex="-1"></a><span class="do">##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],</span></span>
-<span id="cb39-21"><a href="Data_Management.html#cb39-21" aria-hidden="true" tabindex="-1"></a><span class="do">##             ID[&quot;EPSG&quot;,8811]],</span></span>
-<span id="cb39-22"><a href="Data_Management.html#cb39-22" aria-hidden="true" tabindex="-1"></a><span class="do">##         PARAMETER[&quot;Longitude of projection centre&quot;,7.43958333333333,</span></span>
-<span id="cb39-23"><a href="Data_Management.html#cb39-23" aria-hidden="true" tabindex="-1"></a><span class="do">##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],</span></span>
-<span id="cb39-24"><a href="Data_Management.html#cb39-24" aria-hidden="true" tabindex="-1"></a><span class="do">##             ID[&quot;EPSG&quot;,8812]],</span></span>
-<span id="cb39-25"><a href="Data_Management.html#cb39-25" aria-hidden="true" tabindex="-1"></a><span class="do">##         PARAMETER[&quot;Azimuth of initial line&quot;,90,</span></span>
-<span id="cb39-26"><a href="Data_Management.html#cb39-26" aria-hidden="true" tabindex="-1"></a><span class="do">##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],</span></span>
-<span id="cb39-27"><a href="Data_Management.html#cb39-27" aria-hidden="true" tabindex="-1"></a><span class="do">##             ID[&quot;EPSG&quot;,8813]],</span></span>
-<span id="cb39-28"><a href="Data_Management.html#cb39-28" aria-hidden="true" tabindex="-1"></a><span class="do">##         PARAMETER[&quot;Angle from Rectified to Skew Grid&quot;,90,</span></span>
-<span id="cb39-29"><a href="Data_Management.html#cb39-29" aria-hidden="true" tabindex="-1"></a><span class="do">##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],</span></span>
-<span id="cb39-30"><a href="Data_Management.html#cb39-30" aria-hidden="true" tabindex="-1"></a><span class="do">##             ID[&quot;EPSG&quot;,8814]],</span></span>
-<span id="cb39-31"><a href="Data_Management.html#cb39-31" aria-hidden="true" tabindex="-1"></a><span class="do">##         PARAMETER[&quot;Scale factor on initial line&quot;,1,</span></span>
-<span id="cb39-32"><a href="Data_Management.html#cb39-32" aria-hidden="true" tabindex="-1"></a><span class="do">##             SCALEUNIT[&quot;unity&quot;,1],</span></span>
-<span id="cb39-33"><a href="Data_Management.html#cb39-33" aria-hidden="true" tabindex="-1"></a><span class="do">##             ID[&quot;EPSG&quot;,8815]],</span></span>
-<span id="cb39-34"><a href="Data_Management.html#cb39-34" aria-hidden="true" tabindex="-1"></a><span class="do">##         PARAMETER[&quot;Easting at projection centre&quot;,2600000,</span></span>
-<span id="cb39-35"><a href="Data_Management.html#cb39-35" aria-hidden="true" tabindex="-1"></a><span class="do">##             LENGTHUNIT[&quot;metre&quot;,1],</span></span>
-<span id="cb39-36"><a href="Data_Management.html#cb39-36" aria-hidden="true" tabindex="-1"></a><span class="do">##             ID[&quot;EPSG&quot;,8816]],</span></span>
-<span id="cb39-37"><a href="Data_Management.html#cb39-37" aria-hidden="true" tabindex="-1"></a><span class="do">##         PARAMETER[&quot;Northing at projection centre&quot;,1200000,</span></span>
-<span id="cb39-38"><a href="Data_Management.html#cb39-38" aria-hidden="true" tabindex="-1"></a><span class="do">##             LENGTHUNIT[&quot;metre&quot;,1],</span></span>
-<span id="cb39-39"><a href="Data_Management.html#cb39-39" aria-hidden="true" tabindex="-1"></a><span class="do">##             ID[&quot;EPSG&quot;,8817]]],</span></span>
-<span id="cb39-40"><a href="Data_Management.html#cb39-40" aria-hidden="true" tabindex="-1"></a><span class="do">##     CS[Cartesian,2],</span></span>
-<span id="cb39-41"><a href="Data_Management.html#cb39-41" aria-hidden="true" tabindex="-1"></a><span class="do">##         AXIS[&quot;(E)&quot;,east,</span></span>
-<span id="cb39-42"><a href="Data_Management.html#cb39-42" aria-hidden="true" tabindex="-1"></a><span class="do">##             ORDER[1],</span></span>
-<span id="cb39-43"><a href="Data_Management.html#cb39-43" aria-hidden="true" tabindex="-1"></a><span class="do">##             LENGTHUNIT[&quot;metre&quot;,1]],</span></span>
-<span id="cb39-44"><a href="Data_Management.html#cb39-44" aria-hidden="true" tabindex="-1"></a><span class="do">##         AXIS[&quot;(N)&quot;,north,</span></span>
-<span id="cb39-45"><a href="Data_Management.html#cb39-45" aria-hidden="true" tabindex="-1"></a><span class="do">##             ORDER[2],</span></span>
-<span id="cb39-46"><a href="Data_Management.html#cb39-46" aria-hidden="true" tabindex="-1"></a><span class="do">##             LENGTHUNIT[&quot;metre&quot;,1]],</span></span>
-<span id="cb39-47"><a href="Data_Management.html#cb39-47" aria-hidden="true" tabindex="-1"></a><span class="do">##     USAGE[</span></span>
-<span id="cb39-48"><a href="Data_Management.html#cb39-48" aria-hidden="true" tabindex="-1"></a><span class="do">##         SCOPE[&quot;unknown&quot;],</span></span>
-<span id="cb39-49"><a href="Data_Management.html#cb39-49" aria-hidden="true" tabindex="-1"></a><span class="do">##         AREA[&quot;Europe - Liechtenstein and Switzerland&quot;],</span></span>
-<span id="cb39-50"><a href="Data_Management.html#cb39-50" aria-hidden="true" tabindex="-1"></a><span class="do">##         BBOX[45.82,5.96,47.81,10.49]],</span></span>
-<span id="cb39-51"><a href="Data_Management.html#cb39-51" aria-hidden="true" tabindex="-1"></a><span class="do">##     ID[&quot;EPSG&quot;,2056]]</span></span></code></pre></div>
-</div>
-<div id="reproject-raster-data-in-r" class="section level3" number="5.2.2">
-<h3><span class="header-section-number">5.2.2</span> Reproject raster data in R</h3>
-<p>Working with Raster datasets in GIS of operations is of equal importance, as
-working with vector ones. One of the spatial properties of raster datasets is the
-the Coordinate Reference System (CRS). CRS is the specific system that “associates”
-the raster coordinates (which are just pairs of x/y values) to geographic locations.
-In ArcGIS pro the tool for projecting a raster dataset is called
-<em>Project Raster (Data Management)</em>. Let’s see how we can perform the same operation
-with R.</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="Data_Management.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the datasets</span></span>
-<span id="cb40-2"><a href="Data_Management.html#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
-<span id="cb40-3"><a href="Data_Management.html#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-4"><a href="Data_Management.html#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Dataset derived from the spatial interpolation of all the available &quot;recycling points&quot;</span></span>
-<span id="cb40-5"><a href="Data_Management.html#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="co"># in the city of Wädenwil</span></span>
-<span id="cb40-6"><a href="Data_Management.html#cb40-6" aria-hidden="true" tabindex="-1"></a>raster_recycling <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="st">&quot;sample_data/Raster/raster_recycling.tif&quot;</span>) <span class="co"># CRS -&gt; CH1903+LV95</span></span>
-<span id="cb40-7"><a href="Data_Management.html#cb40-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-8"><a href="Data_Management.html#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Dataset representing the public transport quality in the city of Wädenswil</span></span>
-<span id="cb40-9"><a href="Data_Management.html#cb40-9" aria-hidden="true" tabindex="-1"></a>publicTransport <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="st">&quot;sample_data/Raster/publicTransport_waedi.tif&quot;</span>) <span class="co"># CRS -&gt; WGS84 </span></span></code></pre></div>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="Data_Management.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the raster dataset - World Geodetic System 1984 </span></span>
-<span id="cb41-2"><a href="Data_Management.html#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(publicTransport,<span class="at">las=</span><span class="dv">1</span>,</span>
-<span id="cb41-3"><a href="Data_Management.html#cb41-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Quality of public transport in the city of Wädenwil - CRS: WGS84&quot;</span>,</span>
-<span id="cb41-4"><a href="Data_Management.html#cb41-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex.main=</span><span class="dv">1</span>,<span class="at">font.main=</span><span class="dv">4</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
-<p>We can use the <code>projectRaster()</code> function to reproject a raster into a new CRS.
-The first argument of the aforementioned function is the raster dataset we want to reproject,
-while the second one is the dataset to whose projection we are targeting to. So, in
-our case, we are targeting to the coordinate system of the <strong>raster_recycling</strong>
-dataset.<br />
-It is important to remember that raster reprojection only works when the raster
-object has already a defined CRS.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="Data_Management.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transform the coordinate system of the raster dataset publicTransport_CH</span></span>
-<span id="cb42-2"><a href="Data_Management.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="co"># into the Swiss Coordinate system - CH1903+LV95</span></span>
-<span id="cb42-3"><a href="Data_Management.html#cb42-3" aria-hidden="true" tabindex="-1"></a>publicTransport_CH <span class="ot">=</span> <span class="fu">projectRaster</span>(publicTransport, raster_recycling)</span></code></pre></div>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="Data_Management.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the raster dataset - Swiss Coordinate System CH1903+LV95 </span></span>
-<span id="cb43-2"><a href="Data_Management.html#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(publicTransport_CH,<span class="at">las=</span><span class="dv">1</span>,</span>
-<span id="cb43-3"><a href="Data_Management.html#cb43-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Quality of public transport in the city of Wädenwil - CRS: CH1903+LV95&quot;</span>,</span>
-<span id="cb43-4"><a href="Data_Management.html#cb43-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex.main=</span><span class="dv">1</span>,<span class="at">font.main=</span><span class="dv">4</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
-<!-- ## Topology Toolset -->
-<!-- ## Sampling Toolset -->
-</div>
-<div id="generate-tessellation" class="section level3" number="5.2.3">
-<h3><span class="header-section-number">5.2.3</span> Generate Tessellation</h3>
-<ul>
-<li>Hexagon</li>
-<li>Tranverse Hexagon</li>
-<li>Square</li>
-<li>Diamond</li>
-<li>Triangle</li>
-</ul>
-<!-- ### Create Fishnet -->
-<!-- ### Create Random Points -->
-<!-- ### Generate Points Along Lines -->
-<!-- ### Generate Rectangles Along Lines -->
-<!-- ### Generate Transsects Along Lines -->
-<!-- ## Raster Toolset -->
-<!-- <!-- Yes, these are toolsets within toolsets -->
-<p>–&gt;
-<!-- ### Mosaic Dataset Toolset --></p>
-<!-- ### Ortho Mapping Toolset -->
-<!-- ### Raster Dataset Toolset -->
-<!-- ### Raster Processing Toolset -->
-<div id="clip-raster" class="section level4" number="5.2.3.1">
-<h4><span class="header-section-number">5.2.3.1</span> Clip Raster</h4>
-<p>In GIS operations is quite common the necessity of “clipping” an area based on
-some specific region of interest. This is a quite useful and necessary procedure
-not only when we are dealing with vector datasets, but also when we have to work
-with raster ones. In ArcGIS pro the procedure of “cutting” a portion of a raster
-dataset, mosaic dataset, or an image service layer is performed using
-<code>Clip Raster</code> tool.<br />
-In R, the respective operation can be performed using the <em>mask()</em> function. For
-the example below, we are using the following datasets:</p>
-<ul>
-<li><strong>ARE_waedi</strong>: Vector dataset that depicts the public transport connection quality in the city of Wädenswil</li>
-<li><strong>raster_recycling</strong>: Dataset derived from the spatial interpolation of all the available “recycling points”in the city of Wädenwil</li>
-</ul>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="Data_Management.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read raster dataset</span></span>
-<span id="cb44-2"><a href="Data_Management.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
-<span id="cb44-3"><a href="Data_Management.html#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stars)</span>
-<span id="cb44-4"><a href="Data_Management.html#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb44-5"><a href="Data_Management.html#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb44-6"><a href="Data_Management.html#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stars)</span>
-<span id="cb44-7"><a href="Data_Management.html#cb44-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-8"><a href="Data_Management.html#cb44-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Insert a vector dataset that depicts the public transport connection quality in</span></span>
-<span id="cb44-9"><a href="Data_Management.html#cb44-9" aria-hidden="true" tabindex="-1"></a><span class="co"># the city of Wädenswil and plot it</span></span>
-<span id="cb44-10"><a href="Data_Management.html#cb44-10" aria-hidden="true" tabindex="-1"></a>ARE_waedi <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(<span class="st">&quot;sample_data/Entsorgung_Waedenswil/ARE_waedenswil.shp&quot;</span>)</span>
-<span id="cb44-11"><a href="Data_Management.html#cb44-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-12"><a href="Data_Management.html#cb44-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the raster dataset and plot it</span></span>
-<span id="cb44-13"><a href="Data_Management.html#cb44-13" aria-hidden="true" tabindex="-1"></a>raster_recycling <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="st">&quot;sample_data/Entsorgung_Waedenswil/abfall_raster.tif&quot;</span>)</span></code></pre></div>
-<p>Plot the two datasets one over the other.
-<img src="_main_files/figure-html/unnamed-chunk-55-1.png" width="672" /></p>
-<p>In our case, the vector dataset serves as the clipping extent for the clipping operation.</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="Data_Management.html#cb45-1" aria-hidden="true" tabindex="-1"></a>recycle_Waedi_clip <span class="ot">&lt;-</span> <span class="fu">mask</span>(raster_recycling,ARE_waedi)</span></code></pre></div>
-<p><em>Visualising the clipped output</em>
-<img src="_main_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
-<!-- #### Composite Bands -->
-<!-- #### Compute Pansharpen Weights -->
-<!-- #### Create Ortho Corrected Raster Dataset -->
-<!-- #### Create Pansharpened Raster Dataset -->
-<!-- #### Extract Subdataset -->
-<!-- #### Generate Table From Raster Function -->
-<!-- #### Raster To DTED -->
-<!-- #### Resample -->
-<!-- #### Split Raster -->
 <!-- ### Raster Properties Toolset -->
 
             </section>
@@ -598,7 +356,7 @@ the example below, we are using the following datasets:</p>
         </div>
       </div>
 <a href="Select_by_Location.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="Spatial_Analyst.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="Join_toolset.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -615,13 +373,13 @@ gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": false,
-"facebook": true,
-"twitter": true,
+"facebook": false,
+"twitter": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["github", "twitter", "linkedin"]
 },
 "fontsettings": {
 "theme": "white",
@@ -643,8 +401,7 @@ gitbook.start({
 "download": null,
 "toc": {
 "collapse": "section"
-},
-"css": "css/style.css"
+}
 });
 });
 </script>

@@ -30,7 +30,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="Data_Management.html"/>
+<link rel="prev" href="Projections_and_Transformations_toolset.html"/>
 <link rel="next" href="3D_Analyst.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
@@ -137,6 +137,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 
 <body>
@@ -188,17 +189,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="Data_Management.html"><a href="Data_Management.html"><i class="fa fa-check"></i><b>5</b> Data Management Toolbox</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="Data_Management.html"><a href="Data_Management.html#joins-toolset"><i class="fa fa-check"></i><b>5.1</b> Joins Toolset</a>
+<li class="chapter" data-level="5.1" data-path="Join_toolset.html"><a href="Join_toolset.html"><i class="fa fa-check"></i><b>5.1</b> Joins Toolset</a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="Data_Management.html"><a href="Data_Management.html#inner-join"><i class="fa fa-check"></i><b>5.1.1</b> Inner join</a></li>
-<li class="chapter" data-level="5.1.2" data-path="Data_Management.html"><a href="Data_Management.html#outer-join"><i class="fa fa-check"></i><b>5.1.2</b> Outer join</a></li>
-<li class="chapter" data-level="5.1.3" data-path="Data_Management.html"><a href="Data_Management.html#left-right-join"><i class="fa fa-check"></i><b>5.1.3</b> Left / Right join</a></li>
+<li class="chapter" data-level="5.1.1" data-path="Join_toolset.html"><a href="Join_toolset.html#inner-join"><i class="fa fa-check"></i><b>5.1.1</b> Inner join</a></li>
+<li class="chapter" data-level="5.1.2" data-path="Join_toolset.html"><a href="Join_toolset.html#outer-join"><i class="fa fa-check"></i><b>5.1.2</b> Outer join</a></li>
+<li class="chapter" data-level="5.1.3" data-path="Join_toolset.html"><a href="Join_toolset.html#left-right-join"><i class="fa fa-check"></i><b>5.1.3</b> Left / Right join</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="Data_Management.html"><a href="Data_Management.html#projections-and-transformations-toolset"><i class="fa fa-check"></i><b>5.2</b> Projections and Transformations Toolset</a>
+<li class="chapter" data-level="5.2" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html"><i class="fa fa-check"></i><b>5.2</b> Projections and Transformations Toolset</a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="Data_Management.html"><a href="Data_Management.html#reproject-vector-data-in-r"><i class="fa fa-check"></i><b>5.2.1</b> Reproject vector data in R</a></li>
-<li class="chapter" data-level="5.2.2" data-path="Data_Management.html"><a href="Data_Management.html#reproject-raster-data-in-r"><i class="fa fa-check"></i><b>5.2.2</b> Reproject raster data in R</a></li>
-<li class="chapter" data-level="5.2.3" data-path="Data_Management.html"><a href="Data_Management.html#generate-tessellation"><i class="fa fa-check"></i><b>5.2.3</b> Generate Tessellation</a></li>
+<li class="chapter" data-level="5.2.1" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html#reproject-vector-data-in-r"><i class="fa fa-check"></i><b>5.2.1</b> Reproject vector data in R</a></li>
+<li class="chapter" data-level="5.2.2" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html#reproject-raster-data-in-r"><i class="fa fa-check"></i><b>5.2.2</b> Reproject raster data in R</a></li>
+<li class="chapter" data-level="5.2.3" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html#generate-tessellation"><i class="fa fa-check"></i><b>5.2.3</b> Generate Tessellation</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html"><i class="fa fa-check"></i><b>6</b> Spatial Analyst Toolbox</a>
@@ -277,9 +278,9 @@ Developped by the Research Group for Geoinformatics @ ZHAW</a></li>
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="Spatial_Analyst.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb46-2"><a href="Spatial_Analyst.html#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb46-3"><a href="Spatial_Analyst.html#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="Spatial_Analyst.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb47-2"><a href="Spatial_Analyst.html#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb47-3"><a href="Spatial_Analyst.html#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span></code></pre></div>
 </div>
 </div>
 </div>
@@ -298,43 +299,43 @@ Developped by the Research Group for Geoinformatics @ ZHAW</a></li>
 <li><code>MASS::kde2d()</code>: Takes x/y coordinates as vectors and returns a matrix</li>
 </ul>
 <p>In this example, I take <code>MASS:kde2d()</code> and tweak it to take <code>sf</code> and return <code>raster</code>. First, let’s create some sample data:</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="Spatial_Analyst.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">10</span>)</span>
-<span id="cb47-2"><a href="Spatial_Analyst.html#cb47-2" aria-hidden="true" tabindex="-1"></a>mypoints <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>),<span class="at">y =</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb47-3"><a href="Spatial_Analyst.html#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb47-4"><a href="Spatial_Analyst.html#cb47-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-5"><a href="Spatial_Analyst.html#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mypoints)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="Spatial_Analyst.html#cb48-1" aria-hidden="true" tabindex="-1"></a>my_kde <span class="ot">&lt;-</span> <span class="cf">function</span>(points,cellsize, bandwith, <span class="at">extent =</span> <span class="cn">NULL</span>){</span>
-<span id="cb48-2"><a href="Spatial_Analyst.html#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(MASS)</span>
-<span id="cb48-3"><a href="Spatial_Analyst.html#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(raster)</span>
-<span id="cb48-4"><a href="Spatial_Analyst.html#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(sf)</span>
-<span id="cb48-5"><a href="Spatial_Analyst.html#cb48-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">is.null</span>(extent)){</span>
-<span id="cb48-6"><a href="Spatial_Analyst.html#cb48-6" aria-hidden="true" tabindex="-1"></a>    extent_vec <span class="ot">&lt;-</span> <span class="fu">st_bbox</span>(points)[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>)]</span>
-<span id="cb48-7"><a href="Spatial_Analyst.html#cb48-7" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span>{</span>
-<span id="cb48-8"><a href="Spatial_Analyst.html#cb48-8" aria-hidden="true" tabindex="-1"></a>    extent_vec <span class="ot">&lt;-</span> <span class="fu">st_bbox</span>(extent)[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>)]</span>
-<span id="cb48-9"><a href="Spatial_Analyst.html#cb48-9" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb48-10"><a href="Spatial_Analyst.html#cb48-10" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb48-11"><a href="Spatial_Analyst.html#cb48-11" aria-hidden="true" tabindex="-1"></a>  n_y <span class="ot">&lt;-</span> <span class="fu">ceiling</span>((extent_vec[<span class="dv">4</span>]<span class="sc">-</span>extent_vec[<span class="dv">3</span>])<span class="sc">/</span>cellsize)</span>
-<span id="cb48-12"><a href="Spatial_Analyst.html#cb48-12" aria-hidden="true" tabindex="-1"></a>  n_x <span class="ot">&lt;-</span> <span class="fu">ceiling</span>((extent_vec[<span class="dv">2</span>]<span class="sc">-</span>extent_vec[<span class="dv">1</span>])<span class="sc">/</span>cellsize)</span>
-<span id="cb48-13"><a href="Spatial_Analyst.html#cb48-13" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb48-14"><a href="Spatial_Analyst.html#cb48-14" aria-hidden="true" tabindex="-1"></a>  extent_vec[<span class="dv">2</span>] <span class="ot">&lt;-</span> extent_vec[<span class="dv">1</span>]<span class="sc">+</span>(n_x<span class="sc">*</span>cellsize)<span class="sc">-</span>cellsize</span>
-<span id="cb48-15"><a href="Spatial_Analyst.html#cb48-15" aria-hidden="true" tabindex="-1"></a>  extent_vec[<span class="dv">4</span>] <span class="ot">&lt;-</span> extent_vec[<span class="dv">3</span>]<span class="sc">+</span>(n_y<span class="sc">*</span>cellsize)<span class="sc">-</span>cellsize</span>
-<span id="cb48-16"><a href="Spatial_Analyst.html#cb48-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-17"><a href="Spatial_Analyst.html#cb48-17" aria-hidden="true" tabindex="-1"></a>  coords <span class="ot">&lt;-</span> <span class="fu">st_coordinates</span>(points)</span>
-<span id="cb48-18"><a href="Spatial_Analyst.html#cb48-18" aria-hidden="true" tabindex="-1"></a>  matrix <span class="ot">&lt;-</span> <span class="fu">kde2d</span>(coords[,<span class="dv">1</span>],coords[,<span class="dv">2</span>],<span class="at">h =</span> bandwith,<span class="at">n =</span> <span class="fu">c</span>(n_x,n_y),<span class="at">lims =</span> extent_vec)</span>
-<span id="cb48-19"><a href="Spatial_Analyst.html#cb48-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">raster</span>(matrix)</span>
-<span id="cb48-20"><a href="Spatial_Analyst.html#cb48-20" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="Spatial_Analyst.html#cb49-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-2"><a href="Spatial_Analyst.html#cb49-2" aria-hidden="true" tabindex="-1"></a>mypoints_kde <span class="ot">&lt;-</span> <span class="fu">my_kde</span>(mypoints,<span class="fl">0.01</span>,<span class="dv">1</span>)</span>
-<span id="cb49-3"><a href="Spatial_Analyst.html#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stars)</span>
-<span id="cb49-4"><a href="Spatial_Analyst.html#cb49-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-5"><a href="Spatial_Analyst.html#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb49-6"><a href="Spatial_Analyst.html#cb49-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_stars</span>(<span class="at">data =</span> <span class="fu">st_as_stars</span>(mypoints_kde)) <span class="sc">+</span></span>
-<span id="cb49-7"><a href="Spatial_Analyst.html#cb49-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> mypoints, <span class="at">alpha =</span> <span class="fl">0.2</span>, <span class="at">fill =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
-<span id="cb49-8"><a href="Spatial_Analyst.html#cb49-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>() <span class="sc">+</span></span>
-<span id="cb49-9"><a href="Spatial_Analyst.html#cb49-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">fill =</span> <span class="st">&quot;KDE&quot;</span>) <span class="sc">+</span></span>
-<span id="cb49-10"><a href="Spatial_Analyst.html#cb49-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="Spatial_Analyst.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">10</span>)</span>
+<span id="cb48-2"><a href="Spatial_Analyst.html#cb48-2" aria-hidden="true" tabindex="-1"></a>mypoints <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>),<span class="at">y =</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb48-3"><a href="Spatial_Analyst.html#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb48-4"><a href="Spatial_Analyst.html#cb48-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-5"><a href="Spatial_Analyst.html#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mypoints)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-60-1.png" width="672" /></p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="Spatial_Analyst.html#cb49-1" aria-hidden="true" tabindex="-1"></a>my_kde <span class="ot">&lt;-</span> <span class="cf">function</span>(points,cellsize, bandwith, <span class="at">extent =</span> <span class="cn">NULL</span>){</span>
+<span id="cb49-2"><a href="Spatial_Analyst.html#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(MASS)</span>
+<span id="cb49-3"><a href="Spatial_Analyst.html#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(raster)</span>
+<span id="cb49-4"><a href="Spatial_Analyst.html#cb49-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(sf)</span>
+<span id="cb49-5"><a href="Spatial_Analyst.html#cb49-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">is.null</span>(extent)){</span>
+<span id="cb49-6"><a href="Spatial_Analyst.html#cb49-6" aria-hidden="true" tabindex="-1"></a>    extent_vec <span class="ot">&lt;-</span> <span class="fu">st_bbox</span>(points)[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>)]</span>
+<span id="cb49-7"><a href="Spatial_Analyst.html#cb49-7" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span>{</span>
+<span id="cb49-8"><a href="Spatial_Analyst.html#cb49-8" aria-hidden="true" tabindex="-1"></a>    extent_vec <span class="ot">&lt;-</span> <span class="fu">st_bbox</span>(extent)[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>)]</span>
+<span id="cb49-9"><a href="Spatial_Analyst.html#cb49-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb49-10"><a href="Spatial_Analyst.html#cb49-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb49-11"><a href="Spatial_Analyst.html#cb49-11" aria-hidden="true" tabindex="-1"></a>  n_y <span class="ot">&lt;-</span> <span class="fu">ceiling</span>((extent_vec[<span class="dv">4</span>]<span class="sc">-</span>extent_vec[<span class="dv">3</span>])<span class="sc">/</span>cellsize)</span>
+<span id="cb49-12"><a href="Spatial_Analyst.html#cb49-12" aria-hidden="true" tabindex="-1"></a>  n_x <span class="ot">&lt;-</span> <span class="fu">ceiling</span>((extent_vec[<span class="dv">2</span>]<span class="sc">-</span>extent_vec[<span class="dv">1</span>])<span class="sc">/</span>cellsize)</span>
+<span id="cb49-13"><a href="Spatial_Analyst.html#cb49-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb49-14"><a href="Spatial_Analyst.html#cb49-14" aria-hidden="true" tabindex="-1"></a>  extent_vec[<span class="dv">2</span>] <span class="ot">&lt;-</span> extent_vec[<span class="dv">1</span>]<span class="sc">+</span>(n_x<span class="sc">*</span>cellsize)<span class="sc">-</span>cellsize</span>
+<span id="cb49-15"><a href="Spatial_Analyst.html#cb49-15" aria-hidden="true" tabindex="-1"></a>  extent_vec[<span class="dv">4</span>] <span class="ot">&lt;-</span> extent_vec[<span class="dv">3</span>]<span class="sc">+</span>(n_y<span class="sc">*</span>cellsize)<span class="sc">-</span>cellsize</span>
+<span id="cb49-16"><a href="Spatial_Analyst.html#cb49-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-17"><a href="Spatial_Analyst.html#cb49-17" aria-hidden="true" tabindex="-1"></a>  coords <span class="ot">&lt;-</span> <span class="fu">st_coordinates</span>(points)</span>
+<span id="cb49-18"><a href="Spatial_Analyst.html#cb49-18" aria-hidden="true" tabindex="-1"></a>  matrix <span class="ot">&lt;-</span> <span class="fu">kde2d</span>(coords[,<span class="dv">1</span>],coords[,<span class="dv">2</span>],<span class="at">h =</span> bandwith,<span class="at">n =</span> <span class="fu">c</span>(n_x,n_y),<span class="at">lims =</span> extent_vec)</span>
+<span id="cb49-19"><a href="Spatial_Analyst.html#cb49-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">raster</span>(matrix)</span>
+<span id="cb49-20"><a href="Spatial_Analyst.html#cb49-20" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="Spatial_Analyst.html#cb50-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-2"><a href="Spatial_Analyst.html#cb50-2" aria-hidden="true" tabindex="-1"></a>mypoints_kde <span class="ot">&lt;-</span> <span class="fu">my_kde</span>(mypoints,<span class="fl">0.01</span>,<span class="dv">1</span>)</span>
+<span id="cb50-3"><a href="Spatial_Analyst.html#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stars)</span>
+<span id="cb50-4"><a href="Spatial_Analyst.html#cb50-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-5"><a href="Spatial_Analyst.html#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb50-6"><a href="Spatial_Analyst.html#cb50-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_stars</span>(<span class="at">data =</span> <span class="fu">st_as_stars</span>(mypoints_kde)) <span class="sc">+</span></span>
+<span id="cb50-7"><a href="Spatial_Analyst.html#cb50-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> mypoints, <span class="at">alpha =</span> <span class="fl">0.2</span>, <span class="at">fill =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb50-8"><a href="Spatial_Analyst.html#cb50-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>() <span class="sc">+</span></span>
+<span id="cb50-9"><a href="Spatial_Analyst.html#cb50-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">fill =</span> <span class="st">&quot;KDE&quot;</span>) <span class="sc">+</span></span>
+<span id="cb50-10"><a href="Spatial_Analyst.html#cb50-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
 <!-- ### Line Density -->
 <!-- ### Point Density -->
 <!-- ## Distance Toolset -->
@@ -377,23 +378,23 @@ The lower the slope value, the flatter the terrain; the higher the slope value, 
 <p>In <code>R</code>, <code>raster</code> package includes the function <code>terrain()</code>, which helps us compute
 <em>slope</em>, <em>aspect</em> and other terrain characteristics from a raster with elevation data.<br />
 Let’s start by computing the <em>slope</em> of the <strong>swissAlti3d</strong> raster dataset.</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="Spatial_Analyst.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing a raster dataset</span></span>
-<span id="cb50-2"><a href="Spatial_Analyst.html#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="co"># swissALTI3D2019.tif -- Source: https://geovite.ethz.ch</span></span>
-<span id="cb50-3"><a href="Spatial_Analyst.html#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-4"><a href="Spatial_Analyst.html#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
-<span id="cb50-5"><a href="Spatial_Analyst.html#cb50-5" aria-hidden="true" tabindex="-1"></a>swissAlti3d <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="st">&quot;sample_data/Raster/swissALTI3D2019.tif&quot;</span>)</span>
-<span id="cb50-6"><a href="Spatial_Analyst.html#cb50-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(swissAlti3d,</span>
-<span id="cb50-7"><a href="Spatial_Analyst.html#cb50-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;swissALTI3D2019 - CRS: CH1903+LV95&quot;</span>,</span>
-<span id="cb50-8"><a href="Spatial_Analyst.html#cb50-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex.main=</span><span class="dv">1</span>,<span class="at">font.main=</span><span class="dv">4</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-61-1.png" width="672" /></p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="Spatial_Analyst.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing a raster dataset</span></span>
+<span id="cb51-2"><a href="Spatial_Analyst.html#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="co"># swissALTI3D2019.tif -- Source: https://geovite.ethz.ch</span></span>
+<span id="cb51-3"><a href="Spatial_Analyst.html#cb51-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-4"><a href="Spatial_Analyst.html#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
+<span id="cb51-5"><a href="Spatial_Analyst.html#cb51-5" aria-hidden="true" tabindex="-1"></a>swissAlti3d <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="st">&quot;sample_data/Raster/swissALTI3D2019.tif&quot;</span>)</span>
+<span id="cb51-6"><a href="Spatial_Analyst.html#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(swissAlti3d,</span>
+<span id="cb51-7"><a href="Spatial_Analyst.html#cb51-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;swissALTI3D2019 - CRS: CH1903+LV95&quot;</span>,</span>
+<span id="cb51-8"><a href="Spatial_Analyst.html#cb51-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex.main=</span><span class="dv">1</span>,<span class="at">font.main=</span><span class="dv">4</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-63-1.png" width="672" /></p>
 <p>After importing and visualizing our raster dataset, we use the <code>terrain</code> function
 to calculate the slope.</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="Spatial_Analyst.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Computing the slope of a raster dataset using the terrain() function</span></span>
-<span id="cb51-2"><a href="Spatial_Analyst.html#cb51-2" aria-hidden="true" tabindex="-1"></a>swissAlti3d_slope <span class="ot">&lt;-</span> <span class="fu">terrain</span>(swissAlti3d, <span class="at">opt=</span><span class="st">&quot;slope&quot;</span>, <span class="at">unit=</span><span class="st">&quot;degrees&quot;</span>)</span>
-<span id="cb51-3"><a href="Spatial_Analyst.html#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(swissAlti3d_slope,</span>
-<span id="cb51-4"><a href="Spatial_Analyst.html#cb51-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Slope of swissALTI3D2019 in degrees (°)&quot;</span>,</span>
-<span id="cb51-5"><a href="Spatial_Analyst.html#cb51-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex.main=</span><span class="dv">1</span>,<span class="at">font.main=</span><span class="dv">4</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="Spatial_Analyst.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Computing the slope of a raster dataset using the terrain() function</span></span>
+<span id="cb52-2"><a href="Spatial_Analyst.html#cb52-2" aria-hidden="true" tabindex="-1"></a>swissAlti3d_slope <span class="ot">&lt;-</span> <span class="fu">terrain</span>(swissAlti3d, <span class="at">opt=</span><span class="st">&quot;slope&quot;</span>, <span class="at">unit=</span><span class="st">&quot;degrees&quot;</span>)</span>
+<span id="cb52-3"><a href="Spatial_Analyst.html#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(swissAlti3d_slope,</span>
+<span id="cb52-4"><a href="Spatial_Analyst.html#cb52-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Slope of swissALTI3D2019 in degrees (°)&quot;</span>,</span>
+<span id="cb52-5"><a href="Spatial_Analyst.html#cb52-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex.main=</span><span class="dv">1</span>,<span class="at">font.main=</span><span class="dv">4</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-64-1.png" width="672" /></p>
 <p>In the function above, we define the operation we want to perform as the second
 argument of the function (<em>opt = “slope”</em>). Furthermore, we also define the units
 of the final result.<br />
@@ -401,12 +402,12 @@ Similarly, we compute the <code>aspect</code> of a given dataset. Basically as <
 consider the compass direction that a <code>slope</code> leans towards.<br />
 Let’s compute now, using again the same function <code>terrain</code>, the <code>aspect</code> of the
 same dataset <strong>swissALTI3D2019</strong>.</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="Spatial_Analyst.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Computing the aspect of the terrain dataset</span></span>
-<span id="cb52-2"><a href="Spatial_Analyst.html#cb52-2" aria-hidden="true" tabindex="-1"></a>swissAlti3d_aspect <span class="ot">&lt;-</span> <span class="fu">terrain</span>(swissAlti3d, <span class="at">opt=</span><span class="st">&quot;aspect&quot;</span>, <span class="at">unit=</span><span class="st">&quot;degrees&quot;</span>)</span>
-<span id="cb52-3"><a href="Spatial_Analyst.html#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(swissAlti3d_aspect,</span>
-<span id="cb52-4"><a href="Spatial_Analyst.html#cb52-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Aspect of swissALTI3D2019 in degrees (°)&quot;</span>,</span>
-<span id="cb52-5"><a href="Spatial_Analyst.html#cb52-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex.main=</span><span class="dv">1</span>,<span class="at">font.main=</span><span class="dv">4</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-63-1.png" width="672" /></p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="Spatial_Analyst.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Computing the aspect of the terrain dataset</span></span>
+<span id="cb53-2"><a href="Spatial_Analyst.html#cb53-2" aria-hidden="true" tabindex="-1"></a>swissAlti3d_aspect <span class="ot">&lt;-</span> <span class="fu">terrain</span>(swissAlti3d, <span class="at">opt=</span><span class="st">&quot;aspect&quot;</span>, <span class="at">unit=</span><span class="st">&quot;degrees&quot;</span>)</span>
+<span id="cb53-3"><a href="Spatial_Analyst.html#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(swissAlti3d_aspect,</span>
+<span id="cb53-4"><a href="Spatial_Analyst.html#cb53-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Aspect of swissALTI3D2019 in degrees (°)&quot;</span>,</span>
+<span id="cb53-5"><a href="Spatial_Analyst.html#cb53-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex.main=</span><span class="dv">1</span>,<span class="at">font.main=</span><span class="dv">4</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-65-1.png" width="672" /></p>
 <p>So, R gives us the option to retrieve multiple terrain characteristics of a raster
 dataset, using only one function. The aforementioned spatial operation in ArcGIS pro
 could be performed using the tool <code>Aspect (Spatial Analyst)</code>.</p>
@@ -422,19 +423,19 @@ the <code>reclassify</code> function of the <code>raster</code> package. For our
 raster dataset we computed previously, which depicts the <code>aspect</code> of the <strong>swissALTI3D2019</strong>
 dataset.</p>
 <p>As a first step, we can compute the histogram of our dataset.</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="Spatial_Analyst.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(swissAlti3d_aspect)</span>
-<span id="cb53-2"><a href="Spatial_Analyst.html#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="do">##             aspect</span></span>
-<span id="cb53-3"><a href="Spatial_Analyst.html#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Min.        0.0000</span></span>
-<span id="cb53-4"><a href="Spatial_Analyst.html#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 1st Qu.   104.1014</span></span>
-<span id="cb53-5"><a href="Spatial_Analyst.html#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Median    163.3606</span></span>
-<span id="cb53-6"><a href="Spatial_Analyst.html#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 3rd Qu.   258.6777</span></span>
-<span id="cb53-7"><a href="Spatial_Analyst.html#cb53-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Max.      359.9991</span></span>
-<span id="cb53-8"><a href="Spatial_Analyst.html#cb53-8" aria-hidden="true" tabindex="-1"></a><span class="do">## NA&#39;s    12652.0000</span></span>
-<span id="cb53-9"><a href="Spatial_Analyst.html#cb53-9" aria-hidden="true" tabindex="-1"></a>histinfo <span class="ot">&lt;-</span> <span class="fu">hist</span>(swissAlti3d_aspect)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-64-1.png" width="672" /></p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="Spatial_Analyst.html#cb54-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-2"><a href="Spatial_Analyst.html#cb54-2" aria-hidden="true" tabindex="-1"></a>histinfo<span class="sc">$</span>breaks</span>
-<span id="cb54-3"><a href="Spatial_Analyst.html#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]   0  20  40  60  80 100 120 140 160 180 200 220 240 260 280 300 320 340 360</span></span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="Spatial_Analyst.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(swissAlti3d_aspect)</span>
+<span id="cb54-2"><a href="Spatial_Analyst.html#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="do">##             aspect</span></span>
+<span id="cb54-3"><a href="Spatial_Analyst.html#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Min.        0.0000</span></span>
+<span id="cb54-4"><a href="Spatial_Analyst.html#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 1st Qu.   104.1014</span></span>
+<span id="cb54-5"><a href="Spatial_Analyst.html#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Median    163.3606</span></span>
+<span id="cb54-6"><a href="Spatial_Analyst.html#cb54-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 3rd Qu.   258.6777</span></span>
+<span id="cb54-7"><a href="Spatial_Analyst.html#cb54-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Max.      359.9991</span></span>
+<span id="cb54-8"><a href="Spatial_Analyst.html#cb54-8" aria-hidden="true" tabindex="-1"></a><span class="do">## NA&#39;s    12652.0000</span></span>
+<span id="cb54-9"><a href="Spatial_Analyst.html#cb54-9" aria-hidden="true" tabindex="-1"></a>histinfo <span class="ot">&lt;-</span> <span class="fu">hist</span>(swissAlti3d_aspect)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-66-1.png" width="672" /></p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="Spatial_Analyst.html#cb55-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-2"><a href="Spatial_Analyst.html#cb55-2" aria-hidden="true" tabindex="-1"></a>histinfo<span class="sc">$</span>breaks</span>
+<span id="cb55-3"><a href="Spatial_Analyst.html#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]   0  20  40  60  80 100 120 140 160 180 200 220 240 260 280 300 320 340 360</span></span></code></pre></div>
 <p>The number of breaks for our raster values are 19. The aim of ours is to create 4
 different classes with the following values:</p>
 <ul>
@@ -444,37 +445,37 @@ different classes with the following values:</p>
 <li>270°-360° -&gt; Class 4</li>
 </ul>
 <p>To do so, we create below a reclassification matrix with the respective values.</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="Spatial_Analyst.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a reclassification matrix</span></span>
-<span id="cb55-2"><a href="Spatial_Analyst.html#cb55-2" aria-hidden="true" tabindex="-1"></a>reclass_df <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">90</span>,<span class="dv">1</span>,<span class="dv">90</span>,<span class="dv">180</span>,<span class="dv">2</span>,<span class="dv">180</span>,<span class="dv">270</span>,<span class="dv">3</span>,<span class="dv">270</span>,<span class="dv">360</span>,<span class="dv">4</span>)</span>
-<span id="cb55-3"><a href="Spatial_Analyst.html#cb55-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-4"><a href="Spatial_Analyst.html#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="co"># convert to Matrix</span></span>
-<span id="cb55-5"><a href="Spatial_Analyst.html#cb55-5" aria-hidden="true" tabindex="-1"></a>reclass_m <span class="ot">&lt;-</span> <span class="fu">matrix</span>(reclass_df,</span>
-<span id="cb55-6"><a href="Spatial_Analyst.html#cb55-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">ncol =</span> <span class="dv">3</span>,</span>
-<span id="cb55-7"><a href="Spatial_Analyst.html#cb55-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb55-8"><a href="Spatial_Analyst.html#cb55-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-9"><a href="Spatial_Analyst.html#cb55-9" aria-hidden="true" tabindex="-1"></a>reclass_m</span>
-<span id="cb55-10"><a href="Spatial_Analyst.html#cb55-10" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1] [,2] [,3]</span></span>
-<span id="cb55-11"><a href="Spatial_Analyst.html#cb55-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    0   90    1</span></span>
-<span id="cb55-12"><a href="Spatial_Analyst.html#cb55-12" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]   90  180    2</span></span>
-<span id="cb55-13"><a href="Spatial_Analyst.html#cb55-13" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]  180  270    3</span></span>
-<span id="cb55-14"><a href="Spatial_Analyst.html#cb55-14" aria-hidden="true" tabindex="-1"></a><span class="do">## [4,]  270  360    4</span></span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="Spatial_Analyst.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a reclassification matrix</span></span>
+<span id="cb56-2"><a href="Spatial_Analyst.html#cb56-2" aria-hidden="true" tabindex="-1"></a>reclass_df <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">90</span>,<span class="dv">1</span>,<span class="dv">90</span>,<span class="dv">180</span>,<span class="dv">2</span>,<span class="dv">180</span>,<span class="dv">270</span>,<span class="dv">3</span>,<span class="dv">270</span>,<span class="dv">360</span>,<span class="dv">4</span>)</span>
+<span id="cb56-3"><a href="Spatial_Analyst.html#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-4"><a href="Spatial_Analyst.html#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="co"># convert to Matrix</span></span>
+<span id="cb56-5"><a href="Spatial_Analyst.html#cb56-5" aria-hidden="true" tabindex="-1"></a>reclass_m <span class="ot">&lt;-</span> <span class="fu">matrix</span>(reclass_df,</span>
+<span id="cb56-6"><a href="Spatial_Analyst.html#cb56-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">ncol =</span> <span class="dv">3</span>,</span>
+<span id="cb56-7"><a href="Spatial_Analyst.html#cb56-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb56-8"><a href="Spatial_Analyst.html#cb56-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-9"><a href="Spatial_Analyst.html#cb56-9" aria-hidden="true" tabindex="-1"></a>reclass_m</span>
+<span id="cb56-10"><a href="Spatial_Analyst.html#cb56-10" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1] [,2] [,3]</span></span>
+<span id="cb56-11"><a href="Spatial_Analyst.html#cb56-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    0   90    1</span></span>
+<span id="cb56-12"><a href="Spatial_Analyst.html#cb56-12" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]   90  180    2</span></span>
+<span id="cb56-13"><a href="Spatial_Analyst.html#cb56-13" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]  180  270    3</span></span>
+<span id="cb56-14"><a href="Spatial_Analyst.html#cb56-14" aria-hidden="true" tabindex="-1"></a><span class="do">## [4,]  270  360    4</span></span></code></pre></div>
 <p>After creating the respective matrix with the new classes, we are ready to
 call the <code>reclassify</code> function. The function takes as a first argument the dataset
 set to be reclassified and as second the matrix, on which the reclassification is
 based on.</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="Spatial_Analyst.html#cb56-1" aria-hidden="true" tabindex="-1"></a>swissAlti3d_aspect_reclass <span class="ot">&lt;-</span> <span class="fu">reclassify</span>(swissAlti3d_aspect,</span>
-<span id="cb56-2"><a href="Spatial_Analyst.html#cb56-2" aria-hidden="true" tabindex="-1"></a>                     reclass_m)</span>
-<span id="cb56-3"><a href="Spatial_Analyst.html#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-4"><a href="Spatial_Analyst.html#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(swissAlti3d_aspect_reclass, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;yellow&quot;</span>,<span class="st">&quot;blue&quot;</span>),</span>
-<span id="cb56-5"><a href="Spatial_Analyst.html#cb56-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Aspect of swissALTI3D2019 in 4 classes&quot;</span>,</span>
-<span id="cb56-6"><a href="Spatial_Analyst.html#cb56-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex.main=</span><span class="dv">1</span>,<span class="at">font.main=</span><span class="dv">4</span>, <span class="at">legend =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb56-7"><a href="Spatial_Analyst.html#cb56-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-8"><a href="Spatial_Analyst.html#cb56-8" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>,</span>
-<span id="cb56-9"><a href="Spatial_Analyst.html#cb56-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;0°-90°&quot;</span>, <span class="st">&quot;90°-180°&quot;</span>, <span class="st">&quot;180°-270°&quot;</span>,<span class="st">&quot;270°-360°&quot;</span>),</span>
-<span id="cb56-10"><a href="Spatial_Analyst.html#cb56-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;yellow&quot;</span>),</span>
-<span id="cb56-11"><a href="Spatial_Analyst.html#cb56-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">border =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb56-12"><a href="Spatial_Analyst.html#cb56-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>) <span class="co"># turn off legend border</span></span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-66-1.png" width="672" /></p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="Spatial_Analyst.html#cb57-1" aria-hidden="true" tabindex="-1"></a>swissAlti3d_aspect_reclass <span class="ot">&lt;-</span> <span class="fu">reclassify</span>(swissAlti3d_aspect,</span>
+<span id="cb57-2"><a href="Spatial_Analyst.html#cb57-2" aria-hidden="true" tabindex="-1"></a>                     reclass_m)</span>
+<span id="cb57-3"><a href="Spatial_Analyst.html#cb57-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-4"><a href="Spatial_Analyst.html#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(swissAlti3d_aspect_reclass, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;yellow&quot;</span>,<span class="st">&quot;blue&quot;</span>),</span>
+<span id="cb57-5"><a href="Spatial_Analyst.html#cb57-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Aspect of swissALTI3D2019 in 4 classes&quot;</span>,</span>
+<span id="cb57-6"><a href="Spatial_Analyst.html#cb57-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex.main=</span><span class="dv">1</span>,<span class="at">font.main=</span><span class="dv">4</span>, <span class="at">legend =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb57-7"><a href="Spatial_Analyst.html#cb57-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-8"><a href="Spatial_Analyst.html#cb57-8" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>,</span>
+<span id="cb57-9"><a href="Spatial_Analyst.html#cb57-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;0°-90°&quot;</span>, <span class="st">&quot;90°-180°&quot;</span>, <span class="st">&quot;180°-270°&quot;</span>,<span class="st">&quot;270°-360°&quot;</span>),</span>
+<span id="cb57-10"><a href="Spatial_Analyst.html#cb57-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;yellow&quot;</span>),</span>
+<span id="cb57-11"><a href="Spatial_Analyst.html#cb57-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">border =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb57-12"><a href="Spatial_Analyst.html#cb57-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>) <span class="co"># turn off legend border</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-68-1.png" width="672" /></p>
 <!-- ### Contour -->
 <!-- ### Contour List -->
 <!-- ### Contour with Barriers -->
@@ -495,7 +496,7 @@ based on.</p>
           </div>
         </div>
       </div>
-<a href="Data_Management.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="Projections_and_Transformations_toolset.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="3D_Analyst.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
@@ -513,13 +514,13 @@ gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": false,
-"facebook": true,
-"twitter": true,
+"facebook": false,
+"twitter": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["github", "twitter", "linkedin"]
 },
 "fontsettings": {
 "theme": "white",
@@ -541,8 +542,7 @@ gitbook.start({
 "download": null,
 "toc": {
 "collapse": "section"
-},
-"css": "css/style.css"
+}
 });
 });
 </script>
