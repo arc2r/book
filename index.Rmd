@@ -16,7 +16,7 @@ tz <- Sys.timezone()
 [![Actions Status](https://github.com/arc2r/book/workflows/bookdown/badge.svg)](https://github.com/arc2r/book/actions)
 
 
-# Introduction {}
+# What this book is about
 
 This is a resource for people wanting to learn spatial-R (Analysis, Visualization) in R and are coming with a background in ArcGIS. This resource should provide some help on this journey. We assume you have some prior experience with `R`. If this is not the case, we recommend you familiarize yourself with `R` first. 
 
@@ -24,18 +24,47 @@ We are big fans of using `magrittr`'s pipe function `%>%` and heavily use it thr
 
 This book leans heavily on how the Toolboxes and Toolsets are documented in ArcGIS Pro. Is is not a book to read from cover to cover, but to look up specific things of which you only know the ArcGIS terminology for. This book is a work in progress, the current version is from the `r now` (`r tz`). *We highly appreciate contributions* to this book: If you have anything to add, please [file an issue or make a pull request](https://github.com/arc2r/book).  
 
+## How it started
+
 We had long since thought about the necessity of a resource which helps ArcGIS users transition to R or Python. Nils had tweeted about this (see below) without getting much reception, and and one point just decided to start his own resource. Since [our research group](gis.lsfm.zhaw.ch/) teaches and introduction to GIS and an advanced GIS course mostly based on ArcGIS, we decided to pick up where Nils hat started and develop the resource in with internal funding of our University. 
 
-There are already a great many spatial-R Resources out there, and the goal is *not* to rewrite everything that has already been written. The aim of this book is just to provide a resource for people looking to do spatial stuff in R, but only know the ArcGIS-Term for it. When you transition from a proprietary Software like ArcGIS to [FOSS](https://en.wikipedia.org/wiki/Free_and_open-source_software), you have to relearn many of the concepts because the proprietary software usually does not adhere to common standards.
 
 
-```{r, fig.cap="[Nils' Tweet](https://twitter.com/NRatnaweera/status/1187759876472213504) might not have received much attention, but it did spark a conversation within our group",fig.width="50%"}
+
+```{r,echo=FALSE, fig.cap="[Nils' Tweet](https://twitter.com/NRatnaweera/status/1187759876472213504) might not have received much attention, but it did spark a conversation within our group", out.width="70%", fig.align="center"}
 knitr::include_graphics("images/tweet1.jpg")
 ```
 
+## What might make your journey difficult
+
+What are the main difficulties when switching from ArcGIS to R? 
+
+- The fundamental building block of ArcGIS is a visual representation of your data (i.e. the map). The fundamental building block in `R` is your RScript. The visual aspect makes ArcGIS more approachable, but also less saleable.
+- When you aquire ArcGIS, you are served from a single source. In `R`, there are a plethora of developers creating packages for you to use, which can be quite overwhelming
+- while there are always multiple ways to solve a problem in ArcGIS, there are always many more ways to solve it in `R`
+- When you transition from a proprietary Software like ArcGIS to [FOSS](https://en.wikipedia.org/wiki/Free_and_open-source_software), you have to relearn many of the concepts because the proprietary software usually does not adhere to common standards.
 
 
-# How to use this book
+//todo add this somewhere
+//body when you add a shapefile to your arcgis project, you basically have a "connection" to this file. in R, you create a virtual copy / an R representation of your dataset within your r session
+
+## Why you should transition anyway
+
+We strongly advocate the use of a programming language to tackle GIS tasks for the following reasons:
+
+//todo translate this
+//body add specific advantages of youing FOSS?
+<!-- Ich Programmieren, weil ich damit: -->
+<!-- 1. … repetitive Tasks automatisieren kann -->
+<!-- 2. … übertragbare «Tools» bauen kann -->
+<!-- 3. … mehr Flexibilität und «Power» habe -->
+<!-- 4. … zu Grunde liegende Funktionen besser verstehe -->
+<!-- 5. … bessere Möglichkeiten habe zu Kollaborieren -->
+<!-- 6. … bessere Möglichkeiten habe, Hilfe zu erhalten -->
+<!-- 7.… reproduzierbar arbeite -->
+
+
+## How to use this book
 
 //todo add instructions on how to use the book
 //body details on the `arc2r` package and the coding environment
