@@ -1,6 +1,7 @@
 bookdown::gitbook:
   split_by: rmd
   config:
+    css: css/style.css
     toc:
       collapse: section
       before: |
