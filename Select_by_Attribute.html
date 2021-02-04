@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4.4 Select by Attribute | All things R Spatial</title>
-  <meta name="description" content="4.4 Select by Attribute | All things R Spatial" />
+  <title>4.1 Select by Attribute | All things R Spatial</title>
+  <meta name="description" content="4.1 Select by Attribute | All things R Spatial" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4.4 Select by Attribute | All things R Spatial" />
+  <meta property="og:title" content="4.1 Select by Attribute | All things R Spatial" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4.4 Select by Attribute | All things R Spatial" />
+  <meta name="twitter:title" content="4.1 Select by Attribute | All things R Spatial" />
   
   
   
@@ -30,7 +30,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="Basic_spatial_operations.html"/>
+<link rel="prev" href="Selection.html"/>
 <link rel="next" href="Select_by_Location.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
@@ -181,13 +181,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.3" data-path="Dynamic_Maps.html"><a href="Dynamic_Maps.html#further-ressources"><i class="fa fa-check"></i><b>3.2.3</b> Further ressources</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="Basic_spatial_operations.html"><a href="Basic_spatial_operations.html"><i class="fa fa-check"></i><b>4</b> Basic spatial operations</a>
+<li class="chapter" data-level="4" data-path="Selection.html"><a href="Selection.html"><i class="fa fa-check"></i><b>4</b> Selection</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="Basic_spatial_operations.html"><a href="Basic_spatial_operations.html#clip-operation"><i class="fa fa-check"></i><b>4.1</b> Clip operation</a></li>
-<li class="chapter" data-level="4.2" data-path="Basic_spatial_operations.html"><a href="Basic_spatial_operations.html#merge-operation"><i class="fa fa-check"></i><b>4.2</b> Merge operation</a></li>
-<li class="chapter" data-level="4.3" data-path="Basic_spatial_operations.html"><a href="Basic_spatial_operations.html#buffer-operation"><i class="fa fa-check"></i><b>4.3</b> Buffer operation</a></li>
-<li class="chapter" data-level="4.4" data-path="Select_by_Attribute.html"><a href="Select_by_Attribute.html"><i class="fa fa-check"></i><b>4.4</b> Select by Attribute</a></li>
-<li class="chapter" data-level="4.5" data-path="Select_by_Location.html"><a href="Select_by_Location.html"><i class="fa fa-check"></i><b>4.5</b> Select by Location</a></li>
+<li class="chapter" data-level="4.1" data-path="Select_by_Attribute.html"><a href="Select_by_Attribute.html"><i class="fa fa-check"></i><b>4.1</b> Select by Attribute</a></li>
+<li class="chapter" data-level="4.2" data-path="Select_by_Location.html"><a href="Select_by_Location.html"><i class="fa fa-check"></i><b>4.2</b> Select by Location</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="Data_Management.html"><a href="Data_Management.html"><i class="fa fa-check"></i><b>5</b> Data Management Toolbox</a>
 <ul>
@@ -280,33 +277,34 @@ Developped by the Research Group for Geoinformatics @ ZHAW</a></li>
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="select-by-attribute" class="section level2" number="4.4">
-<h2><span class="header-section-number">4.4</span> Select by Attribute</h2>
+<div id="select-by-attribute" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Select by Attribute</h2>
+<p>//todo does this stay here or move to Analysis -&gt; Extract -&gt; Select?</p>
 <p>One of the popular approaches in ArcGIS pro for selecting features in a layer is by using an attribute query. The action is performed using the <code>Select By Attributes</code> tool.</p>
 <p><code>Select By Attributes</code> tool allows us to provide an SQL query expression to select features that match the selection criteria.</p>
 <p><code>R</code> on the other hand offers quite easy and straightforward options to perform similar operations. Let’s examine one of them.</p>
 <p>As a first step, we might want to import a shapefile. To do so, we can use <code>sf</code> package to work with vector data in R. Important to know is that the <code>rgdal</code> package automatically loads when sf is loaded.</p>
 <p>In the code snippet below, we read the shapefile, which represents the <strong>parking spots for bicycles</strong> within the canton of Zurich. The dataset is publicly available for download in the following link: (<a href="https://opendata.swiss/en/dataset/veloparkierungsanlagen" class="uri">https://opendata.swiss/en/dataset/veloparkierungsanlagen</a>).</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="Select_by_Attribute.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb33-2"><a href="Select_by_Attribute.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb33-3"><a href="Select_by_Attribute.html#cb33-3" aria-hidden="true" tabindex="-1"></a>parkBikes <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;sample_data/Kanton_Zuerich/Veloparkierungsanlagen/OGD_VELOPARKIERANLAGEN_P.shp&quot;</span>)</span>
-<span id="cb33-4"><a href="Select_by_Attribute.html#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Reading layer `OGD_VELOPARKIERANLAGEN_P&#39; from data source `/Users/runner/work/book/book/sample_data/Kanton_Zuerich/Veloparkierungsanlagen/OGD_VELOPARKIERANLAGEN_P.shp&#39; using driver `ESRI Shapefile&#39;</span></span>
-<span id="cb33-5"><a href="Select_by_Attribute.html#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Simple feature collection with 511 features and 28 fields</span></span>
-<span id="cb33-6"><a href="Select_by_Attribute.html#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="do">## geometry type:  POINT</span></span>
-<span id="cb33-7"><a href="Select_by_Attribute.html#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="do">## dimension:      XY</span></span>
-<span id="cb33-8"><a href="Select_by_Attribute.html#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="do">## bbox:           xmin: 2669965 ymin: 1229454 xmax: 2707390 ymax: 1280235</span></span>
-<span id="cb33-9"><a href="Select_by_Attribute.html#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="do">## projected CRS:  CH1903+ / LV95</span></span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="Select_by_Attribute.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb26-2"><a href="Select_by_Attribute.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb26-3"><a href="Select_by_Attribute.html#cb26-3" aria-hidden="true" tabindex="-1"></a>parkBikes <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;sample_data/Kanton_Zuerich/Veloparkierungsanlagen/OGD_VELOPARKIERANLAGEN_P.shp&quot;</span>)</span>
+<span id="cb26-4"><a href="Select_by_Attribute.html#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Reading layer `OGD_VELOPARKIERANLAGEN_P&#39; from data source `/Users/runner/work/book/book/sample_data/Kanton_Zuerich/Veloparkierungsanlagen/OGD_VELOPARKIERANLAGEN_P.shp&#39; using driver `ESRI Shapefile&#39;</span></span>
+<span id="cb26-5"><a href="Select_by_Attribute.html#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Simple feature collection with 511 features and 28 fields</span></span>
+<span id="cb26-6"><a href="Select_by_Attribute.html#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="do">## geometry type:  POINT</span></span>
+<span id="cb26-7"><a href="Select_by_Attribute.html#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="do">## dimension:      XY</span></span>
+<span id="cb26-8"><a href="Select_by_Attribute.html#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="do">## bbox:           xmin: 2669965 ymin: 1229454 xmax: 2707390 ymax: 1280235</span></span>
+<span id="cb26-9"><a href="Select_by_Attribute.html#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="do">## projected CRS:  CH1903+ / LV95</span></span></code></pre></div>
 <p>After importing the dataset, let’s say we want to filter it by selecting only the parking spots that lie within a specific municipality (Gemeinde) in the canton of Zurich. More specifically, we will select only the parking spots within the municipality of Winterthur.
 For the aforementioned operation, R offers the function <code>filter()</code>, which lies within the <code>dplyr</code> package.
 This functions works as follows: <code>filter(dataset, condition)</code></p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="Select_by_Attribute.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb34-2"><a href="Select_by_Attribute.html#cb34-2" aria-hidden="true" tabindex="-1"></a>parkBikes_winti <span class="ot">&lt;-</span> <span class="fu">filter</span>(parkBikes,GEMEINDE <span class="sc">==</span> <span class="st">&quot;Winterthur&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-45-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>The operation above produces the same outcome as the one depicted in the figure below <a href="Select_by_Attribute.html#fig:select">4.4</a>.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="Select_by_Attribute.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb27-2"><a href="Select_by_Attribute.html#cb27-2" aria-hidden="true" tabindex="-1"></a>parkBikes_winti <span class="ot">&lt;-</span> <span class="fu">filter</span>(parkBikes,GEMEINDE <span class="sc">==</span> <span class="st">&quot;Winterthur&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-33-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>The operation above produces the same outcome as the one depicted in the figure below <a href="Select_by_Attribute.html#fig:select">4.2</a>.</p>
 <div class="figure" style="text-align: center"><span id="fig:select"></span>
 <img src="images/selectAttr.png" alt="Select by Attributes in ArcGIS pro" width="500px" />
 <p class="caption">
-Figure 4.4: Select by Attributes in ArcGIS pro
+Figure 4.2: Select by Attributes in ArcGIS pro
 </p>
 </div>
 
@@ -316,7 +314,7 @@ Figure 4.4: Select by Attributes in ArcGIS pro
           </div>
         </div>
       </div>
-<a href="Basic_spatial_operations.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="Selection.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="Select_by_Location.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
@@ -362,7 +360,8 @@ gitbook.start({
 "download": null,
 "toc": {
 "collapse": "section"
-}
+},
+"css": "css/style.css"
 });
 });
 </script>
