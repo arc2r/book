@@ -8,7 +8,7 @@ If there is anything special about spatial, it's the Coordinate Reference System
 - **Rescale** (Resizes a raster by the specified x and y scale factors)
 
 
-### Define Projection
+### Define Projection {#define-projection}
 
 > Overwrites the coordinate system information (map projection and datum) stored with a dataset. This tool is intended for datasets that have an unknown or incorrect coordinate system defined.
 
@@ -36,7 +36,7 @@ In ArcGIS, we would use the Tool "Define projection". In `R`, we use the functio
 We find option two to be the simplest approach. 
 <!--
 # todo how do we know this?
-#   body gloss over this?
+#   gloss over this?
 -->
 Since we know the dataset `bezirke` is in the new swiss coordinate system (CH1903+ / LV95), we can find out the EPSG code (e.g. by consulting [epsg.io](http://epsg.io/)).
 We will not get into options 1 and 3 and only 
@@ -45,67 +45,41 @@ We will not get into options 1 and 3 and only
 st_crs(bezirke) <- 2056
 ```
 
-If we look at our header again, we see that we have a new field 
+If we look at our header again, we see that we have a new field `projected CRS` which is in fact displaying the correct name based on the EPSG code we provided. 
 
 ```{r}
 bezirke
 ```
 
+```{block2, type = "rmdnote"}
+<!--
+# TODO revise this
+-->
+ _st_set_crs_ function **does not** reproject the coordinates of the given dataset. In other words, it does not affect the actual _geometry_ column of the sf object. _st_tranform_ on the other hand indeed **does indeed reproject** the dataset to another coordinate
+```
 
 
 ### Project
 
 > Projects spatial data from one coordinate system to another
 
-For our example we will use the dataset `bezirke` from the package `arc2r`.
-
-**R** and more specifically **sf package** offers options (functions) not only for transforming the coordinate system of a dataset, but also for identifying the current existing one. Let's dive in :)
+Now that `bezirke` has an assigned `CRS` (see \@ref{define-projection}), we can transform it into a new coordinate system. To emphasize this, will will visualize the dataset using `base::plot()` with the option `axes = TRUE`, to visualize the current coordinate system.  
 
 ```{r echo=TRUE, message=TRUE, warning=TRUE}
-
-bezirke
+plot(bezirke["area_km2"], axes = TRUE)
 ```
 
 ```{r echo=TRUE, message=TRUE, warning=TRUE}
-# Visualising the imported dataset
-library(ggplot2)
-ggplot() + geom_sf(data = bezirke)
-```
+bezirke_wgs84 <- st_transform(bezirke, 4326)
 
-In order to identify the current coordinate system of a dataset, **sf package**
-offers the function _st_crs_. The main usage of the function is to retrieve the
-coordinate reference system from an sf object.
-
-```{r echo=TRUE, message=TRUE, warning=TRUE}
-# retrieving the coordinate of the imported layer
-st_crs(bezirke)
+plot(bezirke_wgs84["area_km2"], axes = TRUE)
 ```
-As an output we received that there is no assigned coordinate system to this
-specific dataset. _st_set_crs_ function helps us assigning a coordinate system
-to a dataset.
-
-```{r echo=TRUE, message=TRUE, warning=TRUE}
-# Assigning the World Geodetic System (WGS84) as a coordinate system to our dataset
-bezirke <- st_set_crs(bezirke, 4326)
-```
-In the function above, the number 4326 represents the __EPSG Geodetic Parameter Dataset (EPSG)__
-of the respective coordinate system. **EPSG** is a public registry of geodetic
-datums, spatial reference systems, Earth ellipsoids, coordinate transformations
-and related units of measurement.  
 
 ```{r echo=TRUE, message=TRUE, warning=TRUE}
 st_crs(bezirke)
 ```
-After rerunning the _st_crs_ function, we are getting now that the assigned
-coordinate system of the dataset is World Geodetic System (WGS84).  
-As a next step, we might want to transform the dataset to the Swiss coordinate system.
-The respective **EPSG** for code for the latest Swiss coordinate system
-(CH1903+LV95) is 2056. For this purpose we use the `st_transform` function of the **sf package**.
 
 
-```{block2, type = "rmdnote"}
- _st_set_crs_ function **does not** reproject the coordinates of the given dataset. In other words, it does not affect the actual _geometry_ column of the sf object. _st_tranform_ on the other hand indeed **does indeed reproject** the dataset to another coordinate
-```
 
 
 ```{r echo=TRUE, message=TRUE, warning=TRUE}
