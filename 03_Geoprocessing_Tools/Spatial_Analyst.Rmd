@@ -1,3 +1,5 @@
+# Spatial Analyst Toolbox
+
 ```{r}
 library(sf)
 library(tidyverse)
@@ -5,7 +7,6 @@ library(raster)
 ```
 
 
-# Spatial Analyst Toolbox
 
 ## Conditional Toolset
 
