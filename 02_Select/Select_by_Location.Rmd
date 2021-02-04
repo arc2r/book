@@ -41,20 +41,10 @@ ggplot() + geom_sf(data = gemeinde_ZH) + geom_sf(data = swimmSpots,color = "blue
 ```
 
 
-<style>
-div.note { background-color:#f0f0f0; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "note">
-
+```{block2, type = "rmdnote"}
 The operation above is based on the following rule: `x[y, ,operation]`, where:  
 
--  __x__ and __y__ are the spatial objects for which we want to investigate if there is a spatial relationship (x is the target feature, while y is the source one)  
--  the second argument `[, ,]` within the brackets denotes the column number we want to retrieve from the spatial subsetting. In our example this argument was empty, which means we wanted to retrieve all rows for every __attribute column__.  
--  the third argument `[op = ]` specifies the spatial operation we want to perform. In the example above, the goal was to find out how many subset features of the target object _swimmSpots_ lie withing the source spatial object _richterswil_. For that reason we chose the function `st_within()`.
 
-</div>
-
-```{block2, type = "rmdnote"}
 -  __x__ and __y__ are the spatial objects for which we want to investigate if there is a spatial relationship (x is the target feature, while y is the source one)  
 -  the second argument `[, ,]` within the brackets denotes the column number we want to retrieve from the spatial subsetting. In our example this argument was empty, which means we wanted to retrieve all rows for every __attribute column__.  
 -  the third argument `[op = ]` specifies the spatial operation we want to perform. In the example above, the goal was to find out how many subset features of the target object _swimmSpots_ lie withing the source spatial object _richterswil_. For that reason we chose the function `st_within()`.
