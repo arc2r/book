@@ -2,23 +2,33 @@
 
 A very commonly used tool in ArcGIS is the concept of "Selection". The idea is, that you select features from your vector dataset in one of the following three ways:
 
-1.  Interactively by clicking in your map
-2.  By specifying (non-spatial) criteria based on the attribute table
-3.  By specifying spatial criteria based on the relationship to another dataset.
+1.  *Select*: Interactively by clicking in your map
+2.  *Select By Attributes*: By specifying (non-spatial) criteria based on the attribute table
+3.  *Select By Location*: By specifying spatial criteria based on the relationship to another dataset.
 
-```{r, echo = FALSE, out.width="50%", fig.cap="A very commonly used tool: The selection tools from the ArcGIS Pro Map Pane"}
+```{r, selection echo = FALSE, out.width="50%", fig.cap="A very commonly used tool: The selection tools from the ArcGIS Pro Map Pane"}
 
 knitr::include_graphics("images/selection.jpg")
 ```
 
-A selection has two effects.
+Using the tools via these buttons (\@ref{fig:selection}) have two effects.
 
-1.  The selected features are highlighted visually
-2.  Any operation performed with a dataset that has an active selection respects this selection. In other words, the operation is only performed on the selected features.
+1. The selected features are highlighted visually
+2. Any operation performed with a dataset that has an active selection respects this selection. In other words, the operation is only performed on the selected features.
 
 This second effect is cause for many confusing errors, either because the user forgot that a selection was active or the there were zero elements matching the specified criteria and so the operation was performed on an empty dataset.
+For this reason, this type of "*floating* selection" is not very useful and was never implemented in `R`. 
 
-This type of "*floating* selection" is not very useful and was never implemented in `R`. You of course *can* select features in a dataset, but you will have save the selected features in a new dataset^[or, if you are familiar with the pipe operation, you can pipe your selection into a function]. Of the three ways you can perform a selection in ArcGIS, two are heavily supported: Selection based on spatial as well as non-spatial criteria. Since an interactive selection is not reproducible and therefore not supported.
+**However**, two of the three described buttons (\@ref{fig:selection}) have corresponding tools within the toolbox "Analysis Tools" (named *Select by Location* and *Select by Attribute*). Using the tools via the toolbox is distinctly different from using the buttons in the following ways
 
+1. Selected features are *not* highlighted visually
+2. Selected features are exported into a new dataset, and the original data is unchanged
+
+This implementation of selection *is* supported in `R`. We will dive into this in the chapters PLACEHOLDER and PLACEHOLDER. 
+//todo remove placeholder
+Interactive selection (button "Select" in \@ref{fig:selection}) is not reproducible and therefore not supported in `R`. <!-- There might by ways in which an interactive sleection is translated into code, but it might be too confusing to go into this here -->
+
+
+```{block2, type = "rmdnote"}
 By the way: In the world of SQL this type of operation is not called "selection" but "filtering". Consequently, that is also the name used in `R`. In `R` as well as `SQL`, a *select* is done on columns in a dataset, not on rows (i.e. if you want to retain only a subset of the columns in a dataset).
-
+```
