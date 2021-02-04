@@ -1,29 +1,33 @@
 ## Projections and Transformations Toolset
 
-Quite often in GIS, users found themselves before the necessity of transforming
-(reprojecting) the coordinate system of a dataset (vector or raster). In fact this
-is one of the most commonly used operations. In ArcGIS pro the aforementioned
-action is performed using the following tools:
+If there is anything special about spatial, it's the Coordinate Reference System. We will not get into the topic of CRS and Projections here, but it is advisable to get up to speed on this topic if you are dealing with geodata. From this toolset, we will cover the following tools:
 
-- `Project (Data Management)` -> Projects __spatial data__ from one coordinate system to another.
-- `Project Raster (Data Management)` -> Transforms a __raster dataset__ from one coordinate system to another.
+- **Project**
+- **Project Raster**
+- **Define Projection**
+- **Rescale** (Resizes a raster by the specified x and y scale factors)
 
-The question now is how we can perform similar operations with R. 
 
-### Reproject vector data in R
+### Define Projection
 
-For our example we will use the following dataset.
+> Overwrites the coordinate system information (map projection and datum) stored with a dataset. This tool is intended for datasets that have an unknown or incorrect coordinate system defined.
 
-- **bezirke.gpkg** -> Dataset that depicts the Municipal structure in Switzerland
 
-**R** and more specifically **sf package** offers options (functions) not only for 
-transforming the coordinate system of a dataset, but also for identifying the
-current existing one. Let's dive in :)
+
+### Project
+
+> Projects spatial data from one coordinate system to another
+
+For our example we will use the dataset `bezirke` from the package `arc2r`.
+
+**R** and more specifically **sf package** offers options (functions) not only for transforming the coordinate system of a dataset, but also for identifying the current existing one. Let's dive in :)
 
 ```{r echo=TRUE, message=TRUE, warning=TRUE}
-# Importing the dataset
+library(arc2r)
 library(sf)
-bezirke <- read_sf("sample_data/other/bezirke.gpkg") 
+
+
+bezirke
 ```
 
 ```{r echo=TRUE, message=TRUE, warning=TRUE}
@@ -76,7 +80,9 @@ st_crs(bezirke_swiss)
 ```
 
 
-### Reproject raster data in R
+### Project Raster
+
+> Transforms a raster dataset from one coordinate system to another
 
 Working with Raster datasets in GIS of operations is of equal importance, as
 working with vector ones. One of the spatial properties of raster datasets is the 
@@ -140,87 +146,6 @@ plot(publicTransport_CH,las=1,
 
 <!-- ## Sampling Toolset -->
 
-### Generate Tessellation
-
-- Hexagon
-- Tranverse Hexagon
-- Square
-- Diamond
-- Triangle
-
-
-<!-- ### Create Fishnet -->
-
-<!-- ### Create Random Points -->
-
-<!-- ### Generate Points Along Lines -->
-
-<!-- ### Generate Rectangles Along Lines -->
-
-<!-- ### Generate Transsects Along Lines -->
-
-<!-- ## Raster Toolset -->
-
-<!-- <!-- Yes, these are toolsets within toolsets --> -->
-<!-- ### Mosaic Dataset Toolset -->
-
-<!-- ### Ortho Mapping Toolset -->
-
-<!-- ### Raster Dataset Toolset -->
-
-<!-- ### Raster Processing Toolset -->
-
-#### Clip Raster
-
-In GIS operations is quite common the necessity of "clipping" an area based on
-some specific region of interest. This is a quite useful and necessary procedure
-not only when we are dealing with vector datasets, but also when we have to work
-with raster ones. In ArcGIS pro the procedure of "cutting" a portion of a raster
-dataset, mosaic dataset, or an image service layer is performed using 
-`Clip Raster` tool.  
-In R, the respective operation can be performed using the _mask()_ function. For
-the example below, we are using the following datasets:
-
-- __ARE_waedi__: Vector dataset that depicts the public transport connection quality in the city of Wädenswil
-- __raster_recycling__: Dataset derived from the spatial interpolation of all the available "recycling points"in the city of Wädenwil  
-
-
-```{r echo=TRUE}
-# Read raster dataset
-library(raster)
-library(stars)
-library(sf)
-library(dplyr)
-library(stars)
-
-# Insert a vector dataset that depicts the public transport connection quality in
-# the city of Wädenswil and plot it
-ARE_waedi <- read_sf("sample_data/Entsorgung_Waedenswil/ARE_waedenswil.shp")
-
-# Read the raster dataset and plot it
-raster_recycling <- raster("sample_data/Entsorgung_Waedenswil/abfall_raster.tif")
-```
-
-Plot the two datasets one over the other.
-```{r, echo=FALSE}
-plot(raster_recycling)
-plot(ARE_waedi, alpha = 0.5, add = TRUE)
-```
-
-In our case, the vector dataset serves as the clipping extent for the clipping operation.
-```{r Clip raster, echo=TRUE}
-recycle_Waedi_clip <- mask(raster_recycling,ARE_waedi)
-```
-
-
-_Visualising the clipped output_
-```{r echo=FALSE}
-# ggplot() +
-#   geom_stars(data = st_as_stars(recycle_Waedi_clip)) + 
-#   scale_fill_gradientn(colours=c("green","yellow","red"))
-
-plot(recycle_Waedi_clip)
-```
 
 
 
@@ -240,23 +165,10 @@ plot(recycle_Waedi_clip)
 
 
 
-<!-- #### Composite Bands -->
 
-<!-- #### Compute Pansharpen Weights -->
 
-<!-- #### Create Ortho Corrected Raster Dataset -->
 
-<!-- #### Create Pansharpened Raster Dataset -->
 
-<!-- #### Extract Subdataset -->
-
-<!-- #### Generate Table From Raster Function -->
-
-<!-- #### Raster To DTED -->
-
-<!-- #### Resample -->
-
-<!-- #### Split Raster -->
 
 
 

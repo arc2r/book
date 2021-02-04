@@ -29,8 +29,15 @@ maintaining and developing datasets that come in all possible forms (feature cla
 - [ ] Photos
 - [x] Projections and Transformations
 - [ ] Raster
+  - [ ] Mosaic Dataset
+  - [ ] Ortho Mapping
+  - [ ] Raster Dataset
+//todo add these toolsets
+  - [x] Raster Processing
+  - [x] Raster Properties
 - [ ] Relationship Classes
-- [ ] Sampling
+//todo add sampling toolset
+- [x] Sampling
 - [ ] Subtypes
 - [ ] Table
 - [ ] Tile Cache
