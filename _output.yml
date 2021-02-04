@@ -9,10 +9,10 @@ bookdown::gitbook:
       after: |
         <li><a href="https://www.zhaw.ch/de/lsfm/institute-zentren/iunr/ecosystems-and-biodiversity/geoinformatik/">
         Developped by the Research Group for Geoinformatics @ ZHAW</a></li>
-  sharing:
-    facebook: false
-    twitter: false
-    all: ["github", "twitter", "linkedin"]
+    sharing:
+      facebook: false
+      twitter: false
+      all: ["github", "twitter", "linkedin"]
   info: yes
   edit: https://github.com/arc2r/book/edit/master/%s
   view: https://github.com/arc2r/book/blob/master/%s
