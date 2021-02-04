@@ -1,4 +1,4 @@
-# Selection
+# Selection {#chapter-selection}
 
 A very commonly used tool in ArcGIS is the concept of "Selection". The idea is, that you select features from your vector dataset in one of the following three ways:
 
