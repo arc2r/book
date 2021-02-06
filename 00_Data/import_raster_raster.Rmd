@@ -6,7 +6,7 @@ source("R/before_chapter.R", local = knitr::knit_global())
 
 To import raster data, we need a package that can specifically handle raster datasets. The package `raster` has for a long time been the go-to package for this. However, this package is currently in the process of being replaced with a successor, `terra`. Since `raster` is still in heavy use, we will show you how you handle raster data with this package.
 
-## Single band raster
+### Single band raster
 
 Download the sample dataset [here](https://github.com/arc2r/book/raw/master/sample_data/swissalti3D/SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_1196.zip) and unzip it into your project folder. This dataset is a freely available sample for the swissALTI3D data. The full sample, including files at different resolutions, can be downloaded from [here](https://cms.geo.admin.ch/Topo/swissalti3d/swissalti3dgeotifflv95.zip).
 
@@ -31,6 +31,6 @@ To visualize the dataset, we can simply call `plot` on our new object.
 plot(swissalti3d)
 ```
 
-## Multiband Raster
+### Multiband Raster
 
 //todo explain how to import multiband raster

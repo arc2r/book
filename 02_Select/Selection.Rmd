@@ -6,12 +6,12 @@ A very commonly used tool in ArcGIS is the concept of "Selection". The idea is, 
 2.  *Select By Attributes*: By specifying (non-spatial) criteria based on the attribute table
 3.  *Select By Location*: By specifying spatial criteria based on the relationship to another dataset.
 
-```{r, selection, echo = FALSE, out.width="50%", fig.cap="A very commonly used tool: The selection tools from the ArcGIS Pro Map Pane"}
+```{r, selection, echo = FALSE,fig.align="center", out.width="50%", fig.cap="A very commonly used tool: The selection tools from the ArcGIS Pro Map Pane"}
 
 knitr::include_graphics("images/selection.jpg")
 ```
 
-Using the tools via these buttons (\@ref{fig:selection}) have two effects.
+Using the tools via these buttons (\@ref(fig:selection) have two effects.
 
 1. The selected features are highlighted visually
 2. Any operation performed with a dataset that has an active selection respects this selection. In other words, the operation is only performed on the selected features.
@@ -20,7 +20,7 @@ This second effect is cause for many confusing errors, either because the user f
 For this reason, this type of "*floating* selection" is not very useful and was never implemented in `R`. 
 
 **However**, two of the three described methods to select data are supported in `R`, but with a different approach. The selected data leaves the original data unchanged, but must assigned to a new `R` object^[or, if you are familiar with pipes, piped into a new operation].
-Interactive selection (button "Select" in \@ref{fig:selection}) is *a priori* not reproducible and therefore not supported in `R`.
+Interactive selection (button "Select" in \@ref(fig:selection) is *a priori* not reproducible and therefore not supported in `R`.
 
 
 ```{block2, type = "rmdnote"}

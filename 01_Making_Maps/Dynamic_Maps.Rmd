@@ -46,7 +46,7 @@ library(tmap)
 tmap_mode("view")
 ```
 
-As shown in chapter \@ref{static-maps-tmap}, the `tmap` syntax very similar to `ggplot2`s, in the sense that connect "layers" using a `+` sign. 
+As shown in chapter \@ref(static-maps-tmap), the `tmap` syntax very similar to `ggplot2`s, in the sense that connect "layers" using a `+` sign. 
 
 ```{r}
 tm_shape(gemeindegrenzen_zh) +

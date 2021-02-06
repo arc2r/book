@@ -63,7 +63,7 @@ bezirke
 
 > Projects spatial data from one coordinate system to another
 
-Now that `bezirke` has an assigned `CRS` (see \@ref{define-projection}), we can transform it into a new coordinate system. To emphasize this, will will visualize the dataset using `base::plot()` with the option `axes = TRUE`, to visualize the current coordinate system.  
+Now that `bezirke` has an assigned `CRS` (see \@ref(define-projection), we can transform it into a new coordinate system. To emphasize this, will will visualize the dataset using `base::plot()` with the option `axes = TRUE`, to visualize the current coordinate system.  
 
 ```{r echo=TRUE, message=TRUE, warning=TRUE}
 plot(bezirke["area_km2"], axes = TRUE)

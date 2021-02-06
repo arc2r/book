@@ -39,8 +39,8 @@ knitr::include_graphics("images/tweet1.jpg")
 
 What are the main difficulties when switching from ArcGIS to R? 
 
-- The fundamental building block of ArcGIS is a visual representation of your data (i.e. the map). The fundamental building block in `R` is your RScript. The visual aspect makes ArcGIS more approachable, but also less saleable.
-- When you aquire ArcGIS, you are served from a single source. In `R`, there are a plethora of developers creating packages for you to use, which can be quite overwhelming
+- The fundamental building block of ArcGIS is a visual representation of your data (i.e. the map). The fundamental building block in `R` is your RScript. The visual aspect makes ArcGIS more approachable, but also less scaleable.
+- When you acquire ArcGIS, you are served from a single source. In `R`, there are a plethora of developers creating packages for you to use, which can be quite overwhelming
 - while there are always multiple ways to solve a problem in ArcGIS, there are always many more ways to solve it in `R`
 - When you transition from a proprietary Software like ArcGIS to [FOSS](https://en.wikipedia.org/wiki/Free_and_open-source_software), you have to relearn many of the concepts because the proprietary software usually does not adhere to common standards.
 
