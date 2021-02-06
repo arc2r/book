@@ -163,10 +163,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="Data.html"><a href="Data.html"><i class="fa fa-check"></i><b>2</b> Data</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="import_vector.html"><a href="import_vector.html"><i class="fa fa-check"></i><b>2.1</b> Importing vector data with <code>sf</code></a></li>
-<li class="chapter" data-level="2.2" data-path="import_raster_raster.html"><a href="import_raster_raster.html"><i class="fa fa-check"></i><b>2.2</b> Importing raster data with <code>raster</code></a></li>
-<li class="chapter" data-level="2.3" data-path="import_raster_raster.html"><a href="import_raster_raster.html#single-band-raster"><i class="fa fa-check"></i><b>2.3</b> Single band raster</a></li>
-<li class="chapter" data-level="2.4" data-path="import_raster_raster.html"><a href="import_raster_raster.html#multiband-raster"><i class="fa fa-check"></i><b>2.4</b> Multiband Raster</a></li>
-<li class="chapter" data-level="2.5" data-path="import_raster_terra.html"><a href="import_raster_terra.html"><i class="fa fa-check"></i><b>2.5</b> Importing raster data with <code>terra</code></a></li>
+<li class="chapter" data-level="2.2" data-path="import_raster_raster.html"><a href="import_raster_raster.html"><i class="fa fa-check"></i><b>2.2</b> Importing raster data with <code>raster</code></a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="import_raster_raster.html"><a href="import_raster_raster.html#single-band-raster"><i class="fa fa-check"></i><b>2.2.1</b> Single band raster</a></li>
+<li class="chapter" data-level="2.2.2" data-path="import_raster_raster.html"><a href="import_raster_raster.html#multiband-raster"><i class="fa fa-check"></i><b>2.2.2</b> Multiband Raster</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="import_raster_terra.html"><a href="import_raster_terra.html"><i class="fa fa-check"></i><b>2.3</b> Importing raster data with <code>terra</code></a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="Making_Maps.html"><a href="Making_Maps.html"><i class="fa fa-check"></i><b>3</b> Making Maps</a>
 <ul>
@@ -388,7 +390,7 @@ We will not get into options 1 and 3 and only</p>
 <blockquote>
 <p>Projects spatial data from one coordinate system to another</p>
 </blockquote>
-<p>Now that <code>bezirke</code> has an assigned <code>CRS</code> (see @ref{define-projection}), we can transform it into a new coordinate system. To emphasize this, will will visualize the dataset using <code>base::plot()</code> with the option <code>axes = TRUE</code>, to visualize the current coordinate system.</p>
+<p>Now that <code>bezirke</code> has an assigned <code>CRS</code> (see <a href="Projections_and_Transformations_toolset.html#define-projection">5.2.1</a>, we can transform it into a new coordinate system. To emphasize this, will will visualize the dataset using <code>base::plot()</code> with the option <code>axes = TRUE</code>, to visualize the current coordinate system.</p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="Projections_and_Transformations_toolset.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(bezirke[<span class="st">&quot;area_km2&quot;</span>], <span class="at">axes =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-50-1.png" width="672" /></p>
 <div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="Projections_and_Transformations_toolset.html#cb40-1" aria-hidden="true" tabindex="-1"></a>bezirke_wgs84 <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(bezirke, <span class="dv">4326</span>)</span>
@@ -543,6 +545,9 @@ object has already a defined CRS.</p>
 <h3><span class="header-section-number">5.2.4</span> Rescale</h3>
 <p>//todo write this chapter</p>
 
+</div>
+</div>
+</div>
             </section>
 
           </div>

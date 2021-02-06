@@ -163,10 +163,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="Data.html"><a href="Data.html"><i class="fa fa-check"></i><b>2</b> Data</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="import_vector.html"><a href="import_vector.html"><i class="fa fa-check"></i><b>2.1</b> Importing vector data with <code>sf</code></a></li>
-<li class="chapter" data-level="2.2" data-path="import_raster_raster.html"><a href="import_raster_raster.html"><i class="fa fa-check"></i><b>2.2</b> Importing raster data with <code>raster</code></a></li>
-<li class="chapter" data-level="2.3" data-path="import_raster_raster.html"><a href="import_raster_raster.html#single-band-raster"><i class="fa fa-check"></i><b>2.3</b> Single band raster</a></li>
-<li class="chapter" data-level="2.4" data-path="import_raster_raster.html"><a href="import_raster_raster.html#multiband-raster"><i class="fa fa-check"></i><b>2.4</b> Multiband Raster</a></li>
-<li class="chapter" data-level="2.5" data-path="import_raster_terra.html"><a href="import_raster_terra.html"><i class="fa fa-check"></i><b>2.5</b> Importing raster data with <code>terra</code></a></li>
+<li class="chapter" data-level="2.2" data-path="import_raster_raster.html"><a href="import_raster_raster.html"><i class="fa fa-check"></i><b>2.2</b> Importing raster data with <code>raster</code></a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="import_raster_raster.html"><a href="import_raster_raster.html#single-band-raster"><i class="fa fa-check"></i><b>2.2.1</b> Single band raster</a></li>
+<li class="chapter" data-level="2.2.2" data-path="import_raster_raster.html"><a href="import_raster_raster.html#multiband-raster"><i class="fa fa-check"></i><b>2.2.2</b> Multiband Raster</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="import_raster_terra.html"><a href="import_raster_terra.html"><i class="fa fa-check"></i><b>2.3</b> Importing raster data with <code>terra</code></a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="Making_Maps.html"><a href="Making_Maps.html"><i class="fa fa-check"></i><b>3</b> Making Maps</a>
 <ul>
@@ -289,7 +291,7 @@ Developped by the Research Group for Geoinformatics @ ZHAW</a></li>
 <h1><span class="header-section-number">1</span> What this book is about</h1>
 <p>This is a resource for people wanting to learn spatial-R (Analysis, Visualization) in R and are coming with a background in ArcGIS. This resource should provide some help on this journey. We assume you have some prior experience with <code>R</code>. If this is not the case, we recommend you familiarize yourself with <code>R</code> first.</p>
 <p>We are big fans of using <code>magrittr</code>’s pipe function <code>%&gt;%</code> and heavily use it throughout this book. In addition for vector data, we use packages from the <code>tidyverse</code> (especially <code>filter()</code>, <code>mutate()</code> and <code>summarise()</code>.)</p>
-<p>This book leans heavily on how the Toolboxes and Toolsets are documented in ArcGIS Pro. Is is not a book to read from cover to cover, but to look up specific things of which you only know the ArcGIS terminology for. This book is a work in progress, the current version is from the 2021-02-04 14:38:43 (UTC). <em>We highly appreciate contributions</em> to this book: If you have anything to add, please <a href="https://github.com/arc2r/book">file an issue or make a pull request</a>.</p>
+<p>This book leans heavily on how the Toolboxes and Toolsets are documented in ArcGIS Pro. Is is not a book to read from cover to cover, but to look up specific things of which you only know the ArcGIS terminology for. This book is a work in progress, the current version is from the 2021-02-06 18:20:26 (UTC). <em>We highly appreciate contributions</em> to this book: If you have anything to add, please <a href="https://github.com/arc2r/book">file an issue or make a pull request</a>.</p>
 <div id="how-it-started" class="section level2" number="1.1">
 <h2><span class="header-section-number">1.1</span> How it started</h2>
 <p>We had long since thought about the necessity of a resource which helps ArcGIS users transition to R or Python. Nils had tweeted about this (see below) without getting much reception, and and one point just decided to start his own resource. Since <a href="gis.lsfm.zhaw.ch/">our research group</a> teaches and introduction to GIS and an advanced GIS course mostly based on ArcGIS, we decided to pick up where Nils hat started and develop the resource in with internal funding of our University.</p>
@@ -304,8 +306,8 @@ Figure 1.1: <a href="https://twitter.com/NRatnaweera/status/1187759876472213504"
 <h2><span class="header-section-number">1.2</span> What might make your journey difficult</h2>
 <p>What are the main difficulties when switching from ArcGIS to R?</p>
 <ul>
-<li>The fundamental building block of ArcGIS is a visual representation of your data (i.e. the map). The fundamental building block in <code>R</code> is your RScript. The visual aspect makes ArcGIS more approachable, but also less saleable.</li>
-<li>When you aquire ArcGIS, you are served from a single source. In <code>R</code>, there are a plethora of developers creating packages for you to use, which can be quite overwhelming</li>
+<li>The fundamental building block of ArcGIS is a visual representation of your data (i.e. the map). The fundamental building block in <code>R</code> is your RScript. The visual aspect makes ArcGIS more approachable, but also less scaleable.</li>
+<li>When you acquire ArcGIS, you are served from a single source. In <code>R</code>, there are a plethora of developers creating packages for you to use, which can be quite overwhelming</li>
 <li>while there are always multiple ways to solve a problem in ArcGIS, there are always many more ways to solve it in <code>R</code></li>
 <li>When you transition from a proprietary Software like ArcGIS to <a href="https://en.wikipedia.org/wiki/Free_and_open-source_software">FOSS</a>, you have to relearn many of the concepts because the proprietary software usually does not adhere to common standards.</li>
 </ul>

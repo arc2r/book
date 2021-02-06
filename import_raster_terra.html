@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2.5 Importing raster data with terra | All things R Spatial</title>
-  <meta name="description" content="2.5 Importing raster data with terra | All things R Spatial" />
+  <title>2.3 Importing raster data with terra | All things R Spatial</title>
+  <meta name="description" content="2.3 Importing raster data with terra | All things R Spatial" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2.5 Importing raster data with terra | All things R Spatial" />
+  <meta property="og:title" content="2.3 Importing raster data with terra | All things R Spatial" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2.5 Importing raster data with terra | All things R Spatial" />
+  <meta name="twitter:title" content="2.3 Importing raster data with terra | All things R Spatial" />
   
   
   
@@ -163,10 +163,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="Data.html"><a href="Data.html"><i class="fa fa-check"></i><b>2</b> Data</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="import_vector.html"><a href="import_vector.html"><i class="fa fa-check"></i><b>2.1</b> Importing vector data with <code>sf</code></a></li>
-<li class="chapter" data-level="2.2" data-path="import_raster_raster.html"><a href="import_raster_raster.html"><i class="fa fa-check"></i><b>2.2</b> Importing raster data with <code>raster</code></a></li>
-<li class="chapter" data-level="2.3" data-path="import_raster_raster.html"><a href="import_raster_raster.html#single-band-raster"><i class="fa fa-check"></i><b>2.3</b> Single band raster</a></li>
-<li class="chapter" data-level="2.4" data-path="import_raster_raster.html"><a href="import_raster_raster.html#multiband-raster"><i class="fa fa-check"></i><b>2.4</b> Multiband Raster</a></li>
-<li class="chapter" data-level="2.5" data-path="import_raster_terra.html"><a href="import_raster_terra.html"><i class="fa fa-check"></i><b>2.5</b> Importing raster data with <code>terra</code></a></li>
+<li class="chapter" data-level="2.2" data-path="import_raster_raster.html"><a href="import_raster_raster.html"><i class="fa fa-check"></i><b>2.2</b> Importing raster data with <code>raster</code></a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="import_raster_raster.html"><a href="import_raster_raster.html#single-band-raster"><i class="fa fa-check"></i><b>2.2.1</b> Single band raster</a></li>
+<li class="chapter" data-level="2.2.2" data-path="import_raster_raster.html"><a href="import_raster_raster.html#multiband-raster"><i class="fa fa-check"></i><b>2.2.2</b> Multiband Raster</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="import_raster_terra.html"><a href="import_raster_terra.html"><i class="fa fa-check"></i><b>2.3</b> Importing raster data with <code>terra</code></a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="Making_Maps.html"><a href="Making_Maps.html"><i class="fa fa-check"></i><b>3</b> Making Maps</a>
 <ul>
@@ -279,8 +281,8 @@ Developped by the Research Group for Geoinformatics @ ZHAW</a></li>
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="importing-raster-data-with-terra" class="section level2" number="2.5">
-<h2><span class="header-section-number">2.5</span> Importing raster data with <code>terra</code></h2>
+<div id="importing-raster-data-with-terra" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Importing raster data with <code>terra</code></h2>
 <p>With the <code>terra</code> package, data is imported using the function <code>rast</code>.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="import_raster_terra.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
 <span id="cb8-2"><a href="import_raster_terra.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="do">## terra version 1.0.10</span></span>

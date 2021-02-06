@@ -163,10 +163,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="Data.html"><a href="Data.html"><i class="fa fa-check"></i><b>2</b> Data</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="import_vector.html"><a href="import_vector.html"><i class="fa fa-check"></i><b>2.1</b> Importing vector data with <code>sf</code></a></li>
-<li class="chapter" data-level="2.2" data-path="import_raster_raster.html"><a href="import_raster_raster.html"><i class="fa fa-check"></i><b>2.2</b> Importing raster data with <code>raster</code></a></li>
-<li class="chapter" data-level="2.3" data-path="import_raster_raster.html"><a href="import_raster_raster.html#single-band-raster"><i class="fa fa-check"></i><b>2.3</b> Single band raster</a></li>
-<li class="chapter" data-level="2.4" data-path="import_raster_raster.html"><a href="import_raster_raster.html#multiband-raster"><i class="fa fa-check"></i><b>2.4</b> Multiband Raster</a></li>
-<li class="chapter" data-level="2.5" data-path="import_raster_terra.html"><a href="import_raster_terra.html"><i class="fa fa-check"></i><b>2.5</b> Importing raster data with <code>terra</code></a></li>
+<li class="chapter" data-level="2.2" data-path="import_raster_raster.html"><a href="import_raster_raster.html"><i class="fa fa-check"></i><b>2.2</b> Importing raster data with <code>raster</code></a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="import_raster_raster.html"><a href="import_raster_raster.html#single-band-raster"><i class="fa fa-check"></i><b>2.2.1</b> Single band raster</a></li>
+<li class="chapter" data-level="2.2.2" data-path="import_raster_raster.html"><a href="import_raster_raster.html#multiband-raster"><i class="fa fa-check"></i><b>2.2.2</b> Multiband Raster</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="import_raster_terra.html"><a href="import_raster_terra.html"><i class="fa fa-check"></i><b>2.3</b> Importing raster data with <code>terra</code></a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="Making_Maps.html"><a href="Making_Maps.html"><i class="fa fa-check"></i><b>3</b> Making Maps</a>
 <ul>
@@ -282,9 +284,8 @@ Developped by the Research Group for Geoinformatics @ ZHAW</a></li>
 <div id="importing-raster-data-with-raster" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> Importing raster data with <code>raster</code></h2>
 <p>To import raster data, we need a package that can specifically handle raster datasets. The package <code>raster</code> has for a long time been the go-to package for this. However, this package is currently in the process of being replaced with a successor, <code>terra</code>. Since <code>raster</code> is still in heavy use, we will show you how you handle raster data with this package.</p>
-</div>
-<div id="single-band-raster" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> Single band raster</h2>
+<div id="single-band-raster" class="section level3" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Single band raster</h3>
 <p>Download the sample dataset <a href="https://github.com/arc2r/book/raw/master/sample_data/swissalti3D/SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_1196.zip">here</a> and unzip it into your project folder. This dataset is a freely available sample for the swissALTI3D data. The full sample, including files at different resolutions, can be downloaded from <a href="https://cms.geo.admin.ch/Topo/swissalti3d/swissalti3dgeotifflv95.zip">here</a>.</p>
 <p>Now load the library <code>raster</code> the function <code>raster</code> to import the tif-file included in the zip file. Make sure you have set the path to your tif-file correctly.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="import_raster_raster.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
@@ -308,10 +309,11 @@ Developped by the Research Group for Geoinformatics @ ZHAW</a></li>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="import_raster_raster.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(swissalti3d)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 </div>
-<div id="multiband-raster" class="section level2" number="2.4">
-<h2><span class="header-section-number">2.4</span> Multiband Raster</h2>
+<div id="multiband-raster" class="section level3" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Multiband Raster</h3>
 <p>//todo explain how to import multiband raster</p>
 
+</div>
 </div>
             </section>
 

@@ -163,10 +163,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="Data.html"><a href="Data.html"><i class="fa fa-check"></i><b>2</b> Data</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="import_vector.html"><a href="import_vector.html"><i class="fa fa-check"></i><b>2.1</b> Importing vector data with <code>sf</code></a></li>
-<li class="chapter" data-level="2.2" data-path="import_raster_raster.html"><a href="import_raster_raster.html"><i class="fa fa-check"></i><b>2.2</b> Importing raster data with <code>raster</code></a></li>
-<li class="chapter" data-level="2.3" data-path="import_raster_raster.html"><a href="import_raster_raster.html#single-band-raster"><i class="fa fa-check"></i><b>2.3</b> Single band raster</a></li>
-<li class="chapter" data-level="2.4" data-path="import_raster_raster.html"><a href="import_raster_raster.html#multiband-raster"><i class="fa fa-check"></i><b>2.4</b> Multiband Raster</a></li>
-<li class="chapter" data-level="2.5" data-path="import_raster_terra.html"><a href="import_raster_terra.html"><i class="fa fa-check"></i><b>2.5</b> Importing raster data with <code>terra</code></a></li>
+<li class="chapter" data-level="2.2" data-path="import_raster_raster.html"><a href="import_raster_raster.html"><i class="fa fa-check"></i><b>2.2</b> Importing raster data with <code>raster</code></a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="import_raster_raster.html"><a href="import_raster_raster.html#single-band-raster"><i class="fa fa-check"></i><b>2.2.1</b> Single band raster</a></li>
+<li class="chapter" data-level="2.2.2" data-path="import_raster_raster.html"><a href="import_raster_raster.html#multiband-raster"><i class="fa fa-check"></i><b>2.2.2</b> Multiband Raster</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="import_raster_terra.html"><a href="import_raster_terra.html"><i class="fa fa-check"></i><b>2.3</b> Importing raster data with <code>terra</code></a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="Making_Maps.html"><a href="Making_Maps.html"><i class="fa fa-check"></i><b>3</b> Making Maps</a>
 <ul>
@@ -287,13 +289,13 @@ Developped by the Research Group for Geoinformatics @ ZHAW</a></li>
 <li><em>Select By Attributes</em>: By specifying (non-spatial) criteria based on the attribute table</li>
 <li><em>Select By Location</em>: By specifying spatial criteria based on the relationship to another dataset.</li>
 </ol>
-<div class="figure"><span id="fig:selection"></span>
+<div class="figure" style="text-align: center"><span id="fig:selection"></span>
 <img src="images/selection.jpg" alt="A very commonly used tool: The selection tools from the ArcGIS Pro Map Pane" width="50%" />
 <p class="caption">
 Figure 4.1: A very commonly used tool: The selection tools from the ArcGIS Pro Map Pane
 </p>
 </div>
-<p>Using the tools via these buttons (@ref{fig:selection}) have two effects.</p>
+<p>Using the tools via these buttons (<a href="Selection.html#fig:selection">4.1</a> have two effects.</p>
 <ol style="list-style-type: decimal">
 <li>The selected features are highlighted visually</li>
 <li>Any operation performed with a dataset that has an active selection respects this selection. In other words, the operation is only performed on the selected features.</li>
@@ -301,7 +303,7 @@ Figure 4.1: A very commonly used tool: The selection tools from the ArcGIS Pro M
 <p>This second effect is cause for many confusing errors, either because the user forgot that a selection was active or the there were zero elements matching the specified criteria and so the operation was performed on an empty dataset.
 For this reason, this type of “<em>floating</em> selection” is not very useful and was never implemented in <code>R</code>.</p>
 <p><strong>However</strong>, two of the three described methods to select data are supported in <code>R</code>, but with a different approach. The selected data leaves the original data unchanged, but must assigned to a new <code>R</code> object<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.
-Interactive selection (button “Select” in @ref{fig:selection}) is <em>a priori</em> not reproducible and therefore not supported in <code>R</code>.</p>
+Interactive selection (button “Select” in <a href="Selection.html#fig:selection">4.1</a> is <em>a priori</em> not reproducible and therefore not supported in <code>R</code>.</p>
 
 <div class="rmdnote">
 By the way: In the world of SQL this type of operation is not called “selection” but “filtering”. Consequently, that is also the name used in <code>R</code>. In <code>R</code> as well as <code>SQL</code>, a <em>select</em> is done on columns in a dataset, not on rows (i.e. if you want to retain only a subset of the columns in a dataset).

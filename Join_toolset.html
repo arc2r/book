@@ -163,10 +163,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="Data.html"><a href="Data.html"><i class="fa fa-check"></i><b>2</b> Data</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="import_vector.html"><a href="import_vector.html"><i class="fa fa-check"></i><b>2.1</b> Importing vector data with <code>sf</code></a></li>
-<li class="chapter" data-level="2.2" data-path="import_raster_raster.html"><a href="import_raster_raster.html"><i class="fa fa-check"></i><b>2.2</b> Importing raster data with <code>raster</code></a></li>
-<li class="chapter" data-level="2.3" data-path="import_raster_raster.html"><a href="import_raster_raster.html#single-band-raster"><i class="fa fa-check"></i><b>2.3</b> Single band raster</a></li>
-<li class="chapter" data-level="2.4" data-path="import_raster_raster.html"><a href="import_raster_raster.html#multiband-raster"><i class="fa fa-check"></i><b>2.4</b> Multiband Raster</a></li>
-<li class="chapter" data-level="2.5" data-path="import_raster_terra.html"><a href="import_raster_terra.html"><i class="fa fa-check"></i><b>2.5</b> Importing raster data with <code>terra</code></a></li>
+<li class="chapter" data-level="2.2" data-path="import_raster_raster.html"><a href="import_raster_raster.html"><i class="fa fa-check"></i><b>2.2</b> Importing raster data with <code>raster</code></a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="import_raster_raster.html"><a href="import_raster_raster.html#single-band-raster"><i class="fa fa-check"></i><b>2.2.1</b> Single band raster</a></li>
+<li class="chapter" data-level="2.2.2" data-path="import_raster_raster.html"><a href="import_raster_raster.html#multiband-raster"><i class="fa fa-check"></i><b>2.2.2</b> Multiband Raster</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="import_raster_terra.html"><a href="import_raster_terra.html"><i class="fa fa-check"></i><b>2.3</b> Importing raster data with <code>terra</code></a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="Making_Maps.html"><a href="Making_Maps.html"><i class="fa fa-check"></i><b>3</b> Making Maps</a>
 <ul>
@@ -283,7 +285,7 @@ Developped by the Research Group for Geoinformatics @ ZHAW</a></li>
 <h2><span class="header-section-number">5.1</span> Joins Toolset</h2>
 <p>//todo revise this chapter
 //body nothing about this chapter is spatial, the explanation is not based on ArcGIS Tools, the joins are not intuitive (what are df1 and df2?)</p>
-<p>In ArcGIS, joining two datasets on a common attribute is done with tools from the “Join” Toolset. Similar as described with the Selection tools in chapter @ref{chapter-selection}, a join has a temporary / floating nature and does not automatically produce an output. In <code>R</code>, joining two datasets requires is only persistent if the output is assigned to a new variable<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>.</p>
+<p>In ArcGIS, joining two datasets on a common attribute is done with tools from the “Join” Toolset. Similar as described with the Selection tools in chapter <a href="Selection.html#chapter-selection">4</a>, a join has a temporary / floating nature and does not automatically produce an output. In <code>R</code>, joining two datasets requires is only persistent if the output is assigned to a new variable<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>.</p>
 <p>In R we have two main functions for joining two datasets. On the one hand there is the base R function <code>merge</code>, on the other hand there is the <code>*_join</code> family that lie within the <code>dplyr</code> package. Since the latter family of functions are very close to how Joins are done in SQL, we will use the latter case for our examples below.</p>
 <p>Before we begin with our examples, we have to make clear the differences among the various forms of join operations.</p>
 <ul>
