@@ -40,7 +40,9 @@ jobs:
           R -e 'remotes::install_github("arc2r/arc2r",dependencies = TRUE, upgrade = "always")'
 
       - name: Build site
-        run: Rscript -e 'bookdown::render_book("index.Rmd", quiet = TRUE)'
+        run: |
+          R -e 'knitr::knit("Readme.Rmd")'
+          Rscript -e 'bookdown::render_book("index.Rmd", quiet = TRUE)'
 
       - name: Push output to gh-pages branch
         uses: peaceiris/actions-gh-pages@v3.6.1
