@@ -1,0 +1,70 @@
+---
+output: github_document
+---
+
+# All things `R`-Spatial
+
+
+[![Actions Status](https://github.com/arc2r/book/workflows/bookdown/badge.svg)](https://github.com/arc2r/book/actions)
+
+
+## Geoprocessing tools
+
+```{r}
+library(tidyverse)
+library(data.tree)
+
+tools <- read_csv("ESRI_Tool_names.csv")
+
+
+tools %>%
+  mutate(tool = paste(toolb,toolset,Tool, sep = "/"))  %>%
+  as.Node(pathName = "tool")
+```
+
+
+
+## Style Guide
+
+Some basic text formatting rules for keeping the document consistent.
+
+
+### Inline formatting
+
+- formatting with __bold__, in the following cases:
+    - dataset name (e.g __parking spots in the canton of Zurich__)
+    
+- formatting with _italics_, in the following cases:
+    - referring to a tool (e.g `Select By Attributes`) 
+    - operation (e.g __spatial subsetting__)
+
+    
+- formatting with this `format`, in the following cases:
+    - package name (e.g `sf`)
+    - function name (e.g `st_buffer`)
+    
+### Adding notes
+
+If you want to highlight something important, you can add [a custom block](https://bookdown.org/yihui/bookdown/custom-blocks.html) in this format: ````{block2, type = "rmdnote"}` (see example below). This block will recieve the class "rmdnote", which is specified in [css/style.css]. Currently, the classes `rmdcaution, .rmdimportant, .rmdnote, .rmdtip, .rmdwarning` have the same layout, they all come from "Geocomputation with R" and might be specified on demand.
+
+````markdown
+`r ''````{block2, type='rmdnote'}
+Some 
+```
+````
+
+
+
+    
+    
+## Dependencies
+
+To capture the various dependencies on r-Packages, we follow the following logic (see also https://github.com/arc2r/book/issues/9): 
+
+
+
+| Priority 	| Dependency (Package Necessary to:)            	| File        	| Repo        	| Field    	| Eg.                 	|
+|----------	|-----------------------------------------------	|-------------	|-------------	|----------	|---------------------	|
+| 1        	| Use the **data-package**                      	| DESCRIPTION 	| arc2r/arc2r 	| Imports  	| `sf`, `raster`          	|
+| 2        	| To run the code described within **the book** 	| DESCRIPTION 	| arc2r/arc2r 	| Suggests 	| `gstat`, `tmap`, `dplyr`  	|
+| 3        	| Render **the book**                           	| DESCRIPTION 	| arc2r/book  	| Imports  	| `bookdown`, `rmarkdown` 	|
