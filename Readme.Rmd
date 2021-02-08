@@ -2,6 +2,11 @@
 output: github_document
 ---
 
+```{r, include= FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
 # All things `R`-Spatial
 
 
@@ -17,9 +22,11 @@ library(data.tree)
 tools <- read_csv("ESRI_Tool_names.csv")
 
 
-tools %>%
-  mutate(tool = paste(toolb,toolset,Tool, sep = "/"))  %>%
+treefy <- tools %>%
+  mutate(tool = paste(toolb,toolset,Tool, sep = "/"))  %>% 
   as.Node(pathName = "tool")
+
+print(treefy,limit = NULL)
 ```
 
 
