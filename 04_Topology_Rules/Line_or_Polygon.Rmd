@@ -2,7 +2,7 @@
 
 ### Must be larger than cluster tolarance
 
-```{r}
+```{r, echo = FALSE, fig.cap = "Source: [Link](http://resources.arcgis.com/en/help/main/10.2/01mm/pdf/topology_rules_poster.pdf)"}
 knitr::include_graphics("images/topology_rules/0_2.jpg")
 ```
 

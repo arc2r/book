@@ -1,3 +1,222 @@
-# Topology Rules
+# (PART) Topology Rules {-}
 
-in ArcGIS, you create a topology rule by first creating a Feature Dataset in a Geodatabase, and then adding one or more Topology Rules to that Feature Dataset. In R, you can check topology using the DE-9IM together with `st_relate()`.
+# About this section
+
+
+In ArcGIS, you create a topology rule by first creating a Feature Dataset in a Geodatabase, and then adding one or more Topology Rules to that Feature Dataset. You are provided with 32 different named rules which you can apply to this feature dataset (see \@ref(fig:topologyposter)). In 
+`R`, you will find only the most commonly used 9 named spatial relations. These are known as ["Spatial predicates"](https://en.wikipedia.org/wiki/DE-9IM#Spatial_predicates). Spatial relationships are hart to describe with words, but we will try so here. 
+
+Take two geometries, `a` and `b`: 
+
+- **Equals**: `a` and `b` are equal if 
+  - their interiors intersect and 
+  - no part of the interior or boundary of one geometry intersects the exterior of the other
+- **Disjoint**:  `a` and `b` are disjoint if they have no point in common (they form a set of disconnected geometries)
+- **Touches**:  `a` and `b` touch if
+  - they have at least one point in common but 
+  - their interiors do not intersect
+- **Contains**: `a` contains `b` if 
+  - no points of `b` lie in the exterior of `a` and
+  - at least one point of the interior of `b` lies in the interior of `a`
+- **Covers**: `a` covers `b` if at least one point of `b` lies in `a`, and no point of `b` lies in the exterior of `a`
+- **Intersects**: `a` and `b` intersect if the two geometries have at least one point in common
+- **Within** (inside): `a` is within `b` if `a` lies in the interior of the `b`
+- **CoveredBy**: `a` is covered by `b` if `a` lies in `b`
+- **Crosses**: `a` crosses `b` if they have some but not all interior points in common.
+- **Overlaps**: `a` overlaps `b` 
+  - if they have some (but not all) points in common and
+  - they have the same dimension and
+  - the intersection of the interiors of the two geometries has the same dimension as the geometries themselves
+
+```{r, topologyposter, fig.cap="The 32 different topolgy rules that you can apply to one or more feature datasets in ArcGIS"}
+knitr::include_graphics("images/topology_rules_poster.jpg")
+```
+
+
+In R, you can check topology using the DE-9IM together with `st_relate()`.
+
+
+
+## Binary Predicates and DE-9IM
+
+Binary Predicates check topological relationships betweeen geometries. This can be very practical for data quality questions (e.g. "None of the State borders should ovelap") or for neighbourhood question (e.g. "which states border the state of Nevada?"). 
+
+Lets take the example of a chessboard:
+
+```{r, echo = FALSE}
+library(sf)
+library(tidyverse)
+
+
+edges <- st_multipoint(matrix(c(0,0,8,0,8,8,0,8),ncol = 2,byrow = TRUE))
+board <- st_make_grid(edges,n = 8) %>%
+  st_as_sf() %>%
+  mutate(
+    value = rep(c(rep(c(FALSE,TRUE),4),rep(c(TRUE,FALSE),4)),4),
+    namex = rep(letters[1:8],8),
+    namey = rep(1:8,each = 8),
+    name = paste(namex,namey,sep = ""),
+    i = row_number()
+    )
+
+chessplot <- ggplot(board) + 
+  geom_sf(aes(fill = value)) + 
+  geom_sf_label(aes(label = i)) +
+  scale_x_continuous(breaks = 1:8-0.5,labels = letters[1:8]) +
+  scale_y_continuous(breaks = 1:8-0.5,labels = 1:8) +
+  scale_fill_manual(values = c("black","white"))+ 
+  theme(legend.position = "none",
+        panel.grid = element_blank(),
+        panel.background = element_blank(),
+        axis.title = element_blank(),
+        axis.ticks = element_blank()) 
+
+chessplot
+```
+
+Some topological relationships have specific names. For example, if we want to know which field touch a specific field, the name for this predicate is "touches". This is implemented in the function `st_touches` of the packages `sf`:
+
+So to see which field touch field number 36, we can write the following line of code:
+```{r}
+st_touches(board[36,],board)
+```
+
+
+Visually, these are the following fields:
+```{r, echo = FALSE}
+sel36 <- st_touches(board[36,],board)[[1]]
+
+
+chessplot +
+  geom_sf(data = board[36,], fill = "blue", alpha = 0.4)+
+  geom_sf(data = board[sel36,], fill = "red",alpha = 0.4)
+```
+
+Similarly, there are further named topological relationships. Each of them has it's own function in R:
+
+- Contains (`st_contains`)
+- Covers (`st_covers`)
+- Intersects (`st_intersects`)
+- Within / Inside (`st_within`)
+- Covered by (`st_covered_by`)
+- Crosses (`st_crosses`)
+- Overlaps (`st_overlaps`)
+
+Regarding the visual example above, we can imagine a chess piece placed on field #36. If this figure was a Queen or a King, all of the fields resulting from `st_touches` are reachable. In terms of contiguity, this is what is typically called the Queen's or the King's Case. However, this is might not the relationship that we are looking for: Say we would want to exclude the diagonal fields from our selection, the way a Rook would move in chess. How can we implement this in R? 
+
+None of the named topological relationships (binary predicates) above correctly describes this case (`touches_but_not_at_edges` or `shares_boundary` would be appropriate). In this case, we can use the Dimensionally Extended 9-Intersection Model (DE-9IM) to precisely formulate the realtionship we are looking for: the Rooks Case.
+
+IN DE-9IM, the intersection of two objects is viewed at three levels for each object: The Interior, the Boundry and the Exterior ($3^2= 9$, hence the name). These levels mean different things for Polygons, Lines or Points, but let's just look at the simple case for now, polygons (which is the case for our chess fields). Take the following example
+
+```{r, echo = FALSE}
+mat <- matrix(c(0,0,1,0,1,1,0,1,0,0),ncol = 2,byrow = TRUE)
+p1 <- st_polygon(list(mat))
+p2 <- st_polygon(list(mat+0.5))
+p3 <- st_polygon(list(mat-1))
+
+ggplot() +
+  geom_sf(data = p1, fill = "blue", alpha = 0.4) + 
+  geom_sf(data = p2, fill = "red", alpha = 0.4)+
+  # geom_sf(data = p3, fill = "green", alpha = 0.4)+
+  theme_void()
+```
+
+
+The interior of a polygon is the area inside the polygon. If the two areas overlap (as is the case of blue and red), the result from an intersection would also be a polygon. More formally: The Dimesion of $I(blue) \cap I(red)$ is an area. Areas get a value of 2, Lines 1 and points 0. If there is no intersection (as is the case in blue and green), the result equals to `FALSE`. 
+
+This was the first of 9 Intersections. Let's look at the next one:
+
+Interior of blue with the boundry of green:
+
+```{r, echo = FALSE}
+p2_ls <- st_cast(p2,"LINESTRING")
+p2_ls2 <- st_intersection(p1,p2_ls)
+
+ggplot() +
+  geom_sf(data = p1, fill = "blue", alpha = 0.4) + 
+  geom_sf(data = p2, fill = "red", alpha = 0.4)+
+  geom_sf(data = p2_ls2, colour = "yellow", lwd = 2)+
+  theme_void()
+```
+
+The resulting object has a dimenion "line", i.e. 1. Formally: $dim(I(blue) \cap B(red)) = 1$. Now just for the sake of looking at the third level (Exerior), let's look at what this looks like:
+
+```{r}
+p2_ls <- st_cast(p2,"LINESTRING")
+p2_ls2 <- st_intersection(p1,p2_ls)
+
+ggplot() +
+  geom_sf(data = p1, fill = "blue", alpha = 0.4) + 
+  geom_sf(data = p2, fill = "red", alpha = 0.4)+
+  geom_sf(data = st_difference(p1,p2), fill = "yellow", lwd = 2)+
+  theme_void()
+```
+
+The resulting object is again an area, i.e. 2. Formally $dim(I(blue) \cap E(red)) = 2$. 
+
+If we go through all intersections of **I**nterior, *`b`*oundry and **E**xterior of both geometries, we can denote for each comination what type of dimesion we "allow". This can be either 0 (for points), 1 (for lines) or 3 (for areas) or `TRUE` (for either of these), or `FALSE` (for none of these) or `*` (for "I dont care). 
+
+![](https://postgis.net/workshops/postgis-intro/_images/de9im3.jpg)
+
+Why go through all this trouble? Because we would like to specify the rooks case, and none of the named predicates matches. So let's define the rooks case ourselves:
+
+### Rooks Case
+
+If we go throught the all nine combinations of the DE-9IM, this is what defines the rooks case:
+
+
+|             | Interior    | Boundary    | Exterior    |
+| :---------- | :---------- | :---------- | :---------- |
+| Interior    | **nothing** | don't care  | don't care  |
+| Boundary    | don't care  | **Line**    | don't care  |
+| Exterior    | don't care  | don't care  | don't care  |
+
+We can now write this into a string, starting from the top left: F***1****
+
+Now that we have this string, we case use `st_relate()`and specify the string as the pattern we are looking for:
+
+```{r}
+st_relate(board[36,],board,pattern = "F***1****")
+```
+
+Which visually gives us this pattern:
+
+```{r, echo = FALSE}
+st_rook = function(a, b = a) st_relate(a, b, pattern = "F***1****")
+
+
+sel36 <- st_rook(board[36,],board)[[1]]
+chessplot +
+  geom_sf(data = board[36,], fill = "blue", alpha = 0.4)+
+  geom_sf(data = board[sel36,], fill = "red",alpha = 0.4)
+
+```
+
+Because this was so much fun, let's also have a look at the opposite, the Bishops Case.
+
+### Bishops Case
+
+|             | Interior    | Boundary    | Exterior    |
+| :---------- | :---------- | :---------- | :---------- |
+| Interior    | **nothing** | don't care  | don't care  |
+| Boundary    | don't care  | **Point**   | don't care  |
+| Exterior    | don't care  | don't care  | don't care  |
+
+```{r}
+st_relate(board[36,],board,pattern = "F***0****")
+```
+
+
+Visually:
+
+```{r, echo = FALSE}
+
+st_bishop <- function(a, b = a) st_relate(a, b, pattern = "F***0****")
+
+sel36 <- st_bishop(board[36,],board)[[1]]
+chessplot +
+  geom_sf(data = board[36,], fill = "blue", alpha = 0.4)+
+  geom_sf(data = board[sel36,], fill = "red",alpha = 0.4)
+
+```
+
