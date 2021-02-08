@@ -54,16 +54,18 @@ What are the main difficulties when switching from ArcGIS to `R`?
 
 We strongly advocate the use of a programming language to tackle GIS tasks for the following reasons:
 
-//todo translate this
-//body add specific advantages of youing FOSS?
-<!-- Ich Programmieren, weil ich damit: -->
-<!-- 1. … repetitive Tasks automatisieren kann -->
-<!-- 2. … übertragbare «Tools» bauen kann -->
-<!-- 3. … mehr Flexibilität und «Power» habe -->
-<!-- 4. … zu Grunde liegende Funktionen besser verstehe -->
-<!-- 5. … bessere Möglichkeiten habe zu Kollaborieren -->
-<!-- 6. … bessere Möglichkeiten habe, Hilfe zu erhalten -->
-<!-- 7.… reproduzierbar arbeite -->
+<!--
+# todo translate this
+#  add specific advantages of using FOSS?
+#  Ich Programmieren, weil ich damit:
+#  1. … repetitive Tasks automatisieren kann
+#  2. … übertragbare «Tools» bauen kann
+#  3. … mehr Flexibilität und «Power» habe
+#  4. … zu Grunde liegende Funktionen besser verstehe
+#  5. … bessere Möglichkeiten habe zu Kollaborieren
+#  6. … bessere Möglichkeiten habe, Hilfe zu erhalten
+#  7.… reproduzierbar arbeite
+--> 
 
 
 ## How to use this book
