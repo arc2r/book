@@ -47,57 +47,65 @@ library(ggplot2)
 ### Intersect
 
 <!--
-# todo(KimboGilda): Write an example for this chapter, reusing the same dataset if possible
-#  and using the data from the arc2r package
+/ todo: Write an example for this chapter, reusing the same dataset if possible
+/  and using the data from the arc2r package
+/  assignees: KimboGilda
 -->
 
 ### Intersect_3d
 
 <!--
-# todo(KimboGilda): Write an example for this chapter, reusing the same dataset if possible
-#  and using the data from the arc2r package
+/ todo: Write an example for this chapter, reusing the same dataset if possible
+/  and using the data from the arc2r package
+/  assignees: KimboGilda
 -->
 
 ### Within_a_distance
 
 <!--
-# todo(KimboGilda): Write an example for this chapter, reusing the same dataset if possible
-#  and using the data from the arc2r package
+/ todo: Write an example for this chapter, reusing the same dataset if possible
+/  and using the data from the arc2r package
+/  assignees: KimboGilda
 -->
 
 ### Within_a_distance_3d
 
 <!--
-# todo(KimboGilda): Write an example for this chapter, reusing the same dataset if possible
-#  and using the data from the arc2r package
+/ todo: Write an example for this chapter, reusing the same dataset if possible
+/  and using the data from the arc2r package
+/  assignees: KimboGilda
 -->
 
 ### Within_a_distance_geodesic
 
 <!--
-# todo(KimboGilda): Write an example for this chapter, reusing the same dataset if possible
-#  and using the data from the arc2r package
+/ todo: Write an example for this chapter, reusing the same dataset if possible
+/  and using the data from the arc2r package
+/  assignees: KimboGilda
 -->
 
 ### Contains
 
 <!--
-# todo(KimboGilda): Write an example for this chapter, reusing the same dataset if possible
-#  and using the data from the arc2r package
+/ todo: Write an example for this chapter, reusing the same dataset if possible
+/  and using the data from the arc2r package
+/  assignees: KimboGilda
 -->
 
 ### Completely_contains
 
 <!--
-# todo(KimboGilda): Write an example for this chapter, reusing the same dataset if possible
-#  and using the data from the arc2r package
+/ todo: Write an example for this chapter, reusing the same dataset if possible
+/  and using the data from the arc2r package
+/  assignees: KimboGilda
 -->
 
 ### Contains_clementini
 
 <!--
-# todo(KimboGilda): Write an example for this chapter, reusing the same dataset if possible
-#  and using the data from the arc2r package
+/ todo: Write an example for this chapter, reusing the same dataset if possible
+/  and using the data from the arc2r package
+/  assignees: KimboGilda
 -->
 
 ### Within
@@ -136,49 +144,56 @@ ggplot() + geom_sf(data = gemeinde_ZH) + geom_sf(data = swimmSpots,color = "blue
 ### Completely_within
 
 <!--
-# todo(KimboGilda): Write an example for this chapter, reusing the same dataset if possible
-#  and using the data from the arc2r package
+/ todo: Write an example for this chapter, reusing the same dataset if possible
+/  and using the data from the arc2r package
+/  assignees: KimboGilda
 -->
 
 ### Within_clementini
 
 <!--
-# todo(KimboGilda): Write an example for this chapter, reusing the same dataset if possible
-#  and using the data from the arc2r package
+/ todo: Write an example for this chapter, reusing the same dataset if possible
+/  and using the data from the arc2r package
+/  assignees: KimboGilda
 -->
 
 ### Are_identical_to
 
 <!--
-# todo(KimboGilda): Write an example for this chapter, reusing the same dataset if possible
-#  and using the data from the arc2r package
+/ todo: Write an example for this chapter, reusing the same dataset if possible
+/  and using the data from the arc2r package
+/  assignees: KimboGilda
 -->
 
 ### Boundary_touches
 
 <!--
-# todo(KimboGilda): Write an example for this chapter, reusing the same dataset if possible
-#  and using the data from the arc2r package
+/ todo: Write an example for this chapter, reusing the same dataset if possible
+/  and using the data from the arc2r package
+/  assignees: KimboGilda
 -->
 
 ### Share_a_line_segment_with
 
 <!--
-# todo(KimboGilda): Write an example for this chapter, reusing the same dataset if possible
-#  and using the data from the arc2r package
+/ todo: Write an example for this chapter, reusing the same dataset if possible
+/  and using the data from the arc2r package
+/  assignees: KimboGilda
 -->
 ### Crossed_by_the_outline_of
 
 <!--
-# todo(KimboGilda): Write an example for this chapter, reusing the same dataset if possible
-#  and using the data from the arc2r package
+/ todo: Write an example for this chapter, reusing the same dataset if possible
+/  and using the data from the arc2r package
+/  assignees: KimboGilda
 -->
 
 ### Have_their_center_in
 
 <!--
-# todo(KimboGilda): Write an example for this chapter, reusing the same dataset if possible
-#  and using the data from the arc2r package
+/ todo: Write an example for this chapter, reusing the same dataset if possible
+/  and using the data from the arc2r package
+/  assignees: KimboGilda
 -->
 
 
