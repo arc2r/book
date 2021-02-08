@@ -10,15 +10,19 @@ rmd_files: [
   "02_Select/Selection.Rmd",
   "02_Select/Select_by_Attribute.Rmd",
   "02_Select/Select_by_Location.Rmd",
-  "03_Geoprocessing_Tools/03_Data_Management/Data_Management.Rmd",
-  "03_Geoprocessing_Tools/03_Data_Management/Data_Management/Join_toolset.Rmd",
-  "03_Geoprocessing_Tools/03_Data_Management/Data_Management/Projections_and_Transformations_toolset.Rmd",
-  "03_Geoprocessing_Tools/03_Data_Management/Spatial_Analyst.Rmd",
-  "03_Geoprocessing_Tools/03_Data_Management/3D_Analyst.Rmd",
-  "03_Geoprocessing_Tools/03_Data_Management/Image_Analysis.Rmd",
-  "03_Geoprocessing_Tools/03_Data_Management/Analysis.Rmd",
-  "04_Topology_Rules/Chapter_overview.Rmd",
-  "04_Topology_Rules/Polygon.Rmd"
+  "03_Part_Geoprocessing_Tools.Rmd",
+  "03_Data_Management/Data_Management.Rmd",
+  "03_Data_Management/Join_toolset.Rmd",
+  "03_Data_Management/Projections_and_Transformations_toolset.Rmd",
+  "03_Spatial_Analyst/Spatial_Analyst.Rmd",
+  "03_3D_Analyst/3D_Analyst.Rmd",
+  "03_Image_Analysis/Image_Analysis.Rmd",
+  "03_Analysis/Analysis.Rmd",
+  "04_Topology_Rules.Rmd",
+  "04_Topology_Rules/Polygon.Rmd",
+  "04_Topology_Rules/Line.Rmd",
+  "04_Topology_Rules/Point.Rmd",
+  "04_Topology_Rules/Line_or_Polygon.Rmd",
   
 ]
 delete_merged_file: TRUE
