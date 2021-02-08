@@ -11,7 +11,9 @@ library(tidyverse)
 
 ### Must not overlap
 
-![](06_Topology_Rules/images/0_0.jpg)
+```{r}
+knitr::include_graphics("images/topology_rules/0_0.jpg")
+```
 
 In context of DE-9IM, this is a simple case. The polygon interiors should not overlap *at all*, everything else does not matter. Interior-Interior is the first of the 9 intersections, so the the intersection matrix as a code string would be: __2\*\*\*\*\*\*\*\*__. In the case of the example below:
 
@@ -61,7 +63,9 @@ circsplot +
 
 ### Must not have gaps
 
-![](06_Topology_Rules/images/0_0.jpg)
+```{r}
+knitr::include_graphics("images/topology_rules/0_0.jpg")
+```
 
 Lets cosider the North Carolina Dataset for this question. 
 
@@ -122,38 +126,54 @@ map_lgl(nc_holes$geometry,~length(.x)== 1)
 
 ### Contains point
 
-![](06_Topology_Rules/images/1_0.jpg)
+```{r}
+knitr::include_graphics("images/topology_rules/1_0.jpg")
+```
 
 ### Contains one Point 
 
-![](06_Topology_Rules/images/1_1.jpg)
+```{r}
+knitr::include_graphics("images/topology_rules/1_1.jpg")
+```
 
 
 ### Must be covered by feature class of
 
-![](06_Topology_Rules/images/2_0.jpg)
+```{r}
+knitr::include_graphics("images/topology_rules/2_0.jpg")
+```
 
 
 ### Boundary must be covered by
 
-![](06_Topology_Rules/images/2_1.jpg)
+```{r}
+knitr::include_graphics("images/topology_rules/2_1.jpg")
+```
 
 
 ### Must not overlap with
 
-![](06_Topology_Rules/images/3_0.jpg)
+```{r}
+knitr::include_graphics("images/topology_rules/3_0.jpg")
+```
 
 
 ### Must be covered by 
 
-![](06_Topology_Rules/images/3_1.jpg)
+```{r}
+knitr::include_graphics("images/topology_rules/3_1.jpg")
+```
 
 ### Area boundary must be covered by boundary of
 
-![](06_Topology_Rules/images/4_0.jpg)
+```{r}
+knitr::include_graphics("images/topology_rules/4_0.jpg")
+```
 
 ### Must cover each other
 
-![](06_Topology_Rules/images/4_1.jpg)
+```{r}
+knitr::include_graphics("images/topology_rules/4_1.jpg")
+```
 
 

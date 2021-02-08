@@ -2,4 +2,7 @@
 
 ### Must be larger than cluster tolarance
 
-![](06_Topology_Rules/images/0_2.jpg)
+```{r}
+knitr::include_graphics("images/topology_rules/0_2.jpg")
+```
+
