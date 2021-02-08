@@ -1,7 +1,7 @@
 ## Static Maps
 
 
-As we saw in chapter [Data], we can quickly visualize geodata by simply calling `plot` on the dataset. 
+As we saw in chapter \@ref(data), we can quickly visualize geodata by simply calling `plot` on the dataset. 
 
 
 ```{r}
