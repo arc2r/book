@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5.1 Joins Toolset | All things R Spatial</title>
-  <meta name="description" content="5.1 Joins Toolset | All things R Spatial" />
+  <title>6.1 Joins Toolset | All things R Spatial</title>
+  <meta name="description" content="6.1 Joins Toolset | All things R Spatial" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5.1 Joins Toolset | All things R Spatial" />
+  <meta property="og:title" content="6.1 Joins Toolset | All things R Spatial" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5.1 Joins Toolset | All things R Spatial" />
+  <meta name="twitter:title" content="6.1 Joins Toolset | All things R Spatial" />
   
   
   
@@ -70,6 +70,8 @@
 <script src="libs/clipboard-0.0.1/setClipboardText.js"></script>
 <link href="libs/mapviewCSS-0.0.1/mapview-popup.css" rel="stylesheet" />
 <link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
+<script src="libs/d3-4.5.0/d3.min.js"></script>
+<script src="libs/diagonalNetwork-binding-0.4/diagonalNetwork.js"></script>
 
 
 <style type="text/css">
@@ -156,7 +158,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> What this book is about</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#how-it-started"><i class="fa fa-check"></i><b>1.1</b> How it started</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#what-might-make-your-journey-difficult"><i class="fa fa-check"></i><b>1.2</b> What might make your journey difficult</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#difficulties"><i class="fa fa-check"></i><b>1.2</b> What might make your journey difficult</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#why-you-should-transition-anyway"><i class="fa fa-check"></i><b>1.3</b> Why you should transition anyway</a></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#how-to-use-this-book"><i class="fa fa-check"></i><b>1.4</b> How to use this book</a></li>
 </ul></li>
@@ -187,77 +189,147 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="Selection.html"><a href="Selection.html"><i class="fa fa-check"></i><b>4</b> Selection</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="Select_by_Attribute.html"><a href="Select_by_Attribute.html"><i class="fa fa-check"></i><b>4.1</b> Select by Attribute</a></li>
-<li class="chapter" data-level="4.2" data-path="Select_by_Location.html"><a href="Select_by_Location.html"><i class="fa fa-check"></i><b>4.2</b> Select by Location</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="Data_Management.html"><a href="Data_Management.html"><i class="fa fa-check"></i><b>5</b> Data Management Toolbox</a>
+<li class="chapter" data-level="4.2" data-path="Select_by_Location.html"><a href="Select_by_Location.html"><i class="fa fa-check"></i><b>4.2</b> Select by Location</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="Join_toolset.html"><a href="Join_toolset.html"><i class="fa fa-check"></i><b>5.1</b> Joins Toolset</a>
-<ul>
-<li class="chapter" data-level="5.1.1" data-path="Join_toolset.html"><a href="Join_toolset.html#inner-join"><i class="fa fa-check"></i><b>5.1.1</b> Inner join</a></li>
-<li class="chapter" data-level="5.1.2" data-path="Join_toolset.html"><a href="Join_toolset.html#outer-join"><i class="fa fa-check"></i><b>5.1.2</b> Outer join</a></li>
-<li class="chapter" data-level="5.1.3" data-path="Join_toolset.html"><a href="Join_toolset.html#left-right-join"><i class="fa fa-check"></i><b>5.1.3</b> Left / Right join</a></li>
-</ul></li>
-<li class="chapter" data-level="5.2" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html"><i class="fa fa-check"></i><b>5.2</b> Projections and Transformations Toolset</a>
-<ul>
-<li class="chapter" data-level="5.2.1" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html#define-projection"><i class="fa fa-check"></i><b>5.2.1</b> Define Projection</a></li>
-<li class="chapter" data-level="5.2.2" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html#project"><i class="fa fa-check"></i><b>5.2.2</b> Project</a></li>
-<li class="chapter" data-level="5.2.3" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html#project-raster"><i class="fa fa-check"></i><b>5.2.3</b> Project Raster</a></li>
-<li class="chapter" data-level="5.2.4" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html#rescale"><i class="fa fa-check"></i><b>5.2.4</b> Rescale</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html"><i class="fa fa-check"></i><b>6</b> Spatial Analyst Toolbox</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#conditional-toolset"><i class="fa fa-check"></i><b>6.1</b> Conditional Toolset</a>
-<ul>
-<li class="chapter" data-level="6.1.1" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#kernel-density"><i class="fa fa-check"></i><b>6.1.1</b> Kernel Density</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#reclass-toolset"><i class="fa fa-check"></i><b>6.2</b> Reclass Toolset</a></li>
-<li class="chapter" data-level="6.3" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#surface-toolset"><i class="fa fa-check"></i><b>6.3</b> Surface Toolset</a>
-<ul>
-<li class="chapter" data-level="6.3.1" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#slope-and-aspect"><i class="fa fa-check"></i><b>6.3.1</b> Slope and Aspect</a></li>
-<li class="chapter" data-level="6.3.2" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#reclassify"><i class="fa fa-check"></i><b>6.3.2</b> Reclassify</a></li>
+<li class="chapter" data-level="4.2.1" data-path="Select_by_Location.html"><a href="Select_by_Location.html#intersect"><i class="fa fa-check"></i><b>4.2.1</b> Intersect</a></li>
+<li class="chapter" data-level="4.2.2" data-path="Select_by_Location.html"><a href="Select_by_Location.html#intersect_3d"><i class="fa fa-check"></i><b>4.2.2</b> Intersect_3d</a></li>
+<li class="chapter" data-level="4.2.3" data-path="Select_by_Location.html"><a href="Select_by_Location.html#within_a_distance"><i class="fa fa-check"></i><b>4.2.3</b> Within_a_distance</a></li>
+<li class="chapter" data-level="4.2.4" data-path="Select_by_Location.html"><a href="Select_by_Location.html#within_a_distance_3d"><i class="fa fa-check"></i><b>4.2.4</b> Within_a_distance_3d</a></li>
+<li class="chapter" data-level="4.2.5" data-path="Select_by_Location.html"><a href="Select_by_Location.html#within_a_distance_geodesic"><i class="fa fa-check"></i><b>4.2.5</b> Within_a_distance_geodesic</a></li>
+<li class="chapter" data-level="4.2.6" data-path="Select_by_Location.html"><a href="Select_by_Location.html#contains"><i class="fa fa-check"></i><b>4.2.6</b> Contains</a></li>
+<li class="chapter" data-level="4.2.7" data-path="Select_by_Location.html"><a href="Select_by_Location.html#completely_contains"><i class="fa fa-check"></i><b>4.2.7</b> Completely_contains</a></li>
+<li class="chapter" data-level="4.2.8" data-path="Select_by_Location.html"><a href="Select_by_Location.html#contains_clementini"><i class="fa fa-check"></i><b>4.2.8</b> Contains_clementini</a></li>
+<li class="chapter" data-level="4.2.9" data-path="Select_by_Location.html"><a href="Select_by_Location.html#within"><i class="fa fa-check"></i><b>4.2.9</b> Within</a></li>
+<li class="chapter" data-level="4.2.10" data-path="Select_by_Location.html"><a href="Select_by_Location.html#completely_within"><i class="fa fa-check"></i><b>4.2.10</b> Completely_within</a></li>
+<li class="chapter" data-level="4.2.11" data-path="Select_by_Location.html"><a href="Select_by_Location.html#within_clementini"><i class="fa fa-check"></i><b>4.2.11</b> Within_clementini</a></li>
+<li class="chapter" data-level="4.2.12" data-path="Select_by_Location.html"><a href="Select_by_Location.html#are_identical_to"><i class="fa fa-check"></i><b>4.2.12</b> Are_identical_to</a></li>
+<li class="chapter" data-level="4.2.13" data-path="Select_by_Location.html"><a href="Select_by_Location.html#boundary_touches"><i class="fa fa-check"></i><b>4.2.13</b> Boundary_touches</a></li>
+<li class="chapter" data-level="4.2.14" data-path="Select_by_Location.html"><a href="Select_by_Location.html#share_a_line_segment_with"><i class="fa fa-check"></i><b>4.2.14</b> Share_a_line_segment_with</a></li>
+<li class="chapter" data-level="4.2.15" data-path="Select_by_Location.html"><a href="Select_by_Location.html#crossed_by_the_outline_of"><i class="fa fa-check"></i><b>4.2.15</b> Crossed_by_the_outline_of</a></li>
+<li class="chapter" data-level="4.2.16" data-path="Select_by_Location.html"><a href="Select_by_Location.html#have_their_center_in"><i class="fa fa-check"></i><b>4.2.16</b> Have_their_center_in</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="3D_Analyst.html"><a href="3D_Analyst.html"><i class="fa fa-check"></i><b>7</b> 3D Analyst Toolbox</a>
+<li class="part"><span><b>I Geoprocessing Tools</b></span></li>
+<li class="chapter" data-level="5" data-path="03_Part_Geoprocessing_Tools.html"><a href="03_Part_Geoprocessing_Tools.html"><i class="fa fa-check"></i><b>5</b> About this Section</a></li>
+<li class="chapter" data-level="6" data-path="Data_Management.html"><a href="Data_Management.html"><i class="fa fa-check"></i><b>6</b> Data Management Toolbox</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="3D_Analyst.html"><a href="3D_Analyst.html#raster-interpolation-toolset"><i class="fa fa-check"></i><b>7.1</b> Raster Interpolation Toolset</a>
+<li class="chapter" data-level="6.1" data-path="Join_toolset.html"><a href="Join_toolset.html"><i class="fa fa-check"></i><b>6.1</b> Joins Toolset</a>
 <ul>
-<li class="chapter" data-level="7.1.1" data-path="3D_Analyst.html"><a href="3D_Analyst.html#idw"><i class="fa fa-check"></i><b>7.1.1</b> IDW</a></li>
-<li class="chapter" data-level="7.1.2" data-path="3D_Analyst.html"><a href="3D_Analyst.html#kriging"><i class="fa fa-check"></i><b>7.1.2</b> Kriging</a></li>
-<li class="chapter" data-level="7.1.3" data-path="3D_Analyst.html"><a href="3D_Analyst.html#natural-neighbor"><i class="fa fa-check"></i><b>7.1.3</b> Natural Neighbor</a></li>
+<li class="chapter" data-level="6.1.1" data-path="Join_toolset.html"><a href="Join_toolset.html#inner-join"><i class="fa fa-check"></i><b>6.1.1</b> Inner join</a></li>
+<li class="chapter" data-level="6.1.2" data-path="Join_toolset.html"><a href="Join_toolset.html#outer-join"><i class="fa fa-check"></i><b>6.1.2</b> Outer join</a></li>
+<li class="chapter" data-level="6.1.3" data-path="Join_toolset.html"><a href="Join_toolset.html#left-right-join"><i class="fa fa-check"></i><b>6.1.3</b> Left / Right join</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html"><i class="fa fa-check"></i><b>6.2</b> Projections and Transformations Toolset</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html#define-projection"><i class="fa fa-check"></i><b>6.2.1</b> Define Projection</a></li>
+<li class="chapter" data-level="6.2.2" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html#project"><i class="fa fa-check"></i><b>6.2.2</b> Project</a></li>
+<li class="chapter" data-level="6.2.3" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html#project-raster"><i class="fa fa-check"></i><b>6.2.3</b> Project Raster</a></li>
+<li class="chapter" data-level="6.2.4" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html#rescale"><i class="fa fa-check"></i><b>6.2.4</b> Rescale</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="Image_Analysis.html"><a href="Image_Analysis.html"><i class="fa fa-check"></i><b>8</b> Image Analysis Toolbox</a>
+<li class="chapter" data-level="7" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html"><i class="fa fa-check"></i><b>7</b> Spatial Analyst Toolbox</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="Image_Analysis.html"><a href="Image_Analysis.html#map-algebra-toolset"><i class="fa fa-check"></i><b>8.1</b> Map Algebra Toolset</a>
+<li class="chapter" data-level="7.1" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#conditional-toolset"><i class="fa fa-check"></i><b>7.1</b> Conditional Toolset</a>
 <ul>
-<li class="chapter" data-level="8.1.1" data-path="Image_Analysis.html"><a href="Image_Analysis.html#raster-calulator"><i class="fa fa-check"></i><b>8.1.1</b> Raster Calulator</a></li>
-<li class="chapter" data-level="8.1.2" data-path="Image_Analysis.html"><a href="Image_Analysis.html#focal-statistics"><i class="fa fa-check"></i><b>8.1.2</b> Focal Statistics</a></li>
-<li class="chapter" data-level="8.1.3" data-path="Image_Analysis.html"><a href="Image_Analysis.html#zonal-statistics"><i class="fa fa-check"></i><b>8.1.3</b> Zonal Statistics</a></li>
-<li class="chapter" data-level="8.1.4" data-path="Image_Analysis.html"><a href="Image_Analysis.html#zonal-statistics-1"><i class="fa fa-check"></i><b>8.1.4</b> Zonal Statistics</a></li>
+<li class="chapter" data-level="7.1.1" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#kernel-density"><i class="fa fa-check"></i><b>7.1.1</b> Kernel Density</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#reclass-toolset"><i class="fa fa-check"></i><b>7.2</b> Reclass Toolset</a></li>
+<li class="chapter" data-level="7.3" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#surface-toolset"><i class="fa fa-check"></i><b>7.3</b> Surface Toolset</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#slope-and-aspect"><i class="fa fa-check"></i><b>7.3.1</b> Slope and Aspect</a></li>
+<li class="chapter" data-level="7.3.2" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#reclassify"><i class="fa fa-check"></i><b>7.3.2</b> Reclassify</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="Analysis.html"><a href="Analysis.html"><i class="fa fa-check"></i><b>9</b> Analysis Toolbox</a>
+<li class="chapter" data-level="8" data-path="3D_Analyst.html"><a href="3D_Analyst.html"><i class="fa fa-check"></i><b>8</b> 3D Analyst Toolbox</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="Analysis.html"><a href="Analysis.html#clip"><i class="fa fa-check"></i><b>9.1</b> Clip</a></li>
-<li class="chapter" data-level="9.2" data-path="Analysis.html"><a href="Analysis.html#merge"><i class="fa fa-check"></i><b>9.2</b> Merge</a></li>
-<li class="chapter" data-level="9.3" data-path="Analysis.html"><a href="Analysis.html#spatial-join"><i class="fa fa-check"></i><b>9.3</b> Spatial Join</a></li>
-<li class="chapter" data-level="9.4" data-path="Analysis.html"><a href="Analysis.html#buffer"><i class="fa fa-check"></i><b>9.4</b> Buffer</a></li>
+<li class="chapter" data-level="8.1" data-path="3D_Analyst.html"><a href="3D_Analyst.html#raster-interpolation-toolset"><i class="fa fa-check"></i><b>8.1</b> Raster Interpolation Toolset</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="3D_Analyst.html"><a href="3D_Analyst.html#idw"><i class="fa fa-check"></i><b>8.1.1</b> IDW</a></li>
+<li class="chapter" data-level="8.1.2" data-path="3D_Analyst.html"><a href="3D_Analyst.html#kriging"><i class="fa fa-check"></i><b>8.1.2</b> Kriging</a></li>
+<li class="chapter" data-level="8.1.3" data-path="3D_Analyst.html"><a href="3D_Analyst.html#natural-neighbor"><i class="fa fa-check"></i><b>8.1.3</b> Natural Neighbor</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="Chapter_overview.html"><a href="Chapter_overview.html"><i class="fa fa-check"></i><b>10</b> Topology Rules</a>
+</ul></li>
+<li class="chapter" data-level="9" data-path="Image_Analysis.html"><a href="Image_Analysis.html"><i class="fa fa-check"></i><b>9</b> Image Analysis Toolbox</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="Polygon.html"><a href="Polygon.html"><i class="fa fa-check"></i><b>10.1</b> Polygon</a>
+<li class="chapter" data-level="9.1" data-path="Image_Analysis.html"><a href="Image_Analysis.html#map-algebra-toolset"><i class="fa fa-check"></i><b>9.1</b> Map Algebra Toolset</a>
 <ul>
-<li class="chapter" data-level="10.1.1" data-path="Polygon.html"><a href="Polygon.html#must-not-overlap"><i class="fa fa-check"></i><b>10.1.1</b> Must not overlap</a></li>
-<li class="chapter" data-level="10.1.2" data-path="Polygon.html"><a href="Polygon.html#must-not-have-gaps"><i class="fa fa-check"></i><b>10.1.2</b> Must not have gaps</a></li>
-<li class="chapter" data-level="10.1.3" data-path="Polygon.html"><a href="Polygon.html#contains-point"><i class="fa fa-check"></i><b>10.1.3</b> Contains point</a></li>
-<li class="chapter" data-level="10.1.4" data-path="Polygon.html"><a href="Polygon.html#contains-one-point"><i class="fa fa-check"></i><b>10.1.4</b> Contains one Point</a></li>
-<li class="chapter" data-level="10.1.5" data-path="Polygon.html"><a href="Polygon.html#must-be-covered-by-feature-class-of"><i class="fa fa-check"></i><b>10.1.5</b> Must be covered by feature class of</a></li>
-<li class="chapter" data-level="10.1.6" data-path="Polygon.html"><a href="Polygon.html#boundary-must-be-covered-by"><i class="fa fa-check"></i><b>10.1.6</b> Boundary must be covered by</a></li>
-<li class="chapter" data-level="10.1.7" data-path="Polygon.html"><a href="Polygon.html#must-not-overlap-with"><i class="fa fa-check"></i><b>10.1.7</b> Must not overlap with</a></li>
-<li class="chapter" data-level="10.1.8" data-path="Polygon.html"><a href="Polygon.html#must-be-covered-by"><i class="fa fa-check"></i><b>10.1.8</b> Must be covered by</a></li>
-<li class="chapter" data-level="10.1.9" data-path="Polygon.html"><a href="Polygon.html#area-boundary-must-be-covered-by-boundary-of"><i class="fa fa-check"></i><b>10.1.9</b> Area boundary must be covered by boundary of</a></li>
-<li class="chapter" data-level="10.1.10" data-path="Polygon.html"><a href="Polygon.html#must-cover-each-other"><i class="fa fa-check"></i><b>10.1.10</b> Must cover each other</a></li>
+<li class="chapter" data-level="9.1.1" data-path="Image_Analysis.html"><a href="Image_Analysis.html#raster-calulator"><i class="fa fa-check"></i><b>9.1.1</b> Raster Calulator</a></li>
+<li class="chapter" data-level="9.1.2" data-path="Image_Analysis.html"><a href="Image_Analysis.html#focal-statistics"><i class="fa fa-check"></i><b>9.1.2</b> Focal Statistics</a></li>
+<li class="chapter" data-level="9.1.3" data-path="Image_Analysis.html"><a href="Image_Analysis.html#zonal-statistics"><i class="fa fa-check"></i><b>9.1.3</b> Zonal Statistics</a></li>
+<li class="chapter" data-level="9.1.4" data-path="Image_Analysis.html"><a href="Image_Analysis.html#zonal-statistics-1"><i class="fa fa-check"></i><b>9.1.4</b> Zonal Statistics</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="Analysis.html"><a href="Analysis.html"><i class="fa fa-check"></i><b>10</b> Analysis Toolbox</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="Analysis.html"><a href="Analysis.html#clip"><i class="fa fa-check"></i><b>10.1</b> Clip</a></li>
+<li class="chapter" data-level="10.2" data-path="Analysis.html"><a href="Analysis.html#merge"><i class="fa fa-check"></i><b>10.2</b> Merge</a></li>
+<li class="chapter" data-level="10.3" data-path="Analysis.html"><a href="Analysis.html#spatial-join"><i class="fa fa-check"></i><b>10.3</b> Spatial Join</a></li>
+<li class="chapter" data-level="10.4" data-path="Analysis.html"><a href="Analysis.html#buffer"><i class="fa fa-check"></i><b>10.4</b> Buffer</a></li>
+</ul></li>
+<li class="part"><span><b>II Topology Rules</b></span></li>
+<li class="chapter" data-level="11" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html"><i class="fa fa-check"></i><b>11</b> About this section</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#spatial-predicates"><i class="fa fa-check"></i><b>11.1</b> Spatial Predicates</a></li>
+<li class="chapter" data-level="11.2" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#some-examples"><i class="fa fa-check"></i><b>11.2</b> Some examples</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#equals"><i class="fa fa-check"></i><b>11.2.1</b> Equals</a></li>
+<li class="chapter" data-level="11.2.2" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#disjoint"><i class="fa fa-check"></i><b>11.2.2</b> Disjoint</a></li>
+<li class="chapter" data-level="11.2.3" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#touches"><i class="fa fa-check"></i><b>11.2.3</b> Touches</a></li>
+<li class="chapter" data-level="11.2.4" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#contains-1"><i class="fa fa-check"></i><b>11.2.4</b> Contains</a></li>
+<li class="chapter" data-level="11.2.5" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#covers"><i class="fa fa-check"></i><b>11.2.5</b> Covers</a></li>
+<li class="chapter" data-level="11.2.6" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#intersects"><i class="fa fa-check"></i><b>11.2.6</b> Intersects</a></li>
+<li class="chapter" data-level="11.2.7" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#within-1"><i class="fa fa-check"></i><b>11.2.7</b> Within</a></li>
+<li class="chapter" data-level="11.2.8" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#coveredby"><i class="fa fa-check"></i><b>11.2.8</b> CoveredBy</a></li>
+<li class="chapter" data-level="11.2.9" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#crosses"><i class="fa fa-check"></i><b>11.2.9</b> Crosses</a></li>
+<li class="chapter" data-level="11.2.10" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#overlaps"><i class="fa fa-check"></i><b>11.2.10</b> Overlaps</a></li>
+<li class="chapter" data-level="11.2.11" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#touches-1"><i class="fa fa-check"></i><b>11.2.11</b> Touches</a></li>
+<li class="chapter" data-level="11.2.12" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#custom-relationships"><i class="fa fa-check"></i><b>11.2.12</b> Custom relationships</a></li>
+<li class="chapter" data-level="11.2.13" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#rooks-case"><i class="fa fa-check"></i><b>11.2.13</b> Rooks Case</a></li>
+<li class="chapter" data-level="11.2.14" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#bishops-case"><i class="fa fa-check"></i><b>11.2.14</b> Bishops Case</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="Polygon.html"><a href="Polygon.html"><i class="fa fa-check"></i><b>11.3</b> Polygon</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="Polygon.html"><a href="Polygon.html#must-not-overlap"><i class="fa fa-check"></i><b>11.3.1</b> Must not overlap</a></li>
+<li class="chapter" data-level="11.3.2" data-path="Polygon.html"><a href="Polygon.html#must-not-have-gaps"><i class="fa fa-check"></i><b>11.3.2</b> Must not have gaps</a></li>
+<li class="chapter" data-level="11.3.3" data-path="Polygon.html"><a href="Polygon.html#contains-point"><i class="fa fa-check"></i><b>11.3.3</b> Contains point</a></li>
+<li class="chapter" data-level="11.3.4" data-path="Polygon.html"><a href="Polygon.html#contains-one-point"><i class="fa fa-check"></i><b>11.3.4</b> Contains one Point</a></li>
+<li class="chapter" data-level="11.3.5" data-path="Polygon.html"><a href="Polygon.html#must-be-covered-by-feature-class-of"><i class="fa fa-check"></i><b>11.3.5</b> Must be covered by feature class of</a></li>
+<li class="chapter" data-level="11.3.6" data-path="Polygon.html"><a href="Polygon.html#boundary-must-be-covered-by"><i class="fa fa-check"></i><b>11.3.6</b> Boundary must be covered by</a></li>
+<li class="chapter" data-level="11.3.7" data-path="Polygon.html"><a href="Polygon.html#must-not-overlap-with"><i class="fa fa-check"></i><b>11.3.7</b> Must not overlap with</a></li>
+<li class="chapter" data-level="11.3.8" data-path="Polygon.html"><a href="Polygon.html#must-be-covered-by"><i class="fa fa-check"></i><b>11.3.8</b> Must be covered by</a></li>
+<li class="chapter" data-level="11.3.9" data-path="Polygon.html"><a href="Polygon.html#area-boundary-must-be-covered-by-boundary-of"><i class="fa fa-check"></i><b>11.3.9</b> Area boundary must be covered by boundary of</a></li>
+<li class="chapter" data-level="11.3.10" data-path="Polygon.html"><a href="Polygon.html#must-cover-each-other"><i class="fa fa-check"></i><b>11.3.10</b> Must cover each other</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="Line.html"><a href="Line.html"><i class="fa fa-check"></i><b>11.4</b> Line</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="Line.html"><a href="Line.html#must-not-have-pseudo-nodes"><i class="fa fa-check"></i><b>11.4.1</b> Must not have pseudo nodes</a></li>
+<li class="chapter" data-level="11.4.2" data-path="Line.html"><a href="Line.html#must-not-have-dangles"><i class="fa fa-check"></i><b>11.4.2</b> Must not have dangles</a></li>
+<li class="chapter" data-level="11.4.3" data-path="Line.html"><a href="Line.html#must-not-self-overlap"><i class="fa fa-check"></i><b>11.4.3</b> Must not self overlap</a></li>
+<li class="chapter" data-level="11.4.4" data-path="Line.html"><a href="Line.html#must-not-overlap-1"><i class="fa fa-check"></i><b>11.4.4</b> Must not overlap</a></li>
+<li class="chapter" data-level="11.4.5" data-path="Line.html"><a href="Line.html#must-not-self-intersect"><i class="fa fa-check"></i><b>11.4.5</b> Must not self-intersect</a></li>
+<li class="chapter" data-level="11.4.6" data-path="Line.html"><a href="Line.html#must-not-intersect"><i class="fa fa-check"></i><b>11.4.6</b> Must not intersect</a></li>
+<li class="chapter" data-level="11.4.7" data-path="Line.html"><a href="Line.html#must-be-single-part"><i class="fa fa-check"></i><b>11.4.7</b> Must be single part</a></li>
+<li class="chapter" data-level="11.4.8" data-path="Line.html"><a href="Line.html#must-not-intersect-with"><i class="fa fa-check"></i><b>11.4.8</b> Must not intersect with</a></li>
+<li class="chapter" data-level="11.4.9" data-path="Line.html"><a href="Line.html#must-be-covered-by-feature-class-of-1"><i class="fa fa-check"></i><b>11.4.9</b> Must be covered by feature class of</a></li>
+<li class="chapter" data-level="11.4.10" data-path="Line.html"><a href="Line.html#must-not-intersect-or-touch-interior"><i class="fa fa-check"></i><b>11.4.10</b> Must not intersect or touch interior</a></li>
+<li class="chapter" data-level="11.4.11" data-path="Line.html"><a href="Line.html#must-be-covered-by-boundary-of"><i class="fa fa-check"></i><b>11.4.11</b> Must be covered by boundary of</a></li>
+<li class="chapter" data-level="11.4.12" data-path="Line.html"><a href="Line.html#must-not-intersect-or-touch-interior-with"><i class="fa fa-check"></i><b>11.4.12</b> Must not intersect or touch interior with</a></li>
+<li class="chapter" data-level="11.4.13" data-path="Line.html"><a href="Line.html#must-be-properly-inside"><i class="fa fa-check"></i><b>11.4.13</b> Must be properly inside</a></li>
+<li class="chapter" data-level="11.4.14" data-path="Line.html"><a href="Line.html#must-not-overlap-with-1"><i class="fa fa-check"></i><b>11.4.14</b> Must not overlap with</a></li>
+<li class="chapter" data-level="11.4.15" data-path="Line.html"><a href="Line.html#endpoint-must-be-covered-by"><i class="fa fa-check"></i><b>11.4.15</b> Endpoint must be covered by</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="Point.html"><a href="Point.html"><i class="fa fa-check"></i><b>11.5</b> Point</a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="Point.html"><a href="Point.html#must-coincide-with"><i class="fa fa-check"></i><b>11.5.1</b> Must coincide with</a></li>
+<li class="chapter" data-level="11.5.2" data-path="Point.html"><a href="Point.html#must-be-disjoint"><i class="fa fa-check"></i><b>11.5.2</b> Must be disjoint</a></li>
+<li class="chapter" data-level="11.5.3" data-path="Point.html"><a href="Point.html#must-be-covered-by-endpoint-of"><i class="fa fa-check"></i><b>11.5.3</b> Must be covered by endpoint of</a></li>
+<li class="chapter" data-level="11.5.4" data-path="Point.html"><a href="Point.html#point-must-be-covered-by-line"><i class="fa fa-check"></i><b>11.5.4</b> Point must be covered by line</a></li>
+<li class="chapter" data-level="11.5.5" data-path="Point.html"><a href="Point.html#must-be-properly-inside-1"><i class="fa fa-check"></i><b>11.5.5</b> Must be properly inside</a></li>
+<li class="chapter" data-level="11.5.6" data-path="Point.html"><a href="Point.html#must-be-covered-by-boundary-of-1"><i class="fa fa-check"></i><b>11.5.6</b> Must be covered by boundary of</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="Line_or_Polygon.html"><a href="Line_or_Polygon.html"><i class="fa fa-check"></i><b>11.6</b> Line or Polygon</a>
+<ul>
+<li class="chapter" data-level="11.6.1" data-path="Line_or_Polygon.html"><a href="Line_or_Polygon.html#must-be-larger-than-cluster-tolarance"><i class="fa fa-check"></i><b>11.6.1</b> Must be larger than cluster tolarance</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -281,11 +353,11 @@ Developped by the Research Group for Geoinformatics @ ZHAW</a></li>
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="joins-toolset" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> Joins Toolset</h2>
+<div id="joins-toolset" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Joins Toolset</h2>
 <p>//todo revise this chapter
 //body nothing about this chapter is spatial, the explanation is not based on ArcGIS Tools, the joins are not intuitive (what are df1 and df2?)</p>
-<p>In ArcGIS, joining two datasets on a common attribute is done with tools from the “Join” Toolset. Similar as described with the Selection tools in chapter <a href="Selection.html#chapter-selection">4</a>, a join has a temporary / floating nature and does not automatically produce an output. In <code>R</code>, joining two datasets requires is only persistent if the output is assigned to a new variable<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>.</p>
+<p>In ArcGIS, joining two datasets on a common attribute is done with tools from the “Join” Toolset. Similar as described with the Selection tools in chapter <a href="Selection.html#chapter-selection">4</a>, a join has a temporary / floating nature and does not automatically produce an output. In <code>R</code>, joining two datasets requires is only persistent if the output is assigned to a new variable<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>.</p>
 <p>In R we have two main functions for joining two datasets. On the one hand there is the base R function <code>merge</code>, on the other hand there is the <code>*_join</code> family that lie within the <code>dplyr</code> package. Since the latter family of functions are very close to how Joins are done in SQL, we will use the latter case for our examples below.</p>
 <p>Before we begin with our examples, we have to make clear the differences among the various forms of join operations.</p>
 <ul>
@@ -296,74 +368,58 @@ Developped by the Research Group for Geoinformatics @ ZHAW</a></li>
 <div class="figure" style="text-align: center"><span id="fig:joins"></span>
 <img src="images/joins.png" alt="Join operations" width="500px" />
 <p class="caption">
-Figure 5.1: Join operations
+Figure 6.1: Join operations
 </p>
 </div>
-<div id="inner-join" class="section level3" number="5.1.1">
-<h3><span class="header-section-number">5.1.1</span> Inner join</h3>
+<div id="inner-join" class="section level3" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> Inner join</h3>
 <p><code>Inner Join</code> in R is the most common type of join. It is an operation that returns the rows when the matching condition is fulfilled. Below we demonstrate it with an example.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="Join_toolset.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb30-2"><a href="Join_toolset.html#cb30-2" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">TeamID =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">11</span>),</span>
-<span id="cb30-3"><a href="Join_toolset.html#cb30-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">TeamName =</span> <span class="fu">c</span>(<span class="st">&quot;new york knicks&quot;</span>,<span class="st">&quot;los angeles lakers&quot;</span>,<span class="st">&quot;milwaukee bucks&quot;</span>,<span class="st">&quot;boston celtics&quot;</span>),</span>
-<span id="cb30-4"><a href="Join_toolset.html#cb30-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Championships =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">17</span>,<span class="dv">1</span>,<span class="dv">17</span>))</span>
-<span id="cb30-5"><a href="Join_toolset.html#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-6"><a href="Join_toolset.html#cb30-6" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">TeamID =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">11</span>,<span class="dv">8</span>),</span>
-<span id="cb30-7"><a href="Join_toolset.html#cb30-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">TeamName =</span> <span class="fu">c</span>(<span class="st">&quot;new york knicks&quot;</span>,<span class="st">&quot;philadelphia 76ers&quot;</span>,<span class="st">&quot;boston celtics&quot;</span>,<span class="st">&quot;los angeles clippers&quot;</span>),</span>
-<span id="cb30-8"><a href="Join_toolset.html#cb30-8" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Championships =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">17</span>,<span class="dv">0</span>))</span>
-<span id="cb30-9"><a href="Join_toolset.html#cb30-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-10"><a href="Join_toolset.html#cb30-10" aria-hidden="true" tabindex="-1"></a>df1</span>
-<span id="cb30-11"><a href="Join_toolset.html#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="do">##   TeamID           TeamName Championships</span></span>
-<span id="cb30-12"><a href="Join_toolset.html#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 1      1    new york knicks             2</span></span>
-<span id="cb30-13"><a href="Join_toolset.html#cb30-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 2      4 los angeles lakers            17</span></span>
-<span id="cb30-14"><a href="Join_toolset.html#cb30-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 3      6    milwaukee bucks             1</span></span>
-<span id="cb30-15"><a href="Join_toolset.html#cb30-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 4     11     boston celtics            17</span></span>
-<span id="cb30-16"><a href="Join_toolset.html#cb30-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-17"><a href="Join_toolset.html#cb30-17" aria-hidden="true" tabindex="-1"></a>df2</span>
-<span id="cb30-18"><a href="Join_toolset.html#cb30-18" aria-hidden="true" tabindex="-1"></a><span class="do">##   TeamID             TeamName Championships</span></span>
-<span id="cb30-19"><a href="Join_toolset.html#cb30-19" aria-hidden="true" tabindex="-1"></a><span class="do">## 1      1      new york knicks             2</span></span>
-<span id="cb30-20"><a href="Join_toolset.html#cb30-20" aria-hidden="true" tabindex="-1"></a><span class="do">## 2      2   philadelphia 76ers             3</span></span>
-<span id="cb30-21"><a href="Join_toolset.html#cb30-21" aria-hidden="true" tabindex="-1"></a><span class="do">## 3     11       boston celtics            17</span></span>
-<span id="cb30-22"><a href="Join_toolset.html#cb30-22" aria-hidden="true" tabindex="-1"></a><span class="do">## 4      8 los angeles clippers             0</span></span></code></pre></div>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="Join_toolset.html#cb31-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="sc">%&gt;%</span> <span class="fu">inner_join</span>(df2)</span>
-<span id="cb31-2"><a href="Join_toolset.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="do">##   TeamID        TeamName Championships</span></span>
-<span id="cb31-3"><a href="Join_toolset.html#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 1      1 new york knicks             2</span></span>
-<span id="cb31-4"><a href="Join_toolset.html#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 2     11  boston celtics            17</span></span></code></pre></div>
+<pre><code>##   TeamID           TeamName Championships
+## 1      1    new york knicks             2
+## 2      4 los angeles lakers            17
+## 3      6    milwaukee bucks             1
+## 4     11     boston celtics            17
+##   TeamID             TeamName Championships
+## 1      1      new york knicks             2
+## 2      2   philadelphia 76ers             3
+## 3     11       boston celtics            17
+## 4      8 los angeles clippers             0</code></pre>
+<pre><code>##   TeamID        TeamName Championships
+## 1      1 new york knicks             2
+## 2     11  boston celtics            17</code></pre>
 </div>
-<div id="outer-join" class="section level3" number="5.1.2">
-<h3><span class="header-section-number">5.1.2</span> Outer join</h3>
-<p><code>Outer join</code> in R using simply returns all rows from both data frames. This is very well depicted in figure <a href="Join_toolset.html#fig:joins">5.1</a>.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="Join_toolset.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">full_join</span>(df1,df2)</span>
-<span id="cb32-2"><a href="Join_toolset.html#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="do">##   TeamID             TeamName Championships</span></span>
-<span id="cb32-3"><a href="Join_toolset.html#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 1      1      new york knicks             2</span></span>
-<span id="cb32-4"><a href="Join_toolset.html#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 2      4   los angeles lakers            17</span></span>
-<span id="cb32-5"><a href="Join_toolset.html#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 3      6      milwaukee bucks             1</span></span>
-<span id="cb32-6"><a href="Join_toolset.html#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 4     11       boston celtics            17</span></span>
-<span id="cb32-7"><a href="Join_toolset.html#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 5      2   philadelphia 76ers             3</span></span>
-<span id="cb32-8"><a href="Join_toolset.html#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 6      8 los angeles clippers             0</span></span></code></pre></div>
+<div id="outer-join" class="section level3" number="6.1.2">
+<h3><span class="header-section-number">6.1.2</span> Outer join</h3>
+<p><code>Outer join</code> in R using simply returns all rows from both data frames. This is very well depicted in figure <a href="Join_toolset.html#fig:joins">6.1</a>.</p>
+<pre><code>##   TeamID             TeamName Championships
+## 1      1      new york knicks             2
+## 2      4   los angeles lakers            17
+## 3      6      milwaukee bucks             1
+## 4     11       boston celtics            17
+## 5      2   philadelphia 76ers             3
+## 6      8 los angeles clippers             0</code></pre>
 </div>
-<div id="left-right-join" class="section level3" number="5.1.3">
-<h3><span class="header-section-number">5.1.3</span> Left / Right join</h3>
+<div id="left-right-join" class="section level3" number="6.1.3">
+<h3><span class="header-section-number">6.1.3</span> Left / Right join</h3>
 <p>The <code>left join</code> in R returns all records from the data frame on the left, as well as and the matched records from the one at the right.</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="Join_toolset.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(df1,df2)</span>
-<span id="cb33-2"><a href="Join_toolset.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="do">##   TeamID           TeamName Championships</span></span>
-<span id="cb33-3"><a href="Join_toolset.html#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 1      1    new york knicks             2</span></span>
-<span id="cb33-4"><a href="Join_toolset.html#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 2      4 los angeles lakers            17</span></span>
-<span id="cb33-5"><a href="Join_toolset.html#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 3      6    milwaukee bucks             1</span></span>
-<span id="cb33-6"><a href="Join_toolset.html#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 4     11     boston celtics            17</span></span></code></pre></div>
+<pre><code>##   TeamID           TeamName Championships
+## 1      1    new york knicks             2
+## 2      4 los angeles lakers            17
+## 3      6    milwaukee bucks             1
+## 4     11     boston celtics            17</code></pre>
 <p>Similarly works also the <code>right join</code>.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="Join_toolset.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">right_join</span>(df1,df2)</span>
-<span id="cb34-2"><a href="Join_toolset.html#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="do">##   TeamID             TeamName Championships</span></span>
-<span id="cb34-3"><a href="Join_toolset.html#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 1      1      new york knicks             2</span></span>
-<span id="cb34-4"><a href="Join_toolset.html#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 2     11       boston celtics            17</span></span>
-<span id="cb34-5"><a href="Join_toolset.html#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 3      2   philadelphia 76ers             3</span></span>
-<span id="cb34-6"><a href="Join_toolset.html#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 4      8 los angeles clippers             0</span></span></code></pre></div>
+<pre><code>##   TeamID             TeamName Championships
+## 1      1      new york knicks             2
+## 2     11       boston celtics            17
+## 3      2   philadelphia 76ers             3
+## 4      8 los angeles clippers             0</code></pre>
 
 </div>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="2">
-<li id="fn2"><p>or piped into a new function<a href="Join_toolset.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<ol start="3">
+<li id="fn3"><p>or piped into a new function<a href="Join_toolset.html#fnref3" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -403,15 +459,15 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": null,
-"text": null
+"link": "https://github.com/arc2r/book/edit/master/03_Data_Management/Join_toolset.Rmd",
+"text": "Edit"
 },
 "history": {
 "link": null,
 "text": null
 },
 "view": {
-"link": null,
+"link": "https://github.com/arc2r/book/blob/master/03_Data_Management/Join_toolset.Rmd",
 "text": null
 },
 "download": null,
@@ -422,6 +478,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

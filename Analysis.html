@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>9 Analysis Toolbox | All things R Spatial</title>
-  <meta name="description" content="9 Analysis Toolbox | All things R Spatial" />
+  <title>10 Analysis Toolbox | All things R Spatial</title>
+  <meta name="description" content="10 Analysis Toolbox | All things R Spatial" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="9 Analysis Toolbox | All things R Spatial" />
+  <meta property="og:title" content="10 Analysis Toolbox | All things R Spatial" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="9 Analysis Toolbox | All things R Spatial" />
+  <meta name="twitter:title" content="10 Analysis Toolbox | All things R Spatial" />
   
   
   
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="Image_Analysis.html"/>
-<link rel="next" href="Chapter_overview.html"/>
+<link rel="next" href="04_Topology_Rules.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -70,6 +70,8 @@
 <script src="libs/clipboard-0.0.1/setClipboardText.js"></script>
 <link href="libs/mapviewCSS-0.0.1/mapview-popup.css" rel="stylesheet" />
 <link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
+<script src="libs/d3-4.5.0/d3.min.js"></script>
+<script src="libs/diagonalNetwork-binding-0.4/diagonalNetwork.js"></script>
 
 
 <style type="text/css">
@@ -156,7 +158,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> What this book is about</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#how-it-started"><i class="fa fa-check"></i><b>1.1</b> How it started</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#what-might-make-your-journey-difficult"><i class="fa fa-check"></i><b>1.2</b> What might make your journey difficult</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#difficulties"><i class="fa fa-check"></i><b>1.2</b> What might make your journey difficult</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#why-you-should-transition-anyway"><i class="fa fa-check"></i><b>1.3</b> Why you should transition anyway</a></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#how-to-use-this-book"><i class="fa fa-check"></i><b>1.4</b> How to use this book</a></li>
 </ul></li>
@@ -187,77 +189,147 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="Selection.html"><a href="Selection.html"><i class="fa fa-check"></i><b>4</b> Selection</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="Select_by_Attribute.html"><a href="Select_by_Attribute.html"><i class="fa fa-check"></i><b>4.1</b> Select by Attribute</a></li>
-<li class="chapter" data-level="4.2" data-path="Select_by_Location.html"><a href="Select_by_Location.html"><i class="fa fa-check"></i><b>4.2</b> Select by Location</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="Data_Management.html"><a href="Data_Management.html"><i class="fa fa-check"></i><b>5</b> Data Management Toolbox</a>
+<li class="chapter" data-level="4.2" data-path="Select_by_Location.html"><a href="Select_by_Location.html"><i class="fa fa-check"></i><b>4.2</b> Select by Location</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="Join_toolset.html"><a href="Join_toolset.html"><i class="fa fa-check"></i><b>5.1</b> Joins Toolset</a>
-<ul>
-<li class="chapter" data-level="5.1.1" data-path="Join_toolset.html"><a href="Join_toolset.html#inner-join"><i class="fa fa-check"></i><b>5.1.1</b> Inner join</a></li>
-<li class="chapter" data-level="5.1.2" data-path="Join_toolset.html"><a href="Join_toolset.html#outer-join"><i class="fa fa-check"></i><b>5.1.2</b> Outer join</a></li>
-<li class="chapter" data-level="5.1.3" data-path="Join_toolset.html"><a href="Join_toolset.html#left-right-join"><i class="fa fa-check"></i><b>5.1.3</b> Left / Right join</a></li>
-</ul></li>
-<li class="chapter" data-level="5.2" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html"><i class="fa fa-check"></i><b>5.2</b> Projections and Transformations Toolset</a>
-<ul>
-<li class="chapter" data-level="5.2.1" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html#define-projection"><i class="fa fa-check"></i><b>5.2.1</b> Define Projection</a></li>
-<li class="chapter" data-level="5.2.2" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html#project"><i class="fa fa-check"></i><b>5.2.2</b> Project</a></li>
-<li class="chapter" data-level="5.2.3" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html#project-raster"><i class="fa fa-check"></i><b>5.2.3</b> Project Raster</a></li>
-<li class="chapter" data-level="5.2.4" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html#rescale"><i class="fa fa-check"></i><b>5.2.4</b> Rescale</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html"><i class="fa fa-check"></i><b>6</b> Spatial Analyst Toolbox</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#conditional-toolset"><i class="fa fa-check"></i><b>6.1</b> Conditional Toolset</a>
-<ul>
-<li class="chapter" data-level="6.1.1" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#kernel-density"><i class="fa fa-check"></i><b>6.1.1</b> Kernel Density</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#reclass-toolset"><i class="fa fa-check"></i><b>6.2</b> Reclass Toolset</a></li>
-<li class="chapter" data-level="6.3" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#surface-toolset"><i class="fa fa-check"></i><b>6.3</b> Surface Toolset</a>
-<ul>
-<li class="chapter" data-level="6.3.1" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#slope-and-aspect"><i class="fa fa-check"></i><b>6.3.1</b> Slope and Aspect</a></li>
-<li class="chapter" data-level="6.3.2" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#reclassify"><i class="fa fa-check"></i><b>6.3.2</b> Reclassify</a></li>
+<li class="chapter" data-level="4.2.1" data-path="Select_by_Location.html"><a href="Select_by_Location.html#intersect"><i class="fa fa-check"></i><b>4.2.1</b> Intersect</a></li>
+<li class="chapter" data-level="4.2.2" data-path="Select_by_Location.html"><a href="Select_by_Location.html#intersect_3d"><i class="fa fa-check"></i><b>4.2.2</b> Intersect_3d</a></li>
+<li class="chapter" data-level="4.2.3" data-path="Select_by_Location.html"><a href="Select_by_Location.html#within_a_distance"><i class="fa fa-check"></i><b>4.2.3</b> Within_a_distance</a></li>
+<li class="chapter" data-level="4.2.4" data-path="Select_by_Location.html"><a href="Select_by_Location.html#within_a_distance_3d"><i class="fa fa-check"></i><b>4.2.4</b> Within_a_distance_3d</a></li>
+<li class="chapter" data-level="4.2.5" data-path="Select_by_Location.html"><a href="Select_by_Location.html#within_a_distance_geodesic"><i class="fa fa-check"></i><b>4.2.5</b> Within_a_distance_geodesic</a></li>
+<li class="chapter" data-level="4.2.6" data-path="Select_by_Location.html"><a href="Select_by_Location.html#contains"><i class="fa fa-check"></i><b>4.2.6</b> Contains</a></li>
+<li class="chapter" data-level="4.2.7" data-path="Select_by_Location.html"><a href="Select_by_Location.html#completely_contains"><i class="fa fa-check"></i><b>4.2.7</b> Completely_contains</a></li>
+<li class="chapter" data-level="4.2.8" data-path="Select_by_Location.html"><a href="Select_by_Location.html#contains_clementini"><i class="fa fa-check"></i><b>4.2.8</b> Contains_clementini</a></li>
+<li class="chapter" data-level="4.2.9" data-path="Select_by_Location.html"><a href="Select_by_Location.html#within"><i class="fa fa-check"></i><b>4.2.9</b> Within</a></li>
+<li class="chapter" data-level="4.2.10" data-path="Select_by_Location.html"><a href="Select_by_Location.html#completely_within"><i class="fa fa-check"></i><b>4.2.10</b> Completely_within</a></li>
+<li class="chapter" data-level="4.2.11" data-path="Select_by_Location.html"><a href="Select_by_Location.html#within_clementini"><i class="fa fa-check"></i><b>4.2.11</b> Within_clementini</a></li>
+<li class="chapter" data-level="4.2.12" data-path="Select_by_Location.html"><a href="Select_by_Location.html#are_identical_to"><i class="fa fa-check"></i><b>4.2.12</b> Are_identical_to</a></li>
+<li class="chapter" data-level="4.2.13" data-path="Select_by_Location.html"><a href="Select_by_Location.html#boundary_touches"><i class="fa fa-check"></i><b>4.2.13</b> Boundary_touches</a></li>
+<li class="chapter" data-level="4.2.14" data-path="Select_by_Location.html"><a href="Select_by_Location.html#share_a_line_segment_with"><i class="fa fa-check"></i><b>4.2.14</b> Share_a_line_segment_with</a></li>
+<li class="chapter" data-level="4.2.15" data-path="Select_by_Location.html"><a href="Select_by_Location.html#crossed_by_the_outline_of"><i class="fa fa-check"></i><b>4.2.15</b> Crossed_by_the_outline_of</a></li>
+<li class="chapter" data-level="4.2.16" data-path="Select_by_Location.html"><a href="Select_by_Location.html#have_their_center_in"><i class="fa fa-check"></i><b>4.2.16</b> Have_their_center_in</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="3D_Analyst.html"><a href="3D_Analyst.html"><i class="fa fa-check"></i><b>7</b> 3D Analyst Toolbox</a>
+<li class="part"><span><b>I Geoprocessing Tools</b></span></li>
+<li class="chapter" data-level="5" data-path="03_Part_Geoprocessing_Tools.html"><a href="03_Part_Geoprocessing_Tools.html"><i class="fa fa-check"></i><b>5</b> About this Section</a></li>
+<li class="chapter" data-level="6" data-path="Data_Management.html"><a href="Data_Management.html"><i class="fa fa-check"></i><b>6</b> Data Management Toolbox</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="3D_Analyst.html"><a href="3D_Analyst.html#raster-interpolation-toolset"><i class="fa fa-check"></i><b>7.1</b> Raster Interpolation Toolset</a>
+<li class="chapter" data-level="6.1" data-path="Join_toolset.html"><a href="Join_toolset.html"><i class="fa fa-check"></i><b>6.1</b> Joins Toolset</a>
 <ul>
-<li class="chapter" data-level="7.1.1" data-path="3D_Analyst.html"><a href="3D_Analyst.html#idw"><i class="fa fa-check"></i><b>7.1.1</b> IDW</a></li>
-<li class="chapter" data-level="7.1.2" data-path="3D_Analyst.html"><a href="3D_Analyst.html#kriging"><i class="fa fa-check"></i><b>7.1.2</b> Kriging</a></li>
-<li class="chapter" data-level="7.1.3" data-path="3D_Analyst.html"><a href="3D_Analyst.html#natural-neighbor"><i class="fa fa-check"></i><b>7.1.3</b> Natural Neighbor</a></li>
+<li class="chapter" data-level="6.1.1" data-path="Join_toolset.html"><a href="Join_toolset.html#inner-join"><i class="fa fa-check"></i><b>6.1.1</b> Inner join</a></li>
+<li class="chapter" data-level="6.1.2" data-path="Join_toolset.html"><a href="Join_toolset.html#outer-join"><i class="fa fa-check"></i><b>6.1.2</b> Outer join</a></li>
+<li class="chapter" data-level="6.1.3" data-path="Join_toolset.html"><a href="Join_toolset.html#left-right-join"><i class="fa fa-check"></i><b>6.1.3</b> Left / Right join</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html"><i class="fa fa-check"></i><b>6.2</b> Projections and Transformations Toolset</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html#define-projection"><i class="fa fa-check"></i><b>6.2.1</b> Define Projection</a></li>
+<li class="chapter" data-level="6.2.2" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html#project"><i class="fa fa-check"></i><b>6.2.2</b> Project</a></li>
+<li class="chapter" data-level="6.2.3" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html#project-raster"><i class="fa fa-check"></i><b>6.2.3</b> Project Raster</a></li>
+<li class="chapter" data-level="6.2.4" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html#rescale"><i class="fa fa-check"></i><b>6.2.4</b> Rescale</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="Image_Analysis.html"><a href="Image_Analysis.html"><i class="fa fa-check"></i><b>8</b> Image Analysis Toolbox</a>
+<li class="chapter" data-level="7" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html"><i class="fa fa-check"></i><b>7</b> Spatial Analyst Toolbox</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="Image_Analysis.html"><a href="Image_Analysis.html#map-algebra-toolset"><i class="fa fa-check"></i><b>8.1</b> Map Algebra Toolset</a>
+<li class="chapter" data-level="7.1" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#conditional-toolset"><i class="fa fa-check"></i><b>7.1</b> Conditional Toolset</a>
 <ul>
-<li class="chapter" data-level="8.1.1" data-path="Image_Analysis.html"><a href="Image_Analysis.html#raster-calulator"><i class="fa fa-check"></i><b>8.1.1</b> Raster Calulator</a></li>
-<li class="chapter" data-level="8.1.2" data-path="Image_Analysis.html"><a href="Image_Analysis.html#focal-statistics"><i class="fa fa-check"></i><b>8.1.2</b> Focal Statistics</a></li>
-<li class="chapter" data-level="8.1.3" data-path="Image_Analysis.html"><a href="Image_Analysis.html#zonal-statistics"><i class="fa fa-check"></i><b>8.1.3</b> Zonal Statistics</a></li>
-<li class="chapter" data-level="8.1.4" data-path="Image_Analysis.html"><a href="Image_Analysis.html#zonal-statistics-1"><i class="fa fa-check"></i><b>8.1.4</b> Zonal Statistics</a></li>
+<li class="chapter" data-level="7.1.1" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#kernel-density"><i class="fa fa-check"></i><b>7.1.1</b> Kernel Density</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#reclass-toolset"><i class="fa fa-check"></i><b>7.2</b> Reclass Toolset</a></li>
+<li class="chapter" data-level="7.3" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#surface-toolset"><i class="fa fa-check"></i><b>7.3</b> Surface Toolset</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#slope-and-aspect"><i class="fa fa-check"></i><b>7.3.1</b> Slope and Aspect</a></li>
+<li class="chapter" data-level="7.3.2" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#reclassify"><i class="fa fa-check"></i><b>7.3.2</b> Reclassify</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="Analysis.html"><a href="Analysis.html"><i class="fa fa-check"></i><b>9</b> Analysis Toolbox</a>
+<li class="chapter" data-level="8" data-path="3D_Analyst.html"><a href="3D_Analyst.html"><i class="fa fa-check"></i><b>8</b> 3D Analyst Toolbox</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="Analysis.html"><a href="Analysis.html#clip"><i class="fa fa-check"></i><b>9.1</b> Clip</a></li>
-<li class="chapter" data-level="9.2" data-path="Analysis.html"><a href="Analysis.html#merge"><i class="fa fa-check"></i><b>9.2</b> Merge</a></li>
-<li class="chapter" data-level="9.3" data-path="Analysis.html"><a href="Analysis.html#spatial-join"><i class="fa fa-check"></i><b>9.3</b> Spatial Join</a></li>
-<li class="chapter" data-level="9.4" data-path="Analysis.html"><a href="Analysis.html#buffer"><i class="fa fa-check"></i><b>9.4</b> Buffer</a></li>
+<li class="chapter" data-level="8.1" data-path="3D_Analyst.html"><a href="3D_Analyst.html#raster-interpolation-toolset"><i class="fa fa-check"></i><b>8.1</b> Raster Interpolation Toolset</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="3D_Analyst.html"><a href="3D_Analyst.html#idw"><i class="fa fa-check"></i><b>8.1.1</b> IDW</a></li>
+<li class="chapter" data-level="8.1.2" data-path="3D_Analyst.html"><a href="3D_Analyst.html#kriging"><i class="fa fa-check"></i><b>8.1.2</b> Kriging</a></li>
+<li class="chapter" data-level="8.1.3" data-path="3D_Analyst.html"><a href="3D_Analyst.html#natural-neighbor"><i class="fa fa-check"></i><b>8.1.3</b> Natural Neighbor</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="Chapter_overview.html"><a href="Chapter_overview.html"><i class="fa fa-check"></i><b>10</b> Topology Rules</a>
+</ul></li>
+<li class="chapter" data-level="9" data-path="Image_Analysis.html"><a href="Image_Analysis.html"><i class="fa fa-check"></i><b>9</b> Image Analysis Toolbox</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="Polygon.html"><a href="Polygon.html"><i class="fa fa-check"></i><b>10.1</b> Polygon</a>
+<li class="chapter" data-level="9.1" data-path="Image_Analysis.html"><a href="Image_Analysis.html#map-algebra-toolset"><i class="fa fa-check"></i><b>9.1</b> Map Algebra Toolset</a>
 <ul>
-<li class="chapter" data-level="10.1.1" data-path="Polygon.html"><a href="Polygon.html#must-not-overlap"><i class="fa fa-check"></i><b>10.1.1</b> Must not overlap</a></li>
-<li class="chapter" data-level="10.1.2" data-path="Polygon.html"><a href="Polygon.html#must-not-have-gaps"><i class="fa fa-check"></i><b>10.1.2</b> Must not have gaps</a></li>
-<li class="chapter" data-level="10.1.3" data-path="Polygon.html"><a href="Polygon.html#contains-point"><i class="fa fa-check"></i><b>10.1.3</b> Contains point</a></li>
-<li class="chapter" data-level="10.1.4" data-path="Polygon.html"><a href="Polygon.html#contains-one-point"><i class="fa fa-check"></i><b>10.1.4</b> Contains one Point</a></li>
-<li class="chapter" data-level="10.1.5" data-path="Polygon.html"><a href="Polygon.html#must-be-covered-by-feature-class-of"><i class="fa fa-check"></i><b>10.1.5</b> Must be covered by feature class of</a></li>
-<li class="chapter" data-level="10.1.6" data-path="Polygon.html"><a href="Polygon.html#boundary-must-be-covered-by"><i class="fa fa-check"></i><b>10.1.6</b> Boundary must be covered by</a></li>
-<li class="chapter" data-level="10.1.7" data-path="Polygon.html"><a href="Polygon.html#must-not-overlap-with"><i class="fa fa-check"></i><b>10.1.7</b> Must not overlap with</a></li>
-<li class="chapter" data-level="10.1.8" data-path="Polygon.html"><a href="Polygon.html#must-be-covered-by"><i class="fa fa-check"></i><b>10.1.8</b> Must be covered by</a></li>
-<li class="chapter" data-level="10.1.9" data-path="Polygon.html"><a href="Polygon.html#area-boundary-must-be-covered-by-boundary-of"><i class="fa fa-check"></i><b>10.1.9</b> Area boundary must be covered by boundary of</a></li>
-<li class="chapter" data-level="10.1.10" data-path="Polygon.html"><a href="Polygon.html#must-cover-each-other"><i class="fa fa-check"></i><b>10.1.10</b> Must cover each other</a></li>
+<li class="chapter" data-level="9.1.1" data-path="Image_Analysis.html"><a href="Image_Analysis.html#raster-calulator"><i class="fa fa-check"></i><b>9.1.1</b> Raster Calulator</a></li>
+<li class="chapter" data-level="9.1.2" data-path="Image_Analysis.html"><a href="Image_Analysis.html#focal-statistics"><i class="fa fa-check"></i><b>9.1.2</b> Focal Statistics</a></li>
+<li class="chapter" data-level="9.1.3" data-path="Image_Analysis.html"><a href="Image_Analysis.html#zonal-statistics"><i class="fa fa-check"></i><b>9.1.3</b> Zonal Statistics</a></li>
+<li class="chapter" data-level="9.1.4" data-path="Image_Analysis.html"><a href="Image_Analysis.html#zonal-statistics-1"><i class="fa fa-check"></i><b>9.1.4</b> Zonal Statistics</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="Analysis.html"><a href="Analysis.html"><i class="fa fa-check"></i><b>10</b> Analysis Toolbox</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="Analysis.html"><a href="Analysis.html#clip"><i class="fa fa-check"></i><b>10.1</b> Clip</a></li>
+<li class="chapter" data-level="10.2" data-path="Analysis.html"><a href="Analysis.html#merge"><i class="fa fa-check"></i><b>10.2</b> Merge</a></li>
+<li class="chapter" data-level="10.3" data-path="Analysis.html"><a href="Analysis.html#spatial-join"><i class="fa fa-check"></i><b>10.3</b> Spatial Join</a></li>
+<li class="chapter" data-level="10.4" data-path="Analysis.html"><a href="Analysis.html#buffer"><i class="fa fa-check"></i><b>10.4</b> Buffer</a></li>
+</ul></li>
+<li class="part"><span><b>II Topology Rules</b></span></li>
+<li class="chapter" data-level="11" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html"><i class="fa fa-check"></i><b>11</b> About this section</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#spatial-predicates"><i class="fa fa-check"></i><b>11.1</b> Spatial Predicates</a></li>
+<li class="chapter" data-level="11.2" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#some-examples"><i class="fa fa-check"></i><b>11.2</b> Some examples</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#equals"><i class="fa fa-check"></i><b>11.2.1</b> Equals</a></li>
+<li class="chapter" data-level="11.2.2" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#disjoint"><i class="fa fa-check"></i><b>11.2.2</b> Disjoint</a></li>
+<li class="chapter" data-level="11.2.3" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#touches"><i class="fa fa-check"></i><b>11.2.3</b> Touches</a></li>
+<li class="chapter" data-level="11.2.4" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#contains-1"><i class="fa fa-check"></i><b>11.2.4</b> Contains</a></li>
+<li class="chapter" data-level="11.2.5" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#covers"><i class="fa fa-check"></i><b>11.2.5</b> Covers</a></li>
+<li class="chapter" data-level="11.2.6" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#intersects"><i class="fa fa-check"></i><b>11.2.6</b> Intersects</a></li>
+<li class="chapter" data-level="11.2.7" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#within-1"><i class="fa fa-check"></i><b>11.2.7</b> Within</a></li>
+<li class="chapter" data-level="11.2.8" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#coveredby"><i class="fa fa-check"></i><b>11.2.8</b> CoveredBy</a></li>
+<li class="chapter" data-level="11.2.9" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#crosses"><i class="fa fa-check"></i><b>11.2.9</b> Crosses</a></li>
+<li class="chapter" data-level="11.2.10" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#overlaps"><i class="fa fa-check"></i><b>11.2.10</b> Overlaps</a></li>
+<li class="chapter" data-level="11.2.11" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#touches-1"><i class="fa fa-check"></i><b>11.2.11</b> Touches</a></li>
+<li class="chapter" data-level="11.2.12" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#custom-relationships"><i class="fa fa-check"></i><b>11.2.12</b> Custom relationships</a></li>
+<li class="chapter" data-level="11.2.13" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#rooks-case"><i class="fa fa-check"></i><b>11.2.13</b> Rooks Case</a></li>
+<li class="chapter" data-level="11.2.14" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#bishops-case"><i class="fa fa-check"></i><b>11.2.14</b> Bishops Case</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="Polygon.html"><a href="Polygon.html"><i class="fa fa-check"></i><b>11.3</b> Polygon</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="Polygon.html"><a href="Polygon.html#must-not-overlap"><i class="fa fa-check"></i><b>11.3.1</b> Must not overlap</a></li>
+<li class="chapter" data-level="11.3.2" data-path="Polygon.html"><a href="Polygon.html#must-not-have-gaps"><i class="fa fa-check"></i><b>11.3.2</b> Must not have gaps</a></li>
+<li class="chapter" data-level="11.3.3" data-path="Polygon.html"><a href="Polygon.html#contains-point"><i class="fa fa-check"></i><b>11.3.3</b> Contains point</a></li>
+<li class="chapter" data-level="11.3.4" data-path="Polygon.html"><a href="Polygon.html#contains-one-point"><i class="fa fa-check"></i><b>11.3.4</b> Contains one Point</a></li>
+<li class="chapter" data-level="11.3.5" data-path="Polygon.html"><a href="Polygon.html#must-be-covered-by-feature-class-of"><i class="fa fa-check"></i><b>11.3.5</b> Must be covered by feature class of</a></li>
+<li class="chapter" data-level="11.3.6" data-path="Polygon.html"><a href="Polygon.html#boundary-must-be-covered-by"><i class="fa fa-check"></i><b>11.3.6</b> Boundary must be covered by</a></li>
+<li class="chapter" data-level="11.3.7" data-path="Polygon.html"><a href="Polygon.html#must-not-overlap-with"><i class="fa fa-check"></i><b>11.3.7</b> Must not overlap with</a></li>
+<li class="chapter" data-level="11.3.8" data-path="Polygon.html"><a href="Polygon.html#must-be-covered-by"><i class="fa fa-check"></i><b>11.3.8</b> Must be covered by</a></li>
+<li class="chapter" data-level="11.3.9" data-path="Polygon.html"><a href="Polygon.html#area-boundary-must-be-covered-by-boundary-of"><i class="fa fa-check"></i><b>11.3.9</b> Area boundary must be covered by boundary of</a></li>
+<li class="chapter" data-level="11.3.10" data-path="Polygon.html"><a href="Polygon.html#must-cover-each-other"><i class="fa fa-check"></i><b>11.3.10</b> Must cover each other</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="Line.html"><a href="Line.html"><i class="fa fa-check"></i><b>11.4</b> Line</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="Line.html"><a href="Line.html#must-not-have-pseudo-nodes"><i class="fa fa-check"></i><b>11.4.1</b> Must not have pseudo nodes</a></li>
+<li class="chapter" data-level="11.4.2" data-path="Line.html"><a href="Line.html#must-not-have-dangles"><i class="fa fa-check"></i><b>11.4.2</b> Must not have dangles</a></li>
+<li class="chapter" data-level="11.4.3" data-path="Line.html"><a href="Line.html#must-not-self-overlap"><i class="fa fa-check"></i><b>11.4.3</b> Must not self overlap</a></li>
+<li class="chapter" data-level="11.4.4" data-path="Line.html"><a href="Line.html#must-not-overlap-1"><i class="fa fa-check"></i><b>11.4.4</b> Must not overlap</a></li>
+<li class="chapter" data-level="11.4.5" data-path="Line.html"><a href="Line.html#must-not-self-intersect"><i class="fa fa-check"></i><b>11.4.5</b> Must not self-intersect</a></li>
+<li class="chapter" data-level="11.4.6" data-path="Line.html"><a href="Line.html#must-not-intersect"><i class="fa fa-check"></i><b>11.4.6</b> Must not intersect</a></li>
+<li class="chapter" data-level="11.4.7" data-path="Line.html"><a href="Line.html#must-be-single-part"><i class="fa fa-check"></i><b>11.4.7</b> Must be single part</a></li>
+<li class="chapter" data-level="11.4.8" data-path="Line.html"><a href="Line.html#must-not-intersect-with"><i class="fa fa-check"></i><b>11.4.8</b> Must not intersect with</a></li>
+<li class="chapter" data-level="11.4.9" data-path="Line.html"><a href="Line.html#must-be-covered-by-feature-class-of-1"><i class="fa fa-check"></i><b>11.4.9</b> Must be covered by feature class of</a></li>
+<li class="chapter" data-level="11.4.10" data-path="Line.html"><a href="Line.html#must-not-intersect-or-touch-interior"><i class="fa fa-check"></i><b>11.4.10</b> Must not intersect or touch interior</a></li>
+<li class="chapter" data-level="11.4.11" data-path="Line.html"><a href="Line.html#must-be-covered-by-boundary-of"><i class="fa fa-check"></i><b>11.4.11</b> Must be covered by boundary of</a></li>
+<li class="chapter" data-level="11.4.12" data-path="Line.html"><a href="Line.html#must-not-intersect-or-touch-interior-with"><i class="fa fa-check"></i><b>11.4.12</b> Must not intersect or touch interior with</a></li>
+<li class="chapter" data-level="11.4.13" data-path="Line.html"><a href="Line.html#must-be-properly-inside"><i class="fa fa-check"></i><b>11.4.13</b> Must be properly inside</a></li>
+<li class="chapter" data-level="11.4.14" data-path="Line.html"><a href="Line.html#must-not-overlap-with-1"><i class="fa fa-check"></i><b>11.4.14</b> Must not overlap with</a></li>
+<li class="chapter" data-level="11.4.15" data-path="Line.html"><a href="Line.html#endpoint-must-be-covered-by"><i class="fa fa-check"></i><b>11.4.15</b> Endpoint must be covered by</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="Point.html"><a href="Point.html"><i class="fa fa-check"></i><b>11.5</b> Point</a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="Point.html"><a href="Point.html#must-coincide-with"><i class="fa fa-check"></i><b>11.5.1</b> Must coincide with</a></li>
+<li class="chapter" data-level="11.5.2" data-path="Point.html"><a href="Point.html#must-be-disjoint"><i class="fa fa-check"></i><b>11.5.2</b> Must be disjoint</a></li>
+<li class="chapter" data-level="11.5.3" data-path="Point.html"><a href="Point.html#must-be-covered-by-endpoint-of"><i class="fa fa-check"></i><b>11.5.3</b> Must be covered by endpoint of</a></li>
+<li class="chapter" data-level="11.5.4" data-path="Point.html"><a href="Point.html#point-must-be-covered-by-line"><i class="fa fa-check"></i><b>11.5.4</b> Point must be covered by line</a></li>
+<li class="chapter" data-level="11.5.5" data-path="Point.html"><a href="Point.html#must-be-properly-inside-1"><i class="fa fa-check"></i><b>11.5.5</b> Must be properly inside</a></li>
+<li class="chapter" data-level="11.5.6" data-path="Point.html"><a href="Point.html#must-be-covered-by-boundary-of-1"><i class="fa fa-check"></i><b>11.5.6</b> Must be covered by boundary of</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="Line_or_Polygon.html"><a href="Line_or_Polygon.html"><i class="fa fa-check"></i><b>11.6</b> Line or Polygon</a>
+<ul>
+<li class="chapter" data-level="11.6.1" data-path="Line_or_Polygon.html"><a href="Line_or_Polygon.html#must-be-larger-than-cluster-tolarance"><i class="fa fa-check"></i><b>11.6.1</b> Must be larger than cluster tolarance</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -281,64 +353,39 @@ Developped by the Research Group for Geoinformatics @ ZHAW</a></li>
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="analysis-toolbox" class="section level1" number="9">
-<h1><span class="header-section-number">9</span> Analysis Toolbox</h1>
+<div id="analysis-toolbox" class="section level1" number="10">
+<h1><span class="header-section-number">10</span> Analysis Toolbox</h1>
 <!-- ## Extract Toolset -->
-<div id="clip" class="section level2" number="9.1">
-<h2><span class="header-section-number">9.1</span> Clip</h2>
+<div id="clip" class="section level2" number="10.1">
+<h2><span class="header-section-number">10.1</span> Clip</h2>
 <p>Quite often in spatial analysis, we come across with cases, where we do not want to use all the available data there is. In other words, we want to focus on a specific area of interest, which dictates the need for <strong>clipping</strong> the existing dataset based on it’s relationship to some other existing spatial feature. In R this operation can be easily performed using the <code>st_intersection</code> function in <code>sf</code>.</p>
 <p>Let’s assume in the example below that we want to clip the available dataset of all the <strong>train stations in Switzerland</strong> by focusing our analysis on four specific cantons.</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="Analysis.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb71-2"><a href="Analysis.html#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Point dataset depicting the train stations locations across Switzerland</span></span>
-<span id="cb71-3"><a href="Analysis.html#cb71-3" aria-hidden="true" tabindex="-1"></a>bahn_haltestelle_ch <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;sample_data/other/Haltestelle_Bahn_CH.shp&quot;</span>)</span>
-<span id="cb71-4"><a href="Analysis.html#cb71-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Reading layer `Haltestelle_Bahn_CH&#39; from data source `/Users/runner/work/book/book/sample_data/other/Haltestelle_Bahn_CH.shp&#39; using driver `ESRI Shapefile&#39;</span></span>
-<span id="cb71-5"><a href="Analysis.html#cb71-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Simple feature collection with 3134 features and 16 fields</span></span>
-<span id="cb71-6"><a href="Analysis.html#cb71-6" aria-hidden="true" tabindex="-1"></a><span class="do">## geometry type:  POINT</span></span>
-<span id="cb71-7"><a href="Analysis.html#cb71-7" aria-hidden="true" tabindex="-1"></a><span class="do">## dimension:      XYZ</span></span>
-<span id="cb71-8"><a href="Analysis.html#cb71-8" aria-hidden="true" tabindex="-1"></a><span class="do">## bbox:           xmin: 2488908 ymin: 1076850 xmax: 2817389 ymax: 1289090</span></span>
-<span id="cb71-9"><a href="Analysis.html#cb71-9" aria-hidden="true" tabindex="-1"></a><span class="do">## z_range:        zmin: 194.905 zmax: 3453.525</span></span>
-<span id="cb71-10"><a href="Analysis.html#cb71-10" aria-hidden="true" tabindex="-1"></a><span class="do">## projected CRS:  CH1903+ / LV95</span></span>
-<span id="cb71-11"><a href="Analysis.html#cb71-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb71-12"><a href="Analysis.html#cb71-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Dataset depicting Switzerland on canton level</span></span>
-<span id="cb71-13"><a href="Analysis.html#cb71-13" aria-hidden="true" tabindex="-1"></a>kantonsgebiet <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;sample_data/other/Kantonsgebiet.shp&quot;</span>)</span>
-<span id="cb71-14"><a href="Analysis.html#cb71-14" aria-hidden="true" tabindex="-1"></a><span class="do">## Reading layer `Kantonsgebiet&#39; from data source `/Users/runner/work/book/book/sample_data/other/Kantonsgebiet.shp&#39; using driver `ESRI Shapefile&#39;</span></span>
-<span id="cb71-15"><a href="Analysis.html#cb71-15" aria-hidden="true" tabindex="-1"></a><span class="do">## Simple feature collection with 56 features and 22 fields</span></span>
-<span id="cb71-16"><a href="Analysis.html#cb71-16" aria-hidden="true" tabindex="-1"></a><span class="do">## geometry type:  MULTIPOLYGON</span></span>
-<span id="cb71-17"><a href="Analysis.html#cb71-17" aria-hidden="true" tabindex="-1"></a><span class="do">## dimension:      XYZ</span></span>
-<span id="cb71-18"><a href="Analysis.html#cb71-18" aria-hidden="true" tabindex="-1"></a><span class="do">## bbox:           xmin: 2485410 ymin: 1075268 xmax: 2833858 ymax: 1295934</span></span>
-<span id="cb71-19"><a href="Analysis.html#cb71-19" aria-hidden="true" tabindex="-1"></a><span class="do">## z_range:        zmin: 193.51 zmax: 4613.729</span></span>
-<span id="cb71-20"><a href="Analysis.html#cb71-20" aria-hidden="true" tabindex="-1"></a><span class="do">## projected CRS:  CH1903+ / LV95</span></span>
-<span id="cb71-21"><a href="Analysis.html#cb71-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb71-22"><a href="Analysis.html#cb71-22" aria-hidden="true" tabindex="-1"></a><span class="fu">tmap_mode</span>(<span class="at">mode =</span> <span class="fu">c</span>(<span class="st">&quot;plot&quot;</span>)) <span class="co"># setting the plotting mode to static -- optimizing the process</span></span>
-<span id="cb71-23"><a href="Analysis.html#cb71-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb71-24"><a href="Analysis.html#cb71-24" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(kantonsgebiet) <span class="sc">+</span> <span class="fu">tm_polygons</span>(<span class="st">&quot;#f0f0f0&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb71-25"><a href="Analysis.html#cb71-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_shape</span>(bahn_haltestelle_ch) <span class="sc">+</span> <span class="fu">tm_dots</span>(<span class="at">col =</span> <span class="st">&quot;#e34a33&quot;</span>,<span class="at">size =</span> <span class="fl">0.1</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb71-26"><a href="Analysis.html#cb71-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_shape</span>(kantonsgebiet) <span class="sc">+</span> <span class="fu">tm_borders</span>(<span class="at">col =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span> <span class="fu">tm_layout</span>(<span class="at">frame =</span> F)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-82-1.png" width="672" /></p>
-<p>As it was mentioned above, the aim is to analyse the situation at a particular area. So we are going to create an index with the specific cantons we are interested in.</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="Analysis.html#cb72-1" aria-hidden="true" tabindex="-1"></a>index <span class="ot">&lt;-</span> kantonsgebiet<span class="sc">$</span>name <span class="sc">==</span> <span class="st">&quot;Zürich&quot;</span> <span class="sc">|</span></span>
-<span id="cb72-2"><a href="Analysis.html#cb72-2" aria-hidden="true" tabindex="-1"></a>  kantonsgebiet<span class="sc">$</span>name <span class="sc">==</span> <span class="st">&quot;St. Gallen&quot;</span> <span class="sc">|</span></span>
-<span id="cb72-3"><a href="Analysis.html#cb72-3" aria-hidden="true" tabindex="-1"></a>  kantonsgebiet<span class="sc">$</span>name <span class="sc">==</span> <span class="st">&quot;Thurgau&quot;</span> <span class="sc">|</span></span>
-<span id="cb72-4"><a href="Analysis.html#cb72-4" aria-hidden="true" tabindex="-1"></a>  kantonsgebiet<span class="sc">$</span>name <span class="sc">==</span> <span class="st">&quot;Aargau&quot;</span></span>
-<span id="cb72-5"><a href="Analysis.html#cb72-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-6"><a href="Analysis.html#cb72-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecting the cantons based on the previously generated index</span></span>
-<span id="cb72-7"><a href="Analysis.html#cb72-7" aria-hidden="true" tabindex="-1"></a>kantons_aOi <span class="ot">&lt;-</span> kantonsgebiet[index,]</span>
-<span id="cb72-8"><a href="Analysis.html#cb72-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-9"><a href="Analysis.html#cb72-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Performing the clipping operation</span></span>
-<span id="cb72-10"><a href="Analysis.html#cb72-10" aria-hidden="true" tabindex="-1"></a>hal_clipped <span class="ot">&lt;-</span> <span class="fu">st_intersection</span>(kantons_aOi,bahn_haltestelle_ch)</span></code></pre></div>
-<ul>
-<li>Plotting the result from the clipping operation</li>
-</ul>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="Analysis.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(kantons_aOi) <span class="sc">+</span> <span class="fu">tm_polygons</span>(<span class="st">&quot;#f0f0f0&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb73-2"><a href="Analysis.html#cb73-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_shape</span>(hal_clipped) <span class="sc">+</span> <span class="fu">tm_dots</span>(<span class="at">col =</span> <span class="st">&quot;#e34a33&quot;</span>,<span class="at">size =</span> <span class="fl">0.1</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb73-3"><a href="Analysis.html#cb73-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_shape</span>(kantons_aOi) <span class="sc">+</span> <span class="fu">tm_borders</span>() <span class="sc">+</span> <span class="fu">tm_layout</span>(<span class="at">frame =</span> F)</span></code></pre></div>
+<pre><code>## Reading layer `Haltestelle_Bahn_CH&#39; from data source `/Users/runner/work/book/book/sample_data/other/Haltestelle_Bahn_CH.shp&#39; using driver `ESRI Shapefile&#39;
+## Simple feature collection with 3134 features and 16 fields
+## geometry type:  POINT
+## dimension:      XYZ
+## bbox:           xmin: 2488908 ymin: 1076850 xmax: 2817389 ymax: 1289090
+## z_range:        zmin: 194.905 zmax: 3453.525
+## projected CRS:  CH1903+ / LV95
+## Reading layer `Kantonsgebiet&#39; from data source `/Users/runner/work/book/book/sample_data/other/Kantonsgebiet.shp&#39; using driver `ESRI Shapefile&#39;
+## Simple feature collection with 56 features and 22 fields
+## geometry type:  MULTIPOLYGON
+## dimension:      XYZ
+## bbox:           xmin: 2485410 ymin: 1075268 xmax: 2833858 ymax: 1295934
+## z_range:        zmin: 193.51 zmax: 4613.729
+## projected CRS:  CH1903+ / LV95</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-84-1.png" width="672" /></p>
+<p>As it was mentioned above, the aim is to analyse the situation at a particular area. So we are going to create an index with the specific cantons we are interested in.</p>
+<ul>
+<li>Plotting the result from the clipping operation
+<img src="_main_files/figure-html/unnamed-chunk-86-1.png" width="672" /></li>
+</ul>
 <p>So, ultimately, as we can see above, the <em>st_intersection</em> function creates a result where the point dataset is precisely “clipped” based on the area of interest</p>
 <p>The operation above produces the same outcome as the one depicted in the figure below <a href="#fig:clip"><strong>??</strong></a>.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-85"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-87"></span>
 <img src="images/clipOperation.png" alt="Clip operation in ArcGIS pro" width="750px" />
 <p class="caption">
-Figure 9.1: Clip operation in ArcGIS pro
+Figure 10.1: Clip operation in ArcGIS pro
 </p>
 </div>
 <!-- ### Split -->
@@ -346,82 +393,64 @@ Figure 9.1: Clip operation in ArcGIS pro
 <!-- ### Table Select -->
 <!-- ## Overlay Toolset -->
 </div>
-<div id="merge" class="section level2" number="9.2">
-<h2><span class="header-section-number">9.2</span> Merge</h2>
+<div id="merge" class="section level2" number="10.2">
+<h2><span class="header-section-number">10.2</span> Merge</h2>
 <p>Let’s assume in the example below that instead of having four individual areas of interest, we are interested in having one common, unified area on which we focus our analysis. In other words, we have to <strong>merge</strong> the existing four areas into one. In ArcGIS pro the respective tools for this action is either the <code>Merge</code> or the <code>Dissolve</code> tool.<br />
 In R on the other hand, this can be easily performed using the <code>st_union</code> function in the <code>sf</code> package.</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="Analysis.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The area of interest from the previous example - section Clip</span></span>
-<span id="cb74-2"><a href="Analysis.html#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(kantons_aOi)</span>
-<span id="cb74-3"><a href="Analysis.html#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Simple feature collection with 6 features and 22 fields</span></span>
-<span id="cb74-4"><a href="Analysis.html#cb74-4" aria-hidden="true" tabindex="-1"></a><span class="do">## geometry type:  MULTIPOLYGON</span></span>
-<span id="cb74-5"><a href="Analysis.html#cb74-5" aria-hidden="true" tabindex="-1"></a><span class="do">## dimension:      XYZ</span></span>
-<span id="cb74-6"><a href="Analysis.html#cb74-6" aria-hidden="true" tabindex="-1"></a><span class="do">## bbox:           xmin: 2620698 ymin: 1193269 xmax: 2768769 ymax: 1283504</span></span>
-<span id="cb74-7"><a href="Analysis.html#cb74-7" aria-hidden="true" tabindex="-1"></a><span class="do">## z_range:        zmin: 260.666 zmax: 3246.858</span></span>
-<span id="cb74-8"><a href="Analysis.html#cb74-8" aria-hidden="true" tabindex="-1"></a><span class="do">## projected CRS:  CH1903+ / LV95</span></span>
-<span id="cb74-9"><a href="Analysis.html#cb74-9" aria-hidden="true" tabindex="-1"></a><span class="do">##                                      uuid datum_aend datum_erst erstellung</span></span>
-<span id="cb74-10"><a href="Analysis.html#cb74-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 6  {05D55405-466B-4ECC-83C7-A906DEB0D607} 2017-12-04 2012-10-26       2012</span></span>
-<span id="cb74-11"><a href="Analysis.html#cb74-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 7  {FB7105B8-6D7C-4787-846E-17B2BC145C6E} 2018-11-22 2012-10-26       2012</span></span>
-<span id="cb74-12"><a href="Analysis.html#cb74-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 {E11CD2CA-2E2D-415C-8789-C10D7C26E441} 2016-12-09 2012-10-26       2012</span></span>
-<span id="cb74-13"><a href="Analysis.html#cb74-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 12 {87370D3F-DBBE-4D05-AF85-C358C3924B3D} 2018-11-22 2012-10-26       2012</span></span>
-<span id="cb74-14"><a href="Analysis.html#cb74-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 41 {99488953-65F6-4F86-8606-337113587F85} 2015-12-08 2012-10-26       2012</span></span>
-<span id="cb74-15"><a href="Analysis.html#cb74-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 47 {F1A07951-AC8B-4EBA-B48F-64BC8B92228C} 2015-12-08 2012-10-26       2012</span></span>
-<span id="cb74-16"><a href="Analysis.html#cb74-16" aria-hidden="true" tabindex="-1"></a><span class="do">##    erstellu_1 revision_j revision_m grund_aend herkunft herkunft_j herkunft_m</span></span>
-<span id="cb74-17"><a href="Analysis.html#cb74-17" aria-hidden="true" tabindex="-1"></a><span class="do">## 6          10       2019          1        400      100       2018          1</span></span>
-<span id="cb74-18"><a href="Analysis.html#cb74-18" aria-hidden="true" tabindex="-1"></a><span class="do">## 7          10       2019          1        400      500       2019          1</span></span>
-<span id="cb74-19"><a href="Analysis.html#cb74-19" aria-hidden="true" tabindex="-1"></a><span class="do">## 10         10       2019          1        400      100       2017          1</span></span>
-<span id="cb74-20"><a href="Analysis.html#cb74-20" aria-hidden="true" tabindex="-1"></a><span class="do">## 12         10       2019          1        400      500       2019          1</span></span>
-<span id="cb74-21"><a href="Analysis.html#cb74-21" aria-hidden="true" tabindex="-1"></a><span class="do">## 41         10       2019          1        400      500       2015         12</span></span>
-<span id="cb74-22"><a href="Analysis.html#cb74-22" aria-hidden="true" tabindex="-1"></a><span class="do">## 47         10       2019          1        400      500       2015         12</span></span>
-<span id="cb74-23"><a href="Analysis.html#cb74-23" aria-hidden="true" tabindex="-1"></a><span class="do">##    objektart kantonsnum see_flaech  revision_q kantonsfla kanton_tei       name</span></span>
-<span id="cb74-24"><a href="Analysis.html#cb74-24" aria-hidden="true" tabindex="-1"></a><span class="do">## 6          0         17       7720 2018_Aufbau     202820          1 St. Gallen</span></span>
-<span id="cb74-25"><a href="Analysis.html#cb74-25" aria-hidden="true" tabindex="-1"></a><span class="do">## 7          0          1       6811 2018_Aufbau     172894          0     Zürich</span></span>
-<span id="cb74-26"><a href="Analysis.html#cb74-26" aria-hidden="true" tabindex="-1"></a><span class="do">## 10         0         19        870 2018_Aufbau     140380          1     Aargau</span></span>
-<span id="cb74-27"><a href="Analysis.html#cb74-27" aria-hidden="true" tabindex="-1"></a><span class="do">## 12         0         20      13121 2018_Aufbau      99433          1    Thurgau</span></span>
-<span id="cb74-28"><a href="Analysis.html#cb74-28" aria-hidden="true" tabindex="-1"></a><span class="do">## 41         0         20          0 2018_Aufbau          0          2    Thurgau</span></span>
-<span id="cb74-29"><a href="Analysis.html#cb74-29" aria-hidden="true" tabindex="-1"></a><span class="do">## 47         0         17          0 2018_Aufbau          0          2 St. Gallen</span></span>
-<span id="cb74-30"><a href="Analysis.html#cb74-30" aria-hidden="true" tabindex="-1"></a><span class="do">##    icc einwohnerz Shape_Leng   Shape_Area                       geometry</span></span>
-<span id="cb74-31"><a href="Analysis.html#cb74-31" aria-hidden="true" tabindex="-1"></a><span class="do">## 6   CH     504686 494074.195 2028094302.5 MULTIPOLYGON Z (((2703763 1...</span></span>
-<span id="cb74-32"><a href="Analysis.html#cb74-32" aria-hidden="true" tabindex="-1"></a><span class="do">## 7   CH    1504346 312972.523 1728941805.8 MULTIPOLYGON Z (((2673542 1...</span></span>
-<span id="cb74-33"><a href="Analysis.html#cb74-33" aria-hidden="true" tabindex="-1"></a><span class="do">## 10  CH     670988 328943.352 1403783344.8 MULTIPOLYGON Z (((2673542 1...</span></span>
-<span id="cb74-34"><a href="Analysis.html#cb74-34" aria-hidden="true" tabindex="-1"></a><span class="do">## 12  CH     273801 287778.920  990592017.5 MULTIPOLYGON Z (((2701937 1...</span></span>
-<span id="cb74-35"><a href="Analysis.html#cb74-35" aria-hidden="true" tabindex="-1"></a><span class="do">## 41  CH          0   8640.269    3737271.5 MULTIPOLYGON Z (((2751489 1...</span></span>
-<span id="cb74-36"><a href="Analysis.html#cb74-36" aria-hidden="true" tabindex="-1"></a><span class="do">## 47  CH          0   1481.811     105406.8 MULTIPOLYGON Z (((2744263 1...</span></span>
-<span id="cb74-37"><a href="Analysis.html#cb74-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb74-38"><a href="Analysis.html#cb74-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Merging the four areas into one</span></span>
-<span id="cb74-39"><a href="Analysis.html#cb74-39" aria-hidden="true" tabindex="-1"></a>aOi_merged <span class="ot">&lt;-</span> <span class="fu">st_union</span>(kantons_aOi)</span></code></pre></div>
+<pre><code>## Simple feature collection with 6 features and 22 fields
+## geometry type:  MULTIPOLYGON
+## dimension:      XYZ
+## bbox:           xmin: 2620698 ymin: 1193269 xmax: 2768769 ymax: 1283504
+## z_range:        zmin: 260.666 zmax: 3246.858
+## projected CRS:  CH1903+ / LV95
+##                                      uuid datum_aend datum_erst erstellung
+## 6  {05D55405-466B-4ECC-83C7-A906DEB0D607} 2017-12-04 2012-10-26       2012
+## 7  {FB7105B8-6D7C-4787-846E-17B2BC145C6E} 2018-11-22 2012-10-26       2012
+## 10 {E11CD2CA-2E2D-415C-8789-C10D7C26E441} 2016-12-09 2012-10-26       2012
+## 12 {87370D3F-DBBE-4D05-AF85-C358C3924B3D} 2018-11-22 2012-10-26       2012
+## 41 {99488953-65F6-4F86-8606-337113587F85} 2015-12-08 2012-10-26       2012
+## 47 {F1A07951-AC8B-4EBA-B48F-64BC8B92228C} 2015-12-08 2012-10-26       2012
+##    erstellu_1 revision_j revision_m grund_aend herkunft herkunft_j herkunft_m
+## 6          10       2019          1        400      100       2018          1
+## 7          10       2019          1        400      500       2019          1
+## 10         10       2019          1        400      100       2017          1
+## 12         10       2019          1        400      500       2019          1
+## 41         10       2019          1        400      500       2015         12
+## 47         10       2019          1        400      500       2015         12
+##    objektart kantonsnum see_flaech  revision_q kantonsfla kanton_tei       name
+## 6          0         17       7720 2018_Aufbau     202820          1 St. Gallen
+## 7          0          1       6811 2018_Aufbau     172894          0     Zürich
+## 10         0         19        870 2018_Aufbau     140380          1     Aargau
+## 12         0         20      13121 2018_Aufbau      99433          1    Thurgau
+## 41         0         20          0 2018_Aufbau          0          2    Thurgau
+## 47         0         17          0 2018_Aufbau          0          2 St. Gallen
+##    icc einwohnerz Shape_Leng   Shape_Area                       geometry
+## 6   CH     504686 494074.195 2028094302.5 MULTIPOLYGON Z (((2703763 1...
+## 7   CH    1504346 312972.523 1728941805.8 MULTIPOLYGON Z (((2673542 1...
+## 10  CH     670988 328943.352 1403783344.8 MULTIPOLYGON Z (((2673542 1...
+## 12  CH     273801 287778.920  990592017.5 MULTIPOLYGON Z (((2701937 1...
+## 41  CH          0   8640.269    3737271.5 MULTIPOLYGON Z (((2751489 1...
+## 47  CH          0   1481.811     105406.8 MULTIPOLYGON Z (((2744263 1...</code></pre>
 <ul>
 <li>Plot the merged area of interest</li>
 </ul>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="Analysis.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(aOi_merged) <span class="sc">+</span> <span class="fu">tm_polygons</span>(<span class="st">&quot;#f0f0f0&quot;</span>) <span class="sc">+</span> <span class="fu">tm_layout</span>(<span class="at">frame =</span> F)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-87-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-89-1.png" width="672" /></p>
 <p>The operation above produces the same outcome as the one depicted in the figure below <a href="#fig:dissolve"><strong>??</strong></a>.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-88"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-90"></span>
 <img src="images/dissolve.png" alt="Dissolve operation in ArcGIS pro" width="750px" />
 <p class="caption">
-Figure 9.2: Dissolve operation in ArcGIS pro
+Figure 10.2: Dissolve operation in ArcGIS pro
 </p>
 </div>
 <!-- ### Erase -->
 <!-- ### Union -->
 <!-- ### Symmetrical Difference -->
 </div>
-<div id="spatial-join" class="section level2" number="9.3">
-<h2><span class="header-section-number">9.3</span> Spatial Join</h2>
+<div id="spatial-join" class="section level2" number="10.3">
+<h2><span class="header-section-number">10.3</span> Spatial Join</h2>
 <p>Say you have two datasets:</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="Analysis.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb76-2"><a href="Analysis.html#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb76-3"><a href="Analysis.html#cb76-3" aria-hidden="true" tabindex="-1"></a>zweitwohnung <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(<span class="st">&quot;sample_data/other/zweitwohnung_gemeinden.gpkg&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb76-4"><a href="Analysis.html#cb76-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(kanton <span class="sc">==</span> <span class="st">&quot;Valais / Wallis&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb76-5"><a href="Analysis.html#cb76-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(NAME)</span>
-<span id="cb76-6"><a href="Analysis.html#cb76-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb76-7"><a href="Analysis.html#cb76-7" aria-hidden="true" tabindex="-1"></a>bbox <span class="ot">&lt;-</span> <span class="fu">st_bbox</span>(zweitwohnung) <span class="sc">%&gt;%</span> <span class="fu">st_as_sfc</span>()</span>
-<span id="cb76-8"><a href="Analysis.html#cb76-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb76-9"><a href="Analysis.html#cb76-9" aria-hidden="true" tabindex="-1"></a>points <span class="ot">&lt;-</span> <span class="fu">st_sample</span>(bbox,<span class="dv">500</span>)</span>
-<span id="cb76-10"><a href="Analysis.html#cb76-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb76-11"><a href="Analysis.html#cb76-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(zweitwohnung) <span class="sc">+</span> <span class="fu">geom_sf</span>() <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> points)</span></code></pre></div>
 <p>In R, the function used to join two datastes is <code>st_join(x,y)</code>. If you have to different data types (e.g. Points and Polygons) the first question you have to ask yourself is: what data type should the output be? The datatype of <code>x</code> determins what the output datatype is.
 So with the above data: Say for each point, we want to know the Name (<code>NAME</code>) of the “Geimeinde” in which it lies. This means the output is a point dataset. We therefore write:</p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="Analysis.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_join</span>(<span class="fu">st_sf</span>(points),zweitwohnung,<span class="at">join =</span> st_within)</span></code></pre></div>
 <p>Note that points not located in a Gemeinde get the value <code>NA</code>. You have to specify the spatial relationship of your join method within the argument <code>join =</code>. This argument take a so called spatial predicate function. From the join_methods available in ArcGIS, here’s the equivalant spatial predicate function:</p>
 <table>
 <thead>
@@ -509,8 +538,8 @@ So with the above data: Say for each point, we want to know the Name (<code>NAME
 <!-- ### Update -->
 <!-- ## Proximity Toolset -->
 </div>
-<div id="buffer" class="section level2" number="9.4">
-<h2><span class="header-section-number">9.4</span> Buffer</h2>
+<div id="buffer" class="section level2" number="10.4">
+<h2><span class="header-section-number">10.4</span> Buffer</h2>
 <p>One of the most commonly used operations in ArcGIS pro is the one called <code>Buffer</code>. This operation provides a very convenient way of identifying areas of interest lying in the neighborhood of an existing spatial feature. In R the same action can be performed using the <code>st_buffer</code> function in <code>sf</code>.</p>
 <p>Below we introduce a line spatial feature that depicts all the <strong>mountain bike routes</strong> in Switzerland.</p>
 <pre><code>## Reading layer `mountainBikes_routes&#39; from data source `/Users/runner/work/book/book/sample_data/other/mountainBikes_routes.shp&#39; using driver `ESRI Shapefile&#39;
@@ -520,39 +549,36 @@ So with the above data: Say for each point, we want to know the Name (<code>NAME
 ## bbox:           xmin: 2497570 ymin: 1077136 xmax: 2836678 ymax: 1296227
 ## z_range:        zmin: 197.367 zmax: 2860.725
 ## projected CRS:  CH1903+ / LV95</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-92-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-94-1.png" width="672" /></p>
 <p>We focus, as an area of interest, on the canton of Valais. Consequently, we might be interested in identifying all the areas in a radius of 1000 m around these bike routes.</p>
 <ul>
 <li>Selecting the canton of Valais</li>
 </ul>
-<p><img src="_main_files/figure-html/unnamed-chunk-93-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-95-1.png" width="672" /></p>
 <ul>
 <li>Apply a buffer of 1000m on each of the mountain bike routes within the canton of Valais</li>
 </ul>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="Analysis.html#cb79-1" aria-hidden="true" tabindex="-1"></a>routes_buffer <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(mountainBikes_routes_valais,<span class="dv">1000</span>)</span>
-<span id="cb79-2"><a href="Analysis.html#cb79-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb79-3"><a href="Analysis.html#cb79-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(canton_valais) <span class="sc">+</span> <span class="fu">tm_polygons</span>() <span class="sc">+</span> </span>
-<span id="cb79-4"><a href="Analysis.html#cb79-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_shape</span>(mountainBikes_routes_valais) <span class="sc">+</span> <span class="fu">tm_lines</span>(<span class="at">col =</span> <span class="st">&quot;#e34a33&quot;</span>) <span class="sc">+</span></span>
-<span id="cb79-5"><a href="Analysis.html#cb79-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_shape</span>(routes_buffer) <span class="sc">+</span> <span class="fu">tm_polygons</span>(<span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span> </span>
-<span id="cb79-6"><a href="Analysis.html#cb79-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_shape</span>(canton_valais) <span class="sc">+</span> <span class="fu">tm_borders</span>(<span class="at">col =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span> <span class="fu">tm_layout</span>(<span class="at">frame =</span> F)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-94-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-96-1.png" width="672" /></p>
 <p>The operation above produces the same outcome as the one depicted in the figure below <a href="#fig:buffer"><strong>??</strong></a>.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-95"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-97"></span>
 <img src="images/buffer.png" alt="Buffer operation in ArcGIS pro" width="750px" />
 <p class="caption">
-Figure 9.3: Buffer operation in ArcGIS pro
+Figure 10.3: Buffer operation in ArcGIS pro
 </p>
 </div>
 
 </div>
 </div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
 <a href="Image_Analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="Chapter_overview.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="04_Topology_Rules.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -583,15 +609,15 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": null,
-"text": null
+"link": "https://github.com/arc2r/book/edit/master/03_Analysis/Analysis.Rmd",
+"text": "Edit"
 },
 "history": {
 "link": null,
 "text": null
 },
 "view": {
-"link": null,
+"link": "https://github.com/arc2r/book/blob/master/03_Analysis/Analysis.Rmd",
 "text": null
 },
 "download": null,
@@ -602,6 +628,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>6 Spatial Analyst Toolbox | All things R Spatial</title>
-  <meta name="description" content="6 Spatial Analyst Toolbox | All things R Spatial" />
+  <title>7 Spatial Analyst Toolbox | All things R Spatial</title>
+  <meta name="description" content="7 Spatial Analyst Toolbox | All things R Spatial" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="6 Spatial Analyst Toolbox | All things R Spatial" />
+  <meta property="og:title" content="7 Spatial Analyst Toolbox | All things R Spatial" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="6 Spatial Analyst Toolbox | All things R Spatial" />
+  <meta name="twitter:title" content="7 Spatial Analyst Toolbox | All things R Spatial" />
   
   
   
@@ -70,6 +70,8 @@
 <script src="libs/clipboard-0.0.1/setClipboardText.js"></script>
 <link href="libs/mapviewCSS-0.0.1/mapview-popup.css" rel="stylesheet" />
 <link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
+<script src="libs/d3-4.5.0/d3.min.js"></script>
+<script src="libs/diagonalNetwork-binding-0.4/diagonalNetwork.js"></script>
 
 
 <style type="text/css">
@@ -156,7 +158,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> What this book is about</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#how-it-started"><i class="fa fa-check"></i><b>1.1</b> How it started</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#what-might-make-your-journey-difficult"><i class="fa fa-check"></i><b>1.2</b> What might make your journey difficult</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#difficulties"><i class="fa fa-check"></i><b>1.2</b> What might make your journey difficult</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#why-you-should-transition-anyway"><i class="fa fa-check"></i><b>1.3</b> Why you should transition anyway</a></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#how-to-use-this-book"><i class="fa fa-check"></i><b>1.4</b> How to use this book</a></li>
 </ul></li>
@@ -187,77 +189,147 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="Selection.html"><a href="Selection.html"><i class="fa fa-check"></i><b>4</b> Selection</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="Select_by_Attribute.html"><a href="Select_by_Attribute.html"><i class="fa fa-check"></i><b>4.1</b> Select by Attribute</a></li>
-<li class="chapter" data-level="4.2" data-path="Select_by_Location.html"><a href="Select_by_Location.html"><i class="fa fa-check"></i><b>4.2</b> Select by Location</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="Data_Management.html"><a href="Data_Management.html"><i class="fa fa-check"></i><b>5</b> Data Management Toolbox</a>
+<li class="chapter" data-level="4.2" data-path="Select_by_Location.html"><a href="Select_by_Location.html"><i class="fa fa-check"></i><b>4.2</b> Select by Location</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="Join_toolset.html"><a href="Join_toolset.html"><i class="fa fa-check"></i><b>5.1</b> Joins Toolset</a>
-<ul>
-<li class="chapter" data-level="5.1.1" data-path="Join_toolset.html"><a href="Join_toolset.html#inner-join"><i class="fa fa-check"></i><b>5.1.1</b> Inner join</a></li>
-<li class="chapter" data-level="5.1.2" data-path="Join_toolset.html"><a href="Join_toolset.html#outer-join"><i class="fa fa-check"></i><b>5.1.2</b> Outer join</a></li>
-<li class="chapter" data-level="5.1.3" data-path="Join_toolset.html"><a href="Join_toolset.html#left-right-join"><i class="fa fa-check"></i><b>5.1.3</b> Left / Right join</a></li>
-</ul></li>
-<li class="chapter" data-level="5.2" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html"><i class="fa fa-check"></i><b>5.2</b> Projections and Transformations Toolset</a>
-<ul>
-<li class="chapter" data-level="5.2.1" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html#define-projection"><i class="fa fa-check"></i><b>5.2.1</b> Define Projection</a></li>
-<li class="chapter" data-level="5.2.2" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html#project"><i class="fa fa-check"></i><b>5.2.2</b> Project</a></li>
-<li class="chapter" data-level="5.2.3" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html#project-raster"><i class="fa fa-check"></i><b>5.2.3</b> Project Raster</a></li>
-<li class="chapter" data-level="5.2.4" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html#rescale"><i class="fa fa-check"></i><b>5.2.4</b> Rescale</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html"><i class="fa fa-check"></i><b>6</b> Spatial Analyst Toolbox</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#conditional-toolset"><i class="fa fa-check"></i><b>6.1</b> Conditional Toolset</a>
-<ul>
-<li class="chapter" data-level="6.1.1" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#kernel-density"><i class="fa fa-check"></i><b>6.1.1</b> Kernel Density</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#reclass-toolset"><i class="fa fa-check"></i><b>6.2</b> Reclass Toolset</a></li>
-<li class="chapter" data-level="6.3" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#surface-toolset"><i class="fa fa-check"></i><b>6.3</b> Surface Toolset</a>
-<ul>
-<li class="chapter" data-level="6.3.1" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#slope-and-aspect"><i class="fa fa-check"></i><b>6.3.1</b> Slope and Aspect</a></li>
-<li class="chapter" data-level="6.3.2" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#reclassify"><i class="fa fa-check"></i><b>6.3.2</b> Reclassify</a></li>
+<li class="chapter" data-level="4.2.1" data-path="Select_by_Location.html"><a href="Select_by_Location.html#intersect"><i class="fa fa-check"></i><b>4.2.1</b> Intersect</a></li>
+<li class="chapter" data-level="4.2.2" data-path="Select_by_Location.html"><a href="Select_by_Location.html#intersect_3d"><i class="fa fa-check"></i><b>4.2.2</b> Intersect_3d</a></li>
+<li class="chapter" data-level="4.2.3" data-path="Select_by_Location.html"><a href="Select_by_Location.html#within_a_distance"><i class="fa fa-check"></i><b>4.2.3</b> Within_a_distance</a></li>
+<li class="chapter" data-level="4.2.4" data-path="Select_by_Location.html"><a href="Select_by_Location.html#within_a_distance_3d"><i class="fa fa-check"></i><b>4.2.4</b> Within_a_distance_3d</a></li>
+<li class="chapter" data-level="4.2.5" data-path="Select_by_Location.html"><a href="Select_by_Location.html#within_a_distance_geodesic"><i class="fa fa-check"></i><b>4.2.5</b> Within_a_distance_geodesic</a></li>
+<li class="chapter" data-level="4.2.6" data-path="Select_by_Location.html"><a href="Select_by_Location.html#contains"><i class="fa fa-check"></i><b>4.2.6</b> Contains</a></li>
+<li class="chapter" data-level="4.2.7" data-path="Select_by_Location.html"><a href="Select_by_Location.html#completely_contains"><i class="fa fa-check"></i><b>4.2.7</b> Completely_contains</a></li>
+<li class="chapter" data-level="4.2.8" data-path="Select_by_Location.html"><a href="Select_by_Location.html#contains_clementini"><i class="fa fa-check"></i><b>4.2.8</b> Contains_clementini</a></li>
+<li class="chapter" data-level="4.2.9" data-path="Select_by_Location.html"><a href="Select_by_Location.html#within"><i class="fa fa-check"></i><b>4.2.9</b> Within</a></li>
+<li class="chapter" data-level="4.2.10" data-path="Select_by_Location.html"><a href="Select_by_Location.html#completely_within"><i class="fa fa-check"></i><b>4.2.10</b> Completely_within</a></li>
+<li class="chapter" data-level="4.2.11" data-path="Select_by_Location.html"><a href="Select_by_Location.html#within_clementini"><i class="fa fa-check"></i><b>4.2.11</b> Within_clementini</a></li>
+<li class="chapter" data-level="4.2.12" data-path="Select_by_Location.html"><a href="Select_by_Location.html#are_identical_to"><i class="fa fa-check"></i><b>4.2.12</b> Are_identical_to</a></li>
+<li class="chapter" data-level="4.2.13" data-path="Select_by_Location.html"><a href="Select_by_Location.html#boundary_touches"><i class="fa fa-check"></i><b>4.2.13</b> Boundary_touches</a></li>
+<li class="chapter" data-level="4.2.14" data-path="Select_by_Location.html"><a href="Select_by_Location.html#share_a_line_segment_with"><i class="fa fa-check"></i><b>4.2.14</b> Share_a_line_segment_with</a></li>
+<li class="chapter" data-level="4.2.15" data-path="Select_by_Location.html"><a href="Select_by_Location.html#crossed_by_the_outline_of"><i class="fa fa-check"></i><b>4.2.15</b> Crossed_by_the_outline_of</a></li>
+<li class="chapter" data-level="4.2.16" data-path="Select_by_Location.html"><a href="Select_by_Location.html#have_their_center_in"><i class="fa fa-check"></i><b>4.2.16</b> Have_their_center_in</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="3D_Analyst.html"><a href="3D_Analyst.html"><i class="fa fa-check"></i><b>7</b> 3D Analyst Toolbox</a>
+<li class="part"><span><b>I Geoprocessing Tools</b></span></li>
+<li class="chapter" data-level="5" data-path="03_Part_Geoprocessing_Tools.html"><a href="03_Part_Geoprocessing_Tools.html"><i class="fa fa-check"></i><b>5</b> About this Section</a></li>
+<li class="chapter" data-level="6" data-path="Data_Management.html"><a href="Data_Management.html"><i class="fa fa-check"></i><b>6</b> Data Management Toolbox</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="3D_Analyst.html"><a href="3D_Analyst.html#raster-interpolation-toolset"><i class="fa fa-check"></i><b>7.1</b> Raster Interpolation Toolset</a>
+<li class="chapter" data-level="6.1" data-path="Join_toolset.html"><a href="Join_toolset.html"><i class="fa fa-check"></i><b>6.1</b> Joins Toolset</a>
 <ul>
-<li class="chapter" data-level="7.1.1" data-path="3D_Analyst.html"><a href="3D_Analyst.html#idw"><i class="fa fa-check"></i><b>7.1.1</b> IDW</a></li>
-<li class="chapter" data-level="7.1.2" data-path="3D_Analyst.html"><a href="3D_Analyst.html#kriging"><i class="fa fa-check"></i><b>7.1.2</b> Kriging</a></li>
-<li class="chapter" data-level="7.1.3" data-path="3D_Analyst.html"><a href="3D_Analyst.html#natural-neighbor"><i class="fa fa-check"></i><b>7.1.3</b> Natural Neighbor</a></li>
+<li class="chapter" data-level="6.1.1" data-path="Join_toolset.html"><a href="Join_toolset.html#inner-join"><i class="fa fa-check"></i><b>6.1.1</b> Inner join</a></li>
+<li class="chapter" data-level="6.1.2" data-path="Join_toolset.html"><a href="Join_toolset.html#outer-join"><i class="fa fa-check"></i><b>6.1.2</b> Outer join</a></li>
+<li class="chapter" data-level="6.1.3" data-path="Join_toolset.html"><a href="Join_toolset.html#left-right-join"><i class="fa fa-check"></i><b>6.1.3</b> Left / Right join</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html"><i class="fa fa-check"></i><b>6.2</b> Projections and Transformations Toolset</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html#define-projection"><i class="fa fa-check"></i><b>6.2.1</b> Define Projection</a></li>
+<li class="chapter" data-level="6.2.2" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html#project"><i class="fa fa-check"></i><b>6.2.2</b> Project</a></li>
+<li class="chapter" data-level="6.2.3" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html#project-raster"><i class="fa fa-check"></i><b>6.2.3</b> Project Raster</a></li>
+<li class="chapter" data-level="6.2.4" data-path="Projections_and_Transformations_toolset.html"><a href="Projections_and_Transformations_toolset.html#rescale"><i class="fa fa-check"></i><b>6.2.4</b> Rescale</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="Image_Analysis.html"><a href="Image_Analysis.html"><i class="fa fa-check"></i><b>8</b> Image Analysis Toolbox</a>
+<li class="chapter" data-level="7" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html"><i class="fa fa-check"></i><b>7</b> Spatial Analyst Toolbox</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="Image_Analysis.html"><a href="Image_Analysis.html#map-algebra-toolset"><i class="fa fa-check"></i><b>8.1</b> Map Algebra Toolset</a>
+<li class="chapter" data-level="7.1" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#conditional-toolset"><i class="fa fa-check"></i><b>7.1</b> Conditional Toolset</a>
 <ul>
-<li class="chapter" data-level="8.1.1" data-path="Image_Analysis.html"><a href="Image_Analysis.html#raster-calulator"><i class="fa fa-check"></i><b>8.1.1</b> Raster Calulator</a></li>
-<li class="chapter" data-level="8.1.2" data-path="Image_Analysis.html"><a href="Image_Analysis.html#focal-statistics"><i class="fa fa-check"></i><b>8.1.2</b> Focal Statistics</a></li>
-<li class="chapter" data-level="8.1.3" data-path="Image_Analysis.html"><a href="Image_Analysis.html#zonal-statistics"><i class="fa fa-check"></i><b>8.1.3</b> Zonal Statistics</a></li>
-<li class="chapter" data-level="8.1.4" data-path="Image_Analysis.html"><a href="Image_Analysis.html#zonal-statistics-1"><i class="fa fa-check"></i><b>8.1.4</b> Zonal Statistics</a></li>
+<li class="chapter" data-level="7.1.1" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#kernel-density"><i class="fa fa-check"></i><b>7.1.1</b> Kernel Density</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#reclass-toolset"><i class="fa fa-check"></i><b>7.2</b> Reclass Toolset</a></li>
+<li class="chapter" data-level="7.3" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#surface-toolset"><i class="fa fa-check"></i><b>7.3</b> Surface Toolset</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#slope-and-aspect"><i class="fa fa-check"></i><b>7.3.1</b> Slope and Aspect</a></li>
+<li class="chapter" data-level="7.3.2" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html#reclassify"><i class="fa fa-check"></i><b>7.3.2</b> Reclassify</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="Analysis.html"><a href="Analysis.html"><i class="fa fa-check"></i><b>9</b> Analysis Toolbox</a>
+<li class="chapter" data-level="8" data-path="3D_Analyst.html"><a href="3D_Analyst.html"><i class="fa fa-check"></i><b>8</b> 3D Analyst Toolbox</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="Analysis.html"><a href="Analysis.html#clip"><i class="fa fa-check"></i><b>9.1</b> Clip</a></li>
-<li class="chapter" data-level="9.2" data-path="Analysis.html"><a href="Analysis.html#merge"><i class="fa fa-check"></i><b>9.2</b> Merge</a></li>
-<li class="chapter" data-level="9.3" data-path="Analysis.html"><a href="Analysis.html#spatial-join"><i class="fa fa-check"></i><b>9.3</b> Spatial Join</a></li>
-<li class="chapter" data-level="9.4" data-path="Analysis.html"><a href="Analysis.html#buffer"><i class="fa fa-check"></i><b>9.4</b> Buffer</a></li>
+<li class="chapter" data-level="8.1" data-path="3D_Analyst.html"><a href="3D_Analyst.html#raster-interpolation-toolset"><i class="fa fa-check"></i><b>8.1</b> Raster Interpolation Toolset</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="3D_Analyst.html"><a href="3D_Analyst.html#idw"><i class="fa fa-check"></i><b>8.1.1</b> IDW</a></li>
+<li class="chapter" data-level="8.1.2" data-path="3D_Analyst.html"><a href="3D_Analyst.html#kriging"><i class="fa fa-check"></i><b>8.1.2</b> Kriging</a></li>
+<li class="chapter" data-level="8.1.3" data-path="3D_Analyst.html"><a href="3D_Analyst.html#natural-neighbor"><i class="fa fa-check"></i><b>8.1.3</b> Natural Neighbor</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="Chapter_overview.html"><a href="Chapter_overview.html"><i class="fa fa-check"></i><b>10</b> Topology Rules</a>
+</ul></li>
+<li class="chapter" data-level="9" data-path="Image_Analysis.html"><a href="Image_Analysis.html"><i class="fa fa-check"></i><b>9</b> Image Analysis Toolbox</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="Polygon.html"><a href="Polygon.html"><i class="fa fa-check"></i><b>10.1</b> Polygon</a>
+<li class="chapter" data-level="9.1" data-path="Image_Analysis.html"><a href="Image_Analysis.html#map-algebra-toolset"><i class="fa fa-check"></i><b>9.1</b> Map Algebra Toolset</a>
 <ul>
-<li class="chapter" data-level="10.1.1" data-path="Polygon.html"><a href="Polygon.html#must-not-overlap"><i class="fa fa-check"></i><b>10.1.1</b> Must not overlap</a></li>
-<li class="chapter" data-level="10.1.2" data-path="Polygon.html"><a href="Polygon.html#must-not-have-gaps"><i class="fa fa-check"></i><b>10.1.2</b> Must not have gaps</a></li>
-<li class="chapter" data-level="10.1.3" data-path="Polygon.html"><a href="Polygon.html#contains-point"><i class="fa fa-check"></i><b>10.1.3</b> Contains point</a></li>
-<li class="chapter" data-level="10.1.4" data-path="Polygon.html"><a href="Polygon.html#contains-one-point"><i class="fa fa-check"></i><b>10.1.4</b> Contains one Point</a></li>
-<li class="chapter" data-level="10.1.5" data-path="Polygon.html"><a href="Polygon.html#must-be-covered-by-feature-class-of"><i class="fa fa-check"></i><b>10.1.5</b> Must be covered by feature class of</a></li>
-<li class="chapter" data-level="10.1.6" data-path="Polygon.html"><a href="Polygon.html#boundary-must-be-covered-by"><i class="fa fa-check"></i><b>10.1.6</b> Boundary must be covered by</a></li>
-<li class="chapter" data-level="10.1.7" data-path="Polygon.html"><a href="Polygon.html#must-not-overlap-with"><i class="fa fa-check"></i><b>10.1.7</b> Must not overlap with</a></li>
-<li class="chapter" data-level="10.1.8" data-path="Polygon.html"><a href="Polygon.html#must-be-covered-by"><i class="fa fa-check"></i><b>10.1.8</b> Must be covered by</a></li>
-<li class="chapter" data-level="10.1.9" data-path="Polygon.html"><a href="Polygon.html#area-boundary-must-be-covered-by-boundary-of"><i class="fa fa-check"></i><b>10.1.9</b> Area boundary must be covered by boundary of</a></li>
-<li class="chapter" data-level="10.1.10" data-path="Polygon.html"><a href="Polygon.html#must-cover-each-other"><i class="fa fa-check"></i><b>10.1.10</b> Must cover each other</a></li>
+<li class="chapter" data-level="9.1.1" data-path="Image_Analysis.html"><a href="Image_Analysis.html#raster-calulator"><i class="fa fa-check"></i><b>9.1.1</b> Raster Calulator</a></li>
+<li class="chapter" data-level="9.1.2" data-path="Image_Analysis.html"><a href="Image_Analysis.html#focal-statistics"><i class="fa fa-check"></i><b>9.1.2</b> Focal Statistics</a></li>
+<li class="chapter" data-level="9.1.3" data-path="Image_Analysis.html"><a href="Image_Analysis.html#zonal-statistics"><i class="fa fa-check"></i><b>9.1.3</b> Zonal Statistics</a></li>
+<li class="chapter" data-level="9.1.4" data-path="Image_Analysis.html"><a href="Image_Analysis.html#zonal-statistics-1"><i class="fa fa-check"></i><b>9.1.4</b> Zonal Statistics</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="Analysis.html"><a href="Analysis.html"><i class="fa fa-check"></i><b>10</b> Analysis Toolbox</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="Analysis.html"><a href="Analysis.html#clip"><i class="fa fa-check"></i><b>10.1</b> Clip</a></li>
+<li class="chapter" data-level="10.2" data-path="Analysis.html"><a href="Analysis.html#merge"><i class="fa fa-check"></i><b>10.2</b> Merge</a></li>
+<li class="chapter" data-level="10.3" data-path="Analysis.html"><a href="Analysis.html#spatial-join"><i class="fa fa-check"></i><b>10.3</b> Spatial Join</a></li>
+<li class="chapter" data-level="10.4" data-path="Analysis.html"><a href="Analysis.html#buffer"><i class="fa fa-check"></i><b>10.4</b> Buffer</a></li>
+</ul></li>
+<li class="part"><span><b>II Topology Rules</b></span></li>
+<li class="chapter" data-level="11" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html"><i class="fa fa-check"></i><b>11</b> About this section</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#spatial-predicates"><i class="fa fa-check"></i><b>11.1</b> Spatial Predicates</a></li>
+<li class="chapter" data-level="11.2" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#some-examples"><i class="fa fa-check"></i><b>11.2</b> Some examples</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#equals"><i class="fa fa-check"></i><b>11.2.1</b> Equals</a></li>
+<li class="chapter" data-level="11.2.2" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#disjoint"><i class="fa fa-check"></i><b>11.2.2</b> Disjoint</a></li>
+<li class="chapter" data-level="11.2.3" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#touches"><i class="fa fa-check"></i><b>11.2.3</b> Touches</a></li>
+<li class="chapter" data-level="11.2.4" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#contains-1"><i class="fa fa-check"></i><b>11.2.4</b> Contains</a></li>
+<li class="chapter" data-level="11.2.5" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#covers"><i class="fa fa-check"></i><b>11.2.5</b> Covers</a></li>
+<li class="chapter" data-level="11.2.6" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#intersects"><i class="fa fa-check"></i><b>11.2.6</b> Intersects</a></li>
+<li class="chapter" data-level="11.2.7" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#within-1"><i class="fa fa-check"></i><b>11.2.7</b> Within</a></li>
+<li class="chapter" data-level="11.2.8" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#coveredby"><i class="fa fa-check"></i><b>11.2.8</b> CoveredBy</a></li>
+<li class="chapter" data-level="11.2.9" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#crosses"><i class="fa fa-check"></i><b>11.2.9</b> Crosses</a></li>
+<li class="chapter" data-level="11.2.10" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#overlaps"><i class="fa fa-check"></i><b>11.2.10</b> Overlaps</a></li>
+<li class="chapter" data-level="11.2.11" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#touches-1"><i class="fa fa-check"></i><b>11.2.11</b> Touches</a></li>
+<li class="chapter" data-level="11.2.12" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#custom-relationships"><i class="fa fa-check"></i><b>11.2.12</b> Custom relationships</a></li>
+<li class="chapter" data-level="11.2.13" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#rooks-case"><i class="fa fa-check"></i><b>11.2.13</b> Rooks Case</a></li>
+<li class="chapter" data-level="11.2.14" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#bishops-case"><i class="fa fa-check"></i><b>11.2.14</b> Bishops Case</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="Polygon.html"><a href="Polygon.html"><i class="fa fa-check"></i><b>11.3</b> Polygon</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="Polygon.html"><a href="Polygon.html#must-not-overlap"><i class="fa fa-check"></i><b>11.3.1</b> Must not overlap</a></li>
+<li class="chapter" data-level="11.3.2" data-path="Polygon.html"><a href="Polygon.html#must-not-have-gaps"><i class="fa fa-check"></i><b>11.3.2</b> Must not have gaps</a></li>
+<li class="chapter" data-level="11.3.3" data-path="Polygon.html"><a href="Polygon.html#contains-point"><i class="fa fa-check"></i><b>11.3.3</b> Contains point</a></li>
+<li class="chapter" data-level="11.3.4" data-path="Polygon.html"><a href="Polygon.html#contains-one-point"><i class="fa fa-check"></i><b>11.3.4</b> Contains one Point</a></li>
+<li class="chapter" data-level="11.3.5" data-path="Polygon.html"><a href="Polygon.html#must-be-covered-by-feature-class-of"><i class="fa fa-check"></i><b>11.3.5</b> Must be covered by feature class of</a></li>
+<li class="chapter" data-level="11.3.6" data-path="Polygon.html"><a href="Polygon.html#boundary-must-be-covered-by"><i class="fa fa-check"></i><b>11.3.6</b> Boundary must be covered by</a></li>
+<li class="chapter" data-level="11.3.7" data-path="Polygon.html"><a href="Polygon.html#must-not-overlap-with"><i class="fa fa-check"></i><b>11.3.7</b> Must not overlap with</a></li>
+<li class="chapter" data-level="11.3.8" data-path="Polygon.html"><a href="Polygon.html#must-be-covered-by"><i class="fa fa-check"></i><b>11.3.8</b> Must be covered by</a></li>
+<li class="chapter" data-level="11.3.9" data-path="Polygon.html"><a href="Polygon.html#area-boundary-must-be-covered-by-boundary-of"><i class="fa fa-check"></i><b>11.3.9</b> Area boundary must be covered by boundary of</a></li>
+<li class="chapter" data-level="11.3.10" data-path="Polygon.html"><a href="Polygon.html#must-cover-each-other"><i class="fa fa-check"></i><b>11.3.10</b> Must cover each other</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="Line.html"><a href="Line.html"><i class="fa fa-check"></i><b>11.4</b> Line</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="Line.html"><a href="Line.html#must-not-have-pseudo-nodes"><i class="fa fa-check"></i><b>11.4.1</b> Must not have pseudo nodes</a></li>
+<li class="chapter" data-level="11.4.2" data-path="Line.html"><a href="Line.html#must-not-have-dangles"><i class="fa fa-check"></i><b>11.4.2</b> Must not have dangles</a></li>
+<li class="chapter" data-level="11.4.3" data-path="Line.html"><a href="Line.html#must-not-self-overlap"><i class="fa fa-check"></i><b>11.4.3</b> Must not self overlap</a></li>
+<li class="chapter" data-level="11.4.4" data-path="Line.html"><a href="Line.html#must-not-overlap-1"><i class="fa fa-check"></i><b>11.4.4</b> Must not overlap</a></li>
+<li class="chapter" data-level="11.4.5" data-path="Line.html"><a href="Line.html#must-not-self-intersect"><i class="fa fa-check"></i><b>11.4.5</b> Must not self-intersect</a></li>
+<li class="chapter" data-level="11.4.6" data-path="Line.html"><a href="Line.html#must-not-intersect"><i class="fa fa-check"></i><b>11.4.6</b> Must not intersect</a></li>
+<li class="chapter" data-level="11.4.7" data-path="Line.html"><a href="Line.html#must-be-single-part"><i class="fa fa-check"></i><b>11.4.7</b> Must be single part</a></li>
+<li class="chapter" data-level="11.4.8" data-path="Line.html"><a href="Line.html#must-not-intersect-with"><i class="fa fa-check"></i><b>11.4.8</b> Must not intersect with</a></li>
+<li class="chapter" data-level="11.4.9" data-path="Line.html"><a href="Line.html#must-be-covered-by-feature-class-of-1"><i class="fa fa-check"></i><b>11.4.9</b> Must be covered by feature class of</a></li>
+<li class="chapter" data-level="11.4.10" data-path="Line.html"><a href="Line.html#must-not-intersect-or-touch-interior"><i class="fa fa-check"></i><b>11.4.10</b> Must not intersect or touch interior</a></li>
+<li class="chapter" data-level="11.4.11" data-path="Line.html"><a href="Line.html#must-be-covered-by-boundary-of"><i class="fa fa-check"></i><b>11.4.11</b> Must be covered by boundary of</a></li>
+<li class="chapter" data-level="11.4.12" data-path="Line.html"><a href="Line.html#must-not-intersect-or-touch-interior-with"><i class="fa fa-check"></i><b>11.4.12</b> Must not intersect or touch interior with</a></li>
+<li class="chapter" data-level="11.4.13" data-path="Line.html"><a href="Line.html#must-be-properly-inside"><i class="fa fa-check"></i><b>11.4.13</b> Must be properly inside</a></li>
+<li class="chapter" data-level="11.4.14" data-path="Line.html"><a href="Line.html#must-not-overlap-with-1"><i class="fa fa-check"></i><b>11.4.14</b> Must not overlap with</a></li>
+<li class="chapter" data-level="11.4.15" data-path="Line.html"><a href="Line.html#endpoint-must-be-covered-by"><i class="fa fa-check"></i><b>11.4.15</b> Endpoint must be covered by</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="Point.html"><a href="Point.html"><i class="fa fa-check"></i><b>11.5</b> Point</a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="Point.html"><a href="Point.html#must-coincide-with"><i class="fa fa-check"></i><b>11.5.1</b> Must coincide with</a></li>
+<li class="chapter" data-level="11.5.2" data-path="Point.html"><a href="Point.html#must-be-disjoint"><i class="fa fa-check"></i><b>11.5.2</b> Must be disjoint</a></li>
+<li class="chapter" data-level="11.5.3" data-path="Point.html"><a href="Point.html#must-be-covered-by-endpoint-of"><i class="fa fa-check"></i><b>11.5.3</b> Must be covered by endpoint of</a></li>
+<li class="chapter" data-level="11.5.4" data-path="Point.html"><a href="Point.html#point-must-be-covered-by-line"><i class="fa fa-check"></i><b>11.5.4</b> Point must be covered by line</a></li>
+<li class="chapter" data-level="11.5.5" data-path="Point.html"><a href="Point.html#must-be-properly-inside-1"><i class="fa fa-check"></i><b>11.5.5</b> Must be properly inside</a></li>
+<li class="chapter" data-level="11.5.6" data-path="Point.html"><a href="Point.html#must-be-covered-by-boundary-of-1"><i class="fa fa-check"></i><b>11.5.6</b> Must be covered by boundary of</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="Line_or_Polygon.html"><a href="Line_or_Polygon.html"><i class="fa fa-check"></i><b>11.6</b> Line or Polygon</a>
+<ul>
+<li class="chapter" data-level="11.6.1" data-path="Line_or_Polygon.html"><a href="Line_or_Polygon.html#must-be-larger-than-cluster-tolarance"><i class="fa fa-check"></i><b>11.6.1</b> Must be larger than cluster tolarance</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -281,16 +353,13 @@ Developped by the Research Group for Geoinformatics @ ZHAW</a></li>
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="spatial-analyst-toolbox" class="section level1" number="6">
-<h1><span class="header-section-number">6</span> Spatial Analyst Toolbox</h1>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="Spatial_Analyst.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb47-2"><a href="Spatial_Analyst.html#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb47-3"><a href="Spatial_Analyst.html#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span></code></pre></div>
-<div id="conditional-toolset" class="section level2" number="6.1">
-<h2><span class="header-section-number">6.1</span> Conditional Toolset</h2>
+<div id="spatial-analyst-toolbox" class="section level1" number="7">
+<h1><span class="header-section-number">7</span> Spatial Analyst Toolbox</h1>
+<div id="conditional-toolset" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> Conditional Toolset</h2>
 <!-- ## Density Toolset -->
-<div id="kernel-density" class="section level3" number="6.1.1">
-<h3><span class="header-section-number">6.1.1</span> Kernel Density</h3>
+<div id="kernel-density" class="section level3" number="7.1.1">
+<h3><span class="header-section-number">7.1.1</span> Kernel Density</h3>
 <p>There are several Function that can be tweaked to calculate KDE for <code>sf</code>-Point object:</p>
 <ul>
 <li><code>tmaptools::smooth_map()</code>: Depricated (is there a successor?)</li>
@@ -298,43 +367,8 @@ Developped by the Research Group for Geoinformatics @ ZHAW</a></li>
 <li><code>MASS::kde2d()</code>: Takes x/y coordinates as vectors and returns a matrix</li>
 </ul>
 <p>In this example, I take <code>MASS:kde2d()</code> and tweak it to take <code>sf</code> and return <code>raster</code>. First, let’s create some sample data:</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="Spatial_Analyst.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">10</span>)</span>
-<span id="cb48-2"><a href="Spatial_Analyst.html#cb48-2" aria-hidden="true" tabindex="-1"></a>mypoints <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>),<span class="at">y =</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb48-3"><a href="Spatial_Analyst.html#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb48-4"><a href="Spatial_Analyst.html#cb48-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-5"><a href="Spatial_Analyst.html#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mypoints)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-59-1.png" width="672" /></p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="Spatial_Analyst.html#cb49-1" aria-hidden="true" tabindex="-1"></a>my_kde <span class="ot">&lt;-</span> <span class="cf">function</span>(points,cellsize, bandwith, <span class="at">extent =</span> <span class="cn">NULL</span>){</span>
-<span id="cb49-2"><a href="Spatial_Analyst.html#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(MASS)</span>
-<span id="cb49-3"><a href="Spatial_Analyst.html#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(raster)</span>
-<span id="cb49-4"><a href="Spatial_Analyst.html#cb49-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(sf)</span>
-<span id="cb49-5"><a href="Spatial_Analyst.html#cb49-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">is.null</span>(extent)){</span>
-<span id="cb49-6"><a href="Spatial_Analyst.html#cb49-6" aria-hidden="true" tabindex="-1"></a>    extent_vec <span class="ot">&lt;-</span> <span class="fu">st_bbox</span>(points)[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>)]</span>
-<span id="cb49-7"><a href="Spatial_Analyst.html#cb49-7" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span>{</span>
-<span id="cb49-8"><a href="Spatial_Analyst.html#cb49-8" aria-hidden="true" tabindex="-1"></a>    extent_vec <span class="ot">&lt;-</span> <span class="fu">st_bbox</span>(extent)[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>)]</span>
-<span id="cb49-9"><a href="Spatial_Analyst.html#cb49-9" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb49-10"><a href="Spatial_Analyst.html#cb49-10" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb49-11"><a href="Spatial_Analyst.html#cb49-11" aria-hidden="true" tabindex="-1"></a>  n_y <span class="ot">&lt;-</span> <span class="fu">ceiling</span>((extent_vec[<span class="dv">4</span>]<span class="sc">-</span>extent_vec[<span class="dv">3</span>])<span class="sc">/</span>cellsize)</span>
-<span id="cb49-12"><a href="Spatial_Analyst.html#cb49-12" aria-hidden="true" tabindex="-1"></a>  n_x <span class="ot">&lt;-</span> <span class="fu">ceiling</span>((extent_vec[<span class="dv">2</span>]<span class="sc">-</span>extent_vec[<span class="dv">1</span>])<span class="sc">/</span>cellsize)</span>
-<span id="cb49-13"><a href="Spatial_Analyst.html#cb49-13" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb49-14"><a href="Spatial_Analyst.html#cb49-14" aria-hidden="true" tabindex="-1"></a>  extent_vec[<span class="dv">2</span>] <span class="ot">&lt;-</span> extent_vec[<span class="dv">1</span>]<span class="sc">+</span>(n_x<span class="sc">*</span>cellsize)<span class="sc">-</span>cellsize</span>
-<span id="cb49-15"><a href="Spatial_Analyst.html#cb49-15" aria-hidden="true" tabindex="-1"></a>  extent_vec[<span class="dv">4</span>] <span class="ot">&lt;-</span> extent_vec[<span class="dv">3</span>]<span class="sc">+</span>(n_y<span class="sc">*</span>cellsize)<span class="sc">-</span>cellsize</span>
-<span id="cb49-16"><a href="Spatial_Analyst.html#cb49-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-17"><a href="Spatial_Analyst.html#cb49-17" aria-hidden="true" tabindex="-1"></a>  coords <span class="ot">&lt;-</span> <span class="fu">st_coordinates</span>(points)</span>
-<span id="cb49-18"><a href="Spatial_Analyst.html#cb49-18" aria-hidden="true" tabindex="-1"></a>  matrix <span class="ot">&lt;-</span> <span class="fu">kde2d</span>(coords[,<span class="dv">1</span>],coords[,<span class="dv">2</span>],<span class="at">h =</span> bandwith,<span class="at">n =</span> <span class="fu">c</span>(n_x,n_y),<span class="at">lims =</span> extent_vec)</span>
-<span id="cb49-19"><a href="Spatial_Analyst.html#cb49-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">raster</span>(matrix)</span>
-<span id="cb49-20"><a href="Spatial_Analyst.html#cb49-20" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="Spatial_Analyst.html#cb50-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-2"><a href="Spatial_Analyst.html#cb50-2" aria-hidden="true" tabindex="-1"></a>mypoints_kde <span class="ot">&lt;-</span> <span class="fu">my_kde</span>(mypoints,<span class="fl">0.01</span>,<span class="dv">1</span>)</span>
-<span id="cb50-3"><a href="Spatial_Analyst.html#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stars)</span>
-<span id="cb50-4"><a href="Spatial_Analyst.html#cb50-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-5"><a href="Spatial_Analyst.html#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb50-6"><a href="Spatial_Analyst.html#cb50-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_stars</span>(<span class="at">data =</span> <span class="fu">st_as_stars</span>(mypoints_kde)) <span class="sc">+</span></span>
-<span id="cb50-7"><a href="Spatial_Analyst.html#cb50-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> mypoints, <span class="at">alpha =</span> <span class="fl">0.2</span>, <span class="at">fill =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
-<span id="cb50-8"><a href="Spatial_Analyst.html#cb50-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>() <span class="sc">+</span></span>
-<span id="cb50-9"><a href="Spatial_Analyst.html#cb50-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">fill =</span> <span class="st">&quot;KDE&quot;</span>) <span class="sc">+</span></span>
-<span id="cb50-10"><a href="Spatial_Analyst.html#cb50-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() </span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-61-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-63-1.png" width="672" /></p>
 <!-- ### Line Density -->
 <!-- ### Point Density -->
 <!-- ## Distance Toolset -->
@@ -352,18 +386,18 @@ Developped by the Research Group for Geoinformatics @ ZHAW</a></li>
 <!-- ### Weighted Sum -->
 </div>
 </div>
-<div id="reclass-toolset" class="section level2" number="6.2">
-<h2><span class="header-section-number">6.2</span> Reclass Toolset</h2>
+<div id="reclass-toolset" class="section level2" number="7.2">
+<h2><span class="header-section-number">7.2</span> Reclass Toolset</h2>
 <!-- ### Lookup -->
 <!-- ### Reclass by ASCII File -->
 <!-- ### Reclass by Table -->
 <!-- ### Rescale by Function -->
 <!-- ### Slice -->
 </div>
-<div id="surface-toolset" class="section level2" number="6.3">
-<h2><span class="header-section-number">6.3</span> Surface Toolset</h2>
-<div id="slope-and-aspect" class="section level3" number="6.3.1">
-<h3><span class="header-section-number">6.3.1</span> Slope and Aspect</h3>
+<div id="surface-toolset" class="section level2" number="7.3">
+<h2><span class="header-section-number">7.3</span> Surface Toolset</h2>
+<div id="slope-and-aspect" class="section level3" number="7.3.1">
+<h3><span class="header-section-number">7.3.1</span> Slope and Aspect</h3>
 <blockquote>
 <p>In mathematics, the slope or gradient of a line describes its steepness, incline, or grade. A higher slope value indicates a steeper incl.<br />
 Source: “<a href="http://wiki.gis.com/wiki/index.php/Slope" class="uri">http://wiki.gis.com/wiki/index.php/Slope</a>”</p>
@@ -377,23 +411,10 @@ The lower the slope value, the flatter the terrain; the higher the slope value, 
 <p>In <code>R</code>, <code>raster</code> package includes the function <code>terrain()</code>, which helps us compute
 <em>slope</em>, <em>aspect</em> and other terrain characteristics from a raster with elevation data.<br />
 Let’s start by computing the <em>slope</em> of the <strong>swissAlti3d</strong> raster dataset.</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="Spatial_Analyst.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing a raster dataset</span></span>
-<span id="cb51-2"><a href="Spatial_Analyst.html#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="co"># swissALTI3D2019.tif -- Source: https://geovite.ethz.ch</span></span>
-<span id="cb51-3"><a href="Spatial_Analyst.html#cb51-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-4"><a href="Spatial_Analyst.html#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
-<span id="cb51-5"><a href="Spatial_Analyst.html#cb51-5" aria-hidden="true" tabindex="-1"></a>swissAlti3d <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="st">&quot;sample_data/Raster/swissALTI3D2019.tif&quot;</span>)</span>
-<span id="cb51-6"><a href="Spatial_Analyst.html#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(swissAlti3d,</span>
-<span id="cb51-7"><a href="Spatial_Analyst.html#cb51-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;swissALTI3D2019 - CRS: CH1903+LV95&quot;</span>,</span>
-<span id="cb51-8"><a href="Spatial_Analyst.html#cb51-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex.main=</span><span class="dv">1</span>,<span class="at">font.main=</span><span class="dv">4</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-64-1.png" width="672" /></p>
 <p>After importing and visualizing our raster dataset, we use the <code>terrain</code> function
 to calculate the slope.</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="Spatial_Analyst.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Computing the slope of a raster dataset using the terrain() function</span></span>
-<span id="cb52-2"><a href="Spatial_Analyst.html#cb52-2" aria-hidden="true" tabindex="-1"></a>swissAlti3d_slope <span class="ot">&lt;-</span> <span class="fu">terrain</span>(swissAlti3d, <span class="at">opt=</span><span class="st">&quot;slope&quot;</span>, <span class="at">unit=</span><span class="st">&quot;degrees&quot;</span>)</span>
-<span id="cb52-3"><a href="Spatial_Analyst.html#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(swissAlti3d_slope,</span>
-<span id="cb52-4"><a href="Spatial_Analyst.html#cb52-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Slope of swissALTI3D2019 in degrees (°)&quot;</span>,</span>
-<span id="cb52-5"><a href="Spatial_Analyst.html#cb52-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex.main=</span><span class="dv">1</span>,<span class="at">font.main=</span><span class="dv">4</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-63-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-65-1.png" width="672" /></p>
 <p>In the function above, we define the operation we want to perform as the second
 argument of the function (<em>opt = “slope”</em>). Furthermore, we also define the units
 of the final result.<br />
@@ -401,18 +422,13 @@ Similarly, we compute the <code>aspect</code> of a given dataset. Basically as <
 consider the compass direction that a <code>slope</code> leans towards.<br />
 Let’s compute now, using again the same function <code>terrain</code>, the <code>aspect</code> of the
 same dataset <strong>swissALTI3D2019</strong>.</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="Spatial_Analyst.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Computing the aspect of the terrain dataset</span></span>
-<span id="cb53-2"><a href="Spatial_Analyst.html#cb53-2" aria-hidden="true" tabindex="-1"></a>swissAlti3d_aspect <span class="ot">&lt;-</span> <span class="fu">terrain</span>(swissAlti3d, <span class="at">opt=</span><span class="st">&quot;aspect&quot;</span>, <span class="at">unit=</span><span class="st">&quot;degrees&quot;</span>)</span>
-<span id="cb53-3"><a href="Spatial_Analyst.html#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(swissAlti3d_aspect,</span>
-<span id="cb53-4"><a href="Spatial_Analyst.html#cb53-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Aspect of swissALTI3D2019 in degrees (°)&quot;</span>,</span>
-<span id="cb53-5"><a href="Spatial_Analyst.html#cb53-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex.main=</span><span class="dv">1</span>,<span class="at">font.main=</span><span class="dv">4</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-64-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-66-1.png" width="672" /></p>
 <p>So, R gives us the option to retrieve multiple terrain characteristics of a raster
 dataset, using only one function. The aforementioned spatial operation in ArcGIS pro
 could be performed using the tool <code>Aspect (Spatial Analyst)</code>.</p>
 </div>
-<div id="reclassify" class="section level3" number="6.3.2">
-<h3><span class="header-section-number">6.3.2</span> Reclassify</h3>
+<div id="reclassify" class="section level3" number="7.3.2">
+<h3><span class="header-section-number">7.3.2</span> Reclassify</h3>
 <p>In GIS quite often arises the necessity to reclassify a raster dataset. In other
 words, to create new classes with different range of values for the existing cell
 values of the dataset. This operation in ArcGIS Pro is performed using the
@@ -422,19 +438,15 @@ the <code>reclassify</code> function of the <code>raster</code> package. For our
 raster dataset we computed previously, which depicts the <code>aspect</code> of the <strong>swissALTI3D2019</strong>
 dataset.</p>
 <p>As a first step, we can compute the histogram of our dataset.</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="Spatial_Analyst.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(swissAlti3d_aspect)</span>
-<span id="cb54-2"><a href="Spatial_Analyst.html#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="do">##             aspect</span></span>
-<span id="cb54-3"><a href="Spatial_Analyst.html#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Min.        0.0000</span></span>
-<span id="cb54-4"><a href="Spatial_Analyst.html#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 1st Qu.   104.1014</span></span>
-<span id="cb54-5"><a href="Spatial_Analyst.html#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Median    163.3606</span></span>
-<span id="cb54-6"><a href="Spatial_Analyst.html#cb54-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 3rd Qu.   258.6777</span></span>
-<span id="cb54-7"><a href="Spatial_Analyst.html#cb54-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Max.      359.9991</span></span>
-<span id="cb54-8"><a href="Spatial_Analyst.html#cb54-8" aria-hidden="true" tabindex="-1"></a><span class="do">## NA&#39;s    12652.0000</span></span>
-<span id="cb54-9"><a href="Spatial_Analyst.html#cb54-9" aria-hidden="true" tabindex="-1"></a>histinfo <span class="ot">&lt;-</span> <span class="fu">hist</span>(swissAlti3d_aspect)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-65-1.png" width="672" /></p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="Spatial_Analyst.html#cb55-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-2"><a href="Spatial_Analyst.html#cb55-2" aria-hidden="true" tabindex="-1"></a>histinfo<span class="sc">$</span>breaks</span>
-<span id="cb55-3"><a href="Spatial_Analyst.html#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]   0  20  40  60  80 100 120 140 160 180 200 220 240 260 280 300 320 340 360</span></span></code></pre></div>
+<pre><code>##             aspect
+## Min.        0.0000
+## 1st Qu.   104.1014
+## Median    163.3606
+## 3rd Qu.   258.6777
+## Max.      359.9991
+## NA&#39;s    12652.0000</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-67-1.png" width="672" /></p>
+<pre><code>##  [1]   0  20  40  60  80 100 120 140 160 180 200 220 240 260 280 300 320 340 360</code></pre>
 <p>The number of breaks for our raster values are 19. The aim of ours is to create 4
 different classes with the following values:</p>
 <ul>
@@ -444,37 +456,16 @@ different classes with the following values:</p>
 <li>270°-360° -&gt; Class 4</li>
 </ul>
 <p>To do so, we create below a reclassification matrix with the respective values.</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="Spatial_Analyst.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a reclassification matrix</span></span>
-<span id="cb56-2"><a href="Spatial_Analyst.html#cb56-2" aria-hidden="true" tabindex="-1"></a>reclass_df <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">90</span>,<span class="dv">1</span>,<span class="dv">90</span>,<span class="dv">180</span>,<span class="dv">2</span>,<span class="dv">180</span>,<span class="dv">270</span>,<span class="dv">3</span>,<span class="dv">270</span>,<span class="dv">360</span>,<span class="dv">4</span>)</span>
-<span id="cb56-3"><a href="Spatial_Analyst.html#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-4"><a href="Spatial_Analyst.html#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="co"># convert to Matrix</span></span>
-<span id="cb56-5"><a href="Spatial_Analyst.html#cb56-5" aria-hidden="true" tabindex="-1"></a>reclass_m <span class="ot">&lt;-</span> <span class="fu">matrix</span>(reclass_df,</span>
-<span id="cb56-6"><a href="Spatial_Analyst.html#cb56-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">ncol =</span> <span class="dv">3</span>,</span>
-<span id="cb56-7"><a href="Spatial_Analyst.html#cb56-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb56-8"><a href="Spatial_Analyst.html#cb56-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-9"><a href="Spatial_Analyst.html#cb56-9" aria-hidden="true" tabindex="-1"></a>reclass_m</span>
-<span id="cb56-10"><a href="Spatial_Analyst.html#cb56-10" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1] [,2] [,3]</span></span>
-<span id="cb56-11"><a href="Spatial_Analyst.html#cb56-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    0   90    1</span></span>
-<span id="cb56-12"><a href="Spatial_Analyst.html#cb56-12" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]   90  180    2</span></span>
-<span id="cb56-13"><a href="Spatial_Analyst.html#cb56-13" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]  180  270    3</span></span>
-<span id="cb56-14"><a href="Spatial_Analyst.html#cb56-14" aria-hidden="true" tabindex="-1"></a><span class="do">## [4,]  270  360    4</span></span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    0   90    1
+## [2,]   90  180    2
+## [3,]  180  270    3
+## [4,]  270  360    4</code></pre>
 <p>After creating the respective matrix with the new classes, we are ready to
 call the <code>reclassify</code> function. The function takes as a first argument the dataset
 set to be reclassified and as second the matrix, on which the reclassification is
 based on.</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="Spatial_Analyst.html#cb57-1" aria-hidden="true" tabindex="-1"></a>swissAlti3d_aspect_reclass <span class="ot">&lt;-</span> <span class="fu">reclassify</span>(swissAlti3d_aspect,</span>
-<span id="cb57-2"><a href="Spatial_Analyst.html#cb57-2" aria-hidden="true" tabindex="-1"></a>                     reclass_m)</span>
-<span id="cb57-3"><a href="Spatial_Analyst.html#cb57-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-4"><a href="Spatial_Analyst.html#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(swissAlti3d_aspect_reclass, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;yellow&quot;</span>,<span class="st">&quot;blue&quot;</span>),</span>
-<span id="cb57-5"><a href="Spatial_Analyst.html#cb57-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Aspect of swissALTI3D2019 in 4 classes&quot;</span>,</span>
-<span id="cb57-6"><a href="Spatial_Analyst.html#cb57-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex.main=</span><span class="dv">1</span>,<span class="at">font.main=</span><span class="dv">4</span>, <span class="at">legend =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb57-7"><a href="Spatial_Analyst.html#cb57-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-8"><a href="Spatial_Analyst.html#cb57-8" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>,</span>
-<span id="cb57-9"><a href="Spatial_Analyst.html#cb57-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;0°-90°&quot;</span>, <span class="st">&quot;90°-180°&quot;</span>, <span class="st">&quot;180°-270°&quot;</span>,<span class="st">&quot;270°-360°&quot;</span>),</span>
-<span id="cb57-10"><a href="Spatial_Analyst.html#cb57-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;yellow&quot;</span>),</span>
-<span id="cb57-11"><a href="Spatial_Analyst.html#cb57-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">border =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb57-12"><a href="Spatial_Analyst.html#cb57-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>) <span class="co"># turn off legend border</span></span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-67-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-69-1.png" width="672" /></p>
 <!-- ### Contour -->
 <!-- ### Contour List -->
 <!-- ### Contour with Barriers -->
@@ -527,15 +518,15 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": null,
-"text": null
+"link": "https://github.com/arc2r/book/edit/master/03_Spatial_Analyst/Spatial_Analyst.Rmd",
+"text": "Edit"
 },
 "history": {
 "link": null,
 "text": null
 },
 "view": {
-"link": null,
+"link": "https://github.com/arc2r/book/blob/master/03_Spatial_Analyst/Spatial_Analyst.Rmd",
 "text": null
 },
 "download": null,
@@ -546,6 +537,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
