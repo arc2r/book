@@ -4,9 +4,12 @@
 
 
 In ArcGIS, you create a topology rule by first creating a Feature Dataset in a Geodatabase, and then adding one or more Topology Rules to that Feature Dataset. You are provided with 32 different named rules which you can apply to this feature dataset (see \@ref(fig:topologyposter)). In 
-`R`, you will find only the most commonly used 9 named spatial relations. These are known as ["Spatial predicates"](https://en.wikipedia.org/wiki/DE-9IM#Spatial_predicates). Spatial relationships are hart to describe with words, but we will try so here. 
+`R`, you will find only the most commonly used 9 named spatial relations. These are known as ["Spatial predicates"](https://en.wikipedia.org/wiki/DE-9IM#Spatial_predicates). 
 
-Take two geometries, `a` and `b`: 
+
+## Spatial Predicates {#spatial-predicates}
+
+In Opensource GIS Applications, there is a common standard to describe various relationships between features. They are referred to as  ["Spatial predicates"](https://en.wikipedia.org/wiki/DE-9IM#Spatial_predicates) and are defined as follows. Take two geometries, `a` and `b`: 
 
 - **Equals**: `a` and `b` are equal if 
   - their interiors intersect and 
@@ -28,7 +31,8 @@ Take two geometries, `a` and `b`:
   - they have the same dimension and
   - the intersection of the interiors of the two geometries has the same dimension as the geometries themselves
 
-```{r, topologyposter, fig.cap="The 32 different topolgy rules that you can apply to one or more feature datasets in ArcGIS"}
+
+```{r, topologyposter, fig.cap="The 32 different topolgy rules that you can apply to one or more feature datasets in ArcGIS", echo = FALSE}
 knitr::include_graphics("images/topology_rules_poster.jpg")
 ```
 
@@ -37,9 +41,82 @@ In R, you can check topology using the DE-9IM together with `st_relate()`.
 
 
 
-## Binary Predicates and DE-9IM
+## Some examples
 
-Binary Predicates check topological relationships betweeen geometries. This can be very practical for data quality questions (e.g. "None of the State borders should ovelap") or for neighbourhood question (e.g. "which states border the state of Nevada?"). 
+Let's have a look at some examples from the named predicates as defined above.
+
+### Equals
+
+<!--
+# todo(KimboGilda): Write an example for this chapter, reusing the same dataset if possible
+#  and using the data from the arc2r package
+-->
+
+### Disjoint
+
+<!--
+# todo(KimboGilda): Write an example for this chapter, reusing the same dataset if possible
+#  and using the data from the arc2r package
+-->
+
+### Touches
+
+<!--
+# todo(KimboGilda): Write an example for this chapter, reusing the same dataset if possible
+#  and using the data from the arc2r package
+-->
+
+### Contains
+
+<!--
+# todo(KimboGilda): Write an example for this chapter, reusing the same dataset if possible
+#  and using the data from the arc2r package
+-->
+
+### Covers
+
+<!--
+# todo(KimboGilda): Write an example for this chapter, reusing the same dataset if possible
+#  and using the data from the arc2r package
+-->
+
+### Intersects
+
+<!--
+# todo(KimboGilda): Write an example for this chapter, reusing the same dataset if possible
+#  and using the data from the arc2r package
+-->
+
+### Within
+
+<!--
+# todo(KimboGilda): Write an example for this chapter, reusing the same dataset if possible
+#  and using the data from the arc2r package
+-->
+
+### CoveredBy
+
+<!--
+# todo(KimboGilda): Write an example for this chapter, reusing the same dataset if possible
+#  and using the data from the arc2r package
+-->
+
+### Crosses
+
+<!--
+# todo(KimboGilda): Write an example for this chapter, reusing the same dataset if possible
+#  and using the data from the arc2r package
+-->
+
+### Overlaps
+
+<!--
+# todo(KimboGilda): Write an example for this chapter, reusing the same dataset if possible
+#  and using the data from the arc2r package
+-->
+
+
+### Touches
 
 Lets take the example of a chessboard:
 
@@ -74,9 +151,8 @@ chessplot <- ggplot(board) +
 chessplot
 ```
 
-Some topological relationships have specific names. For example, if we want to know which field touch a specific field, the name for this predicate is "touches". This is implemented in the function `st_touches` of the packages `sf`:
 
-So to see which field touch field number 36, we can write the following line of code:
+To find out which field `touch` field number 36, we can write the following line of code:
 ```{r}
 st_touches(board[36,],board)
 ```
@@ -92,21 +168,19 @@ chessplot +
   geom_sf(data = board[sel36,], fill = "red",alpha = 0.4)
 ```
 
-Similarly, there are further named topological relationships. Each of them has it's own function in R:
 
-- Contains (`st_contains`)
-- Covers (`st_covers`)
-- Intersects (`st_intersects`)
-- Within / Inside (`st_within`)
-- Covered by (`st_covered_by`)
-- Crosses (`st_crosses`)
-- Overlaps (`st_overlaps`)
 
-Regarding the visual example above, we can imagine a chess piece placed on field #36. If this figure was a Queen or a King, all of the fields resulting from `st_touches` are reachable. In terms of contiguity, this is what is typically called the Queen's or the King's Case. However, this is might not the relationship that we are looking for: Say we would want to exclude the diagonal fields from our selection, the way a Rook would move in chess. How can we implement this in R? 
 
-None of the named topological relationships (binary predicates) above correctly describes this case (`touches_but_not_at_edges` or `shares_boundary` would be appropriate). In this case, we can use the Dimensionally Extended 9-Intersection Model (DE-9IM) to precisely formulate the realtionship we are looking for: the Rooks Case.
+### Custom relationships
 
-IN DE-9IM, the intersection of two objects is viewed at three levels for each object: The Interior, the Boundry and the Exterior ($3^2= 9$, hence the name). These levels mean different things for Polygons, Lines or Points, but let's just look at the simple case for now, polygons (which is the case for our chess fields). Take the following example
+
+These named spatial predicates are all based on the [Dimensionally Extended 9-Intersection Model (DE-9IM)](https://en.wikipedia.org/wiki/DE-9IM#Spatial_predicates).
+
+Regarding the chessboard example above, we can imagine a chess piece placed on field #36. If this figure was a Queen or a King, all of the fields resulting from `st_touches` are reachable. In terms of contiguity, this is what is typically called the Queen's or the King's Case. However, this is might not the relationship that we are looking for: Say we would want to exclude the diagonal fields from our selection, the way a Rook would move in chess. How can we implement this in `R`? 
+
+None of the named topological relationships above (\@ref(spatial-predicates)) correctly describes this case (`touches_but_not_at_edges` or `shares_boundary` would be appropriate). In this case, we can use the Dimensionally Extended 9-Intersection Model (DE-9IM) to precisely formulate the relationship we are looking for: the Rooks Case.
+
+IN DE-9IM, the intersection of two objects is viewed at three levels for each object: The Interior, the Boundary and the Exterior ($3^2= 9$, hence the name). These levels mean different things for Polygons, Lines or Points, but let's just look at the simple case for now, polygons (which is the case for our chess fields). Take the following example
 
 ```{r, echo = FALSE}
 mat <- matrix(c(0,0,1,0,1,1,0,1,0,0),ncol = 2,byrow = TRUE)
@@ -158,7 +232,9 @@ If we go through all intersections of **I**nterior, *`b`*oundry and **E**xterior
 
 ![](https://postgis.net/workshops/postgis-intro/_images/de9im3.jpg)
 
-Why go through all this trouble? Because we would like to specify the rooks case, and none of the named predicates matches. So let's define the rooks case ourselves:
+
+
+
 
 ### Rooks Case
 
