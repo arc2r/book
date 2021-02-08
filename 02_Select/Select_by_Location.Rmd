@@ -1,17 +1,109 @@
 ## Select by Location
 
+A very common operations when dealing with geodata is the process of selecting features based on a spatial relationship to another object (layer). In ArcGIS pro this process is usually performed using the `Select by Location tool`. This tool offers selecting features based on the following relationships:
+
+- **intersect**: The features in the input layer will be selected if they intersect a selecting feature. This is the default.
+- **intersect_3d**: The features in the input layer will be selected if they intersect a selecting feature in three-dimensional space (x, y, and z).
+- **within_a_distance**: The features in the input layer will be selected if they are within the specified distance (using Euclidean distance) of a selecting feature. Use the search_distance parameter to specify the distance.
+- **within_a_distance_3d**: The features in the input layer will be selected if they are within a specified distance of a selecting feature in three-dimensional space. Use the search_distance parameter to specify the distance.
+- **within_a_distance_geodesic**: The features in the input layer will be selected if they are within a specified distance of a selecting feature. Distance between features will be calculated using a geodesic formula that takes into account the curvature of the spheroid and correctly handles data near and across the dateline and poles. Use the search_distance parameter to specify the distance.
+- **contains**: The features in the input layer will be selected if they contain a selecting feature.
+- **completely_contains**: The features in the input layer will be selected if they completely contain a selecting feature.
+- **contains_clementini**: This spatial relationship yields the same results as COMPLETELY_CONTAINS with the exception that if the selecting feature is entirely on the boundary of the input feature (no part is properly inside or outside), the feature will not be selected. CLEMENTINI defines the boundary polygon as the line separating inside and outside, the boundary of a line is defined as its end points, and the boundary of a point is always empty.
+- **within**: The features in the input layer will be selected if they are within a selecting feature.
+- **completely_within**: The features in the input layer will be selected if they are completely within or contained by a selecting feature.
+- **within_clementini**: The result will be identical to WITHIN with the exception that if the entirety of the feature in the input layer is on the boundary of the feature in the selecting layer, the feature will not be selected. CLEMENTINI defines the boundary polygon as the line separating inside and outside, the boundary of a line is defined as its end points, and the boundary of a point is always empty.
+- **are_identical_to**: The features in the input layer will be selected if they are identical (in geometry) to a selecting feature.
+- **boundary_touches**: The features in the input layer will be selected if they have a boundary that touches a selecting feature. When the input features are lines or polygons, the boundary of the input feature can only touch the boundary of the selecting feature, and no part of the input feature can cross the boundary of the selecting feature.
+- **share_a_line_segment_with**: The features in the input layer will be selected if they share a line segment with a selecting feature. The input and selecting features must be line or polygon.
+- **crossed_by_the_outline_of**: The features in the input layer will be selected if they are crossed by the outline of a selecting feature. The input and selecting features must be lines or polygons. If polygons are used for the input or selecting layer, the polygon's boundary (line) will be used. Lines that cross at a point will be selected; lines that share a line segment will not be selected.
+- **have_their_center_in**: The features in the input layer will be selected if their center falls within a selecting feature. The center of the feature is calculated as follows: for polygon and multipoint, the geometry's centroid is used; for line input, the geometry's midpoint is used.
+
+
+Note that many these relationships are specified in an elegant, generic approach known as ["Spatial Predicates"](https://en.wikipedia.org/wiki/DE-9IM#Spatial_predicates). Read more about this in chapter \@ref(spatial-predicates)
+
+
+```{block2, type = "rmdnote"}
+The operations are based on the following rule: `x[y, ,operation]`, where:  
+
+
+-  __x__ and __y__ are the spatial objects for which we want to investigate if there is a spatial relationship (x is the target feature, while y is the source one)  
+-  the second argument `[, ,]` within the brackets denotes the column number we want to retrieve from the spatial subsetting. In our example this argument was empty, which means we wanted to retrieve all rows for every __attribute column__.  
+-  the third argument `[op = ]` specifies the spatial operation we want to perform. In the example above, the goal was to find out how many subset features of the target object _swimmSpots_ lie withing the source spatial object _richterswil_. For that reason we chose the function `st_within()`.
+```
+
+
+For this chapter, we will use the following libraries:
+
 ```{r,echo=FALSE}
 knitr::opts_chunk$set(warning = F, message = F, tidy = T)
 library(dplyr)
 library(sf)
 library(ggplot2)
 ```
-One of the most commonly used operations in ArcGIS pro is the process of selecting features of a spatial object (layer) based on whether or not these relate spatially to another object (layer). This process is also referred as __spatial subsetting__. In ArcGIS pro this can be performed in various ways using the `Select by Location tool`. 
 
-In `R` the same operation is, on a first level, performed using the square bracket (`[]`) operator from the base R package.
 
-An example of spatial subsetting could be the following. Let's assume we have as a shapefile (polygon dataframe) with all the municipalities (Gemeinde) of the Canton of Zurich. Furthermore, we are also using a shapefile in the form of a point dataframe, which represents all the __"swimming spots"__ (Badenplätze) in the same spatial region (Canton of Zurich). So, ultimately, our goal is to find out the __"swimming spots"__ that lie within a specific municipality of the Canton of Zurich. 
 
+### Intersect
+
+<!--
+# todo(KimboGilda): Write an example for this chapter, reusing the same dataset if possible
+#  and using the data from the arc2r package
+-->
+
+### Intersect_3d
+
+<!--
+# todo(KimboGilda): Write an example for this chapter, reusing the same dataset if possible
+#  and using the data from the arc2r package
+-->
+
+### Within_a_distance
+
+<!--
+# todo(KimboGilda): Write an example for this chapter, reusing the same dataset if possible
+#  and using the data from the arc2r package
+-->
+
+### Within_a_distance_3d
+
+<!--
+# todo(KimboGilda): Write an example for this chapter, reusing the same dataset if possible
+#  and using the data from the arc2r package
+-->
+
+### Within_a_distance_geodesic
+
+<!--
+# todo(KimboGilda): Write an example for this chapter, reusing the same dataset if possible
+#  and using the data from the arc2r package
+-->
+
+### Contains
+
+<!--
+# todo(KimboGilda): Write an example for this chapter, reusing the same dataset if possible
+#  and using the data from the arc2r package
+-->
+
+### Completely_contains
+
+<!--
+# todo(KimboGilda): Write an example for this chapter, reusing the same dataset if possible
+#  and using the data from the arc2r package
+-->
+
+### Contains_clementini
+
+<!--
+# todo(KimboGilda): Write an example for this chapter, reusing the same dataset if possible
+#  and using the data from the arc2r package
+-->
+
+### Within
+
+
+An example of spatial subsetting could be the following. Let's assume we have as a polygon dataset with all the municipalities (Gemeinden) of the Canton of Zurich. Furthermore, we are also using a shapefile in the form of a point dataframe, which represents all the __"swimming spots"__ (Badenplätze) in the same spatial region (Canton of Zurich). So, ultimately, our goal is to find out the __"swimming spots"__ that lie within a specific municipality of the Canton of Zurich. 
 
 ```{r echo=T}
 
@@ -30,7 +122,6 @@ names(richterswil)[5] = "Municipality"
 ggplot() + geom_sf(data = gemeinde_ZH) + geom_sf(data = richterswil,aes(fill = Municipality)) + geom_sf(data = swimmSpots,color = "blue") + ggtitle("Swimming spots in the Canton of Zurich") + theme_minimal()
 ```
 
-After importing and depicting the __"swimming spots"__ throughout the canton of Zurich, let's assume we want to check if and how many of them __lie within__ the Municipality of Richterswil. To do so, we will perform an operation, which belongs to the category of __Spatial subsetting__.
 
 ```{r}
 swimmSpots_richt <- swimmSpots[richterswil, ,op = st_within]
@@ -41,15 +132,54 @@ ggplot() + geom_sf(data = gemeinde_ZH) + geom_sf(data = swimmSpots,color = "blue
 ```
 
 
-```{block2, type = "rmdnote"}
-The operation above is based on the following rule: `x[y, ,operation]`, where:  
+
+### Completely_within
+
+<!--
+# todo(KimboGilda): Write an example for this chapter, reusing the same dataset if possible
+#  and using the data from the arc2r package
+-->
+
+### Within_clementini
+
+<!--
+# todo(KimboGilda): Write an example for this chapter, reusing the same dataset if possible
+#  and using the data from the arc2r package
+-->
+
+### Are_identical_to
+
+<!--
+# todo(KimboGilda): Write an example for this chapter, reusing the same dataset if possible
+#  and using the data from the arc2r package
+-->
+
+### Boundary_touches
+
+<!--
+# todo(KimboGilda): Write an example for this chapter, reusing the same dataset if possible
+#  and using the data from the arc2r package
+-->
+
+### Share_a_line_segment_with
+
+<!--
+# todo(KimboGilda): Write an example for this chapter, reusing the same dataset if possible
+#  and using the data from the arc2r package
+-->
+### Crossed_by_the_outline_of
+
+<!--
+# todo(KimboGilda): Write an example for this chapter, reusing the same dataset if possible
+#  and using the data from the arc2r package
+-->
+
+### Have_their_center_in
+
+<!--
+# todo(KimboGilda): Write an example for this chapter, reusing the same dataset if possible
+#  and using the data from the arc2r package
+-->
 
 
--  __x__ and __y__ are the spatial objects for which we want to investigate if there is a spatial relationship (x is the target feature, while y is the source one)  
--  the second argument `[, ,]` within the brackets denotes the column number we want to retrieve from the spatial subsetting. In our example this argument was empty, which means we wanted to retrieve all rows for every __attribute column__.  
--  the third argument `[op = ]` specifies the spatial operation we want to perform. In the example above, the goal was to find out how many subset features of the target object _swimmSpots_ lie withing the source spatial object _richterswil_. For that reason we chose the function `st_within()`.
-```
-
-
-Depending on what we want to examine, we choose the respective function.
 
