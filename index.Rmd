@@ -35,7 +35,7 @@ We had long since thought about the necessity of a resource which helps ArcGIS u
 knitr::include_graphics("images/tweet1.jpg")
 ```
 
-## What might make your journey difficult
+## What might make your journey difficult {#difficulties}
 
 What are the main difficulties when switching from ArcGIS to `R`? 
 
@@ -43,8 +43,7 @@ What are the main difficulties when switching from ArcGIS to `R`?
 - When you acquire ArcGIS, you are served from a single source. In `R`, there are a plethora of developers creating packages for you to use, which can be quite overwhelming
 - While there are always multiple ways to solve a problem in ArcGIS, there are always many more ways to solve it in `R`
 - When you transition from a proprietary Software like ArcGIS to [FOSS](https://en.wikipedia.org/wiki/Free_and_open-source_software), you have to relearn many of the concepts because the proprietary software usually does not adhere to common standards.
-- ArcGIS follows the concept of creating a tool for *every* situation you might encounter. With this approach, they provide a selection of > 1'000 geoprocessing tools to your disposal. Generally speaking, the authors of Packages will try to keep the number of functions as small as possible, since this reduces maintenance. See [this github thread](https://github.com/r-spatial/sf/issues/609) and [this comment](https://github.com/r-spatial/sf/issues/702#issuecomment-381488716) <!-- https://github.com/r-spatial/sf/pull/536#issuecomment-341685846 -->
-
+- ArcGIS follows the concept of creating a tool for *every* situation you might encounter. With this approach, they provide a selection of > 1'000 geoprocessing tools to your disposal. Generally speaking, the authors of Packages will try to keep the number of functions as small as possible, since this reduces maintenance.
 <!--
 //todo add this somewhere
 //body when you add a shapefile to your arcgis project, you basically have a "connection" to this file. in R, you create a virtual copy / an R representation of your dataset within your r session
@@ -71,10 +70,10 @@ We strongly advocate the use of a programming language to tackle GIS tasks for t
 ## How to use this book
 
 
-```{block2, type = "rmdnote"}
+<!--
 # todo(ratnanil) add instructions on how to use the book
   # on the `arc2r` package and the coding environment
-```
+--> 
 
 
 
