@@ -4,7 +4,9 @@ Version: 0.0.0.9000
 Depends: R (>= 2.10)
 Imports: 
   bookdown,
-  rmarkdown
+  rmarkdown,
+  data.tree
+  networkD3
 Suggests:
   arc2r
 Remotes:
