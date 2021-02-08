@@ -1,5 +1,4 @@
 
-# (PART) Geoprocessing Toolboxes {-}
 
 # Data Management Toolbox
 
