@@ -47,27 +47,52 @@ head(bezirke_arrange_desc)
 
 ### Merge
 
-Let's assume in the example below that instead of having four individual areas of interest, we are interested in having one common, unified area on which we focus our analysis. In other words, we have to __merge__ the existing four areas into one. In ArcGIS pro the respective tools for this action is either the `Merge` or the `Dissolve` tool. In R on the other hand, this can be easily performed using the `st_union` function in the `sf` package. 
+```{r merge}
 
-```{r}
-# The area of interest from the previous example - section Clip
-head(kantons_aOi)
+data("kantonsgebiet")
 
-# Merging the four areas into one
-aOi_merged <- st_union(kantons_aOi)
+# Selecting the Canton of Zug
+zug <- filter(kantonsgebiet, kantonsgebiet$name == "Zug") # depicting the Canton of Zug
+
+ggplot(zug) + geom_sf() # depicting the Canton of Zug
+
+# Selecting the Canton of Zürich
+zurich <- filter(kantonsgebiet, kantonsgebiet$name == "Zürich")
+
+ggplot(zurich) + geom_sf() # depicting the Canton of Zurich
+
+# merging the two sf objects
+merged <- rbind(zug,zurich)
+
+ggplot(merged) + geom_sf() # depicting the product of the merge operation
 ```
 
-- Plot the merged area of interest
 
-```{r}
-tm_shape(aOi_merged) + tm_polygons("#f0f0f0") + tm_layout(frame = F)
-```
+<!-- Let's assume in the example below that instead of having four individual areas of interest, we are interested in having one common, unified area on which we focus our analysis. In other words, we have to __merge__ the existing four areas into one. In ArcGIS pro the respective tools for this action is either the `Merge` or the `Dissolve` tool. In R on the other hand, this can be easily performed using the `st_union` function in the `sf` package.  -->
 
-The operation above produces the same outcome as the one depicted in the figure below \@ref(fig:dissolve).
+<!-- ```{r} -->
+<!-- # The area of interest from the previous example - section Clip -->
+<!-- head(kantons_aOi) -->
 
-```{r, fig.cap= "Dissolve operation in ArcGIS pro",echo=F, out.width = "750px",fig.align='center'}
-knitr::include_graphics("images/dissolve.png")
-```
+<!-- # Merging the four areas into one -->
+<!-- aOi_merged <- st_union(kantons_aOi) -->
+<!-- ``` -->
+
+<!-- - Plot the merged area of interest -->
+
+<!-- ```{r} -->
+<!-- tm_shape(aOi_merged) + tm_polygons("#f0f0f0") + tm_layout(frame = F) -->
+<!-- ``` -->
+
+<!-- The operation above produces the same outcome as the one depicted in the figure below \@ref(fig:dissolve). -->
+
+<!-- ```{r, fig.cap= "Dissolve operation in ArcGIS pro",echo=F, out.width = "750px",fig.align='center'} -->
+<!-- knitr::include_graphics("images/dissolve.png") -->
+<!-- ``` -->
+
+
+
+
 
 
 
@@ -109,6 +134,12 @@ ggplot(eire_dissolved) + geom_sf()
 
 
 ### Find Identical
+
+```{r findIdent}
+data("eire")
+
+duplicated(eire)
+```
 
 
 
