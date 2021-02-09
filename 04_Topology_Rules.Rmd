@@ -1,4 +1,4 @@
-# (PART) Topology Rules {.unnumbered}
+# (PART) Topology Rules {-}
 
 # About this section
 

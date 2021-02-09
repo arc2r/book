@@ -55,13 +55,20 @@ Some basic text formatting rules for keeping the document consistent.
 If you want to highlight something important, you can add [a custom block](https://bookdown.org/yihui/bookdown/custom-blocks.html) in this format: ````{block2, type = "rmdnote"}` (see example below). This block will recieve the class "rmdnote", which is specified in [css/style.css]. Currently, the classes `rmdcaution, .rmdimportant, .rmdnote, .rmdtip, .rmdwarning` have the same layout, they all come from "Geocomputation with R" and might be specified on demand.
 
 ````markdown
-`r ''````{block2, type='rmdnote'}
-Some 
+```{block2, type='rmdnote'}
+Something very important we want to convey to our readers, written in Markdown.
 ```
 ````
 
+### Subdividing into Parts
 
+We can add Subdivision to our document by adding the following line at the top of an Rmd-File
 
+```
+# (PART) Topology Rules {-}
+```
+
+see https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html#special-headers
     
     
 ## Dependencies

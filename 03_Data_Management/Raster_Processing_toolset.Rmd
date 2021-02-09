@@ -1,4 +1,4 @@
-## Raster Processing
+## Raster Processing Toolset
 
 - [x] Clip Raster
 - [ ] Composite Bands
