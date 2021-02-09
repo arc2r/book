@@ -8,6 +8,10 @@ Quite often in spatial analysis, we come across with cases, where we do not want
 Let's assume in the example below that we want to clip the available dataset of all the __train stations in Switzerland__ by focusing our analysis on four specific cantons.
 
 
+<!--
+/ todo: replcace this with arc2r/arc2r
+/  asignees: KimboGilda
+--> 
 
 ```{r}
 library(sf)

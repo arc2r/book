@@ -10,6 +10,11 @@ commonly used tools for performing various operations with raster datasets.
 
 For the example below we will work with 2 datasets that depict India's population at two different timestamps. Our goal is to produce an output raster that demonstrates the evolvement of country's population in this 10 years timespan. Naturally in ArcGIS pro, the aforementioned operation would be performed with the use of `Raster Calculator`. Let's explore our options with R.  
 
+<!--
+/ todo: replcace this with arc2r/arc2r
+/  asignees: KimboGilda
+--> 
+
 ```{r}
 # Read the data for our example
 library(raster)

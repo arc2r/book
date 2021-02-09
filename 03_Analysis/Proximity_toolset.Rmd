@@ -15,6 +15,12 @@ knitr::include_graphics("images/network/Analysis_Proximity.png")
 One of the most commonly used operations in ArcGIS pro is the one called `Buffer`. This operation provides a very convenient way of identifying areas of interest lying in the neighborhood of an existing spatial feature. In R the same action can be performed using the `st_buffer` function in `sf`. 
 
 Below we introduce a line spatial feature that depicts all the __mountain bike routes__ in Switzerland.
+
+<!--
+/ todo: replcace this with arc2r/arc2r
+/  asignees: KimboGilda
+--> 
+
 ```{r, echo=F}
 mountainBikes_routes <- st_read("sample_data/other/mountainBikes_routes.shp")
 ```
