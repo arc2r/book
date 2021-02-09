@@ -21,7 +21,7 @@ In GIS operations is quite common the necessity of "clipping" an area based on s
 
 <!--
 / todo: replcace this with arc2r/arc2r
-/  asignees: KimboGilda
+/  assignees: KimboGilda
 --> 
 
 ```{r echo=TRUE}

@@ -128,7 +128,7 @@ Let's start by computing the _slope_ of the **swissAlti3d** raster dataset.
 
 <!--
 / todo: replcace this with arc2r/arc2r
-/  asignees: KimboGilda
+/  assignees: KimboGilda
 --> 
 
 ```{r}

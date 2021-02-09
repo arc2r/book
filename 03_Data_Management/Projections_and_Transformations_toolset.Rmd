@@ -104,7 +104,7 @@ with R.
 
 <!--
 / todo: replcace this with arc2r/arc2r
-/  asignees: KimboGilda
+/  assignees: KimboGilda
 --> 
 
 ```{r}

@@ -12,7 +12,7 @@ For the example below we will work with 2 datasets that depict India's populatio
 
 <!--
 / todo: replcace this with arc2r/arc2r
-/  asignees: KimboGilda
+/  assignees: KimboGilda
 --> 
 
 ```{r}

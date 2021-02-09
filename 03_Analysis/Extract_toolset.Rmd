@@ -10,7 +10,7 @@ Let's assume in the example below that we want to clip the available dataset of 
 
 <!--
 / todo: replcace this with arc2r/arc2r
-/  asignees: KimboGilda
+/  assignees: KimboGilda
 --> 
 
 ```{r}

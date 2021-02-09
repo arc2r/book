@@ -65,7 +65,7 @@ we can add todos to our document using the following syntax:
 /  here we can add a body of our todo, which is indeted with an additional space
 /  we can also automatically assign a todo to a user using their github username
 /  in the following manner:
-/  asignees: ratnanil
+/  assignees: ratnanil
 ```
 
 The Todo action by alstr (https://github.com/alstr/todo-to-issue-action/) will automatically check all our files for new todos and create issues if it finds one. Once the todo is removed from the document, the issue will be closed as well.
@@ -78,7 +78,7 @@ If we want the todo to be invisible from the users, we need to wrap it with the 
 /  here we can add a body of our todo, which is indeted with an additional space
 /  we can also automatically assign a todo to a user using their github username
 /  in the following manner:
-/  asignees: ratnanil
+/  assignees: ratnanil
 -->
 ```
 
