@@ -57,8 +57,8 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add Readme.md
-          git commit -m "update Readme version of the book"
+          git add README.md
+          git commit -m "update Readme"
           
       - name: Push changes to readme
         uses: ad-m/github-push-action@master
