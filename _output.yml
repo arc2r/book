@@ -1,6 +1,8 @@
 bookdown::gitbook:
   split_by: rmd
   css: css/style.css
+  includes:
+    in_header: html/utterernces.html
   config:
     toc:
       collapse: section
