@@ -15,25 +15,10 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Geoprocessing tools
 
-```{r}
-library(tidyverse)
-library(data.tree)
-
-tools <- read_csv("ESRI_Tool_names.csv")
-
-
-treefy <- tools %>%
-  mutate(tool = paste(toolb,toolset,Tool, sep = "/"))  %>% 
-  as.Node(pathName = "tool")
-
-print(treefy,limit = NULL)
-```
-
+A list of ALL geoprocessing tools is documented in ESRI_Tool_names.csv, ESRI_Toolboxes.csv and ESRI_Toolsets.csv. The Tools we want to document within this book are listed in [auxiliary/tools_todo.yaml]. Read more on this topic here: [R/tools_todo.Rmd]
 
 
 ## Style Guide
-
-Some basic text formatting rules for keeping the document consistent.
 
 
 ### Inline formatting
@@ -52,10 +37,10 @@ Some basic text formatting rules for keeping the document consistent.
     
 ### Adding notes
 
-If you want to highlight something important, you can add [a custom block](https://bookdown.org/yihui/bookdown/custom-blocks.html) in this format: ````{block2, type = "rmdnote"}` (see example below). This block will recieve the class "rmdnote", which is specified in [css/style.css]. Currently, the classes `rmdcaution, .rmdimportant, .rmdnote, .rmdtip, .rmdwarning` have the same layout, they all come from "Geocomputation with R" and might be specified on demand.
+If you want to highlight something important, you can add [a custom block](https://bookdown.org/yihui/bookdown/custom-blocks.html) in this format: ````{block2, type = "rmdnote"}` (see example below). This block will recieve the class "rmdnote", which is specified in [css/style.css]. 
 
 ````markdown
-```{block2, type='rmdnote'}
+`r ''````{block2, type='rmdnote'}
 Something very important we want to convey to our readers, written in Markdown.
 ```
 ````
