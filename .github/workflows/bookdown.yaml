@@ -22,9 +22,9 @@ jobs:
         run: |
           brew install pandoc
           
-      - name: Install gdal
-        run: |
-          brew install gdal 
+      # - name: Install gdal
+      #   run: |
+      #     brew install gdal 
 
       - name: Cache bookdown results
         uses: actions/cache@v2
