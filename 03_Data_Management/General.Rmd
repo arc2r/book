@@ -8,7 +8,7 @@ knitr::include_graphics("images/network/Data Management_General.png")
 
 ### Sort
 
-Sorting out features in ascending or descending order seems a quite primitive operation in any programming language or software package. Even though it is indeed primitive, it is also quite important for filtering and cleaning our datasets. In ArcGIS pro this operation is performed using the tool `Sort`, which is part of the General toolset of the Data Managenent Toolbox. Below we present how we can perform the aforementioned operation using R. For our example we use the Simple Feature object **bezirke**, which depicts the districts within the country of Switzerland Furthermore for performing the sorting operation, we use the column that represents the area (in square km) of every of the districts. 
+Sorting out features in ascending or descending order seems a quite primitive operation in any programming language or software package. Even though it is indeed primitive, it is also quite important for filtering and cleaning our datasets. In ArcGIS pro this operation is performed using the tool `Sort`, which is part of the General toolset of the Data Managenent Toolbox. Below we present how we can perform the aforementioned operation using R. For our example we use the Simple Feature object **bezirke**, which depicts the districts within the country of Switzerland Furthermore for performing the sorting operation, we use the record(column) that represents the area (in square km) of every of the districts. 
 
 ```{r sort_BaseR}
 library(sf)
