@@ -13,7 +13,6 @@ Sorting out features in ascending or descending order seems a quite primitive op
 ```{r sort}
 library(sf)
 # Read the dataset depicting the municipalities (Gemeinde) of Kanton of Zurich
-
 gemeinde <- st_read("sample_data/Kanton_Zuerich/Gemeinde_ZH.shp")
 
 # sort the dataset based on the Area in ascending order
