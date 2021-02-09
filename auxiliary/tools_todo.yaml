@@ -8,12 +8,18 @@
     - Table Select
     Overlay:
     - Erase
-    - Union
     - Symmetrical Difference
-    - Spatial Join
     - Intersect
-    - Identity
     - Update
+    - Identity
+    - Remove Overlap
+    - Weighted Sum
+    - Union
+    - Count Overlapping Features
+    - Fuzzy Membership
+    - Fuzzy Overlay
+    - Weighted Overlay
+    - Spatial Join
     Proximity:
     - Buffer
     - Create Thiessen Polygons
