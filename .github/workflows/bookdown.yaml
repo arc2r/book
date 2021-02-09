@@ -39,9 +39,8 @@ jobs:
           R -e 'remotes::install_deps()'
           R -e 'remotes::install_github("arc2r/arc2r",dependencies = TRUE, upgrade = "always")'
 
-      - name: Build site
+      - name: Build book
         run: |
-          R -e 'knitr::knit("Readme.Rmd")'
           Rscript -e 'bookdown::render_book("index.Rmd", quiet = TRUE)'
 
       - name: Push output to gh-pages branch
@@ -49,3 +48,19 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: /docs
+          
+      - name: Build readme
+        run: |
+          R -e 'rmarkdown::render("Readme.Rmd","github_document")'
+
+      - name: Commit readme
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add Readme.md
+          git commit -m "update Readme version of the book"
+          
+      - name: Push changes to readme
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
