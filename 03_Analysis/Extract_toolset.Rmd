@@ -48,12 +48,12 @@ tm_shape(kantons_aOi) + tm_polygons("#f0f0f0") +
   tm_shape(kantons_aOi) + tm_borders() + tm_layout(frame = F)
 ```
 
-So, ultimately, as we can see above, the _st_intersection_ function creates a result where the point dataset is precisely "clipped" based on the area of interest
+So, ultimately, as we can see above, the `st_intersection` function creates a result where the point dataset is precisely "clipped" based on the area of interest
 
 
 The operation above produces the same outcome as the one depicted in the figure below \@ref(fig:clip).
 
-```{r fig.cap= "Clip operation in ArcGIS pro",echo=F, out.width = "750px",fig.align='center'}
+```{r clip, fig.cap= "Clip operation in ArcGIS pro",echo=F, out.width = "750px",fig.align='center'}
 knitr::include_graphics("images/clipOperation.png")
 ```
 
