@@ -45,12 +45,15 @@ tools %>%
 
 We cannot possibly cover all these tools in this book, and it wouldn't make much sense either. Once you learn the fundamental building blocks, you will be able to replicate most, if not all tools from this list. Figure \@ref(fig:toolsvis2) shows a subset of the full toolset, which we would like to cover in this book.
 
-
+<!--
+/ todo: add static image
+   asignees: ratnanil
+-->
 
 ```{r toolsviz2, fig.asp=2, fig.cap="A subset of tools we would like to cover in this book."}
 
 
-tools_todo_df <- read_csv("auxiliary_files/tools_todo_df.csv")
+tools_todo_df <- read_csv("auxiliary/tools_todo_df.csv")
 
 tools_todo_df %>%
   transmute(tool = paste("GeoprocessingTools",toolbox, toolset, tool, sep = "/")) %>% 
