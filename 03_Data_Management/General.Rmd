@@ -8,6 +8,18 @@ knitr::include_graphics("images/network/Data Management_General.png")
 
 ### Sort
 
+```{r sort}
+gemeinde <- st_read("sample_data/Kanton_Zuerich/Gemeinde_ZH.shp")
+
+gemeinde_asc <- gemeinde[order(-gemeinde$Area),] # sort the dataset based on the Area in ascending order
+
+gemeinde_desc <- gemeinde[order(-gemeinde$Area),] # sort the dataset based on the Area in descending order
+
+head(gemeinde_asc)
+
+head(gemeinde_desc)
+```
+
 
 ### Rename
 
