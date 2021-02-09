@@ -8,23 +8,38 @@ knitr::include_graphics("images/network/Data Management_General.png")
 
 ### Sort
 
-Sorting out features in ascending or descending order seems a quite primitive operation in any programming language or software package. Even though it is indeed primitive, it is also quite important for filtering and cleaning our datasets. In ArcGIS pro this operation is performed using the tool `Sort`, which is part of the General toolset of the Data Managenent Toolbox. Below we present how we can perform the aforementioned operation using R. For our example we use the Simple Feature object _Gemeinde_ZH_, which depicts the municipalities of the Kanton of Zurich. Furthermore for performing the sorting operation, we use the column that represents the area (in square km) of every of the municipalities. 
+Sorting out features in ascending or descending order seems a quite primitive operation in any programming language or software package. Even though it is indeed primitive, it is also quite important for filtering and cleaning our datasets. In ArcGIS pro this operation is performed using the tool `Sort`, which is part of the General toolset of the Data Managenent Toolbox. Below we present how we can perform the aforementioned operation using R. For our example we use the Simple Feature object _bezirke_, which depicts the districts within the country of Switzerland Furthermore for performing the sorting operation, we use the column that represents the area (in square km) of every of the districts. 
 
-```{r sort}
+```{r sort_BaseR}
 library(sf)
-# Read the dataset depicting the municipalities (Gemeinde) of Kanton of Zurich
-gemeinde <- st_read("sample_data/Kanton_Zuerich/Gemeinde_ZH.shp")
+library(arc2r)
+# Read the dataset depicting the districts (Bezirke) in the country of Switzerland
+bezirke <- arc2r::bezirke
 
 # sort the dataset based on the Area in ascending order
-gemeinde_asc <- gemeinde[order(-gemeinde$Area),]
+bezirke_asc <- bezirke[order(bezirke$area_km2),]
+head(bezirke_asc)
 
 # sort the dataset based on the Area in descending order
-gemeinde_desc <- gemeinde[order(-gemeinde$Area),] 
+bezirke_desc <- bezirke[order(-bezirke$area_km2),] 
+head(bezirke_desc)
 
-head(gemeinde_asc)
-
-head(gemeinde_desc)
 ```
+
+The beauty of R is that offers more than one option to perform a specific operation. In the example above, for performing the sorting operation, we used a simple subsetting method integrated within the so called **base R**. Nevertheless using the the function `arrange()` of the **dpyr package** we are able to produce the exact same result.  
+
+```{r sort_dplyr}
+library(dplyr)
+
+# sort the dataset based on the Area in ascending order
+bezirke_arrange_asc <- arrange(bezirke,area_km2) # by default the function sorts in ascendind order
+head(bezirke_arrange_asc)
+
+# sort the dataset based on the Area in descending order
+bezirke_arrange_desc <- arrange(bezirke,desc(area_km2))
+head(bezirke_arrange_desc)
+```
+
 
 
 ### Rename
@@ -33,8 +48,7 @@ head(gemeinde_desc)
 
 ### Merge
 
-Let's assume in the example below that instead of having four individual areas of interest, we are interested in having one common, unified area on which we focus our analysis. In other words, we have to __merge__ the existing four areas into one. In ArcGIS pro the respective tools for this action is either the `Merge` or the `Dissolve` tool.  
-In R on the other hand, this can be easily performed using the `st_union` function in the `sf` package. 
+Let's assume in the example below that instead of having four individual areas of interest, we are interested in having one common, unified area on which we focus our analysis. In other words, we have to __merge__ the existing four areas into one. In ArcGIS pro the respective tools for this action is either the `Merge` or the `Dissolve` tool. In R on the other hand, this can be easily performed using the `st_union` function in the `sf` package. 
 
 ```{r}
 # The area of interest from the previous example - section Clip
