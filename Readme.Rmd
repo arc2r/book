@@ -10,6 +10,8 @@ knitr::opts_chunk$set(echo = FALSE)
 # All things `R`-Spatial
 
 
+`r Sys.time()`
+
 [![Actions Status](https://github.com/arc2r/book/workflows/bookdown/badge.svg)](https://github.com/arc2r/book/actions)
 
 
