@@ -1,0 +1,73 @@
+---
+output: github_document
+---
+
+```{r}
+library(tidyverse)
+library(data.tree)
+library(networkD3)
+library(yaml)
+
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+
+This document has two tasks. It serves as a reference to show how we document the "Geoprocessing Tools" we want to cover in the book (a yaml file). Additionally, it creates the network diagrams.
+
+This way to document the tools has the following advantages:
+1. Tools can be uniquely identified using Toolbox and Toolset
+2. It allows minimal repetition, since Toolboxes and Toolsets must be noted only once.
+
+
+The yaml file is structured as follows:
+
+```{yaml}
+--- #  Geoprocessing Tools    # This is the yaml header and  a comment to show what this is about
+  Toolbox:                    # Level 1 (indented 2 spaces): The toolbox's name                
+    Toolset:                  # Level 2 (indented 4 spaces): The toolset's name 
+      - Tool 1                # Level 3 (indented 6 spaces): the tool's name (starts with a dash)
+      - Tool 2                # Level 3 (indented 2 spaces): the tool's name (starts with a dash)
+
+```
+
+
+```{r}
+tools_toodo <- read_yaml("auxiliary_files/tools_todo.yaml")
+```
+
+This next line of code converts the tools (which are imported as a character vector) into a list.
+
+```{r}
+tools_toodo2 <- map(tools_toodo_yaml, function(x){map(x, function(y){map(y, function(z){list(name = z)})})})
+```
+
+
+```{r}
+
+FromListSimple(tools_toodo2,nodeName =  "GeoprocessingTools") %>%
+    ToListExplicit(unname = TRUE) %>%
+    diagonalNetwork()
+
+imap(tools_toodo2, function(toolsets,toolbox){
+  FromListSimple(toolsets,nodeName = toolbox) %>%
+    ToListExplicit(unname = TRUE) %>%
+    diagonalNetwork() %>%
+    networkD3::saveNetwork("network.html")
+  
+  webshot::webshot("network.html",file.path("images","network",paste0(toolbox,".png")))
+  file.remove("network.html")
+  imap(toolsets,function(tools,toolset){
+    FromListSimple(tools,nodeName = toolset) %>%
+      ToListExplicit(unname = TRUE) %>%
+      diagonalNetwork() %>%
+      networkD3::saveNetwork("network.html")
+    
+    webshot::webshot("network.html",file.path("images","network",paste0(toolbox,"_",toolset,".png")))
+    file.remove("network.html")
+  })
+})
+
+
+
+```
+

@@ -1,0 +1,127 @@
+--- # Geoprocessing Tools
+  Analysis:
+    Extract:
+    - Clip
+    - Select
+    - Split
+    - Split By Attributes
+    - Table Select
+    Overlay:
+    - Erase
+    - Union
+    - Symmetrical Difference
+    - Spatial Join
+    - Intersect
+    - Identity
+    - Update
+    Proximity:
+    - Buffer
+    - Create Thiessen Polygons
+    - Generate Near Table
+    - Multiple Ring Buffer
+    - Near
+  Image Analyst:
+    Map Algebra: Raster Calculator
+  Spatial Analyst:
+    Conditional:
+    - Con
+    - Pick
+    - Set Null
+    Density:
+    - Kernel Density
+    - Line Density
+    - Point Density
+    Distance:
+    - Corridor
+    - Distance Accumulation
+    Extraction:
+    - Extract by Attributes
+    - Extract by Circle
+    - Extract by Mask
+    - Extract by Points
+    - Extract by Polygon
+    - Extract by Rectangle
+    - Extract Multi Values to Points
+    - Extract Values to Points
+    - Sample
+    Generalization:
+    - Aggregate
+    - Boundary Clean
+    - Expand
+    - Majority Filter
+    - Nibble
+    - Region Group
+    - Shrink
+    - Thin
+    Interpolation:
+    - IDW
+    - Kriging
+    - Natural Neighbor
+    - Spline
+    Map Algebra: Raster Calculator
+    Math (general):
+    - Abs
+    - Divide
+    - Exp
+    - Exp10
+    - Exp2
+    - Float
+    - Int
+    - Ln
+    - Log10
+    - Log2
+    - Minus
+    - Mod
+    - Negate
+    - Plus
+    - Power
+    - Round Down
+    - Round Up
+    - Square
+    - Square Root
+    - Times
+    Neighborhood: Focal Statistics
+    Overlay: Weighted Sum
+    Reclass: Reclassify
+    Surface:
+    - Aspect
+    - Slope
+    - Viewshed
+    Zonal:
+    - Tabulate Area
+    - Zonal Fill
+    - Zonal Geometry
+    - Zonal Histogram
+    - Zonal Statistics
+    - Zonal Statistics as Table
+  Spatial Statistics:
+    Mapping Clusters: Cluster and Outlier Analysis (Anselin Local Moran's I)
+  Data Management:
+    General:
+    - Sort
+    - Rename
+    - Merge
+    - Dissolve
+    - Find Identical
+    - Append
+    Joins and Relates:
+    - Add Join
+    - Add Relate
+    - Join Field
+    - Remove Join
+    - Remove Relate
+    Projections and Transformations:
+    - Define Projection
+    - Project
+    Sampling:
+    - Generate Tessellation
+    - Create Fishnet
+    - Create Random Points
+    - Generate Points Along Lines
+    - Generate Rectangles Along Lines
+    - Generate Transects Along Lines
+    Raster:
+    - Copy Raster
+    - Create Random Raster
+    - Create Raster Dataset
+    - Generate Raster From Raster Function

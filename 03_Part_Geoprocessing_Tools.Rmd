@@ -45,62 +45,12 @@ tools %>%
 
 We cannot possibly cover all these tools in this book, and it wouldn't make much sense either. Once you learn the fundamental building blocks, you will be able to replicate most, if not all tools from this list. Figure \@ref(fig:toolsvis2) shows a subset of the full toolset, which we would like to cover in this book.
 
-<!--
-# todo(ratnanil) Add a way to expand, shrink and cross-off this list
-#  I made this list of tools by skimming the descriptions. This is by no means
-#  the final version. We must find a way to discuss what should be included and
-#  excluded from this list. And also, find a way to visualize or at least document
-#  how we have progressed.
--->
 
 
-```{r, toolsviz2, fig.asp=3, fig.cap="A subset of tools we would like to cover in this book."}
+```{r, toolsviz2, fig.asp=2, fig.cap="A subset of tools we would like to cover in this book."}
 
 
-# This is a funky way to document this list
-tools_todo <- list(
-  Analysis = list(
-    Extract = c("Clip","Select","Split","Split By Attributes", "Table Select"),
-    Overlay = c("Erase","Union", "Symmetrical Difference","Spatial Join","Intersect", "Identity", "Update"),
-    Proximity = c("Buffer","Create Thiessen Polygons","Generate Near Table","Multiple Ring Buffer","Near")
-    ),
-  Geocoding = list(),
-  `Image Analyst` = list(
-    `Map Algebra` = c("Raster Calculator")
-  ),
-  `Spatial Analyst` = list(
-    Conditional = c("Con","Pick", "Set Null"),
-    Density = c("Kernel Density","Line Density","Point Density"),
-    Distance = c("Corridor", "Distance Accumulation"),
-    Extraction = c("Extract by Attributes","Extract by Circle","Extract by Mask","Extract by Points","Extract by Polygon","Extract by Rectangle","Extract Multi Values to Points","Extract Values to Points","Sample"),
-    Generalization = c("Aggregate", "Boundary Clean", "Expand","Majority Filter","Nibble","Region Group","Shrink","Thin"),
-    Interpolation = c("IDW","Kriging","Natural Neighbor","Spline"),
-    `Map Algebra` = c("Raster Calculator"),
-    `Math (general)` = c("Abs","Divide","Exp","Exp10","Exp2","Float","Int","Ln","Log10","Log2","Minus","Mod","Negate","Plus","Power","Round Down","Round Up", "Square","Square Root","Times"),
-    Neighborhood = c("Focal Statistics"),
-    Overlay = c("Weighted Sum"),
-    Reclass = c("Reclassify"),
-    Surface = c("Aspect","Slope","Viewshed"),
-    Zonal = c("Tabulate Area","Zonal Fill","Zonal Geometry", "Zonal Histogram", "Zonal Statistics", "Zonal Statistics as Table")
-  ),
-  `Spatial Statistics` = list(
-    `Mapping Clusters` = c("Cluster and Outlier Analysis (Anselin Local Moran's I)")
-  ),
-  `Data Management` = list(
-    `Joins and Relates` = c("Add Join", "Add Relate","Join Field","Remove Join","Remove Relate"),
-    `Projections and Transformations` = c("Define Projection","Project"),
-    `Sampling` = c("Generate Tessellation","Create Fishnet","Create Random Points","Generate Points Along Lines", "Generate Rectangles Along Lines", "Generate Transects Along Lines"),
-    Raster = c("Copy Raster","Create Random Raster","Create Raster Dataset","Generate Raster From Raster Function")
-  )
-  )
-
-tools_todo_df <- imap_dfr(tools_todo, 
-    function(x,toolbox){
-      imap_dfr(x, function(y,toolset){tibble(tool = y, toolset = toolset)}) %>%
-        mutate(toolbox = toolbox)
-      })
-
-
+tools_todo_df <- read_csv("auxiliary_files/tools_todo_df.csv")
 
 tools_todo_df %>%
   transmute(tool = paste("GeoprocessingTools",toolbox, toolset, tool, sep = "/")) %>% 
