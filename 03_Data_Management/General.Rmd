@@ -16,21 +16,51 @@ knitr::include_graphics("images/network/Data Management_General.png")
 ### Merge
 
 Let's assume in the example below that instead of having four individual areas of interest, we are interested in having one common, unified area on which we focus our analysis. In other words, we have to __merge__ the existing four areas into one. In ArcGIS pro the respective tools for this action is either the `Merge` or the `Dissolve` tool.  
+<!--
+/ todo: do merge and union in arcgis really do the same?
+/  asignees: KimboGilda
+-->
 In R on the other hand, this can be easily performed using the `st_union` function in the `sf` package. 
 
 ```{r}
-# The area of interest from the previous example - section Clip
-head(kantons_aOi)
+library(sf)
+library(arc2r)
 
-# Merging the four areas into one
-aOi_merged <- st_union(kantons_aOi)
+data("kantonsgebiet")
 ```
 
-- Plot the merged area of interest
+The dataset has multiple features and columns.
 
 ```{r}
-tm_shape(aOi_merged) + tm_polygons("#f0f0f0") + tm_layout(frame = F)
+kantonsgebiet
 ```
+
+
+```{r}
+plot(kantonsgebiet["name"])
+```
+
+After doing the union, we have  only one feature and no columns.
+
+<!--
+/ todo: The woring here is very sparse.. adjust this
+/  asignees: ratnanil
+-->
+
+
+```{r}
+# Merging the four areas into one
+kantonsgebiet_union <- st_union(kantonsgebiet)
+
+kantonsgebiet_union
+```
+
+
+```{r}
+plot(kantonsgebiet_union)
+```
+
+
 
 The operation above produces the same outcome as the one depicted in the figure below \@ref(fig:dissolve).
 
