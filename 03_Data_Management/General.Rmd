@@ -14,7 +14,6 @@ Sorting out features in ascending or descending order seems a quite primitive op
 library(sf)
 library(arc2r)
 # Read the dataset depicting the districts (Bezirke) in the country of Switzerland
-bezirke <- arc2r::bezirke 
 data("bezirke")
 # sort the dataset based on the Area in ascending order
 bezirke_asc <- bezirke[order(bezirke$area_km2),]
@@ -73,6 +72,39 @@ knitr::include_graphics("images/dissolve.png")
 
 
 ### Dissolve
+
+`Dissolve` in ArcGIS pro serves as a basic tool for aggregating features based on specified attributes. In R the respective operation could be easily performed using some basic functionalities of the `sf` package. For our example below, we use the simple feature object **eire** (provided within the `arc2r` package). 
+
+
+```{r dissolve_01}
+library(ggplot2)
+# reading the dataset that lies with the arc2r package
+data("eire")
+
+# visualising the dataset
+ggplot(eire) + geom_sf()
+```
+
+Dissolve operation with `sf` package does not save the data frame (other than the geometry column) by default without specifying how to aggregate the data. So, based on the geometry column of the given dataset, we compute below the area of each and every of the depicted polygons. To do so we use the `st_area` function.
+
+```{r dissolve_02}
+# Computing the area of the depicted polygons based on the geometry column
+eire$area <- st_area(eire)
+eire
+```
+Now we have data that’s meaningful to group. To do so we can just use `summarise()` to group the data and perform the dissolve:
+
+```{r dissolve_03}
+eire_dissolved <-
+  eire %>%
+  summarise(area = sum(area))
+
+# visualising the dissolved dataset
+ggplot(eire_dissolved) + geom_sf()
+```
+
+
+
 
 
 
