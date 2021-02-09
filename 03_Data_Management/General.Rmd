@@ -8,12 +8,19 @@ knitr::include_graphics("images/network/Data Management_General.png")
 
 ### Sort
 
+Sorting out features in ascending or descending order seems a quite primitive operation in any programming language or software package. Even though it is indeed primitive, it is also quite important for filtering and cleaning our datasets. In ArcGIS pro this operation is performed using the tool `Sort`, which is part of the General toolset of the Data Managenent Toolbox. Below we present how we can perform the aforementioned operation using R. For our example we use the Simple Feature object _Gemeinde_ZH_, which depicts the municipalities of the Kanton of Zurich. Furthermore for performing the sorting operation, we use the column that represents the area (in square km) of every of the municipalities. 
+
 ```{r sort}
+library(sf)
+# Read the dataset depicting the municipalities (Gemeinde) of Kanton of Zurich
+
 gemeinde <- st_read("sample_data/Kanton_Zuerich/Gemeinde_ZH.shp")
 
-gemeinde_asc <- gemeinde[order(-gemeinde$Area),] # sort the dataset based on the Area in ascending order
+# sort the dataset based on the Area in ascending order
+gemeinde_asc <- gemeinde[order(-gemeinde$Area),]
 
-gemeinde_desc <- gemeinde[order(-gemeinde$Area),] # sort the dataset based on the Area in descending order
+# sort the dataset based on the Area in descending order
+gemeinde_desc <- gemeinde[order(-gemeinde$Area),] 
 
 head(gemeinde_asc)
 
