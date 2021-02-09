@@ -74,6 +74,35 @@
 <script src="libs/diagonalNetwork-binding-0.4/diagonalNetwork.js"></script>
 
 
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    if (!/posts/.test(location.pathname)) {
+      return;
+    }
+
+    var script = document.createElement("script");
+    script.src = "https://utteranc.es/client.js";
+    script.setAttribute("repo", "arc2r/book");
+    script.setAttribute("issue-term", "og:title");
+    script.setAttribute("crossorigin", "anonymous");
+    script.setAttribute("label", "comment_thread");
+
+    /* wait for article to load, append script to article element */
+    var observer = new MutationObserver(function (mutations, observer) {
+      var article = document.querySelector("d-article");
+      if (article) {
+        observer.disconnect();
+        /* HACK: article scroll */
+        article.setAttribute("style", "overflow-y: hidden");
+        article.appendChild(script);
+      }
+    });
+
+    observer.observe(document.body, { childList: true });
+  });
+</script>
+
+
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
@@ -343,8 +372,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.2.10" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#overlaps"><i class="fa fa-check"></i><b>12.2.10</b> Overlaps</a></li>
 <li class="chapter" data-level="12.2.11" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#touches-1"><i class="fa fa-check"></i><b>12.2.11</b> Touches</a></li>
 <li class="chapter" data-level="12.2.12" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#custom-relationships"><i class="fa fa-check"></i><b>12.2.12</b> Custom relationships</a></li>
-<li class="chapter" data-level="12.2.13" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#rooks-case"><i class="fa fa-check"></i><b>12.2.13</b> Rooks Case</a></li>
-<li class="chapter" data-level="12.2.14" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#bishops-case"><i class="fa fa-check"></i><b>12.2.14</b> Bishops Case</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="Polygon.html"><a href="Polygon.html"><i class="fa fa-check"></i><b>13</b> Polygon</a>

@@ -74,6 +74,35 @@
 <script src="libs/diagonalNetwork-binding-0.4/diagonalNetwork.js"></script>
 
 
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    if (!/posts/.test(location.pathname)) {
+      return;
+    }
+
+    var script = document.createElement("script");
+    script.src = "https://utteranc.es/client.js";
+    script.setAttribute("repo", "arc2r/book");
+    script.setAttribute("issue-term", "og:title");
+    script.setAttribute("crossorigin", "anonymous");
+    script.setAttribute("label", "comment_thread");
+
+    /* wait for article to load, append script to article element */
+    var observer = new MutationObserver(function (mutations, observer) {
+      var article = document.querySelector("d-article");
+      if (article) {
+        observer.disconnect();
+        /* HACK: article scroll */
+        article.setAttribute("style", "overflow-y: hidden");
+        article.appendChild(script);
+      }
+    });
+
+    observer.observe(document.body, { childList: true });
+  });
+</script>
+
+
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
@@ -343,8 +372,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.2.10" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#overlaps"><i class="fa fa-check"></i><b>12.2.10</b> Overlaps</a></li>
 <li class="chapter" data-level="12.2.11" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#touches-1"><i class="fa fa-check"></i><b>12.2.11</b> Touches</a></li>
 <li class="chapter" data-level="12.2.12" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#custom-relationships"><i class="fa fa-check"></i><b>12.2.12</b> Custom relationships</a></li>
-<li class="chapter" data-level="12.2.13" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#rooks-case"><i class="fa fa-check"></i><b>12.2.13</b> Rooks Case</a></li>
-<li class="chapter" data-level="12.2.14" data-path="04_Topology_Rules.html"><a href="04_Topology_Rules.html#bishops-case"><i class="fa fa-check"></i><b>12.2.14</b> Bishops Case</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="Polygon.html"><a href="Polygon.html"><i class="fa fa-check"></i><b>13</b> Polygon</a>
@@ -566,9 +593,8 @@ Figure 12.1: The 32 different topolgy rules that you can apply to one or more fe
 <p>The resulting object is again an area, i.e. 2. Formally <span class="math inline">\(dim(I(blue) \cap E(red)) = 2\)</span>.</p>
 <p>If we go through all intersections of <strong>I</strong>nterior, <em><code>b</code></em>oundry and <strong>E</strong>xterior of both geometries, we can denote for each comination what type of dimesion we “allow.” This can be either 0 (for points), 1 (for lines) or 3 (for areas) or <code>TRUE</code> (for either of these), or <code>FALSE</code> (for none of these) or <code>*</code> (for "I dont care).</p>
 <p><img src="https://postgis.net/workshops/postgis-intro/_images/de9im3.jpg" /></p>
-</div>
-<div id="rooks-case" class="section level3" number="12.2.13">
-<h3><span class="header-section-number">12.2.13</span> Rooks Case</h3>
+<div id="rooks-case" class="section level4" number="12.2.12.1">
+<h4><span class="header-section-number">12.2.12.1</span> Rooks Case</h4>
 <p>If we go throught the all nine combinations of the DE-9IM, this is what defines the rooks case:</p>
 <table>
 <thead>
@@ -600,7 +626,7 @@ Figure 12.1: The 32 different topolgy rules that you can apply to one or more fe
 </tr>
 </tbody>
 </table>
-<p>We can now write this into a string, starting from the top left: F<strong><em>1</em></strong>*</p>
+<p>We can now write this into a string, starting from the top left: <code>F***1****</code></p>
 <p>Now that we have this string, we case use <code>st_relate()</code>and specify the string as the pattern we are looking for:</p>
 <pre><code>## Sparse geometry binary predicate list of length 1, where the predicate was `relate_pattern&#39;
 ##  1: 28, 35, 37, 44</code></pre>
@@ -608,8 +634,8 @@ Figure 12.1: The 32 different topolgy rules that you can apply to one or more fe
 <p><img src="_main_files/figure-html/unnamed-chunk-120-1.png" width="672" /></p>
 <p>Because this was so much fun, let’s also have a look at the opposite, the Bishops Case.</p>
 </div>
-<div id="bishops-case" class="section level3" number="12.2.14">
-<h3><span class="header-section-number">12.2.14</span> Bishops Case</h3>
+<div id="bishops-case" class="section level4" number="12.2.12.2">
+<h4><span class="header-section-number">12.2.12.2</span> Bishops Case</h4>
 <table>
 <thead>
 <tr class="header">
@@ -645,6 +671,7 @@ Figure 12.1: The 32 different topolgy rules that you can apply to one or more fe
 <p>Visually:</p>
 <p><img src="_main_files/figure-html/unnamed-chunk-122-1.png" width="672" /></p>
 
+</div>
 </div>
 </div>
 </div>
