@@ -11,13 +11,15 @@ Let's assume in the example below that we want to clip the available dataset of 
 
 ```{r}
 library(sf)
+library(tmap)
+
 # Point dataset depicting the train stations locations across Switzerland
 bahn_haltestelle_ch <- st_read("sample_data/other/Haltestelle_Bahn_CH.shp")
 
 # Dataset depicting Switzerland on canton level
 kantonsgebiet <- st_read("sample_data/other/Kantonsgebiet.shp")
 
-tmap_mode(mode = c("plot")) # setting the plotting mode to static -- optimizing the process
+tmap_mode(mode = "plot") # setting the plotting mode to static -- optimizing the process
 
 tm_shape(kantonsgebiet) + tm_polygons("#f0f0f0") + 
   tm_shape(bahn_haltestelle_ch) + tm_dots(col = "#e34a33",size = 0.1, alpha = 0.5) + 
