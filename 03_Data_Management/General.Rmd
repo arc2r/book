@@ -15,7 +15,7 @@ library(sf)
 library(arc2r)
 # Read the dataset depicting the districts (Bezirke) in the country of Switzerland
 bezirke <- arc2r::bezirke 
-
+data("bezirke")
 # sort the dataset based on the Area in ascending order
 bezirke_asc <- bezirke[order(bezirke$area_km2),]
 head(bezirke_asc)
