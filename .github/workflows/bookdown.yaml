@@ -51,7 +51,7 @@ jobs:
           
       - name: Build readme
         run: |
-          R -e 'rmarkdown::render("Readme.Rmd","github_document")'
+          R -e 'rmarkdown::render("Readme.Rmd","github_document",output_file = "Readme.md")'
 
       - name: Commit readme
         run: |
