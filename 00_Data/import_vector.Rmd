@@ -1,6 +1,6 @@
-## Importing vector data with `sf`
+## Importing vector data with `sf` {#importing-vector-sf}
 
-Most vector data that you use in everyday GIS work are what are called "simple features". Simple features are an open standard developed by the Open Geospatial Consortium (OGC). The most common feature types are displayed in figure \@ref(fig:sf_types).
+Most vector data that you use in everyday GIS work are what are called "simple features". Simple features are an open standard developed by the Open Geospatial Consortium (OGC). The most common feature types are displayed in figure \@ref(fig:sf-types).
 
 <!--
 # TODO(ratnanil) add this somewhere
@@ -8,7 +8,7 @@ Most vector data that you use in everyday GIS work are what are called "simple f
 -->
 
 
-```{r sf_types, echo = FALSE, fig.cap="The 7 (of 17) most important simple feature types. Image from @geocompr"}
+```{r sf-types, echo = FALSE, fig.cap="The 7 (of 17) most important simple feature types. Image from @geocompr"}
 knitr::include_graphics("images/sf-classes.png")
 ```
 
@@ -20,10 +20,12 @@ library(sf)
 ```
 
 To import a vector dataset into `R`, we can use the function `read_sf` as in the example below. 
+
 <!--
 //todo how does the user get access to this dataset? 
 //body make this available through the package?
 -->
+
 ```{r}
 
 ARE_waedenswil <- read_sf("sample_data/Entsorgung_Waedenswil/ARE_waedenswil.shp")
@@ -37,7 +39,7 @@ And you are done! The shapefile is now imported into your `R` Session and you ca
 is.data.frame(ARE_waedenswil)
 ```
 
-`sf` provides methods for various generics, e.g. you can use `plot()` on the object for a simple visualisation.
+`sf` provides methods for various generics, e.g. you can use `plot()` on the object for a simple visualisation. By default, using `plot()` on an `sf` object visualizes the geometry in small multiples, where each "facet" is colour coded based on a column in the dataset (see below). If you find this annoying (like I do), see chapter \@ref(chapter-staticmaps).
 
 ```{r}
 plot(ARE_waedenswil)
