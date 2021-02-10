@@ -11,6 +11,16 @@
 - [ ] Resample <!-- duplicate! -->
 - [ ] Split Raster
 
+For this chapter, you will need the following R Packages:
+
+```{r, echo = FALSE}
+library(arc2r)
+library(raster)
+library(stars)
+library(sf)
+library(dplyr)
+library(stars)
+```
 
 ### Clip Raster
 
@@ -21,30 +31,25 @@ In GIS operations is quite common the necessity of "clipping" an area based on s
 
 
 ```{r echo=TRUE}
-# Read raster dataset
-library(raster)
-library(stars)
-library(sf)
-library(dplyr)
-library(stars)
 
 # Insert a vector dataset that depicts the public transport connection quality in
 # the city of Wädenswil and plot it
 ARE_waedi <- read_sf("sample_data/Entsorgung_Waedenswil/ARE_waedenswil.shp")
-
+data("are_waedenswil")
 # Read the raster dataset and plot it
 raster_recycling <- raster("sample_data/Entsorgung_Waedenswil/abfall_raster.tif")
+data("recycling_raster")
 ```
 
 Plot the two datasets one over the other.
 ```{r, echo=FALSE}
-plot(raster_recycling)
-plot(ARE_waedi, alpha = 0.5, add = TRUE)
+plot(recycling_raster)
+plot(are_waedenswil, alpha = 0.5, add = TRUE)
 ```
 
 In our case, the vector dataset serves as the clipping extent for the clipping operation.
 ```{r Clip raster, echo=TRUE}
-recycle_Waedi_clip <- mask(raster_recycling,ARE_waedi)
+recycle_Waedi_clip <- mask(recycling_raster,are_waedenswil)
 ```
 
 
