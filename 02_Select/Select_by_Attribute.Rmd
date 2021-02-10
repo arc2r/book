@@ -17,6 +17,12 @@ As a first step, we might want to import a shapefile. To do so, we can use `sf` 
 
 In the code snippet below, we read the shapefile, which represents the __parking spots for bicycles__ within the canton of Zurich. The dataset is publicly available for download in the following link: (https://opendata.swiss/en/dataset/veloparkierungsanlagen).
 
+
+<!--
+/ todo: replcace this with arc2r/arc2r
+/  asignees: KimboGilda
+--> 
+
 ```{r}
 library(sf)
 library(ggplot2)

@@ -1,0 +1,35 @@
+
+
+This file is used to generate a bib file containting all R Packages used in this project
+
+```{r}
+
+descr <- read.dcf("DESCRIPTION")
+descr_imports <- descr[1,"Imports"]
+descr_suggests <- descr[1,"Suggests"]
+
+packages_book <- str_split(c(descr_imports,descr_suggests), ",\n") %>% unlist()
+
+packages_book <- packages_book[!packages_book == "arc2r"]
+
+
+descr_data <- read.dcf(url("https://raw.githubusercontent.com/arc2r/arc2r/master/DESCRIPTION"))
+
+descr_data_imports <- descr_data[1,"Imports"]
+descr_data_suggests <- descr_data[1,"Suggests"]
+
+
+packages_data <- str_split(c(descr_data_imports,descr_data_suggests), ",") %>% unlist() %>% str_trim(side = "both")
+
+
+knitr::write_bib(c(packages_data, packages_book),"bibliography/packages.bib")
+
+
+readLines("bibliography/packages.bib") %>%
+  c("% Generated automatically: do not edit by hand",
+  "% Please edit R-script in R/generate_bibliography.Rmd",
+  .) %>%
+  write_lines("bibliography/packages.bib")
+
+```
+

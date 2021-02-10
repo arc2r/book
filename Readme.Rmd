@@ -10,30 +10,17 @@ knitr::opts_chunk$set(echo = FALSE)
 # All things `R`-Spatial
 
 
+`r Sys.time()`
+
 [![Actions Status](https://github.com/arc2r/book/workflows/bookdown/badge.svg)](https://github.com/arc2r/book/actions)
 
 
 ## Geoprocessing tools
 
-```{r}
-library(tidyverse)
-library(data.tree)
-
-tools <- read_csv("ESRI_Tool_names.csv")
-
-
-treefy <- tools %>%
-  mutate(tool = paste(toolb,toolset,Tool, sep = "/"))  %>% 
-  as.Node(pathName = "tool")
-
-print(treefy,limit = NULL)
-```
-
+A list of ALL geoprocessing tools is documented in ESRI_Tool_names.csv, ESRI_Toolboxes.csv and ESRI_Toolsets.csv. The Tools we want to document within this book are listed in [auxiliary/tools_todo.yaml]. Read more on this topic here: [R/tools_todo.Rmd]
 
 
 ## Style Guide
-
-Some basic text formatting rules for keeping the document consistent.
 
 
 ### Inline formatting
@@ -52,10 +39,10 @@ Some basic text formatting rules for keeping the document consistent.
     
 ### Adding notes
 
-If you want to highlight something important, you can add [a custom block](https://bookdown.org/yihui/bookdown/custom-blocks.html) in this format: ````{block2, type = "rmdnote"}` (see example below). This block will recieve the class "rmdnote", which is specified in [css/style.css]. Currently, the classes `rmdcaution, .rmdimportant, .rmdnote, .rmdtip, .rmdwarning` have the same layout, they all come from "Geocomputation with R" and might be specified on demand.
+If you want to highlight something important, you can add [a custom block](https://bookdown.org/yihui/bookdown/custom-blocks.html) in this format: ````{block2, type = "rmdnote"}` (see example below). This block will recieve the class "rmdnote", which is specified in [css/style.css]. 
 
 ````markdown
-```{block2, type='rmdnote'}
+`r ''````{block2, type='rmdnote'}
 Something very important we want to convey to our readers, written in Markdown.
 ```
 ````
@@ -69,7 +56,42 @@ We can add Subdivision to our document by adding the following line at the top o
 ```
 
 see https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html#special-headers
-    
+
+
+### Todos:
+
+we can add todos to our document using the following syntax:
+
+```
+/ todo: the title of the todo. what should be done?
+/  here we can add a body of our todo, which is indeted with an additional space
+/  we can also automatically assign a todo to a user using their github username
+/  in the following manner:
+/  assignees: ratnanil
+```
+
+The Todo action by alstr (https://github.com/alstr/todo-to-issue-action/) will automatically check all our files for new todos and create issues if it finds one. Once the todo is removed from the document, the issue will be closed as well.
+
+If we want the todo to be invisible from the users, we need to wrap it with the html comment tag `<!--` and `-->` as follows. Note that the comment tags are written on separate lines.
+
+```
+<!--
+/ todo: the title of the todo. what should be done?
+/  here we can add a body of our todo, which is indeted with an additional space
+/  we can also automatically assign a todo to a user using their github username
+/  in the following manner:
+/  assignees: ratnanil
+-->
+```
+
+
+### Citation
+
+To cite a book or URL or whatever, add a appropriate bibtex entry to [bibliography/general.bib]. You can then cite the document using the reference \@key  or [\@key].
+
+[bibliography/packags.bib] is generated automatically from all the packages in the DESCRIPTION of the book and the DESCRIPTION of the repo arc2r/arc2r. For this reason, ALL items in these bibtex files are added to the document, so only add entries for items we use in the book!
+
+
     
 ## Dependencies
 

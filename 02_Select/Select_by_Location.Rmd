@@ -113,6 +113,12 @@ library(ggplot2)
 
 An example of spatial subsetting could be the following. Let's assume we have as a polygon dataset with all the municipalities (Gemeinden) of the Canton of Zurich. Furthermore, we are also using a shapefile in the form of a point dataframe, which represents all the __"swimming spots"__ (Badenplätze) in the same spatial region (Canton of Zurich). So, ultimately, our goal is to find out the __"swimming spots"__ that lie within a specific municipality of the Canton of Zurich. 
 
+
+<!--
+/ todo: replcace this with arc2r/arc2r
+/  asignees: KimboGilda
+--> 
+
 ```{r echo=T}
 
 # Minicipalities (Gemeinde) in Canton Zurich

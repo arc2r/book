@@ -252,7 +252,7 @@ If we go through all intersections of **I**nterior, *`b`*oundry and **E**xterior
 
 ![](https://postgis.net/workshops/postgis-intro/_images/de9im3.jpg)
 
-### Rooks Case
+#### Rooks Case
 
 If we go throught the all nine combinations of the DE-9IM, this is what defines the rooks case:
 
@@ -262,7 +262,7 @@ If we go throught the all nine combinations of the DE-9IM, this is what defines 
 | Boundary | don't care  | **Line**   | don't care |
 | Exterior | don't care  | don't care | don't care |
 
-We can now write this into a string, starting from the top left: F***1***\*
+We can now write this into a string, starting from the top left: `F***1****`
 
 Now that we have this string, we case use `st_relate()`and specify the string as the pattern we are looking for:
 
@@ -285,7 +285,7 @@ chessplot +
 
 Because this was so much fun, let's also have a look at the opposite, the Bishops Case.
 
-### Bishops Case
+#### Bishops Case
 
 |          | Interior    | Boundary   | Exterior   |
 |:---------|:------------|:-----------|:-----------|

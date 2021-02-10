@@ -1,6 +1,4 @@
-
 ## Overlay Toolset
-
 
 ```{r, echo = FALSE}
 knitr::include_graphics("images/network/Analysis_Overlay.png")
@@ -12,7 +10,10 @@ knitr::include_graphics("images/network/Analysis_Overlay.png")
 
 Say you have two datasets:
 
-
+<!--
+/ todo: replcace this with arc2r/arc2r
+/  assignees: KimboGilda
+--> 
 ```{r, eval=FALSE}
 library(sf)
 library(tidyverse)
@@ -59,3 +60,27 @@ Note that points not located in a Gemeinde get the value `NA`. You have to speci
 
 (1) All binary predicates only work on 2D Objects (see [this issue](https://github.com/r-spatial/sf/issues/907))
 
+
+### Erase
+
+### Symmetrical Difference
+
+### Intersect
+
+### Update
+
+### Identity
+
+### Remove Overlap
+
+### Weighted Sum
+
+### Union
+
+### Count Overlapping Features
+
+### Fuzzy Membership
+
+### Fuzzy Overlay
+
+### Weighted Overlay

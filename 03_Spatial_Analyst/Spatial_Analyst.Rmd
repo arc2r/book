@@ -129,6 +129,11 @@ In `R`, `raster` package includes the function `terrain()`, which helps us compu
 *slope*, *aspect* and other terrain characteristics from a raster with elevation data.  
 Let's start by computing the _slope_ of the **swissAlti3d** raster dataset.  
 
+<!--
+/ todo: replcace this with arc2r/arc2r
+/  assignees: KimboGilda
+--> 
+
 ```{r}
 # Importing a raster dataset
 # swissALTI3D2019.tif -- Source: https://geovite.ethz.ch

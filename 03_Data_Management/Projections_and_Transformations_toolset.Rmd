@@ -107,6 +107,11 @@ In ArcGIS pro the tool for projecting a raster dataset is called
 _Project Raster (Data Management)_. Let's see how we can perform the same operation
 with R. 
 
+<!--
+/ todo: replcace this with arc2r/arc2r
+/  assignees: KimboGilda
+--> 
+
 ```{r}
 # Dataset derived from the spatial interpolation of all the available "recycling points"
 # in the city of Wädenwil
