@@ -229,3 +229,13 @@ write_csv(tools, "auxiliary/tools.csv")
 
 ```
 
+
+
+
+
+## Write Yaml from Toolset
+
+```{r}
+read_csv("auxiliary/toolsets.csv")
+```
+
