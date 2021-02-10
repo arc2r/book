@@ -8,14 +8,14 @@ To import raster data, we need a package that can specifically handle raster dat
 
 ### Single band raster
 
-Download the sample dataset [here](https://github.com/arc2r/book/raw/master/sample_data/swissalti3D/SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_1196.zip) and unzip it into your project folder. This dataset is a freely available sample for the swissALTI3D data. The full sample, including files at different resolutions, can be downloaded from [here](https://cms.geo.admin.ch/Topo/swissalti3d/swissalti3dgeotifflv95.zip).
+Download the sample dataset [here](https://github.com/arc2r/book/raw/master/sample_data/SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_1196.zip) and unzip it into your project folder. This dataset is a freely available sample for the swissALTI3D data. The full sample, including files at different resolutions, can be downloaded from [here](https://cms.geo.admin.ch/Topo/swissalti3d/swissalti3dgeotifflv95.zip).
 
 Now load the library `raster` the function `raster` to import the tif-file included in the zip file. Make sure you have set the path to your tif-file correctly.
 
 ```{r}
 library(raster)
 
-swissalti3d <- raster("sample_data/swissalti3D/SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_1196.tif")
+swissalti3d <- raster("sample_data/SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_1196.tif")
 
 ```
 

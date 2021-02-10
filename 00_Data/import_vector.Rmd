@@ -28,7 +28,7 @@ To import a vector dataset into `R`, we can use the function `read_sf` as in the
 
 ```{r}
 
-ARE_waedenswil <- read_sf("sample_data/Entsorgung_Waedenswil/ARE_waedenswil.shp")
+ARE_waedenswil <- read_sf("sample_data/ARE_waedenswil.shp")
 
 ARE_waedenswil
 ```

@@ -6,7 +6,7 @@ With the `terra` package, data is imported using the function `rast`.
 ```{r}
 library(terra)
 
-swissalti3d <- terra::rast("sample_data/swissalti3D/SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_1196.tif")
+swissalti3d <- terra::rast("sample_data/SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_1196.tif")
 
 ```
 
