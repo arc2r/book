@@ -2,7 +2,7 @@ bookdown::gitbook:
   split_by: rmd
   css: css/style.css
   includes:
-    in_header: html/utterances.html
+    in_footer: html/utterances.html
   config:
     toc:
       collapse: section
