@@ -1,24 +1,29 @@
 ## Overlay Toolset
 
+
 ```{r, echo = FALSE}
 knitr::include_graphics("images/network/Analysis_Overlay.png")
 ```
 
+For this chapter, you will need the following R Packages:
+```{r, echo=FALSE}
+library(arc2r)
+library(sf)
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+```
 
 ### Spatial Join
 
 
 Say you have two datasets:
 
-<!--
-/ todo: replcace this with arc2r/arc2r
-/  assignees: KimboGilda
---> 
 ```{r, eval=FALSE}
-library(sf)
-library(tidyverse)
-zweitwohnung <- read_sf("sample_data/other/zweitwohnung_gemeinden.gpkg") %>%
-  dplyr::filter(kanton == "Valais / Wallis") %>%
+data("zweitwohnung_gemeinden")
+
+zweitwohnung <- zweitwohnung_gemeinden %>%
+  filter(kanton == "Valais / Wallis") %>%
   select(NAME)
 
 bbox <- st_bbox(zweitwohnung) %>% st_as_sfc()

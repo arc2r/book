@@ -1,7 +1,13 @@
-## Joins and Realates Toolset
+## Joins and Relates Toolset
 
 //todo revise this chapter
 //body nothing about this chapter is spatial, the explanation is not based on ArcGIS Tools, the joins are not intuitive (what are df1 and df2?)
+
+For this chapter, you will need the following R Packages:
+
+```{r, echo = FALSE}
+library(dplyr)
+```
 
 
 In ArcGIS, joining two datasets on a common attribute is done with tools from the "Join" Toolset. Similar as described with the Selection tools in chapter \@ref(chapter-selection), a join has a temporary / floating nature and does not automatically produce an output. In `R`, joining two datasets requires is only persistent if the output is assigned to a new variable^[or piped into a new function].
@@ -23,7 +29,7 @@ knitr::include_graphics("images/joins.png")
 `Inner Join` in R is the most common type of join. It is an operation that returns the rows when the matching condition is fulfilled. Below we demonstrate it with an example.
 
 ```{r}
-library(dplyr)
+
 df1 <- data.frame(TeamID = c(1,4,6,11),
                   TeamName = c("new york knicks","los angeles lakers","milwaukee bucks","boston celtics"),
                   Championships = c(2,17,1,17))

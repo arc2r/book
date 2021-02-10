@@ -1,5 +1,12 @@
 # Spatial Statistics Toolbox
 
+For this chapter, you will need the following R Packages:
+```{r, echo=FALSE}
+library(arc2r)
+library(sf)
+library(ggplot2)
+```
+
 ## Mapping Clusters Toolset
 
 ## Measuring Geographic Distributions Toolset
@@ -49,9 +56,9 @@ morans_i <- function(sf_object,col) {
 --> 
 
 ```{r}
-zweitwohung <- read_sf("sample_data/other/zweitwohnung_gemeinden.gpkg")
+data("zweitwohnung_gemeinden")
 
-zweitwohung <- st_set_crs(zweitwohung,2056)
+zweitwohung <- st_set_crs(zweitwohnung_gemeinden,2056)
 ```
 
 

@@ -2,12 +2,16 @@
 ## Proximity Toolset
 
 
-
 ```{r, echo = FALSE}
 knitr::include_graphics("images/network/Analysis_Proximity.png")
 ```
 
-
+For this chapter, you will need the following R Packages:
+```{r, echo=FALSE}
+library(arc2r)
+library(sf)
+library(ggplot2)
+```
 
 
 ### Buffer
@@ -22,7 +26,9 @@ Below we introduce a line spatial feature that depicts all the __mountain bike r
 --> 
 
 ```{r, echo=F}
-mountainBikes_routes <- st_read("sample_data/other/mountainBikes_routes.shp")
+data("mountainBikes_routes") # Dataset depicting the mountain bike routes in Switzerland
+
+data("kantonsgebiet")
 ```
 
 ```{r, echo=F}

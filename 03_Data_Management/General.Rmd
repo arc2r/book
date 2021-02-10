@@ -5,17 +5,24 @@
 knitr::include_graphics("images/network/Data Management_General.png")
 ```
 
+For this chapter, you will need the following R Packages:
+
+```{r, echo = FALSE}
+library(arc2r)
+library(sf)
+library(ggplot2)
+library(dplyr)
+```
 
 ### Sort
 
-Sorting out features in ascending or descending order seems a quite primitive operation in any programming language or software package. Even though it is indeed primitive, it is also quite important for filtering and cleaning our datasets. In ArcGIS pro this operation is performed using the tool `Sort`, which is part of the General toolset of the Data Managenent Toolbox. Below we present how we can perform the aforementioned operation using R. For our example we use the Simple Feature object **bezirke**, which depicts the districts within the country of Switzerland Furthermore for performing the sorting operation, we use the record(column) that represents the area (in square km) of every of the districts. 
+Sorting out features in ascending or descending order seems a quite primitive operation in any programming language or software package. Even though it is indeed primitive, it is also quite important for filtering and cleaning our datasets. In ArcGIS pro this operation is performed using the tool `Sort`, which is part of the General toolset of the Data Managenent Toolbox. Below we present how we can perform the aforementioned operation using R. For our example we use the Simple Feature object **bezirke**, which depicts the districts within the country of Switzerland. Furthermore for performing the sorting operation, we use the record(column) that represents the area (in square km) of every of the districts. 
 
 ```{r sort_BaseR}
-library(sf)
-library(arc2r)
+
 # Read the dataset depicting the districts (Bezirke) in the country of Switzerland
-bezirke <- arc2r::bezirke 
 data("bezirke")
+
 # sort the dataset based on the Area in ascending order
 bezirke_asc <- bezirke[order(bezirke$area_km2),]
 head(bezirke_asc)
@@ -26,10 +33,9 @@ head(bezirke_desc)
 
 ```
 
-The beauty of R is that offers more than one option to perform a specific operation. In the example above, for performing the sorting operation, we used a simple subsetting method integrated within the so called **base R**. Nevertheless using the the function `arrange()` of the `dpyr package` we are able to produce the exact same result.  
+The beauty of R is that offers more than one option to perform a specific operation. In the example above, for performing the sorting operation, we used a simple subsetting method integrated within the so called **base R**. Nevertheless using the the function `arrange()` of the `dpyr package` we will be able to produce the exact same result.  
 
 ```{r sort_dplyr}
-library(dplyr)
 
 # sort the dataset based on the Area in ascending order
 bezirke_arrange_asc <- arrange(bezirke,area_km2) # by default the function sorts in ascendind order
@@ -48,67 +54,55 @@ head(bezirke_arrange_desc)
 
 ### Merge
 
-Let's assume in the example below that instead of having four individual areas of interest, we are interested in having one common, unified area on which we focus our analysis. In other words, we have to __merge__ the existing four areas into one. In ArcGIS pro the respective tools for this action is either the `Merge` or the `Dissolve` tool.  
-<!--
-/ todo: do merge and union in arcgis really do the same?
-/  assignees: KimboGilda
--->
-In R on the other hand, this can be easily performed using the `st_union` function in the `sf` package. 
-Let's assume in the example below that instead of having four individual areas of interest, we are interested in having one common, unified area on which we focus our analysis. In other words, we have to __merge__ the existing four areas into one. In ArcGIS pro the respective tools for this action is either the `Merge` or the `Dissolve` tool. In R on the other hand, this can be easily performed using the `st_union` function in the `sf` package. 
 
-```{r}
-library(sf)
-library(arc2r)
+`Merge` tool in ArcGIS pro is mainly used for combining datasets from different sources into a new, single output dataset. The main prerequisite for this operation is that the merging datasets have to be of the same geometry class. In R the aforementioned operation could be performed as follows:
 
+```{r merge}
+
+# Using the dataset that depicts all the 26 Cantons of Switzerland
 data("kantonsgebiet")
+
+# Selecting the Canton of Zug
+zug <- filter(kantonsgebiet, kantonsgebiet$name == "Zug") # depicting the Canton of Zug
+ggplot(zug) + geom_sf() # depicting the Canton of Zug
+
+# Selecting the Canton of Zürich
+zurich <- filter(kantonsgebiet, kantonsgebiet$name == "Zürich")
+ggplot(zurich) + geom_sf() # depicting the Canton of Zurich
+
+# merging the two sf objects
+merged <- rbind(zug,zurich)
+ggplot(merged) + geom_sf() # depicting the product of the merge operation
 ```
-
-The dataset has multiple features and columns.
-
-```{r}
-kantonsgebiet
-```
-
-
-```{r}
-plot(kantonsgebiet["name"])
-```
-
-After doing the union, we have  only one feature and no columns.
-
-<!--
-/ todo: The wording here is very sparse.. adjust this
-/  assignees: ratnanil
--->
-
-
-```{r}
-# Merging the four areas into one
-kantonsgebiet_union <- st_union(kantonsgebiet)
-
-kantonsgebiet_union
-```
-
-
-```{r}
-plot(kantonsgebiet_union)
-```
-
-
-
-The operation above produces the same outcome as the one depicted in the figure below \@ref(fig:dissolve).
-
-```{r, fig.cap= "Dissolve operation in ArcGIS pro",echo=F, out.width = "750px",fig.align='center'}
-knitr::include_graphics("images/dissolve.png")
-```
-
 
 
 ### Dissolve
 
+`Dissolve` in ArcGIS pro serves as a basic tool for aggregating features based on specified attributes. In R the respective operation could be easily performed using some basic functionalities of the `sf` package. In the example below we use again the dataset that depicts all the 26 Cantons of Switzerland. Our aim is to transform the given dataset to one unified spatial polygon. In ArcGIS pro the respective tool for this action is the tool `Dissolve`. In R on the other hand, this can be easily performed using the `st_union` function of the `sf` package.
+
+```{r dissolve_01}
+
+# The study area from the previous example
+head(kantonsgebiet)
+ggplot(kantonsgebiet) + geom_sf() # depicting all the 26 Cantons of Switzerland
+
+# Dissolving all the cantons into one unified area
+kantonsgebiet_dissolved <- st_union(kantonsgebiet)
+head(kantonsgebiet_dissolved)
+
+# Plot the dissolved output
+ggplot(kantonsgebiet_dissolved) + geom_sf()
+
+```
 
 
 ### Find Identical
+
+In ArcGIS pro `Find Identical` tool identifies records in a feature class or table that have identical values in a list of fields. As an outcome it produces a table listing those identical findings.
+
+```{r}
+duplicated(kantonsgebiet)
+```
 
 
 
@@ -117,3 +111,4 @@ knitr::include_graphics("images/dissolve.png")
 
 
 
+ 

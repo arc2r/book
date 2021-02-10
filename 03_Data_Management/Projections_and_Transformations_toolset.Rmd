@@ -1,5 +1,13 @@
 ## Projections and Transformations Toolset
 
+For this chapter, you will need the following R Packages:
+
+```{r, echo = FALSE}
+library(arc2r)
+library(sf)
+library(raster)
+```
+
 If there is anything special about spatial, it's the Coordinate Reference System. We will not get into the topic of CRS and Projections here, but it is advisable to get up to speed on this topic if you are dealing with geodata. From this toolset, we will cover the following tools:
 
 - **Define Projection**
@@ -15,10 +23,7 @@ If there is anything special about spatial, it's the Coordinate Reference System
 If your dataset comes *without* an assigned CRS, things can get hairy. Usually, you can make an informed guess as to which CRS the dataset is associated with, but in the end only the data producer can tell you. Let's take the dataset `bezirke` from the package `arc2r`. As you can see, the `CRS` field in the data's header is `NA`. 
 
 ```{r}
-library(arc2r)
-library(sf)
-
-bezirke
+data("bezirke")
 ```
 
 Calling the function `st_crs()` on `bezirke` confirms this.
@@ -108,12 +113,9 @@ with R.
 --> 
 
 ```{r}
-# Importing the datasets
-library(raster)
-
 # Dataset derived from the spatial interpolation of all the available "recycling points"
 # in the city of Wädenwil
-raster_recycling <- raster("sample_data/Raster/raster_recycling.tif") # CRS -> CH1903+LV95
+data("recycling_raster")
 
 # Dataset representing the public transport quality in the city of Wädenswil
 publicTransport <- raster("sample_data/Raster/publicTransport_waedi.tif") # CRS -> WGS84 
@@ -138,7 +140,7 @@ object has already a defined CRS.
 ```{r}
 # Transform the coordinate system of the raster dataset publicTransport_CH
 # into the Swiss Coordinate system - CH1903+LV95
-publicTransport_CH = projectRaster(publicTransport, raster_recycling)
+publicTransport_CH = projectRaster(publicTransport, recycling_raster)
 ```
 
 ```{r}
@@ -147,13 +149,6 @@ plot(publicTransport_CH,las=1,
      main = "Quality of public transport in the city of Wädenwil - CRS: CH1903+LV95",
      cex.main=1,font.main=4)
 ```
-
-
-
-
-
-
-
 
 
 

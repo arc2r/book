@@ -1,6 +1,9 @@
 # Spatial Analyst Toolbox
 
-```{r}
+For this chapter, you will need the following R Packages:
+
+```{r, echo=FALSE}
+library(arc2r)
 library(sf)
 library(tidyverse)
 library(raster)
@@ -134,10 +137,9 @@ Let's start by computing the _slope_ of the **swissAlti3d** raster dataset.
 ```{r}
 # Importing a raster dataset
 # swissALTI3D2019.tif -- Source: https://geovite.ethz.ch
+data("swissAlti3D")
 
-library(raster)
-swissAlti3d <- raster("sample_data/Raster/swissALTI3D2019.tif")
-plot(swissAlti3d,
+plot(swissAlti3D,
      main = "swissALTI3D2019 - CRS: CH1903+LV95",
      cex.main=1,font.main=4)
 ```
@@ -147,7 +149,7 @@ to calculate the slope.
 
 ```{r}
 # Computing the slope of a raster dataset using the terrain() function
-swissAlti3d_slope <- terrain(swissAlti3d, opt="slope", unit="degrees")
+swissAlti3d_slope <- terrain(swissAlti3D, opt="slope", unit="degrees")
 plot(swissAlti3d_slope,
      main = "Slope of swissALTI3D2019 in degrees (°)",
      cex.main=1,font.main=4)
@@ -163,7 +165,7 @@ same dataset __swissALTI3D2019__.
 
 ```{r}
 # Computing the aspect of the terrain dataset
-swissAlti3d_aspect <- terrain(swissAlti3d, opt="aspect", unit="degrees")
+swissAlti3d_aspect <- terrain(swissAlti3D, opt="aspect", unit="degrees")
 plot(swissAlti3d_aspect,
      main = "Aspect of swissALTI3D2019 in degrees (°)",
      cex.main=1,font.main=4)
