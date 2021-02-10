@@ -1,0 +1,202 @@
+
+```{r}
+library(rvest)
+library(xml2)
+library(tidyverse)
+```
+
+
+
+This is an EXTREMLY untidy script to scrape all tool-names with their respective toolset and toolbox from the ESRI website.
+
+
+## Get Names of toolboxes and their URLs
+
+
+Go to `https://pro.arcgis.com/en/pro-app/latest/tool-reference/main/arcgis-pro-tool-reference.htm` and copy the inner html of `accordion-content`. I cant scrape this because there seems to bo JS involved. 
+```{html}
+
+toolboxes <- '
+<a class="side-nav-link icon-ui-right" data-collapsed="true" href="/en/pro-app/2.7/tool-reference/3d-analyst">3D Analyst toolbox</a>
+<a class="side-nav-link icon-ui-right" data-collapsed="true" href="/en/pro-app/2.7/tool-reference/analysis">Analysis toolbox</a>
+<a class="side-nav-link icon-ui-right" data-collapsed="true" href="/en/pro-app/2.7/tool-reference/aviation">Aviation toolbox</a>
+<a class="side-nav-link icon-ui-right" data-collapsed="true" href="/en/pro-app/2.7/tool-reference/business-analyst">Business Analyst toolbox</a>
+<a class="side-nav-link icon-ui-right" data-collapsed="true" href="/en/pro-app/2.7/tool-reference/cartography">Cartography toolbox</a>
+<a class="side-nav-link icon-ui-right" data-collapsed="true" href="/en/pro-app/2.7/tool-reference/conversion">Conversion toolbox</a>
+<a class="side-nav-link icon-ui-right" data-collapsed="true" href="/en/pro-app/2.7/tool-reference/crime-analysis">Crime Analysis and Safety toolbox</a>
+<a class="side-nav-link icon-ui-right" data-collapsed="true" href="/en/pro-app/2.7/tool-reference/data-interoperability">Data Interoperability toolbox</a>
+<a class="side-nav-link icon-ui-right" data-collapsed="true" href="/en/pro-app/2.7/tool-reference/data-management">Data Management toolbox</a>
+<a class="side-nav-link icon-ui-right" data-collapsed="true" href="/en/pro-app/2.7/tool-reference/data-reviewer">Data Reviewer toolbox</a>
+<a class="side-nav-link icon-ui-right" data-collapsed="true" href="/en/pro-app/2.7/tool-reference/defense">Defense  toolbox</a>
+<a class="side-nav-link icon-ui-right" data-collapsed="true" href="/en/pro-app/2.7/tool-reference/editing">Editing toolbox</a>
+<a class="side-nav-link icon-ui-right" data-collapsed="true" href="/en/pro-app/2.7/tool-reference/feature-analysis">Feature Analysis toolbox</a>
+<a class="side-nav-link icon-ui-right" data-collapsed="true" href="/en/pro-app/2.7/tool-reference/geoanalytics-desktop">GeoAnalytics Desktop toolbox</a>
+<a class="side-nav-link icon-ui-right" data-collapsed="true" href="/en/pro-app/2.7/tool-reference/big-data-analytics">GeoAnalytics Server toolbox</a>
+<a class="side-nav-link icon-ui-right" data-collapsed="true" href="/en/pro-app/2.7/tool-reference/geocoding">Geocoding toolbox</a>
+<a class="side-nav-link icon-ui-right" data-collapsed="true" href="/en/pro-app/2.7/tool-reference/geostatistical-analyst">Geostatistical Analyst toolbox</a>
+<a class="side-nav-link icon-ui-right" data-collapsed="true" href="/en/pro-app/2.7/tool-reference/image-analyst">Image Analyst toolbox</a>
+<a class="side-nav-link icon-ui-right" data-collapsed="true" href="/en/pro-app/2.7/tool-reference/indoors">Indoors toolbox</a>
+<a class="side-nav-link icon-ui-right" data-collapsed="true" href="/en/pro-app/2.7/tool-reference/intelligence">Intelligence toolbox</a>
+<a class="side-nav-link icon-ui-right" data-collapsed="true" href="/en/pro-app/2.7/tool-reference/linear-referencing">Linear Referencing toolbox</a>
+<a class="side-nav-link icon-ui-right" data-collapsed="true" href="/en/pro-app/2.7/tool-reference/location-referencing">Location Referencing toolbox</a>
+<a class="side-nav-link icon-ui-right" data-collapsed="true" href="/en/pro-app/2.7/tool-reference/maritime">Maritime toolbox</a>
+<a class="side-nav-link icon-ui-right" data-collapsed="true" href="/en/pro-app/2.7/tool-reference/multidimension">Multidimension toolbox</a>
+<a class="side-nav-link icon-ui-right" data-collapsed="true" href="/en/pro-app/2.7/tool-reference/network-analyst">Network Analyst toolbox</a>
+<a class="side-nav-link icon-ui-right" data-collapsed="true" href="/en/pro-app/2.7/tool-reference/network-diagram">Network Diagram toolbox</a>
+<a class="side-nav-link icon-ui-right" data-collapsed="true" href="/en/pro-app/2.7/tool-reference/parcel">Parcels toolbox</a>
+<a class="side-nav-link icon-ui-right" data-collapsed="true" href="/en/pro-app/2.7/tool-reference/raster-analysis">Raster Analysis toolbox</a>
+<a class="side-nav-link icon-ui-right" data-collapsed="true" href="/en/pro-app/2.7/tool-reference/ready-to-use">Ready To Use toolbox</a>
+<a class="side-nav-link icon-ui-right" data-collapsed="true" href="/en/pro-app/2.7/tool-reference/server">Server toolbox</a>
+<a class="side-nav-link icon-ui-right" data-collapsed="true" href="/en/pro-app/2.7/tool-reference/space-time-pattern-mining">Space Time Pattern Mining toolbox</a>
+<a class="side-nav-link icon-ui-right" data-collapsed="true" href="/en/pro-app/2.7/tool-reference/spatial-analyst">Spatial Analyst toolbox</a>
+<a class="side-nav-link icon-ui-right" data-collapsed="true" href="/en/pro-app/2.7/tool-reference/spatial-statistics">Spatial Statistics toolbox</a>
+<a class="side-nav-link icon-ui-right" data-collapsed="true" href="/en/pro-app/2.7/tool-reference/territory-design">Territory Design toolbox</a>
+<a class="side-nav-link icon-ui-right" data-collapsed="true" href="/en/pro-app/2.7/tool-reference/topographic-production">Topographic Production toolbox</a>
+<a class="side-nav-link icon-ui-right" data-collapsed="true" href="/en/pro-app/2.7/tool-reference/trace-network">Trace Network toolbox</a>
+<a class="side-nav-link icon-ui-right" data-collapsed="true" href="/en/pro-app/2.7/tool-reference/utility-networks">Utility Network toolbox</a>
+<a class="side-nav-link icon-ui-right" data-collapsed="true" href="/en/pro-app/2.7/tool-reference/workflow-manager">Workflow Manager toolbox</a>
+'
+
+```
+
+
+Create a dataframe with Toolbox name and URL
+```{r}
+toolboxes <- read_html(toolboxes) %>%
+  html_nodes("a") %>%
+  map_dfr(function(x){
+    tibble(name  = html_text(x),
+           url = html_attr(x, "href"))
+  })
+
+toolboxes
+```
+
+Adjust the URL
+
+```{r}
+# Function to get the last element of a string seperated with "/"
+getlast <- function(inp){
+  st <- str_split(inp,"/")
+  map_chr(st, ~.x[length(.x)])
+}
+
+
+toolboxes <- toolboxes %>%
+  mutate(
+    url_adjusted = paste0(url,"/an-overview-of-the-",getlast(url),"-toolbox.htm"),
+    url_adjusted = str_replace(url_adjusted, "/2.7/","/latest/"),
+    url_adjusted = paste0("https://pro.arcgis.com",url_adjusted) 
+  )
+
+toolboxes
+```
+
+
+```{r}
+get_toolboxdesc <- function(url){
+  url %>%
+    xml2::read_html() %>% 
+    html_node("p") %>% 
+    html_text()
+}
+
+
+toolbox_desc <- toolboxes %>%
+  pmap_dfr(function(name, url, url_adjusted){
+    Sys.sleep(0.5)
+    desc <- tryCatch(
+      get_toolboxdesc(url_adjusted),
+      error = function(e){NA}
+    )
+    
+    tibble(name = name, desc = desc)
+  })
+
+
+toolboxes <- left_join(toolboxes, toolbox_desc, by = "name")
+
+
+write_csv(toolboxes, "auxiliary/toolboxes.csv")
+```
+
+
+```{r}
+# This function takes the URL of a toolbox and returns a table of all toolsets from this toolbox
+grab_toolsets <- function(url){
+  tab <- url %>%
+    xml2::read_html() %>%
+    html_node(".tablexyz")
+  
+  tab2 <- html_table(tab)  
+    
+  tab3 <- tab %>% 
+    html_nodes("a") %>%
+    map_dfr(~tibble(url = html_attr(.x, "href"),text = html_text(.x)))
+  
+  
+  left_join(tab2, tab3, by = c("Toolset" = "text"))
+}
+```
+
+
+
+```{r}
+toolsets <- toolboxes %>%
+  pmap_dfr(function(name, url, url_adjusted, desc){
+    Sys.sleep(0.5)
+    mytable <- tryCatch(
+      grab_toolsets(url_adjusted),
+      error = function(e){
+        tibble(toolset_names = NA, toolset_urls = NA, toolset_desc = NA, toolbox_desc = NA)
+      }
+    )
+    mytable <- mytable %>%
+      mutate(toolbox = name)
+    
+  })
+
+
+# All NA Values mean that the toolsets of the toolbox could not be extracted!
+write_csv(toolsets, "auxiliary/toolsets.csv")
+
+```
+
+Continues here -> remember to save everything as YAML
+
+
+```{r}
+gettool <- function(inp){
+  inp %>%
+    str_replace("/2.7/","/latest/") %>%
+    paste0("https://pro.arcgis.com",.)%>%
+    read_html() %>%
+    html_nodes(".tablexyz") %>%
+    html_table()
+}
+
+
+gettool("/en/pro-app/2.7/tool-reference/3d-analyst/an-overview-of-the-3d-features-toolset.htm")
+
+sc3 <- sc2 %>%
+  # head(1) %>%
+  pmap_dfr(function(href, tool, desc, toolb){
+    Sys.sleep(0.5)
+    tab <- tryCatch(gettool(href),
+                    error = tibble(Tool = NA, Description = NA))
+    tab
+    
+    map_dfr(tab, ~.x) %>%
+      mutate(href = href, toolset = tool, desc = desc, toolb)
+  })
+
+
+
+sc4 <- sc3[,1:6]
+
+write_csv(sc4, "ESRI_Tool_names.csv")
+write_csv(sc2, "ESRI_Toolsets.csv")
+write_csv(toolboxes, "ESRI_Toolboxes.csv")
+
+```
+
