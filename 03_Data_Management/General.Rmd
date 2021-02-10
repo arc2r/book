@@ -54,6 +54,7 @@ head(bezirke_arrange_desc)
 
 ### Merge
 
+
 `Merge` tool in ArcGIS pro is mainly used for combining datasets from different sources into a new, single output dataset. The main prerequisite for this operation is that the merging datasets have to be of the same geometry class. In R the aforementioned operation could be performed as follows:
 
 ```{r merge}

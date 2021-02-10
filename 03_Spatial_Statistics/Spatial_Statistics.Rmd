@@ -43,6 +43,10 @@ morans_i <- function(sf_object,col) {
 }
 ```
 
+<!--
+/ todo: replcace this with arc2r/arc2r
+/  assignees: KimboGilda
+--> 
 
 ```{r}
 zweitwohung <- read_sf("sample_data/other/zweitwohnung_gemeinden.gpkg")

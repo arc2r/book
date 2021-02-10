@@ -7,21 +7,6 @@ knitr::include_graphics("images/network/Data Management_Sampling.png")
 ```
 
 
-```{r, echo = FALSE}
-library(tidyverse)
-library(data.tree)
-library(networkD3)
-
-tools_todo_df <- read_csv("auxiliary_files/tools_todo_df.csv")
-
-tools_todo_df %>%
-  filter(toolbox == "Data Management", toolset == "Sampling") %>% 
-  transmute(tool = paste(toolset, tool, sep = "/")) %>% 
-  as.Node(pathName = "tool") %>%
-  ToListExplicit(unname = TRUE) %>%
-  diagonalNetwork()
-```
-
 ### Generate Tessellation
 
 

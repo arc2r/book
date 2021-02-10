@@ -14,6 +14,7 @@ knitr::opts_chunk$set(echo = FALSE, message=FALSE)
 library(tidyverse)
 library(data.tree)
 library(networkD3)
+library(yaml)
 
 tools <- read_csv("ESRI_Tool_names.csv") %>%
   mutate(toolb = str_remove(toolb," toolbox")) %>%
@@ -28,7 +29,7 @@ toolboxes <- read_csv("ESRI_Toolboxes.csv") %>%
 We haven't found a complete overview of all the geprocessing tools in ArcGIS, but we've scraped ESRIS website and counted `r nrow(toolboxes)` Toolboxes, containing `r nrow(toolsets)` Toolsets and `r nrow(tools)` individual tools^[Note: these numbers are an approximation only, we may have made errors when scraping]. See figure \@ref(fig:toolsvis) for an interactive visualisation of all tools in ArcGIS.
 
 
-```{r, toolsviz, warning=FALSE, fig.cap = "A 'diagonal Network' visualisation of all tools available in ArcGIS Pro. Hover over the blue circles to see the Name in a larger font.",fig.asp=2}
+```{r toolsviz, warning=FALSE, fig.cap = "A 'diagonal Network' visualisation of all tools available in ArcGIS Pro. Hover over the blue circles to see the Name in a larger font.",fig.asp=2}
 tools %>%
   filter(!is.na(Tool)) %>%
   transmute(tool = paste("GeprocessingTools",str_remove(toolb," toolbox"),toolset,Tool, sep = "/")) %>%
@@ -47,16 +48,16 @@ We cannot possibly cover all these tools in this book, and it wouldn't make much
 
 
 
-```{r, toolsviz2, fig.asp=2, fig.cap="A subset of tools we would like to cover in this book."}
+```{r toolsviz2, fig.asp=2, fig.cap="A subset of tools we would like to cover in this book."}
 
 
-tools_todo_df <- read_csv("auxiliary_files/tools_todo_df.csv")
 
-tools_todo_df %>%
-  transmute(tool = paste("GeoprocessingTools",toolbox, toolset, tool, sep = "/")) %>% 
-  as.Node(pathName = "tool") %>%
-  ToListExplicit(unname = TRUE) %>%
-  diagonalNetwork()
+tools_toodo_yaml <- read_yaml("auxiliary/tools_todo.yaml")
+tools_toodo2 <- map(tools_toodo_yaml, function(x){map(x, function(y){map(y, function(z){list(name = z)})})})
+
+FromListSimple(tools_toodo2,nodeName =  "GeoprocessingTools") %>%
+    ToListExplicit(unname = TRUE) %>%
+    diagonalNetwork()
 
 
 

@@ -31,8 +31,14 @@ library(mapview)
 This next line of code generates a representation of your data (in this case, `gemeindegrenzen_zh`), much like the default map in ArcGIS. 
 
 ```{r}
+RSTUDIO_USER_IDENTITY <- Sys.getenv("RSTUDIO_USER_IDENTITY")
+```
+
+```{r, eval=RSTUDIO_USER_IDENTITY != "rata"}
 mapview(gemeindegrenzen_zh)
 ```
+
+
 
 If the emphasis lies on creating a highly customized map, then `tmap` may be more appropriate.
 

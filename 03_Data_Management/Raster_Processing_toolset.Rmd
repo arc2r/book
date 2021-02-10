@@ -19,6 +19,10 @@ In GIS operations is quite common the necessity of "clipping" an area based on s
 - __ARE_waedi__: Vector dataset that depicts the public transport connection quality in the city of Wädenswil
 - __raster_recycling__: Dataset derived from the spatial interpolation of all the available "recycling points"in the city of Wädenwil  
 
+<!--
+/ todo: replcace this with arc2r/arc2r
+/  assignees: KimboGilda
+--> 
 
 ```{r echo=TRUE}
 # Read raster dataset

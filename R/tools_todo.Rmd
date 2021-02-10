@@ -32,7 +32,7 @@ The yaml file is structured as follows:
 
 
 ```{r}
-tools_toodo <- read_yaml("auxiliary_files/tools_todo.yaml")
+tools_toodo <- read_yaml("auxiliary/tools_todo.yaml")
 ```
 
 This next line of code converts the tools (which are imported as a character vector) into a list.
