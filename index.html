@@ -72,34 +72,12 @@
 <link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
 <script src="libs/d3-4.5.0/d3.min.js"></script>
 <script src="libs/diagonalNetwork-binding-0.4/diagonalNetwork.js"></script>
-
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    if (!/posts/.test(location.pathname)) {
-      return;
-    }
-
-    var script = document.createElement("script");
-    script.src = "https://utteranc.es/client.js";
-    script.setAttribute("repo", "arc2r/book");
-    script.setAttribute("issue-term", "og:title");
-    script.setAttribute("crossorigin", "anonymous");
-    script.setAttribute("label", "comment_thread");
-
-    /* wait for article to load, append script to article element */
-    var observer = new MutationObserver(function (mutations, observer) {
-      var article = document.querySelector("d-article");
-      if (article) {
-        observer.disconnect();
-        /* HACK: article scroll */
-        article.setAttribute("style", "overflow-y: hidden");
-        article.appendChild(script);
-      }
-    });
-
-    observer.observe(document.body, { childList: true });
-  });
+<script src="https://utteranc.es/client.js"
+        repo="arc2r/comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
 </script>
 
 
@@ -449,7 +427,7 @@ Developped by the Research Group for Geoinformatics @ ZHAW</a></li>
 <div id="what-this-book-is-about" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> What this book is about</h1>
 <p>This is a resource for people wanting to learn spatial-R (Analysis, Visualization) in R and are coming with a background in ArcGIS. This resource should provide some help on this journey. <strong>We assume you have some prior experience with <code>R</code></strong>. If this is not the case, we recommend you familiarize yourself with <code>R</code> first.</p>
-<p>This book leans heavily on how the Toolboxes and Toolsets are documented in ArcGIS Pro. Is is not a book to read from cover to cover, but to look up specific things of which you only know the ArcGIS terminology for. This book is a work in progress, the current version is from the 2021-02-09 21:33:49 (UTC). <em>We highly appreciate contributions</em> to this book: If you have anything to add, please <a href="https://github.com/arc2r/book">file an issue or make a pull request</a>.</p>
+<p>This book leans heavily on how the Toolboxes and Toolsets are documented in ArcGIS Pro. Is is not a book to read from cover to cover, but to look up specific things of which you only know the ArcGIS terminology for. This book is a work in progress, the current version is from the 2021-02-10 06:25:13 (UTC). <em>We highly appreciate contributions</em> to this book: If you have anything to add, please <a href="https://github.com/arc2r/book">file an issue or make a pull request</a>.</p>
 <p>We are big fans of using <code>magrittr</code>’s pipe function <code>%&gt;%</code> and heavily use it throughout this book. In addition for vector data, we use packages from the <code>tidyverse</code> (especially <code>filter()</code>, <code>mutate()</code> and <code>summarise()</code>.)</p>
 <div id="how-it-started" class="section level2" number="1.1">
 <h2><span class="header-section-number">1.1</span> How it started</h2>
