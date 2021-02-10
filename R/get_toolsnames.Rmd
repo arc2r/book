@@ -75,16 +75,30 @@ toolboxes
 Adjust the URL
 
 ```{r}
-# Function to get the last element of a string seperated with "/"
-getlast <- function(inp){
-  st <- str_split(inp,"/")
+# Function to get the last element of a string separated with sep
+getlast <- function(inp, sep = "/"){
+  st <- str_split(inp,sep)
   map_chr(st, ~.x[length(.x)])
 }
 
 
 toolboxes <- toolboxes %>%
   mutate(
-    url_adjusted = paste0(url,"/an-overview-of-the-",getlast(url),"-toolbox.htm"),
+    last = map_chr(str_split(url,"/"), ~.x[length(.x)]),
+    # There are some cases where the pattern is a bit different
+    last = case_when(
+      last == "parcel"~"parcels",
+      last == "utility-networks"~"utility-network",
+      last == "crime-analysis"~"crime-analysis-and-safety",
+      last == "defense"~"defense-tools",
+      last == "feature-analysis"~"standard-feature-analysis",
+      TRUE~last
+    ),
+    url_adjusted = case_when(
+      # the pattern is different for one toolbox
+      last == "workflow-manager"~paste0(url,"/overview-of-wmx-tools.htm"),
+      TRUE~paste0(url,"/an-overview-of-the-",last,"-toolbox.htm")
+    ),
     url_adjusted = str_replace(url_adjusted, "/2.7/","/latest/"),
     url_adjusted = paste0("https://pro.arcgis.com",url_adjusted) 
   )
@@ -101,9 +115,8 @@ get_toolboxdesc <- function(url){
     html_text()
 }
 
-
 toolbox_desc <- toolboxes %>%
-  pmap_dfr(function(name, url, url_adjusted){
+  pmap_dfr(function(name, url, url_adjusted,last){
     Sys.sleep(0.5)
     desc <- tryCatch(
       get_toolboxdesc(url_adjusted),
@@ -128,14 +141,14 @@ grab_toolsets <- function(url){
     xml2::read_html() %>%
     html_node(".tablexyz")
   
-  tab2 <- html_table(tab)  
-    
+  tab2 <- html_table(tab) %>%
+    rename("Toolset" = 1)
+  
   tab3 <- tab %>% 
     html_nodes("a") %>%
     map_dfr(~tibble(url = html_attr(.x, "href"),text = html_text(.x)))
   
-  
-  left_join(tab2, tab3, by = c("Toolset" = "text"))
+  left_join(tab2, tab3, by = c("Toolset" =  "text"))
 }
 ```
 
@@ -143,60 +156,75 @@ grab_toolsets <- function(url){
 
 ```{r}
 toolsets <- toolboxes %>%
-  pmap_dfr(function(name, url, url_adjusted, desc){
+  pmap_dfr(function(name, url, url_adjusted, last, desc){
     Sys.sleep(0.5)
     mytable <- tryCatch(
       grab_toolsets(url_adjusted),
-      error = function(e){
-        tibble(toolset_names = NA, toolset_urls = NA, toolset_desc = NA, toolbox_desc = NA)
-      }
+      error = function(e){tibble(.rows = 1)}
     )
     mytable <- mytable %>%
       mutate(toolbox = name)
     
   })
+```
 
 
-# All NA Values mean that the toolsets of the toolbox could not be extracted!
+```{r}
+# did every toolbox get a row (as expected)?
+length(unique(toolsets$toolbox)) == nrow(toolboxes)
+
+# if so, is any toolset NA?
+any(is.na(toolsets$Toolset))
+
 write_csv(toolsets, "auxiliary/toolsets.csv")
 
 ```
 
-Continues here -> remember to save everything as YAML
-
-
 ```{r}
-gettool <- function(inp){
-  inp %>%
-    str_replace("/2.7/","/latest/") %>%
-    paste0("https://pro.arcgis.com",.)%>%
+
+toolsets <- toolsets %>%
+  mutate(
+    url_adjusted = str_replace(url,"/2.7/","/latest/"),
+    url_adjusted = paste0("https://pro.arcgis.com",url_adjusted)
+  )
+
+# This function grabs all tools from a given toolset URL
+grab_tools <- function(url){
+  url %>%
     read_html() %>%
     html_nodes(".tablexyz") %>%
     html_table()
 }
 
+toolsets <- toolsets %>%
+  mutate(
+    url_adjusted = case_when(
+      toolbox == "Defense Toolbox" & Toolset == "Gridded Reference Graphic"~"https://pro.arcgis.com/en/pro-app/latest/tool-reference/defense/an-overview-of-the-gridded-reference-graphic-toolset.htm",
+      toolbox == "GeoAnalytics Desktop toolbox" & Toolset == "Analyze Patterns"~"https://pro.arcgis.com/en/pro-app/latest/tool-reference/geoanalytics-desktop/an-overview-of-the-analyze-patterns-toolset.htm",
+      TRUE~url_adjusted
+    )
+  )
 
-gettool("/en/pro-app/2.7/tool-reference/3d-analyst/an-overview-of-the-3d-features-toolset.htm")
+# Any empty URLS?
+toolsets %>%
+  filter(is.na(url_adjusted))
 
-sc3 <- sc2 %>%
-  # head(1) %>%
-  pmap_dfr(function(href, tool, desc, toolb){
+
+tools <- toolsets %>%
+  select(toolbox, Toolset,url_adjusted) %>%
+  pmap_dfr(function(toolbox, Toolset, url_adjusted){
     Sys.sleep(0.5)
-    tab <- tryCatch(gettool(href),
-                    error = tibble(Tool = NA, Description = NA))
-    tab
-    
+    print(toolbox)
+    print(Toolset)
+    print(url_adjusted)
+    tab <- tryCatch(grab_tools(url_adjusted),
+                    error = tibble(.rows = 1))
     map_dfr(tab, ~.x) %>%
-      mutate(href = href, toolset = tool, desc = desc, toolb)
+      mutate(toolbox = toolbox, Toolset = Toolset)
   })
 
 
-
-sc4 <- sc3[,1:6]
-
-write_csv(sc4, "ESRI_Tool_names.csv")
-write_csv(sc2, "ESRI_Toolsets.csv")
-write_csv(toolboxes, "ESRI_Toolboxes.csv")
+write_csv(tools, "auxiliary/tools.csv")
 
 ```
 
