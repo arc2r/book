@@ -26,7 +26,7 @@ In the code snippet below, we read the shapefile, which represents the __parking
 ```{r}
 library(sf)
 library(ggplot2)
-parkBikes <- st_read("sample_data/Kanton_Zuerich/Veloparkierungsanlagen/OGD_VELOPARKIERANLAGEN_P.shp")
+data("veloparkierungsanlagen_zh")
 ```
 
 After importing the dataset, let's say we want to filter it by selecting only the parking spots that lie within a specific municipality (Gemeinde) in the canton of Zurich. More specifically, we will select only the parking spots within the municipality of Winterthur.
@@ -35,11 +35,11 @@ This functions works as follows: `filter(dataset, condition)`
 
 ```{r}
 library(dplyr)
-parkBikes_winti <- filter(parkBikes,GEMEINDE == "Winterthur")
+parkBikes_winti <- filter(veloparkierungsanlagen_zh,GEMEINDE == "Winterthur")
 ```
 
 ```{r,echo = F, fig.align='center'}
-ggplot() + geom_sf(data = parkBikes) + geom_sf(data = parkBikes_winti, fill = "red", aes(color = "Bike parking spots in Winterthur")) + ggtitle("Bike parking facilities in Canton Zurich") + theme_minimal() + labs(color = " ") + theme(legend.position = "bottom")
+ggplot() + geom_sf(data = veloparkierungsanlagen_zh) + geom_sf(data = parkBikes_winti, fill = "red", aes(color = "Bike parking spots in Winterthur")) + ggtitle("Bike parking facilities in Canton Zurich") + labs(color = " ") + theme(legend.position = "right", axis.text.x = element_text(angle=90, hjust=1)) + coord_sf(datum = 2056)
 ```
 
 

@@ -1,6 +1,14 @@
 # Image Analysis Toolbox
 
+For this chapter, you will need the following R Packages:
+```{r, echo=FALSE}
+library(arc2r)
+library(raster)
+library(terra)
+```
+
 ## Map Algebra Toolset
+
 
 
 ### Raster Calulator
@@ -17,15 +25,16 @@ For the example below we will work with 2 datasets that depict India's populatio
 
 ```{r}
 # Read the data for our example
-library(raster)
+
 # India's population in 2000
-india_2000 <- raster("sample_data/population_raster/india_2000.tif")
+data("pop_india2000")
+
 # India's population in 2010
-india_2010 <- raster("sample_data/population_raster/india_2010.tif")
+data("pop_india2010")
 
 par(mfrow=c(1,2))
-plot(india_2000)
-plot(india_2010)
+plot(pop_india2000)
+plot(pop_india2010)
 ```
 
 Let's compute now the difference between the two rasters. To do so, there are various 
@@ -48,7 +57,7 @@ the function _overlay_ of the `raster` package for producing the new raster outp
 
 ```{r}
 # Compute the raster that depicts the difference in population in these 10 years
-pop2010_2000 <- overlay(india_2000, india_2010,
+pop2010_2000 <- overlay(pop_india2000, pop_india2010,
                      fun = diff_rasters)
 
 plot(pop2010_2000,
@@ -79,8 +88,6 @@ In other words to define the moving window for each of these functions. As an ex
 we will create our own raster object.  
 
 ```{r}
-library(raster)
-
 r <- raster(ncol=10, nrow=10)
 values(r) <- 1:ncell(r)
 plot(r, main='Raster with 100 cells', cex.main = 1)
@@ -102,7 +109,7 @@ The operation above can be also performed with the use of the _focal_ function o
   - `fun` represents the specified statistic for the identified neighbourhood (e.g mean,sum etc)
   
 ```{r}
-library(terra)
+
 r_spat <- as(r, "SpatRaster")
 f2 <- terra::focal(r_spat,w=3,fun = "sum")
 plot(f2, main = "Raster after applying the focal function - terra package", cex.main = 1)

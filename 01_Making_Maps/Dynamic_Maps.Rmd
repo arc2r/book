@@ -20,11 +20,10 @@ The package `mapview` is highly automated and you get a very decent map when cal
 > It’s main goal is to fill the gap of quick [...] interactive plotting to examine and visually investigate both aspects of spatial data, the geometries and their attributes.
 
 
-```{r}
+```{r, echo=FALSE}
 library(arc2r)
 library(sf)
 library(raster)
-
 library(mapview)
 ```
 

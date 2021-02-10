@@ -1,6 +1,13 @@
 
 ## Extract Toolset
 
+For this chapter, you will need the following R Packages:
+```{r, echo=FALSE}
+library(arc2r)
+library(sf)
+library(tmap)
+```
+
 ### Clip
 
 Quite often in spatial analysis, we come across with cases, where we do not want to use all the available data there is. In other words, we want to focus on a specific area of interest, which dictates the need for __clipping__ the existing dataset based on it's relationship to some other existing spatial feature. In R this operation can be easily performed using the `st_intersection` function in `sf`.
@@ -14,19 +21,17 @@ Let's assume in the example below that we want to clip the available dataset of 
 --> 
 
 ```{r}
-library(sf)
-library(tmap)
 
 # Point dataset depicting the train stations locations across Switzerland
-bahn_haltestelle_ch <- st_read("sample_data/other/Haltestelle_Bahn_CH.shp")
+data("haltestelle_bahn")
 
 # Dataset depicting Switzerland on canton level
-kantonsgebiet <- st_read("sample_data/other/Kantonsgebiet.shp")
+data("kantonsgebiet")
 
 tmap_mode(mode = "plot") # setting the plotting mode to static -- optimizing the process
 
 tm_shape(kantonsgebiet) + tm_polygons("#f0f0f0") + 
-  tm_shape(bahn_haltestelle_ch) + tm_dots(col = "#e34a33",size = 0.1, alpha = 0.5) + 
+  tm_shape(haltestelle_bahn) + tm_dots(col = "#e34a33",size = 0.1, alpha = 0.5) + 
   tm_shape(kantonsgebiet) + tm_borders(col = "black") + tm_layout(frame = F)
    
 ```
@@ -44,7 +49,7 @@ index <- kantonsgebiet$name == "Zürich" |
 kantons_aOi <- kantonsgebiet[index,]
 
 # Performing the clipping operation
-hal_clipped <- st_intersection(kantons_aOi,bahn_haltestelle_ch)
+hal_clipped <- st_intersection(kantons_aOi,haltestelle_bahn)
 ```
 
  - Plotting the result from the clipping operation
