@@ -1,22 +1,57 @@
-## Static Maps
+## Static Maps {#chapter-staticmaps}
 
-
-As we saw in chapter \@ref(data), we can quickly visualize geodata by simply calling `plot` on the dataset. 
-
+For this chapter, you will need the following packages and datasets:
 
 ```{r}
 library(arc2r) 
 library(sf)
 library(raster)
 
-plot(gemeinde_zh["bezirksnam"])
+data("gemeinde_zh")
+data("swissAlti3D")
+```
 
+
+
+As we saw in chapter \@ref(importing-vector-sf), we can quickly visualize an `sf` object by simply calling `plot`. This will return a small multiple of your geodata, where each facet is colour coded based on a column. 
+
+
+```{r}
+plot(gemeinde_zh)
+```
+
+
+You will get one facet for each column, where the maximum number of facets is set to 9 by default. I find this behaviour pretty annoying, since I usually just want get a *quick* look at the data in space, and these small multiples take ages to render. There are several workarounds to prevent small multiples:
+
+1. Extract the geometry from the `sf` object and just plot that
+2. Specify the column which should colourcode your data
+3. Specify `max.plot = 1` to just plot 1 facet (using the first column in your dataset for colour coding)
+4. Set the option `sf_max.plot` to 1 with `Option(sf_max.plot = 1)` (this will persist throughout your `R` Session)
+
+<!--
+/ todo: add description how this can be added to the .Renviron / .Rprofile
+/  assignees: ratnanil
+-->
+
+```{r}
+
+plot(st_geometry(gemeinde_zh))  # 1
+plot(gemeinde_zh["bezirksnam"]) # 2
+plot(gemeinde_zh, max.plot = 1) # 3
+
+options(sf_max.plot = 1)        # 4
+plot(gemeinde_zh)
+```
+
+
+We dont have the "problem" of facets with raster data, so we can simply call `plot()` on a raster object to visualize it.
+
+```{r}
 plot(swissAlti3D)
 
 ```
 
-
-This is fine for quick view of the data, but as you want to add more layers, legend etc. using `base::plot()` becomes complicated. There are many alternative methods to visualizing spatial data, we will showcase our favourite methods here.
+The `plot()` method is fine for quick view of the data, but as you want to add more layers, legend etc. `plot()` becomes complicated. There are many alternative methods to visualizing spatial data, we will showcase our favourite methods here.
 
 
 ### Package `ggplot2`
@@ -42,8 +77,10 @@ ggplot(gemeinde_zh) +
 
 To change the default graticules from WGS84 to a custom Coordinate System, we can use the argument `datum` in `coord_sf` and call the EPSG Code of our desired coordinate system.
 
-//todo add chapter on CRS
-//body ArcGIS Users are usually not familiar with ESPG Codes, we should provide an introduction somewhere and reference this here.
+<!--
+/ todo: add chapter on CRS
+/  ArcGIS Users are usually not familiar with ESPG Codes, we should provide an introduction somewhere and reference this here.
+-->
 
 ```{r}
 ggplot(gemeinde_zh) + 
@@ -66,7 +103,9 @@ ggplot(gemeinde_zh) +
 
 #### `raster` objects
 
-//todo use a raster object with the same extent as the sf object
+<!--
+/ todo: use a raster object with the same extent as the sf object
+-->
 
 While `sf` objects are very easily integrated in ggplot2, raster data is a little harder. There are various ways to plot a raster object with `ggplot2`. A simple, adhoc approach is converting the `RasterLayer` object into a `data.frame` and then plotting it with `geom_raster`. 
 
@@ -102,10 +141,10 @@ ggplot(swissAlti3D_df, aes(x, y, fill = SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_119
 
 ```
 
-
-//todo combine sf and raster
-//body add an example of how sf and raster can be layered. This needs an additional dataset.
-
+<!--
+/ todo: combine sf and raster
+/  add an example of how sf and raster can be layered. This needs an additional dataset.
+-->
 
 
 ### Package `tmap`{#static-maps-tmap}
