@@ -516,27 +516,27 @@ Developped by the Research Group for Geoinformatics @ ZHAW</a></li>
 / todo: replcace this with arc2r/arc2r
 /  asignees: KimboGilda
 -->
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="Select_by_Location.html#cb29-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-2"><a href="Select_by_Location.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Minicipalities (Gemeinde) in Canton Zurich</span></span>
-<span id="cb29-3"><a href="Select_by_Location.html#cb29-3" aria-hidden="true" tabindex="-1"></a>gemeinde_ZH <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;sample_data/Kanton_Zuerich/Gemeinde_ZH.shp&quot;</span>)</span>
-<span id="cb29-4"><a href="Select_by_Location.html#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Reading layer `Gemeinde_ZH&#39; from data source `/Users/runner/work/book/book/sample_data/Kanton_Zuerich/Gemeinde_ZH.shp&#39; using driver `ESRI Shapefile&#39;</span></span>
-<span id="cb29-5"><a href="Select_by_Location.html#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Simple feature collection with 166 features and 7 fields</span></span>
-<span id="cb29-6"><a href="Select_by_Location.html#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="do">## geometry type:  MULTIPOLYGON</span></span>
-<span id="cb29-7"><a href="Select_by_Location.html#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="do">## dimension:      XY</span></span>
-<span id="cb29-8"><a href="Select_by_Location.html#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="do">## bbox:           xmin: 2669245 ymin: 1223896 xmax: 2716900 ymax: 1283343</span></span>
-<span id="cb29-9"><a href="Select_by_Location.html#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="do">## projected CRS:  CH1903+ / LV95</span></span>
-<span id="cb29-10"><a href="Select_by_Location.html#cb29-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-11"><a href="Select_by_Location.html#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="co"># &quot;Swimming&quot; spots in the Canton of Zurich</span></span>
-<span id="cb29-12"><a href="Select_by_Location.html#cb29-12" aria-hidden="true" tabindex="-1"></a>swimmSpots <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;sample_data/Kanton_Zuerich/Badeplaetze_ZH.shp&quot;</span>)</span>
-<span id="cb29-13"><a href="Select_by_Location.html#cb29-13" aria-hidden="true" tabindex="-1"></a><span class="do">## Reading layer `Badeplaetze_ZH&#39; from data source `/Users/runner/work/book/book/sample_data/Kanton_Zuerich/Badeplaetze_ZH.shp&#39; using driver `ESRI Shapefile&#39;</span></span>
-<span id="cb29-14"><a href="Select_by_Location.html#cb29-14" aria-hidden="true" tabindex="-1"></a><span class="do">## Simple feature collection with 71 features and 6 fields</span></span>
-<span id="cb29-15"><a href="Select_by_Location.html#cb29-15" aria-hidden="true" tabindex="-1"></a><span class="do">## geometry type:  POINT</span></span>
-<span id="cb29-16"><a href="Select_by_Location.html#cb29-16" aria-hidden="true" tabindex="-1"></a><span class="do">## dimension:      XY</span></span>
-<span id="cb29-17"><a href="Select_by_Location.html#cb29-17" aria-hidden="true" tabindex="-1"></a><span class="do">## bbox:           xmin: 2671636 ymin: 1226720 xmax: 2710101 ymax: 1282760</span></span>
-<span id="cb29-18"><a href="Select_by_Location.html#cb29-18" aria-hidden="true" tabindex="-1"></a><span class="do">## projected CRS:  CH1903+ / LV95</span></span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="Select_by_Location.html#cb30-1" aria-hidden="true" tabindex="-1"></a>swimmSpots_richt <span class="ot">&lt;-</span> swimmSpots[richterswil, ,op <span class="ot">=</span> st_within]</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-40-1.png" width="672" /></p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="Select_by_Location.html#cb34-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-2"><a href="Select_by_Location.html#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Minicipalities (Gemeinde) in Canton Zurich</span></span>
+<span id="cb34-3"><a href="Select_by_Location.html#cb34-3" aria-hidden="true" tabindex="-1"></a>gemeinde_ZH <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;sample_data/Kanton_Zuerich/Gemeinde_ZH.shp&quot;</span>)</span>
+<span id="cb34-4"><a href="Select_by_Location.html#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Reading layer `Gemeinde_ZH&#39; from data source `/Users/runner/work/book/book/sample_data/Kanton_Zuerich/Gemeinde_ZH.shp&#39; using driver `ESRI Shapefile&#39;</span></span>
+<span id="cb34-5"><a href="Select_by_Location.html#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Simple feature collection with 166 features and 7 fields</span></span>
+<span id="cb34-6"><a href="Select_by_Location.html#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="do">## geometry type:  MULTIPOLYGON</span></span>
+<span id="cb34-7"><a href="Select_by_Location.html#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="do">## dimension:      XY</span></span>
+<span id="cb34-8"><a href="Select_by_Location.html#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="do">## bbox:           xmin: 2669245 ymin: 1223896 xmax: 2716900 ymax: 1283343</span></span>
+<span id="cb34-9"><a href="Select_by_Location.html#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="do">## projected CRS:  CH1903+ / LV95</span></span>
+<span id="cb34-10"><a href="Select_by_Location.html#cb34-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-11"><a href="Select_by_Location.html#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="co"># &quot;Swimming&quot; spots in the Canton of Zurich</span></span>
+<span id="cb34-12"><a href="Select_by_Location.html#cb34-12" aria-hidden="true" tabindex="-1"></a>swimmSpots <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;sample_data/Kanton_Zuerich/Badeplaetze_ZH.shp&quot;</span>)</span>
+<span id="cb34-13"><a href="Select_by_Location.html#cb34-13" aria-hidden="true" tabindex="-1"></a><span class="do">## Reading layer `Badeplaetze_ZH&#39; from data source `/Users/runner/work/book/book/sample_data/Kanton_Zuerich/Badeplaetze_ZH.shp&#39; using driver `ESRI Shapefile&#39;</span></span>
+<span id="cb34-14"><a href="Select_by_Location.html#cb34-14" aria-hidden="true" tabindex="-1"></a><span class="do">## Simple feature collection with 71 features and 6 fields</span></span>
+<span id="cb34-15"><a href="Select_by_Location.html#cb34-15" aria-hidden="true" tabindex="-1"></a><span class="do">## geometry type:  POINT</span></span>
+<span id="cb34-16"><a href="Select_by_Location.html#cb34-16" aria-hidden="true" tabindex="-1"></a><span class="do">## dimension:      XY</span></span>
+<span id="cb34-17"><a href="Select_by_Location.html#cb34-17" aria-hidden="true" tabindex="-1"></a><span class="do">## bbox:           xmin: 2671636 ymin: 1226720 xmax: 2710101 ymax: 1282760</span></span>
+<span id="cb34-18"><a href="Select_by_Location.html#cb34-18" aria-hidden="true" tabindex="-1"></a><span class="do">## projected CRS:  CH1903+ / LV95</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="Select_by_Location.html#cb35-1" aria-hidden="true" tabindex="-1"></a>swimmSpots_richt <span class="ot">&lt;-</span> swimmSpots[richterswil, ,op <span class="ot">=</span> st_within]</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
 </div>
 <div id="completely_within" class="section level3" number="4.2.10">
 <h3><span class="header-section-number">4.2.10</span> Completely_within</h3>
@@ -600,6 +600,13 @@ Developped by the Research Group for Geoinformatics @ ZHAW</a></li>
 
 
 
+<script src="https://utteranc.es/client.js"
+        repo="arc2r/comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
             </section>
 
           </div>

@@ -411,27 +411,27 @@ Developped by the Research Group for Geoinformatics @ ZHAW</a></li>
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="importing-vector-data-with-sf" class="section level2" number="2.1">
+<div id="importing-vector-sf" class="section level2" number="2.1">
 <h2><span class="header-section-number">2.1</span> Importing vector data with <code>sf</code></h2>
-<p>Most vector data that you use in everyday GIS work are what are called “simple features.” Simple features are an open standard developed by the Open Geospatial Consortium (OGC). The most common feature types are displayed in figure @ref(fig:sf_types).</p>
+<p>Most vector data that you use in everyday GIS work are what are called “simple features.” Simple features are an open standard developed by the Open Geospatial Consortium (OGC). The most common feature types are displayed in figure <a href="import_vector.html#fig:sf-types">2.1</a>.</p>
 <!--
 # TODO(ratnanil) add this somewhere
 #  Most functions in sf start with `st_`, which stands for "spatial type" and is the same syntax used by Postgis. Source: https://stackoverflow.com/questions/7234679/what-is-st-in-postgis and https://github.com/r-spatial/sf/issues/140#issuecomment-270029715
 -->
-<div class="figure">
+<div class="figure"><span id="fig:sf-types"></span>
 <img src="images/sf-classes.png" alt="The 7 (of 17) most important simple feature types. Image from @geocompr" width="300" />
 <p class="caption">
-(#fig:sf_types)The 7 (of 17) most important simple feature types. Image from <span class="citation">Lovelace, Nowosad, and Muenchow (2021)</span>
+Figure 2.1: The 7 (of 17) most important simple feature types. Image from <span class="citation">Lovelace, Nowosad, and Muenchow (2021)</span>
 </p>
 </div>
 <p>To handle these simple features in <code>R</code>, we need the library <code>sf</code>.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="import_vector.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
 <span id="cb1-2"><a href="import_vector.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Linking to GEOS 3.8.1, GDAL 3.1.4, PROJ 6.3.1</span></span></code></pre></div>
-<p>To import a vector dataset into <code>R</code>, we can use the function <code>read_sf</code> as in the example below.
+<p>To import a vector dataset into <code>R</code>, we can use the function <code>read_sf</code> as in the example below.</p>
 <!--
 //todo how does the user get access to this dataset? 
 //body make this available through the package?
---></p>
+-->
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="import_vector.html#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-2"><a href="import_vector.html#cb2-2" aria-hidden="true" tabindex="-1"></a>ARE_waedenswil <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(<span class="st">&quot;sample_data/Entsorgung_Waedenswil/ARE_waedenswil.shp&quot;</span>)</span>
 <span id="cb2-3"><a href="import_vector.html#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -460,11 +460,18 @@ Developped by the Research Group for Geoinformatics @ ZHAW</a></li>
 <p>And you are done! The shapefile is now imported into your <code>R</code> Session and you can start working with it. Much of the beauty in <code>sf</code> comes from it’s simplicity: As you see from importing the shapefile, it is very much like a <code>data.frame</code>, a structure that you are probably know very well. In fact, it <em>is</em> a data.frame, as you can see here:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="import_vector.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.data.frame</span>(ARE_waedenswil)</span>
 <span id="cb3-2"><a href="import_vector.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] TRUE</span></span></code></pre></div>
-<p><code>sf</code> provides methods for various generics, e.g. you can use <code>plot()</code> on the object for a simple visualisation.</p>
+<p><code>sf</code> provides methods for various generics, e.g. you can use <code>plot()</code> on the object for a simple visualisation. By default, using <code>plot()</code> on an <code>sf</code> object visualizes the geometry in small multiples, where each “facet” is colour coded based on a column in the dataset (see below). If you find this annoying (like I do), see chapter <a href="Static_Maps.html#chapter-staticmaps">3.1</a>.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="import_vector.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ARE_waedenswil)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 
 </div>
+<script src="https://utteranc.es/client.js"
+        repo="arc2r/comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
             </section>
 
           </div>

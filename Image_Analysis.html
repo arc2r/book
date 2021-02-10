@@ -424,13 +424,13 @@ commonly used tools for performing various operations with raster datasets.</p>
 / todo: replcace this with arc2r/arc2r
 /  assignees: KimboGilda
 -->
-<p><img src="_main_files/figure-html/unnamed-chunk-89-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-92-1.png" width="672" /></p>
 <p>Let’s compute now the difference between the two rasters. To do so, there are various
 options. As first we can create a function that performs a simple subtraction of two
 rasters.</p>
 <p>Since, we created the function for subtracting one raster from another, we use now
 the function <em>overlay</em> of the <code>raster</code> package for producing the new raster output.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-91-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-94-1.png" width="672" /></p>
 <!-- ## Math Toolset -->
 <!-- ## Overlay Toolset -->
 <!-- ### Weighted Sum -->
@@ -449,18 +449,18 @@ Source: <a href="https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial
 <p>In R in order to apply functions focally to rasters, important is to define the neighbouring cells.
 In other words to define the moving window for each of these functions. As an example below,
 we will create our own raster object.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-92-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-95-1.png" width="672" /></p>
 <p>We will recompute now the raster based on the <code>focal</code> function of the <code>raster</code> package. In the function
 below, the neighbourhood for which we apply the statistic is represented by the argument <code>w</code>, while the
 statistic by the argument <code>fun</code>.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-93-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-96-1.png" width="672" /></p>
 <p>The operation above can be also performed with the use of the <em>focal</em> function of the <strong>terra</strong> package.</p>
 <ul>
 <li><code>w</code> represents the moving window of the function. The window can be defined as one (for a square)
 or two numbers (row, col); or with an odd-sized weights matrix. More details can be found here: <a href="https://rdrr.io/cran/terra/man/focal.html" class="uri">https://rdrr.io/cran/terra/man/focal.html</a></li>
 <li><code>fun</code> represents the specified statistic for the identified neighbourhood (e.g mean,sum etc)</li>
 </ul>
-<p><img src="_main_files/figure-html/unnamed-chunk-94-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-97-1.png" width="672" /></p>
 </div>
 <div id="zonal-statistics-1" class="section level3" number="9.1.4">
 <h3><span class="header-section-number">9.1.4</span> Zonal Statistics</h3>
@@ -489,6 +489,13 @@ similar results with the use of <code>zonal</code> function of the <code>raster<
 </div>
 </div>
 </div>
+<script src="https://utteranc.es/client.js"
+        repo="arc2r/comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
             </section>
 
           </div>

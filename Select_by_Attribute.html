@@ -423,21 +423,21 @@ Developped by the Research Group for Geoinformatics @ ZHAW</a></li>
 / todo: replcace this with arc2r/arc2r
 /  asignees: KimboGilda
 -->
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="Select_by_Attribute.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb27-2"><a href="Select_by_Attribute.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb27-3"><a href="Select_by_Attribute.html#cb27-3" aria-hidden="true" tabindex="-1"></a>parkBikes <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;sample_data/Kanton_Zuerich/Veloparkierungsanlagen/OGD_VELOPARKIERANLAGEN_P.shp&quot;</span>)</span>
-<span id="cb27-4"><a href="Select_by_Attribute.html#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Reading layer `OGD_VELOPARKIERANLAGEN_P&#39; from data source `/Users/runner/work/book/book/sample_data/Kanton_Zuerich/Veloparkierungsanlagen/OGD_VELOPARKIERANLAGEN_P.shp&#39; using driver `ESRI Shapefile&#39;</span></span>
-<span id="cb27-5"><a href="Select_by_Attribute.html#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Simple feature collection with 511 features and 28 fields</span></span>
-<span id="cb27-6"><a href="Select_by_Attribute.html#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="do">## geometry type:  POINT</span></span>
-<span id="cb27-7"><a href="Select_by_Attribute.html#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="do">## dimension:      XY</span></span>
-<span id="cb27-8"><a href="Select_by_Attribute.html#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="do">## bbox:           xmin: 2669965 ymin: 1229454 xmax: 2707390 ymax: 1280235</span></span>
-<span id="cb27-9"><a href="Select_by_Attribute.html#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="do">## projected CRS:  CH1903+ / LV95</span></span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="Select_by_Attribute.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb32-2"><a href="Select_by_Attribute.html#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb32-3"><a href="Select_by_Attribute.html#cb32-3" aria-hidden="true" tabindex="-1"></a>parkBikes <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;sample_data/Kanton_Zuerich/Veloparkierungsanlagen/OGD_VELOPARKIERANLAGEN_P.shp&quot;</span>)</span>
+<span id="cb32-4"><a href="Select_by_Attribute.html#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Reading layer `OGD_VELOPARKIERANLAGEN_P&#39; from data source `/Users/runner/work/book/book/sample_data/Kanton_Zuerich/Veloparkierungsanlagen/OGD_VELOPARKIERANLAGEN_P.shp&#39; using driver `ESRI Shapefile&#39;</span></span>
+<span id="cb32-5"><a href="Select_by_Attribute.html#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Simple feature collection with 511 features and 28 fields</span></span>
+<span id="cb32-6"><a href="Select_by_Attribute.html#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="do">## geometry type:  POINT</span></span>
+<span id="cb32-7"><a href="Select_by_Attribute.html#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="do">## dimension:      XY</span></span>
+<span id="cb32-8"><a href="Select_by_Attribute.html#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="do">## bbox:           xmin: 2669965 ymin: 1229454 xmax: 2707390 ymax: 1280235</span></span>
+<span id="cb32-9"><a href="Select_by_Attribute.html#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="do">## projected CRS:  CH1903+ / LV95</span></span></code></pre></div>
 <p>After importing the dataset, let’s say we want to filter it by selecting only the parking spots that lie within a specific municipality (Gemeinde) in the canton of Zurich. More specifically, we will select only the parking spots within the municipality of Winterthur.
 For the aforementioned operation, R offers the function <code>filter()</code>, which lies within the <code>dplyr</code> package.
 This functions works as follows: <code>filter(dataset, condition)</code></p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="Select_by_Attribute.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb28-2"><a href="Select_by_Attribute.html#cb28-2" aria-hidden="true" tabindex="-1"></a>parkBikes_winti <span class="ot">&lt;-</span> <span class="fu">filter</span>(parkBikes,GEMEINDE <span class="sc">==</span> <span class="st">&quot;Winterthur&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-34-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="Select_by_Attribute.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb33-2"><a href="Select_by_Attribute.html#cb33-2" aria-hidden="true" tabindex="-1"></a>parkBikes_winti <span class="ot">&lt;-</span> <span class="fu">filter</span>(parkBikes,GEMEINDE <span class="sc">==</span> <span class="st">&quot;Winterthur&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-37-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>The operation above produces the same outcome as the one depicted in the figure below <a href="Select_by_Attribute.html#fig:select">4.2</a>.</p>
 <div class="figure" style="text-align: center"><span id="fig:select"></span>
 <img src="images/selectAttr.png" alt="Select by Attributes in ArcGIS pro" width="500px" />
@@ -447,6 +447,13 @@ Figure 4.2: Select by Attributes in ArcGIS pro
 </div>
 
 </div>
+<script src="https://utteranc.es/client.js"
+        repo="arc2r/comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
             </section>
 
           </div>

@@ -446,29 +446,36 @@ Split Raster</li>
 / todo: replcace this with arc2r/arc2r
 /  assignees: KimboGilda
 -->
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="Raster_Processing_toolset.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read raster dataset</span></span>
-<span id="cb35-2"><a href="Raster_Processing_toolset.html#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
-<span id="cb35-3"><a href="Raster_Processing_toolset.html#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stars)</span>
-<span id="cb35-4"><a href="Raster_Processing_toolset.html#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb35-5"><a href="Raster_Processing_toolset.html#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb35-6"><a href="Raster_Processing_toolset.html#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stars)</span>
-<span id="cb35-7"><a href="Raster_Processing_toolset.html#cb35-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-8"><a href="Raster_Processing_toolset.html#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Insert a vector dataset that depicts the public transport connection quality in</span></span>
-<span id="cb35-9"><a href="Raster_Processing_toolset.html#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="co"># the city of Wädenswil and plot it</span></span>
-<span id="cb35-10"><a href="Raster_Processing_toolset.html#cb35-10" aria-hidden="true" tabindex="-1"></a>ARE_waedi <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(<span class="st">&quot;sample_data/Entsorgung_Waedenswil/ARE_waedenswil.shp&quot;</span>)</span>
-<span id="cb35-11"><a href="Raster_Processing_toolset.html#cb35-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-12"><a href="Raster_Processing_toolset.html#cb35-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the raster dataset and plot it</span></span>
-<span id="cb35-13"><a href="Raster_Processing_toolset.html#cb35-13" aria-hidden="true" tabindex="-1"></a>raster_recycling <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="st">&quot;sample_data/Entsorgung_Waedenswil/abfall_raster.tif&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="Raster_Processing_toolset.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read raster dataset</span></span>
+<span id="cb40-2"><a href="Raster_Processing_toolset.html#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
+<span id="cb40-3"><a href="Raster_Processing_toolset.html#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stars)</span>
+<span id="cb40-4"><a href="Raster_Processing_toolset.html#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb40-5"><a href="Raster_Processing_toolset.html#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb40-6"><a href="Raster_Processing_toolset.html#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stars)</span>
+<span id="cb40-7"><a href="Raster_Processing_toolset.html#cb40-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-8"><a href="Raster_Processing_toolset.html#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Insert a vector dataset that depicts the public transport connection quality in</span></span>
+<span id="cb40-9"><a href="Raster_Processing_toolset.html#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="co"># the city of Wädenswil and plot it</span></span>
+<span id="cb40-10"><a href="Raster_Processing_toolset.html#cb40-10" aria-hidden="true" tabindex="-1"></a>ARE_waedi <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(<span class="st">&quot;sample_data/Entsorgung_Waedenswil/ARE_waedenswil.shp&quot;</span>)</span>
+<span id="cb40-11"><a href="Raster_Processing_toolset.html#cb40-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-12"><a href="Raster_Processing_toolset.html#cb40-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the raster dataset and plot it</span></span>
+<span id="cb40-13"><a href="Raster_Processing_toolset.html#cb40-13" aria-hidden="true" tabindex="-1"></a>raster_recycling <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="st">&quot;sample_data/Entsorgung_Waedenswil/abfall_raster.tif&quot;</span>)</span></code></pre></div>
 <p>Plot the two datasets one over the other.
-<img src="_main_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
+<img src="_main_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
 <p>In our case, the vector dataset serves as the clipping extent for the clipping operation.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="Raster_Processing_toolset.html#cb36-1" aria-hidden="true" tabindex="-1"></a>recycle_Waedi_clip <span class="ot">&lt;-</span> <span class="fu">mask</span>(raster_recycling,ARE_waedi)</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="Raster_Processing_toolset.html#cb41-1" aria-hidden="true" tabindex="-1"></a>recycle_Waedi_clip <span class="ot">&lt;-</span> <span class="fu">mask</span>(raster_recycling,ARE_waedi)</span></code></pre></div>
 <p><em>Visualising the clipped output</em>
-<img src="_main_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
+<img src="_main_files/figure-html/unnamed-chunk-55-1.png" width="672" /></p>
 
 </div>
 </div>
 </div>
+<script src="https://utteranc.es/client.js"
+        repo="arc2r/comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
             </section>
 
           </div>

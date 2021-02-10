@@ -425,8 +425,8 @@ Developped by the Research Group for Geoinformatics @ ZHAW</a></li>
 <li><code>MASS::kde2d()</code>: Takes x/y coordinates as vectors and returns a matrix</li>
 </ul>
 <p>In this example, I take <code>MASS:kde2d()</code> and tweak it to take <code>sf</code> and return <code>raster</code>. First, let’s create some sample data:</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-74-1.png" width="672" /></p>
-<p><img src="_main_files/figure-html/unnamed-chunk-76-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-77-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-79-1.png" width="672" /></p>
 <!-- ### Line Density -->
 <!-- ### Point Density -->
 <!-- ## Distance Toolset -->
@@ -473,10 +473,10 @@ Let’s start by computing the <em>slope</em> of the <strong>swissAlti3d</strong
 / todo: replcace this with arc2r/arc2r
 /  assignees: KimboGilda
 -->
-<p><img src="_main_files/figure-html/unnamed-chunk-77-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-80-1.png" width="672" /></p>
 <p>After importing and visualizing our raster dataset, we use the <code>terrain</code> function
 to calculate the slope.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-78-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-81-1.png" width="672" /></p>
 <p>In the function above, we define the operation we want to perform as the second
 argument of the function (<em>opt = “slope”</em>). Furthermore, we also define the units
 of the final result.<br />
@@ -484,7 +484,7 @@ Similarly, we compute the <code>aspect</code> of a given dataset. Basically as <
 consider the compass direction that a <code>slope</code> leans towards.<br />
 Let’s compute now, using again the same function <code>terrain</code>, the <code>aspect</code> of the
 same dataset <strong>swissALTI3D2019</strong>.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-79-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-82-1.png" width="672" /></p>
 <p>So, R gives us the option to retrieve multiple terrain characteristics of a raster
 dataset, using only one function. The aforementioned spatial operation in ArcGIS pro
 could be performed using the tool <code>Aspect (Spatial Analyst)</code>.</p>
@@ -507,7 +507,7 @@ dataset.</p>
 ## 3rd Qu.   258.6777
 ## Max.      359.9991
 ## NA&#39;s    12652.0000</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-80-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-83-1.png" width="672" /></p>
 <pre><code>##  [1]   0  20  40  60  80 100 120 140 160 180 200 220 240 260 280 300 320 340 360</code></pre>
 <p>The number of breaks for our raster values are 19. The aim of ours is to create 4
 different classes with the following values:</p>
@@ -527,7 +527,7 @@ different classes with the following values:</p>
 call the <code>reclassify</code> function. The function takes as a first argument the dataset
 set to be reclassified and as second the matrix, on which the reclassification is
 based on.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-82-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-85-1.png" width="672" /></p>
 <!-- ### Contour -->
 <!-- ### Contour List -->
 <!-- ### Contour with Barriers -->
@@ -543,6 +543,13 @@ based on.</p>
 </div>
 </div>
 </div>
+<script src="https://utteranc.es/client.js"
+        repo="arc2r/comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
             </section>
 
           </div>
