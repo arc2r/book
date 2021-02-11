@@ -1,133 +1,143 @@
+# This yaml file should facilitate the way we document our progress. 
+# The 1. layer (1 Tab) specifies the toolbox
+# The 2. layer (2 Tab) specifies the toolset
+# The 3. layer (3 Tab) specifies the tool and its progress (in percent)
 --- # Geoprocessing Tools
   Analysis:
     Extract:
-    - Clip
-    - Select
-    - Split
-    - Split By Attributes
-    - Table Select
+      Clip: NA
+      Select: NA
+      Split: NA
+      Split By Attributes: NA
+      Table Select: NA
     Overlay:
-    - Erase
-    - Symmetrical Difference
-    - Intersect
-    - Update
-    - Identity
-    - Remove Overlap
-    - Weighted Sum
-    - Union
-    - Count Overlapping Features
-    - Fuzzy Membership
-    - Fuzzy Overlay
-    - Weighted Overlay
-    - Spatial Join
+      Erase: NA
+      Symmetrical Difference: NA
+      Intersect: NA
+      Update: NA
+      Identity: NA
+      Remove Overlap: NA
+      Weighted Sum: NA
+      Union: NA
+      Count Overlapping Features: NA
+      Fuzzy Membership: NA
+      Fuzzy Overlay: NA
+      Weighted Overlay: NA
+      Spatial Join: NA
     Proximity:
-    - Buffer
-    - Create Thiessen Polygons
-    - Generate Near Table
-    - Multiple Ring Buffer
-    - Near
+      Buffer: NA
+      Create Thiessen Polygons: NA
+      Generate Near Table: NA
+      Multiple Ring Buffer: NA
+      Near: NA
   Image Analyst:
-    Map Algebra: Raster Calculator
+    Map Algebra:
+      Raster Calculator: NA
   Spatial Analyst:
     Conditional:
-    - Con
-    - Pick
-    - Set Null
+      Con: NA
+      Pick: NA
+      Set Null: NA
     Density:
-    - Kernel Density
-    - Line Density
-    - Point Density
+      Kernel Density: NA
+      Line Density: NA
+      Point Density: NA
     Distance:
-    - Corridor
-    - Distance Accumulation
+      Corridor: NA
+      Distance Accumulation: NA
     Extraction:
-    - Extract by Attributes
-    - Extract by Circle
-    - Extract by Mask
-    - Extract by Points
-    - Extract by Polygon
-    - Extract by Rectangle
-    - Extract Multi Values to Points
-    - Extract Values to Points
-    - Sample
+      Extract by Attributes: NA
+      Extract by Circle: NA
+      Extract by Mask: NA
+      Extract by Points: NA
+      Extract by Polygon: NA
+      Extract by Rectangle: NA
+      Extract Multi Values to Points: NA
+      Extract Values to Points: NA
+      Sample: NA
     Generalization:
-    - Aggregate
-    - Boundary Clean
-    - Expand
-    - Majority Filter
-    - Nibble
-    - Region Group
-    - Shrink
-    - Thin
+      Aggregate: NA
+      Boundary Clean: NA
+      Expand: NA
+      Majority Filter: NA
+      Nibble: NA
+      Region Group: NA
+      Shrink: NA
+      Thin: NA
     Interpolation:
-    - IDW
-    - Kriging
-    - Natural Neighbor
-    - Spline
-    Map Algebra: Raster Calculator
+      IDW: NA
+      Kriging: NA
+      Natural Neighbor: NA
+      Spline: NA
+    Map Algebra:
+      Raster Calculator: NA
     Math (general):
-    - Abs
-    - Divide
-    - Exp
-    - Exp10
-    - Exp2
-    - Float
-    - Int
-    - Ln
-    - Log10
-    - Log2
-    - Minus
-    - Mod
-    - Negate
-    - Plus
-    - Power
-    - Round Down
-    - Round Up
-    - Square
-    - Square Root
-    - Times
-    Neighborhood: Focal Statistics
-    Overlay: Weighted Sum
-    Reclass: Reclassify
+      Abs: NA
+      Divide: NA
+      Exp: NA
+      Exp10: NA
+      Exp2: NA
+      Float: NA
+      Int: NA
+      Ln: NA
+      Log10: NA
+      Log2: NA
+      Minus: NA
+      Mod: NA
+      Negate: NA
+      Plus: NA
+      Power: NA
+      Round Down: NA
+      Round Up: NA
+      Square: NA
+      Square Root: NA
+      Times: NA
+    Neighborhood:
+      Focal Statistics: NA
+    Overlay:
+      Weighted Sum: NA
+    Reclass:
+      Reclassify: NA
     Surface:
-    - Aspect
-    - Slope
-    - Viewshed
+      Aspect: NA
+      Slope: NA
+      Viewshed: NA
     Zonal:
-    - Tabulate Area
-    - Zonal Fill
-    - Zonal Geometry
-    - Zonal Histogram
-    - Zonal Statistics
-    - Zonal Statistics as Table
+      Tabulate Area: NA
+      Zonal Fill: NA
+      Zonal Geometry: NA
+      Zonal Histogram: NA
+      Zonal Statistics: NA
+      Zonal Statistics as Table: NA
   Spatial Statistics:
-    Mapping Clusters: Cluster and Outlier Analysis (Anselin Local Moran's I)
+    Mapping Clusters:
+      Cluster and Outlier Analysis (Anselin Local Moran's I): NA
   Data Management:
     General:
-    - Sort
-    - Rename
-    - Merge
-    - Dissolve
-    - Find Identical
-    - Append
+      Sort: 90
+      Rename: NA
+      Merge: NA
+      Dissolve: NA
+      Find Identical: NA
+      Append: NA
     Joins and Relates:
-    - Add Join
-    - Add Relate
-    - Join Field
-    - Remove Join
-    - Remove Relate
+      Add Join: 50
+      Add Relate: 50
+      Join Field: 50
+      Remove Join: 50
+      Remove Relate: 50
     Projections and Transformations:
-    - Define Projection
-    - Project
+      Define Projection: 90
+      Project: NA
     Sampling:
-    - Generate Tessellation
-    - Create Fishnet
-    - Create Random Points
-    - Generate Points Along Lines
-    - Generate Rectangles Along Lines
-    - Generate Transects Along Lines
+      Generate Tessellation: 0
+      Create Fishnet: 0
+      Create Random Points: 0
+      Generate Points Along Lines: 0
+      Generate Rectangles Along Lines: 0
+      Generate Transects Along Lines: 0
     Raster:
-    - Copy Raster
-    - Create Random Raster
-    - Create Raster Dataset
-    - Generate Raster From Raster Function
+      Copy Raster: NA
+      Create Random Raster: NA
+      Create Raster Dataset: NA
+      Generate Raster From Raster Function: NA
