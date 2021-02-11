@@ -1,0 +1,62 @@
+
+
+
+I really dont like the way we have to hand-controll the whole structure a the moment. Since the chapter "Geoprocessing tools" has a clear structure, I'm trying to fine a way to stay consistent.
+
+```{r, eval = FALSE}
+
+setwd("C:/Users/rata/temp")
+library(yaml)
+library(tidyverse)
+tools_todo <- read_yaml("C:/Users/rata/switchdrive/Projekte/2021_02_All_things_R_Spatial/gh-repos/book/auxiliary/tools_todo.yaml")
+
+
+dir_create <- function(dirname){
+  if(!dir.exists(dirname)) dir.create(dirname)
+}
+
+dir.create("test")
+
+remove_spaces <- function(string) {
+  str_replace_all(string," ", "_")
+}
+
+classifi <- function(str){paste0(".",str)}
+
+imap(tools_todo, function(toolbox,toolboxname){
+  toolboxname_clean <- remove_spaces(toolboxname)
+  toolboxname_lower <- str_to_lower(toolboxname_clean)
+  
+  toolboxname_dir <- paste0("test/03_",toolboxname_clean)
+  
+  dir_create(toolboxname_dir)
+  
+  
+  
+  imap(toolbox,function(toolset,toolsetname){
+    toolsetname_clean <- remove_spaces(toolsetname)
+    toolsetname_lower <- str_to_lower(toolsetname_clean)
+
+    
+    toolset_dir <- file.path(toolboxname_dir,toolsetname_clean)
+    dir_create(toolset_dir)
+    
+    imap_chr(toolset,function(val,tool){
+      
+      toolname_clean <- remove_spaces(tool)
+      toolname_path <- file.path(toolset_dir, paste0(toolname_clean,".Rmd"))
+      
+      
+      write_lines(
+          c(
+            paste0("### ",tool," {.tool ",classifi(toolsetname_lower)," ", classifi(toolboxname_lower),"}")
+          ),file = toolname_path
+    )
+      
+      })
+    })
+  })
+```
+
+```
+
