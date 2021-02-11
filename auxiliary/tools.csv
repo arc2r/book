@@ -1,0 +1,1225 @@
+tool,description,href,toolbox,toolset
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",/en/pro-app/2.7/tool-reference/3d-analyst/ascii-3d-to-feature-class.htm,3D Analyst toolbox,3D Features
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",/en/pro-app/2.7/tool-reference/3d-analyst/feature-class-z-to-ascii.htm,3D Analyst toolbox,3D Features
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,/en/pro-app/2.7/tool-reference/3d-analyst/feature-to-3d-by-attribute.htm,3D Analyst toolbox,3D Features
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,/en/pro-app/2.7/tool-reference/3d-analyst/features-from-cityengine-rules.htm,3D Analyst toolbox,3D Features
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,/en/pro-app/2.7/tool-reference/3d-analyst/import-3d-files.htm,3D Analyst toolbox,3D Features
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,/en/pro-app/2.7/tool-reference/3d-analyst/layer-3d-to-feature-class.htm,3D Analyst toolbox,3D Features
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",/en/pro-app/2.7/tool-reference/3d-analyst/ascii-3d-to-feature-class.htm,3D Analyst toolbox,3D Features
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",/en/pro-app/2.7/tool-reference/3d-analyst/feature-class-z-to-ascii.htm,3D Analyst toolbox,3D Features
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,/en/pro-app/2.7/tool-reference/3d-analyst/feature-to-3d-by-attribute.htm,3D Analyst toolbox,3D Features
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,/en/pro-app/2.7/tool-reference/3d-analyst/features-from-cityengine-rules.htm,3D Analyst toolbox,3D Features
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,/en/pro-app/2.7/tool-reference/3d-analyst/import-3d-files.htm,3D Analyst toolbox,3D Features
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,/en/pro-app/2.7/tool-reference/3d-analyst/layer-3d-to-feature-class.htm,3D Analyst toolbox,3D Features
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",/en/pro-app/2.7/tool-reference/3d-analyst/ascii-3d-to-feature-class.htm,3D Analyst toolbox,3D Features
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",/en/pro-app/2.7/tool-reference/3d-analyst/feature-class-z-to-ascii.htm,3D Analyst toolbox,3D Features
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,/en/pro-app/2.7/tool-reference/3d-analyst/feature-to-3d-by-attribute.htm,3D Analyst toolbox,3D Features
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,/en/pro-app/2.7/tool-reference/3d-analyst/features-from-cityengine-rules.htm,3D Analyst toolbox,3D Features
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,/en/pro-app/2.7/tool-reference/3d-analyst/import-3d-files.htm,3D Analyst toolbox,3D Features
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,/en/pro-app/2.7/tool-reference/3d-analyst/layer-3d-to-feature-class.htm,3D Analyst toolbox,3D Features
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",/en/pro-app/2.7/tool-reference/3d-analyst/ascii-3d-to-feature-class.htm,3D Analyst toolbox,3D Features
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",/en/pro-app/2.7/tool-reference/3d-analyst/feature-class-z-to-ascii.htm,3D Analyst toolbox,3D Features
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,/en/pro-app/2.7/tool-reference/3d-analyst/feature-to-3d-by-attribute.htm,3D Analyst toolbox,3D Features
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,/en/pro-app/2.7/tool-reference/3d-analyst/features-from-cityengine-rules.htm,3D Analyst toolbox,3D Features
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,/en/pro-app/2.7/tool-reference/3d-analyst/import-3d-files.htm,3D Analyst toolbox,3D Features
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,/en/pro-app/2.7/tool-reference/3d-analyst/layer-3d-to-feature-class.htm,3D Analyst toolbox,3D Features
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,3D Analyst toolbox,3D Intersections
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,3D Analyst toolbox,3D Intersections
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,3D Analyst toolbox,3D Intersections
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,3D Analyst toolbox,3D Intersections
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,3D Analyst toolbox,3D Intersections
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,3D Analyst toolbox,3D Intersections
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,3D Analyst toolbox,3D Proximity
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,3D Analyst toolbox,3D Proximity
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,3D Analyst toolbox,3D Proximity
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,3D Analyst toolbox,3D Proximity
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,3D Analyst toolbox,3D Proximity
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,3D Analyst toolbox,3D Proximity
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,3D Analyst toolbox,Area and Volume
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,3D Analyst toolbox,Area and Volume
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,3D Analyst toolbox,Area and Volume
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,3D Analyst toolbox,Area and Volume
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,3D Analyst toolbox,Area and Volume
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,3D Analyst toolbox,Area and Volume
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,3D Analyst toolbox,LAS Dataset
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,3D Analyst toolbox,LAS Dataset
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,3D Analyst toolbox,LAS Dataset
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,3D Analyst toolbox,LAS Dataset
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,3D Analyst toolbox,LAS Dataset
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,3D Analyst toolbox,LAS Dataset
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,3D Analyst toolbox,LAS Dataset
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,3D Analyst toolbox,LAS Dataset
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,3D Analyst toolbox,LAS Dataset
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,3D Analyst toolbox,LAS Dataset
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,3D Analyst toolbox,LAS Dataset
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,3D Analyst toolbox,LAS Dataset
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,3D Analyst toolbox,LAS Dataset
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,3D Analyst toolbox,LAS Dataset
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,3D Analyst toolbox,LAS Dataset
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,3D Analyst toolbox,LAS Dataset
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,3D Analyst toolbox,LAS Dataset
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,3D Analyst toolbox,LAS Dataset
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,3D Analyst toolbox,Raster
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,3D Analyst toolbox,Raster
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,3D Analyst toolbox,Raster
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,3D Analyst toolbox,Raster
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,3D Analyst toolbox,Raster
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,3D Analyst toolbox,Raster
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,3D Analyst toolbox,Statistics
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,3D Analyst toolbox,Statistics
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,3D Analyst toolbox,Statistics
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,3D Analyst toolbox,Statistics
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,3D Analyst toolbox,Statistics
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,3D Analyst toolbox,Statistics
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,3D Analyst toolbox,Terrain Dataset
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,3D Analyst toolbox,Terrain Dataset
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,3D Analyst toolbox,Terrain Dataset
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,3D Analyst toolbox,Terrain Dataset
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,3D Analyst toolbox,Terrain Dataset
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,3D Analyst toolbox,Terrain Dataset
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,3D Analyst toolbox,TIN Dataset
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,3D Analyst toolbox,TIN Dataset
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,3D Analyst toolbox,TIN Dataset
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,3D Analyst toolbox,TIN Dataset
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,3D Analyst toolbox,TIN Dataset
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,3D Analyst toolbox,TIN Dataset
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,3D Analyst toolbox,TIN Dataset
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,3D Analyst toolbox,TIN Dataset
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,3D Analyst toolbox,TIN Dataset
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,3D Analyst toolbox,TIN Dataset
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,3D Analyst toolbox,TIN Dataset
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,3D Analyst toolbox,TIN Dataset
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,3D Analyst toolbox,Triangulated Surface
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,3D Analyst toolbox,Triangulated Surface
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,3D Analyst toolbox,Triangulated Surface
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,3D Analyst toolbox,Triangulated Surface
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,3D Analyst toolbox,Triangulated Surface
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,3D Analyst toolbox,Triangulated Surface
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,3D Analyst toolbox,Visibility
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,3D Analyst toolbox,Visibility
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,3D Analyst toolbox,Visibility
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,3D Analyst toolbox,Visibility
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,3D Analyst toolbox,Visibility
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,3D Analyst toolbox,Visibility
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Analysis toolbox,Extract
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Analysis toolbox,Extract
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Analysis toolbox,Extract
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Analysis toolbox,Extract
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Analysis toolbox,Extract
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Analysis toolbox,Extract
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Analysis toolbox,Overlay
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Analysis toolbox,Overlay
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Analysis toolbox,Overlay
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Analysis toolbox,Overlay
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Analysis toolbox,Overlay
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Analysis toolbox,Overlay
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Analysis toolbox,Pairwise Overlay
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Analysis toolbox,Pairwise Overlay
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Analysis toolbox,Pairwise Overlay
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Analysis toolbox,Pairwise Overlay
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Analysis toolbox,Pairwise Overlay
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Analysis toolbox,Pairwise Overlay
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Analysis toolbox,Proximity
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Analysis toolbox,Proximity
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Analysis toolbox,Proximity
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Analysis toolbox,Proximity
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Analysis toolbox,Proximity
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Analysis toolbox,Proximity
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Analysis toolbox,Statistics
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Analysis toolbox,Statistics
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Analysis toolbox,Statistics
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Analysis toolbox,Statistics
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Analysis toolbox,Statistics
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Analysis toolbox,Statistics
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Aviation toolbox,Airports
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Aviation toolbox,Airports
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Aviation toolbox,Airports
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Aviation toolbox,Airports
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Aviation toolbox,Airports
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Aviation toolbox,Airports
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Aviation toolbox,Charting
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Aviation toolbox,Charting
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Aviation toolbox,Charting
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Aviation toolbox,Charting
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Aviation toolbox,Charting
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Aviation toolbox,Charting
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Business Analyst toolbox,Analysis
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Business Analyst toolbox,Analysis
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Business Analyst toolbox,Analysis
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Business Analyst toolbox,Analysis
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Business Analyst toolbox,Analysis
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Business Analyst toolbox,Analysis
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Business Analyst toolbox,Modeling
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Business Analyst toolbox,Modeling
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Business Analyst toolbox,Modeling
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Business Analyst toolbox,Modeling
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Business Analyst toolbox,Modeling
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Business Analyst toolbox,Modeling
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Business Analyst toolbox,Reports
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Business Analyst toolbox,Reports
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Business Analyst toolbox,Reports
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Business Analyst toolbox,Reports
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Business Analyst toolbox,Reports
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Business Analyst toolbox,Reports
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Business Analyst toolbox,Statistical Data Collections
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Business Analyst toolbox,Statistical Data Collections
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Business Analyst toolbox,Statistical Data Collections
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Business Analyst toolbox,Statistical Data Collections
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Business Analyst toolbox,Statistical Data Collections
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Business Analyst toolbox,Statistical Data Collections
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Business Analyst toolbox,Suitability Analysis
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Business Analyst toolbox,Suitability Analysis
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Business Analyst toolbox,Suitability Analysis
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Business Analyst toolbox,Suitability Analysis
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Business Analyst toolbox,Suitability Analysis
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Business Analyst toolbox,Suitability Analysis
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Business Analyst toolbox,Target Marketing
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Business Analyst toolbox,Target Marketing
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Business Analyst toolbox,Target Marketing
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Business Analyst toolbox,Target Marketing
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Business Analyst toolbox,Target Marketing
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Business Analyst toolbox,Target Marketing
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Business Analyst toolbox,Trade Areas
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Business Analyst toolbox,Trade Areas
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Business Analyst toolbox,Trade Areas
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Business Analyst toolbox,Trade Areas
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Business Analyst toolbox,Trade Areas
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Business Analyst toolbox,Trade Areas
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Cartography toolbox,Annotation
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Cartography toolbox,Annotation
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Cartography toolbox,Annotation
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Cartography toolbox,Annotation
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Cartography toolbox,Annotation
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Cartography toolbox,Annotation
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Cartography toolbox,Cartographic Refinement
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Cartography toolbox,Cartographic Refinement
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Cartography toolbox,Cartographic Refinement
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Cartography toolbox,Cartographic Refinement
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Cartography toolbox,Cartographic Refinement
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Cartography toolbox,Cartographic Refinement
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Cartography toolbox,Generalization
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Cartography toolbox,Generalization
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Cartography toolbox,Generalization
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Cartography toolbox,Generalization
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Cartography toolbox,Generalization
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Cartography toolbox,Generalization
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Cartography toolbox,Graphic Conflicts
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Cartography toolbox,Graphic Conflicts
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Cartography toolbox,Graphic Conflicts
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Cartography toolbox,Graphic Conflicts
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Cartography toolbox,Graphic Conflicts
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Cartography toolbox,Graphic Conflicts
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Cartography toolbox,Map Series
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Cartography toolbox,Map Series
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Cartography toolbox,Map Series
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Cartography toolbox,Map Series
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Cartography toolbox,Map Series
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Cartography toolbox,Map Series
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Cartography toolbox,Masking
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Cartography toolbox,Masking
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Cartography toolbox,Masking
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Cartography toolbox,Masking
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Cartography toolbox,Masking
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Cartography toolbox,Masking
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Conversion toolbox,Excel
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Conversion toolbox,Excel
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Conversion toolbox,Excel
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Conversion toolbox,Excel
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Conversion toolbox,Excel
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Conversion toolbox,Excel
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Conversion toolbox,From Raster
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Conversion toolbox,From Raster
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Conversion toolbox,From Raster
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Conversion toolbox,From Raster
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Conversion toolbox,From Raster
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Conversion toolbox,From Raster
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Conversion toolbox,From WFS
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Conversion toolbox,From WFS
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Conversion toolbox,From WFS
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Conversion toolbox,From WFS
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Conversion toolbox,From WFS
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Conversion toolbox,From WFS
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Conversion toolbox,GPS
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Conversion toolbox,GPS
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Conversion toolbox,GPS
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Conversion toolbox,GPS
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Conversion toolbox,GPS
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Conversion toolbox,GPS
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Conversion toolbox,JSON
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Conversion toolbox,JSON
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Conversion toolbox,JSON
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Conversion toolbox,JSON
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Conversion toolbox,JSON
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Conversion toolbox,JSON
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Conversion toolbox,KML
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Conversion toolbox,KML
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Conversion toolbox,KML
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Conversion toolbox,KML
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Conversion toolbox,KML
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Conversion toolbox,KML
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Conversion toolbox,LAS
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Conversion toolbox,LAS
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Conversion toolbox,LAS
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Conversion toolbox,LAS
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Conversion toolbox,LAS
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Conversion toolbox,LAS
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Conversion toolbox,To CAD
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Conversion toolbox,To CAD
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Conversion toolbox,To CAD
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Conversion toolbox,To CAD
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Conversion toolbox,To CAD
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Conversion toolbox,To CAD
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Conversion toolbox,To Collada
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Conversion toolbox,To Collada
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Conversion toolbox,To Collada
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Conversion toolbox,To Collada
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Conversion toolbox,To Collada
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Conversion toolbox,To Collada
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Conversion toolbox,To dBASE
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Conversion toolbox,To dBASE
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Conversion toolbox,To dBASE
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Conversion toolbox,To dBASE
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Conversion toolbox,To dBASE
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Conversion toolbox,To dBASE
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Conversion toolbox,To Geodatabase
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Conversion toolbox,To Geodatabase
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Conversion toolbox,To Geodatabase
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Conversion toolbox,To Geodatabase
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Conversion toolbox,To Geodatabase
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Conversion toolbox,To Geodatabase
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Conversion toolbox,To GeoPackage
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Conversion toolbox,To GeoPackage
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Conversion toolbox,To GeoPackage
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Conversion toolbox,To GeoPackage
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Conversion toolbox,To GeoPackage
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Conversion toolbox,To GeoPackage
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Conversion toolbox,To Raster
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Conversion toolbox,To Raster
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Conversion toolbox,To Raster
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Conversion toolbox,To Raster
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Conversion toolbox,To Raster
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Conversion toolbox,To Raster
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Conversion toolbox,To Raster
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Conversion toolbox,To Raster
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Conversion toolbox,To Raster
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Conversion toolbox,To Raster
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Conversion toolbox,To Raster
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Conversion toolbox,To Raster
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Conversion toolbox,To Shapefile
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Conversion toolbox,To Shapefile
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Conversion toolbox,To Shapefile
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Conversion toolbox,To Shapefile
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Conversion toolbox,To Shapefile
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Conversion toolbox,To Shapefile
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Conversion toolbox,Transit Feed (GTFS)
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Conversion toolbox,Transit Feed (GTFS)
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Conversion toolbox,Transit Feed (GTFS)
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Conversion toolbox,Transit Feed (GTFS)
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Conversion toolbox,Transit Feed (GTFS)
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Conversion toolbox,Transit Feed (GTFS)
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Data Management toolbox,3D Objects
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Data Management toolbox,3D Objects
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Data Management toolbox,3D Objects
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Data Management toolbox,3D Objects
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Data Management toolbox,3D Objects
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Data Management toolbox,3D Objects
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Data Management toolbox,Archiving
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Data Management toolbox,Archiving
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Data Management toolbox,Archiving
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Data Management toolbox,Archiving
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Data Management toolbox,Archiving
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Data Management toolbox,Archiving
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Data Management toolbox,Attachments
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Data Management toolbox,Attachments
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Data Management toolbox,Attachments
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Data Management toolbox,Attachments
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Data Management toolbox,Attachments
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Data Management toolbox,Attachments
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Data Management toolbox,Attribute Rules
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Data Management toolbox,Attribute Rules
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Data Management toolbox,Attribute Rules
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Data Management toolbox,Attribute Rules
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Data Management toolbox,Attribute Rules
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Data Management toolbox,Attribute Rules
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Data Management toolbox,Contingent Values
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Data Management toolbox,Contingent Values
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Data Management toolbox,Contingent Values
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Data Management toolbox,Contingent Values
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Data Management toolbox,Contingent Values
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Data Management toolbox,Contingent Values
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Data Management toolbox,Data Comparison
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Data Management toolbox,Data Comparison
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Data Management toolbox,Data Comparison
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Data Management toolbox,Data Comparison
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Data Management toolbox,Data Comparison
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Data Management toolbox,Data Comparison
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Data Management toolbox,Distributed  Geodatabase
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Data Management toolbox,Distributed  Geodatabase
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Data Management toolbox,Distributed  Geodatabase
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Data Management toolbox,Distributed  Geodatabase
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Data Management toolbox,Distributed  Geodatabase
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Data Management toolbox,Distributed  Geodatabase
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Data Management toolbox,Domains
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Data Management toolbox,Domains
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Data Management toolbox,Domains
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Data Management toolbox,Domains
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Data Management toolbox,Domains
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Data Management toolbox,Domains
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Data Management toolbox,Feature Binning
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Data Management toolbox,Feature Binning
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Data Management toolbox,Feature Binning
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Data Management toolbox,Feature Binning
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Data Management toolbox,Feature Binning
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Data Management toolbox,Feature Binning
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Data Management toolbox,Feature Class
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Data Management toolbox,Feature Class
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Data Management toolbox,Feature Class
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Data Management toolbox,Feature Class
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Data Management toolbox,Feature Class
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Data Management toolbox,Feature Class
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Data Management toolbox,Features
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Data Management toolbox,Features
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Data Management toolbox,Features
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Data Management toolbox,Features
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Data Management toolbox,Features
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Data Management toolbox,Features
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Data Management toolbox,Fields
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Data Management toolbox,Fields
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Data Management toolbox,Fields
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Data Management toolbox,Fields
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Data Management toolbox,Fields
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Data Management toolbox,Fields
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Data Management toolbox,File Geodatabase
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Data Management toolbox,File Geodatabase
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Data Management toolbox,File Geodatabase
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Data Management toolbox,File Geodatabase
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Data Management toolbox,File Geodatabase
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Data Management toolbox,File Geodatabase
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Data Management toolbox,General
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Data Management toolbox,General
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Data Management toolbox,General
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Data Management toolbox,General
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Data Management toolbox,General
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Data Management toolbox,General
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Data Management toolbox,Generalization
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Data Management toolbox,Generalization
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Data Management toolbox,Generalization
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Data Management toolbox,Generalization
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Data Management toolbox,Generalization
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Data Management toolbox,Generalization
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Data Management toolbox,Geodatabase Administration
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Data Management toolbox,Geodatabase Administration
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Data Management toolbox,Geodatabase Administration
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Data Management toolbox,Geodatabase Administration
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Data Management toolbox,Geodatabase Administration
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Data Management toolbox,Geodatabase Administration
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Data Management toolbox,Indexes
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Data Management toolbox,Indexes
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Data Management toolbox,Indexes
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Data Management toolbox,Indexes
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Data Management toolbox,Indexes
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Data Management toolbox,Indexes
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Data Management toolbox,Joins and Relates
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Data Management toolbox,Joins and Relates
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Data Management toolbox,Joins and Relates
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Data Management toolbox,Joins and Relates
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Data Management toolbox,Joins and Relates
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Data Management toolbox,Joins and Relates
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Data Management toolbox,LAS Dataset
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Data Management toolbox,LAS Dataset
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Data Management toolbox,LAS Dataset
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Data Management toolbox,LAS Dataset
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Data Management toolbox,LAS Dataset
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Data Management toolbox,LAS Dataset
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Data Management toolbox,Layers and Table Views
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Data Management toolbox,Layers and Table Views
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Data Management toolbox,Layers and Table Views
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Data Management toolbox,Layers and Table Views
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Data Management toolbox,Layers and Table Views
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Data Management toolbox,Layers and Table Views
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Data Management toolbox,Package
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Data Management toolbox,Package
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Data Management toolbox,Package
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Data Management toolbox,Package
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Data Management toolbox,Package
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Data Management toolbox,Package
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Data Management toolbox,Package
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Data Management toolbox,Package
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Data Management toolbox,Package
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Data Management toolbox,Package
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Data Management toolbox,Package
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Data Management toolbox,Package
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Data Management toolbox,Photos
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Data Management toolbox,Photos
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Data Management toolbox,Photos
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Data Management toolbox,Photos
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Data Management toolbox,Photos
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Data Management toolbox,Photos
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Data Management toolbox,Projections and Transformations
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Data Management toolbox,Projections and Transformations
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Data Management toolbox,Projections and Transformations
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Data Management toolbox,Projections and Transformations
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Data Management toolbox,Projections and Transformations
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Data Management toolbox,Projections and Transformations
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Data Management toolbox,Projections and Transformations
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Data Management toolbox,Projections and Transformations
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Data Management toolbox,Projections and Transformations
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Data Management toolbox,Projections and Transformations
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Data Management toolbox,Projections and Transformations
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Data Management toolbox,Projections and Transformations
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Data Management toolbox,Raster
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Data Management toolbox,Raster
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Data Management toolbox,Raster
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Data Management toolbox,Raster
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Data Management toolbox,Raster
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Data Management toolbox,Raster
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Data Management toolbox,Raster
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Data Management toolbox,Raster
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Data Management toolbox,Raster
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Data Management toolbox,Raster
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Data Management toolbox,Raster
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Data Management toolbox,Raster
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Data Management toolbox,Raster
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Data Management toolbox,Raster
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Data Management toolbox,Raster
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Data Management toolbox,Raster
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Data Management toolbox,Raster
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Data Management toolbox,Raster
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Data Management toolbox,Raster
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Data Management toolbox,Raster
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Data Management toolbox,Raster
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Data Management toolbox,Raster
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Data Management toolbox,Raster
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Data Management toolbox,Raster
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Data Management toolbox,Raster
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Data Management toolbox,Raster
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Data Management toolbox,Raster
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Data Management toolbox,Raster
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Data Management toolbox,Raster
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Data Management toolbox,Raster
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Data Management toolbox,Raster
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Data Management toolbox,Raster
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Data Management toolbox,Raster
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Data Management toolbox,Raster
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Data Management toolbox,Raster
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Data Management toolbox,Raster
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Data Management toolbox,Relationship Classes
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Data Management toolbox,Relationship Classes
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Data Management toolbox,Relationship Classes
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Data Management toolbox,Relationship Classes
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Data Management toolbox,Relationship Classes
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Data Management toolbox,Relationship Classes
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Data Management toolbox,Sampling
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Data Management toolbox,Sampling
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Data Management toolbox,Sampling
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Data Management toolbox,Sampling
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Data Management toolbox,Sampling
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Data Management toolbox,Sampling
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Data Management toolbox,Subtypes
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Data Management toolbox,Subtypes
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Data Management toolbox,Subtypes
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Data Management toolbox,Subtypes
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Data Management toolbox,Subtypes
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Data Management toolbox,Subtypes
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Data Management toolbox,Table
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Data Management toolbox,Table
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Data Management toolbox,Table
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Data Management toolbox,Table
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Data Management toolbox,Table
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Data Management toolbox,Table
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Data Management toolbox,Tile Cache
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Data Management toolbox,Tile Cache
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Data Management toolbox,Tile Cache
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Data Management toolbox,Tile Cache
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Data Management toolbox,Tile Cache
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Data Management toolbox,Tile Cache
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Data Management toolbox,Topology
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Data Management toolbox,Topology
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Data Management toolbox,Topology
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Data Management toolbox,Topology
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Data Management toolbox,Topology
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Data Management toolbox,Topology
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Data Management toolbox,Versions
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Data Management toolbox,Versions
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Data Management toolbox,Versions
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Data Management toolbox,Versions
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Data Management toolbox,Versions
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Data Management toolbox,Versions
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Data Management toolbox,Workspace
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Data Management toolbox,Workspace
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Data Management toolbox,Workspace
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Data Management toolbox,Workspace
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Data Management toolbox,Workspace
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Data Management toolbox,Workspace
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Data Reviewer toolbox,Data Validation
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Data Reviewer toolbox,Data Validation
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Data Reviewer toolbox,Data Validation
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Data Reviewer toolbox,Data Validation
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Data Reviewer toolbox,Data Validation
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Data Reviewer toolbox,Data Validation
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Data Reviewer toolbox,Result Management
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Data Reviewer toolbox,Result Management
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Data Reviewer toolbox,Result Management
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Data Reviewer toolbox,Result Management
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Data Reviewer toolbox,Result Management
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Data Reviewer toolbox,Result Management
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Defense  toolbox,Conversion
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Defense  toolbox,Conversion
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Defense  toolbox,Conversion
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Defense  toolbox,Conversion
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Defense  toolbox,Conversion
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Defense  toolbox,Conversion
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Defense  toolbox,Distance and Direction
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Defense  toolbox,Distance and Direction
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Defense  toolbox,Distance and Direction
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Defense  toolbox,Distance and Direction
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Defense  toolbox,Distance and Direction
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Defense  toolbox,Distance and Direction
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Defense  toolbox,Gridded Reference Graphic
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Defense  toolbox,Gridded Reference Graphic
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Defense  toolbox,Gridded Reference Graphic
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Defense  toolbox,Gridded Reference Graphic
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Defense  toolbox,Gridded Reference Graphic
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Defense  toolbox,Gridded Reference Graphic
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Defense  toolbox,Visibility
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Defense  toolbox,Visibility
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Defense  toolbox,Visibility
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Defense  toolbox,Visibility
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Defense  toolbox,Visibility
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Defense  toolbox,Visibility
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Feature Analysis toolbox,Analyze Patterns
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Feature Analysis toolbox,Analyze Patterns
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Feature Analysis toolbox,Analyze Patterns
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Feature Analysis toolbox,Analyze Patterns
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Feature Analysis toolbox,Analyze Patterns
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Feature Analysis toolbox,Analyze Patterns
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Feature Analysis toolbox,Manage Data
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Feature Analysis toolbox,Manage Data
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Feature Analysis toolbox,Manage Data
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Feature Analysis toolbox,Manage Data
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Feature Analysis toolbox,Manage Data
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Feature Analysis toolbox,Manage Data
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Feature Analysis toolbox,Summarize Data
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Feature Analysis toolbox,Summarize Data
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Feature Analysis toolbox,Summarize Data
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Feature Analysis toolbox,Summarize Data
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Feature Analysis toolbox,Summarize Data
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Feature Analysis toolbox,Summarize Data
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Feature Analysis toolbox,Use Proximity
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Feature Analysis toolbox,Use Proximity
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Feature Analysis toolbox,Use Proximity
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Feature Analysis toolbox,Use Proximity
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Feature Analysis toolbox,Use Proximity
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Feature Analysis toolbox,Use Proximity
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,GeoAnalytics Desktop toolbox,Analyze Patterns
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,GeoAnalytics Desktop toolbox,Analyze Patterns
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,GeoAnalytics Desktop toolbox,Analyze Patterns
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,GeoAnalytics Desktop toolbox,Analyze Patterns
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,GeoAnalytics Desktop toolbox,Analyze Patterns
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,GeoAnalytics Desktop toolbox,Analyze Patterns
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,GeoAnalytics Desktop toolbox,Data Enrichment
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,GeoAnalytics Desktop toolbox,Data Enrichment
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,GeoAnalytics Desktop toolbox,Data Enrichment
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,GeoAnalytics Desktop toolbox,Data Enrichment
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,GeoAnalytics Desktop toolbox,Data Enrichment
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,GeoAnalytics Desktop toolbox,Data Enrichment
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,GeoAnalytics Desktop toolbox,Find Locations
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,GeoAnalytics Desktop toolbox,Find Locations
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,GeoAnalytics Desktop toolbox,Find Locations
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,GeoAnalytics Desktop toolbox,Find Locations
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,GeoAnalytics Desktop toolbox,Find Locations
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,GeoAnalytics Desktop toolbox,Find Locations
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,GeoAnalytics Desktop toolbox,Manage Data
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,GeoAnalytics Desktop toolbox,Manage Data
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,GeoAnalytics Desktop toolbox,Manage Data
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,GeoAnalytics Desktop toolbox,Manage Data
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,GeoAnalytics Desktop toolbox,Manage Data
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,GeoAnalytics Desktop toolbox,Manage Data
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,GeoAnalytics Desktop toolbox,Summarize Data
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,GeoAnalytics Desktop toolbox,Summarize Data
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,GeoAnalytics Desktop toolbox,Summarize Data
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,GeoAnalytics Desktop toolbox,Summarize Data
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,GeoAnalytics Desktop toolbox,Summarize Data
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,GeoAnalytics Desktop toolbox,Summarize Data
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,GeoAnalytics Desktop toolbox,Use Proximity
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,GeoAnalytics Desktop toolbox,Use Proximity
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,GeoAnalytics Desktop toolbox,Use Proximity
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,GeoAnalytics Desktop toolbox,Use Proximity
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,GeoAnalytics Desktop toolbox,Use Proximity
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,GeoAnalytics Desktop toolbox,Use Proximity
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,GeoAnalytics Desktop toolbox,Utilities
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,GeoAnalytics Desktop toolbox,Utilities
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,GeoAnalytics Desktop toolbox,Utilities
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,GeoAnalytics Desktop toolbox,Utilities
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,GeoAnalytics Desktop toolbox,Utilities
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,GeoAnalytics Desktop toolbox,Utilities
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,GeoAnalytics Server toolbox,Analyze Patterns
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,GeoAnalytics Server toolbox,Analyze Patterns
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,GeoAnalytics Server toolbox,Analyze Patterns
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,GeoAnalytics Server toolbox,Analyze Patterns
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,GeoAnalytics Server toolbox,Analyze Patterns
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,GeoAnalytics Server toolbox,Analyze Patterns
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,GeoAnalytics Server toolbox,Data Enrichment
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,GeoAnalytics Server toolbox,Data Enrichment
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,GeoAnalytics Server toolbox,Data Enrichment
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,GeoAnalytics Server toolbox,Data Enrichment
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,GeoAnalytics Server toolbox,Data Enrichment
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,GeoAnalytics Server toolbox,Data Enrichment
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,GeoAnalytics Server toolbox,Find Locations
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,GeoAnalytics Server toolbox,Find Locations
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,GeoAnalytics Server toolbox,Find Locations
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,GeoAnalytics Server toolbox,Find Locations
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,GeoAnalytics Server toolbox,Find Locations
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,GeoAnalytics Server toolbox,Find Locations
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,GeoAnalytics Server toolbox,Manage Data
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,GeoAnalytics Server toolbox,Manage Data
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,GeoAnalytics Server toolbox,Manage Data
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,GeoAnalytics Server toolbox,Manage Data
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,GeoAnalytics Server toolbox,Manage Data
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,GeoAnalytics Server toolbox,Manage Data
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,GeoAnalytics Server toolbox,Summarize Data
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,GeoAnalytics Server toolbox,Summarize Data
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,GeoAnalytics Server toolbox,Summarize Data
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,GeoAnalytics Server toolbox,Summarize Data
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,GeoAnalytics Server toolbox,Summarize Data
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,GeoAnalytics Server toolbox,Summarize Data
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,GeoAnalytics Server toolbox,Use Proximity
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,GeoAnalytics Server toolbox,Use Proximity
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,GeoAnalytics Server toolbox,Use Proximity
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,GeoAnalytics Server toolbox,Use Proximity
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,GeoAnalytics Server toolbox,Use Proximity
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,GeoAnalytics Server toolbox,Use Proximity
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Geostatistical Analyst toolbox,Interpolation
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Geostatistical Analyst toolbox,Interpolation
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Geostatistical Analyst toolbox,Interpolation
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Geostatistical Analyst toolbox,Interpolation
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Geostatistical Analyst toolbox,Interpolation
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Geostatistical Analyst toolbox,Interpolation
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Geostatistical Analyst toolbox,Sampling Network Design
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Geostatistical Analyst toolbox,Sampling Network Design
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Geostatistical Analyst toolbox,Sampling Network Design
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Geostatistical Analyst toolbox,Sampling Network Design
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Geostatistical Analyst toolbox,Sampling Network Design
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Geostatistical Analyst toolbox,Sampling Network Design
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Geostatistical Analyst toolbox,Simulation
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Geostatistical Analyst toolbox,Simulation
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Geostatistical Analyst toolbox,Simulation
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Geostatistical Analyst toolbox,Simulation
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Geostatistical Analyst toolbox,Simulation
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Geostatistical Analyst toolbox,Simulation
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Geostatistical Analyst toolbox,Utilities
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Geostatistical Analyst toolbox,Utilities
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Geostatistical Analyst toolbox,Utilities
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Geostatistical Analyst toolbox,Utilities
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Geostatistical Analyst toolbox,Utilities
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Geostatistical Analyst toolbox,Utilities
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Geostatistical Analyst toolbox,Working with Geostatistical Layers
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Geostatistical Analyst toolbox,Working with Geostatistical Layers
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Geostatistical Analyst toolbox,Working with Geostatistical Layers
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Geostatistical Analyst toolbox,Working with Geostatistical Layers
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Geostatistical Analyst toolbox,Working with Geostatistical Layers
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Geostatistical Analyst toolbox,Working with Geostatistical Layers
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Image Analyst toolbox,Change Detection
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Image Analyst toolbox,Change Detection
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Image Analyst toolbox,Change Detection
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Image Analyst toolbox,Change Detection
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Image Analyst toolbox,Change Detection
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Image Analyst toolbox,Change Detection
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Image Analyst toolbox,Deep Learning
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Image Analyst toolbox,Deep Learning
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Image Analyst toolbox,Deep Learning
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Image Analyst toolbox,Deep Learning
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Image Analyst toolbox,Deep Learning
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Image Analyst toolbox,Deep Learning
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Image Analyst toolbox,Extraction
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Image Analyst toolbox,Extraction
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Image Analyst toolbox,Extraction
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Image Analyst toolbox,Extraction
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Image Analyst toolbox,Extraction
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Image Analyst toolbox,Extraction
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Image Analyst toolbox,Map Algebra
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Image Analyst toolbox,Map Algebra
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Image Analyst toolbox,Map Algebra
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Image Analyst toolbox,Map Algebra
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Image Analyst toolbox,Map Algebra
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Image Analyst toolbox,Map Algebra
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Image Analyst toolbox,Math
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Image Analyst toolbox,Math
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Image Analyst toolbox,Math
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Image Analyst toolbox,Math
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Image Analyst toolbox,Math
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Image Analyst toolbox,Math
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Image Analyst toolbox,Math
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Image Analyst toolbox,Math
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Image Analyst toolbox,Math
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Image Analyst toolbox,Math
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Image Analyst toolbox,Math
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Image Analyst toolbox,Math
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Image Analyst toolbox,Motion Imagery
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Image Analyst toolbox,Motion Imagery
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Image Analyst toolbox,Motion Imagery
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Image Analyst toolbox,Motion Imagery
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Image Analyst toolbox,Motion Imagery
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Image Analyst toolbox,Motion Imagery
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Image Analyst toolbox,Multidimensional Analysis
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Image Analyst toolbox,Multidimensional Analysis
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Image Analyst toolbox,Multidimensional Analysis
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Image Analyst toolbox,Multidimensional Analysis
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Image Analyst toolbox,Multidimensional Analysis
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Image Analyst toolbox,Multidimensional Analysis
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Image Analyst toolbox,Overlay
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Image Analyst toolbox,Overlay
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Image Analyst toolbox,Overlay
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Image Analyst toolbox,Overlay
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Image Analyst toolbox,Overlay
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Image Analyst toolbox,Overlay
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Image Analyst toolbox,Segmentation and Classification
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Image Analyst toolbox,Segmentation and Classification
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Image Analyst toolbox,Segmentation and Classification
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Image Analyst toolbox,Segmentation and Classification
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Image Analyst toolbox,Segmentation and Classification
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Image Analyst toolbox,Segmentation and Classification
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Image Analyst toolbox,Statistical
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Image Analyst toolbox,Statistical
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Image Analyst toolbox,Statistical
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Image Analyst toolbox,Statistical
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Image Analyst toolbox,Statistical
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Image Analyst toolbox,Statistical
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Intelligence toolbox,Analysis
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Intelligence toolbox,Analysis
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Intelligence toolbox,Analysis
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Intelligence toolbox,Analysis
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Intelligence toolbox,Analysis
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Intelligence toolbox,Analysis
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Intelligence toolbox,Analysis
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Intelligence toolbox,Analysis
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Intelligence toolbox,Analysis
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Intelligence toolbox,Analysis
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Intelligence toolbox,Analysis
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Intelligence toolbox,Analysis
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Intelligence toolbox,Conversion
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Intelligence toolbox,Conversion
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Intelligence toolbox,Conversion
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Intelligence toolbox,Conversion
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Intelligence toolbox,Conversion
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Intelligence toolbox,Conversion
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Intelligence toolbox,Movement
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Intelligence toolbox,Movement
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Intelligence toolbox,Movement
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Intelligence toolbox,Movement
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Intelligence toolbox,Movement
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Intelligence toolbox,Movement
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Location Referencing toolbox,Overlay Events
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Location Referencing toolbox,Overlay Events
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Location Referencing toolbox,Overlay Events
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Location Referencing toolbox,Overlay Events
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Location Referencing toolbox,Overlay Events
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Location Referencing toolbox,Overlay Events
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Location Referencing toolbox,Overlay Events
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Location Referencing toolbox,Overlay Events
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Location Referencing toolbox,Overlay Events
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Location Referencing toolbox,Overlay Events
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Location Referencing toolbox,Overlay Events
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Location Referencing toolbox,Overlay Events
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Location Referencing toolbox,Update Measures From LRS
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Location Referencing toolbox,Update Measures From LRS
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Location Referencing toolbox,Update Measures From LRS
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Location Referencing toolbox,Update Measures From LRS
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Location Referencing toolbox,Update Measures From LRS
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Location Referencing toolbox,Update Measures From LRS
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Location Referencing toolbox,Update Measures From LRS
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Location Referencing toolbox,Update Measures From LRS
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Location Referencing toolbox,Update Measures From LRS
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Location Referencing toolbox,Update Measures From LRS
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Location Referencing toolbox,Update Measures From LRS
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Location Referencing toolbox,Update Measures From LRS
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Location Referencing toolbox,Update Measures From LRS
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Location Referencing toolbox,Update Measures From LRS
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Location Referencing toolbox,Update Measures From LRS
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Location Referencing toolbox,Update Measures From LRS
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Location Referencing toolbox,Update Measures From LRS
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Location Referencing toolbox,Update Measures From LRS
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Network Analyst toolbox,Analysis
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Network Analyst toolbox,Analysis
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Network Analyst toolbox,Analysis
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Network Analyst toolbox,Analysis
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Network Analyst toolbox,Analysis
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Network Analyst toolbox,Analysis
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Network Analyst toolbox,Analysis
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Network Analyst toolbox,Analysis
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Network Analyst toolbox,Analysis
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Network Analyst toolbox,Analysis
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Network Analyst toolbox,Analysis
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Network Analyst toolbox,Analysis
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Network Analyst toolbox,Network Dataset
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Network Analyst toolbox,Network Dataset
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Network Analyst toolbox,Network Dataset
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Network Analyst toolbox,Network Dataset
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Network Analyst toolbox,Network Dataset
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Network Analyst toolbox,Network Dataset
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Network Analyst toolbox,Turn Feature Class
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Network Analyst toolbox,Turn Feature Class
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Network Analyst toolbox,Turn Feature Class
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Network Analyst toolbox,Turn Feature Class
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Network Analyst toolbox,Turn Feature Class
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Network Analyst toolbox,Turn Feature Class
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Raster Analysis toolbox,Analyze Patterns
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Raster Analysis toolbox,Analyze Patterns
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Raster Analysis toolbox,Analyze Patterns
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Raster Analysis toolbox,Analyze Patterns
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Raster Analysis toolbox,Analyze Patterns
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Raster Analysis toolbox,Analyze Patterns
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Raster Analysis toolbox,Analyze Terrain
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Raster Analysis toolbox,Analyze Terrain
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Raster Analysis toolbox,Analyze Terrain
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Raster Analysis toolbox,Analyze Terrain
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Raster Analysis toolbox,Analyze Terrain
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Raster Analysis toolbox,Analyze Terrain
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Raster Analysis toolbox,Deep Learning
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Raster Analysis toolbox,Deep Learning
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Raster Analysis toolbox,Deep Learning
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Raster Analysis toolbox,Deep Learning
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Raster Analysis toolbox,Deep Learning
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Raster Analysis toolbox,Deep Learning
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Raster Analysis toolbox,Generalize
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Raster Analysis toolbox,Generalize
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Raster Analysis toolbox,Generalize
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Raster Analysis toolbox,Generalize
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Raster Analysis toolbox,Generalize
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Raster Analysis toolbox,Generalize
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Raster Analysis toolbox,Hydrology
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Raster Analysis toolbox,Hydrology
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Raster Analysis toolbox,Hydrology
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Raster Analysis toolbox,Hydrology
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Raster Analysis toolbox,Hydrology
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Raster Analysis toolbox,Hydrology
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Raster Analysis toolbox,Manage Data
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Raster Analysis toolbox,Manage Data
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Raster Analysis toolbox,Manage Data
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Raster Analysis toolbox,Manage Data
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Raster Analysis toolbox,Manage Data
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Raster Analysis toolbox,Manage Data
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Raster Analysis toolbox,Summarize Data
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Raster Analysis toolbox,Summarize Data
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Raster Analysis toolbox,Summarize Data
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Raster Analysis toolbox,Summarize Data
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Raster Analysis toolbox,Summarize Data
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Raster Analysis toolbox,Summarize Data
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Raster Analysis toolbox,Use Proximity
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Raster Analysis toolbox,Use Proximity
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Raster Analysis toolbox,Use Proximity
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Raster Analysis toolbox,Use Proximity
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Raster Analysis toolbox,Use Proximity
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Raster Analysis toolbox,Use Proximity
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Raster Analysis toolbox,Use Proximity (Legacy)
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Raster Analysis toolbox,Use Proximity (Legacy)
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Raster Analysis toolbox,Use Proximity (Legacy)
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Raster Analysis toolbox,Use Proximity (Legacy)
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Raster Analysis toolbox,Use Proximity (Legacy)
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Raster Analysis toolbox,Use Proximity (Legacy)
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Ready To Use toolbox,Elevation
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Ready To Use toolbox,Elevation
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Ready To Use toolbox,Elevation
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Ready To Use toolbox,Elevation
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Ready To Use toolbox,Elevation
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Ready To Use toolbox,Elevation
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Ready To Use toolbox,Hydrology
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Ready To Use toolbox,Hydrology
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Ready To Use toolbox,Hydrology
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Ready To Use toolbox,Hydrology
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Ready To Use toolbox,Hydrology
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Ready To Use toolbox,Hydrology
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Ready To Use toolbox,Network Analysis
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Ready To Use toolbox,Network Analysis
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Ready To Use toolbox,Network Analysis
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Ready To Use toolbox,Network Analysis
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Ready To Use toolbox,Network Analysis
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Ready To Use toolbox,Network Analysis
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Server toolbox,Caching
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Server toolbox,Caching
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Server toolbox,Caching
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Server toolbox,Caching
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Server toolbox,Caching
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Server toolbox,Caching
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Server toolbox,Data Extraction
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Server toolbox,Data Extraction
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Server toolbox,Data Extraction
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Server toolbox,Data Extraction
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Server toolbox,Data Extraction
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Server toolbox,Data Extraction
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Server toolbox,Printing
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Server toolbox,Printing
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Server toolbox,Printing
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Server toolbox,Printing
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Server toolbox,Printing
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Server toolbox,Printing
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Server toolbox,Publishing
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Server toolbox,Publishing
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Server toolbox,Publishing
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Server toolbox,Publishing
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Server toolbox,Publishing
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Server toolbox,Publishing
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Space Time Pattern Mining toolbox,Emerging Hot Spot Analysis
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Space Time Pattern Mining toolbox,Emerging Hot Spot Analysis
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Space Time Pattern Mining toolbox,Emerging Hot Spot Analysis
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Space Time Pattern Mining toolbox,Emerging Hot Spot Analysis
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Space Time Pattern Mining toolbox,Emerging Hot Spot Analysis
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Space Time Pattern Mining toolbox,Emerging Hot Spot Analysis
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Space Time Pattern Mining toolbox,Local Outlier Analysis
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Space Time Pattern Mining toolbox,Local Outlier Analysis
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Space Time Pattern Mining toolbox,Local Outlier Analysis
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Space Time Pattern Mining toolbox,Local Outlier Analysis
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Space Time Pattern Mining toolbox,Local Outlier Analysis
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Space Time Pattern Mining toolbox,Local Outlier Analysis
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Spatial Analyst toolbox,Conditional
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Spatial Analyst toolbox,Conditional
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Spatial Analyst toolbox,Conditional
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Spatial Analyst toolbox,Conditional
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Spatial Analyst toolbox,Conditional
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Spatial Analyst toolbox,Conditional
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Spatial Analyst toolbox,Density
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Spatial Analyst toolbox,Density
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Spatial Analyst toolbox,Density
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Spatial Analyst toolbox,Density
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Spatial Analyst toolbox,Density
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Spatial Analyst toolbox,Density
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Spatial Analyst toolbox,Distance
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Spatial Analyst toolbox,Distance
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Spatial Analyst toolbox,Distance
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Spatial Analyst toolbox,Distance
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Spatial Analyst toolbox,Distance
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Spatial Analyst toolbox,Distance
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Spatial Analyst toolbox,Extraction
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Spatial Analyst toolbox,Extraction
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Spatial Analyst toolbox,Extraction
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Spatial Analyst toolbox,Extraction
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Spatial Analyst toolbox,Extraction
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Spatial Analyst toolbox,Extraction
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Spatial Analyst toolbox,Generalization
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Spatial Analyst toolbox,Generalization
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Spatial Analyst toolbox,Generalization
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Spatial Analyst toolbox,Generalization
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Spatial Analyst toolbox,Generalization
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Spatial Analyst toolbox,Generalization
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Spatial Analyst toolbox,Groundwater
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Spatial Analyst toolbox,Groundwater
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Spatial Analyst toolbox,Groundwater
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Spatial Analyst toolbox,Groundwater
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Spatial Analyst toolbox,Groundwater
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Spatial Analyst toolbox,Groundwater
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Spatial Analyst toolbox,Hydrology
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Spatial Analyst toolbox,Hydrology
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Spatial Analyst toolbox,Hydrology
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Spatial Analyst toolbox,Hydrology
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Spatial Analyst toolbox,Hydrology
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Spatial Analyst toolbox,Hydrology
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Spatial Analyst toolbox,Interpolation
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Spatial Analyst toolbox,Interpolation
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Spatial Analyst toolbox,Interpolation
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Spatial Analyst toolbox,Interpolation
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Spatial Analyst toolbox,Interpolation
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Spatial Analyst toolbox,Interpolation
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Spatial Analyst toolbox,Local
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Spatial Analyst toolbox,Local
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Spatial Analyst toolbox,Local
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Spatial Analyst toolbox,Local
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Spatial Analyst toolbox,Local
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Spatial Analyst toolbox,Local
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Spatial Analyst toolbox,Map Algebra
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Spatial Analyst toolbox,Map Algebra
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Spatial Analyst toolbox,Map Algebra
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Spatial Analyst toolbox,Map Algebra
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Spatial Analyst toolbox,Map Algebra
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Spatial Analyst toolbox,Map Algebra
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Spatial Analyst toolbox,Math (general)
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Spatial Analyst toolbox,Math (general)
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Spatial Analyst toolbox,Math (general)
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Spatial Analyst toolbox,Math (general)
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Spatial Analyst toolbox,Math (general)
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Spatial Analyst toolbox,Math (general)
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Spatial Analyst toolbox,Math (general)
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Spatial Analyst toolbox,Math (general)
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Spatial Analyst toolbox,Math (general)
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Spatial Analyst toolbox,Math (general)
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Spatial Analyst toolbox,Math (general)
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Spatial Analyst toolbox,Math (general)
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Spatial Analyst toolbox,Math Bitwise
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Spatial Analyst toolbox,Math Bitwise
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Spatial Analyst toolbox,Math Bitwise
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Spatial Analyst toolbox,Math Bitwise
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Spatial Analyst toolbox,Math Bitwise
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Spatial Analyst toolbox,Math Bitwise
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Spatial Analyst toolbox,Math Logical
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Spatial Analyst toolbox,Math Logical
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Spatial Analyst toolbox,Math Logical
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Spatial Analyst toolbox,Math Logical
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Spatial Analyst toolbox,Math Logical
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Spatial Analyst toolbox,Math Logical
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Spatial Analyst toolbox,Math Logical
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Spatial Analyst toolbox,Math Logical
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Spatial Analyst toolbox,Math Logical
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Spatial Analyst toolbox,Math Logical
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Spatial Analyst toolbox,Math Logical
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Spatial Analyst toolbox,Math Logical
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Spatial Analyst toolbox,Math Logical
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Spatial Analyst toolbox,Math Logical
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Spatial Analyst toolbox,Math Logical
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Spatial Analyst toolbox,Math Logical
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Spatial Analyst toolbox,Math Logical
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Spatial Analyst toolbox,Math Logical
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Spatial Analyst toolbox,Math Logical
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Spatial Analyst toolbox,Math Logical
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Spatial Analyst toolbox,Math Logical
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Spatial Analyst toolbox,Math Logical
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Spatial Analyst toolbox,Math Logical
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Spatial Analyst toolbox,Math Logical
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Spatial Analyst toolbox,Math Trigonometric
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Spatial Analyst toolbox,Math Trigonometric
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Spatial Analyst toolbox,Math Trigonometric
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Spatial Analyst toolbox,Math Trigonometric
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Spatial Analyst toolbox,Math Trigonometric
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Spatial Analyst toolbox,Math Trigonometric
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Spatial Analyst toolbox,Multidimensional Analysis
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Spatial Analyst toolbox,Multidimensional Analysis
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Spatial Analyst toolbox,Multidimensional Analysis
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Spatial Analyst toolbox,Multidimensional Analysis
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Spatial Analyst toolbox,Multidimensional Analysis
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Spatial Analyst toolbox,Multidimensional Analysis
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Spatial Analyst toolbox,Multivariate
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Spatial Analyst toolbox,Multivariate
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Spatial Analyst toolbox,Multivariate
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Spatial Analyst toolbox,Multivariate
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Spatial Analyst toolbox,Multivariate
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Spatial Analyst toolbox,Multivariate
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Spatial Analyst toolbox,Neighborhood
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Spatial Analyst toolbox,Neighborhood
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Spatial Analyst toolbox,Neighborhood
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Spatial Analyst toolbox,Neighborhood
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Spatial Analyst toolbox,Neighborhood
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Spatial Analyst toolbox,Neighborhood
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Spatial Analyst toolbox,Overlay
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Spatial Analyst toolbox,Overlay
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Spatial Analyst toolbox,Overlay
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Spatial Analyst toolbox,Overlay
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Spatial Analyst toolbox,Overlay
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Spatial Analyst toolbox,Overlay
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Spatial Analyst toolbox,Raster Creation
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Spatial Analyst toolbox,Raster Creation
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Spatial Analyst toolbox,Raster Creation
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Spatial Analyst toolbox,Raster Creation
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Spatial Analyst toolbox,Raster Creation
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Spatial Analyst toolbox,Raster Creation
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Spatial Analyst toolbox,Reclass
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Spatial Analyst toolbox,Reclass
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Spatial Analyst toolbox,Reclass
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Spatial Analyst toolbox,Reclass
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Spatial Analyst toolbox,Reclass
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Spatial Analyst toolbox,Reclass
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Spatial Analyst toolbox,Segmentation and Classification
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Spatial Analyst toolbox,Segmentation and Classification
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Spatial Analyst toolbox,Segmentation and Classification
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Spatial Analyst toolbox,Segmentation and Classification
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Spatial Analyst toolbox,Segmentation and Classification
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Spatial Analyst toolbox,Segmentation and Classification
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Spatial Analyst toolbox,Solar Radiation
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Spatial Analyst toolbox,Solar Radiation
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Spatial Analyst toolbox,Solar Radiation
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Spatial Analyst toolbox,Solar Radiation
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Spatial Analyst toolbox,Solar Radiation
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Spatial Analyst toolbox,Solar Radiation
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Spatial Analyst toolbox,Surface
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Spatial Analyst toolbox,Surface
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Spatial Analyst toolbox,Surface
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Spatial Analyst toolbox,Surface
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Spatial Analyst toolbox,Surface
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Spatial Analyst toolbox,Surface
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Spatial Analyst toolbox,Zonal
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Spatial Analyst toolbox,Zonal
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Spatial Analyst toolbox,Zonal
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Spatial Analyst toolbox,Zonal
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Spatial Analyst toolbox,Zonal
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Spatial Analyst toolbox,Zonal
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Spatial Analyst toolbox,Zonal
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Spatial Analyst toolbox,Zonal
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Spatial Analyst toolbox,Zonal
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Spatial Analyst toolbox,Zonal
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Spatial Analyst toolbox,Zonal
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Spatial Analyst toolbox,Zonal
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Spatial Statistics toolbox,Analyzing Patterns
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Spatial Statistics toolbox,Analyzing Patterns
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Spatial Statistics toolbox,Analyzing Patterns
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Spatial Statistics toolbox,Analyzing Patterns
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Spatial Statistics toolbox,Analyzing Patterns
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Spatial Statistics toolbox,Analyzing Patterns
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Spatial Statistics toolbox,Mapping Clusters
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Spatial Statistics toolbox,Mapping Clusters
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Spatial Statistics toolbox,Mapping Clusters
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Spatial Statistics toolbox,Mapping Clusters
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Spatial Statistics toolbox,Mapping Clusters
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Spatial Statistics toolbox,Mapping Clusters
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Spatial Statistics toolbox,Measuring Geographic Distributions
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Spatial Statistics toolbox,Measuring Geographic Distributions
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Spatial Statistics toolbox,Measuring Geographic Distributions
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Spatial Statistics toolbox,Measuring Geographic Distributions
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Spatial Statistics toolbox,Measuring Geographic Distributions
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Spatial Statistics toolbox,Measuring Geographic Distributions
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Spatial Statistics toolbox,Modeling Spatial Relationships
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Spatial Statistics toolbox,Modeling Spatial Relationships
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Spatial Statistics toolbox,Modeling Spatial Relationships
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Spatial Statistics toolbox,Modeling Spatial Relationships
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Spatial Statistics toolbox,Modeling Spatial Relationships
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Spatial Statistics toolbox,Modeling Spatial Relationships
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Spatial Statistics toolbox,Utilities
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Spatial Statistics toolbox,Utilities
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Spatial Statistics toolbox,Utilities
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Spatial Statistics toolbox,Utilities
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Spatial Statistics toolbox,Utilities
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Spatial Statistics toolbox,Utilities
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Territory Design toolbox,Analysis
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Territory Design toolbox,Analysis
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Territory Design toolbox,Analysis
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Territory Design toolbox,Analysis
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Territory Design toolbox,Analysis
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Territory Design toolbox,Analysis
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Territory Design toolbox,Territory Solution
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Territory Design toolbox,Territory Solution
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Territory Design toolbox,Territory Solution
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Territory Design toolbox,Territory Solution
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Territory Design toolbox,Territory Solution
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Territory Design toolbox,Territory Solution
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Topographic Production toolbox,Cartography
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Topographic Production toolbox,Cartography
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Topographic Production toolbox,Cartography
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Topographic Production toolbox,Cartography
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Topographic Production toolbox,Cartography
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Topographic Production toolbox,Cartography
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Topographic Production toolbox,Data Management
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Topographic Production toolbox,Data Management
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Topographic Production toolbox,Data Management
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Topographic Production toolbox,Data Management
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Topographic Production toolbox,Data Management
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Topographic Production toolbox,Data Management
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Topographic Production toolbox,Workflow
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Topographic Production toolbox,Workflow
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Topographic Production toolbox,Workflow
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Topographic Production toolbox,Workflow
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Topographic Production toolbox,Workflow
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Topographic Production toolbox,Workflow
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Workflow Manager toolbox,Configuration
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Workflow Manager toolbox,Configuration
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Workflow Manager toolbox,Configuration
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Workflow Manager toolbox,Configuration
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Workflow Manager toolbox,Configuration
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Workflow Manager toolbox,Configuration
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Workflow Manager toolbox,Jobs
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Workflow Manager toolbox,Jobs
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Workflow Manager toolbox,Jobs
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Workflow Manager toolbox,Jobs
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Workflow Manager toolbox,Jobs
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Workflow Manager toolbox,Jobs
+ASCII 3D To Feature Class,"Imports 3D features from one or more ASCII files stored in XYZ, XYZI, or GENERATE formats into a new feature class.",NA,Workflow Manager toolbox,Jobs
+Feature Class Z To ASCII,"Exports 3D features to ASCII text files storing GENERATE, XYZ, or profile data.",NA,Workflow Manager toolbox,Jobs
+Feature To 3D By Attribute,Creates 3D features using height values derived from the attribute of the input features.,NA,Workflow Manager toolbox,Jobs
+Features From CityEngine Rules,Generates 3D geometries  from existing 2D and 3D input features using rules authored in ArcGIS CityEngine.,NA,Workflow Manager toolbox,Jobs
+Import 3D Files,Imports one or more 3D models into a multipatch feature class.,NA,Workflow Manager toolbox,Jobs
+Layer 3D To Feature Class,Exports feature layers with 3D display properties to 3D lines or multipatch features.,NA,Workflow Manager toolbox,Jobs
