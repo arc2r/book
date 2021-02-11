@@ -107,10 +107,6 @@ In ArcGIS pro the tool for projecting a raster dataset is called
 _Project Raster (Data Management)_. Let's see how we can perform the same operation
 with R. 
 
-<!--
-/ todo: replcace this with arc2r/arc2r
-/  assignees: KimboGilda
---> 
 
 ```{r}
 # Dataset derived from the spatial interpolation of all the available "recycling points"
@@ -118,7 +114,7 @@ with R.
 data("recycling_raster")
 
 # Dataset representing the public transport quality in the city of Wädenswil
-publicTransport <- raster("sample_data/Raster/publicTransport_waedi.tif") # CRS -> WGS84 
+data("public_transport_waedi")# CRS -> WGS84 
 ```
 
 
@@ -151,10 +147,6 @@ plot(publicTransport_CH,las=1,
 ```
 
 
-
-<!-- ## Topology Toolset -->
-
-<!-- ## Sampling Toolset -->
 
 
 
