@@ -5,10 +5,9 @@ I really dont like the way we have to hand-controll the whole structure a the mo
 
 ```{r, eval = FALSE}
 
-setwd("C:/Users/rata/temp")
 library(yaml)
 library(tidyverse)
-tools_todo <- read_yaml("C:/Users/rata/switchdrive/Projekte/2021_02_All_things_R_Spatial/gh-repos/book/auxiliary/tools_todo.yaml")
+tools_todo <- read_yaml("auxiliary/tools_todo.yaml")
 
 
 dir_create <- function(dirname){
