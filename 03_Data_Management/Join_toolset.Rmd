@@ -1,7 +1,9 @@
 ## Joins and Relates Toolset
 
+<!--
 //todo revise this chapter
 //body nothing about this chapter is spatial, the explanation is not based on ArcGIS Tools, the joins are not intuitive (what are df1 and df2?)
+-->
 
 For this chapter, you will need the following R Packages:
 
