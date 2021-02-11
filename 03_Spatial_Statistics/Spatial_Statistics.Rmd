@@ -50,10 +50,7 @@ morans_i <- function(sf_object,col) {
 }
 ```
 
-<!--
-/ todo: replcace this with arc2r/arc2r
-/  assignees: KimboGilda
---> 
+
 
 ```{r}
 data("zweitwohnung_gemeinden")
