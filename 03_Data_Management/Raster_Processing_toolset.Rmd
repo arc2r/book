@@ -38,10 +38,8 @@ In GIS operations is quite common the necessity of "clipping" an area based on s
 
 # Insert a vector dataset that depicts the public transport connection quality in
 # the city of Wädenswil and plot it
-ARE_waedi <- read_sf("sample_data/Entsorgung_Waedenswil/ARE_waedenswil.shp")
 data("are_waedenswil")
 # Read the raster dataset and plot it
-raster_recycling <- raster("sample_data/Entsorgung_Waedenswil/abfall_raster.tif")
 data("recycling_raster")
 ```
 
@@ -59,9 +57,6 @@ recycle_Waedi_clip <- mask(recycling_raster,are_waedenswil)
 
 _Visualising the clipped output_
 ```{r echo=FALSE}
-# ggplot() +
-#   geom_stars(data = st_as_stars(recycle_Waedi_clip)) + 
-#   scale_fill_gradientn(colours=c("green","yellow","red"))
 
 plot(recycle_Waedi_clip)
 ```
