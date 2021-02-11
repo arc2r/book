@@ -6,6 +6,7 @@ For this chapter, you will need the following packages and datasets:
 library(arc2r) 
 library(sf)
 library(raster)
+library(ggplot2)
 
 data("gemeinde_zh")
 data("swissAlti3D")
@@ -60,7 +61,6 @@ If you are familiar with `ggplot2` you can rejoice: Plotting `sf` objects has be
 #### `sf` objects
 ```{r}
 
-library(ggplot2)
 
 ggplot(gemeinde_zh) +
   geom_sf()
@@ -103,6 +103,8 @@ ggplot(gemeinde_zh) +
 
 #### `raster` objects
 
+
+
 <!--
 / todo: use a raster object with the same extent as the sf object
 -->
@@ -110,8 +112,13 @@ ggplot(gemeinde_zh) +
 While `sf` objects are very easily integrated in ggplot2, raster data is a little harder. There are various ways to plot a raster object with `ggplot2`. A simple, adhoc approach is converting the `RasterLayer` object into a `data.frame` and then plotting it with `geom_raster`. 
 
 
-```{r}
+```{r, echo = FALSE}
+rm(list = ls())
+gc()
+```
 
+
+```{r}
 swissAlti3D_df <- as.data.frame(swissAlti3D,xy = TRUE) # xy = TRUE adds the x and y coordinates to our dataframe as columns
 
 # Note the column names of our dataframe
