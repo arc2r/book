@@ -10,10 +10,13 @@ library(tidyverse)
 ## Get Names of toolboxes and their URLs
 
 
+### Get Toolboxes
+
+
 Go to `https://pro.arcgis.com/en/pro-app/latest/tool-reference/main/arcgis-pro-tool-reference.htm` and copy the inner html of `accordion-content`. I cant scrape this because there seems to bo JS involved. 
 ```{r}
 
-toolboxes <- '
+toolbox_html <- '
 <a class="side-nav-link icon-ui-right" data-collapsed="true" href="/en/pro-app/2.7/tool-reference/3d-analyst">3D Analyst toolbox</a>
 <a class="side-nav-link icon-ui-right" data-collapsed="true" href="/en/pro-app/2.7/tool-reference/analysis">Analysis toolbox</a>
 <a class="side-nav-link icon-ui-right" data-collapsed="true" href="/en/pro-app/2.7/tool-reference/aviation">Aviation toolbox</a>
@@ -59,7 +62,7 @@ toolboxes <- '
 
 Create a dataframe with Toolbox name and URL
 ```{r}
-toolboxes <- read_html(toolboxes) %>%
+toolboxes <- read_html(toolbox_html) %>%
   html_nodes("a") %>%
   map_dfr(function(x){
     tibble(toolbox  = html_text(x),
@@ -99,6 +102,8 @@ toolboxes
 ```
 
 
+Get Toolbox description (Only the first <p> objects is scraped from the website, which might also just hold licensing information).
+
 ```{r}
 get_toolboxdesc <- function(url){
   url %>%
@@ -121,13 +126,16 @@ toolbox_desc <- toolboxes %>%
     tibble(toolbox = toolbox, description = desc)
   })
 
-toolboxes <- left_join(toolboxes, toolbox_desc, by = "toolbox")
+toolboxes <- left_join(toolboxes, toolbox_desc, by = "toolbox") %>%
+  mutate(description = str_trim(description))
 
-toolboxes <- select(toolboxes, -last)
+
 
 write_csv(toolboxes, "auxiliary/toolboxes.csv")
 ```
 
+
+### Get Toolsets
 
 ```{r}
 # This function takes the URL of a toolbox and returns a table of all toolsets from this toolbox
@@ -137,7 +145,7 @@ grab_toolsets <- function(url){
     html_node(".tablexyz")
   
   tab2 <- html_table(tab) %>%
-    rename("Toolset" = 1)
+    rename("toolset" = 1)
   
   tab3 <- tab %>% 
     html_nodes("a") %>%
@@ -163,14 +171,28 @@ toolsets <- toolboxes %>%
     )
     mytable <- mytable %>%
       mutate(toolbox = toolbox)
-    
+  
   })
+
+toolset_url_adjuster <- function(url){
+  paste0("https://pro.arcgis.com",str_replace(url,"/2.7/","/latest/"))
+}
 
 toolsets <- toolsets %>%
   mutate(
-    url_adjusted = str_replace(url,"/2.7/","/latest/"),
-    url_adjusted = paste0("https://pro.arcgis.com",url_adjusted)
+    url_adjusted = toolset_url_adjuster(url)
+  ) %>%
+  mutate(
+    url_adjusted = case_when(
+      toolbox == "Defense  toolbox" & Toolset == "Gridded Reference Graphic"~"https://pro.arcgis.com/en/pro-app/latest/tool-reference/defense/an-overview-of-the-gridded-reference-graphic-toolset.htm",
+      toolbox == "GeoAnalytics Desktop toolbox" & Toolset == "Analyze Patterns"~"https://pro.arcgis.com/en/pro-app/latest/tool-reference/geoanalytics-desktop/an-overview-of-the-analyze-patterns-toolset.htm",
+      TRUE~url_adjusted
+    )
   )
+
+# Any empty URLS?
+toolsets %>% filter(is.na(url))
+
 ```
 
 
@@ -178,8 +200,12 @@ toolsets <- toolsets %>%
 # did every toolbox get a row (as expected)?
 length(unique(toolsets$toolbox)) == nrow(toolboxes)
 
-# if so, is any toolset NA?
+# if so, is any toolset NA? I hope not
 any(is.na(toolsets$Toolset))
+
+
+toolsets <- rename(toolsets, description =  Description)
+
 
 write_csv(toolsets, "auxiliary/toolsets.csv")
 
@@ -187,55 +213,90 @@ write_csv(toolsets, "auxiliary/toolsets.csv")
 
 ```{r}
 
+toolsets <- read_csv("auxiliary/toolsets.csv")
 
 
 # This function grabs all tools from a given toolset URL
-grab_tools <- function(url){
-  url %>%
+grab_tools <- function(input_url, input_toolbox, input_toolset){
+  url_html <- input_url %>%
     read_html() %>%
-    html_nodes(".tablexyz") %>%
-    html_table()
+    html_nodes(".tablexyz")
+  
+  
+  
+  my_tables <- html_table(url_html)
+  
+  a_nodes <- url_html %>% 
+    html_nodes("a")
+  
+  url_table <- tibble(tool = html_text(a_nodes),href = html_attr(a_nodes, "href"))
+  
+  
+  df <- map_dfr(my_tables, function(my_table){
+    
+    mycolnames <- colnames(my_table)
+    
+    if(mycolnames[1] %in% c("Tool","Tool name","Geoprocessing tools","tool")){
+      colnames(my_table)[1] <- "tool"
+      colnames(my_table)[2] <- "description"
+      outtable <- left_join(my_table,url_table, by = "tool")
+      outtable
+    } else if(mycolnames[1] %in% c("Toolsets","Toolset")){
+      
+      colnames(my_table)[1] <- "toolset"
+      colnames(my_table)[2] <- "description"
+      
+      prepared <- left_join(my_table, url_table, by = c("toolset" = "tool")) %>%
+        mutate(
+          url_adjusted2 = toolset_url_adjuster(href),
+          toolbox2 = input_toolbox
+        ) %>% 
+        select(url_adjusted2, toolbox2, toolset2 = toolset)
+      
+      prepared %>%
+        pmap_dfr(function(url_adjusted2,toolbox2, toolset2){
+          grab_tools(url_adjusted2, toolbox2, toolset2)
+        })
+    }
+  })
+  
+  return(df)
 }
 
-toolsets <- toolsets %>%
-  mutate(
-    url_adjusted = case_when(
-      toolbox == "Defense Toolbox" & Toolset == "Gridded Reference Graphic"~"https://pro.arcgis.com/en/pro-app/latest/tool-reference/defense/an-overview-of-the-gridded-reference-graphic-toolset.htm",
-      toolbox == "GeoAnalytics Desktop toolbox" & Toolset == "Analyze Patterns"~"https://pro.arcgis.com/en/pro-app/latest/tool-reference/geoanalytics-desktop/an-overview-of-the-analyze-patterns-toolset.htm",
-      TRUE~url_adjusted
-    )
-  )
-
-# Any empty URLS?
-toolsets %>%
-  filter(toolbox == "Defense Toolbox" & Toolset == "Gridded Reference")
-
+toolsets <- mutate(toolsets, row = row_number())
+maxi <- max(toolsets$row)
 
 tools <- toolsets %>%
-  select(toolbox, Toolset,url_adjusted) %>%
-  pmap_dfr(function(toolbox, Toolset, url_adjusted){
+  # tail(1) %>%
+  # filter(row > 120) %>%
+  # filter(
+  #   toolset != "Overlay Events", 
+  #   toolbox != "Crime Analysis and Safety toolbox", 
+  #   toolbox != "Data Interoperability toolbox",
+  #   toolbox != "Editing toolbox",
+  #   toolbox != "Geocoding toolbox",
+  #   !(toolset == "Raster" & toolbox == "Data Management toolbox") 
+  #   ) %>% 
+  select(toolbox, toolset,url_adjusted, row) %>%
+  pmap(function(toolbox, toolset, url_adjusted, row){
     Sys.sleep(0.5)
-    print(toolbox)
-    print(Toolset)
-    print(url_adjusted)
-    tab <- tryCatch(grab_tools(url_adjusted),
-                    error = tibble(.rows = 1))
-    map_dfr(tab, ~.x) %>%
-      mutate(toolbox = toolbox, Toolset = Toolset)
-  })
+    print(paste(row,toolbox,toolset,round(row/maxi,2)," (",url_adjusted,")",sep = " "))
+    tryCatch(grab_tools(url_adjusted,toolbox, toolset),
+                    error = function(e){
+                      print(paste("ERROR"))
+                    })
 
+  }) 
+
+
+success <- map_lgl(tools, ~ifelse(is.data.frame(.x),nrow(.x)>0,FALSE))
+
+toolsets[!success,] %>% View
+tools[[81]]
 
 write_csv(tools, "auxiliary/tools.csv")
 
 ```
 
 
-
-
-
-## Write Yaml from Toolset
-
-```{r}
-read_csv("auxiliary/toolsets.csv")
-```
 
