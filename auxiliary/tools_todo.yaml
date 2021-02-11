@@ -5,7 +5,7 @@
 --- # Geoprocessing Tools
   Analysis:
     Extract:
-      Clip: NA
+      Clip: 90
       Select: NA
       Split: NA
       Split By Attributes: NA
