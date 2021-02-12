@@ -4,9 +4,34 @@
 knitr::include_graphics("images/network/Data Management_Sampling.png")
 ```
 
+For this chapter, you will need the following R Packages:
+
+```{r, echo=FALSE}
+library(sf)
+library(arc2r)
+library(ggplot2)
+library(dplyr)
+```
 
 ### Generate Tessellation
 
+```{r}
+# Reading the simple feature object that depicts all the cantons of the country of Switzerland
+data("kantonsgebiet")
+
+# Selecting only the geometric extent of the canton of Zurich
+zh <- filter(kantonsgebiet, name == "Zürich")
+
+# Plotting the selected area
+ggplot(zh) + geom_sf() + coord_sf(datum = 2056)
+
+g <- st_make_grid(zh, square = FALSE)
+
+ggplot() + geom_sf(data = zh, fill = "red") +
+  geom_sf(data = g, alpha = 0.3) + coord_sf(datum = 2056) +
+  ggtitle("Canton of Zürich") +
+  theme(plot.title = element_text(hjust = 0.5))
+```
 
 ### Create Fishnet
 
