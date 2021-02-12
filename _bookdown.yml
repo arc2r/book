@@ -1,35 +1,40 @@
 rmd_files: [
   "index.Rmd",
+  
   "00_Data/Data.Rmd",
   "00_Data/import_vector.Rmd",
   "00_Data/import_raster_raster.Rmd",
   "00_Data/import_raster_terra.Rmd",
+  
   "01_Making_Maps/Making_Maps.Rmd",
   "01_Making_Maps/Static_Maps.Rmd",
   "01_Making_Maps/Dynamic_Maps.Rmd",
-  "02_Select/Selection.Rmd",
-  "02_Select/Select_by_Attribute.Rmd",
-  "02_Select/Select_by_Location.Rmd",
-  "03_Part_Geoprocessing_Tools.Rmd",
-  "03_Data_Management/General.Rmd",
-  "03_Data_Management/Raster_Processing_toolset.Rmd",
-  "03_Data_Management/Data_Management.Rmd",
-  "03_Data_Management/Sampling_toolset.Rmd",
-  "03_Data_Management/Join_toolset.Rmd",
-  "03_Data_Management/Projections_and_Transformations_toolset.Rmd",
-  "03_Spatial_Analyst/Spatial_Analyst.Rmd",
-  "03_3D_Analyst/3D_Analyst.Rmd",
-  "03_Image_Analysis/Image_Analysis.Rmd",
+  
+  "02_Data_Management/Data_Management.Rmd",
+  "02_Data_Management/General.Rmd",
+  "02_Data_Management/Layers_and_Table_Views.Rmd",
+  "02_Data_Management/Join.Rmd",
+  "02_Data_Management/Projections_and_Transformations.Rmd",
+  "02_Data_Management/Raster_Processing.Rmd",
+  "02_Data_Management/Sampling.Rmd",
+  
   "03_Analysis/Analysis.Rmd",
   "03_Analysis/Extract_toolset.Rmd",
   "03_Analysis/Overlay_toolset.Rmd",
   "03_Analysis/Proximity_toolset.Rmd",
-  "03_Spatial_Statistics/Spatial_Statistics.Rmd",
-  "04_Topology_Rules.Rmd",
-  "04_Topology_Rules/Polygon.Rmd",
-  "04_Topology_Rules/Line.Rmd",
-  "04_Topology_Rules/Point.Rmd",
-  "04_Topology_Rules/Line_or_Polygon.Rmd",
+  
+  "04_Image_Analyst/Image_Analyst.Rmd",
+  
+  "05_3D_Analyst/3D_Analyst.Rmd",
+  
+  "06_Spatial_Analyst/Spatial_Analyst.Rmd",
+  
+  "07_Topology_Rules.Rmd",
+  "07_Topology_Rules/Polygon.Rmd",
+  "07_Topology_Rules/Line.Rmd",
+  "07_Topology_Rules/Point.Rmd",
+  "07_Topology_Rules/Line_or_Polygon.Rmd",
+  
   "bibliography.Rmd"
 ]
 delete_merged_file: TRUE
