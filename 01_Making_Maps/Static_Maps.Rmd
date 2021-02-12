@@ -135,7 +135,7 @@ Note that this approach, `ggplot` is not aware of the coordinate system assigned
 
 //todo add example of WGS84 raster
 
-```{r, eval = FASLE}
+```{r, eval = FALSE}
 
 ggplot(swissAlti3D_df, aes(x, y, fill = SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_1196)) +
   geom_raster() +
