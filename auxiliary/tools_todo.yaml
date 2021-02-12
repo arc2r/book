@@ -146,10 +146,10 @@
       Project: 100
       Project Raster: 100
     Sampling:
-      Generate Tessellation: 0
-      Create Fishnet: 0
-      Create Random Points: 0
-      Generate Points Along Lines: 0
+      Generate Tessellation: 100
+      Create Fishnet: 10
+      Create Random Points: 100
+      Generate Points Along Lines: 50
       Generate Rectangles Along Lines: 0
       Generate Transects Along Lines: 0
     Raster:
