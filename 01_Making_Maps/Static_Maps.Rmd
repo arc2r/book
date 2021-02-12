@@ -112,23 +112,21 @@ ggplot(gemeinde_zh) +
 While `sf` objects are very easily integrated in ggplot2, raster data is a little harder. There are various ways to plot a raster object with `ggplot2`. A simple, adhoc approach is converting the `RasterLayer` object into a `data.frame` and then plotting it with `geom_raster`. 
 
 
-```{r, echo = FALSE}
-rm(list = ls())
-gc()
-```
 
-
-```{r}
+```{r, eval = FALSE}
 swissAlti3D_df <- as.data.frame(swissAlti3D,xy = TRUE) # xy = TRUE adds the x and y coordinates to our dataframe as columns
-
-# Note the column names of our dataframe
-head(swissAlti3D_df)
-
 
 ggplot(swissAlti3D_df, aes(x, y, fill = SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_1196)) +
   geom_raster()
 
 ```
+
+
+```{r, echo = FALSE}
+# Including manually since this is causing memory issues
+knitr::include_graphics("images/raster_df.png")
+```
+
 
 Note that this approach, `ggplot` is not aware of the coordinate system assigned to our dataset. The `x` and `y` coordinates from our dataframe are assumed to be in a cartesian coordinate system. This implies two things: 
 
@@ -137,7 +135,7 @@ Note that this approach, `ggplot` is not aware of the coordinate system assigned
 
 //todo add example of WGS84 raster
 
-```{r}
+```{r, eval = FASLE}
 
 ggplot(swissAlti3D_df, aes(x, y, fill = SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_1196)) +
   geom_raster() +
@@ -147,6 +145,13 @@ ggplot(swissAlti3D_df, aes(x, y, fill = SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_119
   theme(legend.position = "bottom")
 
 ```
+
+```{r, echo = FALSE}
+# Including manually since this is causing memory issues
+knitr::include_graphics("images/raster_df2.png")
+```
+
+
 
 <!--
 / todo: combine sf and raster
