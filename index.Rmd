@@ -103,18 +103,40 @@ tools_todo_df <- imap_dfr(tools_todo, function(toolbox,toolboxname){
     progress = as.integer(progress)
   )
 
-tools_todo_tree <- tools_todo_df %>%
-  mutate(hier = paste(toolbox,toolset,tool, sep = "/")) %>%
-  as.Node(pathName = "hier")
-
-print(tools_todo_tree,"progress")
 
 
-mean_narm <- function(x){mean(x,na.rm = TRUE)}
+tools_todo_df <- tools_todo_df %>%
+  mutate(
+    progress = round(runif(nrow(.),0,100),0)
+  ) %>%
+  dplyr::select(toolbox,toolset,tool,progress)
 
-tools_todo_tree$Do(function(node) node$progress <- Aggregate(node, attribute = "progress", aggFun = mean_narm), traversal = "post-order")
+library(formattable)
+library(kableExtra)
+tools_todo_df %>%
+  dplyr::select(-c(toolset,toolbox)) %>%
+  mutate(
+    progress = color_bar("lightblue")(progress)
+    ) %>%
+  kable("html",escape = FALSE) %>%
+  kable_styling() %>%
+  pack_rows(index = table(fct_inorder(tools_todo_df$toolbox))) %>%
+  pack_rows(index = table(fct_inorder(tools_todo_df$toolset)),bold = FALSE,italic = TRUE)
 
-print(tools_todo_tree, "progress",limit = NULL)
+
+
+# tools_todo_tree <- tools_todo_df %>%
+#   mutate(hier = paste(toolbox,toolset,tool, sep = "/")) %>%
+#   as.Node(pathName = "hier")
+
+# print(tools_todo_tree,"progress")
+
+
+# mean_narm <- function(x){mean(x,na.rm = TRUE)}
+
+# tools_todo_tree$Do(function(node) node$progress <- Aggregate(node, attribute = "progress", aggFun = mean_narm), traversal = "post-order")
+# 
+# print(tools_todo_tree, "progress",limit = NULL)
 
 ```
 
