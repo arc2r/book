@@ -58,8 +58,35 @@ ggplot() + geom_sf(data = zh) + geom_sf(data = sample) +
 ```
 
 
-### Generate Points Along Lines 
+### Generate Points Along Lines
 
+```{r}
+data("mountainBikes_routes")
+
+# clipping the line spatial feature based on the spatial extent of the Canton of Zurich
+mountainBikes_routes_zh <- st_intersection(mountainBikes_routes, zh)
+
+# Visualizing the clipped output
+p1 <- ggplot() + geom_sf(data = mountainBikes_routes_zh, color = "blue") +
+  geom_sf(data = zh, alpha = 0.5) + coord_sf(datum = 2056) +
+  ggtitle("Mountain bike routes in the Canton of Zurich") +
+  theme(plot.title = element_text(hjust = 0.5), text = element_text(size=9))
+
+p1
+```
+
+```{r pointsOnLine}
+line1 <- mountainBikes_routes_zh[1,]
+pointsOnLine1 <- st_line_sample(line1,50)
+
+ggplot() + geom_sf(data = pointsOnLine1,color = "red") + geom_sf(data = line1) + coord_equal() + 
+  coord_sf(datum = 2056) + ggtitle("Random points along a mountain \nbike route in the canton of Zurich") +
+  theme(plot.title = element_text(hjust = 0.5), text = element_text(size=9),
+        axis.text.x = element_text(angle = 90))
+```
+
+<!-- ToDo -->
+<!-- I have to generalise it to every line of the dataframe -->
 
 
 ### Generate Rectangles Along Lines
