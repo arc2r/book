@@ -24,8 +24,10 @@ rmd_files: [
   "03_Analysis/Proximity_toolset.Rmd",
   
   "04_Image_Analyst/Image_Analyst.Rmd",
+  "04_Image_Analyst/Map_Algebra.Rmd",
   
   "05_3D_Analyst/3D_Analyst.Rmd",
+  "05_3D_Analyst/Raster_Interpolation.Rmd",
   
   "06_Spatial_Analyst/Spatial_Analyst.Rmd",
   "06_Spatial_Analyst/Neighborhood.Rmd",
