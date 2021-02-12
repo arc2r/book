@@ -28,6 +28,8 @@ rmd_files: [
   "05_3D_Analyst/3D_Analyst.Rmd",
   
   "06_Spatial_Analyst/Spatial_Analyst.Rmd",
+  "06_Spatial_Analyst/Neighborhood.Rmd",
+  "06_Spatial_Analyst/Zonal.Rmd",
   
   "07_Topology_Rules.Rmd",
   "07_Topology_Rules/Polygon.Rmd",
