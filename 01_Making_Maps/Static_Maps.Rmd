@@ -153,7 +153,6 @@ ggplot(swissAlti3D_df, aes(x, y, fill = SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_119
 /  add an example of how sf and raster can be layered. This needs an additional dataset.
 -->
 
-
 ### Package `tmap`{#static-maps-tmap}
 
 While `ggplot2` was extended to work with spatial data, the package `tmap` was specifically designed to create maps. The developer created this package leaning on the "grammar of graphics" approach which is also implemented in `ggplot2`, so many of the concepts are the same (e.g. the concept of "layers" and using the `+`-sign). One main difference is that `tmap` does not use NSE, so column names always need to be quoted.
