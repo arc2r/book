@@ -19,9 +19,9 @@ rmd_files: [
   "02_Data_Management/Sampling.Rmd",
   
   "03_Analysis/Analysis.Rmd",
-  "03_Analysis/Extract_toolset.Rmd",
-  "03_Analysis/Overlay_toolset.Rmd",
-  "03_Analysis/Proximity_toolset.Rmd",
+  "03_Analysis/Extract.Rmd",
+  "03_Analysis/Overlay.Rmd",
+  "03_Analysis/Proximity.Rmd",
   
   "04_Image_Analyst/Image_Analyst.Rmd",
   "04_Image_Analyst/Map_Algebra.Rmd",
@@ -36,7 +36,6 @@ rmd_files: [
   "06_Spatial_Analyst/Surface.Rmd",
   
   
-  "07_Topology_Rules.Rmd",
   "07_Topology_Rules/Polygon.Rmd",
   "07_Topology_Rules/Line.Rmd",
   "07_Topology_Rules/Point.Rmd",
