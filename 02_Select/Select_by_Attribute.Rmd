@@ -26,6 +26,7 @@ In the code snippet below, we read the shapefile, which represents the __parking
 ```{r}
 library(sf)
 library(ggplot2)
+library(arc2r)
 data("veloparkierungsanlagen_zh")
 ```
 
