@@ -46,7 +46,7 @@ rmd_files: [
 
   "bibliography.Rmd",
   
-  "99_Appendix/Appendix.Rmd"
+  "99_Appendix/Progress.Rmd"
 
 ]
 delete_merged_file: TRUE
