@@ -150,13 +150,6 @@ plot(publicTransport_CH,las=1,
 
 
 
-### Rescale
-
-//todo write this chapter
-
-
-
-
 
 
 
