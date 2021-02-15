@@ -57,7 +57,7 @@ We cannot possibly cover all these tools in this book, and it wouldn't make much
 
 
 tools_toodo_yaml <- read_yaml("auxiliary/tools_todo.yaml")
-tools_toodo2 <- map(tools_toodo_yaml, function(x){map(x, function(y){map(y, function(z){list(name = z)})})})
+tools_toodo2 <- imap(tools_toodo_yaml, function(toolbox,toolboxname){imap(toolbox, function(toolset,toolsetname){imap(toolset, function(tool,toolname){list(name = toolname)})})})
 
 FromListSimple(tools_toodo2,nodeName =  "GeoprocessingTools") %>%
     ToListExplicit(unname = TRUE) %>%
