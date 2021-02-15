@@ -176,7 +176,6 @@ data("badeplaetze_zh")
 
 ```{r, echo=F}
 # Municipality (Gemeinde) of Richterswil 
-<<<<<<< HEAD:02_Select/Select_by_Location.Rmd
 richterswil <- filter(gemeinde_zh, gemeindena == "Richterswil")
 names(richterswil)[5] = "Municipality"
 
@@ -257,5 +256,4 @@ ggplot() + geom_sf(data = gemeinde_zh) + geom_sf(data = badeplaetze_zh,color = "
 
 
 
-=======
->>>>>>> 7fdb8e7f67b09eef9ff3661eceb4fe78626b7a1a:02_Data_Management/Layers_and_Table_Views.Rmd
+
