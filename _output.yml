@@ -9,7 +9,6 @@ bookdown::gitbook:
       before: |
         <li><a href="https://arc2r.github.io/arc2r">Package Website</a></li>
       after: |
-        after: |
         <li><a href="https://www.zhaw.ch/en/about-us/person/rata/">Nils Ratnaweera</a></li>
         <li><a href="https://www.zhaw.ch/en/about-us/person/bako/"> Nikolaos Bakogiannis </a></li>
         <li><a href="https://www.zhaw.ch/de/lsfm/institute-zentren/iunr/ecosystems-and-biodiversity/geoinformatik/">
