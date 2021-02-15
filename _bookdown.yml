@@ -35,7 +35,7 @@ rmd_files: [
   "06_Spatial_Analyst/Conditional.Rmd",
   "06_Spatial_Analyst/Surface.Rmd",
   
-  
+  "07_Topology_Rules/Topology_Rules.Rmd",
   "07_Topology_Rules/Polygon.Rmd",
   "07_Topology_Rules/Line.Rmd",
   "07_Topology_Rules/Point.Rmd",
