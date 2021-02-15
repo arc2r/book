@@ -25,21 +25,21 @@
       Weighted Overlay: NA
       Spatial Join: NA
     Proximity:
-      Buffer: NA
+      Buffer: 100
       Create Thiessen Polygons: NA
       Generate Near Table: NA
       Multiple Ring Buffer: NA
       Near: NA
   Image Analyst:
     Map Algebra:
-      Raster Calculator: NA
+      Raster Calculator: 100
   Spatial Analyst:
     Conditional:
       Con: NA
       Pick: NA
       Set Null: NA
     Density:
-      Kernel Density: NA
+      Kernel Density: 100
       Line Density: NA
       Point Density: NA
     Distance:
@@ -70,7 +70,7 @@
       Natural Neighbor: NA
       Spline: NA
     Map Algebra:
-      Raster Calculator: NA
+      Raster Calculator: 100
     Math (general):
       Abs: NA
       Divide: NA
@@ -93,21 +93,21 @@
       Square Root: NA
       Times: NA
     Neighborhood:
-      Focal Statistics: NA
+      Focal Statistics: 100
     Overlay:
       Weighted Sum: NA
     Reclass:
-      Reclassify: NA
+      Reclassify: 100
     Surface:
-      Aspect: NA
-      Slope: NA
+      Aspect: 100
+      Slope: 100
       Viewshed: NA
     Zonal:
       Tabulate Area: NA
       Zonal Fill: NA
       Zonal Geometry: NA
       Zonal Histogram: NA
-      Zonal Statistics: NA
+      Zonal Statistics: 100
       Zonal Statistics as Table: NA
   Spatial Statistics:
     Mapping Clusters:
@@ -116,10 +116,25 @@
     General:
       Sort: 90
       Rename: NA
-      Merge: NA
-      Dissolve: NA
+      Merge: 100
+      Dissolve: 100
       Find Identical: NA
       Append: NA
+    Layers and Table Views toolset:
+      Select by Attribute: 100
+      Select by Location: 70
+      Apply Symbology From Layer: NA
+      Make Feature Layer: NA
+      Make Image Server Layer: NA
+      Make Mosaic Layer: NA
+      Make Query Table: NA
+      Make Query Layer: NA
+      Make Raster Layer: NA
+      Make Raster Catalog Layer: NA
+      Make Table View: NA
+      Make WCS Layer: NA
+      Make XY Event Layer: NA
+      Save To Layer File: NA
     Joins and Relates:
       Add Join: 50
       Add Relate: 50
@@ -128,12 +143,13 @@
       Remove Relate: 50
     Projections and Transformations:
       Define Projection: 90
-      Project: NA
+      Project: 100
+      Project Raster: 100
     Sampling:
-      Generate Tessellation: 0
-      Create Fishnet: 0
-      Create Random Points: 0
-      Generate Points Along Lines: 0
+      Generate Tessellation: 100
+      Create Fishnet: 10
+      Create Random Points: 100
+      Generate Points Along Lines: 50
       Generate Rectangles Along Lines: 0
       Generate Transects Along Lines: 0
     Raster:
