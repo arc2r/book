@@ -1,5 +1,3 @@
-# 3D Analyst Toolbox
-
 ## Raster Interpolation Toolset
 
 ```{r}
@@ -122,5 +120,3 @@ ggplot() +
 
 
 <!-- ### Spline -->
-
-
