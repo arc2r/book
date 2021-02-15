@@ -7,7 +7,8 @@ Imports:
   rmarkdown,
   data.tree,
   networkD3,
-  formattable
+  formattable,
+  kableExtra
 Suggests:
   arc2r
 Remotes:
