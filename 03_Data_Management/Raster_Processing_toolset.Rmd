@@ -50,13 +50,13 @@ plot(are_waedenswil, alpha = 0.5, add = TRUE)
 ```
 
 In our case, the vector dataset serves as the clipping extent for the clipping operation.
-```{r Clip raster, echo=TRUE}
+```{r Clip raster, echo=TRUE, eval = FALSE}
 recycle_Waedi_clip <- mask(recycling_raster,are_waedenswil)
 ```
 
 
 _Visualising the clipped output_
-```{r echo=FALSE}
+```{r echo=FALSE, eval = FALSE}
 
 plot(recycle_Waedi_clip)
 ```
