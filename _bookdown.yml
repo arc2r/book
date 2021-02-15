@@ -44,7 +44,11 @@ rmd_files: [
   "07_Topology_Rules/Point.Rmd",
   "07_Topology_Rules/Line_or_Polygon.Rmd",
   
-  "bibliography.Rmd"
+  "bibliography.Rmd",
+  
+  "99_Appendix/Appendix.Rmd",
+  "99_Appendix/Progress.Rmd"
+
 ]
 delete_merged_file: TRUE
 output_dir: "docs"

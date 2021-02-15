@@ -1,0 +1,77 @@
+
+# Progress
+
+We document the state of our project by providing an estimation per Tool. 
+
+
+```{r}
+
+library(tidyverse)
+library(yaml)
+library(formattable)
+library(kableExtra)
+
+
+tools_todo <- read_yaml("auxiliary/tools_todo.yaml")
+
+tools_todo_df <- imap_dfr(tools_todo, function(toolbox,toolboxname){
+  imap_dfr(toolbox, function(toolset,toolsetname){
+    imap_dfr(toolset, function(toolprogress, toolname){
+      toolprogress <- as.character(toolprogress)
+      tibble(tool = toolname, progress = toolprogress)
+    }) %>%
+      mutate(toolset = toolsetname)
+  }) %>%
+    mutate(toolbox = toolboxname)
+}) %>% 
+  mutate(
+    progress = na_if(progress,"NA"),
+    progress = as.integer(progress)
+  )
+
+
+
+# tools_todo_df <- tools_todo_df %>%
+#   mutate(
+#     progress = round(runif(nrow(.),0,100),0)
+#   )
+
+tools_todo_df <- tools_todo_df %>%
+  # mutate(toolset = paste(toolbox,toolset)) %>%
+  group_by(toolbox) %>%
+  mutate(toolbox_progress = mean(progress,na.rm = TRUE)) %>%
+  group_by(toolbox,toolset) %>%
+  mutate(toolset_progress = mean(progress,na.rm = TRUE)) %>%
+  arrange(
+    desc(toolbox_progress),
+    toolbox,
+    desc(toolset_progress),
+    toolset,
+    desc(progress),
+    ) %>%
+  ungroup()
+
+pack_rows_helper <- function(vec) {
+  rle_out <- rle(vec)
+  map2(rle_out$values,rle_out$lengths, function(x,y){
+    names(y) <- x
+    y
+  }) %>%
+    unlist()
+}
+
+tools_todo_df %>%
+  dplyr::transmute(Tool = tool,Progress = ifelse(is.na(progress),0,progress)) %>%
+  mutate(
+    Progress = color_bar("lightblue")(Progress)
+    ) %>%
+  kable("html",escape = FALSE) %>%
+  kable_styling(font_size = 10) %>%
+  pack_rows(index = pack_rows_helper(tools_todo_df$toolbox),background = "darkgrey") %>%
+  pack_rows(index = pack_rows_helper(tools_todo_df$toolset),
+            bold = FALSE,italic = TRUE,background = "lightgrey")
+
+
+
+```
+
