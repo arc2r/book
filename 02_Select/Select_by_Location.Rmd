@@ -40,6 +40,7 @@ knitr::opts_chunk$set(warning = F, message = F, tidy = T)
 library(dplyr)
 library(sf)
 library(ggplot2)
+library(arc2r)
 ```
 
 
@@ -133,8 +134,13 @@ data("badeplaetze_zh")
 richterswil <- filter(gemeinde_zh, gemeindena == "Richterswil")
 names(richterswil)[5] = "Municipality"
 
-ggplot() + geom_sf(data = gemeinde_zh) + geom_sf(data = richterswil,aes(fill = Municipality))
-+ geom_sf(data = badeplaetze_zh,color = "blue") + ggtitle("Swimming spots in the Canton of Zurich") + theme_minimal() + coord_sf(datum = 2056)
+ggplot() + 
+  geom_sf(data = gemeinde_zh) + 
+  geom_sf(data = richterswil, aes(fill = Municipality)) +
+  geom_sf(data = badeplaetze_zh,color = "blue") + 
+  ggtitle("Swimming spots in the Canton of Zurich") + 
+  theme_minimal() + 
+  coord_sf(datum = 2056)
 ```
 
 
