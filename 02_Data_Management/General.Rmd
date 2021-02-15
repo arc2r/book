@@ -50,6 +50,21 @@ head(bezirke_arrange_desc)
 
 ### Rename
 
+`Rename` tool in ArcGIS pro serves as a very simple way of changing the name of a dataset. This applies to any of the available data types, such as feature dataset, raster, table, and shapefile. Let's see below how we can perform a similar operation in R. The easiest way to do it is by reassigning the dataset to a new variable. R is smart enough not to make a copy if the variable is exactly the same.
+
+```{r}
+# Reading the dataset that depicts all the swimming spots in the canton of Zurich
+data("badeplaetze_zh")
+
+# Renaming the dataset above to "swimming_spots_zh"
+swimming_spots_zh <- badeplaetze_zh
+
+# Retrieving the address in memory for the two datasets
+tracemem(badeplaetze_zh) # --> <000001F24AB616E8>
+tracemem(swimming_spots_zh) # --> <000001F24AB616E8>
+```
+
+As we can see both objects point to the same address. R makes a new copy in the memory only if one of them is modified.
 
 
 ### Merge
