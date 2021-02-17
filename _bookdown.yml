@@ -10,12 +10,15 @@ rmd_files: [
   "01_Making_Maps/Static_Maps.Rmd",
   "01_Making_Maps/Dynamic_Maps.Rmd",
   
-  "03_Part_Geoprocessing_Tools.Rmd",
 
+  "02_Select/Select.Rmd"
+  "02_Select/Select_by_Attribute.Rmd",
+  "02_Select/Select_by_Location.Rmd",
+
+  "03_Part_Geoprocessing_Tools.Rmd",
 
   "02_Data_Management/Data_Management.Rmd",
   "02_Data_Management/General.Rmd",
-  "02_Data_Management/Layers_and_Table_Views.Rmd",
   "02_Data_Management/Join.Rmd",
   "02_Data_Management/Projections_and_Transformations.Rmd",
   "02_Data_Management/Raster_Processing.Rmd",

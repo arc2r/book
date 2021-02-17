@@ -1,0 +1,52 @@
+
+## Select by Attribute
+
+//todo does this stay here or move to Analysis -> Extract -> Select? --> It stays here under the umbrella of Layers and Table Views toolset (https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/select-layer-by-attribute.htm) == Geoprocessing Tools/Data Management toolbox/Layers and Table Views toolset 
+
+```{r,echo=FALSE}
+knitr::opts_chunk$set(warning = F, message = F, tidy = T)
+```
+
+
+One of the popular approaches in ArcGIS pro for selecting features in a layer is by using an attribute query. The action is performed using the `Select By Attributes` tool.
+
+`Select By Attributes` tool allows us to provide an SQL query expression to select features that match the selection criteria.
+
+`R` on the other hand offers quite easy and straightforward options to perform similar operations. Let's examine one of them.
+
+As a first step, we might want to import a shapefile. To do so, we can use `sf` package to work with vector data in R. Important to know is that the `rgdal` package automatically loads when sf is loaded.
+
+In the code snippet below, we read the shapefile, which represents the __parking spots for bicycles__ within the canton of Zurich. The dataset is publicly available for download in the following link: (https://opendata.swiss/en/dataset/veloparkierungsanlagen).
+
+
+```{r}
+library(sf)
+library(ggplot2)
+data("veloparkierungsanlagen_zh")
+```
+
+
+After importing the dataset, let's say we want to filter it by selecting only the parking spots that lie within a specific municipality (Gemeinde) in the canton of Zurich. More specifically, we will select only the parking spots within the municipality of Winterthur.
+For the aforementioned operation, R offers the function `filter()`, which lies within the `dplyr` package.
+This functions works as follows: `filter(dataset, condition)`
+
+```{r}
+library(dplyr)
+parkBikes_winti <- filter(veloparkierungsanlagen_zh,GEMEINDE == "Winterthur")
+```
+
+```{r,echo = F, fig.align='center'}
+ggplot() + geom_sf(data = veloparkierungsanlagen_zh) + geom_sf(data = parkBikes_winti, fill = "red", aes(color = "Bike parking spots in Winterthur")) + ggtitle("Bike parking facilities in Canton Zurich") + labs(color = " ") + theme(legend.position = "right", axis.text.x = element_text(angle=90, hjust=1)) + coord_sf(datum = 2056)
+```
+
+
+The operation above produces the same outcome as the one depicted in the figure below \@ref(fig:select).
+
+```{r select, fig.cap= "Select by Attributes in ArcGIS pro",echo=F, out.width = "500px",fig.align='center'}
+knitr::include_graphics("images/selectAttr.png")
+```
+
+
+
+
+
