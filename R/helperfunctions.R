@@ -38,11 +38,11 @@ check_rmdfiles_missing <- function(bookdown_yaml = "_bookdown.yml") {
 
 
 
-yaml_to_rmdfiles <- function(yaml = "_rmd_files.yaml"){
+yaml_to_rmdfiles <- function(rmd_files_yaml = "_rmd_files.yaml"){
   require(yaml)
   require(purrr)
   
-  yaml::read_yaml(yaml) %>%
+  yaml::read_yaml(rmd_files_yaml) %>%
     map(function(part){
       
       index_rmd <- part$index
@@ -62,10 +62,10 @@ yaml_to_rmdfiles <- function(yaml = "_rmd_files.yaml"){
 }
 
 
-update_bookdownyaml <- function(bookdown_yaml = "_bookdown.yml"){
-  bookdown_yaml <- read_yaml(bookdown_yaml)
-  bookdown_yaml$rmd_files <- yaml_to_rmdfiles()
-  write_yaml(bookdown_yaml, bookdown_yaml)
+update_bookdownyaml <- function(bookdown_yaml_file = "_bookdown.yml", rmd_files = "_rmd_files.yaml"){
+  bookdown_yaml <- read_yaml(bookdown_yaml_file)
+  bookdown_yaml$rmd_files <- yaml_to_rmdfiles(rmd_files)
+  write_yaml(bookdown_yaml, bookdown_yaml_file)
 }
 
-
+update_bookdownyaml()

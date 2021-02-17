@@ -8,7 +8,8 @@ Imports:
   data.tree,
   networkD3,
   formattable,
-  kableExtra
+  kableExtra,
+  formatR
 Suggests:
   arc2r
 Remotes:
