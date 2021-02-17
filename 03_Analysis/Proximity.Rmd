@@ -1,4 +1,4 @@
-## Proximity Toolset
+## Proximity Toolset {#proximity-toolset}
 
 
 ```{r, echo = FALSE}

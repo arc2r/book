@@ -1,4 +1,4 @@
-## Overlay Toolset
+## Overlay Toolset {#overlay-toolset}
 
 
 ```{r, echo = FALSE}
