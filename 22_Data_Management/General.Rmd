@@ -128,7 +128,7 @@ ident_results <- st_equals(kantonDuplic)
 
 ### Append
 
-
+checking the key I created
 
 
  
