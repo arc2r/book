@@ -147,6 +147,11 @@ plot(publicTransport_CH,las=1,
 ```
 
 
+### Rescale
+
+```{r}
+data("recycling_raster")
+```
 
 
 
