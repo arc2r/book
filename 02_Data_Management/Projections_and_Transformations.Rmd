@@ -120,7 +120,7 @@ data("public_transport_waedi")# CRS -> WGS84
 
 ```{r}
 # Plot the raster dataset - World Geodetic System 1984 
-plot(publicTransport,las=1,
+plot(public_transport_waedi,las=1,
      main = "Quality of public transport in the city of Wädenwil - CRS: WGS84",
      cex.main=1,font.main=4)
 ```
@@ -136,7 +136,7 @@ object has already a defined CRS.
 ```{r}
 # Transform the coordinate system of the raster dataset publicTransport_CH
 # into the Swiss Coordinate system - CH1903+LV95
-publicTransport_CH = projectRaster(publicTransport, recycling_raster)
+publicTransport_CH = projectRaster(public_transport_waedi, recycling_raster)
 ```
 
 ```{r}

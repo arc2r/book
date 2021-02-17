@@ -233,32 +233,29 @@ grab_tools <- function(input_url, input_toolbox, input_toolset){
   
   
   df <- map_dfr(my_tables, function(my_table){
-    
     mycolnames <- colnames(my_table)
-    
     if(mycolnames[1] %in% c("Tool","Tool name","Geoprocessing tools","tool")){
       colnames(my_table)[1] <- "tool"
       colnames(my_table)[2] <- "description"
-      outtable <- left_join(my_table,url_table, by = "tool")
-      outtable
+      left_join(my_table,url_table, by = "tool")
+      
     } else if(mycolnames[1] %in% c("Toolsets","Toolset")){
       
-      colnames(my_table)[1] <- "toolset"
-      colnames(my_table)[2] <- "description"
+      colnames(my_table)[1] <- "sub_toolset"
+      colnames(my_table)[2] <- "toolset_description"
       
-      prepared <- left_join(my_table, url_table, by = c("toolset" = "tool")) %>%
-        mutate(
-          url_adjusted2 = toolset_url_adjuster(href),
-          toolbox2 = input_toolbox
-        ) %>% 
-        select(url_adjusted2, toolbox2, toolset2 = toolset)
+      left_join(my_table, url_table, by = c("toolset" = "tool"))
       
-      prepared %>%
-        pmap_dfr(function(url_adjusted2,toolbox2, toolset2){
-          grab_tools(url_adjusted2, toolbox2, toolset2)
-        })
+    } else{
+      tibble(.rows = 1)
     }
   })
+  
+  df <- df %>%
+    mutate(
+      toolset = input_toolset,
+      toolbox = input_toolbox
+    )
   
   return(df)
 }
@@ -267,19 +264,9 @@ toolsets <- mutate(toolsets, row = row_number())
 maxi <- max(toolsets$row)
 
 tools <- toolsets %>%
-  # tail(1) %>%
-  # filter(row > 120) %>%
-  # filter(
-  #   toolset != "Overlay Events", 
-  #   toolbox != "Crime Analysis and Safety toolbox", 
-  #   toolbox != "Data Interoperability toolbox",
-  #   toolbox != "Editing toolbox",
-  #   toolbox != "Geocoding toolbox",
-  #   !(toolset == "Raster" & toolbox == "Data Management toolbox") 
-  #   ) %>% 
   select(toolbox, toolset,url_adjusted, row) %>%
   pmap(function(toolbox, toolset, url_adjusted, row){
-    Sys.sleep(0.5)
+    # Sys.sleep(0.5)
     print(paste(row,toolbox,toolset,round(row/maxi,2)," (",url_adjusted,")",sep = " "))
     tryCatch(grab_tools(url_adjusted,toolbox, toolset),
                     error = function(e){
@@ -291,8 +278,18 @@ tools <- toolsets %>%
 
 success <- map_lgl(tools, ~ifelse(is.data.frame(.x),nrow(.x)>0,FALSE))
 
-toolsets[!success,] %>% View
-tools[[81]]
+# These 14 Special case toolboxes were not successfull
+toolsets %>% 
+  filter(!success) %>%
+  group_by(toolbox) %>%
+  summarise()
+
+
+tools_df <- map_dfr(tools[success], ~.x)
+
+tools_df %>%
+  filter_all(any_vars(is.na(.))) %>%
+  View()
 
 write_csv(tools, "auxiliary/tools.csv")
 

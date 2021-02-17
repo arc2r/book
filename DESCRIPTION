@@ -6,7 +6,9 @@ Imports:
   bookdown,
   rmarkdown,
   data.tree,
-  networkD3
+  networkD3,
+  formattable,
+  kableExtra
 Suggests:
   arc2r
 Remotes:

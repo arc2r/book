@@ -90,6 +90,7 @@ knitr::opts_chunk$set(warning = F, message = F, tidy = T)
 library(dplyr)
 library(sf)
 library(ggplot2)
+library(arc2r)
 ```
 
 
@@ -175,3 +176,84 @@ data("badeplaetze_zh")
 
 ```{r, echo=F}
 # Municipality (Gemeinde) of Richterswil 
+richterswil <- filter(gemeinde_zh, gemeindena == "Richterswil")
+names(richterswil)[5] = "Municipality"
+
+ggplot() + 
+  geom_sf(data = gemeinde_zh) + 
+  geom_sf(data = richterswil, aes(fill = Municipality)) +
+  geom_sf(data = badeplaetze_zh,color = "blue") + 
+  ggtitle("Swimming spots in the Canton of Zurich") + 
+  theme_minimal() + 
+  coord_sf(datum = 2056)
+```
+
+
+```{r}
+swimmSpots_richt <- badeplaetze_zh[richterswil, ,op = st_within]
+```
+
+```{r,echo=F}
+ggplot() + geom_sf(data = gemeinde_zh) + geom_sf(data = badeplaetze_zh,color = "blue") + geom_sf(data = richterswil, fill = "white") + geom_sf(data = swimmSpots_richt, color = "red") + ggtitle("Swimming spots in the Canton of Zurich") + theme_minimal() + coord_sf(datum = 2056)
+```
+
+
+
+### Completely_within
+
+<!--
+/ todo: Write an example for this chapter, reusing the same dataset if possible
+/  and using the data from the arc2r package
+/  assignees: KimboGilda
+-->
+
+### Within_clementini
+
+<!--
+/ todo: Write an example for this chapter, reusing the same dataset if possible
+/  and using the data from the arc2r package
+/  assignees: KimboGilda
+-->
+
+### Are_identical_to
+
+<!--
+/ todo: Write an example for this chapter, reusing the same dataset if possible
+/  and using the data from the arc2r package
+/  assignees: KimboGilda
+-->
+
+### Boundary_touches
+
+<!--
+/ todo: Write an example for this chapter, reusing the same dataset if possible
+/  and using the data from the arc2r package
+/  assignees: KimboGilda
+-->
+
+### Share_a_line_segment_with
+
+<!--
+/ todo: Write an example for this chapter, reusing the same dataset if possible
+/  and using the data from the arc2r package
+/  assignees: KimboGilda
+-->
+### Crossed_by_the_outline_of
+
+<!--
+/ todo: Write an example for this chapter, reusing the same dataset if possible
+/  and using the data from the arc2r package
+/  assignees: KimboGilda
+-->
+
+### Have_their_center_in
+
+<!--
+/ todo: Write an example for this chapter, reusing the same dataset if possible
+/  and using the data from the arc2r package
+/  assignees: KimboGilda
+-->
+
+
+
+

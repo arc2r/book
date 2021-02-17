@@ -5,11 +5,11 @@ rmd_files: [
   "00_Data/import_vector.Rmd",
   "00_Data/import_raster_raster.Rmd",
   "00_Data/import_raster_terra.Rmd",
-  
+
   "01_Making_Maps/Making_Maps.Rmd",
   "01_Making_Maps/Static_Maps.Rmd",
   "01_Making_Maps/Dynamic_Maps.Rmd",
-  
+
   "02_Data_Management/Data_Management.Rmd",
   "02_Data_Management/General.Rmd",
   "02_Data_Management/Layers_and_Table_Views.Rmd",
@@ -17,31 +17,37 @@ rmd_files: [
   "02_Data_Management/Projections_and_Transformations.Rmd",
   "02_Data_Management/Raster_Processing.Rmd",
   "02_Data_Management/Sampling.Rmd",
-  
+
+  "03_Part_Geoprocessing_Tools.Rmd",
+
+  "03_Spatial_Statistics/Spatial_Statistics.Rmd",
   "03_Analysis/Analysis.Rmd",
   "03_Analysis/Extract.Rmd",
   "03_Analysis/Overlay.Rmd",
   "03_Analysis/Proximity.Rmd",
-  
+
   "04_Image_Analyst/Image_Analyst.Rmd",
   "04_Image_Analyst/Map_Algebra.Rmd",
-  
+
   "05_3D_Analyst/3D_Analyst.Rmd",
   "05_3D_Analyst/Raster_Interpolation.Rmd",
-  
+
   "06_Spatial_Analyst/Spatial_Analyst.Rmd",
   "06_Spatial_Analyst/Neighborhood.Rmd",
   "06_Spatial_Analyst/Zonal.Rmd",
   "06_Spatial_Analyst/Conditional.Rmd",
   "06_Spatial_Analyst/Surface.Rmd",
-  
-  
+
+  "07_Topology_Rules/Topology_Rules.Rmd",
   "07_Topology_Rules/Polygon.Rmd",
   "07_Topology_Rules/Line.Rmd",
   "07_Topology_Rules/Point.Rmd",
   "07_Topology_Rules/Line_or_Polygon.Rmd",
+
+  "bibliography.Rmd",
   
-  "bibliography.Rmd"
+  "99_Appendix/Progress.Rmd"
+
 ]
 delete_merged_file: TRUE
 output_dir: "docs"
