@@ -32,3 +32,40 @@ check_rmdfiles_missing <- function(bookdown_yaml = "_bookdown.yml") {
   }
   
 }
+
+
+
+
+
+
+yaml_to_rmdfiles <- function(yaml = "_rmd_files.yaml"){
+  require(yaml)
+  require(purrr)
+  
+  yaml::read_yaml(yaml) %>%
+    map(function(part){
+      
+      index_rmd <- part$index
+      
+      subchapter_rmds <- map(part[["chapters"]], function(chapter){
+        
+        list(
+          file.path(chapter$folder,chapter$index),
+          file.path(chapter$folder,chapter$subchapters)
+        )
+      })
+      
+      return(list(index_rmd, subchapter_rmds))
+    }) %>%
+    unlist() %>%
+    unname()
+}
+
+
+update_bookdownyaml <- function(bookdown_yaml = "_bookdown.yml"){
+  bookdown_yaml <- read_yaml(bookdown_yaml)
+  bookdown_yaml$rmd_files <- yaml_to_rmdfiles()
+  write_yaml(bookdown_yaml, bookdown_yaml)
+}
+
+
