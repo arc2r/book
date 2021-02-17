@@ -1,15 +1,5 @@
 # Image Analysis Toolbox
 
-For this chapter, you will need the following R Packages:
-```{r, echo=FALSE}
-library(arc2r)
-library(raster)
-library(terra)
-```
-
-
-
-
 
 
 
