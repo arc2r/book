@@ -18,7 +18,7 @@ As an ArcGIS user, you are probably very familiar with the two major geodata for
 In ArcGIS, you add a new dataset to your project using the "Add Data" button in the "Map" Pane. ArcGIS then "helps" you in various ways that `R` will not. For example, ArcGIS:
 
 - ... only displays files with extensions that are typically associated with geodata (e.g. `.tif`, `.shp` etc)
-- ... Automatically bundles multifile-datasets (files that are composed of different with a common prefix, e.g. shapefiles^[shapefiles consist of at least 3 files (\*.shp, \*.dbf and \*.shx)]) and displays it as a single dataset
+- ... automatically bundles multifile-datasets (files that are composed of different with a common prefix, e.g. shapefiles^[shapefiles consist of at least 3 files (\*.shp, \*.dbf and \*.shx)]) and displays it as a single dataset
 - ... let's you interactively browse the content of File-Geodatabases (\*.gdb-Files)
 - ... displays the datatype / geometrytype of a dataset as a little icon
 - ... automatically uses the correct mechanisms to import a dataset^[so you don't have to care whether it is raster, vector, multiband or singleband format]
