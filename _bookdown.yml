@@ -1,50 +1,59 @@
 rmd_files: [
   "index.Rmd",
   
-  "00_Data/Data.Rmd",
-  "00_Data/import_vector.Rmd",
-  "00_Data/import_raster_raster.Rmd",
-  "00_Data/import_raster_terra.Rmd",
+  "11_Data/Data.Rmd",
+  "11_Data/import_vector.Rmd",
+  "11_Data/import_raster_raster.Rmd",
+  "11_Data/import_raster_terra.Rmd",
 
-  "01_Making_Maps/Making_Maps.Rmd",
-  "01_Making_Maps/Static_Maps.Rmd",
-  "01_Making_Maps/Dynamic_Maps.Rmd",
+  "12_Making_Maps/Making_Maps.Rmd",
+  "12_Making_Maps/Static_Maps.Rmd",
+  "12_Making_Maps/Dynamic_Maps.Rmd",
   
-  "02_Select/Select_by_Attribute.Rmd",
-  "02_Select/Select_by_Location.Rmd",
 
-  "02_Data_Management/Data_Management.Rmd",
-  "02_Data_Management/General.Rmd",
-  "02_Data_Management/Join.Rmd",
-  "02_Data_Management/Projections_and_Transformations.Rmd",
-  "02_Data_Management/Raster_Processing.Rmd",
-  "02_Data_Management/Sampling.Rmd",
+  "13_Select/Select.Rmd",
+  "13_Select/Select_by_Attribute.Rmd",
+  "13_Select/Select_by_Location.Rmd",
 
   "03_Part_Geoprocessing_Tools.Rmd",
+  
+  
+  "21_Analysis/Analysis.Rmd",
+  "21_Analysis/Extract.Rmd",
+  "21_Analysis/Overlay.Rmd",
+  "21_Analysis/Proximity.Rmd",
 
-  "03_Spatial_Statistics/Spatial_Statistics.Rmd",
-  "03_Analysis/Analysis.Rmd",
-  "03_Analysis/Extract.Rmd",
-  "03_Analysis/Overlay.Rmd",
-  "03_Analysis/Proximity.Rmd",
+  "22_Data_Management/Data_Management.Rmd",
+  "22_Data_Management/General.Rmd",
+  "22_Data_Management/Join.Rmd",
+  "22_Data_Management/Projections_and_Transformations.Rmd",
+  "22_Data_Management/Raster_Processing.Rmd",
+  "22_Data_Management/Sampling.Rmd",
+  
+  
+  "23_Spatial_Analyst/Spatial_Analyst.Rmd",
+  "23_Spatial_Analyst/Neighborhood.Rmd",
+  "23_Spatial_Analyst/Zonal.Rmd",
+  "23_Spatial_Analyst/Conditional.Rmd",
+  "23_Spatial_Analyst/Surface.Rmd",
 
-  "04_Image_Analyst/Image_Analyst.Rmd",
-  "04_Image_Analyst/Map_Algebra.Rmd",
 
-  "05_3D_Analyst/3D_Analyst.Rmd",
-  "05_3D_Analyst/Raster_Interpolation.Rmd",
+  "24_Spatial_Statistics/Spatial_Statistics.Rmd",
 
-  "06_Spatial_Analyst/Spatial_Analyst.Rmd",
-  "06_Spatial_Analyst/Neighborhood.Rmd",
-  "06_Spatial_Analyst/Zonal.Rmd",
-  "06_Spatial_Analyst/Conditional.Rmd",
-  "06_Spatial_Analyst/Surface.Rmd",
 
-  "07_Topology_Rules/Topology_Rules.Rmd",
-  "07_Topology_Rules/Polygon.Rmd",
-  "07_Topology_Rules/Line.Rmd",
-  "07_Topology_Rules/Point.Rmd",
-  "07_Topology_Rules/Line_or_Polygon.Rmd",
+  "25_Image_Analyst/Image_Analyst.Rmd",
+  "25_Image_Analyst/Map_Algebra.Rmd",
+
+  "26_3D_Analyst/3D_Analyst.Rmd",
+  "26_3D_Analyst/Raster_Interpolation.Rmd",
+
+
+
+  "31_Topology_Rules/Topology_Rules.Rmd",
+  "31_Topology_Rules/Polygon.Rmd",
+  "31_Topology_Rules/Line.Rmd",
+  "31_Topology_Rules/Point.Rmd",
+  "31_Topology_Rules/Line_or_Polygon.Rmd",
 
   "bibliography.Rmd",
   

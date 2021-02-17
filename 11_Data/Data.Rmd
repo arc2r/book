@@ -6,20 +6,22 @@
 source("R/before_chapter.R", local = knitr::knit_global())
 ```
 
-As an ArcGIS user, you are probably very familiar with the two major geodata formats, raster data and vector data. *shapefiles* and geodatabases with *feature classes* are most commonly used for vector data in the ESRI World. For raster data, *geotiff*s and *ESRI GRID* files inside geodatabases are used very frequently. As you work with OpenSource GIS Tools and Data, you will come across a much richer ecosystem of data formats. 
+As an ArcGIS user, you are probably very familiar with the two major geodata formats, raster data and vector data. *shapefiles* and geodatabases with *feature classes* are most commonly used for vector data in the ESRI World. For raster data, *geotiff*s and *ESRI GRID* files inside geodatabases are used very frequently. As you work with OpenSource GIS Tools and Data, you will come across a much richer ecosystem of data formats (which can be a blessing and a curse!).
 
+
+<!--
 //todo add some examples of geodata-formats (gpkg, sqlite)
 //body link to switchfromshapefile.org
-
+-->
 
 
 In ArcGIS, you add a new dataset to your project using the "Add Data" button in the "Map" Pane. ArcGIS then "helps" you in various ways that `R` will not. For example, ArcGIS:
 
 - ... only displays files with extensions that are typically associated with geodata (e.g. `.tif`, `.shp` etc)
-- ... Automatically bundels files multifile-files (files with a common prefix, e.g. shapefiles) and displays it as a single dataset
-- ... let's you visually examine the content of .gdb-files
+- ... Automatically bundles multifile-datasets (files that are composed of different with a common prefix, e.g. shapefiles^[shapefiles consist of at least 3 files (\*.shp, \*.dbf and \*.shx)]) and displays it as a single dataset
+- ... let's you interactively browse the content of File-Geodatabases (\*.gdb-Files)
 - ... displays the datatype / geometrytype of a dataset as a little icon
-- ... automatically uses the correct mechanisms to import a dataset  <!-- (so you dont have to care whether it is raster, vector, multiband or singleband format) -->
+- ... automatically uses the correct mechanisms to import a dataset^[so you don't have to care whether it is raster, vector, multiband or singleband format]
 
 `R` provides less help when importing a dataset which can be seen as a disadvantage, but in many cases is more preferable. `R` *interferes less* and *assumes an informed user* who has good knowledge of the data. Just like when importing datasets using `read.csv`, `read.delim` and so on, you need to prior knowledge of your data to import it correctly: You need to know the delimiter used to separate columns, and the encoding used to store the information. 
 
@@ -28,4 +30,6 @@ In ArcGIS, you add a new dataset to your project using the "Add Data" button in 
 The same holds true when importing geodata in R: depending on the *type* of geodata, we need different packages to handle the data and different functions to import it. For handling vector data, the package `sf` now has replaced its predecessor `sp`. `sf` is so powerful and simple, that it has helped bring GIS workflows to non-GIS R users. For handling raster data, the package `raster` is still in heavy use but is in the process of being replaced by it's successor, `terra`.
 
 
+```{r}
 
+```
