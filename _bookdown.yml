@@ -9,6 +9,9 @@ rmd_files: [
   "01_Making_Maps/Making_Maps.Rmd",
   "01_Making_Maps/Static_Maps.Rmd",
   "01_Making_Maps/Dynamic_Maps.Rmd",
+  
+  "03_Part_Geoprocessing_Tools.Rmd",
+
 
   "02_Data_Management/Data_Management.Rmd",
   "02_Data_Management/General.Rmd",
@@ -18,7 +21,6 @@ rmd_files: [
   "02_Data_Management/Raster_Processing.Rmd",
   "02_Data_Management/Sampling.Rmd",
 
-  "03_Part_Geoprocessing_Tools.Rmd",
 
   "03_Spatial_Statistics/Spatial_Statistics.Rmd",
   "03_Analysis/Analysis.Rmd",
