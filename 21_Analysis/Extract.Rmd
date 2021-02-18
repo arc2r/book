@@ -1,6 +1,11 @@
 
 ## Extract Toolset {#extract-toolset}
 
+
+From the docs [@esri-gptoolref]:
+
+> GIS datasets often contain more data than you need. The Extract tools let you select features and attributes in a feature class or table based on a query (SQL expression) or spatial and attribute extraction. The output features and attributes are stored in a feature class or table.
+
 For this chapter, you will need the following R Packages:
 ```{r, echo=TRUE}
 library(arc2r)
@@ -8,7 +13,7 @@ library(sf)
 library(tmap)
 ```
 
-### Clip
+### Clip {#clip}
 
 Quite often in spatial analysis, we come across with cases where we do not want to use all the available data there is. In other words, we want to focus on a specific area of interest, which dictates the need for __clipping__ the existing dataset based on it's relationship to some other existing spatial feature. In R this operation can be easily performed using the `st_intersection` function in `sf`.
   
@@ -23,7 +28,7 @@ data("haltestelle_bahn")
 # Dataset depicting Switzerland on canton level
 data("kantonsgebiet")
 
-kanton_filter <- filter(kantonsgebiet, name %in% c("Zürich","St. Gallen","Thurgau","Aargau"))
+kanton_filter <- filter(kantonsgebiet, NAME %in% c("Zürich","St. Gallen","Thurgau","Aargau"))
 
 plot(st_geometry(haltestelle_bahn))
 plot(st_geometry(kanton_filter), col = "grey", add = TRUE,alpha = 1)
@@ -34,7 +39,7 @@ To clip the dataset _haltestellen_bahn_ to the extent of _kanton_filter, we can 
 
 
 ```{r, echo = TRUE}
-haltestelle_bahn_clipped <- st_intersection(kanton_filter ,haltestelle_bahn)
+haltestelle_bahn_clipped <- st_intersection(kanton_filter, haltestelle_bahn)
 ```
 
 We can now visualize the result from our operation:
@@ -51,3 +56,36 @@ The operation above produces the same outcome as the one depicted in the figure 
 knitr::include_graphics("images/clipOperation.png")
 ```
 
+
+
+### Select {#select}
+
+This chapter is covered in \@ref(select-by-attribute).
+
+
+
+### Split {#split}
+
+The split tool is used in ArcGIS to split a dataset into multiple outputs. 
+
+When clipping the _haltestellen_ dataset in \@ref(clip) with a polygon containing multiple features (`kanton_filter`). Each point in `haltestelle_bahn_clipped` now has the attributes origining from `kanton_filter`, which we can use to split the dataset into different parts. The function `split()` (from base-R) helps us with this. It returns a list of `sf` objects, that we can each save in it's own dataset if need be.
+
+<!--
+TODO: 
+- Somewhere, we might need to explain how to deal with lists and refer to apply or purrr
+- what happens when we use intersection with two polygons objects. do the polygons get "cut up into pieces"?
+--> 
+
+
+
+
+```{r, echo = TRUE}
+haltestellen_split <- split(haltestelle_bahn_clipped,haltestelle_bahn_clipped$name)
+
+str(haltestellen_split)
+```
+
+
+### Split by Attributes {#split-by-attributes}
+
+See \@ref{split}.
