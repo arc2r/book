@@ -14,6 +14,9 @@ nocite: '@*'
 ```{r,echo=FALSE,message=FALSE,warning=FALSE}
 now <- Sys.time()
 tz <- Sys.timezone()
+
+source("R/helperfunctions.R", local = knitr::knit_global())
+
 ```
 
 [![Actions Status](https://github.com/arc2r/book/workflows/bookdown/badge.svg)](https://github.com/arc2r/book/actions)
