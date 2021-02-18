@@ -17,6 +17,11 @@ knitr::include_graphics("images/topology_rules/0_0.jpg")
 
 In context of DE-9IM, this is a simple case. The polygon interiors should not overlap *at all*, everything else does not matter. Interior-Interior is the first of the 9 intersections, so the the intersection matrix as a code string would be: `2********`. In the case of the example below:
 
+<!--
+todo: replace this with a real life dataset, which is stored in arc2r/arc2r
+
+-->
+
 ```{r}
 
 set.seed(10)

@@ -139,33 +139,22 @@ Let's have a look at some examples from the named predicates as defined above.
 
 Lets take the example of a chessboard:
 
-```{r, echo = FALSE}
+```{r, echo = TRUE}
 library(sf)
 library(tidyverse)
+library(arc2r)
+
+data("chessboard")
 
 
-edges <- st_multipoint(matrix(c(0,0,8,0,8,8,0,8),ncol = 2,byrow = TRUE))
-board <- st_make_grid(edges,n = 8) %>%
-  st_as_sf() %>%
-  mutate(
-    value = rep(c(rep(c(FALSE,TRUE),4),rep(c(TRUE,FALSE),4)),4),
-    namex = rep(letters[1:8],8),
-    namey = rep(1:8,each = 8),
-    name = paste(namex,namey,sep = ""),
-    i = row_number()
-    )
-
-chessplot <- ggplot(board) + 
-  geom_sf(aes(fill = value)) + 
+chessplot <- ggplot(chessboard) + 
+  geom_sf(aes(fill = colour)) + 
   geom_sf_label(aes(label = i)) +
   scale_x_continuous(breaks = 1:8-0.5,labels = letters[1:8]) +
   scale_y_continuous(breaks = 1:8-0.5,labels = 1:8) +
-  scale_fill_manual(values = c("black","white"))+ 
-  theme(legend.position = "none",
-        panel.grid = element_blank(),
-        panel.background = element_blank(),
-        axis.title = element_blank(),
-        axis.ticks = element_blank()) 
+  scale_fill_manual(values = c(black = "black",white = "white"))+ 
+  theme_void() +
+  theme(legend.position = "none") 
 
 chessplot
 ```
@@ -173,18 +162,18 @@ chessplot
 To find out which field `touch` field number 36, we can write the following line of code:
 
 ```{r}
-st_touches(board[36,],board)
+st_touches(chessboard[36,],chessboard)
 ```
 
 Visually, these are the following fields:
 
 ```{r, echo = FALSE}
-sel36 <- st_touches(board[36,],board)[[1]]
+sel36 <- st_touches(chessboard[36,],chessboard)[[1]]
 
 
 chessplot +
-  geom_sf(data = board[36,], fill = "blue", alpha = 0.4)+
-  geom_sf(data = board[sel36,], fill = "red",alpha = 0.4)
+  geom_sf(data = chessboard[36,], fill = "blue", alpha = 0.4)+
+  geom_sf(data = chessboard[sel36,], fill = "red",alpha = 0.4)
 ```
 
 ### Custom relationships
@@ -261,7 +250,7 @@ We can now write this into a string, starting from the top left: `F***1****`
 Now that we have this string, we case use `st_relate()`and specify the string as the pattern we are looking for:
 
 ```{r}
-st_relate(board[36,],board,pattern = "F***1****")
+st_relate(chessboard[36,],chessboard,pattern = "F***1****")
 ```
 
 Which visually gives us this pattern:
@@ -270,10 +259,10 @@ Which visually gives us this pattern:
 st_rook = function(a, b = a) st_relate(a, b, pattern = "F***1****")
 
 
-sel36 <- st_rook(board[36,],board)[[1]]
+sel36 <- st_rook(chessboard[36,],chessboard)[[1]]
 chessplot +
-  geom_sf(data = board[36,], fill = "blue", alpha = 0.4)+
-  geom_sf(data = board[sel36,], fill = "red",alpha = 0.4)
+  geom_sf(data = chessboard[36,], fill = "blue", alpha = 0.4)+
+  geom_sf(data = chessboard[sel36,], fill = "red",alpha = 0.4)
 
 ```
 
@@ -288,7 +277,7 @@ Because this was so much fun, let's also have a look at the opposite, the Bishop
 | Exterior | don't care  | don't care | don't care |
 
 ```{r}
-st_relate(board[36,],board,pattern = "F***0****")
+st_relate(chessboard[36,],chessboard,pattern = "F***0****")
 ```
 
 Visually:
@@ -297,9 +286,9 @@ Visually:
 
 st_bishop <- function(a, b = a) st_relate(a, b, pattern = "F***0****")
 
-sel36 <- st_bishop(board[36,],board)[[1]]
+sel36 <- st_bishop(chessboard[36,],chessboard)[[1]]
 chessplot +
-  geom_sf(data = board[36,], fill = "blue", alpha = 0.4)+
-  geom_sf(data = board[sel36,], fill = "red",alpha = 0.4)
+  geom_sf(data = chessboard[36,], fill = "blue", alpha = 0.4)+
+  geom_sf(data = chessboard[sel36,], fill = "red",alpha = 0.4)
 
 ```
