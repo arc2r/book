@@ -52,6 +52,7 @@
           - Neighborhood.Rmd
           - Zonal.Rmd
           - Conditional.Rmd
+          - Density.Rmd
           - Surface.Rmd
           
       Spatial Statistics:
