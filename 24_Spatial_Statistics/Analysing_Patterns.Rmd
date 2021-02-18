@@ -10,7 +10,8 @@ library(ggplot2)
 
 ### Spatial Autocorrelation (Global Morans I)
 
-#### TL;DR - here's the funciton to calculate Morans I
+Here's the function to calculate Morans I
+
 ```{r, echo = TRUE}
 morans_i <- function(sf_object,col) {
   require(sf)
@@ -54,10 +55,9 @@ zweit_plot
 ```
 
 ```{r, echo = TRUE}
-MI_zweitwo <- morans_i(zweitwohung,"ja_in_percent")
+morans_i(zweitwohung,"ja_in_percent")
 
-zweit_plot +
-  labs(caption = paste("Morans I",formatC(MI_zweitwo,2,flag = "+")))
+
 ```
 
 
