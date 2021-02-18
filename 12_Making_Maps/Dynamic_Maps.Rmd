@@ -20,7 +20,7 @@ The package `mapview` is highly automated and you get a very decent map when cal
 > It’s main goal is to fill the gap of quick [...] interactive plotting to examine and visually investigate both aspects of spatial data, the geometries and their attributes.
 
 
-```{r, echo=FALSE}
+```{r, echo=TRUE}
 library(arc2r)
 library(sf)
 library(raster)
@@ -29,11 +29,7 @@ library(mapview)
 
 This next line of code generates a representation of your data (in this case, `gemeindegrenzen_zh`), much like the default map in ArcGIS. 
 
-```{r}
-RSTUDIO_USER_IDENTITY <- Sys.getenv("RSTUDIO_USER_IDENTITY")
-```
-
-```{r, eval=RSTUDIO_USER_IDENTITY != "rata"}
+```{r, eval=Sys.getenv("RSTUDIO_USER_IDENTITY") != "rata"}
 mapview(gemeindegrenzen_zh)
 ```
 
@@ -45,7 +41,7 @@ If the emphasis lies on creating a highly customized map, then `tmap` may be mor
 
 Like mentioned in the previous chapter, the package `tmap` facilitates creating highly customized maps. But the greatest strength in `tmap` comes from it's versatility: All you need to do is specify how you want your data to be displayed, and `tmap` can render this into an interactive map of a static one that you can print. All you need to do is change the `mode` within the function `tmap_mode()` to `view`.
 
-```{r}
+```{r, echo=TRUE}
 library(tmap)
 
 tmap_mode("view")
@@ -53,7 +49,7 @@ tmap_mode("view")
 
 As shown in chapter \@ref(static-maps-tmap), the `tmap` syntax very similar to `ggplot2`s, in the sense that connect "layers" using a `+` sign. 
 
-```{r}
+```{r, echo=TRUE}
 tm_shape(gemeindegrenzen_zh) +
   tm_polygons()
 ```
