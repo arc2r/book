@@ -7,7 +7,7 @@
 on values of a raster within the zones of another dataset. In R we are able to produce
 similar results with the use of `zonal` function of the `raster` package. 
 
-```{r}
+```{r, echo = TRUE}
 r <- raster(ncols=10, nrows=10)
 # generating random numbers that will used as values in our raster layer (r) - input values raster
 values(r) <- runif(ncell(r)) * 1:ncell(r)

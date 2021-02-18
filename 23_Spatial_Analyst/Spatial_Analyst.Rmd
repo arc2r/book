@@ -2,7 +2,7 @@
 
 For this chapter, you will need the following R Packages:
 
-```{r, echo=FALSE}
+```{r, echo=TRUE}
 library(arc2r)
 library(sf)
 library(tidyverse)
