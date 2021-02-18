@@ -78,11 +78,11 @@ As we can see both objects point to the same address. R makes a new copy in the 
 data("kantonsgebiet")
 
 # Selecting the Canton of Zug
-zug <- filter(kantonsgebiet, kantonsgebiet$name == "Zug") # depicting the Canton of Zug
+zug <- filter(kantonsgebiet, NAME == "Zug") # depicting the Canton of Zug
 ggplot(zug) + geom_sf() # depicting the Canton of Zug
 
 # Selecting the Canton of Zürich
-zurich <- filter(kantonsgebiet, kantonsgebiet$name == "Zürich")
+zurich <- filter(kantonsgebiet, NAME == "Zürich")
 ggplot(zurich) + geom_sf() # depicting the Canton of Zurich
 
 # merging the two sf objects
@@ -94,6 +94,10 @@ ggplot(merged) + geom_sf() # depicting the product of the merge operation
 ### Dissolve
 
 `Dissolve` in ArcGIS pro serves as a basic tool for aggregating features based on specified attributes. In R the respective operation could be easily performed using some basic functionalities of the `sf` package. In the example below we use again the dataset that depicts all the 26 Cantons of Switzerland. Our aim is to transform the given dataset to one unified spatial polygon. In ArcGIS pro the respective tool for this action is the tool `Dissolve`. In R on the other hand, this can be easily performed using the `st_union` function of the `sf` package.
+
+<!--
+todo: add dissolve field
+-->
 
 ```{r dissolve_01}
 
@@ -118,8 +122,6 @@ In ArcGIS pro `Find Identical` tool identifies records in a feature class or tab
 ```{r}
 duplicated(kantonsgebiet)
 ```
-
-
 
 ### Append
 

@@ -6,7 +6,7 @@ knitr::include_graphics("images/network/Data Management_Sampling.png")
 
 For this chapter, you will need the following R Packages:
 
-```{r, echo=FALSE}
+```{r, echo = TRUE}
 library(sf)
 library(arc2r)
 library(ggplot2)
@@ -17,12 +17,12 @@ library(dplyr)
 
 `Generate Tessellation` tool in ArcGIS pro is used for generating a tessellated grid of regular polygon features. The generated output is covering a certain extent that usually represents the respective extent of another spatial feature. The aforementioned operation in R is possible using the function `st_make_grid` of the **sf** package. Below we present an example of how we can create a tesselated grid covering the spatial extent of the canton of Zurich in Switzerland.
 
-```{r}
+```{r, echo = TRUE}
 # Reading the simple feature object that depicts all the cantons of the country of Switzerland
 data("kantonsgebiet")
 
 # Selecting only the geometric extent of the canton of Zurich
-zh <- filter(kantonsgebiet, name == "Zürich")
+zh <- filter(kantonsgebiet, NAME == "Zürich")
 
 # Plotting the selected area
 ggplot(zh) + geom_sf() + coord_sf(datum = 2056)
@@ -46,43 +46,30 @@ ggplot() + geom_sf(data = zh, fill = "red") +
 
 `Create Random Points` tool in ArcGIS pro serves as a very straightforward way of generating randomly distributed points within an extent window, inside polygon features, on point features, or along line features. In R the respective operation can be again achieved using one of the functions provided by the **sf** package. Below we present how we can perform this operation with the function `st_sample()`.
 
-```{r}
+```{r, echo = TRUE}
 # Create random points (1000) within the spatial extent of the Canton of Zurich
 sample <- st_sample(zh, size = 1000)
 
 # Plotting the randomly generated points over the spatial feature that
 # represents the canton of Zurich
-ggplot() + geom_sf(data = zh) + geom_sf(data = sample) +
-  coord_sf(datum = 2056) + ggtitle("1000 random points witihn the Canton of Zurich") +
-  theme(plot.title = element_text(hjust = 0.5), text = element_text(size=9))
+ggplot() + geom_sf(data = zh) + 
+  geom_sf(data = sample) +
+  coord_sf(datum = 2056) + 
+  ggtitle("1000 random points witihn the Canton of Zurich") 
 ```
 
 
 ### Generate Points Along Lines
 
-```{r}
+```{r, echo = TRUE}
 data("mountainBikes_routes")
 
-# clipping the line spatial feature based on the spatial extent of the Canton of Zurich
-mountainBikes_routes_zh <- st_intersection(mountainBikes_routes, zh)
+line1 <- mountainBikes_routes[1,]
+pointsOnLine1 <- st_line_sample(line1,50, type = "random")
 
-# Visualizing the clipped output
-p1 <- ggplot() + geom_sf(data = mountainBikes_routes_zh, color = "blue") +
-  geom_sf(data = zh, alpha = 0.5) + coord_sf(datum = 2056) +
-  ggtitle("Mountain bike routes in the Canton of Zurich") +
-  theme(plot.title = element_text(hjust = 0.5), text = element_text(size=9))
 
-p1
-```
-
-```{r pointsOnLine}
-line1 <- mountainBikes_routes_zh[1,]
-pointsOnLine1 <- st_line_sample(line1,50)
-
-ggplot() + geom_sf(data = pointsOnLine1,color = "red") + geom_sf(data = line1) + coord_equal() + 
-  coord_sf(datum = 2056) + ggtitle("Random points along a mountain \nbike route in the canton of Zurich") +
-  theme(plot.title = element_text(hjust = 0.5), text = element_text(size=9),
-        axis.text.x = element_text(angle = 90))
+plot(st_geometry(line1))
+plot(pointsOnLine1, add = TRUE, pch = 20, col = "red")
 ```
 
 <!-- ToDo -->
