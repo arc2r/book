@@ -1,7 +1,7 @@
 
 # All things `R`-Spatial
 
-2021-02-15 13:51:55
+2021-02-18 11:50:47
 
 [![Actions
 Status](https://github.com/arc2r/book/workflows/bookdown/badge.svg)](https://github.com/arc2r/book/actions)
