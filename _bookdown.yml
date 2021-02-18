@@ -25,6 +25,7 @@ rmd_files:
 - 23_Spatial_Analyst/Neighborhood.Rmd
 - 23_Spatial_Analyst/Zonal.Rmd
 - 23_Spatial_Analyst/Conditional.Rmd
+- 23_Spatial_Analyst/Density.Rmd
 - 23_Spatial_Analyst/Surface.Rmd
 - 24_Spatial_Statistics/Spatial_Statistics.Rmd
 - 24_Spatial_Statistics/Analysing_Patterns.Rmd
