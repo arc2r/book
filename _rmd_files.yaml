@@ -1,5 +1,5 @@
 --- # Rmdfile
-  Part 1:
+  Introduction:
     index: index.Rmd
     chapters:
       Data:
@@ -24,7 +24,7 @@
           - Select_by_Attribute.Rmd
           - Select_by_Location.Rmd
         
-  Part 2:
+  Geoprocessing Tools:
     index: 20_Geoprocessing_Tools.Rmd
     chapters:
       Analysis:
@@ -72,7 +72,7 @@
         subchapters:
           - Raster_Interpolation.Rmd
           
-  Part 3:
+  Toplogy:
     index: 30_Topology.Rmd
     chapters:
       Spatial Predicates:
@@ -89,7 +89,7 @@
           - Line_or_Polygon.Rmd
           
           
-  Part 4:
+  Appendix:
       index: NULL
       chapters:
         Progress:
