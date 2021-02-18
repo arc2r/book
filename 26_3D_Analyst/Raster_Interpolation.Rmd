@@ -1,6 +1,6 @@
 ## Raster Interpolation Toolset
 
-```{r}
+```{r, echo = TRUE}
 library(sp)
 library(sf)
 library(tidyverse)
@@ -15,7 +15,7 @@ meuse_sf <- meuse %>%
 
 ### IDW
 
-```{r}
+```{r, echo = TRUE}
 my_idw <- function(groundtruth,column,cellsize, nmax = Inf, maxdist = Inf, idp = 2, extent = NULL){
   require(gstat)
   require(sf)
@@ -41,7 +41,7 @@ my_idw <- function(groundtruth,column,cellsize, nmax = Inf, maxdist = Inf, idp =
 ```
 
 
-```{r}
+```{r, echo = TRUE}
 meuse_idw <- my_idw(meuse_sf,"copper",cellsize = 10,idp = 3)
 
 ggplot() +
@@ -57,7 +57,7 @@ ggplot() +
 
 ### Kriging
 
-```{r}
+```{r, echo = TRUE}
 my_krige <- function(groundtruth,column,cellsize, nmax = Inf, maxdist = Inf, extent = NULL){
   require(gstat)
   require(sf)
@@ -83,7 +83,7 @@ my_krige <- function(groundtruth,column,cellsize, nmax = Inf, maxdist = Inf, ext
 ```
 
 
-```{r}
+```{r, echo = TRUE}
 meuse_krige <- my_krige(meuse_sf,"copper",cellsize = 10,nmax = 30, maxdist = 500)
 
 ggplot() +
@@ -98,7 +98,7 @@ ggplot() +
 
 Nearest Neighbor:
 
-```{r}
+```{r, echo = TRUE}
 
 meuse_thiessen <- st_voronoi(st_union(meuse_sf))
 meuse_thiessen <- st_cast(meuse_thiessen)
@@ -119,4 +119,3 @@ ggplot() +
 ```
 
 
-<!-- ### Spline -->
