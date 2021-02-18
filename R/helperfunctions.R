@@ -61,6 +61,7 @@ yaml_to_rmdfiles <- function(rmd_files_yaml = "_rmd_files.yaml"){
 
 
 update_bookdownyaml <- function(bookdown_yaml_file = "_bookdown.yml", rmd_files = "_rmd_files.yaml"){
+  require(yaml)
   bookdown_yaml <- read_yaml(bookdown_yaml_file)
   bookdown_yaml$rmd_files <- unlist(yaml_to_rmdfiles(rmd_files))
   write_yaml(bookdown_yaml, bookdown_yaml_file)
