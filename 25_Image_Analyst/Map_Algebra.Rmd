@@ -1,7 +1,7 @@
 ## Map Algebra Toolset
 
 For this chapter, you will need the following R Packages:
-```{r, echo=FALSE}
+```{r, echo=TRUE}
 library(arc2r)
 library(raster)
 library(terra)
@@ -16,9 +16,7 @@ commonly used tools for performing various operations with raster datasets.
 For the example below we will work with 2 datasets that depict India's population at two different timestamps. Our goal is to produce an output raster that demonstrates the evolvement of country's population in this 10 years timespan. Naturally in ArcGIS pro, the aforementioned operation would be performed with the use of `Raster Calculator`. Let's explore our options with R.  
 
 
-```{r}
-# Read the data for our example
-
+```{r, echo = TRUE}
 # India's population in 2000
 data("pop_india2000")
 
@@ -35,7 +33,7 @@ options. As first we can create a function that performs a simple subtraction of
 rasters.
 
 
-```{r}
+```{r, echo = TRUE}
 diff_rasters <- function(b1, b2){
   # this function calculates the difference between two rasters of the same CRS and extent
   # input: 2 raster layers of the same extent, crs that can be subtracted
@@ -48,7 +46,7 @@ diff_rasters <- function(b1, b2){
 Since, we created the function for subtracting one raster from another, we use now
 the function _overlay_ of the `raster` package for producing the new raster output.  
 
-```{r}
+```{r, echo = TRUE}
 # Compute the raster that depicts the difference in population in these 10 years
 pop2010_2000 <- overlay(pop_india2000, pop_india2010,
                      fun = diff_rasters)
