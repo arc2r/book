@@ -5,14 +5,13 @@ check_rmdfiles_exists <- function(bookdown_yaml = "_bookdown.yml") {
   bookdown_yaml_read <- read_yaml(bookdown_yaml)
   rmd_files <- bookdown_yaml_read$rmd_files
   existing <- file.exists(rmd_files)
-  
+  notexisting <- rmd_files[!existing]
+  notexisting <- paste(notexisting, collapse = "\n- ")
   if(any(!existing)){
-    print("The following files are listed in your bookdown yaml but do not exist in your project")
-    rmd_files[!existing]
+    warning("The following files are listed in your bookdown yaml but do not exist in your project",notexisting)
   } else{
     print("all good, all files specified in bookdown_yaml exist")
   }
-  
 }
 check_rmdfiles_missing <- function(bookdown_yaml = "_bookdown.yml") {
   require(yaml)
@@ -23,10 +22,10 @@ check_rmdfiles_missing <- function(bookdown_yaml = "_bookdown.yml") {
   rmd_files_all <- list.files(pattern = ".Rmd",full.names = TRUE,recursive = TRUE) %>% str_remove("./")
   
   existing <- rmd_files_all %in% rmd_files
-  
+  missing_files <- rmd_files_all[!existing]
+  missing_files <- paste(missing_files, collapse = "\n-")
   if(any(!existing)){
-    print("The following files exist in you project but are not listed in your bookdown_yaml")
-    rmd_files_all[!existing]
+    warning("The following files exist in you project but are not listed in your bookdown_yaml\n",missing_files)
   } else{
     print("all good, all files specified in bookdown_yaml exist")
   }
@@ -65,6 +64,7 @@ update_bookdownyaml <- function(bookdown_yaml_file = "_bookdown.yml", rmd_files 
   bookdown_yaml <- read_yaml(bookdown_yaml_file)
   bookdown_yaml$rmd_files <- unlist(yaml_to_rmdfiles(rmd_files))
   write_yaml(bookdown_yaml, bookdown_yaml_file)
+  warning(bookdown_yaml_file," has been overwritten. Check your git diff!")
 }
 
 
