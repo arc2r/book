@@ -114,10 +114,48 @@ hierarchy_to_list <- function(part, chapter,rmd_files_yaml = "_rmd_files.yaml"){
       paste0(
         paste(rep(" ",level*2),collapse = ""),
         "- ",
+        ifelse(is.na(tag),"",paste0("\\@ref(",tag,") ")),
         "[",mylines,"]",
-        ifelse(is.na(tag),"",paste0("(",tag,")")),
+        ifelse(is.na(tag),"",paste0("(#",tag,")")),
         "\n"
       )
     }) %>%
     cat()
 }
+
+
+
+
+preview_chapter2 <- function(part,chapter, rmd_files = "_rmd_files.yaml", bookdown_yaml = "_bookdown.yml") {
+  require(yaml)
+  require(purrr)
+  struc <- read_yaml(rmd_files)
+  
+  stopifnot(part %in% imap(struc,~.y))
+  stopifnot(chapter %in% imap(struc[[part]]$chapters,~.y))
+  # map(struc,function(x){imap(x$chapters,~.y))
+  
+  sec <- struc[[part]]$chapters[[chapter]]
+  
+  part_index <- struc[[part]]$index
+  chapter_index <- file.path(sec$folder, sec$index)
+  subchapters <- file.path(sec$folder,sec$subchapters)
+  
+  rmds <- c("index.Rmd",chapter_index, subchapters)
+  
+  bookdown_yaml_original <- read_yaml(bookdown_yaml)
+  bookdown_yaml_new <- bookdown_yaml_original
+  
+  bookdown_yaml_new$rmd_files <- rmds
+  
+  warning("overwriting ",bookdown_yaml," with updated content (restoring later)")
+  write_yaml(bookdown_yaml_new,bookdown_yaml)
+  
+  bookdown::render_book("index.Rmd")
+  
+  print("restoring old files")
+  write_yaml(bookdown_yaml_original,bookdown_yaml)
+  
+}
+
+
