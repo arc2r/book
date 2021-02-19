@@ -45,7 +45,7 @@ In R, you can check topology using the DE-9IM together with `st_relate()`.
 
 Let's have a look at some examples from the named predicates as defined above.
 
-### Equals
+<!-- ### Equals -->
 
 
 <!--
@@ -54,7 +54,7 @@ Let's have a look at some examples from the named predicates as defined above.
 /  assignees: KimboGilda
 -->
 
-### Disjoint
+<!-- ### Disjoint -->
 
 <!--
 / todo: Write an example for this chapter, reusing the same dataset if possible
@@ -63,7 +63,7 @@ Let's have a look at some examples from the named predicates as defined above.
 /  assignees: KimboGilda
 --> 
 
-### Touches
+<!-- ### Touches -->
 
 
 <!--
@@ -73,7 +73,7 @@ Let's have a look at some examples from the named predicates as defined above.
 -->
 
 
-### Contains
+<!-- ### Contains -->
 
 
 <!--
@@ -82,7 +82,7 @@ Let's have a look at some examples from the named predicates as defined above.
 /  assignees: KimboGilda
 -->
 
-### Covers
+<!-- ### Covers -->
 
 
 <!--
@@ -91,7 +91,7 @@ Let's have a look at some examples from the named predicates as defined above.
 /  assignees: KimboGilda
 -->
 
-### Intersects
+<!-- ### Intersects -->
 
 <!--
 / todo: Write an example for this chapter, reusing the same dataset if possible
@@ -99,16 +99,7 @@ Let's have a look at some examples from the named predicates as defined above.
 /  assignees: KimboGilda
 -->
 
-### Within
-
-
-<!--
-/ todo: Write an example for this chapter, reusing the same dataset if possible
-/  and using the data from the arc2r package
-/  assignees: KimboGilda
--->
-
-### CoveredBy
+<!-- ### Within -->
 
 
 <!--
@@ -117,7 +108,7 @@ Let's have a look at some examples from the named predicates as defined above.
 /  assignees: KimboGilda
 -->
 
-### Crosses
+<!-- ### CoveredBy -->
 
 
 <!--
@@ -126,7 +117,16 @@ Let's have a look at some examples from the named predicates as defined above.
 /  assignees: KimboGilda
 -->
 
-### Overlaps
+<!-- ### Crosses -->
+
+
+<!--
+/ todo: Write an example for this chapter, reusing the same dataset if possible
+/  and using the data from the arc2r package
+/  assignees: KimboGilda
+-->
+
+<!-- ### Overlaps -->
 
 
 <!--
