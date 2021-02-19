@@ -3,9 +3,11 @@
 
 ### Zonal Statistics
 
-`Zonal Statistics` tool in ArcGIS pro is used for calculating the statistics
-on values of a raster within the zones of another dataset. In R we are able to produce
-similar results with the use of `zonal` function of the `raster` package. 
+`Zonal Statistics` tool in ArcGIS pro is used for calculating the statistics on values of a raster within the zones of another dataset. In R we are able to produce similar results with the use of `zonal` function of the `raster` package. 
+
+<!--
+replac this with a real life dataset
+-->
 
 ```{r, echo = TRUE}
 r <- raster(ncols=10, nrows=10)
