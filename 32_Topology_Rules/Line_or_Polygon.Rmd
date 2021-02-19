@@ -1,6 +1,6 @@
-# Line or Polygon
+## Line or Polygon
 
-## Must be larger than cluster tolarance
+### Must be larger than cluster tolarance
 
 ```{r, echo = FALSE, fig.cap = "Source: @esri-topology"}
 knitr::include_graphics("images/topology_rules/0_2.jpg")
