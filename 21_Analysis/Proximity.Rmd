@@ -6,7 +6,7 @@ From the docs [@esri-gptoolref]:
 > The Proximity toolset contains tools that are used to determine the proximity of features within one or more feature classes or between two feature classes. These tools can identify features that are closest to one another or calculate the distances between or around them.
 
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, eval = FALSE}
 # knitr::include_graphics("images/network/Analysis_Proximity.png")
 ```
 

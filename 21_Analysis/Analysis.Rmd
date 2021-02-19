@@ -13,8 +13,8 @@ hierarchy_to_list("Geoprocessing Tools", "Analysis","_rmd_files.yaml")
 
 
 
-```{r, echo = FALSE}
-# knitr::include_graphics("images/network/Analysis.png")
+```{r, echo = FALSE, eval = FALSE}
+knitr::include_graphics("images/network/Analysis.png")
 ```
 
 

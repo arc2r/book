@@ -1,6 +1,6 @@
 ## Sampling Toolset
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, eval = FALSE}
 knitr::include_graphics("images/network/Data Management_Sampling.png")
 ```
 
