@@ -1,16 +1,5 @@
 ## Raster Processing Toolset
 
-- [x] Clip Raster
-- [ ] Composite Bands
-- [ ] Compute Pansharpen Weights
-- [ ] Create Ortho Corrected Raster Dataset
-- [ ] Create Pansharpened Raster Dataset
-- [ ] Extract Subdataset
-- [ ] Generate Table From Raster Function
-- [ ] Raster To DTED
-- [ ] Resample <!-- duplicate! -->
-- [ ] Split Raster
-
 For this chapter, you will need the following R Packages:
 
 ```{r, echo = FALSE}
