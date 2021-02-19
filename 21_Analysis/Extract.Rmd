@@ -82,10 +82,10 @@ TODO:
 ```{r, echo = TRUE}
 haltestellen_split <- split(haltestelle_bahn_clipped,haltestelle_bahn_clipped$name)
 
-str(haltestellen_split)
+str(haltestellen_split[1:2])
 ```
 
 
 ### Split by Attributes {#split-by-attributes}
 
-See \@ref{split}.
+See \@ref(split).
