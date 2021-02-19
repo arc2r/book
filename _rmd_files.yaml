@@ -51,7 +51,7 @@
         subchapters:
           - Neighborhood.Rmd
           - Zonal.Rmd
-          - Conditional.Rmd
+          - Reclass.Rmd
           - Density.Rmd
           - Surface.Rmd
           
