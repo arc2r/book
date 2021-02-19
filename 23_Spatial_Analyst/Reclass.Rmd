@@ -23,8 +23,6 @@ Let's have a look at the histogram of the raster values to see their distributio
 histinfo <- hist(swissAlti3D)
 ```
 
-```{r, echo = FALSE}
-```
 
 The histogram above automatically created `r length(histinfo$breaks)` breaks (`r paste(c(head(histinfo$breaks,2),"...", tail(histinfo$breaks,2)),collapse = ",")`). We can use these breaks to reclassify our values. To do so, we create below a reclassification matrix with the respective values.
 
@@ -48,7 +46,6 @@ After creating the respective matrix with the new classes, we are ready to call 
 swissAlti3D_reclass <- reclassify(swissAlti3D, reclass_m)
 
 plot(swissAlti3D_reclass)
-
 ```
 
 

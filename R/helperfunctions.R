@@ -72,7 +72,7 @@ update_bookdownyaml <- function(bookdown_yaml_file = "_bookdown.yml", rmd_files 
 # This function depends on "rmd_files.yaml" and the way this yaml files captures
 # the file structure of this rmd. The idea is, that the function extracts the
 # headers > level2 (level 1 headers are hard to distinguish from r-chunk-comments)
-# and returns a nested list with linkts to the chapters
+# and returns a nested list with links to the chapters
 
 # part: The first hierarchical level of our book ("introduction", geoprocessing tools" etc)
 # must be the same name as specified in the yaml file, "_rmd_files.yaml")
