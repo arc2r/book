@@ -83,6 +83,7 @@
         
       Toplogy Rules:
         folder: 32_Topology_Rules
+        index: Topology_Rules.Rmd
         subchapters:
           - Polygon.Rmd
           - Line.Rmd
