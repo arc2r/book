@@ -1,7 +1,7 @@
 # 3D Analyst Toolbox
 
 
-From the docs [@esri-gptoolsref]:
+From the docs [@esri-gptoolref]:
 
 > The 3D Analyst toolbox provides a collection of geoprocessing tools that enable a wide variety of analytical, data management, and data conversion operations on surface models and three-dimensional vector data.
 
