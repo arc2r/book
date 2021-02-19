@@ -1,2 +1,12 @@
 # Spatial Statistics Toolbox
 
+---
+
+**Table of content**
+
+```{r, results="asis", echo = FALSE}
+source("R/helperfunctions.R", local = knitr::knit_global())
+
+hierarchy_to_list("Geoprocessing Tools", "Spatial Statistics")
+```
+

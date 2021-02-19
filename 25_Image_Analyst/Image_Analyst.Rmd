@@ -7,5 +7,15 @@ From the docs [@esri-gptoolref]:
 > The capabilities of Image Analyst are grouped into categories of related functionality. Knowing the categories will help you identify the tool to use. The table below lists the Image Analyst toolsets with a description of the capabilities offered by the tools in each.
 
 
+---
+
+**Table of content**
+
+```{r, results="asis", echo = FALSE}
+source("R/helperfunctions.R", local = knitr::knit_global())
+
+hierarchy_to_list("Geoprocessing Tools", "Image Analyst")
+```
+
 
 

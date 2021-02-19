@@ -2,6 +2,15 @@
 
 Data Management toolbox in ArcGIS pro provides the users a variety of tools for managing, maintaining and developing datasets that come in all possible forms (feature classes / datasets, raster datasets). 
 
+---
+
+**Table of content**
+
+```{r, results="asis", echo = FALSE}
+source("R/helperfunctions.R", local = knitr::knit_global())
+
+hierarchy_to_list("Geoprocessing Tools", "Data Management","_rmd_files.yaml")
+```
 
 ```{r, echo = FALSE, eval = FALSE}
 knitr::include_graphics("images/network/Data Management.png")

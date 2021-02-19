@@ -1,15 +1,16 @@
 # Spatial Analyst Toolbox
 
-For this chapter, you will need the following R Packages:
 
-```{r, echo=TRUE}
-library(arc2r)
-library(sf)
-library(tidyverse)
-library(raster)
+
+---
+
+**Table of content**
+
+```{r, results="asis", echo = FALSE}
+source("R/helperfunctions.R", local = knitr::knit_global())
+
+hierarchy_to_list("Geoprocessing Tools", "Spatial Analyst")
 ```
-
-
 
 
 
