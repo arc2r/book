@@ -18,7 +18,7 @@ library(ggplot2)
 ```
 
 
-### Buffer
+### Buffer {#buffer}
 
 One of the most commonly used operations in ArcGIS pro is the one called `Buffer`. This operation provides a very convenient way of identifying areas of interest lying in the neighborhood of an existing spatial feature. In R the same action can be performed using the `st_buffer` function in `sf`. 
 
@@ -39,7 +39,7 @@ plot(st_geometry(mountainBikes_routes), add = TRUE, col = "red")
 We might be interested in identifying all the areas in a radius of 1000 m around these bike routes.
 
 
-```{r}
+```{r, echo = TRUE}
 routes_buffer <- st_buffer(mountainBikes_routes,1000)
 
 plot(st_geometry(routes_buffer))

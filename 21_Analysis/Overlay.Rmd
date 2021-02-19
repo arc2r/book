@@ -17,7 +17,7 @@ library(dplyr)
 library(ggplot2)
 ```
 
-### Spatial Join
+### Spatial Join {#spatial-join}
 
 
 @esri-gptoolref describes Spatial Join as follows:
