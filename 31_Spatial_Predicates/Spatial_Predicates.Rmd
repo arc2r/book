@@ -41,9 +41,9 @@ knitr::include_graphics("images/topology_rules_poster.jpg")
 
 In R, you can check topology using the DE-9IM together with `st_relate()`.
 
-## Some examples
+<!-- ## Some examples -->
 
-Let's have a look at some examples from the named predicates as defined above.
+<!-- Let's have a look at some examples from the named predicates as defined above. -->
 
 <!-- ### Equals -->
 
