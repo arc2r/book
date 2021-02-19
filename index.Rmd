@@ -30,7 +30,7 @@ This is a resource for people wanting to learn spatial-R (Analysis, Visualizatio
 
 This book leans heavily on how the Toolboxes and Toolsets are organized in ArcGIS Pro. The idea is that you can look up specific things of which you only know the ArcGIS terminology for. This book is a work in progress, and *we highly appreciate contributions* to this book: If you have anything to add, please [file an issue or make a pull request](https://github.com/arc2r/book).  
 
-We are big fans of using `magrittr`'s pipe function `%>%` and heavily use it throughout this book. In addition for vector data, we use packages from the `tidyverse` (especially from the `dplyr` package: filter()`, `mutate()` and `summarise()`).
+We are big fans of using `magrittr`'s pipe function `%>%` and heavily use it throughout this book. In addition for vector data, we use packages from the `tidyverse` (especially from the `dplyr` package: `filter()`, `mutate()` and `summarise()`).
 
 ## How it started
 
