@@ -3,14 +3,18 @@
 
 ### Focal Statistics
 
->`Focal statistics` performs a neighbourhood operation that computes an output raster, where the value for each output cell is a function of the values of all the input cells that are in a specified neighborhood around that location. The function performed on the input is a statistic, such as the maximum, average, or sum of all values encountered in that neighborhood.
-Source: https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/how-focal-statistics-works.html
+From the docs [@esri-gptoolref]:
 
-In R in order to apply functions focally to rasters, important is to define the neighbouring cells.
-In other words to define the moving window for each of these functions. As an example below,
-we will create our own raster object.  
+> Focal statistics performs a neighbourhood operation that computes an output raster, where the value for each output cell is a function of the values of all the input cells that are in a specified neighborhood around that location. The function performed on the input is a statistic, such as the maximum, average, or sum of all values encountered in that neighborhood.
 
-```{r}
+In R in order to apply functions focally to rasters, important is to define the neighbouring cells. In other words to define the moving window for each of these functions. As an example below, we will create our own raster object.  
+
+<!--
+todo: replace this with a read life dataset
+-->
+
+
+```{r, echo = TRUE}
 r <- raster(ncol=10, nrow=10)
 values(r) <- 1:ncell(r)
 plot(r, main='Raster with 100 cells', cex.main = 1)
@@ -20,7 +24,7 @@ We will recompute now the raster based on the `focal` function of the  `raster` 
 below, the neighbourhood for which we apply the statistic is represented by the argument `w`, while the 
 statistic by the argument `fun`. 
 
-```{r} 
+```{r, echo = TRUE} 
 f1 <- focal(r, w=matrix(1,nrow=3,ncol=3),fun=sum)
 plot(f1, main = "Raster after applying the focal function - raster package", cex.main = 1)
 ```
@@ -31,7 +35,7 @@ The operation above can be also performed with the use of the _focal_ function o
     or two numbers (row, col); or with an odd-sized weights matrix. More details can be found here: https://rdrr.io/cran/terra/man/focal.html
   - `fun` represents the specified statistic for the identified neighbourhood (e.g mean,sum etc)
   
-```{r}
+```{r, echo = TRUE}
 
 r_spat <- as(r, "SpatRaster")
 f2 <- terra::focal(r_spat,w=3,fun = "sum")
