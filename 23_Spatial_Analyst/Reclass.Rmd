@@ -48,6 +48,7 @@ After creating the respective matrix with the new classes, we are ready to call 
 swissAlti3D_reclass <- reclassify(swissAlti3D, reclass_m)
 
 plot(swissAlti3D_reclass)
+
 ```
 
 
