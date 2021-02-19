@@ -145,33 +145,3 @@ plot(publicTransport_CH,las=1,
      main = "Quality of public transport in the city of Wädenwil - CRS: CH1903+LV95",
      cex.main=1,font.main=4)
 ```
-
-
-### Rescale
-
-```{r}
-data("recycling_raster")
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
