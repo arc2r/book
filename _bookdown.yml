@@ -35,6 +35,7 @@ rmd_files:
 - 26_3D_Analyst/Raster_Interpolation.Rmd
 - 30_Topology.Rmd
 - 31_Spatial_Predicates/Spatial_Predicates.Rmd
+- 32_Topology_Rules/Topology_Rules.Rmd
 - 32_Topology_Rules/Polygon.Rmd
 - 32_Topology_Rules/Line.Rmd
 - 32_Topology_Rules/Point.Rmd
