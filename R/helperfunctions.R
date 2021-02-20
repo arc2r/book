@@ -1,8 +1,8 @@
 
 
-check_rmdfiles_exists <- function(bookdown_yaml = "_bookdown.yml") {
+check_rmdfiles_exists <- function() {
   require(yaml)
-  bookdown_yaml_read <- read_yaml(bookdown_yaml)
+  bookdown_yaml_read <- read_yaml(sort(list.files(pattern = "_bookdown.ya*ml"),TRUE)[1])
   rmd_files <- bookdown_yaml_read$rmd_files
   existing <- file.exists(rmd_files)
   notexisting <- rmd_files[!existing]
@@ -13,13 +13,14 @@ check_rmdfiles_exists <- function(bookdown_yaml = "_bookdown.yml") {
     print("all good, all files specified in bookdown_yaml exist")
   }
 }
-check_rmdfiles_missing <- function(bookdown_yaml = "_bookdown.yml") {
+check_rmdfiles_missing <- function(pattern = ".Rmd") {
   require(yaml)
   require(stringr)
+  bookdown_yaml_read <- read_yaml(sort(list.files(pattern = "_bookdown.ya*ml"),TRUE)[1])
   bookdown_yaml_read <- read_yaml(bookdown_yaml)
   rmd_files <- bookdown_yaml_read$rmd_files
   
-  rmd_files_all <- list.files(pattern = ".Rmd",full.names = TRUE,recursive = TRUE) %>% str_remove("./")
+  rmd_files_all <- list.files(pattern = pattern,full.names = TRUE,recursive = TRUE) %>% str_remove("./")
   
   existing <- rmd_files_all %in% rmd_files
   missing_files <- rmd_files_all[!existing]
@@ -59,9 +60,10 @@ yaml_to_rmdfiles <- function(rmd_files_yaml = "_rmd_files.yaml"){
 }
 
 
-update_bookdownyaml <- function(bookdown_yaml_file = "_bookdown.yml", rmd_files = "_rmd_files.yaml"){
+update_bookdownyaml <- function(rmd_files = "_rmd_files.yaml"){
   require(yaml)
-  bookdown_yaml <- read_yaml(bookdown_yaml_file)
+  bookdown_yaml_file <- sort(list.files(pattern = "_bookdown.ya*ml"),FALSE)[1]
+  bookdown_yaml <- read_yaml()
   bookdown_yaml$rmd_files <- unlist(yaml_to_rmdfiles(rmd_files))
   write_yaml(bookdown_yaml, bookdown_yaml_file)
   warning(bookdown_yaml_file," has been overwritten. Check your git diff!")
@@ -126,15 +128,16 @@ hierarchy_to_list <- function(part, chapter,rmd_files_yaml = "_rmd_files.yaml"){
 
 
 
-preview_chapter2 <- function(part,chapter, rmd_files = "_rmd_files.yaml", bookdown_yaml = "_bookdown.yml") {
+
+
+preview_chapter_fun <- function(part,chapter, rmd_files = "_rmd_files.yaml") {
   require(yaml)
   require(purrr)
   struc <- read_yaml(rmd_files)
   
   stopifnot(part %in% imap(struc,~.y))
   stopifnot(chapter %in% imap(struc[[part]]$chapters,~.y))
-  # map(struc,function(x){imap(x$chapters,~.y))
-  
+
   sec <- struc[[part]]$chapters[[chapter]]
   
   part_index <- struc[[part]]$index
@@ -143,19 +146,80 @@ preview_chapter2 <- function(part,chapter, rmd_files = "_rmd_files.yaml", bookdo
   
   rmds <- c("index.Rmd",chapter_index, subchapters)
   
-  bookdown_yaml_original <- read_yaml(bookdown_yaml)
-  bookdown_yaml_new <- bookdown_yaml_original
+  if(file.exists("_bookdown.yml")){stop("_bokdown.yml already exists. Please rename this file to '_bookdown.yaml' and rerun the function")}
+  if(!file.exists("_bookdown.yaml")){stop("_bokdown.yaml does not exist. Please create this file and rerun the function.")}
   
-  bookdown_yaml_new$rmd_files <- rmds
+  bookdown_yaml <- read_yaml("_bookdown.yaml")
   
-  warning("overwriting ",bookdown_yaml," with updated content (restoring later)")
-  write_yaml(bookdown_yaml_new,bookdown_yaml)
+  bookdown_yaml$rmd_files <- rmds
+  
+  write_yaml(bookdown_yaml,"_bookdown.yml")
   
   bookdown::render_book("index.Rmd")
   
-  print("restoring old files")
-  write_yaml(bookdown_yaml_original,bookdown_yaml)
+  file.remove("_bookdown.yml")
   
 }
 
+
+preview_chapter_app <- function(rmd_files = "_rmd_files.yaml"){
+  require(yaml)
+  require(purrr)
+  require(shiny)
+  require(stringr)
+  struc <- read_yaml(rmd_files)
+  parts <- imap_chr(struc, ~.y) 
+  chapters <- imap(parts, ~names(struc[[.x]][["chapters"]])) %>% invisible()
+  
+  choices <- imap(chapters, function(x,y){
+    z <- as.list(paste(y,x,sep = "|"))
+    names(z) <- x
+    z
+  })
+  
+  
+  # Define UI for application that draws a histogram
+  ui <- fluidPage(
+    
+    # Application title
+    
+    # Sidebar with a slider input for number of bins 
+    sidebarLayout(
+      sidebarPanel(
+        textOutput("result")
+      ),
+      
+      # Show a plot of the generated distribution
+      mainPanel(
+        selectInput("partinput","Select a Part",choices),
+        actionButton("run","build Book")
+      )
+    )
+  )
+  
+  # Define server logic required to draw a histogram
+  server <- function(input, output) {
+    
+    output$result <- renderText({
+      choice_str <- input$partinput
+      choice_mat <- str_split_fixed(choice_str,"\\|",2)
+      part <- choice_mat[,1]
+      chapter <- choice_mat[,2]
+      paste0("You chose part '", part, "' and chapter '",chapter,"'")
+    })
+    
+    observeEvent(input$run, {
+      choice_str <- input$partinput
+      choice_mat <- str_split_fixed(choice_str,"\\|",2)
+      part <- choice_mat[,1]
+      chapter <- choice_mat[,2]
+      preview_chapter_fun(part = part,chapter = chapter,rmd_files = rmd_files)
+      
+      
+    })
+  }
+  
+  # Run the application 
+  shinyApp(ui = ui, server = server)
+}
 
