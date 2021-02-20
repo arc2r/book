@@ -155,9 +155,11 @@ preview_chapter_fun <- function(part,chapter, rmd_files = "_rmd_files.yaml") {
   
   write_yaml(bookdown_yaml,"_bookdown.yml")
   
-  bookdown::render_book("index.Rmd")
+  index_location <- bookdown::render_book("index.Rmd")
   
   file.remove("_bookdown.yml")
+  
+  rstudioapi::viewer(index_location)
   
 }
 
