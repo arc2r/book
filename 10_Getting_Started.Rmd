@@ -2,4 +2,16 @@
 
 # About this section {-}
 
-This Section will cover the some general differences between ArcGIS and `R`. 
+This section will cover the some general concepts to be aware of when switching from ArcGIS to `R`. In our view, here is a (non exhaustive) list of the main differences between the two approaches:
+
+- The fundamental building block of ArcGIS is a visual representation of your data (i.e. the map). The fundamental building block in `R` is your R-Script. The visual aspect makes ArcGIS more approachable, but also less scalable.
+- When you acquire ArcGIS, you are served from a single source. In `R`, there are a plethora of developers creating packages for you to use, which can be quite overwhelming
+- While there are always multiple ways to solve a problem in ArcGIS, there are usually many more ways to solve it in `R`. Finding the right way is not always easy.
+- When you transition from a proprietary Software like ArcGIS to [FOSS](https://en.wikipedia.org/wiki/Free_and_open-source_software), you have to relearn many of the concepts because the proprietary software usually do not adhere to common standards.
+- ArcGIS follows the concept of creating a tool for *every* situation you might encounter. With this approach, they provide a selection of > 1'000 geoprocessing tools to your disposal. Generally speaking, the authors of Packages will try to keep the number of functions as small as possible, since this reduces maintenance.
+<!--
+//todo add this somewhere
+//body when you add a shapefile to your arcgis project, you basically have a "connection" to this file. in R, you create a virtual copy / an R representation of your dataset within your r session
+-->
+
+
