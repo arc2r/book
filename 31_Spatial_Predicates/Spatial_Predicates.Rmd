@@ -2,138 +2,29 @@
 
 In Opensource GIS Applications, there is a common standard to describe various relationships between features. They are referred to as ["Spatial predicates"](https://en.wikipedia.org/wiki/DE-9IM#Spatial_predicates) and are defined as follows. Take two geometries, `a` and `b`:
 
--   **Equals**: `a` and `b` are equal if
-
-    -   their interiors intersect and
-    -   no part of the interior or boundary of one geometry intersects the exterior of the other
-
--   **Disjoint**: `a` and `b` are disjoint if they have no point in common (they form a set of disconnected geometries)
-
--   **Touches**: `a` and `b` touch if
-
-    -   they have at least one point in common but
-    -   their interiors do not intersect
-
--   **Contains**: `a` contains `b` if
-
-    -   no points of `b` lie in the exterior of `a` and
-    -   at least one point of the interior of `b` lies in the interior of `a`
-
--   **Covers**: `a` covers `b` if at least one point of `b` lies in `a`, and no point of `b` lies in the exterior of `a`
-
--   **Intersects**: `a` and `b` intersect if the two geometries have at least one point in common
-
--   **Within** (inside): `a` is within `b` if `a` lies in the interior of the `b`
-
--   **CoveredBy**: `a` is covered by `b` if `a` lies in `b`
-
--   **Crosses**: `a` crosses `b` if they have some but not all interior points in common.
-
--   **Overlaps**: `a` overlaps `b`
-
-    -   if they have some (but not all) points in common and
-    -   they have the same dimension and
-    -   the intersection of the interiors of the two geometries has the same dimension as the geometries themselves
-
-```{r, topologyposter, fig.cap="The 32 different topolgy rules that you can apply to one or more feature datasets in ArcGIS", echo = FALSE}
-knitr::include_graphics("images/topology_rules_poster.jpg")
-```
-
-In R, you can check topology using the DE-9IM together with `st_relate()`.
-
-<!-- ## Some examples -->
-
-<!-- Let's have a look at some examples from the named predicates as defined above. -->
-
-<!-- ### Equals -->
+- **Equals**: `a` and `b` are equal if
+  - their interiors intersect and
+  - no part of the interior or boundary of one geometry intersects the exterior of the other
+- **Disjoint**: `a` and `b` are disjoint if they have no point in common (they form a set of disconnected geometries)
+- **Touches**: `a` and `b` touch if
+  - they have at least one point in common but
+  - their interiors do not intersect
+- **Contains**: `a` contains `b` if
+  - no points of `b` lie in the exterior of `a` and
+  - at least one point of the interior of `b` lies in the interior of `a`
+- **Covers**: `a` covers `b` if at least one point of `b` lies in `a`, and no point of `b` lies in the exterior of `a`
+- **Intersects**: `a` and `b` intersect if the two geometries have at least one point in common
+- **Within** (inside): `a` is within `b` if `a` lies in the interior of the `b`
+- **CoveredBy**: `a` is covered by `b` if `a` lies in `b`
+- **Crosses**: `a` crosses `b` if they have some but not all interior points in common.
+- **Overlaps**: `a` overlaps `b`
+  - if they have some (but not all) points in common and
+  - they have the same dimension and
+  - the intersection of the interiors of the two geometries has the same dimension as the geometries themselves
 
 
-<!--
-/ todo: Write an example for this chapter, reusing the same dataset if possible
-/  and using the data from the arc2r package
-/  assignees: KimboGilda
--->
 
-<!-- ### Disjoint -->
-
-<!--
-/ todo: Write an example for this chapter, reusing the same dataset if possible
-/  and using the data from the arc2r package
-/  assignees: KimboGilda
-/  assignees: KimboGilda
---> 
-
-<!-- ### Touches -->
-
-
-<!--
-/ todo: Write an example for this chapter, reusing the same dataset if possible
-/  and using the data from the arc2r package
-/  assignees: KimboGilda
--->
-
-
-<!-- ### Contains -->
-
-
-<!--
-/ todo: Write an example for this chapter, reusing the same dataset if possible
-/  and using the data from the arc2r package
-/  assignees: KimboGilda
--->
-
-<!-- ### Covers -->
-
-
-<!--
-/ todo: Write an example for this chapter, reusing the same dataset if possible
-/  and using the data from the arc2r package
-/  assignees: KimboGilda
--->
-
-<!-- ### Intersects -->
-
-<!--
-/ todo: Write an example for this chapter, reusing the same dataset if possible
-/  and using the data from the arc2r package
-/  assignees: KimboGilda
--->
-
-<!-- ### Within -->
-
-
-<!--
-/ todo: Write an example for this chapter, reusing the same dataset if possible
-/  and using the data from the arc2r package
-/  assignees: KimboGilda
--->
-
-<!-- ### CoveredBy -->
-
-
-<!--
-/ todo: Write an example for this chapter, reusing the same dataset if possible
-/  and using the data from the arc2r package
-/  assignees: KimboGilda
--->
-
-<!-- ### Crosses -->
-
-
-<!--
-/ todo: Write an example for this chapter, reusing the same dataset if possible
-/  and using the data from the arc2r package
-/  assignees: KimboGilda
--->
-
-<!-- ### Overlaps -->
-
-
-<!--
-/ todo: Write an example for this chapter, reusing the same dataset if possible
-/  and using the data from the arc2r package
-/  assignees: KimboGilda
--->
+## Named predicates
 
 ### Touches
 
@@ -176,7 +67,7 @@ chessplot +
   geom_sf(data = chessboard[sel36,], fill = "red",alpha = 0.4)
 ```
 
-### Custom relationships
+## Custom predicates
 
 These named spatial predicates are all based on the [Dimensionally Extended 9-Intersection Model (DE-9IM)](https://en.wikipedia.org/wiki/DE-9IM#Spatial_predicates).
 
@@ -184,7 +75,7 @@ Regarding the chessboard example above, we can imagine a chess piece placed on f
 
 None of the named topological relationships above (\@ref(spatial-predicates)) correctly describes this case (`touches_but_not_at_edges` or `shares_boundary` would be appropriate). In this case, we can use the Dimensionally Extended 9-Intersection Model (DE-9IM) to precisely formulate the relationship we are looking for: the Rooks Case.
 
-IN DE-9IM, the intersection of two objects is viewed at three levels for each object: The Interior, the Boundary and the Exterior ($3^2= 9$, hence the name). These levels mean different things for Polygons, Lines or Points, but let's just look at the simple case for now, polygons (which is the case for our chess fields). Take the following example
+IN DE-9IM, the intersection of two objects is viewed at three levels for each object: The Interior, the Boundary and the Exterior ($3^2= 9$, hence the name). These levels mean different things for Polygons, Lines or Points, but let's just look at the simple case for now, polygons (which is the case for our chess fields). Take the example of two partially overlapping squares as shown below:
 
 ```{r, echo = FALSE}
 mat <- matrix(c(0,0,1,0,1,1,0,1,0,0),ncol = 2,byrow = TRUE)
@@ -199,11 +90,11 @@ ggplot() +
   theme_void()
 ```
 
-The interior of a polygon is the area inside the polygon. If the two areas overlap (as is the case of blue and red), the result from an intersection would also be a polygon. More formally: The Dimesion of $I(blue) \cap I(red)$ is an area. Areas get a value of 2, Lines 1 and points 0. If there is no intersection (as is the case in blue and green), the result equals to `FALSE`.
+The interior of a polygon is the area *inside* the polygon. If the two areas overlap (as is the case of blue and red), the result from an intersection would also be a polygon. More formally: The dimesion of $I(blue) \cap I(red)$ is an area. Areas get a value of 2, Lines 1 and points 0. If there is no intersection, the result equals to `FALSE`.
 
 This was the first of 9 Intersections. Let's look at the next one:
 
-Interior of blue with the boundry of green:
+Interior of blue with the boundary of red:
 
 ```{r, echo = FALSE}
 p2_ls <- st_cast(p2,"LINESTRING")
