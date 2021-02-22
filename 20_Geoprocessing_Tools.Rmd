@@ -2,7 +2,7 @@
 
 # About this Section {-}
 
-As described in \@ref(difficulties), ESRI's approach to building ArcGIS is to create a tool for every situation you might encounter. This is a little different in `R`. Depending on the package, the idea is usually to provide a minimal set of functions with which the user can create their *own* tools. The creators of the package `sf` are very strict on this paradigm [^github-1]. As [Roger Bivand](https://en.wikipedia.org/wiki/Roger_Bivand) [once put it](https://github.com/r-spatial/sf/issues/702#issuecomment-381488716):
+Generally speaking ESRI's approach to building ArcGIS is to create a tool for every situation you might encounter. This is a little different in `R`. Depending on the package, the idea is usually to provide a minimal set of functions with which the user can create their *own* tools. The creators of the package `sf` are very strict on this paradigm [^github-1]. As [Roger Bivand](https://en.wikipedia.org/wiki/Roger_Bivand) [once put it](https://github.com/r-spatial/sf/issues/702#issuecomment-381488716):
 
 > Users should learn to catch fish, not be given tidied fish.
 
