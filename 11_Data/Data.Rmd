@@ -1,5 +1,3 @@
-# (PART) Introduction {-}
-
 # Data Handling (I/O) {#data}
 
 ```{r, include=FALSE}
