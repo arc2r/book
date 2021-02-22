@@ -12,6 +12,3 @@ source("R/helperfunctions.R", local = knitr::knit_global())
 hierarchy_to_list("Geoprocessing Tools", "Data Management","_rmd_files.yaml")
 ```
 
-```{r, echo = FALSE, eval = FALSE}
-knitr::include_graphics("images/network/Data Management.png")
-```
