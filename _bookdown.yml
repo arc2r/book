@@ -1,5 +1,6 @@
 rmd_files:
 - index.Rmd
+- 10_Getting_Started.Rmd
 - 11_Data/Data.Rmd
 - 11_Data/import_vector.Rmd
 - 11_Data/import_raster_raster.Rmd
