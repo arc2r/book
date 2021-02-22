@@ -1,4 +1,4 @@
-## Sampling Toolset
+## Sampling Toolset {#sampling}
 
 ```{r, echo = FALSE, eval = FALSE}
 knitr::include_graphics("images/network/Data Management_Sampling.png")
@@ -13,7 +13,7 @@ library(ggplot2)
 library(dplyr)
 ```
 
-### Generate Tessellation
+### Generate Tessellation {#sampling-generatetessallation}
 
 `Generate Tessellation` tool in ArcGIS pro is used for generating a tessellated grid of regular polygon features. The generated output is covering a certain extent that usually represents the respective extent of another spatial feature. The aforementioned operation in R is possible using the function `st_make_grid` of the **sf** package. Below we present an example of how we can create a tesselated grid covering the spatial extent of the canton of Zurich in Switzerland.
 
@@ -37,12 +37,7 @@ ggplot() + geom_sf(data = zh, fill = "red") +
   theme(plot.title = element_text(hjust = 0.5), text = element_text(size=9))
 ```
 
-### Create Fishnet
-
-
-
-
-### Create Random Points
+### Create Random Points {#sampling-randompoints}
 
 `Create Random Points` tool in ArcGIS pro serves as a very straightforward way of generating randomly distributed points within an extent window, inside polygon features, on point features, or along line features. In R the respective operation can be again achieved using one of the functions provided by the **sf** package. Below we present how we can perform this operation with the function `st_sample()`.
 
@@ -59,7 +54,7 @@ ggplot() + geom_sf(data = zh) +
 ```
 
 
-### Generate Points Along Lines
+### Generate Points Along Lines {#sampling-pointsalonglines}
 
 ```{r, echo = TRUE}
 data("mountainBikes_routes")
@@ -74,16 +69,6 @@ plot(pointsOnLine1, add = TRUE, pch = 20, col = "red")
 
 <!-- ToDo -->
 <!-- I have to generalise it to every line of the dataframe -->
-
-
-### Generate Rectangles Along Lines
-
-
-
-### Generate Transects Along Lines
-
-
-
 
 
 

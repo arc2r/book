@@ -1,4 +1,4 @@
-## Joins and Relates Toolset
+## Joins and Relates Toolset  {#join}
 
 <!--
 //todo revise this chapter
@@ -26,7 +26,7 @@ Before we begin with our examples, we have to make clear the differences among t
 knitr::include_graphics("images/joins.png")
 ```
       
-### Inner join
+### Inner join  {#join-inner}
 
 `Inner Join` in R is the most common type of join. It is an operation that returns the rows when the matching condition is fulfilled. Below we demonstrate it with an example.
 
@@ -50,7 +50,7 @@ df2
 df1 %>% inner_join(df2)
 ```
 
-### Outer join
+### Outer join  {#join-outer}
 
 `Outer join` in R using simply returns all rows from both data frames. This is very well depicted in figure \@ref(fig:joins).
 
@@ -58,7 +58,7 @@ df1 %>% inner_join(df2)
 full_join(df1,df2)
 ```
 
-### Left / Right join
+### Left / Right join  {#join-left}
 
 The `left join` in R returns all records from the data frame on the left, as well as and the matched records from the one at the right.  
 

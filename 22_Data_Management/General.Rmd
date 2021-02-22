@@ -1,5 +1,5 @@
 
-## General Toolset
+## General Toolset {#general}
 
 ```{r, echo = FALSE, eval = FALSE}
 knitr::include_graphics("images/network/Data Management_General.png")
@@ -14,7 +14,7 @@ library(ggplot2)
 library(dplyr)
 ```
 
-### Sort
+### Sort {#general-sort}
 
 Sorting out features in ascending or descending order seems a quite primitive operation in any programming language or software package. Even though it is indeed primitive, it is also quite important for filtering and cleaning our datasets. In ArcGIS pro this operation is performed using the tool `Sort`, which is part of the General toolset of the Data Managenent Toolbox. Below we present how we can perform the aforementioned operation using R. For our example we use the Simple Feature object **bezirke**, which depicts the districts within the country of Switzerland. Furthermore for performing the sorting operation, we use the record(column) that represents the area (in square km) of every of the districts. 
 
@@ -48,7 +48,7 @@ head(bezirke_arrange_desc)
 
 
 
-### Rename
+### Rename {#general-rename}
 
 `Rename` tool in ArcGIS pro serves as a very simple way of changing the name of a dataset. This applies to any of the available data types, such as feature dataset, raster, table, and shapefile. Let's see below how we can perform a similar operation in R. The easiest way to do it is by reassigning the dataset to a new variable. R is smart enough not to make a copy if the variable is exactly the same.
 
@@ -67,7 +67,7 @@ tracemem(swimming_spots_zh) # --> <000001F24AB616E8>
 As we can see both objects point to the same address. R makes a new copy in the memory only if one of them is modified.
 
 
-### Merge
+### Merge {#general-merge}
 
 
 `Merge` tool in ArcGIS pro is mainly used for combining datasets from different sources into a new, single output dataset. The main prerequisite for this operation is that the merging datasets have to be of the same geometry class. In R the aforementioned operation could be performed as follows:
@@ -91,7 +91,7 @@ ggplot(merged) + geom_sf() # depicting the product of the merge operation
 ```
 
 
-### Dissolve
+### Dissolve {#general-dissolve}
 
 `Dissolve` in ArcGIS pro serves as a basic tool for aggregating features based on specified attributes. In R the respective operation could be easily performed using some basic functionalities of the `sf` package. In the example below we use again the dataset that depicts all the 26 Cantons of Switzerland. Our aim is to transform the given dataset to one unified spatial polygon. In ArcGIS pro the respective tool for this action is the tool `Dissolve`. In R on the other hand, this can be easily performed using the `st_union` function of the `sf` package.
 
@@ -115,17 +115,13 @@ ggplot(kantonsgebiet_dissolved) + geom_sf()
 ```
 
 
-### Find Identical
+### Find Identical {#general-findidentical}
 
 In ArcGIS pro `Find Identical` tool identifies records in a feature class or table that have identical values in a list of fields. As an outcome it produces a table listing those identical findings.
 
 ```{r}
 duplicated(kantonsgebiet)
 ```
-
-### Append
-
-
 
 
  

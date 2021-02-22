@@ -1,4 +1,4 @@
-## Raster Processing Toolset
+## Raster Processing Toolset {#rasterprocessing}
 
 For this chapter, you will need the following R Packages:
 
@@ -10,7 +10,7 @@ library(dplyr)
 library(stars)
 ```
 
-### Clip Raster
+### Clip Raster {#rasterprocessing-clipraster}
 
 In GIS operations is quite common the necessity of "clipping" an area based on some specific region of interest. This is a quite useful and necessary procedure not only when we are dealing with vector datasets, but also when we have to work with raster ones. In ArcGIS pro the procedure of "cutting" a portion of a raster dataset, mosaic dataset, or an image service layer is performed using `Clip Raster` tool. In R, the respective operation can be performed using the _mask()_ function. For the example below, we are using the following datasets:
 
