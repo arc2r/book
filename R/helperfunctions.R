@@ -38,11 +38,11 @@ check_rmdfiles_missing <- function(pattern = ".Rmd") {
 
 
 
-yaml_to_rmdfiles <- function(rmd_files_yaml = "_rmd_files.yaml"){
+yaml_to_rmdfiles <- function(rmd_files_yaml){
   require(yaml)
   require(purrr)
   
-  yaml::read_yaml(rmd_files_yaml) %>%
+  rmd_files_yaml %>%
     map(function(part){
       
       index_rmd <- part$index
@@ -60,10 +60,13 @@ yaml_to_rmdfiles <- function(rmd_files_yaml = "_rmd_files.yaml"){
 }
 
 
-update_bookdownyaml <- function(rmd_files_yaml = "_rmd_files.yaml"){
+update_bookdownyaml <- function(rmd_files_yaml_name = "_rmd_files.yaml"){
   require(yaml)
   bookdown_yaml_file <- sort(list.files(pattern = "_bookdown.ya*ml"),FALSE)[1]
   bookdown_yaml <- read_yaml(bookdown_yaml_file)
+  rmd_files_yaml <- yaml::read_yaml(rmd_files_yaml_name)
+  
+  
   bookdown_yaml$rmd_files <- c("index.Rmd",unlist(yaml_to_rmdfiles(rmd_files_yaml)))
   write_yaml(bookdown_yaml, bookdown_yaml_file)
   warning(bookdown_yaml_file," has been overwritten. Check your git diff!")
@@ -130,46 +133,41 @@ hierarchy_to_list <- function(part, chapter,rmd_files_yaml = "_rmd_files.yaml"){
 
 
 
-preview_chapter_fun <- function(part,chapter, rmd_files = "_rmd_files.yaml") {
+preview_chapter_fun <- function(part,chapters, rmd_files_yaml_file = "_rmd_files.yaml", bookdown_yaml_name = "_bookdown.yml") {
   require(yaml)
   require(purrr)
-  struc <- read_yaml(rmd_files)
+  rmd_files_yaml <- read_yaml(rmd_files_yaml_file)
   
-  stopifnot(part %in% imap(struc,~.y))
-  stopifnot(chapter %in% imap(struc[[part]]$chapters,~.y))
-
-  sec <- struc[[part]]$chapters[[chapter]]
   
-  part_index <- struc[[part]]$index
-  chapter_index <- file.path(sec$folder, sec$index)
-  subchapters <- file.path(sec$folder,sec$subchapters)
+  rmd_files_yaml[names(rmd_files_yaml) != part] <- NULL
   
-  rmds <- c("index.Rmd",chapter_index, subchapters)
+  rmd_files_yaml[[part]]$chapters[!names(rmd_files_yaml[[part]]$chapters) %in% chapters] <- NULL
   
-  if(file.exists("_bookdown.yml")){stop("_bokdown.yml already exists. Please rename this file to '_bookdown.yaml' and rerun the function")}
-  if(!file.exists("_bookdown.yaml")){stop("_bokdown.yaml does not exist. Please create this file and rerun the function.")}
+  rmds <- c("index.Rmd",unlist(yaml_to_rmdfiles(rmd_files_yaml)))
   
-  bookdown_yaml <- read_yaml("_bookdown.yaml")
+  bookdown_yaml <- read_yaml(bookdown_yaml_name)
   
   bookdown_yaml$rmd_files <- rmds
   
-  write_yaml(bookdown_yaml,"_bookdown.yml")
+  bookdown_yaml_name_temp <- tempfile(pattern = "_bookdown", fileext = ".yaml",tmpdir = getwd())
   
-  index_location <- bookdown::render_book("index.Rmd")
+  write_yaml(bookdown_yaml,bookdown_yaml_name_temp)
   
-  file.remove("_bookdown.yml")
+  index_location <- bookdown::render_book("index.Rmd",config_file = bookdown_yaml_name_temp)
+  
+  unlink(bookdown_yaml_name_temp)
   
   rstudioapi::viewer(index_location)
   
 }
 
 
-preview_chapter_app <- function(rmd_files = "_rmd_files.yaml"){
+preview_chapter_app <- function(rmd_files_yaml_file = "_rmd_files.yaml"){
   require(yaml)
   require(purrr)
   require(shiny)
   require(stringr)
-  struc <- read_yaml(rmd_files)
+  rmd_files_yaml <- read_yaml(rmd_files_yaml_file)
   parts <- imap_chr(struc, ~.y) 
   chapters <- imap(parts, ~names(struc[[.x]][["chapters"]])) %>% invisible()
   
@@ -193,7 +191,7 @@ preview_chapter_app <- function(rmd_files = "_rmd_files.yaml"){
       
       # Show a plot of the generated distribution
       mainPanel(
-        selectInput("partinput","Select a Part",choices),
+        selectInput("partinput","Select a chapter",choices,multiple = TRUE),
         actionButton("run","build Book")
       )
     )
@@ -207,16 +205,31 @@ preview_chapter_app <- function(rmd_files = "_rmd_files.yaml"){
       choice_mat <- str_split_fixed(choice_str,"\\|",2)
       part <- choice_mat[,1]
       chapter <- choice_mat[,2]
-      paste0("You chose part '", part, "' and chapter '",chapter,"'")
+      # paste0("You chose part '", part, "' and chapter '",chapter,"'")
+      choice_str
     })
     
     observeEvent(input$run, {
       choice_str <- input$partinput
       choice_mat <- str_split_fixed(choice_str,"\\|",2)
-      part <- choice_mat[,1]
-      chapter <- choice_mat[,2]
-      preview_chapter_fun(part = part,chapter = chapter,rmd_files = rmd_files)
+      part <- unique(choice_mat[,1])
       
+      if(length(part)>1){
+        showModal(modalDialog(
+          title = "Error",
+          "Please select chapters from a single part only",
+          easyClose = TRUE
+        ))
+      } else{
+        chapters <- choice_mat[,2]
+        showModal(modalDialog(
+          title = "Building book now",
+          "The book is now going to be built in the console. You can close this dialog now, or it will close automatically after completion.",
+          easyClose = TRUE
+        ))
+        preview_chapter_fun(part = part,chapters = chapters,rmd_files_yaml_file = rmd_files_yaml_file)
+        stopApp()
+      }
       
     })
   }
