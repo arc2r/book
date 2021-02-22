@@ -81,11 +81,11 @@
         index: Spatial_Predicates.Rmd
         subchapters: NULL
       DE-9IM:
-        folder: DE-9IM
+        folder: 32_DE-9IM
         index: DE-9IM.Rmd
         subchapters: NULL
       Toplogy Rules:
-        folder: 32_Topology_Rules
+        folder: 33_Topology_Rules
         index: Topology_Rules.Rmd
         subchapters:
           - Polygon.Rmd
