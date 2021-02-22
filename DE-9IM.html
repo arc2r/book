@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>12 DE-9IM | All things R Spatial</title>
+  <meta name="description" content="12 DE-9IM | All things R Spatial" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="12 DE-9IM | All things R Spatial" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="12 DE-9IM | All things R Spatial" />
+  
+  
+  
+
+<meta name="author" content="Nils Ratnaweera and Nikolaos Bakogiannis" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="Spatial_Predicates.html"/>
+<link rel="next" href="Topology_Rules.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script>
+<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.0.4.1/leaflet-providers-plugin.js"></script>
+<script src="libs/FlatGeoBuf-3.3.3/fgb.js"></script>
+<script src="libs/FlatGeoBuf-3.3.3/flatgeobuf-geojson.min.js"></script>
+<script src="libs/chromajs-2.1.0/chroma.min.js"></script>
+<link id="gemeindegrenzen_zh-1-attachment" rel="attachment" href="libs/gemeindegrenzen_zh-0.0.1/gemeindegrenzen_zh_layer.fgb"/>
+<link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
+<script src="libs/HomeButton-0.0.1/home-button.js"></script>
+<script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
+<script src="libs/clipboard-0.0.1/setClipboardText.js"></script>
+<link href="libs/mapviewCSS-0.0.1/mapview-popup.css" rel="stylesheet" />
+<link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
+<script src="libs/d3-4.5.0/d3.min.js"></script>
+<script src="libs/diagonalNetwork-binding-0.4/diagonalNetwork.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="https://arc2r.github.io/arc2r">Package Website</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome!</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#what-this-book-is-about"><i class="fa fa-check"></i><b>1.1</b> What this book is about</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#how-it-started"><i class="fa fa-check"></i><b>1.2</b> How it started</a></li>
+</ul></li>
+<li class="part"><span><b>I Getting Started</b></span></li>
+<li class="chapter" data-level="" data-path="10_Getting_Started.html"><a href="10_Getting_Started.html"><i class="fa fa-check"></i>About this section</a></li>
+<li class="chapter" data-level="2" data-path="Data.html"><a href="Data.html"><i class="fa fa-check"></i><b>2</b> Data Handling (I/O)</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="import_vector.html"><a href="import_vector.html"><i class="fa fa-check"></i><b>2.1</b> Importing vector data with <code>sf</code></a></li>
+<li class="chapter" data-level="2.2" data-path="import_raster_raster.html"><a href="import_raster_raster.html"><i class="fa fa-check"></i><b>2.2</b> Importing raster data with <code>raster</code></a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="import_raster_raster.html"><a href="import_raster_raster.html#single-band-raster"><i class="fa fa-check"></i><b>2.2.1</b> Single band raster</a></li>
+<li class="chapter" data-level="2.2.2" data-path="import_raster_raster.html"><a href="import_raster_raster.html#multiband-raster"><i class="fa fa-check"></i><b>2.2.2</b> Multiband Raster</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="import_raster_terra.html"><a href="import_raster_terra.html"><i class="fa fa-check"></i><b>2.3</b> Importing raster data with <code>terra</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="Making_Maps.html"><a href="Making_Maps.html"><i class="fa fa-check"></i><b>3</b> Making Maps</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="Static_Maps.html"><a href="Static_Maps.html"><i class="fa fa-check"></i><b>3.1</b> Static Maps</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="Static_Maps.html"><a href="Static_Maps.html#package-ggplot2"><i class="fa fa-check"></i><b>3.1.1</b> Package <code>ggplot2</code></a></li>
+<li class="chapter" data-level="3.1.2" data-path="Static_Maps.html"><a href="Static_Maps.html#package-tmap"><i class="fa fa-check"></i><b>3.1.2</b> Package <code id="static-maps-tmap">tmap</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="Dynamic_Maps.html"><a href="Dynamic_Maps.html"><i class="fa fa-check"></i><b>3.2</b> Interactive Maps</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="Dynamic_Maps.html"><a href="Dynamic_Maps.html#package-mapview"><i class="fa fa-check"></i><b>3.2.1</b> Package <code>mapview</code></a></li>
+<li class="chapter" data-level="3.2.2" data-path="Dynamic_Maps.html"><a href="Dynamic_Maps.html#package-tmap-1"><i class="fa fa-check"></i><b>3.2.2</b> Package <code>tmap</code></a></li>
+<li class="chapter" data-level="3.2.3" data-path="Dynamic_Maps.html"><a href="Dynamic_Maps.html#further-ressources"><i class="fa fa-check"></i><b>3.2.3</b> Further ressources</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="Select.html"><a href="Select.html"><i class="fa fa-check"></i><b>4</b> Selection</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="Select_by_Attribute.html"><a href="Select_by_Attribute.html"><i class="fa fa-check"></i><b>4.1</b> Select by Attribute</a></li>
+<li class="chapter" data-level="4.2" data-path="Select_by_Location.html"><a href="Select_by_Location.html"><i class="fa fa-check"></i><b>4.2</b> Select by Location</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="Select_by_Location.html"><a href="Select_by_Location.html#intersect"><i class="fa fa-check"></i><b>4.2.1</b> Intersect</a></li>
+<li class="chapter" data-level="4.2.2" data-path="Select_by_Location.html"><a href="Select_by_Location.html#intersect_3d"><i class="fa fa-check"></i><b>4.2.2</b> Intersect_3d</a></li>
+<li class="chapter" data-level="4.2.3" data-path="Select_by_Location.html"><a href="Select_by_Location.html#within_a_distance"><i class="fa fa-check"></i><b>4.2.3</b> Within_a_distance</a></li>
+<li class="chapter" data-level="4.2.4" data-path="Select_by_Location.html"><a href="Select_by_Location.html#within_a_distance_3d"><i class="fa fa-check"></i><b>4.2.4</b> Within_a_distance_3d</a></li>
+<li class="chapter" data-level="4.2.5" data-path="Select_by_Location.html"><a href="Select_by_Location.html#within_a_distance_geodesic"><i class="fa fa-check"></i><b>4.2.5</b> Within_a_distance_geodesic</a></li>
+<li class="chapter" data-level="4.2.6" data-path="Select_by_Location.html"><a href="Select_by_Location.html#contains"><i class="fa fa-check"></i><b>4.2.6</b> Contains</a></li>
+<li class="chapter" data-level="4.2.7" data-path="Select_by_Location.html"><a href="Select_by_Location.html#completely_contains"><i class="fa fa-check"></i><b>4.2.7</b> Completely_contains</a></li>
+<li class="chapter" data-level="4.2.8" data-path="Select_by_Location.html"><a href="Select_by_Location.html#contains_clementini"><i class="fa fa-check"></i><b>4.2.8</b> Contains_clementini</a></li>
+<li class="chapter" data-level="4.2.9" data-path="Select_by_Location.html"><a href="Select_by_Location.html#within"><i class="fa fa-check"></i><b>4.2.9</b> Within</a></li>
+<li class="chapter" data-level="4.2.10" data-path="Select_by_Location.html"><a href="Select_by_Location.html#completely_within"><i class="fa fa-check"></i><b>4.2.10</b> Completely_within</a></li>
+<li class="chapter" data-level="4.2.11" data-path="Select_by_Location.html"><a href="Select_by_Location.html#within_clementini"><i class="fa fa-check"></i><b>4.2.11</b> Within_clementini</a></li>
+<li class="chapter" data-level="4.2.12" data-path="Select_by_Location.html"><a href="Select_by_Location.html#are_identical_to"><i class="fa fa-check"></i><b>4.2.12</b> Are_identical_to</a></li>
+<li class="chapter" data-level="4.2.13" data-path="Select_by_Location.html"><a href="Select_by_Location.html#boundary_touches"><i class="fa fa-check"></i><b>4.2.13</b> Boundary_touches</a></li>
+<li class="chapter" data-level="4.2.14" data-path="Select_by_Location.html"><a href="Select_by_Location.html#share_a_line_segment_with"><i class="fa fa-check"></i><b>4.2.14</b> Share_a_line_segment_with</a></li>
+<li class="chapter" data-level="4.2.15" data-path="Select_by_Location.html"><a href="Select_by_Location.html#crossed_by_the_outline_of"><i class="fa fa-check"></i><b>4.2.15</b> Crossed_by_the_outline_of</a></li>
+<li class="chapter" data-level="4.2.16" data-path="Select_by_Location.html"><a href="Select_by_Location.html#have_their_center_in"><i class="fa fa-check"></i><b>4.2.16</b> Have_their_center_in</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II Geoprocessing Tools</b></span></li>
+<li class="chapter" data-level="" data-path="20_Geoprocessing_Tools.html"><a href="20_Geoprocessing_Tools.html"><i class="fa fa-check"></i>About this Section</a></li>
+<li class="chapter" data-level="5" data-path="Analysis.html"><a href="Analysis.html"><i class="fa fa-check"></i><b>5</b> Analysis Toolbox</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="Extract.html"><a href="Extract.html"><i class="fa fa-check"></i><b>5.1</b> Extract Toolset</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="Extract.html"><a href="Extract.html#clip"><i class="fa fa-check"></i><b>5.1.1</b> Clip</a></li>
+<li class="chapter" data-level="5.1.2" data-path="Extract.html"><a href="Extract.html#select"><i class="fa fa-check"></i><b>5.1.2</b> Select</a></li>
+<li class="chapter" data-level="5.1.3" data-path="Extract.html"><a href="Extract.html#split"><i class="fa fa-check"></i><b>5.1.3</b> Split</a></li>
+<li class="chapter" data-level="5.1.4" data-path="Extract.html"><a href="Extract.html#split-by-attributes"><i class="fa fa-check"></i><b>5.1.4</b> Split by Attributes</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="Overlay.html"><a href="Overlay.html"><i class="fa fa-check"></i><b>5.2</b> Overlay Toolset</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="Overlay.html"><a href="Overlay.html#spatial-join"><i class="fa fa-check"></i><b>5.2.1</b> Spatial Join</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="Proximity.html"><a href="Proximity.html"><i class="fa fa-check"></i><b>5.3</b> Proximity Toolset</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="Proximity.html"><a href="Proximity.html#buffer"><i class="fa fa-check"></i><b>5.3.1</b> Buffer</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="Data_Management.html"><a href="Data_Management.html"><i class="fa fa-check"></i><b>6</b> Data Management Toolbox</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="General.html"><a href="General.html"><i class="fa fa-check"></i><b>6.1</b> General Toolset</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="General.html"><a href="General.html#general-sort"><i class="fa fa-check"></i><b>6.1.1</b> Sort</a></li>
+<li class="chapter" data-level="6.1.2" data-path="General.html"><a href="General.html#general-rename"><i class="fa fa-check"></i><b>6.1.2</b> Rename</a></li>
+<li class="chapter" data-level="6.1.3" data-path="General.html"><a href="General.html#general-merge"><i class="fa fa-check"></i><b>6.1.3</b> Merge</a></li>
+<li class="chapter" data-level="6.1.4" data-path="General.html"><a href="General.html#general-dissolve"><i class="fa fa-check"></i><b>6.1.4</b> Dissolve</a></li>
+<li class="chapter" data-level="6.1.5" data-path="General.html"><a href="General.html#general-findidentical"><i class="fa fa-check"></i><b>6.1.5</b> Find Identical</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="Join.html"><a href="Join.html"><i class="fa fa-check"></i><b>6.2</b> Joins and Relates Toolset</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="Join.html"><a href="Join.html#join-inner"><i class="fa fa-check"></i><b>6.2.1</b> Inner join</a></li>
+<li class="chapter" data-level="6.2.2" data-path="Join.html"><a href="Join.html#join-outer"><i class="fa fa-check"></i><b>6.2.2</b> Outer join</a></li>
+<li class="chapter" data-level="6.2.3" data-path="Join.html"><a href="Join.html#join-left"><i class="fa fa-check"></i><b>6.2.3</b> Left / Right join</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="Projections_and_Transformations.html"><a href="Projections_and_Transformations.html"><i class="fa fa-check"></i><b>6.3</b> Projections and Transformations Toolset</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="Projections_and_Transformations.html"><a href="Projections_and_Transformations.html#projections-defineprojection"><i class="fa fa-check"></i><b>6.3.1</b> Define Projection</a></li>
+<li class="chapter" data-level="6.3.2" data-path="Projections_and_Transformations.html"><a href="Projections_and_Transformations.html#projections-project"><i class="fa fa-check"></i><b>6.3.2</b> Project</a></li>
+<li class="chapter" data-level="6.3.3" data-path="Projections_and_Transformations.html"><a href="Projections_and_Transformations.html#projections-projectraster"><i class="fa fa-check"></i><b>6.3.3</b> Project Raster</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="Raster_Processing.html"><a href="Raster_Processing.html"><i class="fa fa-check"></i><b>6.4</b> Raster Processing Toolset</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="Raster_Processing.html"><a href="Raster_Processing.html#rasterprocessing-clipraster"><i class="fa fa-check"></i><b>6.4.1</b> Clip Raster</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="Sampling.html"><a href="Sampling.html"><i class="fa fa-check"></i><b>6.5</b> Sampling Toolset</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="Sampling.html"><a href="Sampling.html#sampling-generatetessallation"><i class="fa fa-check"></i><b>6.5.1</b> Generate Tessellation</a></li>
+<li class="chapter" data-level="6.5.2" data-path="Sampling.html"><a href="Sampling.html#sampling-randompoints"><i class="fa fa-check"></i><b>6.5.2</b> Create Random Points</a></li>
+<li class="chapter" data-level="6.5.3" data-path="Sampling.html"><a href="Sampling.html#sampling-pointsalonglines"><i class="fa fa-check"></i><b>6.5.3</b> Generate Points Along Lines</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="Spatial_Analyst.html"><a href="Spatial_Analyst.html"><i class="fa fa-check"></i><b>7</b> Spatial Analyst Toolbox</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="Neighborhood.html"><a href="Neighborhood.html"><i class="fa fa-check"></i><b>7.1</b> Neighborhood toolset</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="Neighborhood.html"><a href="Neighborhood.html#focal-statistics"><i class="fa fa-check"></i><b>7.1.1</b> Focal Statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="Zonal.html"><a href="Zonal.html"><i class="fa fa-check"></i><b>7.2</b> Zonal toolset</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="Zonal.html"><a href="Zonal.html#zonal-statistics"><i class="fa fa-check"></i><b>7.2.1</b> Zonal Statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="Reclass.html"><a href="Reclass.html"><i class="fa fa-check"></i><b>7.3</b> Reclass Toolset</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="Reclass.html"><a href="Reclass.html#reclassify"><i class="fa fa-check"></i><b>7.3.1</b> Reclassify</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="Density.html"><a href="Density.html"><i class="fa fa-check"></i><b>7.4</b> Density Toolset</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="Density.html"><a href="Density.html#kernel-density"><i class="fa fa-check"></i><b>7.4.1</b> Kernel Density</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="Surface.html"><a href="Surface.html"><i class="fa fa-check"></i><b>7.5</b> Surface Toolset</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="Surface.html"><a href="Surface.html#slope-and-aspect"><i class="fa fa-check"></i><b>7.5.1</b> Slope and Aspect</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="Spatial_Statistics.html"><a href="Spatial_Statistics.html"><i class="fa fa-check"></i><b>8</b> Spatial Statistics Toolbox</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="Analysing_Patterns.html"><a href="Analysing_Patterns.html"><i class="fa fa-check"></i><b>8.1</b> Analysing Patterns Toolset</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="Analysing_Patterns.html"><a href="Analysing_Patterns.html#spatial-autocorrelation-global-morans-i"><i class="fa fa-check"></i><b>8.1.1</b> Spatial Autocorrelation (Global Morans I)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="Image_Analyst.html"><a href="Image_Analyst.html"><i class="fa fa-check"></i><b>9</b> Image Analyst Toolbox</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="Map_Algebra.html"><a href="Map_Algebra.html"><i class="fa fa-check"></i><b>9.1</b> Map Algebra Toolset</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="Map_Algebra.html"><a href="Map_Algebra.html#raster-calulator"><i class="fa fa-check"></i><b>9.1.1</b> Raster Calulator</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="3D_Analyst.html"><a href="3D_Analyst.html"><i class="fa fa-check"></i><b>10</b> 3D Analyst Toolbox</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="Raster_Interpolation.html"><a href="Raster_Interpolation.html"><i class="fa fa-check"></i><b>10.1</b> Raster Interpolation Toolset</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="Raster_Interpolation.html"><a href="Raster_Interpolation.html#idw"><i class="fa fa-check"></i><b>10.1.1</b> IDW</a></li>
+<li class="chapter" data-level="10.1.2" data-path="Raster_Interpolation.html"><a href="Raster_Interpolation.html#kriging"><i class="fa fa-check"></i><b>10.1.2</b> Kriging</a></li>
+<li class="chapter" data-level="10.1.3" data-path="Raster_Interpolation.html"><a href="Raster_Interpolation.html#natural-neighbor"><i class="fa fa-check"></i><b>10.1.3</b> Natural Neighbor</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>III Topology</b></span></li>
+<li class="chapter" data-level="" data-path="30_Topology.html"><a href="30_Topology.html"><i class="fa fa-check"></i>About this section</a></li>
+<li class="chapter" data-level="11" data-path="Spatial_Predicates.html"><a href="Spatial_Predicates.html"><i class="fa fa-check"></i><b>11</b> Spatial Predicates</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="Spatial_Predicates.html"><a href="Spatial_Predicates.html#named-predicates"><i class="fa fa-check"></i><b>11.1</b> Named predicates</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="Spatial_Predicates.html"><a href="Spatial_Predicates.html#touches"><i class="fa fa-check"></i><b>11.1.1</b> Touches</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="DE-9IM.html"><a href="DE-9IM.html"><i class="fa fa-check"></i><b>12</b> DE-9IM</a></li>
+<li class="chapter" data-level="13" data-path="Topology_Rules.html"><a href="Topology_Rules.html"><i class="fa fa-check"></i><b>13</b> Topology Rules</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="Polygon.html"><a href="Polygon.html"><i class="fa fa-check"></i><b>13.1</b> Polygon</a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="Polygon.html"><a href="Polygon.html#must-not-overlap"><i class="fa fa-check"></i><b>13.1.1</b> Must not overlap</a></li>
+<li class="chapter" data-level="13.1.2" data-path="Polygon.html"><a href="Polygon.html#must-not-have-gaps"><i class="fa fa-check"></i><b>13.1.2</b> Must not have gaps</a></li>
+<li class="chapter" data-level="13.1.3" data-path="Polygon.html"><a href="Polygon.html#contains-point"><i class="fa fa-check"></i><b>13.1.3</b> Contains point</a></li>
+<li class="chapter" data-level="13.1.4" data-path="Polygon.html"><a href="Polygon.html#contains-one-point"><i class="fa fa-check"></i><b>13.1.4</b> Contains one Point</a></li>
+<li class="chapter" data-level="13.1.5" data-path="Polygon.html"><a href="Polygon.html#must-be-covered-by-feature-class-of"><i class="fa fa-check"></i><b>13.1.5</b> Must be covered by feature class of</a></li>
+<li class="chapter" data-level="13.1.6" data-path="Polygon.html"><a href="Polygon.html#boundary-must-be-covered-by"><i class="fa fa-check"></i><b>13.1.6</b> Boundary must be covered by</a></li>
+<li class="chapter" data-level="13.1.7" data-path="Polygon.html"><a href="Polygon.html#must-not-overlap-with"><i class="fa fa-check"></i><b>13.1.7</b> Must not overlap with</a></li>
+<li class="chapter" data-level="13.1.8" data-path="Polygon.html"><a href="Polygon.html#must-be-covered-by"><i class="fa fa-check"></i><b>13.1.8</b> Must be covered by</a></li>
+<li class="chapter" data-level="13.1.9" data-path="Polygon.html"><a href="Polygon.html#area-boundary-must-be-covered-by-boundary-of"><i class="fa fa-check"></i><b>13.1.9</b> Area boundary must be covered by boundary of</a></li>
+<li class="chapter" data-level="13.1.10" data-path="Polygon.html"><a href="Polygon.html#must-cover-each-other"><i class="fa fa-check"></i><b>13.1.10</b> Must cover each other</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="Line.html"><a href="Line.html"><i class="fa fa-check"></i><b>13.2</b> Line</a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="Line.html"><a href="Line.html#must-not-have-pseudo-nodes"><i class="fa fa-check"></i><b>13.2.1</b> Must not have pseudo nodes</a></li>
+<li class="chapter" data-level="13.2.2" data-path="Line.html"><a href="Line.html#must-not-have-dangles"><i class="fa fa-check"></i><b>13.2.2</b> Must not have dangles</a></li>
+<li class="chapter" data-level="13.2.3" data-path="Line.html"><a href="Line.html#must-not-self-overlap"><i class="fa fa-check"></i><b>13.2.3</b> Must not self overlap</a></li>
+<li class="chapter" data-level="13.2.4" data-path="Line.html"><a href="Line.html#must-not-overlap-1"><i class="fa fa-check"></i><b>13.2.4</b> Must not overlap</a></li>
+<li class="chapter" data-level="13.2.5" data-path="Line.html"><a href="Line.html#must-not-self-intersect"><i class="fa fa-check"></i><b>13.2.5</b> Must not self-intersect</a></li>
+<li class="chapter" data-level="13.2.6" data-path="Line.html"><a href="Line.html#must-not-intersect"><i class="fa fa-check"></i><b>13.2.6</b> Must not intersect</a></li>
+<li class="chapter" data-level="13.2.7" data-path="Line.html"><a href="Line.html#must-be-single-part"><i class="fa fa-check"></i><b>13.2.7</b> Must be single part</a></li>
+<li class="chapter" data-level="13.2.8" data-path="Line.html"><a href="Line.html#must-not-intersect-with"><i class="fa fa-check"></i><b>13.2.8</b> Must not intersect with</a></li>
+<li class="chapter" data-level="13.2.9" data-path="Line.html"><a href="Line.html#must-be-covered-by-feature-class-of-1"><i class="fa fa-check"></i><b>13.2.9</b> Must be covered by feature class of</a></li>
+<li class="chapter" data-level="13.2.10" data-path="Line.html"><a href="Line.html#must-not-intersect-or-touch-interior"><i class="fa fa-check"></i><b>13.2.10</b> Must not intersect or touch interior</a></li>
+<li class="chapter" data-level="13.2.11" data-path="Line.html"><a href="Line.html#must-be-covered-by-boundary-of"><i class="fa fa-check"></i><b>13.2.11</b> Must be covered by boundary of</a></li>
+<li class="chapter" data-level="13.2.12" data-path="Line.html"><a href="Line.html#must-not-intersect-or-touch-interior-with"><i class="fa fa-check"></i><b>13.2.12</b> Must not intersect or touch interior with</a></li>
+<li class="chapter" data-level="13.2.13" data-path="Line.html"><a href="Line.html#must-be-properly-inside"><i class="fa fa-check"></i><b>13.2.13</b> Must be properly inside</a></li>
+<li class="chapter" data-level="13.2.14" data-path="Line.html"><a href="Line.html#must-not-overlap-with-1"><i class="fa fa-check"></i><b>13.2.14</b> Must not overlap with</a></li>
+<li class="chapter" data-level="13.2.15" data-path="Line.html"><a href="Line.html#endpoint-must-be-covered-by"><i class="fa fa-check"></i><b>13.2.15</b> Endpoint must be covered by</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="Point.html"><a href="Point.html"><i class="fa fa-check"></i><b>13.3</b> Point</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="Point.html"><a href="Point.html#must-coincide-with"><i class="fa fa-check"></i><b>13.3.1</b> Must coincide with</a></li>
+<li class="chapter" data-level="13.3.2" data-path="Point.html"><a href="Point.html#must-be-disjoint"><i class="fa fa-check"></i><b>13.3.2</b> Must be disjoint</a></li>
+<li class="chapter" data-level="13.3.3" data-path="Point.html"><a href="Point.html#must-be-covered-by-endpoint-of"><i class="fa fa-check"></i><b>13.3.3</b> Must be covered by endpoint of</a></li>
+<li class="chapter" data-level="13.3.4" data-path="Point.html"><a href="Point.html#point-must-be-covered-by-line"><i class="fa fa-check"></i><b>13.3.4</b> Point must be covered by line</a></li>
+<li class="chapter" data-level="13.3.5" data-path="Point.html"><a href="Point.html#must-be-properly-inside-1"><i class="fa fa-check"></i><b>13.3.5</b> Must be properly inside</a></li>
+<li class="chapter" data-level="13.3.6" data-path="Point.html"><a href="Point.html#must-be-covered-by-boundary-of-1"><i class="fa fa-check"></i><b>13.3.6</b> Must be covered by boundary of</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="Line_or_Polygon.html"><a href="Line_or_Polygon.html"><i class="fa fa-check"></i><b>13.4</b> Line or Polygon</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="Line_or_Polygon.html"><a href="Line_or_Polygon.html#must-be-larger-than-cluster-tolarance"><i class="fa fa-check"></i><b>13.4.1</b> Must be larger than cluster tolarance</a></li>
+</ul></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="Progress.html"><a href="Progress.html"><i class="fa fa-check"></i><b>A</b> Progress</a></li>
+<li class="divider"></li>
+<li><a href="https://www.zhaw.ch/en/about-us/person/rata/">Nils Ratnaweera</a></li>
+<li><a href="https://www.zhaw.ch/en/about-us/person/bako/"> Nikolaos Bakogiannis </a></li>
+<li><a href="https://www.zhaw.ch/de/lsfm/institute-zentren/iunr/ecosystems-and-biodiversity/geoinformatik/">
+GIS @ ZHAW</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">All things R Spatial</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="de-9im" class="section level1" number="12">
+<h1><span class="header-section-number">12</span> DE-9IM</h1>
+<p>Thes named spatial predicates covered in chapter <a href="Spatial_Predicates.html#spatial-predicates">11</a> are all based on the <a href="https://en.wikipedia.org/wiki/DE-9IM#Spatial_predicates">Dimensionally Extended 9-Intersection Model (DE-9IM)</a>.</p>
+<p>Regarding the chessboard example, we can imagine a chess piece placed on field #36. If this figure was a Queen or a King, all of the fields resulting from <code>st_touches</code> are reachable. In terms of contiguity, this is what is typically called the Queen’s or the King’s Case. However, this is might not the relationship that we are looking for: Say we would want to exclude the diagonal fields from our selection, the way a Rook would move in chess. How can we implement this in <code>R</code>?</p>
+<p>None of the named topological relationships above (<a href="Spatial_Predicates.html#spatial-predicates">11</a>) correctly describes this case (<code>touches_but_not_at_edges</code> or <code>shares_boundary</code> would be appropriate). In this case, we can use the Dimensionally Extended 9-Intersection Model (DE-9IM) to precisely formulate the relationship we are looking for: the Rooks Case.</p>
+<p>IN DE-9IM, the intersection of two objects is viewed at three levels for each object: The Interior, the Boundary and the Exterior (<span class="math inline">\(3^2= 9\)</span>, hence the name). These levels mean different things for Polygons, Lines or Points, but let’s just look at the simple case for now, polygons (which is the case for our chess fields). Take the example of two partially overlapping squares as shown below:</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-137-1.png" width="672" /></p>
+<p>The interior of a polygon is the area <em>inside</em> the polygon. If the two areas overlap (as is the case of blue and red), the result from an intersection would also be a polygon. More formally: The dimesion of <span class="math inline">\(I(blue) \cap I(red)\)</span> is an area. Areas get a value of 2, Lines 1 and points 0. If there is no intersection, the result equals to <code>FALSE</code>.</p>
+<p>This was the first of 9 Intersections. Let’s look at the next one:</p>
+<p>Interior of blue with the boundary of red:</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-138-1.png" width="672" /></p>
+<p>The resulting object has a dimenion “line,” i.e. 1. Formally: <span class="math inline">\(dim(I(blue) \cap B(red)) = 1\)</span>. Now just for the sake of looking at the third level (Exerior), let’s look at what this looks like:</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-139-1.png" width="672" /></p>
+<p>The resulting object is again an area, i.e. 2. Formally <span class="math inline">\(dim(I(blue) \cap E(red)) = 2\)</span>.</p>
+<p>If we go through all intersections of <strong>I</strong>nterior, <em><code>b</code></em>oundry and <strong>E</strong>xterior of both geometries, we can denote for each comination what type of dimesion we “allow.” This can be either 0 (for points), 1 (for lines) or 3 (for areas) or <code>TRUE</code> (for either of these), or <code>FALSE</code> (for none of these) or <code>*</code> (for "I dont care).</p>
+<p><img src="https://postgis.net/workshops/postgis-intro/_images/de9im3.jpg" /></p>
+<div id="rooks-case" class="section level4" number="12.0.0.1">
+<h4><span class="header-section-number">12.0.0.1</span> Rooks Case</h4>
+<p>If we go throught the all nine combinations of the DE-9IM, this is what defines the rooks case:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">Interior</th>
+<th align="left">Boundary</th>
+<th align="left">Exterior</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Interior</td>
+<td align="left"><strong>nothing</strong></td>
+<td align="left">don’t care</td>
+<td align="left">don’t care</td>
+</tr>
+<tr class="even">
+<td align="left">Boundary</td>
+<td align="left">don’t care</td>
+<td align="left"><strong>Line</strong></td>
+<td align="left">don’t care</td>
+</tr>
+<tr class="odd">
+<td align="left">Exterior</td>
+<td align="left">don’t care</td>
+<td align="left">don’t care</td>
+<td align="left">don’t care</td>
+</tr>
+</tbody>
+</table>
+<p>We can now write this into a string, starting from the top left: <code>F***1****</code></p>
+<p>Now that we have this string, we case use <code>st_relate()</code>and specify the string as the pattern we are looking for:</p>
+<pre><code>## Sparse geometry binary predicate list of length 1, where the predicate was `relate_pattern&#39;
+##  1: 28, 35, 37, 44</code></pre>
+<p>Which visually gives us this pattern:</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-141-1.png" width="672" /></p>
+<p>Because this was so much fun, let’s also have a look at the opposite, the Bishops Case.</p>
+</div>
+<div id="bishops-case" class="section level4" number="12.0.0.2">
+<h4><span class="header-section-number">12.0.0.2</span> Bishops Case</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">Interior</th>
+<th align="left">Boundary</th>
+<th align="left">Exterior</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Interior</td>
+<td align="left"><strong>nothing</strong></td>
+<td align="left">don’t care</td>
+<td align="left">don’t care</td>
+</tr>
+<tr class="even">
+<td align="left">Boundary</td>
+<td align="left">don’t care</td>
+<td align="left"><strong>Point</strong></td>
+<td align="left">don’t care</td>
+</tr>
+<tr class="odd">
+<td align="left">Exterior</td>
+<td align="left">don’t care</td>
+<td align="left">don’t care</td>
+<td align="left">don’t care</td>
+</tr>
+</tbody>
+</table>
+<pre><code>## Sparse geometry binary predicate list of length 1, where the predicate was `relate_pattern&#39;
+##  1: 27, 29, 43, 45</code></pre>
+<p>Visually:</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-143-1.png" width="672" /></p>
+
+</div>
+</div>
+<script src="https://utteranc.es/client.js"
+        repo="arc2r/comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="Spatial_Predicates.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="Topology_Rules.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["github", "twitter", "linkedin"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/arc2r/book/edit/master/32_DE-9IM/DE-9IM.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/arc2r/book/blob/master/32_DE-9IM/DE-9IM.Rmd",
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
