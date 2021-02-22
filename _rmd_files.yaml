@@ -1,5 +1,5 @@
 --- # Rmdfile
-  Introduction:
+  Getting Started:
     index: 10_Getting_Started.Rmd
     chapters:
       Data:
@@ -92,7 +92,9 @@
           - Line.Rmd
           - Point.Rmd
           - Line_or_Polygon.Rmd
-          
+  
+  References:
+    index: bibliography.Rmd
           
   Appendix:
       index: NULL
@@ -101,5 +103,3 @@
           folder: 99_Appendix
           index: Progress.Rmd
           subchapters: NULL
-  
-          
