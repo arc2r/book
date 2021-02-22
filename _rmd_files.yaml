@@ -1,6 +1,6 @@
 --- # Rmdfile
   Introduction:
-    index: index.Rmd
+    index: 10_Getting_Started.Rmd
     chapters:
       Data:
         folder: 11_Data
