@@ -1,0 +1,5 @@
+# (PART) Getting Started {-}
+
+# About this section {-}
+
+This Section will cover the some general differences between ArcGIS and `R`. 

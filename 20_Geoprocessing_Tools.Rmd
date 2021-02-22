@@ -1,6 +1,6 @@
-# (PART) Geoprocessing Tools {.unnumbered}
+# (PART) Geoprocessing Tools {-}
 
-# About this Section
+# About this Section {-}
 
 As described in \@ref(difficulties), ESRI's approach to building ArcGIS is to create a tool for every situation you might encounter. This is a little different in `R`. Depending on the package, the idea is usually to provide a minimal set of functions with which the user can create their *own* tools. The creators of the package `sf` are very strict on this paradigm [^github-1]. As [Roger Bivand](https://en.wikipedia.org/wiki/Roger_Bivand) [once put it](https://github.com/r-spatial/sf/issues/702#issuecomment-381488716):
 
@@ -31,7 +31,7 @@ toolboxes <- read_csv("ESRI_Toolboxes.csv") %>%
   distinct(name)
 ```
 
-We haven't found a complete overview of all the "Geprocessing Tools" in ArcGIS, but we've scraped ESRIS website and counted `r nrow(toolboxes)` Toolboxes, containing `r nrow(toolsets)` Toolsets and `r nrow(tools)` individual tools[^geoprocessing_tools-3]. 
+We haven't found a complete overview of all the "Geprocessing Tools" in ArcGIS, but we've scraped ESRI'S website and counted `r nrow(toolboxes)` Toolboxes, containing `r nrow(toolsets)` Toolsets and `r nrow(tools)` individual tools[^geoprocessing_tools-3]. 
 We cannot possibly cover the `R` way for every tool in this list. It probably wouldn't make much sense either: Once you learn the fundamental building blocks, you will be able to replicate most, if not all tools from this list. The aim of this book is to cover these fundamental building block.
 See figure \@ref(fig:toolsviz) for an interactive visualisation of all tools in ArcGIS.
 
