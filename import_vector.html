@@ -246,7 +246,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.1.3" data-path="General.html"><a href="General.html#general-merge"><i class="fa fa-check"></i><b>7.1.3</b> Merge</a></li>
 <li class="chapter" data-level="7.1.4" data-path="General.html"><a href="General.html#general-dissolve"><i class="fa fa-check"></i><b>7.1.4</b> Dissolve</a></li>
 <li class="chapter" data-level="7.1.5" data-path="General.html"><a href="General.html#general-findidentical"><i class="fa fa-check"></i><b>7.1.5</b> Find Identical</a></li>
-<li class="chapter" data-level="7.1.6" data-path="General.html"><a href="General.html#append"><i class="fa fa-check"></i><b>7.1.6</b> Append</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="Join.html"><a href="Join.html"><i class="fa fa-check"></i><b>7.2</b> Joins and Relates Toolset</a>
 <ul>
@@ -418,39 +417,38 @@ Figure 3.1: The 7 (of 17) most important simple feature types. Image from <span 
 //todo how does the user get access to this dataset? 
 //body make this available through the package?
 --></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="import_vector.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb2-2"><a href="import_vector.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Linking to GEOS 3.8.1, GDAL 3.1.4, PROJ 6.3.1</span></span>
-<span id="cb2-3"><a href="import_vector.html#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="import_vector.html#cb2-4" aria-hidden="true" tabindex="-1"></a>ARE_waedenswil <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(<span class="st">&quot;sample_data/ARE_waedenswil.shp&quot;</span>)</span>
-<span id="cb2-5"><a href="import_vector.html#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="import_vector.html#cb2-6" aria-hidden="true" tabindex="-1"></a>ARE_waedenswil</span>
-<span id="cb2-7"><a href="import_vector.html#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Simple feature collection with 13 features and 5 fields</span></span>
-<span id="cb2-8"><a href="import_vector.html#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="do">## geometry type:  MULTIPOLYGON</span></span>
-<span id="cb2-9"><a href="import_vector.html#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="do">## dimension:      XY</span></span>
-<span id="cb2-10"><a href="import_vector.html#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="do">## bbox:           xmin: 2689594 ymin: 1228563 xmax: 2694829 ymax: 1234095</span></span>
-<span id="cb2-11"><a href="import_vector.html#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="do">## projected CRS:  CH1903+ / LV95</span></span>
-<span id="cb2-12"><a href="import_vector.html#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 13 x 6</span></span>
-<span id="cb2-13"><a href="import_vector.html#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="do">##       ID KLASSE KLASSE_DE   KLASSE_FR   KLASSE_NUM                      geometry</span></span>
-<span id="cb2-14"><a href="import_vector.html#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt;            &lt;dbl&gt;            &lt;MULTIPOLYGON [m]&gt;</span></span>
-<span id="cb2-15"><a href="import_vector.html#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  1    69 D      D - gering… D - faible…          4 (((2692378 1233048, 2692373 …</span></span>
-<span id="cb2-16"><a href="import_vector.html#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  2  1371 D      D - gering… D - faible…          4 (((2689720 1232195, 2689767 …</span></span>
-<span id="cb2-17"><a href="import_vector.html#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  3  3578 D      D - gering… D - faible…          4 (((2692766 1232135, 2692690 …</span></span>
-<span id="cb2-18"><a href="import_vector.html#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  4  3591 D      D - gering… D - faible…          4 (((2691861 1232707, 2691907 …</span></span>
-<span id="cb2-19"><a href="import_vector.html#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="do">##  5  3696 A      A - sehr g… A - très b…          1 (((2693943 1231286, 2693834 …</span></span>
-<span id="cb2-20"><a href="import_vector.html#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="do">##  6  3901 B      B - gute E… B - bonne …          2 (((2693183 1231097, 2693113 …</span></span>
-<span id="cb2-21"><a href="import_vector.html#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="do">##  7  4137 B      B - gute E… B - bonne …          2 (((2690970 1232339, 2690947 …</span></span>
-<span id="cb2-22"><a href="import_vector.html#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="do">##  8  4161 B      B - gute E… B - bonne …          2 (((2691724 1232478, 2691701 …</span></span>
-<span id="cb2-23"><a href="import_vector.html#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="do">##  9  4225 B      B - gute E… B - bonne …          2 (((2692266 1232198, 2692243 …</span></span>
-<span id="cb2-24"><a href="import_vector.html#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="do">## 10  4401 C      C - mittel… C - desser…          3 (((2694681 1230763, 2694659 …</span></span>
-<span id="cb2-25"><a href="import_vector.html#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="do">## 11  5208 C      C - mittel… C - desser…          3 (((2693064 1229206, 2693041 …</span></span>
-<span id="cb2-26"><a href="import_vector.html#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="do">## 12  5319 C      C - mittel… C - desser…          3 (((2690879 1233702, 2690856 …</span></span>
-<span id="cb2-27"><a href="import_vector.html#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="do">## 13  5514 C      C - mittel… C - desser…          3 (((2693168 1229907, 2693145 …</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="import_vector.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code></pre></div>
+<pre><code>## Linking to GEOS 3.8.1, GDAL 3.1.4, PROJ 6.3.1</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="import_vector.html#cb4-1" aria-hidden="true" tabindex="-1"></a>ARE_waedenswil <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(<span class="st">&quot;sample_data/ARE_waedenswil.shp&quot;</span>)</span>
+<span id="cb4-2"><a href="import_vector.html#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="import_vector.html#cb4-3" aria-hidden="true" tabindex="-1"></a>ARE_waedenswil</span></code></pre></div>
+<pre><code>## Simple feature collection with 13 features and 5 fields
+## geometry type:  MULTIPOLYGON
+## dimension:      XY
+## bbox:           xmin: 2689594 ymin: 1228563 xmax: 2694829 ymax: 1234095
+## projected CRS:  CH1903+ / LV95
+## # A tibble: 13 x 6
+##       ID KLASSE KLASSE_DE   KLASSE_FR   KLASSE_NUM                      geometry
+##    &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt;            &lt;dbl&gt;            &lt;MULTIPOLYGON [m]&gt;
+##  1    69 D      D - gering… D - faible…          4 (((2692378 1233048, 2692373 …
+##  2  1371 D      D - gering… D - faible…          4 (((2689720 1232195, 2689767 …
+##  3  3578 D      D - gering… D - faible…          4 (((2692766 1232135, 2692690 …
+##  4  3591 D      D - gering… D - faible…          4 (((2691861 1232707, 2691907 …
+##  5  3696 A      A - sehr g… A - très b…          1 (((2693943 1231286, 2693834 …
+##  6  3901 B      B - gute E… B - bonne …          2 (((2693183 1231097, 2693113 …
+##  7  4137 B      B - gute E… B - bonne …          2 (((2690970 1232339, 2690947 …
+##  8  4161 B      B - gute E… B - bonne …          2 (((2691724 1232478, 2691701 …
+##  9  4225 B      B - gute E… B - bonne …          2 (((2692266 1232198, 2692243 …
+## 10  4401 C      C - mittel… C - desser…          3 (((2694681 1230763, 2694659 …
+## 11  5208 C      C - mittel… C - desser…          3 (((2693064 1229206, 2693041 …
+## 12  5319 C      C - mittel… C - desser…          3 (((2690879 1233702, 2690856 …
+## 13  5514 C      C - mittel… C - desser…          3 (((2693168 1229907, 2693145 …</code></pre>
 <p>And you are done! The shapefile is now imported into your <code>R</code> Session and you can start working with it. Much of the beauty in <code>sf</code> comes from it’s simplicity: As you see from importing the shapefile, it is very much like a <code>data.frame</code>, a structure that you are probably know very well. In fact, it <em>is</em> a data.frame, as you can see here:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="import_vector.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.data.frame</span>(ARE_waedenswil)</span>
-<span id="cb3-2"><a href="import_vector.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="import_vector.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.data.frame</span>(ARE_waedenswil)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
 <p><code>sf</code> provides methods for various generics, e.g. you can use <code>plot()</code> on the object for a simple visualisation. By default, using <code>plot()</code> on an <code>sf</code> object visualizes the geometry in small multiples, where each “facet” is colour coded based on a column in the dataset (see below). If you find this annoying (like I do), see chapter <a href="Static_Maps.html#chapter-staticmaps">4.1</a>.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="import_vector.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ARE_waedenswil)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="import_vector.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ARE_waedenswil)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 
 </div>
 <script src="https://utteranc.es/client.js"

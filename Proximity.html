@@ -246,7 +246,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.1.3" data-path="General.html"><a href="General.html#general-merge"><i class="fa fa-check"></i><b>7.1.3</b> Merge</a></li>
 <li class="chapter" data-level="7.1.4" data-path="General.html"><a href="General.html#general-dissolve"><i class="fa fa-check"></i><b>7.1.4</b> Dissolve</a></li>
 <li class="chapter" data-level="7.1.5" data-path="General.html"><a href="General.html#general-findidentical"><i class="fa fa-check"></i><b>7.1.5</b> Find Identical</a></li>
-<li class="chapter" data-level="7.1.6" data-path="General.html"><a href="General.html#append"><i class="fa fa-check"></i><b>7.1.6</b> Append</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="Join.html"><a href="Join.html"><i class="fa fa-check"></i><b>7.2</b> Joins and Relates Toolset</a>
 <ul>
@@ -407,27 +406,27 @@ GIS @ ZHAW</a></li>
 <p>The Proximity toolset contains tools that are used to determine the proximity of features within one or more feature classes or between two feature classes. These tools can identify features that are closest to one another or calculate the distances between or around them.</p>
 </blockquote>
 <p>For this chapter, you will need the following R Packages:</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="Proximity.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arc2r)</span>
-<span id="cb42-2"><a href="Proximity.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb42-3"><a href="Proximity.html#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="Proximity.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arc2r)</span>
+<span id="cb70-2"><a href="Proximity.html#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb70-3"><a href="Proximity.html#cb70-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
 <div id="buffer" class="section level3" number="6.3.1">
 <h3><span class="header-section-number">6.3.1</span> Buffer</h3>
 <p>One of the most commonly used operations in ArcGIS pro is the one called <code>Buffer</code>. This operation provides a very convenient way of identifying areas of interest lying in the neighborhood of an existing spatial feature. In R the same action can be performed using the <code>st_buffer</code> function in <code>sf</code>.</p>
 <p>Below we introduce a line spatial feature that depicts all the <strong>mountain bike routes</strong> in Switzerland.</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="Proximity.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;mountainBikes_routes&quot;</span>)  <span class="co"># Dataset depicting the mountain bike routes in Switzerland</span></span>
-<span id="cb43-2"><a href="Proximity.html#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-3"><a href="Proximity.html#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;kantonsgebiet&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="Proximity.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(kantonsgebiet))</span>
-<span id="cb44-2"><a href="Proximity.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(mountainBikes_routes), <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-64-1.png" width="672" /></p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="Proximity.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;mountainBikes_routes&quot;</span>)  <span class="co"># Dataset depicting the mountain bike routes in Switzerland</span></span>
+<span id="cb71-2"><a href="Proximity.html#cb71-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-3"><a href="Proximity.html#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;kantonsgebiet&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="Proximity.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(kantonsgebiet))</span>
+<span id="cb72-2"><a href="Proximity.html#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(mountainBikes_routes), <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-61-1.png" width="672" /></p>
 <p>We might be interested in identifying all the areas in a radius of 1000 m around these bike routes.</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="Proximity.html#cb45-1" aria-hidden="true" tabindex="-1"></a>routes_buffer <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(mountainBikes_routes, <span class="dv">1000</span>)</span>
-<span id="cb45-2"><a href="Proximity.html#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-3"><a href="Proximity.html#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(routes_buffer))</span>
-<span id="cb45-4"><a href="Proximity.html#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(mountainBikes_routes), <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-65-1.png" width="672" /></p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="Proximity.html#cb73-1" aria-hidden="true" tabindex="-1"></a>routes_buffer <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(mountainBikes_routes, <span class="dv">1000</span>)</span>
+<span id="cb73-2"><a href="Proximity.html#cb73-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-3"><a href="Proximity.html#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(routes_buffer))</span>
+<span id="cb73-4"><a href="Proximity.html#cb73-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(mountainBikes_routes), <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
 <p>The operation above produces the same outcome as the one depicted in the figure below <a href="#fig:buffer"><strong>??</strong></a>.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-66"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-63"></span>
 <img src="images/buffer.png" alt="Buffer operation in ArcGIS pro" width="750px" />
 <p class="caption">
 Figure 6.2: Buffer operation in ArcGIS pro

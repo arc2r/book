@@ -246,7 +246,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.1.3" data-path="General.html"><a href="General.html#general-merge"><i class="fa fa-check"></i><b>7.1.3</b> Merge</a></li>
 <li class="chapter" data-level="7.1.4" data-path="General.html"><a href="General.html#general-dissolve"><i class="fa fa-check"></i><b>7.1.4</b> Dissolve</a></li>
 <li class="chapter" data-level="7.1.5" data-path="General.html"><a href="General.html#general-findidentical"><i class="fa fa-check"></i><b>7.1.5</b> Find Identical</a></li>
-<li class="chapter" data-level="7.1.6" data-path="General.html"><a href="General.html#append"><i class="fa fa-check"></i><b>7.1.6</b> Append</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="Join.html"><a href="Join.html"><i class="fa fa-check"></i><b>7.2</b> Joins and Relates Toolset</a>
 <ul>
@@ -403,57 +402,56 @@ GIS @ ZHAW</a></li>
 <div id="sampling" class="section level2" number="7.5">
 <h2><span class="header-section-number">7.5</span> Sampling Toolset</h2>
 <p>For this chapter, you will need the following R Packages:</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="Sampling.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb64-2"><a href="Sampling.html#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arc2r)</span>
-<span id="cb64-3"><a href="Sampling.html#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb64-4"><a href="Sampling.html#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="Sampling.html#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb133-2"><a href="Sampling.html#cb133-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arc2r)</span>
+<span id="cb133-3"><a href="Sampling.html#cb133-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb133-4"><a href="Sampling.html#cb133-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
 <div id="sampling-generatetessallation" class="section level3" number="7.5.1">
 <h3><span class="header-section-number">7.5.1</span> Generate Tessellation</h3>
 <p><code>Generate Tessellation</code> tool in ArcGIS pro is used for generating a tessellated grid of regular polygon features. The generated output is covering a certain extent that usually represents the respective extent of another spatial feature. The aforementioned operation in R is possible using the function <code>st_make_grid</code> of the <strong>sf</strong> package. Below we present an example of how we can create a tesselated grid covering the spatial extent of the canton of Zurich in Switzerland.</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="Sampling.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reading the simple feature object that depicts all the cantons of the country</span></span>
-<span id="cb65-2"><a href="Sampling.html#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="co"># of Switzerland</span></span>
-<span id="cb65-3"><a href="Sampling.html#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;kantonsgebiet&quot;</span>)</span>
-<span id="cb65-4"><a href="Sampling.html#cb65-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-5"><a href="Sampling.html#cb65-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecting only the geometric extent of the canton of Zurich</span></span>
-<span id="cb65-6"><a href="Sampling.html#cb65-6" aria-hidden="true" tabindex="-1"></a>zh <span class="ot">&lt;-</span> <span class="fu">filter</span>(kantonsgebiet, NAME <span class="sc">==</span> <span class="st">&quot;Zürich&quot;</span>)</span>
-<span id="cb65-7"><a href="Sampling.html#cb65-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-8"><a href="Sampling.html#cb65-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the selected area</span></span>
-<span id="cb65-9"><a href="Sampling.html#cb65-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(zh) <span class="sc">+</span> <span class="fu">geom_sf</span>() <span class="sc">+</span> <span class="fu">coord_sf</span>(<span class="at">datum =</span> <span class="dv">2056</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-97-1.png" width="672" /></p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="Sampling.html#cb66-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb66-2"><a href="Sampling.html#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a tessellated grid of hexagons using the st_make_grid() function.</span></span>
-<span id="cb66-3"><a href="Sampling.html#cb66-3" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">st_make_grid</span>(zh, <span class="at">square =</span> <span class="cn">FALSE</span>)  <span class="co"># square = TRUE creates as expected a tesselation of squares</span></span>
-<span id="cb66-4"><a href="Sampling.html#cb66-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb66-5"><a href="Sampling.html#cb66-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the generated output over the spatial representation of the canton of</span></span>
-<span id="cb66-6"><a href="Sampling.html#cb66-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Zurich</span></span>
-<span id="cb66-7"><a href="Sampling.html#cb66-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> zh, <span class="at">fill =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> g, <span class="at">alpha =</span> <span class="fl">0.3</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb66-8"><a href="Sampling.html#cb66-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_sf</span>(<span class="at">datum =</span> <span class="dv">2056</span>) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;Tesselated grid within the Canton of Zürich&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb66-9"><a href="Sampling.html#cb66-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>), <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">9</span>))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-97-2.png" width="672" /></p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="Sampling.html#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reading the simple feature object that depicts all the cantons of the country</span></span>
+<span id="cb134-2"><a href="Sampling.html#cb134-2" aria-hidden="true" tabindex="-1"></a><span class="co"># of Switzerland</span></span>
+<span id="cb134-3"><a href="Sampling.html#cb134-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;kantonsgebiet&quot;</span>)</span>
+<span id="cb134-4"><a href="Sampling.html#cb134-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb134-5"><a href="Sampling.html#cb134-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecting only the geometric extent of the canton of Zurich</span></span>
+<span id="cb134-6"><a href="Sampling.html#cb134-6" aria-hidden="true" tabindex="-1"></a>zh <span class="ot">&lt;-</span> <span class="fu">filter</span>(kantonsgebiet, NAME <span class="sc">==</span> <span class="st">&quot;Zürich&quot;</span>)</span>
+<span id="cb134-7"><a href="Sampling.html#cb134-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb134-8"><a href="Sampling.html#cb134-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the selected area</span></span>
+<span id="cb134-9"><a href="Sampling.html#cb134-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(zh) <span class="sc">+</span> <span class="fu">geom_sf</span>() <span class="sc">+</span> <span class="fu">coord_sf</span>(<span class="at">datum =</span> <span class="dv">2056</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-94-1.png" width="672" /></p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="Sampling.html#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a tessellated grid of hexagons using the st_make_grid() function.</span></span>
+<span id="cb135-2"><a href="Sampling.html#cb135-2" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">st_make_grid</span>(zh, <span class="at">square =</span> <span class="cn">FALSE</span>)  <span class="co"># square = TRUE creates as expected a tesselation of squares</span></span>
+<span id="cb135-3"><a href="Sampling.html#cb135-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb135-4"><a href="Sampling.html#cb135-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the generated output over the spatial representation of the canton of</span></span>
+<span id="cb135-5"><a href="Sampling.html#cb135-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Zurich</span></span>
+<span id="cb135-6"><a href="Sampling.html#cb135-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> zh, <span class="at">fill =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> g, <span class="at">alpha =</span> <span class="fl">0.3</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb135-7"><a href="Sampling.html#cb135-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_sf</span>(<span class="at">datum =</span> <span class="dv">2056</span>) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;Tesselated grid within the Canton of Zürich&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb135-8"><a href="Sampling.html#cb135-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>), <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">9</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-94-2.png" width="672" /></p>
 </div>
 <div id="sampling-randompoints" class="section level3" number="7.5.2">
 <h3><span class="header-section-number">7.5.2</span> Create Random Points</h3>
 <p><code>Create Random Points</code> tool in ArcGIS pro serves as a very straightforward way of generating randomly distributed points within an extent window, inside polygon features, on point features, or along line features. In R the respective operation can be again achieved using one of the functions provided by the <strong>sf</strong> package. Below we present how we can perform this operation with the function <code>st_sample()</code>.</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="Sampling.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create random points (1000) within the spatial extent of the Canton of Zurich</span></span>
-<span id="cb67-2"><a href="Sampling.html#cb67-2" aria-hidden="true" tabindex="-1"></a>sample <span class="ot">&lt;-</span> <span class="fu">st_sample</span>(zh, <span class="at">size =</span> <span class="dv">1000</span>)</span>
-<span id="cb67-3"><a href="Sampling.html#cb67-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-4"><a href="Sampling.html#cb67-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the randomly generated points over the spatial feature that represents</span></span>
-<span id="cb67-5"><a href="Sampling.html#cb67-5" aria-hidden="true" tabindex="-1"></a><span class="co"># the canton of Zurich</span></span>
-<span id="cb67-6"><a href="Sampling.html#cb67-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> zh) <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> sample) <span class="sc">+</span> <span class="fu">coord_sf</span>(<span class="at">datum =</span> <span class="dv">2056</span>) <span class="sc">+</span> </span>
-<span id="cb67-7"><a href="Sampling.html#cb67-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">&quot;1000 random points witihn the Canton of Zurich&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-98-1.png" width="672" /></p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="Sampling.html#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create random points (1000) within the spatial extent of the Canton of Zurich</span></span>
+<span id="cb136-2"><a href="Sampling.html#cb136-2" aria-hidden="true" tabindex="-1"></a>sample <span class="ot">&lt;-</span> <span class="fu">st_sample</span>(zh, <span class="at">size =</span> <span class="dv">1000</span>)</span>
+<span id="cb136-3"><a href="Sampling.html#cb136-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb136-4"><a href="Sampling.html#cb136-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the randomly generated points over the spatial feature that represents</span></span>
+<span id="cb136-5"><a href="Sampling.html#cb136-5" aria-hidden="true" tabindex="-1"></a><span class="co"># the canton of Zurich</span></span>
+<span id="cb136-6"><a href="Sampling.html#cb136-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> zh) <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> sample) <span class="sc">+</span> <span class="fu">coord_sf</span>(<span class="at">datum =</span> <span class="dv">2056</span>) <span class="sc">+</span> </span>
+<span id="cb136-7"><a href="Sampling.html#cb136-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">&quot;1000 random points witihn the Canton of Zurich&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-95-1.png" width="672" /></p>
 </div>
 <div id="sampling-pointsalonglines" class="section level3" number="7.5.3">
 <h3><span class="header-section-number">7.5.3</span> Generate Points Along Lines</h3>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="Sampling.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;mountainBikes_routes&quot;</span>)</span>
-<span id="cb68-2"><a href="Sampling.html#cb68-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-3"><a href="Sampling.html#cb68-3" aria-hidden="true" tabindex="-1"></a>line1 <span class="ot">&lt;-</span> mountainBikes_routes[<span class="dv">1</span>, ]</span>
-<span id="cb68-4"><a href="Sampling.html#cb68-4" aria-hidden="true" tabindex="-1"></a>pointsOnLine1 <span class="ot">&lt;-</span> <span class="fu">st_line_sample</span>(line1, <span class="dv">50</span>, <span class="at">type =</span> <span class="st">&quot;random&quot;</span>)</span>
-<span id="cb68-5"><a href="Sampling.html#cb68-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-6"><a href="Sampling.html#cb68-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-7"><a href="Sampling.html#cb68-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(line1))</span>
-<span id="cb68-8"><a href="Sampling.html#cb68-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pointsOnLine1, <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-99-1.png" width="672" /></p>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="Sampling.html#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;mountainBikes_routes&quot;</span>)</span>
+<span id="cb137-2"><a href="Sampling.html#cb137-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb137-3"><a href="Sampling.html#cb137-3" aria-hidden="true" tabindex="-1"></a>line1 <span class="ot">&lt;-</span> mountainBikes_routes[<span class="dv">1</span>, ]</span>
+<span id="cb137-4"><a href="Sampling.html#cb137-4" aria-hidden="true" tabindex="-1"></a>pointsOnLine1 <span class="ot">&lt;-</span> <span class="fu">st_line_sample</span>(line1, <span class="dv">50</span>, <span class="at">type =</span> <span class="st">&quot;random&quot;</span>)</span>
+<span id="cb137-5"><a href="Sampling.html#cb137-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb137-6"><a href="Sampling.html#cb137-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb137-7"><a href="Sampling.html#cb137-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(line1))</span>
+<span id="cb137-8"><a href="Sampling.html#cb137-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pointsOnLine1, <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-96-1.png" width="672" /></p>
 <!-- ToDo -->
 <!-- I have to generalise it to every line of the dataframe -->
 

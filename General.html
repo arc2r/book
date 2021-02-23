@@ -246,7 +246,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.1.3" data-path="General.html"><a href="General.html#general-merge"><i class="fa fa-check"></i><b>7.1.3</b> Merge</a></li>
 <li class="chapter" data-level="7.1.4" data-path="General.html"><a href="General.html#general-dissolve"><i class="fa fa-check"></i><b>7.1.4</b> Dissolve</a></li>
 <li class="chapter" data-level="7.1.5" data-path="General.html"><a href="General.html#general-findidentical"><i class="fa fa-check"></i><b>7.1.5</b> Find Identical</a></li>
-<li class="chapter" data-level="7.1.6" data-path="General.html"><a href="General.html#append"><i class="fa fa-check"></i><b>7.1.6</b> Append</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="Join.html"><a href="Join.html"><i class="fa fa-check"></i><b>7.2</b> Joins and Relates Toolset</a>
 <ul>
@@ -403,9 +402,20 @@ GIS @ ZHAW</a></li>
 <div id="general" class="section level2" number="7.1">
 <h2><span class="header-section-number">7.1</span> General Toolset</h2>
 <p>For this chapter, you will need the following R Packages:</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="General.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arc2r)</span>
+<span id="cb74-2"><a href="General.html#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb74-3"><a href="General.html#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb74-4"><a href="General.html#cb74-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
 <div id="general-sort" class="section level3" number="7.1.1">
 <h3><span class="header-section-number">7.1.1</span> Sort</h3>
 <p>Sorting out features in ascending or descending order seems a quite primitive operation in any programming language or software package. Even though it is indeed primitive, it is also quite important for filtering and cleaning our datasets. In ArcGIS pro this operation is performed using the tool <code>Sort</code>, which is part of the General toolset of the Data Managenent Toolbox. Below we present how we can perform the aforementioned operation using R. For our example we use the Simple Feature object <strong>bezirke</strong>, which depicts the districts within the country of Switzerland. Furthermore for performing the sorting operation, we use the record(column) that represents the area (in square km) of every of the districts.</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="General.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the dataset depicting the districts (Bezirke) in the country of</span></span>
+<span id="cb75-2"><a href="General.html#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Switzerland</span></span>
+<span id="cb75-3"><a href="General.html#cb75-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;bezirke&quot;</span>)</span>
+<span id="cb75-4"><a href="General.html#cb75-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-5"><a href="General.html#cb75-5" aria-hidden="true" tabindex="-1"></a><span class="co"># sort the dataset based on the Area in ascending order</span></span>
+<span id="cb75-6"><a href="General.html#cb75-6" aria-hidden="true" tabindex="-1"></a>bezirke_asc <span class="ot">&lt;-</span> bezirke[<span class="fu">order</span>(bezirke<span class="sc">$</span>area_km2), ]</span>
+<span id="cb75-7"><a href="General.html#cb75-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(bezirke_asc)</span></code></pre></div>
 <pre><code>## Simple feature collection with 6 features and 4 fields
 ## geometry type:  MULTIPOLYGON
 ## dimension:      XYZ
@@ -418,8 +428,11 @@ GIS @ ZHAW</a></li>
 ## 186 Schaffhausen    Kanton      176 0.2405185 MULTIPOLYGON Z (((2707903 1...
 ## 104      Seeland    Bezirk        9 0.4128530 MULTIPOLYGON Z (((2575776 1...
 ## 119          Wil    Bezirk      145 0.5292165 MULTIPOLYGON Z (((2732986 1...
-## 131         Höfe    Bezirk       43 0.5612065 MULTIPOLYGON Z (((2702572 1...
-## Simple feature collection with 6 features and 4 fields
+## 131         Höfe    Bezirk       43 0.5612065 MULTIPOLYGON Z (((2702572 1...</code></pre>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="General.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sort the dataset based on the Area in descending order</span></span>
+<span id="cb77-2"><a href="General.html#cb77-2" aria-hidden="true" tabindex="-1"></a>bezirke_desc <span class="ot">&lt;-</span> bezirke[<span class="fu">order</span>(<span class="sc">-</span>bezirke<span class="sc">$</span>area_km2), ]</span>
+<span id="cb77-3"><a href="General.html#cb77-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(bezirke_desc)</span></code></pre></div>
+<pre><code>## Simple feature collection with 6 features and 4 fields
 ## geometry type:  MULTIPOLYGON
 ## dimension:      XYZ
 ## bbox:           xmin: 2580900 ymin: 1128447 xmax: 2833842 ymax: 1219106
@@ -440,6 +453,9 @@ GIS @ ZHAW</a></li>
 ## 4   MULTIPOLYGON Z (((2775675 1...
 ## 52  MULTIPOLYGON Z (((2587852 1...</code></pre>
 <p>The beauty of R is that offers more than one option to perform a specific operation. In the example above, for performing the sorting operation, we used a simple subsetting method integrated within the so called <strong>base R</strong>. Nevertheless using the the function <code>arrange()</code> of the <code>dpyr package</code> we will be able to produce the exact same result.</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="General.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sort the dataset based on the Area in ascending order</span></span>
+<span id="cb79-2"><a href="General.html#cb79-2" aria-hidden="true" tabindex="-1"></a>bezirke_arrange_asc <span class="ot">&lt;-</span> <span class="fu">arrange</span>(bezirke, area_km2)  <span class="co"># by default the function sorts in ascendind order</span></span>
+<span id="cb79-3"><a href="General.html#cb79-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(bezirke_arrange_asc)</span></code></pre></div>
 <pre><code>## Simple feature collection with 6 features and 4 fields
 ## geometry type:  MULTIPOLYGON
 ## dimension:      XYZ
@@ -452,8 +468,11 @@ GIS @ ZHAW</a></li>
 ## 3 Schaffhausen    Kanton      176 0.2405185 MULTIPOLYGON Z (((2707903 1...
 ## 4      Seeland    Bezirk        9 0.4128530 MULTIPOLYGON Z (((2575776 1...
 ## 5          Wil    Bezirk      145 0.5292165 MULTIPOLYGON Z (((2732986 1...
-## 6         Höfe    Bezirk       43 0.5612065 MULTIPOLYGON Z (((2702572 1...
-## Simple feature collection with 6 features and 4 fields
+## 6         Höfe    Bezirk       43 0.5612065 MULTIPOLYGON Z (((2702572 1...</code></pre>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="General.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sort the dataset based on the Area in descending order</span></span>
+<span id="cb81-2"><a href="General.html#cb81-2" aria-hidden="true" tabindex="-1"></a>bezirke_arrange_desc <span class="ot">&lt;-</span> <span class="fu">arrange</span>(bezirke, <span class="sc">-</span>area_km2)</span>
+<span id="cb81-3"><a href="General.html#cb81-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(bezirke_arrange_desc)</span></code></pre></div>
+<pre><code>## Simple feature collection with 6 features and 4 fields
 ## geometry type:  MULTIPOLYGON
 ## dimension:      XYZ
 ## bbox:           xmin: 2580900 ymin: 1128447 xmax: 2833842 ymax: 1219106
@@ -477,14 +496,37 @@ GIS @ ZHAW</a></li>
 <div id="general-rename" class="section level3" number="7.1.2">
 <h3><span class="header-section-number">7.1.2</span> Rename</h3>
 <p><code>Rename</code> tool in ArcGIS pro serves as a very simple way of changing the name of a dataset. This applies to any of the available data types, such as feature dataset, raster, table, and shapefile. Let’s see below how we can perform a similar operation in R. The easiest way to do it is by reassigning the dataset to a new variable. R is smart enough not to make a copy if the variable is exactly the same.</p>
-<pre><code>## [1] &quot;&lt;0x7f984b3313a8&gt;&quot;
-## [1] &quot;&lt;0x7f984b3313a8&gt;&quot;</code></pre>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="General.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reading the dataset that depicts all the swimming spots in the canton of Zurich</span></span>
+<span id="cb83-2"><a href="General.html#cb83-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;badeplaetze_zh&quot;</span>)</span>
+<span id="cb83-3"><a href="General.html#cb83-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-4"><a href="General.html#cb83-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Renaming the dataset above to &#39;swimming_spots_zh&#39;</span></span>
+<span id="cb83-5"><a href="General.html#cb83-5" aria-hidden="true" tabindex="-1"></a>swimming_spots_zh <span class="ot">&lt;-</span> badeplaetze_zh</span>
+<span id="cb83-6"><a href="General.html#cb83-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-7"><a href="General.html#cb83-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Retrieving the address in memory for the two datasets</span></span>
+<span id="cb83-8"><a href="General.html#cb83-8" aria-hidden="true" tabindex="-1"></a><span class="fu">tracemem</span>(badeplaetze_zh)  <span class="co"># --&gt; &lt;000001F24AB616E8&gt;</span></span></code></pre></div>
+<pre><code>## [1] &quot;&lt;0x7fa9f8097338&gt;&quot;</code></pre>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="General.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tracemem</span>(swimming_spots_zh)  <span class="co"># --&gt; &lt;000001F24AB616E8&gt;</span></span></code></pre></div>
+<pre><code>## [1] &quot;&lt;0x7fa9f8097338&gt;&quot;</code></pre>
 <p>As we can see both objects point to the same address. R makes a new copy in the memory only if one of them is modified.</p>
 </div>
 <div id="general-merge" class="section level3" number="7.1.3">
 <h3><span class="header-section-number">7.1.3</span> Merge</h3>
 <p><code>Merge</code> tool in ArcGIS pro is mainly used for combining datasets from different sources into a new, single output dataset. The main prerequisite for this operation is that the merging datasets have to be of the same geometry class. In R the aforementioned operation could be performed as follows:</p>
-<p><img src="_main_files/figure-html/merge-1.png" width="672" /><img src="_main_files/figure-html/merge-2.png" width="672" /><img src="_main_files/figure-html/merge-3.png" width="672" /></p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="General.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using the dataset that depicts all the 26 Cantons of Switzerland</span></span>
+<span id="cb87-2"><a href="General.html#cb87-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;kantonsgebiet&quot;</span>)</span>
+<span id="cb87-3"><a href="General.html#cb87-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-4"><a href="General.html#cb87-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecting the Canton of Zug</span></span>
+<span id="cb87-5"><a href="General.html#cb87-5" aria-hidden="true" tabindex="-1"></a>zug <span class="ot">&lt;-</span> <span class="fu">filter</span>(kantonsgebiet, NAME <span class="sc">==</span> <span class="st">&quot;Zug&quot;</span>)  <span class="co"># depicting the Canton of Zug</span></span>
+<span id="cb87-6"><a href="General.html#cb87-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(zug) <span class="sc">+</span> <span class="fu">geom_sf</span>()  <span class="co"># depicting the Canton of Zug</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/merge-1.png" width="672" /></p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="General.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecting the Canton of Zürich</span></span>
+<span id="cb88-2"><a href="General.html#cb88-2" aria-hidden="true" tabindex="-1"></a>zurich <span class="ot">&lt;-</span> <span class="fu">filter</span>(kantonsgebiet, NAME <span class="sc">==</span> <span class="st">&quot;Zürich&quot;</span>)</span>
+<span id="cb88-3"><a href="General.html#cb88-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(zurich) <span class="sc">+</span> <span class="fu">geom_sf</span>()  <span class="co"># depicting the Canton of Zurich</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/merge-2.png" width="672" /></p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="General.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="co"># merging the two sf objects</span></span>
+<span id="cb89-2"><a href="General.html#cb89-2" aria-hidden="true" tabindex="-1"></a>merged <span class="ot">&lt;-</span> <span class="fu">rbind</span>(zug, zurich)</span>
+<span id="cb89-3"><a href="General.html#cb89-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(merged) <span class="sc">+</span> <span class="fu">geom_sf</span>()  <span class="co"># depicting the product of the merge operation</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/merge-3.png" width="672" /></p>
 </div>
 <div id="general-dissolve" class="section level3" number="7.1.4">
 <h3><span class="header-section-number">7.1.4</span> Dissolve</h3>
@@ -492,6 +534,8 @@ GIS @ ZHAW</a></li>
 <!--
 todo: add dissolve field
 -->
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="General.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The study area from the previous example</span></span>
+<span id="cb90-2"><a href="General.html#cb90-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(kantonsgebiet)</span></code></pre></div>
 <pre><code>## Simple feature collection with 6 features and 1 field
 ## geometry type:  POLYGON
 ## dimension:      XY
@@ -504,20 +548,31 @@ todo: add dissolve field
 ## 4       Vaud POLYGON ((2555093 1138713, ...
 ## 5     Ticino POLYGON ((2727359 1119219, ...
 ## 6 St. Gallen POLYGON ((2716175 1240719, ...</code></pre>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="General.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(kantonsgebiet) <span class="sc">+</span> <span class="fu">geom_sf</span>()  <span class="co"># depicting all the 26 Cantons of Switzerland</span></span></code></pre></div>
 <p><img src="_main_files/figure-html/dissolve_01-1.png" width="672" /></p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="General.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dissolving all the cantons into one unified area</span></span>
+<span id="cb93-2"><a href="General.html#cb93-2" aria-hidden="true" tabindex="-1"></a>kantonsgebiet_dissolved <span class="ot">&lt;-</span> <span class="fu">st_union</span>(kantonsgebiet)  <span class="co"># use of the sf__st_union() function</span></span>
+<span id="cb93-3"><a href="General.html#cb93-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(kantonsgebiet_dissolved)</span></code></pre></div>
 <pre><code>## Geometry set for 1 feature 
 ## geometry type:  POLYGON
 ## dimension:      XY
 ## bbox:           xmin: 2485410 ymin: 1075268 xmax: 2833858 ymax: 1295934
 ## projected CRS:  CH1903+ / LV95</code></pre>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="General.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the dissolved output</span></span>
+<span id="cb95-2"><a href="General.html#cb95-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(kantonsgebiet_dissolved) <span class="sc">+</span> <span class="fu">geom_sf</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/dissolve_01-2.png" width="672" /></p>
 </div>
 <div id="general-findidentical" class="section level3" number="7.1.5">
 <h3><span class="header-section-number">7.1.5</span> Find Identical</h3>
 <p>In ArcGIS pro <code>Find Identical</code> tool identifies records in a feature class or table that have identical values in a list of fields. As an outcome it produces a table listing those identical findings. In R we obtain a similar result for spatial features using the <code>st_equals</code> function of the <code>sf</code> package.</p>
-</div>
-<div id="append" class="section level3" number="7.1.6">
-<h3><span class="header-section-number">7.1.6</span> Append</h3>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="General.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create the duplicates</span></span>
+<span id="cb96-2"><a href="General.html#cb96-2" aria-hidden="true" tabindex="-1"></a>addDupli <span class="ot">&lt;-</span> kantonsgebiet[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, ]</span>
+<span id="cb96-3"><a href="General.html#cb96-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-4"><a href="General.html#cb96-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine it with the original dataset (kantonsgebiet)</span></span>
+<span id="cb96-5"><a href="General.html#cb96-5" aria-hidden="true" tabindex="-1"></a>kantonDuplic <span class="ot">&lt;-</span> <span class="fu">rbind</span>(kantonsgebiet, addDupli)</span>
+<span id="cb96-6"><a href="General.html#cb96-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-7"><a href="General.html#cb96-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Examine if there are any identical values</span></span>
+<span id="cb96-8"><a href="General.html#cb96-8" aria-hidden="true" tabindex="-1"></a>ident_results <span class="ot">&lt;-</span> <span class="fu">st_equals</span>(kantonDuplic)</span></code></pre></div>
 
 </div>
 </div>

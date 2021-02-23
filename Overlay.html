@@ -246,7 +246,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.1.3" data-path="General.html"><a href="General.html#general-merge"><i class="fa fa-check"></i><b>7.1.3</b> Merge</a></li>
 <li class="chapter" data-level="7.1.4" data-path="General.html"><a href="General.html#general-dissolve"><i class="fa fa-check"></i><b>7.1.4</b> Dissolve</a></li>
 <li class="chapter" data-level="7.1.5" data-path="General.html"><a href="General.html#general-findidentical"><i class="fa fa-check"></i><b>7.1.5</b> Find Identical</a></li>
-<li class="chapter" data-level="7.1.6" data-path="General.html"><a href="General.html#append"><i class="fa fa-check"></i><b>7.1.6</b> Append</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="Join.html"><a href="Join.html"><i class="fa fa-check"></i><b>7.2</b> Joins and Relates Toolset</a>
 <ul>
@@ -407,10 +406,10 @@ GIS @ ZHAW</a></li>
 <p>The Overlay toolset contains tools to overlay multiple feature classes to combine, erase, modify, or update spatial features, resulting in a new feature class. New information is created when overlaying one set of features with another. All of the overlay operations involve joining two sets of features into a single set of features to identify spatial relationships between the input features.</p>
 </blockquote>
 <p>For this chapter, you will need the following R Packages:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="Overlay.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arc2r)</span>
-<span id="cb38-2"><a href="Overlay.html#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb38-3"><a href="Overlay.html#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb38-4"><a href="Overlay.html#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="Overlay.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arc2r)</span>
+<span id="cb61-2"><a href="Overlay.html#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb61-3"><a href="Overlay.html#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb61-4"><a href="Overlay.html#cb61-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
 <div id="spatial-join" class="section level3" number="6.2.1">
 <h3><span class="header-section-number">6.2.1</span> Spatial Join</h3>
 <p><span class="citation">Esri (2020)</span> describes Spatial Join as follows:</p>
@@ -418,70 +417,67 @@ GIS @ ZHAW</a></li>
 <p>Joins attributes from one feature to another based on the spatial relationship. The target features and the joined attributes from the join features are written to the output feature class.</p>
 </blockquote>
 <p>Say you have two datasets, <code>haltestelle_bahn</code> and <code>kantonsgebiet</code> as shown below.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="Overlay.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;haltestelle_bahn&quot;</span>)</span>
-<span id="cb39-2"><a href="Overlay.html#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;kantonsgebiet&quot;</span>)</span>
-<span id="cb39-3"><a href="Overlay.html#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-4"><a href="Overlay.html#cb39-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-5"><a href="Overlay.html#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(haltestelle_bahn)</span>
-<span id="cb39-6"><a href="Overlay.html#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Simple feature collection with 6 features and 1 field</span></span>
-<span id="cb39-7"><a href="Overlay.html#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="do">## geometry type:  POINT</span></span>
-<span id="cb39-8"><a href="Overlay.html#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="do">## dimension:      XY</span></span>
-<span id="cb39-9"><a href="Overlay.html#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="do">## bbox:           xmin: 2694932 ymin: 1263039 xmax: 2713408 ymax: 1289090</span></span>
-<span id="cb39-10"><a href="Overlay.html#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="do">## projected CRS:  CH1903+ / LV95</span></span>
-<span id="cb39-11"><a href="Overlay.html#cb39-11" aria-hidden="true" tabindex="-1"></a><span class="do">##                name                geometry</span></span>
-<span id="cb39-12"><a href="Overlay.html#cb39-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 1          Thayngen POINT (2694932 1289090)</span></span>
-<span id="cb39-13"><a href="Overlay.html#cb39-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 2            Ramsen POINT (2703768 1285024)</span></span>
-<span id="cb39-14"><a href="Overlay.html#cb39-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 3        Hemishofen POINT (2704726 1281756)</span></span>
-<span id="cb39-15"><a href="Overlay.html#cb39-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 Weberei Matzingen POINT (2711701 1265116)</span></span>
-<span id="cb39-16"><a href="Overlay.html#cb39-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 5         Matzingen POINT (2712529 1264372)</span></span>
-<span id="cb39-17"><a href="Overlay.html#cb39-17" aria-hidden="true" tabindex="-1"></a><span class="do">## 6         Jakobstal POINT (2713408 1263039)</span></span>
-<span id="cb39-18"><a href="Overlay.html#cb39-18" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(kantonsgebiet)</span>
-<span id="cb39-19"><a href="Overlay.html#cb39-19" aria-hidden="true" tabindex="-1"></a><span class="do">## Simple feature collection with 6 features and 1 field</span></span>
-<span id="cb39-20"><a href="Overlay.html#cb39-20" aria-hidden="true" tabindex="-1"></a><span class="do">## geometry type:  POLYGON</span></span>
-<span id="cb39-21"><a href="Overlay.html#cb39-21" aria-hidden="true" tabindex="-1"></a><span class="do">## dimension:      XY</span></span>
-<span id="cb39-22"><a href="Overlay.html#cb39-22" aria-hidden="true" tabindex="-1"></a><span class="do">## bbox:           xmin: 2494306 ymin: 1075268 xmax: 2833858 ymax: 1268609</span></span>
-<span id="cb39-23"><a href="Overlay.html#cb39-23" aria-hidden="true" tabindex="-1"></a><span class="do">## projected CRS:  CH1903+ / LV95</span></span>
-<span id="cb39-24"><a href="Overlay.html#cb39-24" aria-hidden="true" tabindex="-1"></a><span class="do">##         NAME                       geometry</span></span>
-<span id="cb39-25"><a href="Overlay.html#cb39-25" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 Graubünden POLYGON ((2735216 1194955, ...</span></span>
-<span id="cb39-26"><a href="Overlay.html#cb39-26" aria-hidden="true" tabindex="-1"></a><span class="do">## 2       Bern POLYGON ((2595242 1169313, ...</span></span>
-<span id="cb39-27"><a href="Overlay.html#cb39-27" aria-hidden="true" tabindex="-1"></a><span class="do">## 3     Valais POLYGON ((2601808 1136117, ...</span></span>
-<span id="cb39-28"><a href="Overlay.html#cb39-28" aria-hidden="true" tabindex="-1"></a><span class="do">## 4       Vaud POLYGON ((2555093 1138713, ...</span></span>
-<span id="cb39-29"><a href="Overlay.html#cb39-29" aria-hidden="true" tabindex="-1"></a><span class="do">## 5     Ticino POLYGON ((2727359 1119219, ...</span></span>
-<span id="cb39-30"><a href="Overlay.html#cb39-30" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 St. Gallen POLYGON ((2716175 1240719, ...</span></span>
-<span id="cb39-31"><a href="Overlay.html#cb39-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-32"><a href="Overlay.html#cb39-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-33"><a href="Overlay.html#cb39-33" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(kantonsgebiet))</span>
-<span id="cb39-34"><a href="Overlay.html#cb39-34" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(haltestelle_bahn, <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">pch =</span> <span class="dv">20</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="Overlay.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;haltestelle_bahn&quot;</span>)</span>
+<span id="cb62-2"><a href="Overlay.html#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;kantonsgebiet&quot;</span>)</span>
+<span id="cb62-3"><a href="Overlay.html#cb62-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-4"><a href="Overlay.html#cb62-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-5"><a href="Overlay.html#cb62-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(haltestelle_bahn)</span></code></pre></div>
+<pre><code>## Simple feature collection with 6 features and 1 field
+## geometry type:  POINT
+## dimension:      XY
+## bbox:           xmin: 2694932 ymin: 1263039 xmax: 2713408 ymax: 1289090
+## projected CRS:  CH1903+ / LV95
+##                name                geometry
+## 1          Thayngen POINT (2694932 1289090)
+## 2            Ramsen POINT (2703768 1285024)
+## 3        Hemishofen POINT (2704726 1281756)
+## 4 Weberei Matzingen POINT (2711701 1265116)
+## 5         Matzingen POINT (2712529 1264372)
+## 6         Jakobstal POINT (2713408 1263039)</code></pre>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="Overlay.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(kantonsgebiet)</span></code></pre></div>
+<pre><code>## Simple feature collection with 6 features and 1 field
+## geometry type:  POLYGON
+## dimension:      XY
+## bbox:           xmin: 2494306 ymin: 1075268 xmax: 2833858 ymax: 1268609
+## projected CRS:  CH1903+ / LV95
+##         NAME                       geometry
+## 1 Graubünden POLYGON ((2735216 1194955, ...
+## 2       Bern POLYGON ((2595242 1169313, ...
+## 3     Valais POLYGON ((2601808 1136117, ...
+## 4       Vaud POLYGON ((2555093 1138713, ...
+## 5     Ticino POLYGON ((2727359 1119219, ...
+## 6 St. Gallen POLYGON ((2716175 1240719, ...</code></pre>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="Overlay.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(kantonsgebiet))</span>
+<span id="cb66-2"><a href="Overlay.html#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(haltestelle_bahn, <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">pch =</span> <span class="dv">20</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-55-1.png" width="672" /></p>
 <p>For each point in <code>haltestelln_bahn</code>, we would like to know the <code>name</code> of the canton in which it is located.
 In R, the function used to join two datastes is <code>st_join(x,y)</code>. If you have to different data types (e.g. Points and Polygons) the first question you have to ask yourself is: what data type should the output be? The datatype of <code>x</code> determines what the output datatype is.
 So with the above data: Say for each point, we want to know the Name (<code>name</code>) of the “Canton” in which it lies. This means the output is a point dataset. We therefore write:</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="Overlay.html#cb40-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-2"><a href="Overlay.html#cb40-2" aria-hidden="true" tabindex="-1"></a>haltestelle_bahn_join <span class="ot">&lt;-</span> <span class="fu">st_join</span>(haltestelle_bahn, kantonsgebiet)</span>
-<span id="cb40-3"><a href="Overlay.html#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-4"><a href="Overlay.html#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-5"><a href="Overlay.html#cb40-5" aria-hidden="true" tabindex="-1"></a>haltestelle_bahn_join</span>
-<span id="cb40-6"><a href="Overlay.html#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Simple feature collection with 3134 features and 2 fields</span></span>
-<span id="cb40-7"><a href="Overlay.html#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="do">## geometry type:  POINT</span></span>
-<span id="cb40-8"><a href="Overlay.html#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="do">## dimension:      XY</span></span>
-<span id="cb40-9"><a href="Overlay.html#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="do">## bbox:           xmin: 2488908 ymin: 1076850 xmax: 2817389 ymax: 1289090</span></span>
-<span id="cb40-10"><a href="Overlay.html#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="do">## projected CRS:  CH1903+ / LV95</span></span>
-<span id="cb40-11"><a href="Overlay.html#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="do">## First 10 features:</span></span>
-<span id="cb40-12"><a href="Overlay.html#cb40-12" aria-hidden="true" tabindex="-1"></a><span class="do">##                     name         NAME                geometry</span></span>
-<span id="cb40-13"><a href="Overlay.html#cb40-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 1               Thayngen Schaffhausen POINT (2694932 1289090)</span></span>
-<span id="cb40-14"><a href="Overlay.html#cb40-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 2                 Ramsen Schaffhausen POINT (2703768 1285024)</span></span>
-<span id="cb40-15"><a href="Overlay.html#cb40-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 3             Hemishofen Schaffhausen POINT (2704726 1281756)</span></span>
-<span id="cb40-16"><a href="Overlay.html#cb40-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 4      Weberei Matzingen      Thurgau POINT (2711701 1265116)</span></span>
-<span id="cb40-17"><a href="Overlay.html#cb40-17" aria-hidden="true" tabindex="-1"></a><span class="do">## 5              Matzingen      Thurgau POINT (2712529 1264372)</span></span>
-<span id="cb40-18"><a href="Overlay.html#cb40-18" aria-hidden="true" tabindex="-1"></a><span class="do">## 6              Jakobstal      Thurgau POINT (2713408 1263039)</span></span>
-<span id="cb40-19"><a href="Overlay.html#cb40-19" aria-hidden="true" tabindex="-1"></a><span class="do">## 7            Wiesengrund      Thurgau POINT (2713771 1262367)</span></span>
-<span id="cb40-20"><a href="Overlay.html#cb40-20" aria-hidden="true" tabindex="-1"></a><span class="do">## 8                  Wängi      Thurgau POINT (2714128 1261715)</span></span>
-<span id="cb40-21"><a href="Overlay.html#cb40-21" aria-hidden="true" tabindex="-1"></a><span class="do">## 9               Rosental      Thurgau POINT (2715765 1261315)</span></span>
-<span id="cb40-22"><a href="Overlay.html#cb40-22" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 Münchwilen Pflegeheim      Thurgau POINT (2717089 1260114)</span></span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="Overlay.html#cb67-1" aria-hidden="true" tabindex="-1"></a>haltestelle_bahn_join <span class="ot">&lt;-</span> <span class="fu">st_join</span>(haltestelle_bahn, kantonsgebiet)</span>
+<span id="cb67-2"><a href="Overlay.html#cb67-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-3"><a href="Overlay.html#cb67-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-4"><a href="Overlay.html#cb67-4" aria-hidden="true" tabindex="-1"></a>haltestelle_bahn_join</span></code></pre></div>
+<pre><code>## Simple feature collection with 3134 features and 2 fields
+## geometry type:  POINT
+## dimension:      XY
+## bbox:           xmin: 2488908 ymin: 1076850 xmax: 2817389 ymax: 1289090
+## projected CRS:  CH1903+ / LV95
+## First 10 features:
+##                     name         NAME                geometry
+## 1               Thayngen Schaffhausen POINT (2694932 1289090)
+## 2                 Ramsen Schaffhausen POINT (2703768 1285024)
+## 3             Hemishofen Schaffhausen POINT (2704726 1281756)
+## 4      Weberei Matzingen      Thurgau POINT (2711701 1265116)
+## 5              Matzingen      Thurgau POINT (2712529 1264372)
+## 6              Jakobstal      Thurgau POINT (2713408 1263039)
+## 7            Wiesengrund      Thurgau POINT (2713771 1262367)
+## 8                  Wängi      Thurgau POINT (2714128 1261715)
+## 9               Rosental      Thurgau POINT (2715765 1261315)
+## 10 Münchwilen Pflegeheim      Thurgau POINT (2717089 1260114)</code></pre>
 <p>The following visualisation shows that each point has inherited the Name of the according Canton.</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="Overlay.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> kantonsgebiet) <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> haltestelle_bahn_join, </span>
-<span id="cb41-2"><a href="Overlay.html#cb41-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">colour =</span> NAME))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-60-1.png" width="672" /></p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="Overlay.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> kantonsgebiet) <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> haltestelle_bahn_join, </span>
+<span id="cb69-2"><a href="Overlay.html#cb69-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">colour =</span> NAME))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-57-1.png" width="672" /></p>
 <p>By default, the spatial relationship between <code>haltestellen_bahn</code> and <code>kantonsgebiet</code> was that of an “intersection” (this is also de default in ArcGIS). However, we can do spatial joins with other relationships as well: These relationships are commonly known as “spatial predicates.”</p>
 <table>
 <thead>

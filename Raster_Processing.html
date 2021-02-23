@@ -246,7 +246,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.1.3" data-path="General.html"><a href="General.html#general-merge"><i class="fa fa-check"></i><b>7.1.3</b> Merge</a></li>
 <li class="chapter" data-level="7.1.4" data-path="General.html"><a href="General.html#general-dissolve"><i class="fa fa-check"></i><b>7.1.4</b> Dissolve</a></li>
 <li class="chapter" data-level="7.1.5" data-path="General.html"><a href="General.html#general-findidentical"><i class="fa fa-check"></i><b>7.1.5</b> Find Identical</a></li>
-<li class="chapter" data-level="7.1.6" data-path="General.html"><a href="General.html#append"><i class="fa fa-check"></i><b>7.1.6</b> Append</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="Join.html"><a href="Join.html"><i class="fa fa-check"></i><b>7.2</b> Joins and Relates Toolset</a>
 <ul>
@@ -403,6 +402,11 @@ GIS @ ZHAW</a></li>
 <div id="rasterprocessing" class="section level2" number="7.4">
 <h2><span class="header-section-number">7.4</span> Raster Processing Toolset</h2>
 <p>For this chapter, you will need the following R Packages:</p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="Raster_Processing.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arc2r)</span>
+<span id="cb128-2"><a href="Raster_Processing.html#cb128-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
+<span id="cb128-3"><a href="Raster_Processing.html#cb128-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb128-4"><a href="Raster_Processing.html#cb128-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb128-5"><a href="Raster_Processing.html#cb128-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stars)</span></code></pre></div>
 <div id="rasterprocessing-clipraster" class="section level3" number="7.4.1">
 <h3><span class="header-section-number">7.4.1</span> Clip Raster</h3>
 <p>In GIS operations is quite common the necessity of “clipping” an area based on some specific region of interest. This is a quite useful and necessary procedure not only when we are dealing with vector datasets, but also when we have to work with raster ones. In ArcGIS pro the procedure of “cutting” a portion of a raster dataset, mosaic dataset, or an image service layer is performed using <code>Clip Raster</code> tool. In R, the respective operation can be performed using the <em>mask()</em> function. For the example below, we are using the following datasets:</p>
@@ -414,17 +418,19 @@ GIS @ ZHAW</a></li>
 / todo: replcace this with arc2r/arc2r
 /  assignees: KimboGilda
 -->
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="Raster_Processing.html#cb62-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-2"><a href="Raster_Processing.html#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Insert a vector dataset that depicts the public transport connection quality in</span></span>
-<span id="cb62-3"><a href="Raster_Processing.html#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="co"># the city of Wädenswil and plot it</span></span>
-<span id="cb62-4"><a href="Raster_Processing.html#cb62-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;are_waedenswil&quot;</span>)</span>
-<span id="cb62-5"><a href="Raster_Processing.html#cb62-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the raster dataset and plot it</span></span>
-<span id="cb62-6"><a href="Raster_Processing.html#cb62-6" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;recycling_raster&quot;</span>)</span></code></pre></div>
-<p>Plot the two datasets one over the other.
-<img src="_main_files/figure-html/unnamed-chunk-93-1.png" width="672" /></p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="Raster_Processing.html#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Insert a vector dataset that depicts the public transport connection quality in</span></span>
+<span id="cb129-2"><a href="Raster_Processing.html#cb129-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the city of Wädenswil and plot it</span></span>
+<span id="cb129-3"><a href="Raster_Processing.html#cb129-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;are_waedenswil&quot;</span>)</span>
+<span id="cb129-4"><a href="Raster_Processing.html#cb129-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the raster dataset and plot it</span></span>
+<span id="cb129-5"><a href="Raster_Processing.html#cb129-5" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;recycling_raster&quot;</span>)</span></code></pre></div>
+<p>Plot the two datasets one over the other.</p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="Raster_Processing.html#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(recycling_raster)</span>
+<span id="cb130-2"><a href="Raster_Processing.html#cb130-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(are_waedenswil, <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-90-1.png" width="672" /></p>
 <p>In our case, the vector dataset serves as the clipping extent for the clipping operation.</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="Raster_Processing.html#cb63-1" aria-hidden="true" tabindex="-1"></a>recycle_Waedi_clip <span class="ot">&lt;-</span> <span class="fu">mask</span>(recycling_raster, are_waedenswil)</span></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="Raster_Processing.html#cb131-1" aria-hidden="true" tabindex="-1"></a>recycle_Waedi_clip <span class="ot">&lt;-</span> <span class="fu">mask</span>(recycling_raster, are_waedenswil)</span></code></pre></div>
 <p><em>Visualising the clipped output</em></p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="Raster_Processing.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(recycle_Waedi_clip)</span></code></pre></div>
 
 </div>
 </div>

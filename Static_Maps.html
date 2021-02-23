@@ -246,7 +246,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.1.3" data-path="General.html"><a href="General.html#general-merge"><i class="fa fa-check"></i><b>7.1.3</b> Merge</a></li>
 <li class="chapter" data-level="7.1.4" data-path="General.html"><a href="General.html#general-dissolve"><i class="fa fa-check"></i><b>7.1.4</b> Dissolve</a></li>
 <li class="chapter" data-level="7.1.5" data-path="General.html"><a href="General.html#general-findidentical"><i class="fa fa-check"></i><b>7.1.5</b> Find Identical</a></li>
-<li class="chapter" data-level="7.1.6" data-path="General.html"><a href="General.html#append"><i class="fa fa-check"></i><b>7.1.6</b> Append</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="Join.html"><a href="Join.html"><i class="fa fa-check"></i><b>7.2</b> Joins and Relates Toolset</a>
 <ul>
@@ -403,16 +402,16 @@ GIS @ ZHAW</a></li>
 <div id="chapter-staticmaps" class="section level2" number="4.1">
 <h2><span class="header-section-number">4.1</span> Static Maps</h2>
 <p>For this chapter, you will need the following packages and datasets:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="Static_Maps.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arc2r) </span>
-<span id="cb13-2"><a href="Static_Maps.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb13-3"><a href="Static_Maps.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
-<span id="cb13-4"><a href="Static_Maps.html#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb13-5"><a href="Static_Maps.html#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-6"><a href="Static_Maps.html#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;gemeindegrenzen_zh&quot;</span>)</span>
-<span id="cb13-7"><a href="Static_Maps.html#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;swissAlti3D&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="Static_Maps.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arc2r) </span>
+<span id="cb23-2"><a href="Static_Maps.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb23-3"><a href="Static_Maps.html#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
+<span id="cb23-4"><a href="Static_Maps.html#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb23-5"><a href="Static_Maps.html#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="Static_Maps.html#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;gemeindegrenzen_zh&quot;</span>)</span>
+<span id="cb23-7"><a href="Static_Maps.html#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;swissAlti3D&quot;</span>)</span></code></pre></div>
 <p>As we saw in chapter <a href="import_vector.html#importing-vector-sf">3.1</a>, we can quickly visualize an <code>sf</code> object by simply calling <code>plot</code>. This will return a small multiple of your geodata, where each facet is colour coded based on a column.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="Static_Maps.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gemeindegrenzen_zh)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="Static_Maps.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gemeindegrenzen_zh)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 <p>You will get one facet for each column, where the maximum number of facets is set to 9 by default. I find this behaviour pretty annoying, since I usually just want get a <em>quick</em> look at the data in space, and these small multiples take ages to render. There are several workarounds to prevent small multiples:</p>
 <ol style="list-style-type: decimal">
 <li>Extract the geometry from the <code>sf</code> object and just plot that</li>
@@ -424,47 +423,44 @@ GIS @ ZHAW</a></li>
 / todo: add description how this can be added to the .Renviron / .Rprofile
 /  assignees: ratnanil
 -->
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="Static_Maps.html#cb15-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-2"><a href="Static_Maps.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(gemeindegrenzen_zh))  <span class="co"># 1</span></span>
-<span id="cb15-3"><a href="Static_Maps.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gemeindegrenzen_zh[<span class="st">&quot;BEZIRKSNAME&quot;</span>]) <span class="co"># 2</span></span>
-<span id="cb15-4"><a href="Static_Maps.html#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gemeindegrenzen_zh, <span class="at">max.plot =</span> <span class="dv">1</span>) <span class="co"># 3</span></span>
-<span id="cb15-5"><a href="Static_Maps.html#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-6"><a href="Static_Maps.html#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">sf_max.plot =</span> <span class="dv">1</span>)        <span class="co"># 4</span></span>
-<span id="cb15-7"><a href="Static_Maps.html#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gemeindegrenzen_zh)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="Static_Maps.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(gemeindegrenzen_zh))  <span class="co"># 1</span></span>
+<span id="cb25-2"><a href="Static_Maps.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gemeindegrenzen_zh[<span class="st">&quot;BEZIRKSNAME&quot;</span>]) <span class="co"># 2</span></span>
+<span id="cb25-3"><a href="Static_Maps.html#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gemeindegrenzen_zh, <span class="at">max.plot =</span> <span class="dv">1</span>) <span class="co"># 3</span></span>
+<span id="cb25-4"><a href="Static_Maps.html#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="Static_Maps.html#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">sf_max.plot =</span> <span class="dv">1</span>)        <span class="co"># 4</span></span>
+<span id="cb25-6"><a href="Static_Maps.html#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gemeindegrenzen_zh)</span></code></pre></div>
 <p>We dont have the “problem” of facets with raster data, so we can simply call <code>plot()</code> on a raster object to visualize it.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="Static_Maps.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(swissAlti3D)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="Static_Maps.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(swissAlti3D)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 <p>The <code>plot()</code> method is fine for quick view of the data, but as you want to add more layers, legend etc. <code>plot()</code> becomes complicated. There are many alternative methods to visualizing spatial data, we will showcase our favourite methods here.</p>
 <div id="package-ggplot2" class="section level3" number="4.1.1">
 <h3><span class="header-section-number">4.1.1</span> Package <code>ggplot2</code></h3>
 <p>If you are familiar with <code>ggplot2</code> you can rejoice: Plotting <code>sf</code> objects has become <em>very</em> easy with this package. If you do not know this package yet, we recommend you familiarize yourself with it first before diving into this chapter. We will continue to work with the datasets used above</p>
 <div id="sf-objects" class="section level4" number="4.1.1.1">
 <h4><span class="header-section-number">4.1.1.1</span> <code>sf</code> objects</h4>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="Static_Maps.html#cb17-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-2"><a href="Static_Maps.html#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-3"><a href="Static_Maps.html#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gemeindegrenzen_zh) <span class="sc">+</span></span>
-<span id="cb17-4"><a href="Static_Maps.html#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="Static_Maps.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gemeindegrenzen_zh) <span class="sc">+</span></span>
+<span id="cb27-2"><a href="Static_Maps.html#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 <p>In its most basic form, we can visualize the geometry of our <code>sf</code> object.As always in <code>ggplot2</code>, if you want to use a column from your dataset as an input for, say, colour, you need to specify this with <code>aes()</code>:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="Static_Maps.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gemeindegrenzen_zh) <span class="sc">+</span> </span>
-<span id="cb18-2"><a href="Static_Maps.html#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> BEZIRKSNAME))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="Static_Maps.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gemeindegrenzen_zh) <span class="sc">+</span> </span>
+<span id="cb28-2"><a href="Static_Maps.html#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> BEZIRKSNAME))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
 <p>To change the default graticules from WGS84 to a custom Coordinate System, we can use the argument <code>datum</code> in <code>coord_sf</code> and call the EPSG Code of our desired coordinate system.</p>
 <!--
 / todo: add chapter on CRS
 /  ArcGIS Users are usually not familiar with ESPG Codes, we should provide an introduction somewhere and reference this here.
 -->
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="Static_Maps.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gemeindegrenzen_zh) <span class="sc">+</span> </span>
-<span id="cb19-2"><a href="Static_Maps.html#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> BEZIRKSNAME)) <span class="sc">+</span></span>
-<span id="cb19-3"><a href="Static_Maps.html#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_sf</span>(<span class="at">datum =</span> <span class="dv">2056</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="Static_Maps.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gemeindegrenzen_zh) <span class="sc">+</span> </span>
+<span id="cb29-2"><a href="Static_Maps.html#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> BEZIRKSNAME)) <span class="sc">+</span></span>
+<span id="cb29-3"><a href="Static_Maps.html#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_sf</span>(<span class="at">datum =</span> <span class="dv">2056</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
 <p>How we can use our standard <code>ggplot2</code> methods to polish this plot:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="Static_Maps.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gemeindegrenzen_zh) <span class="sc">+</span> </span>
-<span id="cb20-2"><a href="Static_Maps.html#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> BEZIRKSNAME), <span class="at">colour =</span> <span class="st">&quot;white&quot;</span>) <span class="sc">+</span></span>
-<span id="cb20-3"><a href="Static_Maps.html#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Gemeinden des Kantons Zürich nach Bezirk&quot;</span>,<span class="at">fill =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
-<span id="cb20-4"><a href="Static_Maps.html#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
-<span id="cb20-5"><a href="Static_Maps.html#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="Static_Maps.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gemeindegrenzen_zh) <span class="sc">+</span> </span>
+<span id="cb30-2"><a href="Static_Maps.html#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> BEZIRKSNAME), <span class="at">colour =</span> <span class="st">&quot;white&quot;</span>) <span class="sc">+</span></span>
+<span id="cb30-3"><a href="Static_Maps.html#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Gemeinden des Kantons Zürich nach Bezirk&quot;</span>,<span class="at">fill =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
+<span id="cb30-4"><a href="Static_Maps.html#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb30-5"><a href="Static_Maps.html#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
 </div>
 <div id="raster-objects" class="section level4" number="4.1.1.2">
 <h4><span class="header-section-number">4.1.1.2</span> <code>raster</code> objects</h4>
@@ -472,10 +468,10 @@ GIS @ ZHAW</a></li>
 / todo: use a raster object with the same extent as the sf object
 -->
 <p>While <code>sf</code> objects are very easily integrated in ggplot2, raster data is a little harder. There are various ways to plot a raster object with <code>ggplot2</code>. A simple, adhoc approach is converting the <code>RasterLayer</code> object into a <code>data.frame</code> and then plotting it with <code>geom_raster</code>.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="Static_Maps.html#cb21-1" aria-hidden="true" tabindex="-1"></a>swissAlti3D_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(swissAlti3D,<span class="at">xy =</span> <span class="cn">TRUE</span>) <span class="co"># xy = TRUE adds the x and y coordinates to our dataframe as columns</span></span>
-<span id="cb21-2"><a href="Static_Maps.html#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-3"><a href="Static_Maps.html#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(swissAlti3D_df, <span class="fu">aes</span>(x, y, <span class="at">fill =</span> SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_1196)) <span class="sc">+</span></span>
-<span id="cb21-4"><a href="Static_Maps.html#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_raster</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="Static_Maps.html#cb31-1" aria-hidden="true" tabindex="-1"></a>swissAlti3D_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(swissAlti3D,<span class="at">xy =</span> <span class="cn">TRUE</span>) <span class="co"># xy = TRUE adds the x and y coordinates to our dataframe as columns</span></span>
+<span id="cb31-2"><a href="Static_Maps.html#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="Static_Maps.html#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(swissAlti3D_df, <span class="fu">aes</span>(x, y, <span class="at">fill =</span> SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_1196)) <span class="sc">+</span></span>
+<span id="cb31-4"><a href="Static_Maps.html#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_raster</span>()</span></code></pre></div>
 <p><img src="images/raster_df.png" width="406" /></p>
 <p>Note that this approach, <code>ggplot</code> is not aware of the coordinate system assigned to our dataset. The <code>x</code> and <code>y</code> coordinates from our dataframe are assumed to be in a cartesian coordinate system. This implies two things:</p>
 <ol style="list-style-type: decimal">
@@ -483,13 +479,12 @@ GIS @ ZHAW</a></li>
 <li>We have to specify that the coordinate system in the two direction are equal with <code>cord_equal()</code> (<code>coord_sf()</code> will not work if we don’t have any <code>sf</code> objects)</li>
 </ol>
 <p>//todo add example of WGS84 raster</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="Static_Maps.html#cb22-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-2"><a href="Static_Maps.html#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(swissAlti3D_df, <span class="fu">aes</span>(x, y, <span class="at">fill =</span> SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_1196)) <span class="sc">+</span></span>
-<span id="cb22-3"><a href="Static_Maps.html#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_raster</span>() <span class="sc">+</span></span>
-<span id="cb22-4"><a href="Static_Maps.html#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>() <span class="sc">+</span></span>
-<span id="cb22-5"><a href="Static_Maps.html#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
-<span id="cb22-6"><a href="Static_Maps.html#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_equal</span>() <span class="sc">+</span></span>
-<span id="cb22-7"><a href="Static_Maps.html#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="Static_Maps.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(swissAlti3D_df, <span class="fu">aes</span>(x, y, <span class="at">fill =</span> SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_1196)) <span class="sc">+</span></span>
+<span id="cb32-2"><a href="Static_Maps.html#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_raster</span>() <span class="sc">+</span></span>
+<span id="cb32-3"><a href="Static_Maps.html#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>() <span class="sc">+</span></span>
+<span id="cb32-4"><a href="Static_Maps.html#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb32-5"><a href="Static_Maps.html#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_equal</span>() <span class="sc">+</span></span>
+<span id="cb32-6"><a href="Static_Maps.html#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)</span></code></pre></div>
 <p><img src="images/raster_df2.png" width="184" /></p>
 <!--
 / todo: combine sf and raster
@@ -500,23 +495,21 @@ GIS @ ZHAW</a></li>
 <div id="package-tmap" class="section level3" number="4.1.2">
 <h3><span class="header-section-number">4.1.2</span> Package <code id="static-maps-tmap">tmap</code></h3>
 <p>While <code>ggplot2</code> was extended to work with spatial data, the package <code>tmap</code> was specifically designed to create maps. The developer created this package leaning on the “grammar of graphics” approach which is also implemented in <code>ggplot2</code>, so many of the concepts are the same (e.g. the concept of “layers” and using the <code>+</code>-sign). One main difference is that <code>tmap</code> does not use NSE, so column names always need to be quoted.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="Static_Maps.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tmap)</span>
-<span id="cb23-2"><a href="Static_Maps.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tmap_mode</span>(<span class="st">&quot;plot&quot;</span>) <span class="co"># &lt;- to create static plots</span></span>
-<span id="cb23-3"><a href="Static_Maps.html#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="do">## tmap mode set to plotting</span></span>
-<span id="cb23-4"><a href="Static_Maps.html#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-5"><a href="Static_Maps.html#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-6"><a href="Static_Maps.html#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(gemeindegrenzen_zh) <span class="sc">+</span> </span>
-<span id="cb23-7"><a href="Static_Maps.html#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_polygons</span>(<span class="at">col =</span> <span class="st">&quot;BEZIRKSNAME&quot;</span>) </span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="Static_Maps.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tmap)</span>
+<span id="cb33-2"><a href="Static_Maps.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tmap_mode</span>(<span class="st">&quot;plot&quot;</span>) <span class="co"># &lt;- to create static plots</span></span></code></pre></div>
+<pre><code>## tmap mode set to plotting</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="Static_Maps.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(gemeindegrenzen_zh) <span class="sc">+</span> </span>
+<span id="cb35-2"><a href="Static_Maps.html#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_polygons</span>(<span class="at">col =</span> <span class="st">&quot;BEZIRKSNAME&quot;</span>) </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
 <p>The fact that <code>tmap</code> is designed for maps makes it much easier to add map elements, such as a North Arrow.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="Static_Maps.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(gemeindegrenzen_zh) <span class="sc">+</span> </span>
-<span id="cb24-2"><a href="Static_Maps.html#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_polygons</span>(<span class="at">col =</span> <span class="st">&quot;BEZIRKSNAME&quot;</span>)  <span class="sc">+</span></span>
-<span id="cb24-3"><a href="Static_Maps.html#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_compass</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="Static_Maps.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(gemeindegrenzen_zh) <span class="sc">+</span> </span>
+<span id="cb36-2"><a href="Static_Maps.html#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_polygons</span>(<span class="at">col =</span> <span class="st">&quot;BEZIRKSNAME&quot;</span>)  <span class="sc">+</span></span>
+<span id="cb36-3"><a href="Static_Maps.html#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_compass</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
 <p>It also means that visualizing a <code>RasterLayer</code> is built in to the package:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="Static_Maps.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(swissAlti3D) <span class="sc">+</span></span>
-<span id="cb25-2"><a href="Static_Maps.html#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_raster</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="Static_Maps.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(swissAlti3D) <span class="sc">+</span></span>
+<span id="cb37-2"><a href="Static_Maps.html#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_raster</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
 <p>The most amazing thing about <code>tmap</code> probably is <code>tmap_mode("view")</code>. Run this code and then the two chunks above, you will be amazed. Learn more about this in chapter <a href="Dynamic_Maps.html#interactive-maps">Interactive Maps</a>.</p>
 
 </div>

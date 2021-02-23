@@ -246,7 +246,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.1.3" data-path="General.html"><a href="General.html#general-merge"><i class="fa fa-check"></i><b>7.1.3</b> Merge</a></li>
 <li class="chapter" data-level="7.1.4" data-path="General.html"><a href="General.html#general-dissolve"><i class="fa fa-check"></i><b>7.1.4</b> Dissolve</a></li>
 <li class="chapter" data-level="7.1.5" data-path="General.html"><a href="General.html#general-findidentical"><i class="fa fa-check"></i><b>7.1.5</b> Find Identical</a></li>
-<li class="chapter" data-level="7.1.6" data-path="General.html"><a href="General.html#append"><i class="fa fa-check"></i><b>7.1.6</b> Append</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="Join.html"><a href="Join.html"><i class="fa fa-check"></i><b>7.2</b> Joins and Relates Toolset</a>
 <ul>
@@ -408,42 +407,40 @@ GIS @ ZHAW</a></li>
 <!--
 replac this with a real life dataset
 -->
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="Zonal.html#cb72-1" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="at">ncols =</span> <span class="dv">10</span>, <span class="at">nrows =</span> <span class="dv">10</span>)</span>
-<span id="cb72-2"><a href="Zonal.html#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="co"># generating random numbers that will used as values in our raster layer (r) -</span></span>
-<span id="cb72-3"><a href="Zonal.html#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="co"># input values raster</span></span>
-<span id="cb72-4"><a href="Zonal.html#cb72-4" aria-hidden="true" tabindex="-1"></a><span class="fu">values</span>(r) <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="fu">ncell</span>(r)) <span class="sc">*</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncell</span>(r)</span>
-<span id="cb72-5"><a href="Zonal.html#cb72-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-6"><a href="Zonal.html#cb72-6" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> r</span>
-<span id="cb72-7"><a href="Zonal.html#cb72-7" aria-hidden="true" tabindex="-1"></a><span class="co"># generating integer values for the raster layer z, which will be used as the</span></span>
-<span id="cb72-8"><a href="Zonal.html#cb72-8" aria-hidden="true" tabindex="-1"></a><span class="co"># zone raster</span></span>
-<span id="cb72-9"><a href="Zonal.html#cb72-9" aria-hidden="true" tabindex="-1"></a><span class="fu">values</span>(z) <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">each =</span> <span class="dv">20</span>)</span>
-<span id="cb72-10"><a href="Zonal.html#cb72-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-11"><a href="Zonal.html#cb72-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Zonal statistics - Summarize</span></span>
-<span id="cb72-12"><a href="Zonal.html#cb72-12" aria-hidden="true" tabindex="-1"></a><span class="fu">zonal</span>(r, z, <span class="st">&quot;sum&quot;</span>)</span>
-<span id="cb72-13"><a href="Zonal.html#cb72-13" aria-hidden="true" tabindex="-1"></a><span class="do">##      zone      sum</span></span>
-<span id="cb72-14"><a href="Zonal.html#cb72-14" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    1 111.0758</span></span>
-<span id="cb72-15"><a href="Zonal.html#cb72-15" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]    2 369.7174</span></span>
-<span id="cb72-16"><a href="Zonal.html#cb72-16" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]    3 481.8409</span></span>
-<span id="cb72-17"><a href="Zonal.html#cb72-17" aria-hidden="true" tabindex="-1"></a><span class="do">## [4,]    4 724.5146</span></span>
-<span id="cb72-18"><a href="Zonal.html#cb72-18" aria-hidden="true" tabindex="-1"></a><span class="do">## [5,]    5 885.2672</span></span>
-<span id="cb72-19"><a href="Zonal.html#cb72-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-20"><a href="Zonal.html#cb72-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Zonal statistics - Mean</span></span>
-<span id="cb72-21"><a href="Zonal.html#cb72-21" aria-hidden="true" tabindex="-1"></a><span class="fu">zonal</span>(r, z, <span class="st">&quot;mean&quot;</span>)</span>
-<span id="cb72-22"><a href="Zonal.html#cb72-22" aria-hidden="true" tabindex="-1"></a><span class="do">##      zone      mean</span></span>
-<span id="cb72-23"><a href="Zonal.html#cb72-23" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    1  5.553789</span></span>
-<span id="cb72-24"><a href="Zonal.html#cb72-24" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]    2 18.485871</span></span>
-<span id="cb72-25"><a href="Zonal.html#cb72-25" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]    3 24.092046</span></span>
-<span id="cb72-26"><a href="Zonal.html#cb72-26" aria-hidden="true" tabindex="-1"></a><span class="do">## [4,]    4 36.225730</span></span>
-<span id="cb72-27"><a href="Zonal.html#cb72-27" aria-hidden="true" tabindex="-1"></a><span class="do">## [5,]    5 44.263358</span></span>
-<span id="cb72-28"><a href="Zonal.html#cb72-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-29"><a href="Zonal.html#cb72-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Zonal statistics - Minimum</span></span>
-<span id="cb72-30"><a href="Zonal.html#cb72-30" aria-hidden="true" tabindex="-1"></a><span class="fu">zonal</span>(r, z, <span class="st">&quot;min&quot;</span>)</span>
-<span id="cb72-31"><a href="Zonal.html#cb72-31" aria-hidden="true" tabindex="-1"></a><span class="do">##      zone        min</span></span>
-<span id="cb72-32"><a href="Zonal.html#cb72-32" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    1 0.02220006</span></span>
-<span id="cb72-33"><a href="Zonal.html#cb72-33" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]    2 0.22270266</span></span>
-<span id="cb72-34"><a href="Zonal.html#cb72-34" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]    3 1.66819263</span></span>
-<span id="cb72-35"><a href="Zonal.html#cb72-35" aria-hidden="true" tabindex="-1"></a><span class="do">## [4,]    4 1.63438316</span></span>
-<span id="cb72-36"><a href="Zonal.html#cb72-36" aria-hidden="true" tabindex="-1"></a><span class="do">## [5,]    5 3.24121277</span></span></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="Zonal.html#cb141-1" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="at">ncols =</span> <span class="dv">10</span>, <span class="at">nrows =</span> <span class="dv">10</span>)</span>
+<span id="cb141-2"><a href="Zonal.html#cb141-2" aria-hidden="true" tabindex="-1"></a><span class="co"># generating random numbers that will used as values in our raster layer (r) -</span></span>
+<span id="cb141-3"><a href="Zonal.html#cb141-3" aria-hidden="true" tabindex="-1"></a><span class="co"># input values raster</span></span>
+<span id="cb141-4"><a href="Zonal.html#cb141-4" aria-hidden="true" tabindex="-1"></a><span class="fu">values</span>(r) <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="fu">ncell</span>(r)) <span class="sc">*</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncell</span>(r)</span>
+<span id="cb141-5"><a href="Zonal.html#cb141-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb141-6"><a href="Zonal.html#cb141-6" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> r</span>
+<span id="cb141-7"><a href="Zonal.html#cb141-7" aria-hidden="true" tabindex="-1"></a><span class="co"># generating integer values for the raster layer z, which will be used as the</span></span>
+<span id="cb141-8"><a href="Zonal.html#cb141-8" aria-hidden="true" tabindex="-1"></a><span class="co"># zone raster</span></span>
+<span id="cb141-9"><a href="Zonal.html#cb141-9" aria-hidden="true" tabindex="-1"></a><span class="fu">values</span>(z) <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">each =</span> <span class="dv">20</span>)</span>
+<span id="cb141-10"><a href="Zonal.html#cb141-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb141-11"><a href="Zonal.html#cb141-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Zonal statistics - Summarize</span></span>
+<span id="cb141-12"><a href="Zonal.html#cb141-12" aria-hidden="true" tabindex="-1"></a><span class="fu">zonal</span>(r, z, <span class="st">&quot;sum&quot;</span>)</span></code></pre></div>
+<pre><code>##      zone       sum
+## [1,]    1  99.97487
+## [2,]    2 306.54851
+## [3,]    3 346.25004
+## [4,]    4 685.95830
+## [5,]    5 781.47571</code></pre>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="Zonal.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Zonal statistics - Mean</span></span>
+<span id="cb143-2"><a href="Zonal.html#cb143-2" aria-hidden="true" tabindex="-1"></a><span class="fu">zonal</span>(r, z, <span class="st">&quot;mean&quot;</span>)</span></code></pre></div>
+<pre><code>##      zone      mean
+## [1,]    1  4.998743
+## [2,]    2 15.327425
+## [3,]    3 17.312502
+## [4,]    4 34.297915
+## [5,]    5 39.073785</code></pre>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="Zonal.html#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Zonal statistics - Minimum</span></span>
+<span id="cb145-2"><a href="Zonal.html#cb145-2" aria-hidden="true" tabindex="-1"></a><span class="fu">zonal</span>(r, z, <span class="st">&quot;min&quot;</span>)</span></code></pre></div>
+<pre><code>##      zone        min
+## [1,]    1 0.02332285
+## [2,]    2 0.48088566
+## [3,]    3 1.20338067
+## [4,]    4 3.33982246
+## [5,]    5 4.12478213</code></pre>
 
 </div>
 </div>

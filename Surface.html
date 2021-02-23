@@ -246,7 +246,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.1.3" data-path="General.html"><a href="General.html#general-merge"><i class="fa fa-check"></i><b>7.1.3</b> Merge</a></li>
 <li class="chapter" data-level="7.1.4" data-path="General.html"><a href="General.html#general-dissolve"><i class="fa fa-check"></i><b>7.1.4</b> Dissolve</a></li>
 <li class="chapter" data-level="7.1.5" data-path="General.html"><a href="General.html#general-findidentical"><i class="fa fa-check"></i><b>7.1.5</b> Find Identical</a></li>
-<li class="chapter" data-level="7.1.6" data-path="General.html"><a href="General.html#append"><i class="fa fa-check"></i><b>7.1.6</b> Append</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="Join.html"><a href="Join.html"><i class="fa fa-check"></i><b>7.2</b> Joins and Relates Toolset</a>
 <ul>
@@ -421,19 +420,19 @@ Let’s start by computing the <em>slope</em> of the <strong>swissAlti3d</strong
 / todo: replcace this with arc2r/arc2r
 /  assignees: KimboGilda
 -->
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="Surface.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;swissAlti3D&quot;</span>)</span>
-<span id="cb81-2"><a href="Surface.html#cb81-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-3"><a href="Surface.html#cb81-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(swissAlti3D)</span></code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-113"></span>
-<img src="_main_files/figure-html/unnamed-chunk-113-1.png" alt="swissALTI3D2019 - CRS: CH1903+LV95" width="672" />
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="Surface.html#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;swissAlti3D&quot;</span>)</span>
+<span id="cb155-2"><a href="Surface.html#cb155-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb155-3"><a href="Surface.html#cb155-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(swissAlti3D)</span></code></pre></div>
+<div class="figure"><span id="fig:unnamed-chunk-110"></span>
+<img src="_main_files/figure-html/unnamed-chunk-110-1.png" alt="swissALTI3D2019 - CRS: CH1903+LV95" width="672" />
 <p class="caption">
 Figure 8.2: swissALTI3D2019 - CRS: CH1903+LV95
 </p>
 </div>
 <p>After importing and visualizing our raster dataset, we use the <code>terrain</code> function
 to calculate the slope.</p>
-<div class="figure"><span id="fig:unnamed-chunk-114"></span>
-<img src="_main_files/figure-html/unnamed-chunk-114-1.png" alt="swissALTI3D2019 - CRS: CH1903+LV95" width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-111"></span>
+<img src="_main_files/figure-html/unnamed-chunk-111-1.png" alt="swissALTI3D2019 - CRS: CH1903+LV95" width="672" />
 <p class="caption">
 Figure 8.3: swissALTI3D2019 - CRS: CH1903+LV95
 </p>
@@ -445,8 +444,8 @@ Similarly, we compute the <code>aspect</code> of a given dataset. Basically as <
 consider the compass direction that a <code>slope</code> leans towards.<br />
 Let’s compute now, using again the same function <code>terrain</code>, the <code>aspect</code> of the
 same dataset <strong>swissALTI3D2019</strong>.</p>
-<div class="figure"><span id="fig:unnamed-chunk-115"></span>
-<img src="_main_files/figure-html/unnamed-chunk-115-1.png" alt="Aspect of swissALTI3D2019 in degrees (°)" width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-112"></span>
+<img src="_main_files/figure-html/unnamed-chunk-112-1.png" alt="Aspect of swissALTI3D2019 in degrees (°)" width="672" />
 <p class="caption">
 Figure 8.4: Aspect of swissALTI3D2019 in degrees (°)
 </p>

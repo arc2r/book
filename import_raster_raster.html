@@ -246,7 +246,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.1.3" data-path="General.html"><a href="General.html#general-merge"><i class="fa fa-check"></i><b>7.1.3</b> Merge</a></li>
 <li class="chapter" data-level="7.1.4" data-path="General.html"><a href="General.html#general-dissolve"><i class="fa fa-check"></i><b>7.1.4</b> Dissolve</a></li>
 <li class="chapter" data-level="7.1.5" data-path="General.html"><a href="General.html#general-findidentical"><i class="fa fa-check"></i><b>7.1.5</b> Find Identical</a></li>
-<li class="chapter" data-level="7.1.6" data-path="General.html"><a href="General.html#append"><i class="fa fa-check"></i><b>7.1.6</b> Append</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="Join.html"><a href="Join.html"><i class="fa fa-check"></i><b>7.2</b> Joins and Relates Toolset</a>
 <ul>
@@ -403,31 +402,32 @@ GIS @ ZHAW</a></li>
 <div id="importing-raster-data-with-raster" class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> Importing raster data with <code>raster</code></h2>
 <p>For this chapter, you will need the following R Packages:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="import_raster_raster.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span></code></pre></div>
 <pre><code>## Loading required package: sp</code></pre>
 <p>To import raster data, we need a package that can specifically handle raster datasets. The package <code>raster</code> has for a long time been the go-to package for this. However, this package is currently in the process of being replaced with a successor, <code>terra</code>. Since <code>raster</code> is still in heavy use, we will show you how you handle raster data with this package.</p>
 <div id="single-band-raster" class="section level3" number="3.2.1">
 <h3><span class="header-section-number">3.2.1</span> Single band raster</h3>
 <p>Download the sample dataset <a href="https://github.com/arc2r/book/raw/master/sample_data/SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_1196.zip">here</a> and unzip it into your project folder. This dataset is a freely available sample for the swissALTI3D data. The full sample, including files at different resolutions, can be downloaded from <a href="https://cms.geo.admin.ch/Topo/swissalti3d/swissalti3dgeotifflv95.zip">here</a>.</p>
 <p>Now load the library <code>raster</code> the function <code>raster</code> to import the tif-file included in the zip file. Make sure you have set the path to your tif-file correctly.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="import_raster_raster.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
-<span id="cb6-2"><a href="import_raster_raster.html#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="import_raster_raster.html#cb6-3" aria-hidden="true" tabindex="-1"></a>swissAlti3D <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="st">&quot;sample_data/SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_1196.tif&quot;</span>)</span>
-<span id="cb6-4"><a href="import_raster_raster.html#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning in showSRID(uprojargs, format = &quot;PROJ&quot;, multiline = &quot;NO&quot;, prefer_proj</span></span>
-<span id="cb6-5"><a href="import_raster_raster.html#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="do">## = prefer_proj): Discarded datum Unknown based on Bessel 1841 ellipsoid in Proj4</span></span>
-<span id="cb6-6"><a href="import_raster_raster.html#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="do">## definition</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="import_raster_raster.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
+<span id="cb11-2"><a href="import_raster_raster.html#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="import_raster_raster.html#cb11-3" aria-hidden="true" tabindex="-1"></a>swissAlti3D <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="st">&quot;sample_data/SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_1196.tif&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning in showSRID(uprojargs, format = &quot;PROJ&quot;, multiline = &quot;NO&quot;, prefer_proj
+## = prefer_proj): Discarded datum Unknown based on Bessel 1841 ellipsoid in Proj4
+## definition</code></pre>
 <p>The dataset is now imported into your project and ready to be viewed, analysed and processed. If we call the object in our console, we can see that the dataset was imported as a <code>RasterLayer</code> and can see some important statistics which you would typically find via Layer Properties -&gt; Source in ArcGIS.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="import_raster_raster.html#cb7-1" aria-hidden="true" tabindex="-1"></a>swissAlti3D</span>
-<span id="cb7-2"><a href="import_raster_raster.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="do">## class      : RasterLayer </span></span>
-<span id="cb7-3"><a href="import_raster_raster.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="do">## dimensions : 100, 100, 10000  (nrow, ncol, ncell)</span></span>
-<span id="cb7-4"><a href="import_raster_raster.html#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="do">## resolution : 10, 10  (x, y)</span></span>
-<span id="cb7-5"><a href="import_raster_raster.html#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="do">## extent     : 2600000, 2601000, 1196000, 1197000  (xmin, xmax, ymin, ymax)</span></span>
-<span id="cb7-6"><a href="import_raster_raster.html#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="do">## crs        : +proj=somerc +lat_0=46.9524055555556 +lon_0=7.43958333333333 +k_0=1 +x_0=2600000 +y_0=1200000 +ellps=bessel +units=m +no_defs </span></span>
-<span id="cb7-7"><a href="import_raster_raster.html#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="do">## source     : /Users/runner/work/book/book/sample_data/SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_1196.tif </span></span>
-<span id="cb7-8"><a href="import_raster_raster.html#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="do">## names      : SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_1196 </span></span>
-<span id="cb7-9"><a href="import_raster_raster.html#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="do">## values     : 623.3814, 858.2705  (min, max)</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="import_raster_raster.html#cb13-1" aria-hidden="true" tabindex="-1"></a>swissAlti3D</span></code></pre></div>
+<pre><code>## class      : RasterLayer 
+## dimensions : 100, 100, 10000  (nrow, ncol, ncell)
+## resolution : 10, 10  (x, y)
+## extent     : 2600000, 2601000, 1196000, 1197000  (xmin, xmax, ymin, ymax)
+## crs        : +proj=somerc +lat_0=46.9524055555556 +lon_0=7.43958333333333 +k_0=1 +x_0=2600000 +y_0=1200000 +ellps=bessel +units=m +no_defs 
+## source     : /Users/runner/work/book/book/sample_data/SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_1196.tif 
+## names      : SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_1196 
+## values     : 623.3814, 858.2705  (min, max)</code></pre>
 <p>To visualize the dataset, we can simply call <code>plot</code> on our new object.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="import_raster_raster.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(swissAlti3D)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="import_raster_raster.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(swissAlti3D)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 </div>
 <div id="multiband-raster" class="section level3" number="3.2.2">
 <h3><span class="header-section-number">3.2.2</span> Multiband Raster</h3>

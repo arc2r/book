@@ -246,7 +246,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.1.3" data-path="General.html"><a href="General.html#general-merge"><i class="fa fa-check"></i><b>7.1.3</b> Merge</a></li>
 <li class="chapter" data-level="7.1.4" data-path="General.html"><a href="General.html#general-dissolve"><i class="fa fa-check"></i><b>7.1.4</b> Dissolve</a></li>
 <li class="chapter" data-level="7.1.5" data-path="General.html"><a href="General.html#general-findidentical"><i class="fa fa-check"></i><b>7.1.5</b> Find Identical</a></li>
-<li class="chapter" data-level="7.1.6" data-path="General.html"><a href="General.html#append"><i class="fa fa-check"></i><b>7.1.6</b> Append</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="Join.html"><a href="Join.html"><i class="fa fa-check"></i><b>7.2</b> Joins and Relates Toolset</a>
 <ul>
@@ -407,30 +406,29 @@ GIS @ ZHAW</a></li>
 <p>GIS datasets often contain more data than you need. The Extract tools let you select features and attributes in a feature class or table based on a query (SQL expression) or spatial and attribute extraction. The output features and attributes are stored in a feature class or table.</p>
 </blockquote>
 <p>For this chapter, you will need the following R Packages:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="Extract.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arc2r)</span>
-<span id="cb34-2"><a href="Extract.html#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb34-3"><a href="Extract.html#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tmap)</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="Extract.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arc2r)</span>
+<span id="cb56-2"><a href="Extract.html#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb56-3"><a href="Extract.html#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tmap)</span></code></pre></div>
 <div id="clip" class="section level3" number="6.1.1">
 <h3><span class="header-section-number">6.1.1</span> Clip</h3>
 <p>Quite often in spatial analysis, we come across with cases where we do not want to use all the available data there is. In other words, we want to focus on a specific area of interest, which dictates the need for <strong>clipping</strong> the existing dataset based on it’s relationship to some other existing spatial feature. In R this operation can be easily performed using the <code>st_intersection</code> function in <code>sf</code>.</p>
 <p>Let’s assume in the example below that we want to clip the available dataset of all the <strong>train stations in Switzerland</strong> by focusing our analysis on the cantons Zurich, St. Gallen, Thurgau and Aargau. In the following chunk we prerpare and visualize this situation.</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="Extract.html#cb35-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-2"><a href="Extract.html#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Point dataset depicting the train stations locations across Switzerland</span></span>
-<span id="cb35-3"><a href="Extract.html#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;haltestelle_bahn&quot;</span>)</span>
-<span id="cb35-4"><a href="Extract.html#cb35-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-5"><a href="Extract.html#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Dataset depicting Switzerland on canton level</span></span>
-<span id="cb35-6"><a href="Extract.html#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;kantonsgebiet&quot;</span>)</span>
-<span id="cb35-7"><a href="Extract.html#cb35-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-8"><a href="Extract.html#cb35-8" aria-hidden="true" tabindex="-1"></a>kanton_filter <span class="ot">&lt;-</span> <span class="fu">filter</span>(kantonsgebiet, NAME <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Zürich&quot;</span>, <span class="st">&quot;St. Gallen&quot;</span>, <span class="st">&quot;Thurgau&quot;</span>, </span>
-<span id="cb35-9"><a href="Extract.html#cb35-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Aargau&quot;</span>))</span>
-<span id="cb35-10"><a href="Extract.html#cb35-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-11"><a href="Extract.html#cb35-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(haltestelle_bahn))</span>
-<span id="cb35-12"><a href="Extract.html#cb35-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(kanton_filter), <span class="at">col =</span> <span class="st">&quot;grey&quot;</span>, <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">alpha =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="Extract.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Point dataset depicting the train stations locations across Switzerland</span></span>
+<span id="cb57-2"><a href="Extract.html#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;haltestelle_bahn&quot;</span>)</span>
+<span id="cb57-3"><a href="Extract.html#cb57-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-4"><a href="Extract.html#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Dataset depicting Switzerland on canton level</span></span>
+<span id="cb57-5"><a href="Extract.html#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;kantonsgebiet&quot;</span>)</span>
+<span id="cb57-6"><a href="Extract.html#cb57-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-7"><a href="Extract.html#cb57-7" aria-hidden="true" tabindex="-1"></a>kanton_filter <span class="ot">&lt;-</span> <span class="fu">filter</span>(kantonsgebiet, NAME <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Zürich&quot;</span>, <span class="st">&quot;St. Gallen&quot;</span>, <span class="st">&quot;Thurgau&quot;</span>, </span>
+<span id="cb57-8"><a href="Extract.html#cb57-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Aargau&quot;</span>))</span>
+<span id="cb57-9"><a href="Extract.html#cb57-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-10"><a href="Extract.html#cb57-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(haltestelle_bahn))</span>
+<span id="cb57-11"><a href="Extract.html#cb57-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(kanton_filter), <span class="at">col =</span> <span class="st">&quot;grey&quot;</span>, <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">alpha =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
 <p>To clip the dataset <em>haltestellen_bahn</em> to the extent of _kanton_filter, we can simply use the <code>st_intersection</code> function as shown below:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="Extract.html#cb36-1" aria-hidden="true" tabindex="-1"></a>haltestelle_bahn_clipped <span class="ot">&lt;-</span> <span class="fu">st_intersection</span>(kanton_filter, haltestelle_bahn)</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="Extract.html#cb58-1" aria-hidden="true" tabindex="-1"></a>haltestelle_bahn_clipped <span class="ot">&lt;-</span> <span class="fu">st_intersection</span>(kanton_filter, haltestelle_bahn)</span></code></pre></div>
 <p>We can now visualize the result from our operation:</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
 <p>So, ultimately, as we can see above, the <code>st_intersection</code> function creates a result where the point dataset is precisely “clipped” based on the area of interest.
 The operation above produces the same outcome as the one depicted in the figure below <a href="Extract.html#fig:clip">6.1</a>.</p>
 <div class="figure" style="text-align: center"><span id="fig:clip"></span>
@@ -453,24 +451,24 @@ TODO:
 - Somewhere, we might need to explain how to deal with lists and refer to apply or purrr
 - what happens when we use intersection with two polygons objects. do the polygons get "cut up into pieces"?
 -->
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="Extract.html#cb37-1" aria-hidden="true" tabindex="-1"></a>haltestellen_split <span class="ot">&lt;-</span> <span class="fu">split</span>(haltestelle_bahn_clipped, haltestelle_bahn_clipped<span class="sc">$</span>name)</span>
-<span id="cb37-2"><a href="Extract.html#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-3"><a href="Extract.html#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(haltestellen_split[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])</span>
-<span id="cb37-4"><a href="Extract.html#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="do">## List of 2</span></span>
-<span id="cb37-5"><a href="Extract.html#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Aadorf:Classes &#39;sf&#39; and &#39;data.frame&#39;: 1 obs. of  3 variables:</span></span>
-<span id="cb37-6"><a href="Extract.html#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..$ NAME    : chr &quot;Thurgau&quot;</span></span>
-<span id="cb37-7"><a href="Extract.html#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..$ name    : chr &quot;Aadorf&quot;</span></span>
-<span id="cb37-8"><a href="Extract.html#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..$ geometry:sfc_POINT of length 1; first list element:  &#39;XY&#39; num [1:2] 2710374 1260730</span></span>
-<span id="cb37-9"><a href="Extract.html#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..- attr(*, &quot;sf_column&quot;)= chr &quot;geometry&quot;</span></span>
-<span id="cb37-10"><a href="Extract.html#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..- attr(*, &quot;agr&quot;)= Factor w/ 3 levels &quot;constant&quot;,&quot;aggregate&quot;,..: NA NA</span></span>
-<span id="cb37-11"><a href="Extract.html#cb37-11" aria-hidden="true" tabindex="-1"></a><span class="do">##   .. ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;NAME&quot; &quot;name&quot;</span></span>
-<span id="cb37-12"><a href="Extract.html#cb37-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Aarau :Classes &#39;sf&#39; and &#39;data.frame&#39;: 2 obs. of  3 variables:</span></span>
-<span id="cb37-13"><a href="Extract.html#cb37-13" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..$ NAME    : chr [1:2] &quot;Aargau&quot; &quot;Aargau&quot;</span></span>
-<span id="cb37-14"><a href="Extract.html#cb37-14" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..$ name    : chr [1:2] &quot;Aarau&quot; &quot;Aarau&quot;</span></span>
-<span id="cb37-15"><a href="Extract.html#cb37-15" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..$ geometry:sfc_POINT of length 2; first list element:  &#39;XY&#39; num [1:2] 2646322 1249126</span></span>
-<span id="cb37-16"><a href="Extract.html#cb37-16" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..- attr(*, &quot;sf_column&quot;)= chr &quot;geometry&quot;</span></span>
-<span id="cb37-17"><a href="Extract.html#cb37-17" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..- attr(*, &quot;agr&quot;)= Factor w/ 3 levels &quot;constant&quot;,&quot;aggregate&quot;,..: NA NA</span></span>
-<span id="cb37-18"><a href="Extract.html#cb37-18" aria-hidden="true" tabindex="-1"></a><span class="do">##   .. ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;NAME&quot; &quot;name&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="Extract.html#cb59-1" aria-hidden="true" tabindex="-1"></a>haltestellen_split <span class="ot">&lt;-</span> <span class="fu">split</span>(haltestelle_bahn_clipped, haltestelle_bahn_clipped<span class="sc">$</span>name)</span>
+<span id="cb59-2"><a href="Extract.html#cb59-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-3"><a href="Extract.html#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(haltestellen_split[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])</span></code></pre></div>
+<pre><code>## List of 2
+##  $ Aadorf:Classes &#39;sf&#39; and &#39;data.frame&#39;: 1 obs. of  3 variables:
+##   ..$ NAME    : chr &quot;Thurgau&quot;
+##   ..$ name    : chr &quot;Aadorf&quot;
+##   ..$ geometry:sfc_POINT of length 1; first list element:  &#39;XY&#39; num [1:2] 2710374 1260730
+##   ..- attr(*, &quot;sf_column&quot;)= chr &quot;geometry&quot;
+##   ..- attr(*, &quot;agr&quot;)= Factor w/ 3 levels &quot;constant&quot;,&quot;aggregate&quot;,..: NA NA
+##   .. ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;NAME&quot; &quot;name&quot;
+##  $ Aarau :Classes &#39;sf&#39; and &#39;data.frame&#39;: 2 obs. of  3 variables:
+##   ..$ NAME    : chr [1:2] &quot;Aargau&quot; &quot;Aargau&quot;
+##   ..$ name    : chr [1:2] &quot;Aarau&quot; &quot;Aarau&quot;
+##   ..$ geometry:sfc_POINT of length 2; first list element:  &#39;XY&#39; num [1:2] 2646322 1249126
+##   ..- attr(*, &quot;sf_column&quot;)= chr &quot;geometry&quot;
+##   ..- attr(*, &quot;agr&quot;)= Factor w/ 3 levels &quot;constant&quot;,&quot;aggregate&quot;,..: NA NA
+##   .. ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;NAME&quot; &quot;name&quot;</code></pre>
 </div>
 <div id="split-by-attributes" class="section level3" number="6.1.4">
 <h3><span class="header-section-number">6.1.4</span> Split by Attributes</h3>

@@ -246,7 +246,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.1.3" data-path="General.html"><a href="General.html#general-merge"><i class="fa fa-check"></i><b>7.1.3</b> Merge</a></li>
 <li class="chapter" data-level="7.1.4" data-path="General.html"><a href="General.html#general-dissolve"><i class="fa fa-check"></i><b>7.1.4</b> Dissolve</a></li>
 <li class="chapter" data-level="7.1.5" data-path="General.html"><a href="General.html#general-findidentical"><i class="fa fa-check"></i><b>7.1.5</b> Find Identical</a></li>
-<li class="chapter" data-level="7.1.6" data-path="General.html"><a href="General.html#append"><i class="fa fa-check"></i><b>7.1.6</b> Append</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="Join.html"><a href="Join.html"><i class="fa fa-check"></i><b>7.2</b> Joins and Relates Toolset</a>
 <ul>
@@ -403,6 +402,9 @@ GIS @ ZHAW</a></li>
 <div id="projections" class="section level2" number="7.3">
 <h2><span class="header-section-number">7.3</span> Projections and Transformations Toolset</h2>
 <p>For this chapter, you will need the following R Packages:</p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="Projections_and_Transformations.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arc2r)</span>
+<span id="cb111-2"><a href="Projections_and_Transformations.html#cb111-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb111-3"><a href="Projections_and_Transformations.html#cb111-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span></code></pre></div>
 <p>If there is anything special about spatial, it’s the Coordinate Reference System. We will not get into the topic of CRS and Projections here, but it is advisable to get up to speed on this topic if you are dealing with geodata. From this toolset, we will cover the following tools:</p>
 <ul>
 <li><strong>Define Projection</strong></li>
@@ -416,7 +418,9 @@ GIS @ ZHAW</a></li>
 <p>Overwrites the coordinate system information (map projection and datum) stored with a dataset. This tool is intended for datasets that have an unknown or incorrect coordinate system defined.</p>
 </blockquote>
 <p>If your dataset comes <em>without</em> an assigned CRS, things can get hairy. Usually, you can make an informed guess as to which CRS the dataset is associated with, but in the end only the data producer can tell you. Let’s take the dataset <code>bezirke</code> from the package <code>arc2r</code>. As you can see, the <code>CRS</code> field in the data’s header is <code>NA</code>.</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="Projections_and_Transformations.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;bezirke&quot;</span>)</span></code></pre></div>
 <p>Calling the function <code>st_crs()</code> on <code>bezirke</code> confirms this.</p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="Projections_and_Transformations.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(bezirke)</span></code></pre></div>
 <pre><code>## Coordinate Reference System: NA</code></pre>
 <p>In ArcGIS, we would use the Tool “Define projection.” In <code>R</code>, we use the function <code>st_crs(dataset) &lt;- value</code>, where <code>value</code> is the CRS of our dataset. It can be either</p>
 <ol style="list-style-type: decimal">
@@ -431,7 +435,9 @@ gloss over this?
 -->
 Since we know the dataset <code>bezirke</code> is in the new swiss coordinate system (CH1903+ / LV95), we can find out the EPSG code (e.g. by consulting <a href="http://epsg.io/">epsg.io</a>).
 We will not get into options 1 and 3 and only</p>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="Projections_and_Transformations.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(bezirke) <span class="ot">&lt;-</span> <span class="dv">2056</span></span></code></pre></div>
 <p>If we look at our header again, we see that we have a new field <code>projected CRS</code> which is in fact displaying the correct name based on the EPSG code we provided.</p>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="Projections_and_Transformations.html#cb116-1" aria-hidden="true" tabindex="-1"></a>bezirke</span></code></pre></div>
 <pre><code>## Simple feature collection with 192 features and 4 fields
 ## geometry type:  MULTIPOLYGON
 ## dimension:      XYZ
@@ -461,6 +467,13 @@ We will not get into options 1 and 3 and only</p>
 ## 8  MULTIPOLYGON Z (((2598823 1...
 ## 9  MULTIPOLYGON Z (((2629665 1...
 ## 10 MULTIPOLYGON Z (((2593875 1...</code></pre>
+
+<div class="rmdnote">
+<!--
+# TODO revise this
+-->
+<em>st_set_crs</em> function <strong>does not</strong> reproject the coordinates of the given dataset. In other words, it does not affect the actual <em>geometry</em> column of the sf object. <em>st_tranform</em> on the other hand indeed <strong>does indeed reproject</strong> the dataset to another coordinate
+</div>
 </div>
 <div id="projections-project" class="section level3" number="7.3.2">
 <h3><span class="header-section-number">7.3.2</span> Project</h3>
@@ -468,111 +481,111 @@ We will not get into options 1 and 3 and only</p>
 <p>Projects spatial data from one coordinate system to another</p>
 </blockquote>
 <p>Now that <code>bezirke</code> has an assigned <code>CRS</code> (see <a href="Projections_and_Transformations.html#projections-defineprojection">7.3.1</a>, we can transform it into a new coordinate system. To emphasize this, will will visualize the dataset using <code>base::plot()</code> with the option <code>axes = TRUE</code>, to visualize the current coordinate system.</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="Projections_and_Transformations.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(bezirke[<span class="st">&quot;area_km2&quot;</span>], <span class="at">axes =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-83-1.png" width="672" /></p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="Projections_and_Transformations.html#cb59-1" aria-hidden="true" tabindex="-1"></a>bezirke_wgs84 <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(bezirke, <span class="dv">4326</span>)</span>
-<span id="cb59-2"><a href="Projections_and_Transformations.html#cb59-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-3"><a href="Projections_and_Transformations.html#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(bezirke_wgs84[<span class="st">&quot;area_km2&quot;</span>], <span class="at">axes =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-84-1.png" width="672" /></p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="Projections_and_Transformations.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(bezirke)</span>
-<span id="cb60-2"><a href="Projections_and_Transformations.html#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Coordinate Reference System:</span></span>
-<span id="cb60-3"><a href="Projections_and_Transformations.html#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   User input: EPSG:2056 </span></span>
-<span id="cb60-4"><a href="Projections_and_Transformations.html#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="do">##   wkt:</span></span>
-<span id="cb60-5"><a href="Projections_and_Transformations.html#cb60-5" aria-hidden="true" tabindex="-1"></a><span class="do">## PROJCRS[&quot;CH1903+ / LV95&quot;,</span></span>
-<span id="cb60-6"><a href="Projections_and_Transformations.html#cb60-6" aria-hidden="true" tabindex="-1"></a><span class="do">##     BASEGEOGCRS[&quot;CH1903+&quot;,</span></span>
-<span id="cb60-7"><a href="Projections_and_Transformations.html#cb60-7" aria-hidden="true" tabindex="-1"></a><span class="do">##         DATUM[&quot;CH1903+&quot;,</span></span>
-<span id="cb60-8"><a href="Projections_and_Transformations.html#cb60-8" aria-hidden="true" tabindex="-1"></a><span class="do">##             ELLIPSOID[&quot;Bessel 1841&quot;,6377397.155,299.1528128,</span></span>
-<span id="cb60-9"><a href="Projections_and_Transformations.html#cb60-9" aria-hidden="true" tabindex="-1"></a><span class="do">##                 LENGTHUNIT[&quot;metre&quot;,1]]],</span></span>
-<span id="cb60-10"><a href="Projections_and_Transformations.html#cb60-10" aria-hidden="true" tabindex="-1"></a><span class="do">##         PRIMEM[&quot;Greenwich&quot;,0,</span></span>
-<span id="cb60-11"><a href="Projections_and_Transformations.html#cb60-11" aria-hidden="true" tabindex="-1"></a><span class="do">##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433]],</span></span>
-<span id="cb60-12"><a href="Projections_and_Transformations.html#cb60-12" aria-hidden="true" tabindex="-1"></a><span class="do">##         ID[&quot;EPSG&quot;,4150]],</span></span>
-<span id="cb60-13"><a href="Projections_and_Transformations.html#cb60-13" aria-hidden="true" tabindex="-1"></a><span class="do">##     CONVERSION[&quot;Swiss Oblique Mercator 1995&quot;,</span></span>
-<span id="cb60-14"><a href="Projections_and_Transformations.html#cb60-14" aria-hidden="true" tabindex="-1"></a><span class="do">##         METHOD[&quot;Hotine Oblique Mercator (variant B)&quot;,</span></span>
-<span id="cb60-15"><a href="Projections_and_Transformations.html#cb60-15" aria-hidden="true" tabindex="-1"></a><span class="do">##             ID[&quot;EPSG&quot;,9815]],</span></span>
-<span id="cb60-16"><a href="Projections_and_Transformations.html#cb60-16" aria-hidden="true" tabindex="-1"></a><span class="do">##         PARAMETER[&quot;Latitude of projection centre&quot;,46.9524055555556,</span></span>
-<span id="cb60-17"><a href="Projections_and_Transformations.html#cb60-17" aria-hidden="true" tabindex="-1"></a><span class="do">##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],</span></span>
-<span id="cb60-18"><a href="Projections_and_Transformations.html#cb60-18" aria-hidden="true" tabindex="-1"></a><span class="do">##             ID[&quot;EPSG&quot;,8811]],</span></span>
-<span id="cb60-19"><a href="Projections_and_Transformations.html#cb60-19" aria-hidden="true" tabindex="-1"></a><span class="do">##         PARAMETER[&quot;Longitude of projection centre&quot;,7.43958333333333,</span></span>
-<span id="cb60-20"><a href="Projections_and_Transformations.html#cb60-20" aria-hidden="true" tabindex="-1"></a><span class="do">##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],</span></span>
-<span id="cb60-21"><a href="Projections_and_Transformations.html#cb60-21" aria-hidden="true" tabindex="-1"></a><span class="do">##             ID[&quot;EPSG&quot;,8812]],</span></span>
-<span id="cb60-22"><a href="Projections_and_Transformations.html#cb60-22" aria-hidden="true" tabindex="-1"></a><span class="do">##         PARAMETER[&quot;Azimuth of initial line&quot;,90,</span></span>
-<span id="cb60-23"><a href="Projections_and_Transformations.html#cb60-23" aria-hidden="true" tabindex="-1"></a><span class="do">##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],</span></span>
-<span id="cb60-24"><a href="Projections_and_Transformations.html#cb60-24" aria-hidden="true" tabindex="-1"></a><span class="do">##             ID[&quot;EPSG&quot;,8813]],</span></span>
-<span id="cb60-25"><a href="Projections_and_Transformations.html#cb60-25" aria-hidden="true" tabindex="-1"></a><span class="do">##         PARAMETER[&quot;Angle from Rectified to Skew Grid&quot;,90,</span></span>
-<span id="cb60-26"><a href="Projections_and_Transformations.html#cb60-26" aria-hidden="true" tabindex="-1"></a><span class="do">##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],</span></span>
-<span id="cb60-27"><a href="Projections_and_Transformations.html#cb60-27" aria-hidden="true" tabindex="-1"></a><span class="do">##             ID[&quot;EPSG&quot;,8814]],</span></span>
-<span id="cb60-28"><a href="Projections_and_Transformations.html#cb60-28" aria-hidden="true" tabindex="-1"></a><span class="do">##         PARAMETER[&quot;Scale factor on initial line&quot;,1,</span></span>
-<span id="cb60-29"><a href="Projections_and_Transformations.html#cb60-29" aria-hidden="true" tabindex="-1"></a><span class="do">##             SCALEUNIT[&quot;unity&quot;,1],</span></span>
-<span id="cb60-30"><a href="Projections_and_Transformations.html#cb60-30" aria-hidden="true" tabindex="-1"></a><span class="do">##             ID[&quot;EPSG&quot;,8815]],</span></span>
-<span id="cb60-31"><a href="Projections_and_Transformations.html#cb60-31" aria-hidden="true" tabindex="-1"></a><span class="do">##         PARAMETER[&quot;Easting at projection centre&quot;,2600000,</span></span>
-<span id="cb60-32"><a href="Projections_and_Transformations.html#cb60-32" aria-hidden="true" tabindex="-1"></a><span class="do">##             LENGTHUNIT[&quot;metre&quot;,1],</span></span>
-<span id="cb60-33"><a href="Projections_and_Transformations.html#cb60-33" aria-hidden="true" tabindex="-1"></a><span class="do">##             ID[&quot;EPSG&quot;,8816]],</span></span>
-<span id="cb60-34"><a href="Projections_and_Transformations.html#cb60-34" aria-hidden="true" tabindex="-1"></a><span class="do">##         PARAMETER[&quot;Northing at projection centre&quot;,1200000,</span></span>
-<span id="cb60-35"><a href="Projections_and_Transformations.html#cb60-35" aria-hidden="true" tabindex="-1"></a><span class="do">##             LENGTHUNIT[&quot;metre&quot;,1],</span></span>
-<span id="cb60-36"><a href="Projections_and_Transformations.html#cb60-36" aria-hidden="true" tabindex="-1"></a><span class="do">##             ID[&quot;EPSG&quot;,8817]]],</span></span>
-<span id="cb60-37"><a href="Projections_and_Transformations.html#cb60-37" aria-hidden="true" tabindex="-1"></a><span class="do">##     CS[Cartesian,2],</span></span>
-<span id="cb60-38"><a href="Projections_and_Transformations.html#cb60-38" aria-hidden="true" tabindex="-1"></a><span class="do">##         AXIS[&quot;(E)&quot;,east,</span></span>
-<span id="cb60-39"><a href="Projections_and_Transformations.html#cb60-39" aria-hidden="true" tabindex="-1"></a><span class="do">##             ORDER[1],</span></span>
-<span id="cb60-40"><a href="Projections_and_Transformations.html#cb60-40" aria-hidden="true" tabindex="-1"></a><span class="do">##             LENGTHUNIT[&quot;metre&quot;,1]],</span></span>
-<span id="cb60-41"><a href="Projections_and_Transformations.html#cb60-41" aria-hidden="true" tabindex="-1"></a><span class="do">##         AXIS[&quot;(N)&quot;,north,</span></span>
-<span id="cb60-42"><a href="Projections_and_Transformations.html#cb60-42" aria-hidden="true" tabindex="-1"></a><span class="do">##             ORDER[2],</span></span>
-<span id="cb60-43"><a href="Projections_and_Transformations.html#cb60-43" aria-hidden="true" tabindex="-1"></a><span class="do">##             LENGTHUNIT[&quot;metre&quot;,1]],</span></span>
-<span id="cb60-44"><a href="Projections_and_Transformations.html#cb60-44" aria-hidden="true" tabindex="-1"></a><span class="do">##     USAGE[</span></span>
-<span id="cb60-45"><a href="Projections_and_Transformations.html#cb60-45" aria-hidden="true" tabindex="-1"></a><span class="do">##         SCOPE[&quot;unknown&quot;],</span></span>
-<span id="cb60-46"><a href="Projections_and_Transformations.html#cb60-46" aria-hidden="true" tabindex="-1"></a><span class="do">##         AREA[&quot;Europe - Liechtenstein and Switzerland&quot;],</span></span>
-<span id="cb60-47"><a href="Projections_and_Transformations.html#cb60-47" aria-hidden="true" tabindex="-1"></a><span class="do">##         BBOX[45.82,5.96,47.81,10.49]],</span></span>
-<span id="cb60-48"><a href="Projections_and_Transformations.html#cb60-48" aria-hidden="true" tabindex="-1"></a><span class="do">##     ID[&quot;EPSG&quot;,2056]]</span></span></code></pre></div>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="Projections_and_Transformations.html#cb61-1" aria-hidden="true" tabindex="-1"></a>bezirke_swiss <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(bezirke, <span class="dv">2056</span>)</span>
-<span id="cb61-2"><a href="Projections_and_Transformations.html#cb61-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-3"><a href="Projections_and_Transformations.html#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="co"># retrieve the coordinate system</span></span>
-<span id="cb61-4"><a href="Projections_and_Transformations.html#cb61-4" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(bezirke_swiss)</span>
-<span id="cb61-5"><a href="Projections_and_Transformations.html#cb61-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Coordinate Reference System:</span></span>
-<span id="cb61-6"><a href="Projections_and_Transformations.html#cb61-6" aria-hidden="true" tabindex="-1"></a><span class="do">##   User input: EPSG:2056 </span></span>
-<span id="cb61-7"><a href="Projections_and_Transformations.html#cb61-7" aria-hidden="true" tabindex="-1"></a><span class="do">##   wkt:</span></span>
-<span id="cb61-8"><a href="Projections_and_Transformations.html#cb61-8" aria-hidden="true" tabindex="-1"></a><span class="do">## PROJCRS[&quot;CH1903+ / LV95&quot;,</span></span>
-<span id="cb61-9"><a href="Projections_and_Transformations.html#cb61-9" aria-hidden="true" tabindex="-1"></a><span class="do">##     BASEGEOGCRS[&quot;CH1903+&quot;,</span></span>
-<span id="cb61-10"><a href="Projections_and_Transformations.html#cb61-10" aria-hidden="true" tabindex="-1"></a><span class="do">##         DATUM[&quot;CH1903+&quot;,</span></span>
-<span id="cb61-11"><a href="Projections_and_Transformations.html#cb61-11" aria-hidden="true" tabindex="-1"></a><span class="do">##             ELLIPSOID[&quot;Bessel 1841&quot;,6377397.155,299.1528128,</span></span>
-<span id="cb61-12"><a href="Projections_and_Transformations.html#cb61-12" aria-hidden="true" tabindex="-1"></a><span class="do">##                 LENGTHUNIT[&quot;metre&quot;,1]]],</span></span>
-<span id="cb61-13"><a href="Projections_and_Transformations.html#cb61-13" aria-hidden="true" tabindex="-1"></a><span class="do">##         PRIMEM[&quot;Greenwich&quot;,0,</span></span>
-<span id="cb61-14"><a href="Projections_and_Transformations.html#cb61-14" aria-hidden="true" tabindex="-1"></a><span class="do">##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433]],</span></span>
-<span id="cb61-15"><a href="Projections_and_Transformations.html#cb61-15" aria-hidden="true" tabindex="-1"></a><span class="do">##         ID[&quot;EPSG&quot;,4150]],</span></span>
-<span id="cb61-16"><a href="Projections_and_Transformations.html#cb61-16" aria-hidden="true" tabindex="-1"></a><span class="do">##     CONVERSION[&quot;Swiss Oblique Mercator 1995&quot;,</span></span>
-<span id="cb61-17"><a href="Projections_and_Transformations.html#cb61-17" aria-hidden="true" tabindex="-1"></a><span class="do">##         METHOD[&quot;Hotine Oblique Mercator (variant B)&quot;,</span></span>
-<span id="cb61-18"><a href="Projections_and_Transformations.html#cb61-18" aria-hidden="true" tabindex="-1"></a><span class="do">##             ID[&quot;EPSG&quot;,9815]],</span></span>
-<span id="cb61-19"><a href="Projections_and_Transformations.html#cb61-19" aria-hidden="true" tabindex="-1"></a><span class="do">##         PARAMETER[&quot;Latitude of projection centre&quot;,46.9524055555556,</span></span>
-<span id="cb61-20"><a href="Projections_and_Transformations.html#cb61-20" aria-hidden="true" tabindex="-1"></a><span class="do">##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],</span></span>
-<span id="cb61-21"><a href="Projections_and_Transformations.html#cb61-21" aria-hidden="true" tabindex="-1"></a><span class="do">##             ID[&quot;EPSG&quot;,8811]],</span></span>
-<span id="cb61-22"><a href="Projections_and_Transformations.html#cb61-22" aria-hidden="true" tabindex="-1"></a><span class="do">##         PARAMETER[&quot;Longitude of projection centre&quot;,7.43958333333333,</span></span>
-<span id="cb61-23"><a href="Projections_and_Transformations.html#cb61-23" aria-hidden="true" tabindex="-1"></a><span class="do">##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],</span></span>
-<span id="cb61-24"><a href="Projections_and_Transformations.html#cb61-24" aria-hidden="true" tabindex="-1"></a><span class="do">##             ID[&quot;EPSG&quot;,8812]],</span></span>
-<span id="cb61-25"><a href="Projections_and_Transformations.html#cb61-25" aria-hidden="true" tabindex="-1"></a><span class="do">##         PARAMETER[&quot;Azimuth of initial line&quot;,90,</span></span>
-<span id="cb61-26"><a href="Projections_and_Transformations.html#cb61-26" aria-hidden="true" tabindex="-1"></a><span class="do">##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],</span></span>
-<span id="cb61-27"><a href="Projections_and_Transformations.html#cb61-27" aria-hidden="true" tabindex="-1"></a><span class="do">##             ID[&quot;EPSG&quot;,8813]],</span></span>
-<span id="cb61-28"><a href="Projections_and_Transformations.html#cb61-28" aria-hidden="true" tabindex="-1"></a><span class="do">##         PARAMETER[&quot;Angle from Rectified to Skew Grid&quot;,90,</span></span>
-<span id="cb61-29"><a href="Projections_and_Transformations.html#cb61-29" aria-hidden="true" tabindex="-1"></a><span class="do">##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],</span></span>
-<span id="cb61-30"><a href="Projections_and_Transformations.html#cb61-30" aria-hidden="true" tabindex="-1"></a><span class="do">##             ID[&quot;EPSG&quot;,8814]],</span></span>
-<span id="cb61-31"><a href="Projections_and_Transformations.html#cb61-31" aria-hidden="true" tabindex="-1"></a><span class="do">##         PARAMETER[&quot;Scale factor on initial line&quot;,1,</span></span>
-<span id="cb61-32"><a href="Projections_and_Transformations.html#cb61-32" aria-hidden="true" tabindex="-1"></a><span class="do">##             SCALEUNIT[&quot;unity&quot;,1],</span></span>
-<span id="cb61-33"><a href="Projections_and_Transformations.html#cb61-33" aria-hidden="true" tabindex="-1"></a><span class="do">##             ID[&quot;EPSG&quot;,8815]],</span></span>
-<span id="cb61-34"><a href="Projections_and_Transformations.html#cb61-34" aria-hidden="true" tabindex="-1"></a><span class="do">##         PARAMETER[&quot;Easting at projection centre&quot;,2600000,</span></span>
-<span id="cb61-35"><a href="Projections_and_Transformations.html#cb61-35" aria-hidden="true" tabindex="-1"></a><span class="do">##             LENGTHUNIT[&quot;metre&quot;,1],</span></span>
-<span id="cb61-36"><a href="Projections_and_Transformations.html#cb61-36" aria-hidden="true" tabindex="-1"></a><span class="do">##             ID[&quot;EPSG&quot;,8816]],</span></span>
-<span id="cb61-37"><a href="Projections_and_Transformations.html#cb61-37" aria-hidden="true" tabindex="-1"></a><span class="do">##         PARAMETER[&quot;Northing at projection centre&quot;,1200000,</span></span>
-<span id="cb61-38"><a href="Projections_and_Transformations.html#cb61-38" aria-hidden="true" tabindex="-1"></a><span class="do">##             LENGTHUNIT[&quot;metre&quot;,1],</span></span>
-<span id="cb61-39"><a href="Projections_and_Transformations.html#cb61-39" aria-hidden="true" tabindex="-1"></a><span class="do">##             ID[&quot;EPSG&quot;,8817]]],</span></span>
-<span id="cb61-40"><a href="Projections_and_Transformations.html#cb61-40" aria-hidden="true" tabindex="-1"></a><span class="do">##     CS[Cartesian,2],</span></span>
-<span id="cb61-41"><a href="Projections_and_Transformations.html#cb61-41" aria-hidden="true" tabindex="-1"></a><span class="do">##         AXIS[&quot;(E)&quot;,east,</span></span>
-<span id="cb61-42"><a href="Projections_and_Transformations.html#cb61-42" aria-hidden="true" tabindex="-1"></a><span class="do">##             ORDER[1],</span></span>
-<span id="cb61-43"><a href="Projections_and_Transformations.html#cb61-43" aria-hidden="true" tabindex="-1"></a><span class="do">##             LENGTHUNIT[&quot;metre&quot;,1]],</span></span>
-<span id="cb61-44"><a href="Projections_and_Transformations.html#cb61-44" aria-hidden="true" tabindex="-1"></a><span class="do">##         AXIS[&quot;(N)&quot;,north,</span></span>
-<span id="cb61-45"><a href="Projections_and_Transformations.html#cb61-45" aria-hidden="true" tabindex="-1"></a><span class="do">##             ORDER[2],</span></span>
-<span id="cb61-46"><a href="Projections_and_Transformations.html#cb61-46" aria-hidden="true" tabindex="-1"></a><span class="do">##             LENGTHUNIT[&quot;metre&quot;,1]],</span></span>
-<span id="cb61-47"><a href="Projections_and_Transformations.html#cb61-47" aria-hidden="true" tabindex="-1"></a><span class="do">##     USAGE[</span></span>
-<span id="cb61-48"><a href="Projections_and_Transformations.html#cb61-48" aria-hidden="true" tabindex="-1"></a><span class="do">##         SCOPE[&quot;unknown&quot;],</span></span>
-<span id="cb61-49"><a href="Projections_and_Transformations.html#cb61-49" aria-hidden="true" tabindex="-1"></a><span class="do">##         AREA[&quot;Europe - Liechtenstein and Switzerland&quot;],</span></span>
-<span id="cb61-50"><a href="Projections_and_Transformations.html#cb61-50" aria-hidden="true" tabindex="-1"></a><span class="do">##         BBOX[45.82,5.96,47.81,10.49]],</span></span>
-<span id="cb61-51"><a href="Projections_and_Transformations.html#cb61-51" aria-hidden="true" tabindex="-1"></a><span class="do">##     ID[&quot;EPSG&quot;,2056]]</span></span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="Projections_and_Transformations.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(bezirke[<span class="st">&quot;area_km2&quot;</span>], <span class="at">axes =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-80-1.png" width="672" /></p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="Projections_and_Transformations.html#cb119-1" aria-hidden="true" tabindex="-1"></a>bezirke_wgs84 <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(bezirke, <span class="dv">4326</span>)</span>
+<span id="cb119-2"><a href="Projections_and_Transformations.html#cb119-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-3"><a href="Projections_and_Transformations.html#cb119-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(bezirke_wgs84[<span class="st">&quot;area_km2&quot;</span>], <span class="at">axes =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-81-1.png" width="672" /></p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="Projections_and_Transformations.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(bezirke)</span></code></pre></div>
+<pre><code>## Coordinate Reference System:
+##   User input: EPSG:2056 
+##   wkt:
+## PROJCRS[&quot;CH1903+ / LV95&quot;,
+##     BASEGEOGCRS[&quot;CH1903+&quot;,
+##         DATUM[&quot;CH1903+&quot;,
+##             ELLIPSOID[&quot;Bessel 1841&quot;,6377397.155,299.1528128,
+##                 LENGTHUNIT[&quot;metre&quot;,1]]],
+##         PRIMEM[&quot;Greenwich&quot;,0,
+##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433]],
+##         ID[&quot;EPSG&quot;,4150]],
+##     CONVERSION[&quot;Swiss Oblique Mercator 1995&quot;,
+##         METHOD[&quot;Hotine Oblique Mercator (variant B)&quot;,
+##             ID[&quot;EPSG&quot;,9815]],
+##         PARAMETER[&quot;Latitude of projection centre&quot;,46.9524055555556,
+##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],
+##             ID[&quot;EPSG&quot;,8811]],
+##         PARAMETER[&quot;Longitude of projection centre&quot;,7.43958333333333,
+##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],
+##             ID[&quot;EPSG&quot;,8812]],
+##         PARAMETER[&quot;Azimuth of initial line&quot;,90,
+##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],
+##             ID[&quot;EPSG&quot;,8813]],
+##         PARAMETER[&quot;Angle from Rectified to Skew Grid&quot;,90,
+##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],
+##             ID[&quot;EPSG&quot;,8814]],
+##         PARAMETER[&quot;Scale factor on initial line&quot;,1,
+##             SCALEUNIT[&quot;unity&quot;,1],
+##             ID[&quot;EPSG&quot;,8815]],
+##         PARAMETER[&quot;Easting at projection centre&quot;,2600000,
+##             LENGTHUNIT[&quot;metre&quot;,1],
+##             ID[&quot;EPSG&quot;,8816]],
+##         PARAMETER[&quot;Northing at projection centre&quot;,1200000,
+##             LENGTHUNIT[&quot;metre&quot;,1],
+##             ID[&quot;EPSG&quot;,8817]]],
+##     CS[Cartesian,2],
+##         AXIS[&quot;(E)&quot;,east,
+##             ORDER[1],
+##             LENGTHUNIT[&quot;metre&quot;,1]],
+##         AXIS[&quot;(N)&quot;,north,
+##             ORDER[2],
+##             LENGTHUNIT[&quot;metre&quot;,1]],
+##     USAGE[
+##         SCOPE[&quot;unknown&quot;],
+##         AREA[&quot;Europe - Liechtenstein and Switzerland&quot;],
+##         BBOX[45.82,5.96,47.81,10.49]],
+##     ID[&quot;EPSG&quot;,2056]]</code></pre>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="Projections_and_Transformations.html#cb122-1" aria-hidden="true" tabindex="-1"></a>bezirke_swiss <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(bezirke, <span class="dv">2056</span>)</span>
+<span id="cb122-2"><a href="Projections_and_Transformations.html#cb122-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-3"><a href="Projections_and_Transformations.html#cb122-3" aria-hidden="true" tabindex="-1"></a><span class="co"># retrieve the coordinate system</span></span>
+<span id="cb122-4"><a href="Projections_and_Transformations.html#cb122-4" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(bezirke_swiss)</span></code></pre></div>
+<pre><code>## Coordinate Reference System:
+##   User input: EPSG:2056 
+##   wkt:
+## PROJCRS[&quot;CH1903+ / LV95&quot;,
+##     BASEGEOGCRS[&quot;CH1903+&quot;,
+##         DATUM[&quot;CH1903+&quot;,
+##             ELLIPSOID[&quot;Bessel 1841&quot;,6377397.155,299.1528128,
+##                 LENGTHUNIT[&quot;metre&quot;,1]]],
+##         PRIMEM[&quot;Greenwich&quot;,0,
+##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433]],
+##         ID[&quot;EPSG&quot;,4150]],
+##     CONVERSION[&quot;Swiss Oblique Mercator 1995&quot;,
+##         METHOD[&quot;Hotine Oblique Mercator (variant B)&quot;,
+##             ID[&quot;EPSG&quot;,9815]],
+##         PARAMETER[&quot;Latitude of projection centre&quot;,46.9524055555556,
+##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],
+##             ID[&quot;EPSG&quot;,8811]],
+##         PARAMETER[&quot;Longitude of projection centre&quot;,7.43958333333333,
+##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],
+##             ID[&quot;EPSG&quot;,8812]],
+##         PARAMETER[&quot;Azimuth of initial line&quot;,90,
+##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],
+##             ID[&quot;EPSG&quot;,8813]],
+##         PARAMETER[&quot;Angle from Rectified to Skew Grid&quot;,90,
+##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],
+##             ID[&quot;EPSG&quot;,8814]],
+##         PARAMETER[&quot;Scale factor on initial line&quot;,1,
+##             SCALEUNIT[&quot;unity&quot;,1],
+##             ID[&quot;EPSG&quot;,8815]],
+##         PARAMETER[&quot;Easting at projection centre&quot;,2600000,
+##             LENGTHUNIT[&quot;metre&quot;,1],
+##             ID[&quot;EPSG&quot;,8816]],
+##         PARAMETER[&quot;Northing at projection centre&quot;,1200000,
+##             LENGTHUNIT[&quot;metre&quot;,1],
+##             ID[&quot;EPSG&quot;,8817]]],
+##     CS[Cartesian,2],
+##         AXIS[&quot;(E)&quot;,east,
+##             ORDER[1],
+##             LENGTHUNIT[&quot;metre&quot;,1]],
+##         AXIS[&quot;(N)&quot;,north,
+##             ORDER[2],
+##             LENGTHUNIT[&quot;metre&quot;,1]],
+##     USAGE[
+##         SCOPE[&quot;unknown&quot;],
+##         AREA[&quot;Europe - Liechtenstein and Switzerland&quot;],
+##         BBOX[45.82,5.96,47.81,10.49]],
+##     ID[&quot;EPSG&quot;,2056]]</code></pre>
 </div>
 <div id="projections-projectraster" class="section level3" number="7.3.3">
 <h3><span class="header-section-number">7.3.3</span> Project Raster</h3>
@@ -586,7 +599,16 @@ the raster coordinates (which are just pairs of x/y values) to geographic locati
 In ArcGIS pro the tool for projecting a raster dataset is called
 <em>Project Raster (Data Management)</em>. Let’s see how we can perform the same operation
 with R.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-88-1.png" width="672" /></p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="Projections_and_Transformations.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dataset derived from the spatial interpolation of all the available &#39;recycling</span></span>
+<span id="cb124-2"><a href="Projections_and_Transformations.html#cb124-2" aria-hidden="true" tabindex="-1"></a><span class="co"># points&#39; in the city of Wädenwil</span></span>
+<span id="cb124-3"><a href="Projections_and_Transformations.html#cb124-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;recycling_raster&quot;</span>)</span>
+<span id="cb124-4"><a href="Projections_and_Transformations.html#cb124-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-5"><a href="Projections_and_Transformations.html#cb124-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Dataset representing the public transport quality in the city of Wädenswil</span></span>
+<span id="cb124-6"><a href="Projections_and_Transformations.html#cb124-6" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;public_transport_waedi&quot;</span>)  <span class="co"># CRS -&gt; WGS84 </span></span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="Projections_and_Transformations.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the raster dataset - World Geodetic System 1984</span></span>
+<span id="cb125-2"><a href="Projections_and_Transformations.html#cb125-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(public_transport_waedi, <span class="at">las =</span> <span class="dv">1</span>, <span class="at">main =</span> <span class="st">&quot;Quality of public transport in the city of Wädenwil - CRS: WGS84&quot;</span>, </span>
+<span id="cb125-3"><a href="Projections_and_Transformations.html#cb125-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cex.main =</span> <span class="dv">1</span>, <span class="at">font.main =</span> <span class="dv">4</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-85-1.png" width="672" /></p>
 <p>We can use the <code>projectRaster()</code> function to reproject a raster into a new CRS.
 The first argument of the aforementioned function is the raster dataset we want to reproject,
 while the second one is the dataset to whose projection we are targeting to. So, in
@@ -594,7 +616,13 @@ our case, we are targeting to the coordinate system of the <strong>raster_recycl
 dataset.<br />
 It is important to remember that raster reprojection only works when the raster
 object has already a defined CRS.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-90-1.png" width="672" /></p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="Projections_and_Transformations.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transform the coordinate system of the raster dataset publicTransport_CH into</span></span>
+<span id="cb126-2"><a href="Projections_and_Transformations.html#cb126-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the Swiss Coordinate system - CH1903+LV95</span></span>
+<span id="cb126-3"><a href="Projections_and_Transformations.html#cb126-3" aria-hidden="true" tabindex="-1"></a>publicTransport_CH <span class="ot">=</span> <span class="fu">projectRaster</span>(public_transport_waedi, recycling_raster)</span></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="Projections_and_Transformations.html#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the raster dataset - Swiss Coordinate System CH1903+LV95</span></span>
+<span id="cb127-2"><a href="Projections_and_Transformations.html#cb127-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(publicTransport_CH, <span class="at">las =</span> <span class="dv">1</span>, <span class="at">main =</span> <span class="st">&quot;Quality of public transport in the city of Wädenwil - CRS: CH1903+LV95&quot;</span>, </span>
+<span id="cb127-3"><a href="Projections_and_Transformations.html#cb127-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cex.main =</span> <span class="dv">1</span>, <span class="at">font.main =</span> <span class="dv">4</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-87-1.png" width="672" /></p>
 
 </div>
 </div>
