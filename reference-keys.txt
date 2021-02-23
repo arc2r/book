@@ -46,6 +46,7 @@ fig:unnamed-chunk-184
 welcome
 what-this-book-is-about
 how-it-started
+how-to-use-this-book
 data
 importing-vector-sf
 importing-raster-data-with-raster
