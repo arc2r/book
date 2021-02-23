@@ -4,7 +4,7 @@ on:
       - main
       - master
 
-name: bookdown
+name: Generate templates
 
 jobs:
   build:
@@ -18,9 +18,9 @@ jobs:
       - name: Setup R
         uses: r-lib/actions/setup-r@v1
 
-      - name: Install packages
-        run: |
-          R -e 'install.packages("yaml","dplyr","purrr","stringr","stringr")'
+      # - name: Install packages
+      #   run: |
+      #     R -e 'install.packages("yaml","dplyr","purrr","stringr")'
 
       - name: Build template files
         run: |

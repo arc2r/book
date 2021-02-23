@@ -1,4 +1,7 @@
-
+install.packages("yaml")
+install.packages("purrr")
+install.packages("stringr")
+install.packages("dplyr")
 
 library(yaml)
 library(purrr)
