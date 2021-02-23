@@ -1,10 +1,11 @@
 fig:unnamed-chunk-2
+fig:projettemplate
 fig:sf-types
 fig:selection
 fig:select
 fig:toolsviz
 fig:clip
-fig:unnamed-chunk-65
+fig:unnamed-chunk-66
 fig:joins
 fig:unnamed-chunk-109
 fig:unnamed-chunk-113
@@ -99,6 +100,7 @@ general-rename
 general-merge
 general-dissolve
 general-findidentical
+append
 join
 join-inner
 join-outer
