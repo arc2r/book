@@ -122,7 +122,7 @@ ggplot(swissAlti3D_df, aes(x, y, fill = SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_119
 ```
 
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, purl=FALSE}
 # Including manually since this is causing memory issues
 knitr::include_graphics("images/raster_df.png")
 ```
@@ -146,7 +146,7 @@ ggplot(swissAlti3D_df, aes(x, y, fill = SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_119
 
 ```
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, purl=FALSE}
 # Including manually since this is causing memory issues
 knitr::include_graphics("images/raster_df2.png")
 ```

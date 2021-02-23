@@ -1,7 +1,7 @@
 
 ## General Toolset {#general}
 
-```{r, echo = FALSE, eval = FALSE}
+```{r, echo = FALSE, eval = FALSE, purl=FALSE}
 knitr::include_graphics("images/network/Data Management_General.png")
 ```
 
@@ -47,8 +47,8 @@ head(bezirke_arrange_desc)
 ```
 
 
-
 ### Rename {#general-rename}
+
 
 `Rename` tool in ArcGIS pro serves as a very simple way of changing the name of a dataset. This applies to any of the available data types, such as feature dataset, raster, table, and shapefile. Let's see below how we can perform a similar operation in R. The easiest way to do it is by reassigning the dataset to a new variable. R is smart enough not to make a copy if the variable is exactly the same.
 
@@ -68,7 +68,6 @@ As we can see both objects point to the same address. R makes a new copy in the 
 
 
 ### Merge {#general-merge}
-
 
 `Merge` tool in ArcGIS pro is mainly used for combining datasets from different sources into a new, single output dataset. The main prerequisite for this operation is that the merging datasets have to be of the same geometry class. In R the aforementioned operation could be performed as follows:
 
@@ -93,7 +92,7 @@ ggplot(merged) + geom_sf() # depicting the product of the merge operation
 
 ### Dissolve {#general-dissolve}
 
-`Dissolve` in ArcGIS pro serves as a basic tool for aggregating features based on specified attributes. In R the respective operation could be easily performed using some basic functionalities of the `sf` package. In the example below we use again the dataset that depicts all the 26 Cantons of Switzerland. Our aim is to transform the given dataset to one unified spatial polygon. In ArcGIS pro the respective tool for this action is the tool `Dissolve`. In R on the other hand, this can be easily performed using the `st_union` function of the `sf` package.
+`Dissolve` in ArcGIS pro serves as a basic tool for aggregating features based on specified attributes. In R the respective operation could be easily performed using some basic functionalities of the `sf` package. In the example below we use again the dataset that depicts all the 26 Cantons of Switzerland. Our aim is to transform the given dataset to one unified spatial polygon.
 
 <!--
 todo: add dissolve field
@@ -106,7 +105,7 @@ head(kantonsgebiet)
 ggplot(kantonsgebiet) + geom_sf() # depicting all the 26 Cantons of Switzerland
 
 # Dissolving all the cantons into one unified area
-kantonsgebiet_dissolved <- st_union(kantonsgebiet)
+kantonsgebiet_dissolved <- st_union(kantonsgebiet) # use of the sf__st_union() function
 head(kantonsgebiet_dissolved)
 
 # Plot the dissolved output
@@ -117,11 +116,21 @@ ggplot(kantonsgebiet_dissolved) + geom_sf()
 
 ### Find Identical {#general-findidentical}
 
-In ArcGIS pro `Find Identical` tool identifies records in a feature class or table that have identical values in a list of fields. As an outcome it produces a table listing those identical findings.
+In ArcGIS pro `Find Identical` tool identifies records in a feature class or table that have identical values in a list of fields. As an outcome it produces a table listing those identical findings. In R we obtain a similar result for spatial features using the `st_equals` function of the `sf` package.
 
-```{r}
-duplicated(kantonsgebiet)
+```{r findIdentical}
+# create the duplicates
+addDupli <- kantonsgebiet[1:3,]
+
+# Combine it with the original dataset (kantonsgebiet)
+kantonDuplic <- rbind(kantonsgebiet, addDupli)
+
+# Examine if there are any identical values
+ident_results <- st_equals(kantonDuplic)
 ```
 
 
- 
+### Append
+
+
+

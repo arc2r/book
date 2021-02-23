@@ -8,7 +8,7 @@ Most vector data that you use in everyday GIS work are what are called "simple f
 -->
 
 
-```{r sf-types, echo = FALSE, fig.cap="The 7 (of 17) most important simple feature types. Image from @geocompr", fig.align="center", out.width="100%"}
+```{r sf-types, echo = FALSE, fig.cap="The 7 (of 17) most important simple feature types. Image from @geocompr", fig.align="center", out.width="100%", purl=FALSE}
 knitr::include_graphics("images/sf-classes.png")
 ```
 

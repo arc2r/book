@@ -5,7 +5,7 @@ From the docs [@esri-gptoolref]:
 
 > The Overlay toolset contains tools to overlay multiple feature classes to combine, erase, modify, or update spatial features, resulting in a new feature class. New information is created when overlaying one set of features with another. All of the overlay operations involve joining two sets of features into a single set of features to identify spatial relationships between the input features.
 
-```{r, echo = FALSE, eval = FALSE}
+```{r, echo = FALSE, eval = FALSE, purl=FALSE}
 knitr::include_graphics("images/network/Analysis_Overlay.png")
 ```
 

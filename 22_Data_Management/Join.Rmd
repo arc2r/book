@@ -22,7 +22,7 @@ Before we begin with our examples, we have to make clear the differences among t
 - _Outer Join_ retains *all* rows from both datasets.
 - _Left Join_ retains all rows from the "left" dataset, _Right Join_ only those from the "right" dataset.
   
-```{r joins, fig.cap= "Join operations",echo=F, out.width = "500px",fig.align='center'}
+```{r joins, fig.cap= "Join operations",echo=F, out.width = "500px",fig.align='center', purl=FALSE}
 knitr::include_graphics("images/joins.png")
 ```
       
