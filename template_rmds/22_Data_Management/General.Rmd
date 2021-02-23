@@ -1,0 +1,101 @@
+
+```{r echo = FALSE, eval = FALSE}
+## knitr::include_graphics("images/network/Data Management_General.png")
+
+
+```
+
+```{r echo = FALSE}
+library(arc2r)
+library(sf)
+library(ggplot2)
+library(dplyr)
+
+
+```
+
+```{r sort_BaseR}
+
+# Read the dataset depicting the districts (Bezirke) in the country of Switzerland
+data("bezirke")
+
+# sort the dataset based on the Area in ascending order
+bezirke_asc <- bezirke[order(bezirke$area_km2),]
+head(bezirke_asc)
+
+# sort the dataset based on the Area in descending order
+bezirke_desc <- bezirke[order(-bezirke$area_km2),] 
+head(bezirke_desc)
+
+
+
+```
+
+```{r sort_dplyr}
+
+# sort the dataset based on the Area in ascending order
+bezirke_arrange_asc <- arrange(bezirke,area_km2) # by default the function sorts in ascendind order
+head(bezirke_arrange_asc)
+
+# sort the dataset based on the Area in descending order
+bezirke_arrange_desc <- arrange(bezirke,-area_km2)
+head(bezirke_arrange_desc)
+
+
+```
+
+```{r }
+# Reading the dataset that depicts all the swimming spots in the canton of Zurich
+data("badeplaetze_zh")
+
+# Renaming the dataset above to "swimming_spots_zh"
+swimming_spots_zh <- badeplaetze_zh
+
+# Retrieving the address in memory for the two datasets
+tracemem(badeplaetze_zh) # --> <000001F24AB616E8>
+tracemem(swimming_spots_zh) # --> <000001F24AB616E8>
+
+
+```
+
+```{r merge}
+
+# Using the dataset that depicts all the 26 Cantons of Switzerland
+data("kantonsgebiet")
+
+# Selecting the Canton of Zug
+zug <- filter(kantonsgebiet, NAME == "Zug") # depicting the Canton of Zug
+ggplot(zug) + geom_sf() # depicting the Canton of Zug
+
+# Selecting the Canton of Zürich
+zurich <- filter(kantonsgebiet, NAME == "Zürich")
+ggplot(zurich) + geom_sf() # depicting the Canton of Zurich
+
+# merging the two sf objects
+merged <- rbind(zug,zurich)
+ggplot(merged) + geom_sf() # depicting the product of the merge operation
+
+
+```
+
+```{r dissolve_01}
+
+# The study area from the previous example
+head(kantonsgebiet)
+ggplot(kantonsgebiet) + geom_sf() # depicting all the 26 Cantons of Switzerland
+
+# Dissolving all the cantons into one unified area
+kantonsgebiet_dissolved <- st_union(kantonsgebiet)
+head(kantonsgebiet_dissolved)
+
+# Plot the dissolved output
+ggplot(kantonsgebiet_dissolved) + geom_sf()
+
+
+
+```
+
+```{r }
+duplicated(kantonsgebiet)
+```
+

@@ -1,0 +1,89 @@
+
+```{r echo = FALSE, fig.cap = "Source: @esri-topology"}
+knitr::include_graphics("images/topology_rules/0_3.jpg")
+
+
+```
+
+```{r echo = FALSE, fig.cap = "Source: @esri-topology"}
+knitr::include_graphics("images/topology_rules/1_2.jpg")
+
+
+```
+
+```{r echo = FALSE, fig.cap = "Source: @esri-topology"}
+knitr::include_graphics("images/topology_rules/1_3.jpg")
+
+
+```
+
+```{r echo = FALSE, fig.cap = "Source: @esri-topology"}
+knitr::include_graphics("images/topology_rules/2_2.jpg")
+
+
+```
+
+```{r echo = FALSE, fig.cap = "Source: @esri-topology"}
+knitr::include_graphics("images/topology_rules/2_3.jpg")
+
+
+```
+
+```{r echo = FALSE, fig.cap = "Source: @esri-topology"}
+knitr::include_graphics("images/topology_rules/3_2.jpg")
+
+
+```
+
+```{r echo = FALSE, fig.cap = "Source: @esri-topology"}
+knitr::include_graphics("images/topology_rules/3_3.jpg")
+
+
+```
+
+```{r echo = FALSE, fig.cap = "Source: @esri-topology"}
+knitr::include_graphics("images/topology_rules/4_2.jpg")
+
+
+```
+
+```{r echo = FALSE, fig.cap = "Source: @esri-topology"}
+knitr::include_graphics("images/topology_rules/4_3.jpg")
+
+
+```
+
+```{r echo = FALSE, fig.cap = "Source: @esri-topology"}
+knitr::include_graphics("images/topology_rules/5_2.jpg")
+
+
+```
+
+```{r echo = FALSE, fig.cap = "Source: @esri-topology"}
+knitr::include_graphics("images/topology_rules/5_3.jpg")
+
+
+```
+
+```{r echo = FALSE, fig.cap = "Source: @esri-topology"}
+knitr::include_graphics("images/topology_rules/6_2.jpg")
+
+
+```
+
+```{r echo = FALSE, fig.cap = "Source: @esri-topology"}
+knitr::include_graphics("images/topology_rules/6_3.jpg")
+
+
+```
+
+```{r echo = FALSE, fig.cap = "Source: @esri-topology"}
+knitr::include_graphics("images/topology_rules/7_2.jpg")
+
+
+```
+
+```{r echo = FALSE, fig.cap = "Source: @esri-topology"}
+knitr::include_graphics("images/topology_rules/7_3.jpg")
+```
+

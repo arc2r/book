@@ -1,0 +1,26 @@
+
+```{r }
+library(sf)
+library(ggplot2)
+data("veloparkierungsanlagen_zh")
+
+
+```
+
+```{r }
+library(dplyr)
+parkBikes_winti <- filter(veloparkierungsanlagen_zh,GEMEINDE == "Winterthur")
+
+
+```
+
+```{r echo = F, fig.align='center'}
+ggplot() + geom_sf(data = veloparkierungsanlagen_zh) + geom_sf(data = parkBikes_winti, fill = "red", aes(color = "Bike parking spots in Winterthur")) + ggtitle("Bike parking facilities in Canton Zurich") + labs(color = " ") + theme(legend.position = "right", axis.text.x = element_text(angle=90, hjust=1)) + coord_sf(datum = 2056)
+
+
+```
+
+```{r select, fig.cap= "Select by Attributes in ArcGIS pro",echo=F, out.width = "500px",fig.align='center'}
+knitr::include_graphics("images/selectAttr.png")
+```
+

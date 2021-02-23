@@ -1,0 +1,106 @@
+
+```{r echo = FALSE}
+library(arc2r)
+library(sf)
+library(raster)
+
+
+```
+
+```{r }
+data("bezirke")
+
+
+```
+
+```{r }
+st_crs(bezirke)
+
+
+```
+
+```{r }
+st_crs(bezirke) <- 2056
+
+
+```
+
+```{r }
+bezirke
+
+
+## <!--
+
+## # TODO revise this
+
+## -->
+
+##  _st_set_crs_ function **does not** reproject the coordinates of the given dataset. In other words, it does not affect the actual _geometry_ column of the sf object. _st_tranform_ on the other hand indeed **does indeed reproject** the dataset to another coordinate
+
+
+```
+
+```{r echo=TRUE, message=TRUE, warning=TRUE}
+plot(bezirke["area_km2"], axes = TRUE)
+
+
+```
+
+```{r echo=TRUE, message=TRUE, warning=TRUE}
+bezirke_wgs84 <- st_transform(bezirke, 4326)
+
+plot(bezirke_wgs84["area_km2"], axes = TRUE)
+
+
+```
+
+```{r echo=TRUE, message=TRUE, warning=TRUE}
+st_crs(bezirke)
+
+
+```
+
+```{r echo=TRUE, message=TRUE, warning=TRUE}
+bezirke_swiss <- st_transform(bezirke, 2056)
+
+# retrieve the coordinate system
+st_crs(bezirke_swiss)
+
+
+```
+
+```{r }
+# Dataset derived from the spatial interpolation of all the available "recycling points"
+# in the city of Wädenwil
+data("recycling_raster")
+
+# Dataset representing the public transport quality in the city of Wädenswil
+data("public_transport_waedi")# CRS -> WGS84 
+
+
+```
+
+```{r }
+# Plot the raster dataset - World Geodetic System 1984 
+plot(public_transport_waedi,las=1,
+     main = "Quality of public transport in the city of Wädenwil - CRS: WGS84",
+     cex.main=1,font.main=4)
+
+
+```
+
+```{r }
+# Transform the coordinate system of the raster dataset publicTransport_CH
+# into the Swiss Coordinate system - CH1903+LV95
+publicTransport_CH = projectRaster(public_transport_waedi, recycling_raster)
+
+
+```
+
+```{r }
+# Plot the raster dataset - Swiss Coordinate System CH1903+LV95 
+plot(publicTransport_CH,las=1,
+     main = "Quality of public transport in the city of Wädenwil - CRS: CH1903+LV95",
+     cex.main=1,font.main=4)
+```
+

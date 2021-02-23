@@ -1,0 +1,67 @@
+
+```{r }
+## The operations are based on the following rule: `x[y, ,operation]`, where:
+
+## 
+## 
+## -  __x__ and __y__ are the spatial objects for which we want to investigate if there is a spatial relationship (x is the target feature, while y is the source one)
+
+## -  the second argument `[, ,]` within the brackets denotes the column number we want to retrieve from the spatial subsetting. In our example this argument was empty, which means we wanted to retrieve all rows for every __attribute column__.
+
+## -  the third argument `[op = ]` specifies the spatial operation we want to perform. In the example above, the goal was to find out how many subset features of the target object _swimmSpots_ lie withing the source spatial object _richterswil_. For that reason we chose the function `st_within()`.
+
+
+```
+
+```{r echo=FALSE}
+knitr::opts_chunk$set(warning = F, message = F, tidy = T)
+library(dplyr)
+library(sf)
+library(ggplot2)
+library(arc2r)
+
+
+```
+
+```{r echo=T}
+
+# Minicipalities (Gemeinde) in Canton Zurich
+data("gemeindegrenzen_zh")
+
+# "Swimming" spots in the Canton of Zurich
+data("badeplaetze_zh")
+
+
+```
+
+```{r echo=F}
+richterswil <- filter(gemeindegrenzen_zh, GEMEINDENAME == "Richterswil")
+
+ggplot() + 
+  geom_sf(data = gemeindegrenzen_zh) + 
+  geom_sf(data = richterswil, fill = "red") +
+  geom_sf(data = badeplaetze_zh,color = "blue") + 
+  ggtitle("Swimming spots in the Canton of Zurich") + 
+  theme_minimal() + 
+  coord_sf(datum = 2056)
+
+
+```
+
+```{r }
+swimmSpots_richt <- badeplaetze_zh[richterswil, ,op = st_within]
+
+
+```
+
+```{r echo=F}
+ggplot() + 
+  geom_sf(data = gemeindegrenzen_zh) + 
+  geom_sf(data = badeplaetze_zh,color = "blue") +
+  geom_sf(data = richterswil, fill = "white") + 
+  geom_sf(data = swimmSpots_richt, color = "red") + 
+  ggtitle("Swimming spots in the Canton of Zurich") + 
+  theme_minimal() + 
+  coord_sf(datum = 2056)
+```
+

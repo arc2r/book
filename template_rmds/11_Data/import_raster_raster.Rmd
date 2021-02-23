@@ -1,0 +1,31 @@
+
+```{r echo=FALSE}
+library(raster)
+
+
+```
+
+```{r include=FALSE}
+source("R/before_chapter.R", local = knitr::knit_global())
+
+
+```
+
+```{r }
+library(raster)
+
+swissAlti3D <- raster("sample_data/SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_1196.tif")
+
+
+```
+
+```{r }
+swissAlti3D
+
+
+```
+
+```{r }
+plot(swissAlti3D)
+```
+

@@ -1,0 +1,44 @@
+
+```{r echo = FALSE, eval = FALSE}
+## # knitr::include_graphics("images/network/Analysis_Proximity.png")
+
+
+```
+
+```{r echo=TRUE}
+library(arc2r)
+library(sf)
+library(ggplot2)
+
+
+```
+
+```{r echo=TRUE}
+data("mountainBikes_routes") # Dataset depicting the mountain bike routes in Switzerland
+
+data("kantonsgebiet")
+
+
+```
+
+```{r echo=TRUE}
+plot(st_geometry(kantonsgebiet))
+plot(st_geometry(mountainBikes_routes), add = TRUE, col = "red")
+
+
+```
+
+```{r echo = TRUE}
+routes_buffer <- st_buffer(mountainBikes_routes,1000)
+
+plot(st_geometry(routes_buffer))
+plot(st_geometry(mountainBikes_routes), add = TRUE)
+
+
+
+```
+
+```{r fig.cap= "Buffer operation in ArcGIS pro",echo=F, out.width = "750px",fig.align='center'}
+knitr::include_graphics("images/buffer.png")
+```
+

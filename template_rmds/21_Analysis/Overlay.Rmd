@@ -1,0 +1,48 @@
+
+```{r echo = FALSE, eval = FALSE}
+## knitr::include_graphics("images/network/Analysis_Overlay.png")
+
+
+```
+
+```{r echo=TRUE}
+library(arc2r)
+library(sf)
+library(dplyr)
+library(ggplot2)
+
+
+```
+
+```{r echo = TRUE}
+data("haltestelle_bahn")
+data("kantonsgebiet")
+
+
+head(haltestelle_bahn)
+head(kantonsgebiet)
+
+
+plot(st_geometry(kantonsgebiet))
+plot(haltestelle_bahn, add = TRUE, col = "blue", pch = 20)
+
+
+
+```
+
+```{r echo = TRUE}
+
+haltestelle_bahn_join <- st_join(haltestelle_bahn,kantonsgebiet)
+
+
+haltestelle_bahn_join
+
+
+```
+
+```{r echo = TRUE}
+ggplot() +
+  geom_sf(data = kantonsgebiet) +
+  geom_sf(data = haltestelle_bahn_join, aes(colour = NAME)) 
+```
+

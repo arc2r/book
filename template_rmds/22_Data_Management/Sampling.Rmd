@@ -1,0 +1,63 @@
+
+```{r echo = FALSE, eval = FALSE}
+## knitr::include_graphics("images/network/Data Management_Sampling.png")
+
+
+```
+
+```{r echo = TRUE}
+library(sf)
+library(arc2r)
+library(ggplot2)
+library(dplyr)
+
+
+```
+
+```{r echo = TRUE}
+# Reading the simple feature object that depicts all the cantons of the country of Switzerland
+data("kantonsgebiet")
+
+# Selecting only the geometric extent of the canton of Zurich
+zh <- filter(kantonsgebiet, NAME == "Zürich")
+
+# Plotting the selected area
+ggplot(zh) + geom_sf() + coord_sf(datum = 2056)
+
+# Creating a tessellated grid of hexagons using the st_make_grid() function. 
+g <- st_make_grid(zh, square = FALSE) # square = TRUE creates as expected a tesselation of squares
+
+# Plotting the generated output over the spatial representation of the canton of Zurich
+ggplot() + geom_sf(data = zh, fill = "red") +
+  geom_sf(data = g, alpha = 0.3, color = "black") + coord_sf(datum = 2056) +
+  ggtitle("Tesselated grid within the Canton of Zürich") +
+  theme(plot.title = element_text(hjust = 0.5), text = element_text(size=9))
+
+
+```
+
+```{r echo = TRUE}
+# Create random points (1000) within the spatial extent of the Canton of Zurich
+sample <- st_sample(zh, size = 1000)
+
+# Plotting the randomly generated points over the spatial feature that
+# represents the canton of Zurich
+ggplot() + geom_sf(data = zh) + 
+  geom_sf(data = sample) +
+  coord_sf(datum = 2056) + 
+  ggtitle("1000 random points witihn the Canton of Zurich") 
+
+
+```
+
+```{r echo = TRUE}
+data("mountainBikes_routes")
+
+line1 <- mountainBikes_routes[1,]
+pointsOnLine1 <- st_line_sample(line1,50, type = "random")
+
+
+plot(st_geometry(line1))
+plot(pointsOnLine1, add = TRUE, pch = 20, col = "red")
+```
+
