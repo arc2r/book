@@ -67,7 +67,7 @@ ggplot(gemeindegrenzen_zh) +
 
 ```
 
-In its most basic form, we can visualize the geometry of our `sf` object.As always in `ggplot2`, if you want to use a column from your dataset as an input for, say, colour, you need to specify this with `aes()`:
+In its most basic form, we can visualize the geometry of our `sf` object. As always in `ggplot2`, if you want to use a column from your dataset as an input for, say, colour, you need to specify this with `aes()`:
 
 ```{r}
 ggplot(gemeindegrenzen_zh) + 
