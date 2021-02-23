@@ -2,7 +2,7 @@
 
 ### Must be larger than cluster tolarance
 
-```{r, echo = FALSE, fig.cap = "Source: @esri-topology"}
+```{r, echo = FALSE, fig.cap = "Source: @esri-topology", purl=FALSE}
 knitr::include_graphics("images/topology_rules/0_2.jpg")
 ```
 

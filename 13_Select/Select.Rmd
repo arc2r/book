@@ -6,7 +6,7 @@ A very commonly used tool in ArcGIS is the concept of "Selection". The idea is, 
 2.  *Select By Attributes*: By specifying (non-spatial) criteria based on the attribute table
 3.  *Select By Location*: By specifying spatial criteria based on the relationship to another dataset.
 
-```{r, selection, echo = FALSE,fig.align="center", out.width="50%", fig.cap="A very commonly used tool: The selection tools from the ArcGIS Pro Map Pane"}
+```{r, selection, echo = FALSE,fig.align="center", out.width="50%", fig.cap="A very commonly used tool: The selection tools from the ArcGIS Pro Map Pane", purl=FALSE}
 
 knitr::include_graphics("images/selection.jpg")
 ```

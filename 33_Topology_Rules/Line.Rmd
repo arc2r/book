@@ -2,7 +2,7 @@
 
 ### Must not have pseudo nodes
 
-```{r, echo = FALSE, fig.cap = "Source: @esri-topology"}
+```{r, echo = FALSE, fig.cap = "Source: @esri-topology", purl=FALSE}
 knitr::include_graphics("images/topology_rules/0_3.jpg")
 ```
 
@@ -14,78 +14,78 @@ knitr::include_graphics("images/topology_rules/1_2.jpg")
 
 ### Must not self overlap
 
-```{r, echo = FALSE, fig.cap = "Source: @esri-topology"}
+```{r, echo = FALSE, fig.cap = "Source: @esri-topology", purl=FALSE}
 knitr::include_graphics("images/topology_rules/1_3.jpg")
 ```
 
 ### Must not overlap
 
-```{r, echo = FALSE, fig.cap = "Source: @esri-topology"}
+```{r, echo = FALSE, fig.cap = "Source: @esri-topology", purl=FALSE}
 knitr::include_graphics("images/topology_rules/2_2.jpg")
 ```
 
 ### Must not self-intersect
 
-```{r, echo = FALSE, fig.cap = "Source: @esri-topology"}
+```{r, echo = FALSE, fig.cap = "Source: @esri-topology", purl=FALSE}
 knitr::include_graphics("images/topology_rules/2_3.jpg")
 ```
 
 ### Must not intersect
 
-```{r, echo = FALSE, fig.cap = "Source: @esri-topology"}
+```{r, echo = FALSE, fig.cap = "Source: @esri-topology", purl=FALSE}
 knitr::include_graphics("images/topology_rules/3_2.jpg")
 ```
 
 ### Must be single part
 
-```{r, echo = FALSE, fig.cap = "Source: @esri-topology"}
+```{r, echo = FALSE, fig.cap = "Source: @esri-topology", purl=FALSE}
 knitr::include_graphics("images/topology_rules/3_3.jpg")
 ```
 
 ### Must not intersect with
 
-```{r, echo = FALSE, fig.cap = "Source: @esri-topology"}
+```{r, echo = FALSE, fig.cap = "Source: @esri-topology", purl=FALSE}
 knitr::include_graphics("images/topology_rules/4_2.jpg")
 ```
 
 ### Must be covered by feature class of
 
-```{r, echo = FALSE, fig.cap = "Source: @esri-topology"}
+```{r, echo = FALSE, fig.cap = "Source: @esri-topology", purl=FALSE}
 knitr::include_graphics("images/topology_rules/4_3.jpg")
 ```
 
 ### Must not intersect or touch interior
 
-```{r, echo = FALSE, fig.cap = "Source: @esri-topology"}
+```{r, echo = FALSE, fig.cap = "Source: @esri-topology", purl=FALSE}
 knitr::include_graphics("images/topology_rules/5_2.jpg")
 ```
 
 ### Must be covered by boundary of
 
-```{r, echo = FALSE, fig.cap = "Source: @esri-topology"}
+```{r, echo = FALSE, fig.cap = "Source: @esri-topology", purl=FALSE}
 knitr::include_graphics("images/topology_rules/5_3.jpg")
 ```
 
 ### Must not intersect or touch interior with
 
-```{r, echo = FALSE, fig.cap = "Source: @esri-topology"}
+```{r, echo = FALSE, fig.cap = "Source: @esri-topology", purl=FALSE}
 knitr::include_graphics("images/topology_rules/6_2.jpg")
 ```
 
 ### Must be properly inside
 
-```{r, echo = FALSE, fig.cap = "Source: @esri-topology"}
+```{r, echo = FALSE, fig.cap = "Source: @esri-topology", purl=FALSE}
 knitr::include_graphics("images/topology_rules/6_3.jpg")
 ```
 
 ### Must not overlap with
 
-```{r, echo = FALSE, fig.cap = "Source: @esri-topology"}
+```{r, echo = FALSE, fig.cap = "Source: @esri-topology", purl=FALSE}
 knitr::include_graphics("images/topology_rules/7_2.jpg")
 ```
 
 ### Endpoint must be covered by
 
-```{r, echo = FALSE, fig.cap = "Source: @esri-topology"}
+```{r, echo = FALSE, fig.cap = "Source: @esri-topology", purl=FALSE}
 knitr::include_graphics("images/topology_rules/7_3.jpg")
 ```

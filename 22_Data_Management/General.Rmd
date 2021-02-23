@@ -1,7 +1,7 @@
 
 ## General Toolset {#general}
 
-```{r, echo = FALSE, eval = FALSE}
+```{r, echo = FALSE, eval = FALSE, purl=FALSE}
 knitr::include_graphics("images/network/Data Management_General.png")
 ```
 
