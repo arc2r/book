@@ -1,0 +1,45 @@
+
+```{r echo=TRUE}
+library(arc2r)
+library(raster)
+library(terra)
+
+
+```
+
+```{r echo = TRUE}
+# India's population in 2000
+data("pop_india2000")
+
+# India's population in 2010
+data("pop_india2010")
+
+par(mfrow=c(1,2))
+plot(pop_india2000)
+plot(pop_india2010)
+
+
+```
+
+```{r echo = TRUE}
+diff_rasters <- function(b1, b2){
+  # this function calculates the difference between two rasters of the same CRS and extent
+  # input: 2 raster layers of the same extent, crs that can be subtracted
+  # output: a single different raster of the same extent, crs of the input rasters
+  diff <- b2 - b1
+  return(diff)
+}
+
+
+```
+
+```{r echo = TRUE}
+# Compute the raster that depicts the difference in population in these 10 years
+pop2010_2000 <- overlay(pop_india2000, pop_india2010,
+                     fun = diff_rasters)
+
+plot(pop2010_2000,
+     main = "India's population difference in the timespan of 10 years",
+     cex.main = 1)
+```
+

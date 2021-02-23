@@ -1,0 +1,8 @@
+# Topology Rules
+
+About this
+
+
+```{r, topologyposter, fig.cap="The 32 different topolgy rules that you can apply to one or more feature datasets in ArcGIS", echo = FALSE}
+knitr::include_graphics("images/topology_rules_poster.jpg")
+```

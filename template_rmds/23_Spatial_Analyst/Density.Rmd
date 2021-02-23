@@ -1,0 +1,49 @@
+
+```{r echo = TRUE}
+set.seed(10)
+mypoints <- data.frame(x = rnorm(1000),y = rnorm(1000)) %>%
+  st_as_sf(coords = c(1,2))
+
+plot(mypoints)
+
+
+```
+
+```{r echo = TRUE}
+my_kde <- function(points,cellsize, bandwith, extent = NULL){
+  require(MASS)
+  require(raster)
+  require(sf)
+  if(is.null(extent)){
+    extent_vec <- st_bbox(points)[c(1,3,2,4)]
+  } else{
+    extent_vec <- st_bbox(extent)[c(1,3,2,4)]
+  }
+  
+  n_y <- ceiling((extent_vec[4]-extent_vec[3])/cellsize)
+  n_x <- ceiling((extent_vec[2]-extent_vec[1])/cellsize)
+  
+  extent_vec[2] <- extent_vec[1]+(n_x*cellsize)-cellsize
+  extent_vec[4] <- extent_vec[3]+(n_y*cellsize)-cellsize
+
+  coords <- st_coordinates(points)
+  matrix <- kde2d(coords[,1],coords[,2],h = bandwith,n = c(n_x,n_y),lims = extent_vec)
+  raster(matrix)
+}
+
+
+```
+
+```{r echo = TRUE}
+
+mypoints_kde <- my_kde(mypoints,0.01,1)
+library(stars)
+
+ggplot() +
+  geom_stars(data = st_as_stars(mypoints_kde)) +
+  geom_sf(data = mypoints, alpha = 0.2, fill = "black") +
+  scale_fill_viridis_c() +
+  labs(fill = "KDE") +
+  theme_void() 
+```
+

@@ -1,7 +1,7 @@
 
 # All things `R`-Spatial
 
-2021-02-15 13:51:55
+2021-02-22 09:52:24
 
 [![Actions
 Status](https://github.com/arc2r/book/workflows/bookdown/badge.svg)](https://github.com/arc2r/book/actions)
@@ -50,34 +50,6 @@ the top of an Rmd-File
 
 see
 <https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html#special-headers>
-
-### Todos:
-
-we can add todos to our document using the following syntax:
-
-    / todo: the title of the todo. what should be done?
-    /  here we can add a body of our todo, which is indeted with an additional space
-    /  we can also automatically assign a todo to a user using their github username
-    /  in the following manner:
-    /  assignees: ratnanil
-
-The Todo action by alstr
-(<https://github.com/alstr/todo-to-issue-action/>) will automatically
-check all our files for new todos and create issues if it finds one.
-Once the todo is removed from the document, the issue will be closed as
-well.
-
-If we want the todo to be invisible from the users, we need to wrap it
-with the html comment tag `<!--` and `-->` as follows. Note that the
-comment tags are written on separate lines.
-
-    <!--
-    / todo: the title of the todo. what should be done?
-    /  here we can add a body of our todo, which is indeted with an additional space
-    /  we can also automatically assign a todo to a user using their github username
-    /  in the following manner:
-    /  assignees: ratnanil
-    -->
 
 ### Citation
 

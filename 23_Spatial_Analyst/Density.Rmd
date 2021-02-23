@@ -1,6 +1,4 @@
-## Conditional Toolset
-
-<!-- ## Density Toolset -->
+## Density Toolset
 
 ### Kernel Density
 
@@ -13,7 +11,7 @@ There are several Function that can be tweaked to calculate KDE for `sf`-Point o
 
 In this example, I take `MASS:kde2d()` and tweak it to take `sf` and return `raster`. First, let's create some sample data:
 
-```{r}
+```{r, echo = TRUE}
 set.seed(10)
 mypoints <- data.frame(x = rnorm(1000),y = rnorm(1000)) %>%
   st_as_sf(coords = c(1,2))
@@ -22,7 +20,7 @@ plot(mypoints)
 ```
 
 
-```{r}
+```{r, echo = TRUE}
 my_kde <- function(points,cellsize, bandwith, extent = NULL){
   require(MASS)
   require(raster)
@@ -45,7 +43,7 @@ my_kde <- function(points,cellsize, bandwith, extent = NULL){
 }
 ```
 
-```{r}
+```{r, echo = TRUE}
 
 mypoints_kde <- my_kde(mypoints,0.01,1)
 library(stars)
@@ -61,37 +59,4 @@ ggplot() +
 ```
 
 
-<!-- ### Line Density -->
 
-<!-- ### Point Density -->
-
-<!-- ## Distance Toolset -->
-
-<!-- ## Extraction Toolset -->
-
-<!-- ## Generalization Toolset -->
-
-<!-- ## Interpolation Toolset -->
-
-<!-- ## Map Algebra Toolset -->
-
-<!-- ## Math Toolset -->
-
-<!-- ## Neighborhood Toolset -->
-
-<!-- ## Overlay Toolset -->
-
-<!-- ### Fuzzy Membership -->
-<!-- ### Fuzzy Overlay -->
-<!-- ### Locate Regions -->
-<!-- ### Weighted Overlay -->
-<!-- ### Weighted Sum -->
-
-
-## Reclass Toolset
-
-<!-- ### Lookup -->
-<!-- ### Reclass by ASCII File -->
-<!-- ### Reclass by Table -->
-<!-- ### Rescale by Function -->
-<!-- ### Slice -->

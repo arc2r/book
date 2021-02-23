@@ -14,6 +14,9 @@ nocite: '@*'
 ```{r,echo=FALSE,message=FALSE,warning=FALSE}
 now <- Sys.time()
 tz <- Sys.timezone()
+
+source("R/helperfunctions.R", local = knitr::knit_global())
+
 ```
 
 [![Actions Status](https://github.com/arc2r/book/workflows/bookdown/badge.svg)](https://github.com/arc2r/book/actions)
@@ -27,7 +30,7 @@ This is a resource for people wanting to learn spatial-R (Analysis, Visualizatio
 
 This book leans heavily on how the Toolboxes and Toolsets are organized in ArcGIS Pro. The idea is that you can look up specific things of which you only know the ArcGIS terminology for. This book is a work in progress, and *we highly appreciate contributions* to this book: If you have anything to add, please [file an issue or make a pull request](https://github.com/arc2r/book).  
 
-We are big fans of using `magrittr`'s pipe function `%>%` and heavily use it throughout this book. In addition for vector data, we use packages from the `tidyverse` (especially from the `dplyr` package: filter()`, `mutate()` and `summarise()`).
+We are big fans of using `magrittr`'s pipe function `%>%` and heavily use it throughout this book. In addition for vector data, we use packages from the `tidyverse` (especially from the `dplyr` package: `filter()`, `mutate()` and `summarise()`).
 
 ## How it started
 
@@ -36,27 +39,14 @@ We had long since thought about the necessity of a resource which helps ArcGIS u
 
 
 
-```{r,echo=FALSE, fig.cap="[Nils' Tweet](https://twitter.com/NRatnaweera/status/1187759876472213504) might not have received much attention, but it did spark a conversation within our group", out.width="70%", fig.align="center"}
+```{r,echo=FALSE, fig.cap="[Nils' Tweet](https://twitter.com/NRatnaweera/status/1187759876472213504) might not have received much attention, but it did spark a conversation within our group", out.width="60%", fig.align="center"}
 knitr::include_graphics("images/tweet1.jpg")
 ```
 
-## What might make your journey difficult {#difficulties}
 
-What are the main difficulties when switching from ArcGIS to `R`? 
+<!-- ## Why you should transition anyway -->
 
-- The fundamental building block of ArcGIS is a visual representation of your data (i.e. the map). The fundamental building block in `R` is your RScript. The visual aspect makes ArcGIS more approachable, but also less scalable.
-- When you acquire ArcGIS, you are served from a single source. In `R`, there are a plethora of developers creating packages for you to use, which can be quite overwhelming
-- While there are always multiple ways to solve a problem in ArcGIS, there are usually many more ways to solve it in `R`
-- When you transition from a proprietary Software like ArcGIS to [FOSS](https://en.wikipedia.org/wiki/Free_and_open-source_software), you have to relearn many of the concepts because the proprietary software usually does not adhere to common standards.
-- ArcGIS follows the concept of creating a tool for *every* situation you might encounter. With this approach, they provide a selection of > 1'000 geoprocessing tools to your disposal. Generally speaking, the authors of Packages will try to keep the number of functions as small as possible, since this reduces maintenance.
-<!--
-//todo add this somewhere
-//body when you add a shapefile to your arcgis project, you basically have a "connection" to this file. in R, you create a virtual copy / an R representation of your dataset within your r session
--->
-
-## Why you should transition anyway
-
-We strongly advocate the use of a programming language to tackle GIS tasks for the following reasons:
+<!-- We strongly advocate the use of a programming language to tackle GIS tasks for the following reasons: -->
 
 <!--
 # todo translate this
@@ -73,6 +63,8 @@ We strongly advocate the use of a programming language to tackle GIS tasks for t
 
 
 ## How to use this book
+
+The tutorials in this book should be very easy to follow along. 
 
 
 <!--

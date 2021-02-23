@@ -1,0 +1,52 @@
+## Reclass Toolset
+
+```{r, echo = TRUE}
+library(raster)
+library(arc2r)
+library(dplyr)
+```
+
+### Reclassify
+
+In GIS quite often arises the necessity to reclassify a raster dataset. In other words, to create new classes with different range of values for the existing cell values of the dataset. This operation in ArcGIS Pro is performed using the `Reclassify (Spatial Analyst)` tool.  In R the respective operation is quite straightforward and is based on the use of the `reclassify` function of the `raster` package. For our example we use the raster dataset `swissAlti3D`.
+
+
+```{r, echo = TRUE}
+data("swissAlti3D")
+
+plot(swissAlti3D)
+```
+
+Let's have a look at the histogram of the raster values to see their distribution.
+
+```{r, echo = TRUE}
+histinfo <- hist(swissAlti3D)
+```
+
+
+The histogram above automatically created `r length(histinfo$breaks)` breaks (`r paste(c(head(histinfo$breaks,2),"...", tail(histinfo$breaks,2)),collapse = ",")`). We can use these breaks to reclassify our values. To do so, we create below a reclassification matrix with the respective values.
+
+```{r}
+# create a reclassification matrix
+reclass_vec <- histinfo$breaks
+
+reclass_m <- matrix(c(
+  lag(reclass_vec,default = 0),
+  reclass_vec,
+  seq_along(reclass_vec)
+),ncol = 3)
+
+
+reclass_m
+```
+
+After creating the respective matrix with the new classes, we are ready to call the `reclassify` function. The function takes as a first argument the dataset set to be reclassified and as second the matrix, on which the reclassification is based on. 
+
+```{r, echo = TRUE, fig.cap="Aspect of swissALTI3D2019 in 4 classes"}
+swissAlti3D_reclass <- reclassify(swissAlti3D, reclass_m)
+
+plot(swissAlti3D_reclass)
+```
+
+
+

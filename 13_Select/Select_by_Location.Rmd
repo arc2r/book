@@ -118,20 +118,18 @@ An example of spatial subsetting could be the following. Let's assume we have as
 ```{r echo=T}
 
 # Minicipalities (Gemeinde) in Canton Zurich
-data("gemeinde_zh")
+data("gemeindegrenzen_zh")
 
 # "Swimming" spots in the Canton of Zurich
 data("badeplaetze_zh")
 ```
 
 ```{r, echo=F}
-# Municipality (Gemeinde) of Richterswil 
-richterswil <- filter(gemeinde_zh, gemeindena == "Richterswil")
-names(richterswil)[5] = "Municipality"
+richterswil <- filter(gemeindegrenzen_zh, GEMEINDENAME == "Richterswil")
 
 ggplot() + 
-  geom_sf(data = gemeinde_zh) + 
-  geom_sf(data = richterswil, aes(fill = Municipality)) +
+  geom_sf(data = gemeindegrenzen_zh) + 
+  geom_sf(data = richterswil, fill = "red") +
   geom_sf(data = badeplaetze_zh,color = "blue") + 
   ggtitle("Swimming spots in the Canton of Zurich") + 
   theme_minimal() + 
@@ -144,7 +142,14 @@ swimmSpots_richt <- badeplaetze_zh[richterswil, ,op = st_within]
 ```
 
 ```{r,echo=F}
-ggplot() + geom_sf(data = gemeinde_zh) + geom_sf(data = badeplaetze_zh,color = "blue") + geom_sf(data = richterswil, fill = "white") + geom_sf(data = swimmSpots_richt, color = "red") + ggtitle("Swimming spots in the Canton of Zurich") + theme_minimal() + coord_sf(datum = 2056)
+ggplot() + 
+  geom_sf(data = gemeindegrenzen_zh) + 
+  geom_sf(data = badeplaetze_zh,color = "blue") +
+  geom_sf(data = richterswil, fill = "white") + 
+  geom_sf(data = swimmSpots_richt, color = "red") + 
+  ggtitle("Swimming spots in the Canton of Zurich") + 
+  theme_minimal() + 
+  coord_sf(datum = 2056)
 ```
 
 

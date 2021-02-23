@@ -1,0 +1,52 @@
+
+```{r echo = FALSE}
+library(dplyr)
+
+
+```
+
+```{r joins, fig.cap= "Join operations",echo=F, out.width = "500px",fig.align='center'}
+knitr::include_graphics("images/joins.png")
+
+
+```
+
+```{r }
+
+df1 <- data.frame(TeamID = c(1,4,6,11),
+                  TeamName = c("new york knicks","los angeles lakers","milwaukee bucks","boston celtics"),
+                  Championships = c(2,17,1,17))
+
+df2 <- data.frame(TeamID = c(1,2,11,8),
+                  TeamName = c("new york knicks","philadelphia 76ers","boston celtics","los angeles clippers"),
+                  Championships = c(2,3,17,0))
+
+df1
+
+df2
+
+
+```
+
+```{r }
+df1 %>% inner_join(df2)
+
+
+```
+
+```{r }
+full_join(df1,df2)
+
+
+```
+
+```{r }
+left_join(df1,df2)
+
+
+```
+
+```{r }
+right_join(df1,df2)
+```
+

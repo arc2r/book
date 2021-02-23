@@ -1,12 +1,5 @@
 
-## Select by Attribute
-
-//todo does this stay here or move to Analysis -> Extract -> Select? --> It stays here under the umbrella of Layers and Table Views toolset (https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/select-layer-by-attribute.htm) == Geoprocessing Tools/Data Management toolbox/Layers and Table Views toolset 
-
-```{r,echo=FALSE}
-knitr::opts_chunk$set(warning = F, message = F, tidy = T)
-```
-
+## Select by Attribute {#select-by-attribute}
 
 One of the popular approaches in ArcGIS pro for selecting features in a layer is by using an attribute query. The action is performed using the `Select By Attributes` tool.
 

@@ -1,68 +1,47 @@
-rmd_files: [
-  "index.Rmd",
-  
-  "11_Data/Data.Rmd",
-  "11_Data/import_vector.Rmd",
-  "11_Data/import_raster_raster.Rmd",
-  "11_Data/import_raster_terra.Rmd",
-
-  "12_Making_Maps/Making_Maps.Rmd",
-  "12_Making_Maps/Static_Maps.Rmd",
-  "12_Making_Maps/Dynamic_Maps.Rmd",
-  
-
-  "13_Select/Select.Rmd",
-  "13_Select/Select_by_Attribute.Rmd",
-  "13_Select/Select_by_Location.Rmd",
-
-  "03_Part_Geoprocessing_Tools.Rmd",
-  
-  
-  "21_Analysis/Analysis.Rmd",
-  "21_Analysis/Extract.Rmd",
-  "21_Analysis/Overlay.Rmd",
-  "21_Analysis/Proximity.Rmd",
-
-  "22_Data_Management/Data_Management.Rmd",
-  "22_Data_Management/General.Rmd",
-  "22_Data_Management/Join.Rmd",
-  "22_Data_Management/Projections_and_Transformations.Rmd",
-  "22_Data_Management/Raster_Processing.Rmd",
-  "22_Data_Management/Sampling.Rmd",
-  
-  
-  "23_Spatial_Analyst/Spatial_Analyst.Rmd",
-  "23_Spatial_Analyst/Neighborhood.Rmd",
-  "23_Spatial_Analyst/Zonal.Rmd",
-  "23_Spatial_Analyst/Conditional.Rmd",
-  "23_Spatial_Analyst/Surface.Rmd",
-
-
-  "24_Spatial_Statistics/Spatial_Statistics.Rmd",
-
-
-  "25_Image_Analyst/Image_Analyst.Rmd",
-  "25_Image_Analyst/Map_Algebra.Rmd",
-
-  "26_3D_Analyst/3D_Analyst.Rmd",
-  "26_3D_Analyst/Raster_Interpolation.Rmd",
-
-
-
-  "31_Topology_Rules/Topology_Rules.Rmd",
-  "31_Topology_Rules/Polygon.Rmd",
-  "31_Topology_Rules/Line.Rmd",
-  "31_Topology_Rules/Point.Rmd",
-  "31_Topology_Rules/Line_or_Polygon.Rmd",
-
-  "bibliography.Rmd",
-  
-  "99_Appendix/Progress.Rmd"
-
-]
-delete_merged_file: TRUE
-output_dir: "docs"
-# after_chapter_script: R/after_chapter.R
-# before_chapter_script: R/before_chapter.R
-
-# please leave an empty line after this one, there are warnings otherwise
+rmd_files:
+- index.Rmd
+- 10_Getting_Started.Rmd
+- 11_Data/Data.Rmd
+- 11_Data/import_vector.Rmd
+- 11_Data/import_raster_raster.Rmd
+- 11_Data/import_raster_terra.Rmd
+- 12_Making_Maps/Making_Maps.Rmd
+- 12_Making_Maps/Static_Maps.Rmd
+- 12_Making_Maps/Dynamic_Maps.Rmd
+- 13_Select/Select.Rmd
+- 13_Select/Select_by_Attribute.Rmd
+- 13_Select/Select_by_Location.Rmd
+- 20_Geoprocessing_Tools.Rmd
+- 21_Analysis/Analysis.Rmd
+- 21_Analysis/Extract.Rmd
+- 21_Analysis/Overlay.Rmd
+- 21_Analysis/Proximity.Rmd
+- 22_Data_Management/Data_Management.Rmd
+- 22_Data_Management/General.Rmd
+- 22_Data_Management/Join.Rmd
+- 22_Data_Management/Projections_and_Transformations.Rmd
+- 22_Data_Management/Raster_Processing.Rmd
+- 22_Data_Management/Sampling.Rmd
+- 23_Spatial_Analyst/Spatial_Analyst.Rmd
+- 23_Spatial_Analyst/Neighborhood.Rmd
+- 23_Spatial_Analyst/Zonal.Rmd
+- 23_Spatial_Analyst/Reclass.Rmd
+- 23_Spatial_Analyst/Density.Rmd
+- 23_Spatial_Analyst/Surface.Rmd
+- 24_Spatial_Statistics/Spatial_Statistics.Rmd
+- 24_Spatial_Statistics/Analysing_Patterns.Rmd
+- 25_Image_Analyst/Image_Analyst.Rmd
+- 25_Image_Analyst/Map_Algebra.Rmd
+- 26_3D_Analyst/3D_Analyst.Rmd
+- 26_3D_Analyst/Raster_Interpolation.Rmd
+- 30_Topology.Rmd
+- 31_Spatial_Predicates/Spatial_Predicates.Rmd
+- 32_DE-9IM/DE-9IM.Rmd
+- 33_Topology_Rules/Topology_Rules.Rmd
+- 33_Topology_Rules/Polygon.Rmd
+- 33_Topology_Rules/Line.Rmd
+- 33_Topology_Rules/Point.Rmd
+- 33_Topology_Rules/Line_or_Polygon.Rmd
+- 99_Appendix/Progress.Rmd
+delete_merged_file: yes
+output_dir: docs

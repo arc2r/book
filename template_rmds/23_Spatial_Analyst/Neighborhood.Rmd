@@ -1,0 +1,23 @@
+
+```{r echo = TRUE}
+r <- raster(ncol=10, nrow=10)
+values(r) <- 1:ncell(r)
+plot(r, main='Raster with 100 cells', cex.main = 1)
+
+
+```
+
+```{r echo = TRUE}
+f1 <- focal(r, w=matrix(1,nrow=3,ncol=3),fun=sum)
+plot(f1, main = "Raster after applying the focal function - raster package", cex.main = 1)
+
+
+```
+
+```{r echo = TRUE}
+
+r_spat <- as(r, "SpatRaster")
+f2 <- terra::focal(r_spat,w=3,fun = "sum")
+plot(f2, main = "Raster after applying the focal function - terra package", cex.main = 1)
+```
+

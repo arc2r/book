@@ -1,26 +1,26 @@
 
 ## Extract Toolset {#extract-toolset}
 
+
+From the docs [@esri-gptoolref]:
+
+> GIS datasets often contain more data than you need. The Extract tools let you select features and attributes in a feature class or table based on a query (SQL expression) or spatial and attribute extraction. The output features and attributes are stored in a feature class or table.
+
 For this chapter, you will need the following R Packages:
-```{r, echo=FALSE}
+```{r, echo=TRUE}
 library(arc2r)
 library(sf)
 library(tmap)
 ```
 
-### Clip
+### Clip {#clip}
 
-Quite often in spatial analysis, we come across with cases, where we do not want to use all the available data there is. In other words, we want to focus on a specific area of interest, which dictates the need for __clipping__ the existing dataset based on it's relationship to some other existing spatial feature. In R this operation can be easily performed using the `st_intersection` function in `sf`.
+Quite often in spatial analysis, we come across with cases where we do not want to use all the available data there is. In other words, we want to focus on a specific area of interest, which dictates the need for __clipping__ the existing dataset based on it's relationship to some other existing spatial feature. In R this operation can be easily performed using the `st_intersection` function in `sf`.
   
-Let's assume in the example below that we want to clip the available dataset of all the __train stations in Switzerland__ by focusing our analysis on four specific cantons.
+Let's assume in the example below that we want to clip the available dataset of all the __train stations in Switzerland__ by focusing our analysis on the cantons Zurich, St. Gallen, Thurgau and Aargau. In the following chunk we prerpare and visualize this situation.
 
 
-<!--
-/ todo: replcace this with arc2r/arc2r
-/  assignees: KimboGilda
---> 
-
-```{r}
+```{r, echo = TRUE}
 
 # Point dataset depicting the train stations locations across Switzerland
 data("haltestelle_bahn")
@@ -28,43 +28,64 @@ data("haltestelle_bahn")
 # Dataset depicting Switzerland on canton level
 data("kantonsgebiet")
 
-tmap_mode(mode = "plot") # setting the plotting mode to static -- optimizing the process
+kanton_filter <- filter(kantonsgebiet, NAME %in% c("Zürich","St. Gallen","Thurgau","Aargau"))
 
-tm_shape(kantonsgebiet) + tm_polygons("#f0f0f0") + 
-  tm_shape(haltestelle_bahn) + tm_dots(col = "#e34a33",size = 0.1, alpha = 0.5) + 
-  tm_shape(kantonsgebiet) + tm_borders(col = "black") + tm_layout(frame = F)
-   
+plot(st_geometry(haltestelle_bahn))
+plot(st_geometry(kanton_filter), col = "grey", add = TRUE,alpha = 1)
+
 ```
 
-As it was mentioned above, the aim is to analyse the situation at a particular area. So we are going to create an index with the specific cantons we are interested in.
+To clip the dataset _haltestellen_bahn_ to the extent of _kanton_filter, we can simply use the `st_intersection` function as shown below:
 
+
+```{r, echo = TRUE}
+haltestelle_bahn_clipped <- st_intersection(kanton_filter, haltestelle_bahn)
+```
+
+We can now visualize the result from our operation:
 
 ```{r}
-index <- kantonsgebiet$name == "Zürich" |
-  kantonsgebiet$name == "St. Gallen" |
-  kantonsgebiet$name == "Thurgau" |
-  kantonsgebiet$name == "Aargau"
-
-# Selecting the cantons based on the previously generated index
-kantons_aOi <- kantonsgebiet[index,]
-
-# Performing the clipping operation
-hal_clipped <- st_intersection(kantons_aOi,haltestelle_bahn)
+plot(st_geometry(haltestelle_bahn_clipped))
+plot(st_geometry(kanton_filter), add = TRUE,alpha = 1)
 ```
 
- - Plotting the result from the clipping operation
-```{r}
-tm_shape(kantons_aOi) + tm_polygons("#f0f0f0") + 
-  tm_shape(hal_clipped) + tm_dots(col = "#e34a33",size = 0.1, alpha = 0.5) + 
-  tm_shape(kantons_aOi) + tm_borders() + tm_layout(frame = F)
-```
-
-So, ultimately, as we can see above, the `st_intersection` function creates a result where the point dataset is precisely "clipped" based on the area of interest
-
-
+So, ultimately, as we can see above, the `st_intersection` function creates a result where the point dataset is precisely "clipped" based on the area of interest. 
 The operation above produces the same outcome as the one depicted in the figure below \@ref(fig:clip).
 
 ```{r clip, fig.cap= "Clip operation in ArcGIS pro",echo=F, out.width = "750px",fig.align='center'}
 knitr::include_graphics("images/clipOperation.png")
 ```
 
+
+
+### Select {#select}
+
+This chapter is covered in \@ref(select-by-attribute).
+
+
+
+### Split {#split}
+
+The split tool is used in ArcGIS to split a dataset into multiple outputs. 
+
+When clipping the _haltestellen_ dataset in \@ref(clip) with a polygon containing multiple features (`kanton_filter`). Each point in `haltestelle_bahn_clipped` now has the attributes origining from `kanton_filter`, which we can use to split the dataset into different parts. The function `split()` (from base-R) helps us with this. It returns a list of `sf` objects, that we can each save in it's own dataset if need be.
+
+<!--
+TODO: 
+- Somewhere, we might need to explain how to deal with lists and refer to apply or purrr
+- what happens when we use intersection with two polygons objects. do the polygons get "cut up into pieces"?
+--> 
+
+
+
+
+```{r, echo = TRUE}
+haltestellen_split <- split(haltestelle_bahn_clipped,haltestelle_bahn_clipped$name)
+
+str(haltestellen_split[1:2])
+```
+
+
+### Split by Attributes {#split-by-attributes}
+
+See \@ref(split).

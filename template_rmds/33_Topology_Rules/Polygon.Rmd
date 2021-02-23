@@ -1,0 +1,171 @@
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE,message = FALSE)
+
+library(sf)
+library(tidyverse)
+
+
+```
+
+```{r echo = FALSE, fig.cap = "Source: @esri-topology"}
+knitr::include_graphics("images/topology_rules/0_0.jpg")
+
+
+```
+
+```{r }
+
+set.seed(10)
+nrows <- 10
+circs <- data.frame(
+  id = 1:nrows,
+  x = rnorm(nrows),
+  y = rnorm(nrows)
+) %>%
+  st_as_sf(coords = c(2,3)) %>%
+  st_buffer(0.25)
+
+
+
+```
+
+```{r }
+circsplot <- ggplot(circs) + 
+  geom_sf(fill = "blue",alpha = 0.3) +
+  geom_sf_text(aes(label = id)) +
+  theme_void()
+circsplot
+
+
+```
+
+```{r }
+st_relate(circs,pattern = "2********")
+
+
+```
+
+```{r }
+crossmatrix <- st_relate(circs,pattern = "2********",sparse = FALSE)
+crossmatrix[1:6,1:6] # only showing 6 since this prints nicely
+
+# Remove the diagonals since it's simply each feature tested against itself
+diag(crossmatrix) <- FALSE
+error <- which(crossmatrix,arr.ind = TRUE) %>%
+  as.vector() %>%
+  unique()
+
+
+circsplot +
+  geom_sf(data = circs[error,], fill = "red", alpha = 0.3)
+
+
+```
+
+```{r echo = FALSE, fig.cap = "Source: @esri-topology"}
+knitr::include_graphics("images/topology_rules/0_0.jpg")
+
+
+```
+
+```{r }
+nc = st_read(system.file("shape/nc.shp", package="sf"), quiet = TRUE)
+
+ggplot(nc) + 
+  geom_sf() +
+  theme_void()
+
+
+```
+
+```{r }
+nc_union <- st_union(nc)
+nc_union
+
+
+```
+
+```{r }
+nc_singlepart <- nc_union %>%
+  st_cast("POLYGON")%>%
+  st_sf() %>%
+  mutate(id = 1:n())
+
+ggplot(nc_singlepart) +
+  geom_sf(aes(fill = factor(id))) +
+  labs(fill = "id") +
+  theme_void()
+
+
+```
+
+```{r }
+map_lgl(nc_singlepart$geometry,~length(.x)== 1)
+
+
+```
+
+```{r }
+holes <- nc_singlepart %>%
+  st_union() %>%
+  st_centroid() %>%
+  st_buffer(0.5)
+
+nc_holes <- st_difference(nc_singlepart,holes)
+
+ggplot(nc_holes) + 
+  geom_sf() +
+  theme_void()
+
+map_lgl(nc_holes$geometry,~length(.x)== 1)
+
+
+```
+
+```{r echo = FALSE, fig.cap = "Source: @esri-topology"}
+knitr::include_graphics("images/topology_rules/1_0.jpg")
+
+
+```
+
+```{r echo = FALSE, fig.cap = "Source: @esri-topology"}
+knitr::include_graphics("images/topology_rules/1_1.jpg")
+
+
+```
+
+```{r echo = FALSE, fig.cap = "Source: @esri-topology"}
+knitr::include_graphics("images/topology_rules/2_0.jpg")
+
+
+```
+
+```{r echo = FALSE, fig.cap = "Source: @esri-topology"}
+knitr::include_graphics("images/topology_rules/2_1.jpg")
+
+
+```
+
+```{r echo = FALSE, fig.cap = "Source: @esri-topology"}
+knitr::include_graphics("images/topology_rules/3_0.jpg")
+
+
+```
+
+```{r echo = FALSE, fig.cap = "Source: @esri-topology"}
+knitr::include_graphics("images/topology_rules/3_1.jpg")
+
+
+```
+
+```{r echo = FALSE, fig.cap = "Source: @esri-topology"}
+knitr::include_graphics("images/topology_rules/4_0.jpg")
+
+
+```
+
+```{r echo = FALSE, fig.cap = "Source: @esri-topology"}
+knitr::include_graphics("images/topology_rules/4_1.jpg")
+```
+

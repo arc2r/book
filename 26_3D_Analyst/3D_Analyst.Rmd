@@ -1,5 +1,20 @@
 # 3D Analyst Toolbox
 
 
+From the docs [@esri-gptoolref]:
+
+> The 3D Analyst toolbox provides a collection of geoprocessing tools that enable a wide variety of analytical, data management, and data conversion operations on surface models and three-dimensional vector data.
+
+> 3D Analyst tools provide the ability to create and analyze surface data represented in raster, terrain, triangulated irregular network (TIN), and LAS dataset formats. 3D data can be converted from a rich variety of formats, including COLLADA, lidar, SketchUp, OpenFlight, and many other data types. Analysis of geometric relationships and feature properties, interpolation of raster and various triangulated irregular network (TIN) models, and analysis of surface properties are only some of the numerous functions provided by the 3D Analyst tools.
+
+---
+
+**Table of content**
+
+```{r, results="asis", echo = FALSE}
+source("R/helperfunctions.R", local = knitr::knit_global())
+
+hierarchy_to_list("Geoprocessing Tools", "3D Analyst")
+```
 
 

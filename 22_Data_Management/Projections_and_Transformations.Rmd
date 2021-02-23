@@ -1,4 +1,4 @@
-## Projections and Transformations Toolset
+## Projections and Transformations Toolset {#projections}
 
 For this chapter, you will need the following R Packages:
 
@@ -16,7 +16,7 @@ If there is anything special about spatial, it's the Coordinate Reference System
 - **Rescale** (Resizes a raster by the specified x and y scale factors)
 
 
-### Define Projection {#define-projection}
+### Define Projection {#projections-defineprojection}
 
 > Overwrites the coordinate system information (map projection and datum) stored with a dataset. This tool is intended for datasets that have an unknown or incorrect coordinate system defined.
 
@@ -40,8 +40,8 @@ In ArcGIS, we would use the Tool "Define projection". In `R`, we use the functio
 
 We find option two to be the simplest approach. 
 <!--
-# todo how do we know this?
-#   gloss over this?
+todo how do we know this?
+gloss over this?
 -->
 Since we know the dataset `bezirke` is in the new swiss coordinate system (CH1903+ / LV95), we can find out the EPSG code (e.g. by consulting [epsg.io](http://epsg.io/)).
 We will not get into options 1 and 3 and only 
@@ -64,11 +64,11 @@ bezirke
 ```
 
 
-### Project
+### Project {#projections-project}
 
 > Projects spatial data from one coordinate system to another
 
-Now that `bezirke` has an assigned `CRS` (see \@ref(define-projection), we can transform it into a new coordinate system. To emphasize this, will will visualize the dataset using `base::plot()` with the option `axes = TRUE`, to visualize the current coordinate system.  
+Now that `bezirke` has an assigned `CRS` (see \@ref(projections-defineprojection), we can transform it into a new coordinate system. To emphasize this, will will visualize the dataset using `base::plot()` with the option `axes = TRUE`, to visualize the current coordinate system.  
 
 ```{r echo=TRUE, message=TRUE, warning=TRUE}
 plot(bezirke["area_km2"], axes = TRUE)
@@ -95,7 +95,7 @@ st_crs(bezirke_swiss)
 ```
 
 
-### Project Raster
+### Project Raster {#projections-projectraster}
 
 > Transforms a raster dataset from one coordinate system to another
 
@@ -145,33 +145,3 @@ plot(publicTransport_CH,las=1,
      main = "Quality of public transport in the city of Wädenwil - CRS: CH1903+LV95",
      cex.main=1,font.main=4)
 ```
-
-
-### Rescale
-
-```{r}
-data("recycling_raster")
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

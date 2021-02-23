@@ -8,25 +8,19 @@ Most vector data that you use in everyday GIS work are what are called "simple f
 -->
 
 
-```{r sf-types, echo = FALSE, fig.cap="The 7 (of 17) most important simple feature types. Image from @geocompr", fig.align="center"}
+```{r sf-types, echo = FALSE, fig.cap="The 7 (of 17) most important simple feature types. Image from @geocompr", fig.align="center", out.width="100%"}
 knitr::include_graphics("images/sf-classes.png")
 ```
 
 
-To handle these simple features in `R`, we need the library `sf`. 
-
-```{r}
-library(sf)
-```
-
-To import a vector dataset into `R`, we can use the function `read_sf` as in the example below. 
-
+To handle these simple features in `R`, we need the library `sf`, and to import a vector dataset into `R`, we can use the function `read_sf` as in the example below. 
 <!--
 //todo how does the user get access to this dataset? 
 //body make this available through the package?
 -->
 
 ```{r}
+library(sf)
 
 ARE_waedenswil <- read_sf("sample_data/ARE_waedenswil.shp")
 

@@ -1,0 +1,23 @@
+
+```{r echo = TRUE, fig.cap = "swissALTI3D2019 - CRS: CH1903+LV95"}
+data("swissAlti3D")
+
+plot(swissAlti3D)
+
+
+```
+
+```{r fig.cap = "swissALTI3D2019 - CRS: CH1903+LV95"}
+# Computing the slope of a raster dataset using the terrain() function
+swissAlti3d_slope <- terrain(swissAlti3D, opt="slope", unit="degrees")
+plot(swissAlti3d_slope)
+
+
+```
+
+```{r fig.cap="Aspect of swissALTI3D2019 in degrees (°)"}
+# Computing the aspect of the terrain dataset
+swissAlti3d_aspect <- terrain(swissAlti3D, opt="aspect", unit="degrees")
+plot(swissAlti3d_aspect)
+```
+

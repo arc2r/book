@@ -1,0 +1,71 @@
+# (PART) Geoprocessing Tools {-}
+
+# About this Section {-}
+
+Generally speaking ESRI's approach to building ArcGIS is to create a tool for every situation you might encounter. This is a little different in `R`. Depending on the package, the idea is usually to provide a minimal set of functions with which the user can create their *own* tools. The creators of the package `sf` are very strict on this paradigm [^github-1]. As [Roger Bivand](https://en.wikipedia.org/wiki/Roger_Bivand) [once put it](https://github.com/r-spatial/sf/issues/702#issuecomment-381488716):
+
+> Users should learn to catch fish, not be given tidied fish.
+
+[^github-1]: [This](https://github.com/r-spatial/sf/issues/609) and [this](https://github.com/r-spatial/sf/pull/536#issuecomment-341685846) github nicely illustrate this.
+
+
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(echo = FALSE, message=FALSE)
+```
+
+```{r}
+
+library(tidyverse)
+library(data.tree)
+library(networkD3)
+library(yaml)
+
+tools <- read_csv("ESRI_Tool_names.csv") %>%
+  mutate(toolb = str_remove(toolb," toolbox")) %>%
+  distinct(toolb, toolset, Tool)
+  
+toolsets <-  read_csv("ESRI_Toolsets.csv") %>%
+  distinct(toolb, tool)
+toolboxes <- read_csv("ESRI_Toolboxes.csv") %>%
+  distinct(name)
+```
+
+We haven't found a complete overview of all the "Geprocessing Tools" in ArcGIS, but we've scraped ESRI'S website and counted `r nrow(toolboxes)` Toolboxes, containing `r nrow(toolsets)` Toolsets and `r nrow(tools)` individual tools[^geoprocessing_tools-3]. 
+We cannot possibly cover the `R` way for every tool in this list. It probably wouldn't make much sense either: Once you learn the fundamental building blocks, you will be able to replicate most, if not all tools from this list. The aim of this book is to cover these fundamental building block.
+See figure \@ref(fig:toolsviz) for an interactive visualisation of all tools in ArcGIS.
+
+
+
+```{r}
+
+```
+
+
+```{r toolsviz, warning=FALSE, fig.cap = "A 'diagonal Network' visualisation of many[^geoprocessing_tools-3] of the tools available in ArcGIS Pro. ",fig.asp=2}
+tools %>%
+  filter(!is.na(Tool)) %>%
+  transmute(tool = paste("GeprocessingTools",str_remove(toolb," toolbox"),toolset,Tool, sep = "/")) %>%
+  as.Node(pathName = "tool") %>%
+  ToListExplicit(unname = TRUE) %>%
+  diagonalNetwork() #%>%
+#   saveNetwork("all_tool.html")
+# # 
+# webshot::webshot("all_tool.html", "images/all_tools.png")
+# 
+# knitr::include_graphics("all_tools.png")
+```
+
+[^geoprocessing_tools-3]: Note: these numbers are an approximation only, we may have made errors when scraping
+
+
+```{r toolsviz2, fig.asp=2, fig.cap="A subset of tools we would like to cover in this book.", eval = FALSE}
+
+tools_toodo_yaml <- read_yaml("auxiliary/tools_todo.yaml")
+tools_toodo2 <- imap(tools_toodo_yaml, function(toolbox,toolboxname){imap(toolbox, function(toolset,toolsetname){imap(toolset, function(tool,toolname){list(name = toolname)})})})
+
+FromListSimple(tools_toodo2,nodeName =  "GeoprocessingTools") %>%
+    ToListExplicit(unname = TRUE) %>%
+    diagonalNetwork()
+
+```

@@ -1,18 +1,21 @@
 # Analysis Toolbox
 
 
-The Analysis toolbox contains 5 toolsets to "perform the most fundamental GIS Operations [@esri-gptoolref]. We want to focus on three toolsets that contain the monst important tools: 
+The Analysis toolbox contains 5 toolsets to "perform the most fundamental GIS Operations" [@esri-gptoolref]. It covers the tools you will encounter in every 101 course to GIS: Clip, Buffer, Spatial Join.
+We wont cover all tools in this toolbox, but focus on three toolsets that contain the tools most commonly used tools. All these tools are all vector based, so we will work mostly with the package `sf` (see chapter \@ref(importing-vector-sf)).
 
-- \@ref(extract-toolset)
-- \@ref(proximity-toolset)
-- \@ref(overlay-toolset)
+---
 
+**Table of content**
 
+```{r, results="asis", echo = FALSE}
+source("R/helperfunctions.R", local = knitr::knit_global())
 
-
-```{r, echo = FALSE}
-knitr::include_graphics("images/network/Analysis.png")
+hierarchy_to_list("Geoprocessing Tools", "Analysis","_rmd_files.yaml")
 ```
+
+
+
 
 
 

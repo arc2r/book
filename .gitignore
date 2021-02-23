@@ -7,3 +7,4 @@ docs/
 _bookdown_files/
 Readme.html
 _main.Rmd
+.DS_Store

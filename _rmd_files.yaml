@@ -1,0 +1,105 @@
+--- # Rmdfile
+  Getting Started:
+    index: 10_Getting_Started.Rmd
+    chapters:
+      Data:
+        folder: 11_Data
+        index: Data.Rmd
+        subchapters:
+          - import_vector.Rmd
+          - import_raster_raster.Rmd
+          - import_raster_terra.Rmd
+          
+      Making Maps:
+        folder: 12_Making_Maps
+        index: Making_Maps.Rmd
+        subchapters:
+          - Static_Maps.Rmd
+          - Dynamic_Maps.Rmd
+          
+      Select:
+        folder: 13_Select
+        index: Select.Rmd
+        subchapters:
+          - Select_by_Attribute.Rmd
+          - Select_by_Location.Rmd
+        
+  Geoprocessing Tools:
+    index: 20_Geoprocessing_Tools.Rmd
+    chapters:
+      Analysis:
+        folder: 21_Analysis
+        index: Analysis.Rmd
+        subchapters:
+          - Extract.Rmd
+          - Overlay.Rmd
+          - Proximity.Rmd
+
+      Data Management:
+        folder: 22_Data_Management
+        index: Data_Management.Rmd
+        subchapters:
+          - General.Rmd
+          - Join.Rmd
+          - Projections_and_Transformations.Rmd
+          - Raster_Processing.Rmd
+          - Sampling.Rmd
+      
+      Spatial Analyst:
+        folder: 23_Spatial_Analyst
+        index: Spatial_Analyst.Rmd
+        subchapters:
+          - Neighborhood.Rmd
+          - Zonal.Rmd
+          - Reclass.Rmd
+          - Density.Rmd
+          - Surface.Rmd
+          
+      Spatial Statistics:
+        folder: 24_Spatial_Statistics
+        index: Spatial_Statistics.Rmd
+        subchapters:
+          - Analysing_Patterns.Rmd
+          
+      Image Analyst:
+        folder: 25_Image_Analyst
+        index: Image_Analyst.Rmd
+        subchapters:
+          - Map_Algebra.Rmd
+        
+      3D Analyst:
+        folder: 26_3D_Analyst
+        index: 3D_Analyst.Rmd
+        subchapters:
+          - Raster_Interpolation.Rmd
+          
+  Toplogy:
+    index: 30_Topology.Rmd
+    chapters:
+      Spatial Predicates:
+        folder: 31_Spatial_Predicates
+        index: Spatial_Predicates.Rmd
+        subchapters: NULL
+      DE-9IM:
+        folder: 32_DE-9IM
+        index: DE-9IM.Rmd
+        subchapters: NULL
+      Toplogy Rules:
+        folder: 33_Topology_Rules
+        index: Topology_Rules.Rmd
+        subchapters:
+          - Polygon.Rmd
+          - Line.Rmd
+          - Point.Rmd
+          - Line_or_Polygon.Rmd
+  
+  References:
+    index: bibliography.Rmd
+          
+  Appendix:
+      index: NULL
+      chapters:
+        Progress:
+          folder: 99_Appendix
+          index: Progress.Rmd
+          subchapters: NULL

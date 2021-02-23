@@ -1,0 +1,40 @@
+
+```{r echo = FALSE}
+library(arc2r)
+library(raster)
+library(sf)
+library(dplyr)
+library(stars)
+
+
+```
+
+```{r echo=TRUE}
+
+# Insert a vector dataset that depicts the public transport connection quality in
+# the city of Wädenswil and plot it
+data("are_waedenswil")
+# Read the raster dataset and plot it
+data("recycling_raster")
+
+
+```
+
+```{r echo=FALSE}
+plot(recycling_raster)
+plot(are_waedenswil, alpha = 0.5, add = TRUE)
+
+
+```
+
+```{r Clip raster, echo=TRUE, eval = FALSE}
+## recycle_Waedi_clip <- mask(recycling_raster,are_waedenswil)
+
+
+```
+
+```{r echo=FALSE, eval = FALSE}
+## 
+## plot(recycle_Waedi_clip)
+```
+

@@ -1,0 +1,29 @@
+
+```{r echo=TRUE}
+library(arc2r)
+library(sf)
+library(raster)
+library(mapview)
+
+
+```
+
+```{r eval=Sys.getenv("RSTUDIO_USER_IDENTITY") != "rata"}
+## mapview(gemeindegrenzen_zh)
+
+
+```
+
+```{r echo=TRUE}
+library(tmap)
+
+tmap_mode("view")
+
+
+```
+
+```{r echo=TRUE}
+tm_shape(gemeindegrenzen_zh) +
+  tm_polygons()
+```
+

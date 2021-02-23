@@ -1,0 +1,45 @@
+
+```{r echo = TRUE}
+library(raster)
+library(arc2r)
+library(dplyr)
+
+
+```
+
+```{r echo = TRUE}
+data("swissAlti3D")
+
+plot(swissAlti3D)
+
+
+```
+
+```{r echo = TRUE}
+histinfo <- hist(swissAlti3D)
+
+
+```
+
+```{r }
+# create a reclassification matrix
+reclass_vec <- histinfo$breaks
+
+reclass_m <- matrix(c(
+  lag(reclass_vec,default = 0),
+  reclass_vec,
+  seq_along(reclass_vec)
+),ncol = 3)
+
+
+reclass_m
+
+
+```
+
+```{r echo = TRUE, fig.cap="Aspect of swissALTI3D2019 in 4 classes"}
+swissAlti3D_reclass <- reclassify(swissAlti3D, reclass_m)
+
+plot(swissAlti3D_reclass)
+```
+

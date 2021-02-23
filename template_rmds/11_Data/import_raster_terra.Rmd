@@ -1,0 +1,27 @@
+
+```{r echo=FALSE}
+library(terra)
+library(arc2r)
+
+
+```
+
+```{r }
+library(terra)
+
+swissalti3d <- terra::rast("sample_data/SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_1196.tif")
+
+
+
+```
+
+```{r }
+swissalti3d
+
+
+```
+
+```{r }
+plot(swissalti3d)
+```
+

@@ -1,0 +1,6 @@
+# (PART) Topology {-}
+
+# About this section {-}
+
+In ArcGIS, you create a topology rule by first creating a Feature Dataset in a Geodatabase, and then adding one or more Topology Rules to that Feature Dataset. You are provided with 32 different named rules which you can apply to this feature dataset (see \@ref(fig:topologyposter)). In `R`, you will find only the most commonly used 9 named spatial relations. These are known as ["Spatial predicates"](https://en.wikipedia.org/wiki/DE-9IM#Spatial_predicates).
+

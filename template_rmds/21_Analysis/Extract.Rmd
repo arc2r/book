@@ -1,0 +1,51 @@
+
+```{r echo=TRUE}
+library(arc2r)
+library(sf)
+library(tmap)
+
+
+```
+
+```{r echo = TRUE}
+
+# Point dataset depicting the train stations locations across Switzerland
+data("haltestelle_bahn")
+
+# Dataset depicting Switzerland on canton level
+data("kantonsgebiet")
+
+kanton_filter <- filter(kantonsgebiet, NAME %in% c("Zürich","St. Gallen","Thurgau","Aargau"))
+
+plot(st_geometry(haltestelle_bahn))
+plot(st_geometry(kanton_filter), col = "grey", add = TRUE,alpha = 1)
+
+
+
+```
+
+```{r echo = TRUE}
+haltestelle_bahn_clipped <- st_intersection(kanton_filter, haltestelle_bahn)
+
+
+```
+
+```{r }
+plot(st_geometry(haltestelle_bahn_clipped))
+plot(st_geometry(kanton_filter), add = TRUE,alpha = 1)
+
+
+```
+
+```{r clip, fig.cap= "Clip operation in ArcGIS pro",echo=F, out.width = "750px",fig.align='center'}
+knitr::include_graphics("images/clipOperation.png")
+
+
+```
+
+```{r echo = TRUE}
+haltestellen_split <- split(haltestelle_bahn_clipped,haltestelle_bahn_clipped$name)
+
+str(haltestellen_split[1:2])
+```
+

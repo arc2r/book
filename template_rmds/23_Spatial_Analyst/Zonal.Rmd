@@ -1,0 +1,20 @@
+
+```{r echo = TRUE}
+r <- raster(ncols=10, nrows=10)
+# generating random numbers that will used as values in our raster layer (r) - input values raster
+values(r) <- runif(ncell(r)) * 1:ncell(r)
+
+z <- r
+# generating integer values for the raster layer z, which will be used as the zone raster
+values(z) <- rep(1:5, each=20) 
+
+# Zonal statistics - Summarize
+zonal(r, z, "sum")
+
+# Zonal statistics - Mean
+zonal(r, z, "mean")
+
+# Zonal statistics - Minimum
+zonal(r, z, "min")
+```
+

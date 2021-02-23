@@ -1,0 +1,136 @@
+
+```{r }
+library(arc2r) 
+library(sf)
+library(raster)
+library(ggplot2)
+
+data("gemeindegrenzen_zh")
+data("swissAlti3D")
+
+
+```
+
+```{r }
+plot(gemeindegrenzen_zh)
+
+
+```
+
+```{r eval = FALSE}
+## 
+## plot(st_geometry(gemeindegrenzen_zh))  # 1
+## plot(gemeindegrenzen_zh["BEZIRKSNAME"]) # 2
+## plot(gemeindegrenzen_zh, max.plot = 1) # 3
+## 
+## options(sf_max.plot = 1)        # 4
+## plot(gemeindegrenzen_zh)
+
+
+```
+
+```{r }
+plot(swissAlti3D)
+
+
+```
+
+```{r }
+
+
+ggplot(gemeindegrenzen_zh) +
+  geom_sf()
+
+
+
+```
+
+```{r }
+ggplot(gemeindegrenzen_zh) + 
+  geom_sf(aes(fill = BEZIRKSNAME))
+
+
+```
+
+```{r }
+ggplot(gemeindegrenzen_zh) + 
+  geom_sf(aes(fill = BEZIRKSNAME)) +
+  coord_sf(datum = 2056)
+  
+
+
+```
+
+```{r }
+ggplot(gemeindegrenzen_zh) + 
+  geom_sf(aes(fill = BEZIRKSNAME), colour = "white") +
+  labs(title = "Gemeinden des Kantons Zürich nach Bezirk",fill = "") +
+  theme_void() +
+  theme(legend.position = "bottom")
+
+
+
+```
+
+```{r eval = FALSE}
+## swissAlti3D_df <- as.data.frame(swissAlti3D,xy = TRUE) # xy = TRUE adds the x and y coordinates to our dataframe as columns
+## 
+## ggplot(swissAlti3D_df, aes(x, y, fill = SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_1196)) +
+##   geom_raster()
+## 
+
+
+```
+
+```{r echo = FALSE}
+# Including manually since this is causing memory issues
+knitr::include_graphics("images/raster_df.png")
+
+
+```
+
+```{r eval = FALSE}
+## 
+## ggplot(swissAlti3D_df, aes(x, y, fill = SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_1196)) +
+##   geom_raster() +
+##   scale_fill_viridis_c() +
+##   theme_void() +
+##   coord_equal() +
+##   theme(legend.position = "bottom")
+## 
+
+
+```
+
+```{r echo = FALSE}
+# Including manually since this is causing memory issues
+knitr::include_graphics("images/raster_df2.png")
+
+
+```
+
+```{r }
+library(tmap)
+tmap_mode("plot") # <- to create static plots
+
+
+tm_shape(gemeindegrenzen_zh) + 
+  tm_polygons(col = "BEZIRKSNAME") 
+
+
+
+```
+
+```{r }
+tm_shape(gemeindegrenzen_zh) + 
+  tm_polygons(col = "BEZIRKSNAME")  +
+  tm_compass()
+
+
+```
+
+```{r }
+tm_shape(swissAlti3D) +
+  tm_raster()
+```
+
