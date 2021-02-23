@@ -11,7 +11,7 @@ A very commonly used tool in ArcGIS is the concept of "Selection". The idea is, 
 knitr::include_graphics("images/selection.jpg")
 ```
 
-Using the tools via these buttons (\@ref(fig:selection) have two effects.
+Using the tools via these buttons \@ref(fig:selection) have two effects.
 
 1. The selected features are highlighted visually
 2. Any operation performed with a dataset that has an active selection respects this selection. In other words, the operation is only performed on the selected features.
