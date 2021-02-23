@@ -62,7 +62,9 @@ knitr::include_graphics("images/tweet1.jpg")
 --> 
 
 
-<!-- ## How to use this book -->
+## How to use this book
+
+The tutorials in this book should be very easy to follow along. 
 
 
 <!--
