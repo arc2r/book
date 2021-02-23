@@ -99,10 +99,10 @@
   References:
     index: bibliography.Rmd
           
-  Appendix:
-      index: NULL
-      chapters:
-        Progress:
-          folder: 99_Appendix
-          index: Progress.Rmd
-          subchapters: NULL
+  # Appendix:
+  #     index: NULL
+  #     chapters:
+  #       Progress:
+  #         folder: 99_Appendix
+  #         index: Progress.Rmd
+  #         subchapters: NULL
