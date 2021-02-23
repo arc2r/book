@@ -1,4 +1,7 @@
 --- # Rmdfile
+  Meta:
+    - index.Rmd
+    - setting_up.Rmd
   Getting Started:
     index: 10_Getting_Started.Rmd
     chapters:

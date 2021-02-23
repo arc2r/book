@@ -45,17 +45,23 @@ yaml_to_rmdfiles <- function(rmd_files_yaml){
   rmd_files_yaml %>%
     map(function(part){
       
-      index_rmd <- part$index
-      
-      subchapter_rmds <- map(part[["chapters"]], function(chapter){
+      if(is.list(part)){
+        index_rmd <- part$index
         
-        list(
-          file.path(chapter$folder,chapter$index),
-          file.path(chapter$folder,chapter$subchapters)
-        )
-      })
+        subchapter_rmds <- map(part[["chapters"]], function(chapter){
+          
+          list(
+            file.path(chapter$folder,chapter$index),
+            file.path(chapter$folder,chapter$subchapters)
+          )
+        })
+        
+        return(list(index_rmd, subchapter_rmds))
+      }
+      else(
+        part
+      )
       
-      return(list(index_rmd, subchapter_rmds))
     }) 
 }
 
@@ -67,7 +73,7 @@ update_bookdownyaml <- function(rmd_files_yaml_name = "_rmd_files.yaml"){
   rmd_files_yaml <- yaml::read_yaml(rmd_files_yaml_name)
   
   
-  bookdown_yaml$rmd_files <- c("index.Rmd",unlist(yaml_to_rmdfiles(rmd_files_yaml)))
+  bookdown_yaml$rmd_files <- unlist(yaml_to_rmdfiles(rmd_files_yaml))
   write_yaml(bookdown_yaml, bookdown_yaml_file)
   warning(bookdown_yaml_file," has been overwritten. Check your git diff!")
 }
@@ -139,17 +145,17 @@ preview_chapter_fun <- function(part,chapters, rmd_files_yaml_file = "_rmd_files
   rmd_files_yaml <- read_yaml(rmd_files_yaml_file)
   
   
-  rmd_files_yaml[names(rmd_files_yaml) != part] <- NULL
+  rmd_files_yaml[!names(rmd_files_yaml) %in% c(part,"Meta")] <- NULL
   
   rmd_files_yaml[[part]]$chapters[!names(rmd_files_yaml[[part]]$chapters) %in% chapters] <- NULL
   
-  rmds <- c("index.Rmd",unlist(yaml_to_rmdfiles(rmd_files_yaml)))
+  rmds <- unlist(yaml_to_rmdfiles(rmd_files_yaml))
   
   bookdown_yaml <- read_yaml(bookdown_yaml_name)
   
   bookdown_yaml$rmd_files <- rmds
   
-  bookdown_yaml_name_temp <- tempfile(pattern = "_bookdown", fileext = ".yaml",tmpdir = getwd())
+  bookdown_yaml_name_temp <- tempfile(pattern = "_bookdown", fileext = ".yml",tmpdir = getwd())
   
   write_yaml(bookdown_yaml,bookdown_yaml_name_temp)
   
@@ -168,8 +174,8 @@ preview_chapter_app <- function(rmd_files_yaml_file = "_rmd_files.yaml"){
   require(shiny)
   require(stringr)
   rmd_files_yaml <- read_yaml(rmd_files_yaml_file)
-  parts <- imap_chr(struc, ~.y) 
-  chapters <- imap(parts, ~names(struc[[.x]][["chapters"]])) %>% invisible()
+  parts <- imap_chr(rmd_files_yaml, ~.y) 
+  chapters <- imap(parts, ~names(rmd_files_yaml[[.x]][["chapters"]])) %>% invisible()
   
   choices <- imap(chapters, function(x,y){
     z <- as.list(paste(y,x,sep = "|"))
