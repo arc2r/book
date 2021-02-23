@@ -37,7 +37,7 @@ We had long since thought about the necessity of a resource which helps ArcGIS u
 
 
 
-```{r,echo=FALSE, fig.cap="[Nils' Tweet](https://twitter.com/NRatnaweera/status/1187759876472213504) might not have received much attention, but it did spark a conversation within our group", out.width="60%", fig.align="center"}
+```{r,echo=FALSE, fig.cap="[Nils' Tweet](https://twitter.com/NRatnaweera/status/1187759876472213504) might not have received much attention, but it did spark a conversation within our group", out.width="60%", fig.align="center", purl=FALSE}
 knitr::include_graphics("images/tweet1.jpg")
 ```
 

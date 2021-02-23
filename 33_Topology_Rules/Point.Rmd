@@ -2,36 +2,36 @@
 
 ### Must coincide with 
 
-```{r, echo = FALSE, fig.cap = "Source: @esri-topology"}
+```{r, echo = FALSE, fig.cap = "Source: @esri-topology",  purl=FALSE}
 knitr::include_graphics("images/topology_rules/5_0.jpg")
 ```
 
 ### Must be disjoint
 
-```{r, echo = FALSE, fig.cap = "Source: @esri-topology"}
+```{r, echo = FALSE, fig.cap = "Source: @esri-topology", purl=FALSE}
 knitr::include_graphics("images/topology_rules/5_1.jpg")
 ```
 
 ### Must be covered by endpoint of
 
-```{r, echo = FALSE, fig.cap = "Source: @esri-topology"}
+```{r, echo = FALSE, fig.cap = "Source: @esri-topology", purl=FALSE}
 knitr::include_graphics("images/topology_rules/6_0.jpg")
 ```
 
 ### Point must be covered by line
 
-```{r, echo = FALSE, fig.cap = "Source: @esri-topology"}
+```{r, echo = FALSE, fig.cap = "Source: @esri-topology", purl=FALSE}
 knitr::include_graphics("images/topology_rules/6_1.jpg")
 ```
 
 ### Must be properly inside
 
-```{r, echo = FALSE, fig.cap = "Source: @esri-topology"}
+```{r, echo = FALSE, fig.cap = "Source: @esri-topology", purl=FALSE}
 knitr::include_graphics("images/topology_rules/7_0.jpg")
 ```
 
 ### Must be covered by boundary of
 
-```{r, echo = FALSE, fig.cap = "Source: @esri-topology"}
+```{r, echo = FALSE, fig.cap = "Source: @esri-topology", purl=FALSE}
 knitr::include_graphics("images/topology_rules/7_1.jpg")
 ```

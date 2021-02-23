@@ -8,7 +8,7 @@ Most functions in sf start with `st_`, which stands for "spatial type" and is th
 -->
 
 
-```{r sf-types, echo = FALSE, fig.cap="The 7 (of 17) most important simple feature types. Image from @geocompr", fig.align="center", out.width="100%"}
+```{r sf-types, echo = FALSE, fig.cap="The 7 (of 17) most important simple feature types. Image from @geocompr", fig.align="center", out.width="100%", purl=FALSE}
 knitr::include_graphics("images/sf-classes.png")
 ```
 

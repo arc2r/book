@@ -6,7 +6,7 @@ From the docs [@esri-gptoolref]:
 > The Proximity toolset contains tools that are used to determine the proximity of features within one or more feature classes or between two feature classes. These tools can identify features that are closest to one another or calculate the distances between or around them.
 
 
-```{r, echo = FALSE, eval = FALSE}
+```{r, echo = FALSE, eval = FALSE, purl=FALSE}
 # knitr::include_graphics("images/network/Analysis_Proximity.png")
 ```
 
@@ -50,6 +50,6 @@ plot(st_geometry(mountainBikes_routes), add = TRUE)
 
 The operation above produces the same outcome as the one depicted in the figure below \@ref(fig:buffer).
 
-```{r, fig.cap= "Buffer operation in ArcGIS pro",echo=F, out.width = "750px",fig.align='center'}
+```{r, fig.cap= "Buffer operation in ArcGIS pro",echo=F, out.width = "750px",fig.align='center', purl=FALSE}
 knitr::include_graphics("images/buffer.png")
 ```

@@ -35,7 +35,7 @@ ggplot() + geom_sf(data = veloparkierungsanlagen_zh) + geom_sf(data = parkBikes_
 
 The operation above produces the same outcome as the one depicted in the figure below \@ref(fig:select).
 
-```{r select, fig.cap= "Select by Attributes in ArcGIS pro",echo=F, out.width = "500px",fig.align='center'}
+```{r select, fig.cap= "Select by Attributes in ArcGIS pro",echo=F, out.width = "500px",fig.align='center', purl=FALSE}
 knitr::include_graphics("images/selectAttr.png")
 ```
 

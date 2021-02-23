@@ -11,7 +11,7 @@ library(tidyverse)
 
 ### Must not overlap
 
-```{r, echo = FALSE, fig.cap = "Source: @esri-topology"}
+```{r, echo = FALSE, fig.cap = "Source: @esri-topology", purl=FALSE}
 knitr::include_graphics("images/topology_rules/0_0.jpg")
 ```
 
@@ -68,7 +68,7 @@ circsplot +
 
 ### Must not have gaps
 
-```{r, echo = FALSE, fig.cap = "Source: @esri-topology"}
+```{r, echo = FALSE, fig.cap = "Source: @esri-topology", purl=FALSE}
 knitr::include_graphics("images/topology_rules/0_0.jpg")
 ```
 
@@ -131,53 +131,53 @@ map_lgl(nc_holes$geometry,~length(.x)== 1)
 
 ### Contains point
 
-```{r, echo = FALSE, fig.cap = "Source: @esri-topology"}
+```{r, echo = FALSE, fig.cap = "Source: @esri-topology", purl=FALSE}
 knitr::include_graphics("images/topology_rules/1_0.jpg")
 ```
 
 ### Contains one Point 
 
-```{r, echo = FALSE, fig.cap = "Source: @esri-topology"}
+```{r, echo = FALSE, fig.cap = "Source: @esri-topology", purl=FALSE}
 knitr::include_graphics("images/topology_rules/1_1.jpg")
 ```
 
 
 ### Must be covered by feature class of
 
-```{r, echo = FALSE, fig.cap = "Source: @esri-topology"}
+```{r, echo = FALSE, fig.cap = "Source: @esri-topology", purl=FALSE}
 knitr::include_graphics("images/topology_rules/2_0.jpg")
 ```
 
 
 ### Boundary must be covered by
 
-```{r, echo = FALSE, fig.cap = "Source: @esri-topology"}
+```{r, echo = FALSE, fig.cap = "Source: @esri-topology", purl=FALSE}
 knitr::include_graphics("images/topology_rules/2_1.jpg")
 ```
 
 
 ### Must not overlap with
 
-```{r, echo = FALSE, fig.cap = "Source: @esri-topology"}
+```{r, echo = FALSE, fig.cap = "Source: @esri-topology", purl=FALSE}
 knitr::include_graphics("images/topology_rules/3_0.jpg")
 ```
 
 
 ### Must be covered by 
 
-```{r, echo = FALSE, fig.cap = "Source: @esri-topology"}
+```{r, echo = FALSE, fig.cap = "Source: @esri-topology", purl=FALSE}
 knitr::include_graphics("images/topology_rules/3_1.jpg")
 ```
 
 ### Area boundary must be covered by boundary of
 
-```{r, echo = FALSE, fig.cap = "Source: @esri-topology"}
+```{r, echo = FALSE, fig.cap = "Source: @esri-topology", purl=FALSE}
 knitr::include_graphics("images/topology_rules/4_0.jpg")
 ```
 
 ### Must cover each other
 
-```{r, echo = FALSE, fig.cap = "Source: @esri-topology"}
+```{r, echo = FALSE, fig.cap = "Source: @esri-topology", purl=FALSE}
 knitr::include_graphics("images/topology_rules/4_1.jpg")
 ```
 
