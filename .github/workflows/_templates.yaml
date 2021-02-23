@@ -24,7 +24,7 @@ jobs:
 
       - name: Build template files
         run: |
-          Rscript -e R/build_template_files.R
+          Rscript -e 'R/build_template_files.R'
 
       - name: Pushes to another repository  
         uses: cpina/github-action-push-to-another-repository@master
