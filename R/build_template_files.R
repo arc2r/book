@@ -12,10 +12,14 @@ library(knitr)
 rmd_files_yaml <- yaml::read_yaml("_rmd_files.yaml")
 
 filelist <- map(rmd_files_yaml, function(x){
-  map(x[["chapters"]], function(y){
-    file.path(y$folder,y$subchapters)
+  if(is.list(x)){
+    map(x[["chapters"]], function(y){
+      file.path(y$folder,y$subchapters)
     })
-  }) %>% unlist() %>% unname()
+  }
+  }) %>% 
+  unlist() %>% 
+  unname()
 
 
 templatepath <- "template_rmds"
