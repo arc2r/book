@@ -62,17 +62,3 @@ knitr::include_graphics("images/tweet1.jpg")
 --> 
 
 
-## How to use this book
-
-The tutorials in this book should be very easy to follow along. 
-
-
-<!--
-# todo(ratnanil) add instructions on how to use the book
-  # on the `arc2r` package and the coding environment
---> 
-
-
-
-
-

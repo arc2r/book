@@ -1,0 +1,32 @@
+# How to use this book
+
+The tutorials in this book are designed in a way for you to follow along easily. Just follow the following steps
+
+## Step 1: Installing R and RStudio {-}
+
+To follow along, you will need a fairly new version of `R` an IDE to work with. We recommend (and use) RStudio ourselves, but you are free to use your preferred software. You can install R and Rstudio locally (which we recommend) or you can get going quickly with an online version of RStudio: If you are a Student or Teacher at ZHAW, you can request access to our RStudio Server located at [rstudio-ide.zhaw.ch](https://rstudio-ide.zhaw.ch) (just write a mail to Nils, rata\@zhaw.ch). Alternatively, you can create a RStudio Cloud account and start working there: [rstudio.cloud](https://rstudio.cloud/).
+
+
+## Step 2: Install the accompanying package `arc2r` {-}
+
+This book has an accompanying package that will provide you with all the necessary datasets. Plus, installing this package in the right way (`dependencies = TRUE`) will also provide you with all the necessary packages, so you don't have to install them manually. 
+Since the package is hosted on github and is not available on CRAN, you cannot install it the usual way (`install.packages("arc2r")`). Instead, you will have to install it using the `remotes` packages, which *is* on CRAN. This package will provide you with a function named `install_github()`, which allows installing packages from github. Note: Since the package contains all the datasets, this might take a while. You might get promted to upgrade your `R` packages: We recommend you do so. If you are afraid of messing up dependencies in other projects, cosider working with [`renv`](https://rstudio.github.io/renv/).
+
+```{r, eval = FALSE}
+install.packages("remotes")
+
+remotes::install_github("arc2r/arc2r",dependencies = TRUE)
+```
+
+## Step 3: Create a new project (RStudio only) {-}
+
+If you are working with RStudio, you can make use of the RMarkdown Template that we provide you with the data package you installed in step 2. To use these, restart RStudio and create a new project (File > New Project). Choose "New Directory" and in the next window, click on the the template we created for following along (see figure \@ref(fig:projettemplate)).
+
+
+```{r projettemplate, out.width="49%", fig.show="hold", echo = FALSE, purl = FALSE, fig.cap = "To use the templates, click on 'Create project' and then on 'arc2r: all things R Spatial' "}
+knitr::include_graphics(c("images/new_project.jpg", "images/template.jpg"))
+```
+
+
+
+
