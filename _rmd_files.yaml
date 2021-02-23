@@ -95,14 +95,16 @@
           - Line.Rmd
           - Point.Rmd
           - Line_or_Polygon.Rmd
+          
+  Appendix:
+      index: NULL
+      chapters:
+        Progress:
+          folder: 99_Appendix
+          index: Progress.Rmd
+          subchapters: NULL
   
   References:
     index: bibliography.Rmd
           
-  # Appendix:
-  #     index: NULL
-  #     chapters:
-  #       Progress:
-  #         folder: 99_Appendix
-  #         index: Progress.Rmd
-  #         subchapters: NULL
+
