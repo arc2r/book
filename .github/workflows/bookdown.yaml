@@ -49,18 +49,18 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: /docs
           
-      - name: Build readme
-        run: |
-          R -e 'rmarkdown::render("Readme.Rmd","github_document",output_file = "Readme.md")'
-
-      - name: Commit readme
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add README.md
-          git commit -m "update Readme"
-          
-      - name: Push changes to readme
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Build readme
+      #   run: |
+      #     R -e 'rmarkdown::render("Readme.Rmd","github_document",output_file = "Readme.md")'
+      # 
+      # - name: Commit readme
+      #   run: |
+      #     git config --local user.email "action@github.com"
+      #     git config --local user.name "GitHub Action"
+      #     git add README.md
+      #     git commit -m "update Readme"
+      #     
+      # - name: Push changes to readme
+      #   uses: ad-m/github-push-action@master
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
