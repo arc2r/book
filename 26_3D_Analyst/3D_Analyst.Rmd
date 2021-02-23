@@ -11,7 +11,7 @@ From the docs [@esri-gptoolref]:
 
 **Table of content**
 
-```{r, results="asis", echo = FALSE}
+```{r, results="asis", echo = FALSE, purl = FALSE}
 source("R/helperfunctions.R", local = knitr::knit_global())
 
 hierarchy_to_list("Geoprocessing Tools", "3D Analyst")

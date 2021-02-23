@@ -2,7 +2,7 @@
 
 For this chapter, you will need the following R Packages:
 
-```{r, echo = FALSE}
+```{r, echo = TRUE}
 library(arc2r)
 library(sf)
 library(raster)
@@ -22,13 +22,13 @@ If there is anything special about spatial, it's the Coordinate Reference System
 
 If your dataset comes *without* an assigned CRS, things can get hairy. Usually, you can make an informed guess as to which CRS the dataset is associated with, but in the end only the data producer can tell you. Let's take the dataset `bezirke` from the package `arc2r`. As you can see, the `CRS` field in the data's header is `NA`. 
 
-```{r}
+```{r, echo = TRUE}
 data("bezirke")
 ```
 
 Calling the function `st_crs()` on `bezirke` confirms this.
 
-```{r}
+```{r, echo = TRUE}
 st_crs(bezirke)
 ```
 
@@ -46,17 +46,17 @@ gloss over this?
 Since we know the dataset `bezirke` is in the new swiss coordinate system (CH1903+ / LV95), we can find out the EPSG code (e.g. by consulting [epsg.io](http://epsg.io/)).
 We will not get into options 1 and 3 and only 
 
-```{r}
+```{r, echo = TRUE}
 st_crs(bezirke) <- 2056
 ```
 
 If we look at our header again, we see that we have a new field `projected CRS` which is in fact displaying the correct name based on the EPSG code we provided. 
 
-```{r}
+```{r, echo = TRUE}
 bezirke
 ```
 
-```{block2, type = "rmdnote"}
+```{block2, type = "rmdnote", echo = TRUE, purl = FALSE}
 <!--
 # TODO revise this
 -->
@@ -108,7 +108,7 @@ _Project Raster (Data Management)_. Let's see how we can perform the same operat
 with R. 
 
 
-```{r}
+```{r, echo = TRUE}
 # Dataset derived from the spatial interpolation of all the available "recycling points"
 # in the city of Wädenwil
 data("recycling_raster")
@@ -118,7 +118,7 @@ data("public_transport_waedi")# CRS -> WGS84
 ```
 
 
-```{r}
+```{r, echo = TRUE}
 # Plot the raster dataset - World Geodetic System 1984 
 plot(public_transport_waedi,las=1,
      main = "Quality of public transport in the city of Wädenwil - CRS: WGS84",
@@ -133,13 +133,13 @@ dataset.
 It is important to remember that raster reprojection only works when the raster
 object has already a defined CRS.
 
-```{r}
+```{r, echo = TRUE}
 # Transform the coordinate system of the raster dataset publicTransport_CH
 # into the Swiss Coordinate system - CH1903+LV95
 publicTransport_CH = projectRaster(public_transport_waedi, recycling_raster)
 ```
 
-```{r}
+```{r, echo = TRUE}
 # Plot the raster dataset - Swiss Coordinate System CH1903+LV95 
 plot(publicTransport_CH,las=1,
      main = "Quality of public transport in the city of Wädenwil - CRS: CH1903+LV95",

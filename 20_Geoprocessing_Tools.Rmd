@@ -10,11 +10,11 @@ Generally speaking ESRI's approach to building ArcGIS is to create a tool for ev
 
 
 
-```{r, echo = FALSE}
+```{r, echo = TRUE}
 knitr::opts_chunk$set(echo = FALSE, message=FALSE)
 ```
 
-```{r}
+```{r, echo = TRUE}
 
 library(tidyverse)
 library(data.tree)
@@ -37,12 +37,7 @@ See figure \@ref(fig:toolsviz) for an interactive visualisation of all tools in 
 
 
 
-```{r}
-
-```
-
-
-```{r toolsviz, warning=FALSE, fig.cap = "A 'diagonal Network' visualisation of many[^geoprocessing_tools-3] of the tools available in ArcGIS Pro. ",fig.asp=2}
+```{r toolsviz, warning=FALSE, fig.cap = "A 'diagonal Network' visualisation of many[^geoprocessing_tools-3] of the tools available in ArcGIS Pro. ",fig.asp=2, echo = FALSE, purl = FALSE}
 tools %>%
   filter(!is.na(Tool)) %>%
   transmute(tool = paste("GeprocessingTools",str_remove(toolb," toolbox"),toolset,Tool, sep = "/")) %>%
@@ -59,7 +54,7 @@ tools %>%
 [^geoprocessing_tools-3]: Note: these numbers are an approximation only, we may have made errors when scraping
 
 
-```{r toolsviz2, fig.asp=2, fig.cap="A subset of tools we would like to cover in this book.", eval = FALSE}
+```{r toolsviz2, fig.asp=2, fig.cap="A subset of tools we would like to cover in this book.", eval = FALSE, purl = FALSE}
 
 tools_toodo_yaml <- read_yaml("auxiliary/tools_todo.yaml")
 tools_toodo2 <- imap(tools_toodo_yaml, function(toolbox,toolboxname){imap(toolbox, function(toolset,toolsetname){imap(toolset, function(tool,toolname){list(name = toolname)})})})

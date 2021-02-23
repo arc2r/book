@@ -8,7 +8,7 @@ We wont cover all tools in this toolbox, but focus on three toolsets that contai
 
 **Table of content**
 
-```{r, results="asis", echo = FALSE}
+```{r, results="asis", echo = FALSE, purl = FALSE}
 source("R/helperfunctions.R", local = knitr::knit_global())
 
 hierarchy_to_list("Geoprocessing Tools", "Analysis","_rmd_files.yaml")

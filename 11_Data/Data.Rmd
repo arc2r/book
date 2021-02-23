@@ -1,9 +1,5 @@
 # Data Handling (I/O) {#data}
 
-```{r, include=FALSE}
-source("R/before_chapter.R", local = knitr::knit_global())
-```
-
 As an ArcGIS user, you are probably very familiar with the two major geodata formats, raster data and vector data. *shapefiles* and geodatabases with *feature classes* are most commonly used for vector data in the ESRI World. For raster data, *geotiff*s and *ESRI GRID* files inside geodatabases are used very frequently. As you work with OpenSource GIS Tools and Data, you will come across a much richer ecosystem of data formats (which can be a blessing and a curse!).
 
 

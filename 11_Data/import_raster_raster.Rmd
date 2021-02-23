@@ -2,12 +2,8 @@
 
 For this chapter, you will need the following R Packages:
 
-```{r, echo=FALSE}
+```{r, echo=TRUE}
 library(raster)
-```
-
-```{r, include=FALSE}
-source("R/before_chapter.R", local = knitr::knit_global())
 ```
 
 To import raster data, we need a package that can specifically handle raster datasets. The package `raster` has for a long time been the go-to package for this. However, this package is currently in the process of being replaced with a successor, `terra`. Since `raster` is still in heavy use, we will show you how you handle raster data with this package.
@@ -18,7 +14,7 @@ Download the sample dataset [here](https://github.com/arc2r/book/raw/master/samp
 
 Now load the library `raster` the function `raster` to import the tif-file included in the zip file. Make sure you have set the path to your tif-file correctly.
 
-```{r}
+```{r, echo=TRUE}
 library(raster)
 
 swissAlti3D <- raster("sample_data/SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_1196.tif")
@@ -26,13 +22,13 @@ swissAlti3D <- raster("sample_data/SWISSALTI3D_10_TIFF_CHLV95_LN02_2600_1196.tif
 
 The dataset is now imported into your project and ready to be viewed, analysed and processed. If we call the object in our console, we can see that the dataset was imported as a `RasterLayer` and can see some important statistics which you would typically find via Layer Properties -\> Source in ArcGIS.
 
-```{r}
+```{r, echo=TRUE}
 swissAlti3D
 ```
 
 To visualize the dataset, we can simply call `plot` on our new object.
 
-```{r}
+```{r, echo=TRUE}
 plot(swissAlti3D)
 ```
 

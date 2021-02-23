@@ -2,7 +2,7 @@
 
 For this chapter, you will need the following R Packages:
 
-```{r, echo = FALSE}
+```{r, echo = TRUE}
 library(arc2r)
 library(raster)
 library(sf)
@@ -32,7 +32,7 @@ data("recycling_raster")
 ```
 
 Plot the two datasets one over the other.
-```{r, echo=FALSE}
+```{r, echo=TRUE}
 plot(recycling_raster)
 plot(are_waedenswil, alpha = 0.5, add = TRUE)
 ```
@@ -44,7 +44,7 @@ recycle_Waedi_clip <- mask(recycling_raster,are_waedenswil)
 
 
 _Visualising the clipped output_
-```{r echo=FALSE, eval = FALSE}
+```{r echo=TRUE, eval = FALSE}
 
 plot(recycle_Waedi_clip)
 ```

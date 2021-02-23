@@ -52,13 +52,13 @@ chessplot
 
 To find out which field `touch` field number 36, we can write the following line of code:
 
-```{r}
+```{r, echo = TRUE}
 st_touches(chessboard[36,],chessboard)
 ```
 
 Visually, these are the following fields:
 
-```{r, echo = FALSE}
+```{r, echo = TRUE, purl = FALSE}
 sel36 <- st_touches(chessboard[36,],chessboard)[[1]]
 
 
