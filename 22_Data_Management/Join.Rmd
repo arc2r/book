@@ -12,7 +12,7 @@ library(dplyr)
 ```
 
 
-In ArcGIS, joining two datasets on a common attribute is done with tools from the "Join" Toolset. Similar as described with the Selection tools in chapter \@ref(chapter-selection), a join has a temporary / floating nature and does not automatically produce an output. In `R`, joining two datasets requires is only persistent if the output is assigned to a new variable^[or piped into a new function].
+In ArcGIS, joining two datasets on a common attribute is done with tools from the "Join" Toolset. Similar as described with the Selection tools in chapter \@ref(chapter-selection), a join has a temporary / floating nature and does not automatically produce an output. In `R`, joining two datasets is only persistent if the output is assigned to a new variable^[or piped into a new function].
 
 In R we have two main functions for joining two datasets. On the one hand there is the base R function `merge`, on the other hand there is the `*_join` family that lie within the `dplyr` package. Since the latter family of functions are very close to how Joins are done in SQL, we will use the latter case for our examples below.
 
