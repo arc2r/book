@@ -3,8 +3,8 @@
 Most vector data that you use in everyday GIS work are what are called "simple features". Simple features are an open standard developed by the Open Geospatial Consortium (OGC). The most common feature types are displayed in figure \@ref(fig:sf-types).
 
 <!--
-# TODO(ratnanil) add this somewhere
-#  Most functions in sf start with `st_`, which stands for "spatial type" and is the same syntax used by Postgis. Source: https://stackoverflow.com/questions/7234679/what-is-st-in-postgis and https://github.com/r-spatial/sf/issues/140#issuecomment-270029715
+TODO(ratnanil) add this somewhere
+Most functions in sf start with `st_`, which stands for "spatial type" and is the same syntax used by Postgis. Source: https://stackoverflow.com/questions/7234679/what-is-st-in-postgis and https://github.com/r-spatial/sf/issues/140#issuecomment-270029715
 -->
 
 
