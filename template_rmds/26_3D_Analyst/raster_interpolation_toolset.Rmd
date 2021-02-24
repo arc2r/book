@@ -2,7 +2,7 @@
 ```{r echo = TRUE}
 library(sp)
 library(sf)
-library(tidyverse)
+library(dplyr)
 library(stars)
 data(meuse)
 

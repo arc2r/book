@@ -1,13 +1,12 @@
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE,message = FALSE)
+```
 
+
+```{r, echo = TRUE}
 library(sf)
-library(tidyverse)
-
-
-
-
+library(dplyr)
 ```
 
 ```{r }

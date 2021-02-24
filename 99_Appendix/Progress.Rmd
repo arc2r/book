@@ -8,7 +8,7 @@ We document the state of our project by providing an estimation per Tool.
 
 ```{r, echo = FALSE, message=FALSE,warning=FALSE}
 
-library(tidyverse)
+library(dplyr)
 library(yaml)
 library(formattable)
 library(kableExtra)

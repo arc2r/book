@@ -32,7 +32,7 @@ Lets take the example of a chessboard:
 
 ```{r, echo = TRUE}
 library(sf)
-library(tidyverse)
+library(dplyr)
 library(arc2r)
 
 data("chessboard")

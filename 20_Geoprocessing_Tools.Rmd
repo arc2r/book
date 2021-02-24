@@ -16,7 +16,9 @@ knitr::opts_chunk$set(echo = FALSE, message=FALSE)
 
 ```{r, echo = TRUE}
 
-library(tidyverse)
+library(dplyr)
+library(readr)
+library(stringr)
 library(data.tree)
 library(networkD3)
 library(yaml)

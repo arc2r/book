@@ -2,7 +2,9 @@
 ```{r}
 library(rvest)
 library(xml2)
-library(tidyverse)
+library(dplyr)
+library(readr)
+library(purrr)
 ```
 
 

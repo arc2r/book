@@ -3,7 +3,7 @@ output: github_document
 ---
 
 ```{r}
-library(tidyverse)
+library(dplyr)
 library(data.tree)
 library(networkD3)
 library(yaml)
