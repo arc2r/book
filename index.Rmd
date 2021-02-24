@@ -32,7 +32,7 @@ We are big fans of using `magrittr`'s pipe function `%>%` and heavily use it thr
 
 ## How it started
 
-We had long since thought about the necessity of a resource which helps ArcGIS users transition to R or Python. Nils had tweeted about this (see below) without getting much reception, and and one point just decided to start his own resource. Since [our research group](gis.lsfm.zhaw.ch/) teaches and introduction to GIS and an advanced GIS course mostly based on ArcGIS, we decided to pick up where Nils hat started and develop the resource in with internal funding of our University. 
+We had long since thought about the necessity of a resource which helps ArcGIS users transition to R or Python. Nils had tweeted about this (see below) without getting much reception, and one point just decided to start his own resource. Since [our research group](gis.lsfm.zhaw.ch/) teaches an introduction to GIS and an advanced GIS course mostly based on ArcGIS, we decided to pick up where Nils had started and develop the resource with internal funding of our University. 
 
 
 
