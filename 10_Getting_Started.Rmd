@@ -2,7 +2,7 @@
 
 # About this section {-}
 
-This section will cover the some general concepts to be aware of when switching from ArcGIS to `R`. In our view, here is a (non exhaustive) list of the main differences between the two approaches:
+This section will cover some general concepts to be aware of when switching from ArcGIS to `R`. In our view, this is a (non exhaustive) list of the main differences between the two approaches:
 
 test fork
 
