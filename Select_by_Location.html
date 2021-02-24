@@ -499,7 +499,7 @@ GIS @ ZHAW</a></li>
 </div>
 <div id="within" class="section level3" number="5.2.9">
 <h3><span class="header-section-number">5.2.9</span> Within</h3>
-<p>An example of spatial subsetting could be the following. Let’s assume we have as a polygon dataset with all the municipalities (Gemeinden) of the Canton of Zurich. Furthermore, we are also using a shapefile in the form of a point dataframe, which represents all the <strong>“swimming spots”</strong> (Badenplätze) in the same spatial region (Canton of Zurich). So, ultimately, our goal is to find out the <strong>“swimming spots”</strong> that lie within a specific municipality of the Canton of Zurich.</p>
+<p>An example of spatial subsetting could be the following. Let’s assume we have a polygon dataset with all the municipalities (Gemeinden) of the Canton of Zurich. Furthermore, we are also using a shapefile in the form of a point dataframe, which represents all the <strong>“swimming spots”</strong> (Badenplätze) in the same spatial region (Canton of Zurich). So, ultimately, our goal is to find out the <strong>“swimming spots”</strong> that lie within a specific municipality of the Canton of Zurich.</p>
 <div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="Select_by_Location.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Minicipalities (Gemeinde) in Canton Zurich</span></span>
 <span id="cb52-2"><a href="Select_by_Location.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;gemeindegrenzen_zh&quot;</span>)</span>
 <span id="cb52-3"><a href="Select_by_Location.html#cb52-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -508,6 +508,9 @@ GIS @ ZHAW</a></li>
 <p><img src="_main_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
 <div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="Select_by_Location.html#cb53-1" aria-hidden="true" tabindex="-1"></a>swimmSpots_richt <span class="ot">&lt;-</span> badeplaetze_zh[richterswil, , op <span class="ot">=</span> st_within]</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
+<!--
+murj: -> irgendwas stimmt da nicht mit der darstellung weil es laut der karte keine badestätten in Richtersil gibt. Da ist nix rot...
+-->
 </div>
 <div id="completely_within" class="section level3" number="5.2.10">
 <h3><span class="header-section-number">5.2.10</span> Completely_within</h3>

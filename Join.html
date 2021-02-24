@@ -407,7 +407,7 @@ GIS @ ZHAW</a></li>
 -->
 <p>For this chapter, you will need the following R Packages:</p>
 <div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="Join.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
-<p>In ArcGIS, joining two datasets on a common attribute is done with tools from the “Join” Toolset. Similar as described with the Selection tools in chapter <a href="Select.html#chapter-selection">5</a>, a join has a temporary / floating nature and does not automatically produce an output. In <code>R</code>, joining two datasets requires is only persistent if the output is assigned to a new variable<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a>.</p>
+<p>In ArcGIS, joining two datasets on a common attribute is done with tools from the “Join” Toolset. Similar as described with the Selection tools in chapter <a href="Select.html#chapter-selection">5</a>, a join has a temporary / floating nature and does not automatically produce an output. In <code>R</code>, joining two datasets is only persistent if the output is assigned to a new variable<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a>.</p>
 <p>In R we have two main functions for joining two datasets. On the one hand there is the base R function <code>merge</code>, on the other hand there is the <code>*_join</code> family that lie within the <code>dplyr</code> package. Since the latter family of functions are very close to how Joins are done in SQL, we will use the latter case for our examples below.</p>
 <p>Before we begin with our examples, we have to make clear the differences among the various forms of join operations.</p>
 <ul>

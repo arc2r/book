@@ -401,7 +401,7 @@ GIS @ ZHAW</a></li>
             <section class="normal" id="section-">
 <div id="about-this-section" class="section level1 unnumbered">
 <h1>About this section</h1>
-<p>This section will cover the some general concepts to be aware of when switching from ArcGIS to <code>R</code>. In our view, here is a (non exhaustive) list of the main differences between the two approaches:</p>
+<p>This section will cover some general concepts to be aware of when switching from ArcGIS to <code>R</code>. This is a (non exhaustive) list of the main differences we see between the two approaches:</p>
 <ul>
 <li>The fundamental building block of ArcGIS is a visual representation of your data (i.e. the map). The fundamental building block in <code>R</code> is your R-Script. The visual aspect makes ArcGIS more approachable, but also less scalable.</li>
 <li>When you acquire ArcGIS, you are served from a single source. In <code>R</code>, there are a plethora of developers creating packages for you to use, which can be quite overwhelming</li>
@@ -413,6 +413,14 @@ GIS @ ZHAW</a></li>
 //body when you add a shapefile to your arcgis project, you basically have a "connection" to this file. in R, you create a virtual copy / an R representation of your dataset within your r session
 --></li>
 </ul>
+<p>And just to get this out of the way: When is ArcGIS (or QGIS for that matter) preferable to using R? We will just cite <a href="https://twitter.com/StatnMap/status/1362440566861086724">Sébastien Rochette’s tweet</a></p>
+<blockquote>
+<p>I would use QGIS for georeferencering and digitizing.
+- Georeferencing is when you get an aerial photo or an old paper map that you want to add in GIS
+- Digitizing is when you want to manually draw areas that you see on a digitized map
+Also, the reason I use to keep a QGIS installed, is to get the list of all projections and being able to search through the list to find the appropriate projection in case of problems with yours.
+Also, with {raster}, where you need to use the PROJ4 string, QGIS gives it to you.</p>
+</blockquote>
 
 </div>
 <script src="https://utteranc.es/client.js"

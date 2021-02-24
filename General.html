@@ -504,9 +504,9 @@ GIS @ ZHAW</a></li>
 <span id="cb83-6"><a href="General.html#cb83-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb83-7"><a href="General.html#cb83-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Retrieving the address in memory for the two datasets</span></span>
 <span id="cb83-8"><a href="General.html#cb83-8" aria-hidden="true" tabindex="-1"></a><span class="fu">tracemem</span>(badeplaetze_zh)  <span class="co"># --&gt; &lt;000001F24AB616E8&gt;</span></span></code></pre></div>
-<pre><code>## [1] &quot;&lt;0x7fa9f8097338&gt;&quot;</code></pre>
+<pre><code>## [1] &quot;&lt;0x7faf9e2dc7f8&gt;&quot;</code></pre>
 <div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="General.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tracemem</span>(swimming_spots_zh)  <span class="co"># --&gt; &lt;000001F24AB616E8&gt;</span></span></code></pre></div>
-<pre><code>## [1] &quot;&lt;0x7fa9f8097338&gt;&quot;</code></pre>
+<pre><code>## [1] &quot;&lt;0x7faf9e2dc7f8&gt;&quot;</code></pre>
 <p>As we can see both objects point to the same address. R makes a new copy in the memory only if one of them is modified.</p>
 </div>
 <div id="general-merge" class="section level3" number="7.1.3">

@@ -441,7 +441,7 @@ GIS @ ZHAW</a></li>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="Static_Maps.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gemeindegrenzen_zh) <span class="sc">+</span></span>
 <span id="cb27-2"><a href="Static_Maps.html#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
-<p>In its most basic form, we can visualize the geometry of our <code>sf</code> object.As always in <code>ggplot2</code>, if you want to use a column from your dataset as an input for, say, colour, you need to specify this with <code>aes()</code>:</p>
+<p>In its most basic form, we can visualize the geometry of our <code>sf</code> object. As always in <code>ggplot2</code>, if you want to use a column from your dataset as an input for, say, colour, you need to specify this with <code>aes()</code>:</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="Static_Maps.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gemeindegrenzen_zh) <span class="sc">+</span> </span>
 <span id="cb28-2"><a href="Static_Maps.html#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> BEZIRKSNAME))</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
@@ -499,12 +499,14 @@ GIS @ ZHAW</a></li>
 <span id="cb33-2"><a href="Static_Maps.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tmap_mode</span>(<span class="st">&quot;plot&quot;</span>) <span class="co"># &lt;- to create static plots</span></span></code></pre></div>
 <pre><code>## tmap mode set to plotting</code></pre>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="Static_Maps.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(gemeindegrenzen_zh) <span class="sc">+</span> </span>
-<span id="cb35-2"><a href="Static_Maps.html#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_polygons</span>(<span class="at">col =</span> <span class="st">&quot;BEZIRKSNAME&quot;</span>) </span></code></pre></div>
+<span id="cb35-2"><a href="Static_Maps.html#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_polygons</span>(<span class="at">col =</span> <span class="st">&quot;BEZIRKSNAME&quot;</span>)<span class="sc">+</span></span>
+<span id="cb35-3"><a href="Static_Maps.html#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_layout</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="st">&quot;right&quot;</span>,<span class="st">&quot;top&quot;</span>))</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
 <p>The fact that <code>tmap</code> is designed for maps makes it much easier to add map elements, such as a North Arrow.</p>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="Static_Maps.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(gemeindegrenzen_zh) <span class="sc">+</span> </span>
-<span id="cb36-2"><a href="Static_Maps.html#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_polygons</span>(<span class="at">col =</span> <span class="st">&quot;BEZIRKSNAME&quot;</span>)  <span class="sc">+</span></span>
-<span id="cb36-3"><a href="Static_Maps.html#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_compass</span>()</span></code></pre></div>
+<span id="cb36-2"><a href="Static_Maps.html#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_polygons</span>(<span class="at">col =</span> <span class="st">&quot;BEZIRKSNAME&quot;</span>)<span class="sc">+</span></span>
+<span id="cb36-3"><a href="Static_Maps.html#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_layout</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="st">&quot;right&quot;</span>,<span class="st">&quot;bottom&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb36-4"><a href="Static_Maps.html#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_compass</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
 <p>It also means that visualizing a <code>RasterLayer</code> is built in to the package:</p>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="Static_Maps.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(swissAlti3D) <span class="sc">+</span></span>

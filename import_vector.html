@@ -401,7 +401,7 @@ GIS @ ZHAW</a></li>
             <section class="normal" id="section-">
 <div id="importing-vector-sf" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> Importing vector data with <code>sf</code></h2>
-<p>Most vector data that you use in everyday GIS work are what are called “simple features.” Simple features are an open standard developed by the Open Geospatial Consortium (OGC). The most common feature types are displayed in figure <a href="import_vector.html#fig:sf-types">3.1</a>.</p>
+<p>Most vector data that you use in everyday GIS work are so called “simple features.” Simple features are an open standard developed by the Open Geospatial Consortium (OGC). The most common feature types are displayed in figure <a href="import_vector.html#fig:sf-types">3.1</a>.</p>
 <!--
 TODO(ratnanil) add this somewhere
 Most functions in sf start with `st_`, which stands for "spatial type" and is the same syntax used by Postgis. Source: https://stackoverflow.com/questions/7234679/what-is-st-in-postgis and https://github.com/r-spatial/sf/issues/140#issuecomment-270029715
@@ -443,7 +443,7 @@ Figure 3.1: The 7 (of 17) most important simple feature types. Image from <span 
 ## 11  5208 C      C - mittel… C - desser…          3 (((2693064 1229206, 2693041 …
 ## 12  5319 C      C - mittel… C - desser…          3 (((2690879 1233702, 2690856 …
 ## 13  5514 C      C - mittel… C - desser…          3 (((2693168 1229907, 2693145 …</code></pre>
-<p>And you are done! The shapefile is now imported into your <code>R</code> Session and you can start working with it. Much of the beauty in <code>sf</code> comes from it’s simplicity: As you see from importing the shapefile, it is very much like a <code>data.frame</code>, a structure that you are probably know very well. In fact, it <em>is</em> a data.frame, as you can see here:</p>
+<p>And you are done! The shapefile is now imported into your <code>R</code> Session and you can start working with it. Much of the beauty in <code>sf</code> comes from it’s simplicity: As you see from importing the shapefile, it is very much like a <code>data.frame</code>, a structure that you probably know very well. In fact, it <em>is</em> a data.frame, as you can see here:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="import_vector.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.data.frame</span>(ARE_waedenswil)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p><code>sf</code> provides methods for various generics, e.g. you can use <code>plot()</code> on the object for a simple visualisation. By default, using <code>plot()</code> on an <code>sf</code> object visualizes the geometry in small multiples, where each “facet” is colour coded based on a column in the dataset (see below). If you find this annoying (like I do), see chapter <a href="Static_Maps.html#chapter-staticmaps">4.1</a>.</p>
