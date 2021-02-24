@@ -15,7 +15,7 @@ library(tmap)
 
 ### Clip {#clip}
 
-Quite often in spatial analysis, we come across with cases where we do not want to use all the available data there is. In other words, we want to focus on a specific area of interest, which dictates the need for __clipping__ the existing dataset based on it's relationship to some other existing spatial feature. In R this operation can be easily performed using the `st_intersection` function in `sf`.
+Quite often in spatial analysis, we come across cases where we do not want to use all the available data there is. In other words, we want to focus on a specific area of interest, which dictates the need for __clipping__ the existing dataset based on it's relationship to some other existing spatial feature. In R this operation can be easily performed using the `st_intersection` function in `sf`.
   
 Let's assume in the example below that we want to clip the available dataset of all the __train stations in Switzerland__ by focusing our analysis on the cantons Zurich, St. Gallen, Thurgau and Aargau. In the following chunk we prerpare and visualize this situation.
 
@@ -68,7 +68,7 @@ This chapter is covered in \@ref(select-by-attribute).
 
 The split tool is used in ArcGIS to split a dataset into multiple outputs. 
 
-When clipping the _haltestellen_ dataset in \@ref(clip) with a polygon containing multiple features (`kanton_filter`). Each point in `haltestelle_bahn_clipped` now has the attributes origining from `kanton_filter`, which we can use to split the dataset into different parts. The function `split()` (from base-R) helps us with this. It returns a list of `sf` objects, that we can each save in it's own dataset if need be.
+When clipping the _haltestellen_ dataset in \@ref(clip) with a polygon containing multiple features (`kanton_filter`). Each point in `haltestelle_bahn_clipped` now has the attributes originating from `kanton_filter`, which we can use to split the dataset into different parts. The function `split()` (from base-R) helps us with this. It returns a list of `sf` objects, that we can each save in it's own dataset if need be.
 
 <!--
 TODO: 
