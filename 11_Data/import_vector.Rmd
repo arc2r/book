@@ -1,6 +1,6 @@
 ## Importing vector data with `sf` {#importing-vector-sf}
 
-Most vector data that you use in everyday GIS work are what are called "simple features". Simple features are an open standard developed by the Open Geospatial Consortium (OGC). The most common feature types are displayed in figure \@ref(fig:sf-types).
+Most vector data that you use in everyday GIS work are so called "simple features". Simple features are an open standard developed by the Open Geospatial Consortium (OGC). The most common feature types are displayed in figure \@ref(fig:sf-types).
 
 <!--
 TODO(ratnanil) add this somewhere
@@ -27,7 +27,7 @@ ARE_waedenswil <- read_sf("sample_data/ARE_waedenswil.shp")
 ARE_waedenswil
 ```
 
-And you are done! The shapefile is now imported into your `R` Session and you can start working with it. Much of the beauty in `sf` comes from it's simplicity: As you see from importing the shapefile, it is very much like a `data.frame`, a structure that you are probably know very well. In fact, it *is* a data.frame, as you can see here:
+And you are done! The shapefile is now imported into your `R` Session and you can start working with it. Much of the beauty in `sf` comes from it's simplicity: As you see from importing the shapefile, it is very much like a `data.frame`, a structure that you probably know very well. In fact, it *is* a data.frame, as you can see here:
 
 ```{r}
 is.data.frame(ARE_waedenswil)
