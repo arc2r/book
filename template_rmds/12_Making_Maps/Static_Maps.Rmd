@@ -80,11 +80,6 @@ ggplot(gemeindegrenzen_zh) +
 ## 
 
 
-```
-
-```{r echo = FALSE}
-# Including manually since this is causing memory issues
-knitr::include_graphics("images/raster_df.png")
 
 
 ```
@@ -100,11 +95,6 @@ knitr::include_graphics("images/raster_df.png")
 ## 
 
 
-```
-
-```{r echo = FALSE}
-# Including manually since this is causing memory issues
-knitr::include_graphics("images/raster_df2.png")
 
 
 ```
@@ -115,7 +105,8 @@ tmap_mode("plot") # <- to create static plots
 
 
 tm_shape(gemeindegrenzen_zh) + 
-  tm_polygons(col = "BEZIRKSNAME") 
+  tm_polygons(col = "BEZIRKSNAME")+
+  tm_layout(legend.position = c("right","top"))
 
 
 
@@ -123,7 +114,8 @@ tm_shape(gemeindegrenzen_zh) +
 
 ```{r }
 tm_shape(gemeindegrenzen_zh) + 
-  tm_polygons(col = "BEZIRKSNAME")  +
+  tm_polygons(col = "BEZIRKSNAME")+
+  tm_layout(legend.position = c("right","bottom")) +
   tm_compass()
 
 

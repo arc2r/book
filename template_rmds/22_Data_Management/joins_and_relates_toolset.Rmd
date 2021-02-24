@@ -1,17 +1,13 @@
 
-```{r echo = FALSE}
+```{r echo = TRUE}
 library(dplyr)
 
 
-```
-
-```{r joins, fig.cap= "Join operations",echo=F, out.width = "500px",fig.align='center'}
-knitr::include_graphics("images/joins.png")
 
 
 ```
 
-```{r }
+```{r echo = TRUE}
 
 df1 <- data.frame(TeamID = c(1,4,6,11),
                   TeamName = c("new york knicks","los angeles lakers","milwaukee bucks","boston celtics"),
@@ -28,25 +24,25 @@ df2
 
 ```
 
-```{r }
+```{r echo = TRUE}
 df1 %>% inner_join(df2)
 
 
 ```
 
-```{r }
+```{r echo = TRUE}
 full_join(df1,df2)
 
 
 ```
 
-```{r }
+```{r echo = TRUE}
 left_join(df1,df2)
 
 
 ```
 
-```{r }
+```{r echo = TRUE}
 right_join(df1,df2)
 ```
 

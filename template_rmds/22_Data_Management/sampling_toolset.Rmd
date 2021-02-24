@@ -1,10 +1,4 @@
 
-```{r echo = FALSE, eval = FALSE}
-## knitr::include_graphics("images/network/Data Management_Sampling.png")
-
-
-```
-
 ```{r echo = TRUE}
 library(sf)
 library(arc2r)

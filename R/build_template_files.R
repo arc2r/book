@@ -50,7 +50,7 @@ filelist <- map_dfr(filelist, function(x){
   group_by(filename) %>%
   filter(level == min(level)) %>%
   filter(row_number() == 1) %>%
-  select(filename,filename_new)
+  dplyr::select(filename,filename_new)
 
 templatepath <- "template_rmds"
 

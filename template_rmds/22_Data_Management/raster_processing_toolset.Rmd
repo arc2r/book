@@ -1,5 +1,5 @@
 
-```{r echo = FALSE}
+```{r echo = TRUE}
 library(arc2r)
 library(raster)
 library(sf)
@@ -20,7 +20,7 @@ data("recycling_raster")
 
 ```
 
-```{r echo=FALSE}
+```{r echo=TRUE}
 plot(recycling_raster)
 plot(are_waedenswil, alpha = 0.5, add = TRUE)
 
@@ -33,7 +33,7 @@ plot(are_waedenswil, alpha = 0.5, add = TRUE)
 
 ```
 
-```{r echo=FALSE, eval = FALSE}
+```{r echo=TRUE, eval = FALSE}
 ## 
 ## plot(recycle_Waedi_clip)
 ```

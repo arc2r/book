@@ -35,10 +35,6 @@ plot(st_geometry(haltestelle_bahn_clipped))
 plot(st_geometry(kanton_filter), add = TRUE,alpha = 1)
 
 
-```
-
-```{r clip, fig.cap= "Clip operation in ArcGIS pro",echo=F, out.width = "750px",fig.align='center'}
-knitr::include_graphics("images/clipOperation.png")
 
 
 ```

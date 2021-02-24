@@ -6,10 +6,6 @@ library(sf)
 library(tidyverse)
 
 
-```
-
-```{r echo = FALSE, fig.cap = "Source: @esri-topology"}
-knitr::include_graphics("images/topology_rules/0_0.jpg")
 
 
 ```
@@ -61,10 +57,6 @@ circsplot +
   geom_sf(data = circs[error,], fill = "red", alpha = 0.3)
 
 
-```
-
-```{r echo = FALSE, fig.cap = "Source: @esri-topology"}
-knitr::include_graphics("images/topology_rules/0_0.jpg")
 
 
 ```
@@ -119,53 +111,5 @@ ggplot(nc_holes) +
   theme_void()
 
 map_lgl(nc_holes$geometry,~length(.x)== 1)
-
-
-```
-
-```{r echo = FALSE, fig.cap = "Source: @esri-topology"}
-knitr::include_graphics("images/topology_rules/1_0.jpg")
-
-
-```
-
-```{r echo = FALSE, fig.cap = "Source: @esri-topology"}
-knitr::include_graphics("images/topology_rules/1_1.jpg")
-
-
-```
-
-```{r echo = FALSE, fig.cap = "Source: @esri-topology"}
-knitr::include_graphics("images/topology_rules/2_0.jpg")
-
-
-```
-
-```{r echo = FALSE, fig.cap = "Source: @esri-topology"}
-knitr::include_graphics("images/topology_rules/2_1.jpg")
-
-
-```
-
-```{r echo = FALSE, fig.cap = "Source: @esri-topology"}
-knitr::include_graphics("images/topology_rules/3_0.jpg")
-
-
-```
-
-```{r echo = FALSE, fig.cap = "Source: @esri-topology"}
-knitr::include_graphics("images/topology_rules/3_1.jpg")
-
-
-```
-
-```{r echo = FALSE, fig.cap = "Source: @esri-topology"}
-knitr::include_graphics("images/topology_rules/4_0.jpg")
-
-
-```
-
-```{r echo = FALSE, fig.cap = "Source: @esri-topology"}
-knitr::include_graphics("images/topology_rules/4_1.jpg")
 ```
 
