@@ -2,7 +2,7 @@
 
 # About this section {-}
 
-This section will cover some general concepts to be aware of when switching from ArcGIS to `R`. In our view, this is a (non exhaustive) list of the main differences between the two approaches:
+This section will cover some general concepts to be aware of when switching from ArcGIS to `R`. This is a (non exhaustive) list of the main differences we see between the two approaches:
 
 - The fundamental building block of ArcGIS is a visual representation of your data (i.e. the map). The fundamental building block in `R` is your R-Script. The visual aspect makes ArcGIS more approachable, but also less scalable.
 - When you acquire ArcGIS, you are served from a single source. In `R`, there are a plethora of developers creating packages for you to use, which can be quite overwhelming
@@ -14,4 +14,10 @@ This section will cover some general concepts to be aware of when switching from
 //body when you add a shapefile to your arcgis project, you basically have a "connection" to this file. in R, you create a virtual copy / an R representation of your dataset within your r session
 -->
 
+And just to get this out of the way: When is ArcGIS (or QGIS for that matter) preferable to using R? We will just cite [Sébastien Rochette's tweet](https://twitter.com/StatnMap/status/1362440566861086724)
 
+> I would use QGIS for georeferencering and digitizing.
+> - Georeferencing is when you get an aerial photo or an old paper map that you  want to add in GIS
+> - Digitizing is when you want to manually draw areas that you see on a digitized map
+> Also, the reason I use to keep a QGIS installed, is to get the list of all projections and being able to search through the list to find the appropriate projection in case of problems with yours.
+> Also, with {raster}, where you need to use the PROJ4 string, QGIS gives it to you.
