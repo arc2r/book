@@ -2,7 +2,9 @@
 
 
 The Analysis toolbox contains 5 toolsets to "perform the most fundamental GIS Operations" [@esri-gptoolref]. It covers the tools you will encounter in every 101 course to GIS: Clip, Buffer, Spatial Join.
-We wont cover all tools in this toolbox, but focus on three toolsets that contain the tools most commonly used tools. All these tools are all vector based, so we will work mostly with the package `sf` (see chapter \@ref(importing-vector-sf)).
+We wont cover all tools in this toolbox, but focus on three toolsets that contain the tools most commonly used tools. All these tools are all vector based, so we will work mostly with the package `sf` (see chapter \@ref(importing-vector-sf)).$
+
+so will ich was ändern
 
 ---
 
