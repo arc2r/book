@@ -4,8 +4,6 @@
 
 This section will cover some general concepts to be aware of when switching from ArcGIS to `R`. In our view, this is a (non exhaustive) list of the main differences between the two approaches:
 
-test fork
-
 - The fundamental building block of ArcGIS is a visual representation of your data (i.e. the map). The fundamental building block in `R` is your R-Script. The visual aspect makes ArcGIS more approachable, but also less scalable.
 - When you acquire ArcGIS, you are served from a single source. In `R`, there are a plethora of developers creating packages for you to use, which can be quite overwhelming
 - While there are always multiple ways to solve a problem in ArcGIS, there are usually many more ways to solve it in `R`. Finding the right way is not always easy.
