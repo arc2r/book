@@ -20,3 +20,6 @@ bookdown::gitbook:
     edit: https://github.com/arc2r/book/edit/master/%s
     view: https://github.com/arc2r/book/blob/master/%s
   info: yes
+  url: https://arc2r.github.io/book/
+  github-repo: https://github.com/arc2r/book
+  cover-image: cover.png
