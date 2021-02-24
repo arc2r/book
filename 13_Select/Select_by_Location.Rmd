@@ -150,6 +150,8 @@ ggplot() +
   ggtitle("Swimming spots in the Canton of Zurich") + 
   theme_minimal() + 
   coord_sf(datum = 2056)
+  
+  /-> irgendwas stimmt da nicht mit der darstellung weil es laut der karte keine badestätten in Richtersil gibt. Da ist nix rot...
 ```
 
 
