@@ -12,7 +12,7 @@ otherwise.
 
 ## Style Guide
 
-## Coding Style
+### Coding Style
 
 Let's be specific about which libraries we actually need in every script (avoid `library(tidyverse)`). We havent so much settled on a standard yet, but maybe using [style.tidyverse.org](https://style.tidyverse.org/) is a good start?
 
