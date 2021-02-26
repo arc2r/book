@@ -3,11 +3,11 @@
 The tutorials in this book are designed in a way for you to follow along easily. We will describe four different options:
 
 - Work on your **local machine**
-  a) With R Studio <- This is what we recommend for most users
-  b) different IDE
+  a) With R Studio *← This is what we recommend for most users*
+  b) with a different IDE
 - Work in **the Cloud** (via your browser)
-  c) ZHAW's [RStudio-Cloud](https://rstudio-ide.zhaw.ch/) <- Only available for [ZHAW](https://www.zhaw.ch) Students and Teachers<sup>1</sup>
-  d) RStudio's RStudio Cloud: [rstudio.cloud](https://rstudio.cloud/)
+  c) ZHAW's [RStudio Cloud](https://rstudio-ide.zhaw.ch/) *← Only available for [ZHAW](https://www.zhaw.ch) Students and Teachers<sup>1</sup>*
+  d) RStudio's [RStudio Cloud](https://rstudio.cloud/)
 
 
 <sup>1</sup>: Login with your School Credentials. Contact [Nils](https://www.zhaw.ch/en/about-us/person/rata/) to apply for an account
@@ -63,7 +63,7 @@ steps %>%
 
 ## Step 1: Installing R {-}
 
-To follow along, you will need a fairly new version of `R`, which you can download from [CRAN](https://cran.r-project.org/). See \@ref(sessioninfo) to find out the `R` and Package Version that we used. 
+To follow along, you will need a fairly new version of `R`, which you can download from [CRAN](https://cran.r-project.org/). See Appendix \@ref(sessioninfo) to find out the `R` and Package Version that we used. 
 
 
 ## Step 2: Installing RStudio {-}
