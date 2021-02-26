@@ -16,41 +16,7 @@ The tutorials in this book are designed in a way for you to follow along easily.
 Here is a quick overview of the steps necessary and the features available depending on which path you choose. We will explain these steps in more detail below:
 
 
-```{r, echo = FALSE, purl= FALSE, message=FALSE}
-
-library(readr)
-library(dplyr)
-library(flextable)
-library(ftExtra)
-
-steps <- read_csv("steps.csv")
-
-# Replace this with a manual html table. The content of this table will not change, so using R for this is not necessary, inflexible and adds additional dependencies
-
-steps %>%
-  mutate(Step = paste(Step, Description, sep = " ")) %>%
-  dplyr::select(-Description) %>%
-  dplyr::rename(
-    "a) RStudio" = local_rstudio,
-    "b) different IDE" = local_other,
-    "c) ZHAW Infrastructure" = cloud_zhaw,
-    "d) RStudio Infrastructure" = cloud_rstudio
-  ) %>%
-  flextable() %>%
-  merge_at(c(1),c(2,3)) %>%
-  merge_at(c(1), c(4,5)) %>%
-  merge_at(c(2), c(4,5)) %>%
-  merge_at(3,c(2,3)) %>%
-  flextable::theme_booktabs() %>%
-  add_header_row(values = c("","Work on your local machine","Work on the Cloud (from your browser)"),colwidths = c(1,2,2)) %>%
-  flextable::theme_zebra()  %>%
-  flextable::align(1, part = "header",align = "center" ) %>%
-  flextable::align(1, 2, align = "center") %>%
-  flextable::align(1, 4, align = "center") %>%
-  flextable::align(2, 4, align = "center") %>%
-  flextable::align(3, 2, align = "center") %>%
-  flextable::vline() %>%
-  colformat_md()
+```{asis, child = "html/table.html"}
 
 
 
