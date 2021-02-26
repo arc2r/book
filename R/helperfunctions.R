@@ -175,12 +175,20 @@ preview_chapter_app <- function(rmd_files_yaml_file = "_rmd_files.yaml"){
   require(stringr)
   rmd_files_yaml <- read_yaml(rmd_files_yaml_file)
   parts <- imap_chr(rmd_files_yaml, ~.y) 
-  chapters <- imap(parts, ~names(rmd_files_yaml[[.x]][["chapters"]])) %>% invisible()
+  chapters <- imap(parts, function(x,y){
+    z <- rmd_files_yaml[[x]]
+    if(is.list(z)){
+      names(rmd_files_yaml[[x]][["chapters"]])
+    }
+  })
   
   choices <- imap(chapters, function(x,y){
-    z <- as.list(paste(y,x,sep = "|"))
-    names(z) <- x
-    z
+    if(!is.null(x)){
+      z <- as.list(paste(y,x,sep = "|"))
+      names(z) <- x
+      z
+    }
+    
   })
   
   
