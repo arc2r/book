@@ -68,6 +68,6 @@ following logic (see also <https://github.com/arc2r/book/issues/9>):
 
 | Priority | Dependency (Package Necessary to:)            | File        | Repo        | Field    | Eg.                      |
 |----------|-----------------------------------------------|-------------|-------------|----------|--------------------------|
-| 1        | Use the **data-package**                      | DESCRIPTION | arc2r/arc2r | Imports  | `sf`, `raster`           |
-| 2        | To run the code described within **the book** | DESCRIPTION | arc2r/arc2r | Suggests | `gstat`, `tmap`, `dplyr` |
-| 3        | Render **the book**                           | DESCRIPTION | arc2r/book  | Imports  | `bookdown`, `rmarkdown`  |
+| 1        | Use the **data-package**                      | [DESCRIPTION](https://github.com/arc2r/arc2r/blob/master/DESCRIPTION) | arc2r/arc2r | Imports  | `sf`, `raster`           |
+| 2        | To run the code described within **the book** | [DESCRIPTION](https://github.com/arc2r/arc2r/blob/master/DESCRIPTION) | arc2r/arc2r | Suggests | `gstat`, `tmap`, `dplyr` |
+| 3        | Render **the book**                           | [DESCRIPTION](https://github.com/arc2r/book/blob/master/DESCRIPTION) | arc2r/book  | Imports  | `bookdown`, `rmarkdown`  |
