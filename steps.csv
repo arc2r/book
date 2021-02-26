@@ -1,5 +1,0 @@
-﻿Step,Description,local_rstudio,local_other,cloud_zhaw,cloud_rstudio
-1,Download and install R,from [CRAN](https://cran.r-project.org/),,this step is not necessary,
-2,Download and install Rstudio or a different IDE,from [RStudio](https://rstudio.com/products/rstudio/download/),download the IDE from the appropriate website,this step is not necessary,
-3,"Install the accompanying R Package ""arc2r""","remotes::install_github(""arc2r/arc2r"")",,this step is not necessary,"remotes::install_github(""arc2r/arc2r"")"
-4,Create a new Project using the Templates,see Details below,**this feature is not available**,see Details below,**this feature is not available**
