@@ -35,6 +35,7 @@ jobs:
 
       - name: Install packages
         run: |
+          brew install udunits
           R -e 'install.packages("remotes")'
           R -e 'remotes::install_deps()'
           R -e 'remotes::install_github("arc2r/arc2r",dependencies = TRUE, upgrade = "always")'
