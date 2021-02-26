@@ -4,12 +4,13 @@ Version: 0.0.0.9000
 Depends: R (>= 2.10)
 Imports: 
   bookdown,
-  rmarkdown,
   data.tree,
-  networkD3,
   formattable,
+  formatR,
+  tidyr,
   kableExtra,
-  formatR
+  networkD3,
+  rmarkdown
 Suggests:
   arc2r
 Remotes:
