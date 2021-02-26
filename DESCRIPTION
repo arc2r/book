@@ -11,7 +11,8 @@ Imports:
   formatR,
   kableExtra,
   networkD3,
-  rmarkdown
+  rmarkdown,
+  stringr
 Suggests:
   arc2r
 Remotes:
