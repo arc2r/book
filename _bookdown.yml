@@ -44,6 +44,7 @@ rmd_files:
 - 33_Topology_Rules/Point.Rmd
 - 33_Topology_Rules/Line_or_Polygon.Rmd
 - 99_Appendix/Progress.Rmd
+- 99_Appendix/Sessioninfo.Rmd
 - bibliography.Rmd
 delete_merged_file: yes
 output_dir: docs
