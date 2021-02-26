@@ -1,0 +1,11 @@
+
+# Sessioninfo {#sessioninfo}
+
+
+Here is the info on the session used to generate the code:
+
+```{r, echo = TRUE}
+
+sessioninfo::session_info()
+```
+
