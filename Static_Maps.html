@@ -164,9 +164,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="setting_up.html"><a href="setting_up.html"><i class="fa fa-check"></i><b>2</b> How to use this book</a>
 <ul>
-<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-1-installing-r-and-rstudio"><i class="fa fa-check"></i>Step 1: Installing R and RStudio</a></li>
-<li><a href="setting_up.html#step-2-install-the-accompanying-package-arc2r">Step 2: Install the accompanying package <code>arc2r</code></a></li>
-<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-3-create-a-new-project-rstudio-only"><i class="fa fa-check"></i>Step 3: Create a new project (RStudio only)</a></li>
+<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-1-installing-r"><i class="fa fa-check"></i>Step 1: Installing R</a></li>
+<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-2-installing-rstudio"><i class="fa fa-check"></i>Step 2: Installing RStudio</a></li>
+<li><a href="setting_up.html#step-3-install-the-accompanying-package-arc2r">Step 3: Install the accompanying package <code>arc2r</code></a></li>
+<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-4-create-a-new-project"><i class="fa fa-check"></i>Step 4: Create a new project</a></li>
 </ul></li>
 <li class="part"><span><b>I Getting Started</b></span></li>
 <li class="chapter" data-level="" data-path="10_Getting_Started.html"><a href="10_Getting_Started.html"><i class="fa fa-check"></i>About this section</a></li>
@@ -375,6 +376,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="Progress.html"><a href="Progress.html"><i class="fa fa-check"></i><b>A</b> Progress</a></li>
+<li class="chapter" data-level="B" data-path="Sessioninfo.html"><a href="Sessioninfo.html"><i class="fa fa-check"></i><b>B</b> Sessioninfo</a></li>
 <li class="chapter" data-level="" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://www.zhaw.ch/en/about-us/person/rata/">Nils Ratnaweera</a></li>
@@ -411,7 +413,7 @@ GIS @ ZHAW</a></li>
 <span id="cb23-7"><a href="Static_Maps.html#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;swissAlti3D&quot;</span>)</span></code></pre></div>
 <p>As we saw in chapter <a href="import_vector.html#importing-vector-sf">3.1</a>, we can quickly visualize an <code>sf</code> object by simply calling <code>plot</code>. This will return a small multiple of your geodata, where each facet is colour coded based on a column.</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="Static_Maps.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gemeindegrenzen_zh)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 <p>You will get one facet for each column, where the maximum number of facets is set to 9 by default. I find this behaviour pretty annoying, since I usually just want get a <em>quick</em> look at the data in space, and these small multiples take ages to render. There are several workarounds to prevent small multiples:</p>
 <ol style="list-style-type: decimal">
 <li>Extract the geometry from the <code>sf</code> object and just plot that</li>
@@ -431,7 +433,7 @@ GIS @ ZHAW</a></li>
 <span id="cb25-6"><a href="Static_Maps.html#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gemeindegrenzen_zh)</span></code></pre></div>
 <p>We dont have the “problem” of facets with raster data, so we can simply call <code>plot()</code> on a raster object to visualize it.</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="Static_Maps.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(swissAlti3D)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
 <p>The <code>plot()</code> method is fine for quick view of the data, but as you want to add more layers, legend etc. <code>plot()</code> becomes complicated. There are many alternative methods to visualizing spatial data, we will showcase our favourite methods here.</p>
 <div id="package-ggplot2" class="section level3" number="4.1.1">
 <h3><span class="header-section-number">4.1.1</span> Package <code>ggplot2</code></h3>
@@ -440,11 +442,11 @@ GIS @ ZHAW</a></li>
 <h4><span class="header-section-number">4.1.1.1</span> <code>sf</code> objects</h4>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="Static_Maps.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gemeindegrenzen_zh) <span class="sc">+</span></span>
 <span id="cb27-2"><a href="Static_Maps.html#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
 <p>In its most basic form, we can visualize the geometry of our <code>sf</code> object. As always in <code>ggplot2</code>, if you want to use a column from your dataset as an input for, say, colour, you need to specify this with <code>aes()</code>:</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="Static_Maps.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gemeindegrenzen_zh) <span class="sc">+</span> </span>
 <span id="cb28-2"><a href="Static_Maps.html#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> BEZIRKSNAME))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
 <p>To change the default graticules from WGS84 to a custom Coordinate System, we can use the argument <code>datum</code> in <code>coord_sf</code> and call the EPSG Code of our desired coordinate system.</p>
 <!--
 / todo: add chapter on CRS
@@ -453,14 +455,14 @@ GIS @ ZHAW</a></li>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="Static_Maps.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gemeindegrenzen_zh) <span class="sc">+</span> </span>
 <span id="cb29-2"><a href="Static_Maps.html#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> BEZIRKSNAME)) <span class="sc">+</span></span>
 <span id="cb29-3"><a href="Static_Maps.html#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_sf</span>(<span class="at">datum =</span> <span class="dv">2056</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
 <p>How we can use our standard <code>ggplot2</code> methods to polish this plot:</p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="Static_Maps.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gemeindegrenzen_zh) <span class="sc">+</span> </span>
 <span id="cb30-2"><a href="Static_Maps.html#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> BEZIRKSNAME), <span class="at">colour =</span> <span class="st">&quot;white&quot;</span>) <span class="sc">+</span></span>
 <span id="cb30-3"><a href="Static_Maps.html#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Gemeinden des Kantons Zürich nach Bezirk&quot;</span>,<span class="at">fill =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
 <span id="cb30-4"><a href="Static_Maps.html#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
 <span id="cb30-5"><a href="Static_Maps.html#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
 </div>
 <div id="raster-objects" class="section level4" number="4.1.1.2">
 <h4><span class="header-section-number">4.1.1.2</span> <code>raster</code> objects</h4>
@@ -501,17 +503,17 @@ GIS @ ZHAW</a></li>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="Static_Maps.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(gemeindegrenzen_zh) <span class="sc">+</span> </span>
 <span id="cb35-2"><a href="Static_Maps.html#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_polygons</span>(<span class="at">col =</span> <span class="st">&quot;BEZIRKSNAME&quot;</span>)<span class="sc">+</span></span>
 <span id="cb35-3"><a href="Static_Maps.html#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_layout</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="st">&quot;right&quot;</span>,<span class="st">&quot;top&quot;</span>))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
 <p>The fact that <code>tmap</code> is designed for maps makes it much easier to add map elements, such as a North Arrow.</p>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="Static_Maps.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(gemeindegrenzen_zh) <span class="sc">+</span> </span>
 <span id="cb36-2"><a href="Static_Maps.html#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_polygons</span>(<span class="at">col =</span> <span class="st">&quot;BEZIRKSNAME&quot;</span>)<span class="sc">+</span></span>
 <span id="cb36-3"><a href="Static_Maps.html#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_layout</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="st">&quot;right&quot;</span>,<span class="st">&quot;bottom&quot;</span>)) <span class="sc">+</span></span>
 <span id="cb36-4"><a href="Static_Maps.html#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_compass</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
 <p>It also means that visualizing a <code>RasterLayer</code> is built in to the package:</p>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="Static_Maps.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(swissAlti3D) <span class="sc">+</span></span>
 <span id="cb37-2"><a href="Static_Maps.html#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_raster</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
 <p>The most amazing thing about <code>tmap</code> probably is <code>tmap_mode("view")</code>. Run this code and then the two chunks above, you will be amazed. Learn more about this in chapter <a href="Dynamic_Maps.html#interactive-maps">Interactive Maps</a>.</p>
 
 </div>

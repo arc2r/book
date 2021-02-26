@@ -164,9 +164,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="setting_up.html"><a href="setting_up.html"><i class="fa fa-check"></i><b>2</b> How to use this book</a>
 <ul>
-<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-1-installing-r-and-rstudio"><i class="fa fa-check"></i>Step 1: Installing R and RStudio</a></li>
-<li><a href="setting_up.html#step-2-install-the-accompanying-package-arc2r">Step 2: Install the accompanying package <code>arc2r</code></a></li>
-<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-3-create-a-new-project-rstudio-only"><i class="fa fa-check"></i>Step 3: Create a new project (RStudio only)</a></li>
+<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-1-installing-r"><i class="fa fa-check"></i>Step 1: Installing R</a></li>
+<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-2-installing-rstudio"><i class="fa fa-check"></i>Step 2: Installing RStudio</a></li>
+<li><a href="setting_up.html#step-3-install-the-accompanying-package-arc2r">Step 3: Install the accompanying package <code>arc2r</code></a></li>
+<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-4-create-a-new-project"><i class="fa fa-check"></i>Step 4: Create a new project</a></li>
 </ul></li>
 <li class="part"><span><b>I Getting Started</b></span></li>
 <li class="chapter" data-level="" data-path="10_Getting_Started.html"><a href="10_Getting_Started.html"><i class="fa fa-check"></i>About this section</a></li>
@@ -375,6 +376,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="Progress.html"><a href="Progress.html"><i class="fa fa-check"></i><b>A</b> Progress</a></li>
+<li class="chapter" data-level="B" data-path="Sessioninfo.html"><a href="Sessioninfo.html"><i class="fa fa-check"></i><b>B</b> Sessioninfo</a></li>
 <li class="chapter" data-level="" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://www.zhaw.ch/en/about-us/person/rata/">Nils Ratnaweera</a></li>
@@ -414,13 +416,13 @@ todo: replace this with a read life dataset
 <div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="Neighborhood.html#cb138-1" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="at">ncol =</span> <span class="dv">10</span>, <span class="at">nrow =</span> <span class="dv">10</span>)</span>
 <span id="cb138-2"><a href="Neighborhood.html#cb138-2" aria-hidden="true" tabindex="-1"></a><span class="fu">values</span>(r) <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncell</span>(r)</span>
 <span id="cb138-3"><a href="Neighborhood.html#cb138-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(r, <span class="at">main =</span> <span class="st">&quot;Raster with 100 cells&quot;</span>, <span class="at">cex.main =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-98-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-100-1.png" width="672" /></p>
 <p>We will recompute now the raster based on the <code>focal</code> function of the <code>raster</code> package. In the function
 below, the neighbourhood for which we apply the statistic is represented by the argument <code>w</code>, while the
 statistic by the argument <code>fun</code>.</p>
 <div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="Neighborhood.html#cb139-1" aria-hidden="true" tabindex="-1"></a>f1 <span class="ot">&lt;-</span> <span class="fu">focal</span>(r, <span class="at">w =</span> <span class="fu">matrix</span>(<span class="dv">1</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">3</span>), <span class="at">fun =</span> sum)</span>
 <span id="cb139-2"><a href="Neighborhood.html#cb139-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(f1, <span class="at">main =</span> <span class="st">&quot;Raster after applying the focal function - raster package&quot;</span>, <span class="at">cex.main =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-99-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-101-1.png" width="672" /></p>
 <p>The operation above can be also performed with the use of the <em>focal</em> function of the <strong>terra</strong> package.</p>
 <ul>
 <li><code>w</code> represents the moving window of the function. The window can be defined as one (for a square)
@@ -430,7 +432,7 @@ or two numbers (row, col); or with an odd-sized weights matrix. More details can
 <div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="Neighborhood.html#cb140-1" aria-hidden="true" tabindex="-1"></a>r_spat <span class="ot">&lt;-</span> <span class="fu">as</span>(r, <span class="st">&quot;SpatRaster&quot;</span>)</span>
 <span id="cb140-2"><a href="Neighborhood.html#cb140-2" aria-hidden="true" tabindex="-1"></a>f2 <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">focal</span>(r_spat, <span class="at">w =</span> <span class="dv">3</span>, <span class="at">fun =</span> <span class="st">&quot;sum&quot;</span>)</span>
 <span id="cb140-3"><a href="Neighborhood.html#cb140-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(f2, <span class="at">main =</span> <span class="st">&quot;Raster after applying the focal function - terra package&quot;</span>, <span class="at">cex.main =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-100-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-102-1.png" width="672" /></p>
 
 </div>
 </div>

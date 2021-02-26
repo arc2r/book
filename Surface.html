@@ -164,9 +164,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="setting_up.html"><a href="setting_up.html"><i class="fa fa-check"></i><b>2</b> How to use this book</a>
 <ul>
-<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-1-installing-r-and-rstudio"><i class="fa fa-check"></i>Step 1: Installing R and RStudio</a></li>
-<li><a href="setting_up.html#step-2-install-the-accompanying-package-arc2r">Step 2: Install the accompanying package <code>arc2r</code></a></li>
-<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-3-create-a-new-project-rstudio-only"><i class="fa fa-check"></i>Step 3: Create a new project (RStudio only)</a></li>
+<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-1-installing-r"><i class="fa fa-check"></i>Step 1: Installing R</a></li>
+<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-2-installing-rstudio"><i class="fa fa-check"></i>Step 2: Installing RStudio</a></li>
+<li><a href="setting_up.html#step-3-install-the-accompanying-package-arc2r">Step 3: Install the accompanying package <code>arc2r</code></a></li>
+<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-4-create-a-new-project"><i class="fa fa-check"></i>Step 4: Create a new project</a></li>
 </ul></li>
 <li class="part"><span><b>I Getting Started</b></span></li>
 <li class="chapter" data-level="" data-path="10_Getting_Started.html"><a href="10_Getting_Started.html"><i class="fa fa-check"></i>About this section</a></li>
@@ -375,6 +376,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="Progress.html"><a href="Progress.html"><i class="fa fa-check"></i><b>A</b> Progress</a></li>
+<li class="chapter" data-level="B" data-path="Sessioninfo.html"><a href="Sessioninfo.html"><i class="fa fa-check"></i><b>B</b> Sessioninfo</a></li>
 <li class="chapter" data-level="" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://www.zhaw.ch/en/about-us/person/rata/">Nils Ratnaweera</a></li>
@@ -423,16 +425,16 @@ Let’s start by computing the <em>slope</em> of the <strong>swissAlti3d</strong
 <div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="Surface.html#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;swissAlti3D&quot;</span>)</span>
 <span id="cb155-2"><a href="Surface.html#cb155-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb155-3"><a href="Surface.html#cb155-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(swissAlti3D)</span></code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-110"></span>
-<img src="_main_files/figure-html/unnamed-chunk-110-1.png" alt="swissALTI3D2019 - CRS: CH1903+LV95" width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-112"></span>
+<img src="_main_files/figure-html/unnamed-chunk-112-1.png" alt="swissALTI3D2019 - CRS: CH1903+LV95" width="672" />
 <p class="caption">
 Figure 8.2: swissALTI3D2019 - CRS: CH1903+LV95
 </p>
 </div>
 <p>After importing and visualizing our raster dataset, we use the <code>terrain</code> function
 to calculate the slope.</p>
-<div class="figure"><span id="fig:unnamed-chunk-111"></span>
-<img src="_main_files/figure-html/unnamed-chunk-111-1.png" alt="swissALTI3D2019 - CRS: CH1903+LV95" width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-113"></span>
+<img src="_main_files/figure-html/unnamed-chunk-113-1.png" alt="swissALTI3D2019 - CRS: CH1903+LV95" width="672" />
 <p class="caption">
 Figure 8.3: swissALTI3D2019 - CRS: CH1903+LV95
 </p>
@@ -444,8 +446,8 @@ Similarly, we compute the <code>aspect</code> of a given dataset. Basically as <
 consider the compass direction that a <code>slope</code> leans towards.<br />
 Let’s compute now, using again the same function <code>terrain</code>, the <code>aspect</code> of the
 same dataset <strong>swissALTI3D2019</strong>.</p>
-<div class="figure"><span id="fig:unnamed-chunk-112"></span>
-<img src="_main_files/figure-html/unnamed-chunk-112-1.png" alt="Aspect of swissALTI3D2019 in degrees (°)" width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-114"></span>
+<img src="_main_files/figure-html/unnamed-chunk-114-1.png" alt="Aspect of swissALTI3D2019 in degrees (°)" width="672" />
 <p class="caption">
 Figure 8.4: Aspect of swissALTI3D2019 in degrees (°)
 </p>

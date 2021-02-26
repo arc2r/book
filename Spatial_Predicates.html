@@ -164,9 +164,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="setting_up.html"><a href="setting_up.html"><i class="fa fa-check"></i><b>2</b> How to use this book</a>
 <ul>
-<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-1-installing-r-and-rstudio"><i class="fa fa-check"></i>Step 1: Installing R and RStudio</a></li>
-<li><a href="setting_up.html#step-2-install-the-accompanying-package-arc2r">Step 2: Install the accompanying package <code>arc2r</code></a></li>
-<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-3-create-a-new-project-rstudio-only"><i class="fa fa-check"></i>Step 3: Create a new project (RStudio only)</a></li>
+<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-1-installing-r"><i class="fa fa-check"></i>Step 1: Installing R</a></li>
+<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-2-installing-rstudio"><i class="fa fa-check"></i>Step 2: Installing RStudio</a></li>
+<li><a href="setting_up.html#step-3-install-the-accompanying-package-arc2r">Step 3: Install the accompanying package <code>arc2r</code></a></li>
+<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-4-create-a-new-project"><i class="fa fa-check"></i>Step 4: Create a new project</a></li>
 </ul></li>
 <li class="part"><span><b>I Getting Started</b></span></li>
 <li class="chapter" data-level="" data-path="10_Getting_Started.html"><a href="10_Getting_Started.html"><i class="fa fa-check"></i>About this section</a></li>
@@ -375,6 +376,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="Progress.html"><a href="Progress.html"><i class="fa fa-check"></i><b>A</b> Progress</a></li>
+<li class="chapter" data-level="B" data-path="Sessioninfo.html"><a href="Sessioninfo.html"><i class="fa fa-check"></i><b>B</b> Sessioninfo</a></li>
 <li class="chapter" data-level="" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://www.zhaw.ch/en/about-us/person/rata/">Nils Ratnaweera</a></li>
@@ -449,7 +451,7 @@ GIS @ ZHAW</a></li>
 <span id="cb176-11"><a href="Spatial_Predicates.html#cb176-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_void</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
 <span id="cb176-12"><a href="Spatial_Predicates.html#cb176-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb176-13"><a href="Spatial_Predicates.html#cb176-13" aria-hidden="true" tabindex="-1"></a>chessplot</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-131-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-133-1.png" width="672" /></p>
 <p>To find out which field <code>touch</code> field number 36, we can write the following line of code:</p>
 <div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="Spatial_Predicates.html#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_touches</span>(chessboard[<span class="dv">36</span>, ], chessboard)</span></code></pre></div>
 <pre><code>## Sparse geometry binary predicate list of length 1, where the predicate was `touches&#39;
@@ -460,7 +462,7 @@ GIS @ ZHAW</a></li>
 <span id="cb179-3"><a href="Spatial_Predicates.html#cb179-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb179-4"><a href="Spatial_Predicates.html#cb179-4" aria-hidden="true" tabindex="-1"></a>chessplot <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> chessboard[<span class="dv">36</span>, ], <span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> chessboard[sel36, </span>
 <span id="cb179-5"><a href="Spatial_Predicates.html#cb179-5" aria-hidden="true" tabindex="-1"></a>    ], <span class="at">fill =</span> <span class="st">&quot;red&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-133-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-135-1.png" width="672" /></p>
 
 </div>
 </div>

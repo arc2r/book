@@ -164,9 +164,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="setting_up.html"><a href="setting_up.html"><i class="fa fa-check"></i><b>2</b> How to use this book</a>
 <ul>
-<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-1-installing-r-and-rstudio"><i class="fa fa-check"></i>Step 1: Installing R and RStudio</a></li>
-<li><a href="setting_up.html#step-2-install-the-accompanying-package-arc2r">Step 2: Install the accompanying package <code>arc2r</code></a></li>
-<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-3-create-a-new-project-rstudio-only"><i class="fa fa-check"></i>Step 3: Create a new project (RStudio only)</a></li>
+<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-1-installing-r"><i class="fa fa-check"></i>Step 1: Installing R</a></li>
+<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-2-installing-rstudio"><i class="fa fa-check"></i>Step 2: Installing RStudio</a></li>
+<li><a href="setting_up.html#step-3-install-the-accompanying-package-arc2r">Step 3: Install the accompanying package <code>arc2r</code></a></li>
+<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-4-create-a-new-project"><i class="fa fa-check"></i>Step 4: Create a new project</a></li>
 </ul></li>
 <li class="part"><span><b>I Getting Started</b></span></li>
 <li class="chapter" data-level="" data-path="10_Getting_Started.html"><a href="10_Getting_Started.html"><i class="fa fa-check"></i>About this section</a></li>
@@ -375,6 +376,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="Progress.html"><a href="Progress.html"><i class="fa fa-check"></i><b>A</b> Progress</a></li>
+<li class="chapter" data-level="B" data-path="Sessioninfo.html"><a href="Sessioninfo.html"><i class="fa fa-check"></i><b>B</b> Sessioninfo</a></li>
 <li class="chapter" data-level="" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://www.zhaw.ch/en/about-us/person/rata/">Nils Ratnaweera</a></li>
@@ -405,13 +407,13 @@ GIS @ ZHAW</a></li>
 <p>Regarding the chessboard example, we can imagine a chess piece placed on field #36. If this figure was a Queen or a King, all of the fields resulting from <code>st_touches</code> are reachable. In terms of contiguity, this is what is typically called the Queen’s or the King’s Case. However, this is might not the relationship that we are looking for: Say we would want to exclude the diagonal fields from our selection, the way a Rook would move in chess. How can we implement this in <code>R</code>?</p>
 <p>None of the named topological relationships above (<a href="Spatial_Predicates.html#spatial-predicates">12</a>) correctly describes this case (<code>touches_but_not_at_edges</code> or <code>shares_boundary</code> would be appropriate). In this case, we can use the Dimensionally Extended 9-Intersection Model (DE-9IM) to precisely formulate the relationship we are looking for: the Rooks Case.</p>
 <p>IN DE-9IM, the intersection of two objects is viewed at three levels for each object: The Interior, the Boundary and the Exterior (<span class="math inline">\(3^2= 9\)</span>, hence the name). These levels mean different things for Polygons, Lines or Points, but let’s just look at the simple case for now, polygons (which is the case for our chess fields). Take the example of two partially overlapping squares as shown below:</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-134-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-136-1.png" width="672" /></p>
 <p>The interior of a polygon is the area <em>inside</em> the polygon. If the two areas overlap (as is the case of blue and red), the result from an intersection would also be a polygon. More formally: The dimesion of <span class="math inline">\(I(blue) \cap I(red)\)</span> is an area. Areas get a value of 2, Lines 1 and points 0. If there is no intersection, the result equals to <code>FALSE</code>.</p>
 <p>This was the first of 9 Intersections. Let’s look at the next one:</p>
 <p>Interior of blue with the boundary of red:</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-135-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-137-1.png" width="672" /></p>
 <p>The resulting object has a dimenion “line,” i.e. 1. Formally: <span class="math inline">\(dim(I(blue) \cap B(red)) = 1\)</span>. Now just for the sake of looking at the third level (Exerior), let’s look at what this looks like:</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-136-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-138-1.png" width="672" /></p>
 <p>The resulting object is again an area, i.e. 2. Formally <span class="math inline">\(dim(I(blue) \cap E(red)) = 2\)</span>.</p>
 <p>If we go through all intersections of <strong>I</strong>nterior, <em><code>b</code></em>oundry and <strong>E</strong>xterior of both geometries, we can denote for each comination what type of dimesion we “allow.” This can be either 0 (for points), 1 (for lines) or 3 (for areas) or <code>TRUE</code> (for either of these), or <code>FALSE</code> (for none of these) or <code>*</code> (for "I dont care).</p>
 <p><img src="https://postgis.net/workshops/postgis-intro/_images/de9im3.jpg" /></p>
@@ -453,7 +455,7 @@ GIS @ ZHAW</a></li>
 <pre><code>## Sparse geometry binary predicate list of length 1, where the predicate was `relate_pattern&#39;
 ##  1: 28, 35, 37, 44</code></pre>
 <p>Which visually gives us this pattern:</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-138-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-140-1.png" width="672" /></p>
 <p>Because this was so much fun, let’s also have a look at the opposite, the Bishops Case.</p>
 </div>
 <div id="bishops-case" class="section level4" number="13.0.0.2">
@@ -491,7 +493,7 @@ GIS @ ZHAW</a></li>
 <pre><code>## Sparse geometry binary predicate list of length 1, where the predicate was `relate_pattern&#39;
 ##  1: 27, 29, 43, 45</code></pre>
 <p>Visually:</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-140-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-142-1.png" width="672" /></p>
 
 </div>
 </div>

@@ -164,9 +164,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="setting_up.html"><a href="setting_up.html"><i class="fa fa-check"></i><b>2</b> How to use this book</a>
 <ul>
-<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-1-installing-r-and-rstudio"><i class="fa fa-check"></i>Step 1: Installing R and RStudio</a></li>
-<li><a href="setting_up.html#step-2-install-the-accompanying-package-arc2r">Step 2: Install the accompanying package <code>arc2r</code></a></li>
-<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-3-create-a-new-project-rstudio-only"><i class="fa fa-check"></i>Step 3: Create a new project (RStudio only)</a></li>
+<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-1-installing-r"><i class="fa fa-check"></i>Step 1: Installing R</a></li>
+<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-2-installing-rstudio"><i class="fa fa-check"></i>Step 2: Installing RStudio</a></li>
+<li><a href="setting_up.html#step-3-install-the-accompanying-package-arc2r">Step 3: Install the accompanying package <code>arc2r</code></a></li>
+<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-4-create-a-new-project"><i class="fa fa-check"></i>Step 4: Create a new project</a></li>
 </ul></li>
 <li class="part"><span><b>I Getting Started</b></span></li>
 <li class="chapter" data-level="" data-path="10_Getting_Started.html"><a href="10_Getting_Started.html"><i class="fa fa-check"></i>About this section</a></li>
@@ -375,6 +376,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="Progress.html"><a href="Progress.html"><i class="fa fa-check"></i><b>A</b> Progress</a></li>
+<li class="chapter" data-level="B" data-path="Sessioninfo.html"><a href="Sessioninfo.html"><i class="fa fa-check"></i><b>B</b> Sessioninfo</a></li>
 <li class="chapter" data-level="" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://www.zhaw.ch/en/about-us/person/rata/">Nils Ratnaweera</a></li>
@@ -418,7 +420,7 @@ GIS @ ZHAW</a></li>
 <span id="cb134-7"><a href="Sampling.html#cb134-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb134-8"><a href="Sampling.html#cb134-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the selected area</span></span>
 <span id="cb134-9"><a href="Sampling.html#cb134-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(zh) <span class="sc">+</span> <span class="fu">geom_sf</span>() <span class="sc">+</span> <span class="fu">coord_sf</span>(<span class="at">datum =</span> <span class="dv">2056</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-94-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-96-1.png" width="672" /></p>
 <div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="Sampling.html#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a tessellated grid of hexagons using the st_make_grid() function.</span></span>
 <span id="cb135-2"><a href="Sampling.html#cb135-2" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">st_make_grid</span>(zh, <span class="at">square =</span> <span class="cn">FALSE</span>)  <span class="co"># square = TRUE creates as expected a tesselation of squares</span></span>
 <span id="cb135-3"><a href="Sampling.html#cb135-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -427,7 +429,7 @@ GIS @ ZHAW</a></li>
 <span id="cb135-6"><a href="Sampling.html#cb135-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> zh, <span class="at">fill =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> g, <span class="at">alpha =</span> <span class="fl">0.3</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span> </span>
 <span id="cb135-7"><a href="Sampling.html#cb135-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_sf</span>(<span class="at">datum =</span> <span class="dv">2056</span>) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;Tesselated grid within the Canton of Zürich&quot;</span>) <span class="sc">+</span> </span>
 <span id="cb135-8"><a href="Sampling.html#cb135-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>), <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">9</span>))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-94-2.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-96-2.png" width="672" /></p>
 </div>
 <div id="sampling-randompoints" class="section level3" number="7.5.2">
 <h3><span class="header-section-number">7.5.2</span> Create Random Points</h3>
@@ -439,7 +441,7 @@ GIS @ ZHAW</a></li>
 <span id="cb136-5"><a href="Sampling.html#cb136-5" aria-hidden="true" tabindex="-1"></a><span class="co"># the canton of Zurich</span></span>
 <span id="cb136-6"><a href="Sampling.html#cb136-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> zh) <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> sample) <span class="sc">+</span> <span class="fu">coord_sf</span>(<span class="at">datum =</span> <span class="dv">2056</span>) <span class="sc">+</span> </span>
 <span id="cb136-7"><a href="Sampling.html#cb136-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">&quot;1000 random points witihn the Canton of Zurich&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-95-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-97-1.png" width="672" /></p>
 </div>
 <div id="sampling-pointsalonglines" class="section level3" number="7.5.3">
 <h3><span class="header-section-number">7.5.3</span> Generate Points Along Lines</h3>
@@ -451,7 +453,7 @@ GIS @ ZHAW</a></li>
 <span id="cb137-6"><a href="Sampling.html#cb137-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb137-7"><a href="Sampling.html#cb137-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(line1))</span>
 <span id="cb137-8"><a href="Sampling.html#cb137-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pointsOnLine1, <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-96-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-98-1.png" width="672" /></p>
 <!-- ToDo -->
 <!-- I have to generalise it to every line of the dataframe -->
 

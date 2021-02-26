@@ -164,9 +164,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="setting_up.html"><a href="setting_up.html"><i class="fa fa-check"></i><b>2</b> How to use this book</a>
 <ul>
-<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-1-installing-r-and-rstudio"><i class="fa fa-check"></i>Step 1: Installing R and RStudio</a></li>
-<li><a href="setting_up.html#step-2-install-the-accompanying-package-arc2r">Step 2: Install the accompanying package <code>arc2r</code></a></li>
-<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-3-create-a-new-project-rstudio-only"><i class="fa fa-check"></i>Step 3: Create a new project (RStudio only)</a></li>
+<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-1-installing-r"><i class="fa fa-check"></i>Step 1: Installing R</a></li>
+<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-2-installing-rstudio"><i class="fa fa-check"></i>Step 2: Installing RStudio</a></li>
+<li><a href="setting_up.html#step-3-install-the-accompanying-package-arc2r">Step 3: Install the accompanying package <code>arc2r</code></a></li>
+<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-4-create-a-new-project"><i class="fa fa-check"></i>Step 4: Create a new project</a></li>
 </ul></li>
 <li class="part"><span><b>I Getting Started</b></span></li>
 <li class="chapter" data-level="" data-path="10_Getting_Started.html"><a href="10_Getting_Started.html"><i class="fa fa-check"></i>About this section</a></li>
@@ -375,6 +376,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="Progress.html"><a href="Progress.html"><i class="fa fa-check"></i><b>A</b> Progress</a></li>
+<li class="chapter" data-level="B" data-path="Sessioninfo.html"><a href="Sessioninfo.html"><i class="fa fa-check"></i><b>B</b> Sessioninfo</a></li>
 <li class="chapter" data-level="" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://www.zhaw.ch/en/about-us/person/rata/">Nils Ratnaweera</a></li>
@@ -482,11 +484,11 @@ We will not get into options 1 and 3 and only</p>
 </blockquote>
 <p>Now that <code>bezirke</code> has an assigned <code>CRS</code> (see <a href="Projections_and_Transformations.html#projections-defineprojection">7.3.1</a>, we can transform it into a new coordinate system. To emphasize this, will will visualize the dataset using <code>base::plot()</code> with the option <code>axes = TRUE</code>, to visualize the current coordinate system.</p>
 <div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="Projections_and_Transformations.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(bezirke[<span class="st">&quot;area_km2&quot;</span>], <span class="at">axes =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-80-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-82-1.png" width="672" /></p>
 <div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="Projections_and_Transformations.html#cb119-1" aria-hidden="true" tabindex="-1"></a>bezirke_wgs84 <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(bezirke, <span class="dv">4326</span>)</span>
 <span id="cb119-2"><a href="Projections_and_Transformations.html#cb119-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb119-3"><a href="Projections_and_Transformations.html#cb119-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(bezirke_wgs84[<span class="st">&quot;area_km2&quot;</span>], <span class="at">axes =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-81-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-83-1.png" width="672" /></p>
 <div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="Projections_and_Transformations.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(bezirke)</span></code></pre></div>
 <pre><code>## Coordinate Reference System:
 ##   User input: EPSG:2056 
@@ -608,7 +610,7 @@ with R.</p>
 <div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="Projections_and_Transformations.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the raster dataset - World Geodetic System 1984</span></span>
 <span id="cb125-2"><a href="Projections_and_Transformations.html#cb125-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(public_transport_waedi, <span class="at">las =</span> <span class="dv">1</span>, <span class="at">main =</span> <span class="st">&quot;Quality of public transport in the city of Wädenwil - CRS: WGS84&quot;</span>, </span>
 <span id="cb125-3"><a href="Projections_and_Transformations.html#cb125-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cex.main =</span> <span class="dv">1</span>, <span class="at">font.main =</span> <span class="dv">4</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-85-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-87-1.png" width="672" /></p>
 <p>We can use the <code>projectRaster()</code> function to reproject a raster into a new CRS.
 The first argument of the aforementioned function is the raster dataset we want to reproject,
 while the second one is the dataset to whose projection we are targeting to. So, in
@@ -622,7 +624,7 @@ object has already a defined CRS.</p>
 <div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="Projections_and_Transformations.html#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the raster dataset - Swiss Coordinate System CH1903+LV95</span></span>
 <span id="cb127-2"><a href="Projections_and_Transformations.html#cb127-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(publicTransport_CH, <span class="at">las =</span> <span class="dv">1</span>, <span class="at">main =</span> <span class="st">&quot;Quality of public transport in the city of Wädenwil - CRS: CH1903+LV95&quot;</span>, </span>
 <span id="cb127-3"><a href="Projections_and_Transformations.html#cb127-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cex.main =</span> <span class="dv">1</span>, <span class="at">font.main =</span> <span class="dv">4</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-87-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-89-1.png" width="672" /></p>
 
 </div>
 </div>

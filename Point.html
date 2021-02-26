@@ -164,9 +164,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="setting_up.html"><a href="setting_up.html"><i class="fa fa-check"></i><b>2</b> How to use this book</a>
 <ul>
-<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-1-installing-r-and-rstudio"><i class="fa fa-check"></i>Step 1: Installing R and RStudio</a></li>
-<li><a href="setting_up.html#step-2-install-the-accompanying-package-arc2r">Step 2: Install the accompanying package <code>arc2r</code></a></li>
-<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-3-create-a-new-project-rstudio-only"><i class="fa fa-check"></i>Step 3: Create a new project (RStudio only)</a></li>
+<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-1-installing-r"><i class="fa fa-check"></i>Step 1: Installing R</a></li>
+<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-2-installing-rstudio"><i class="fa fa-check"></i>Step 2: Installing RStudio</a></li>
+<li><a href="setting_up.html#step-3-install-the-accompanying-package-arc2r">Step 3: Install the accompanying package <code>arc2r</code></a></li>
+<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-4-create-a-new-project"><i class="fa fa-check"></i>Step 4: Create a new project</a></li>
 </ul></li>
 <li class="part"><span><b>I Getting Started</b></span></li>
 <li class="chapter" data-level="" data-path="10_Getting_Started.html"><a href="10_Getting_Started.html"><i class="fa fa-check"></i>About this section</a></li>
@@ -375,6 +376,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="Progress.html"><a href="Progress.html"><i class="fa fa-check"></i><b>A</b> Progress</a></li>
+<li class="chapter" data-level="B" data-path="Sessioninfo.html"><a href="Sessioninfo.html"><i class="fa fa-check"></i><b>B</b> Sessioninfo</a></li>
 <li class="chapter" data-level="" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://www.zhaw.ch/en/about-us/person/rata/">Nils Ratnaweera</a></li>
@@ -403,7 +405,7 @@ GIS @ ZHAW</a></li>
 <h2><span class="header-section-number">14.3</span> Point</h2>
 <div id="must-coincide-with" class="section level3" number="14.3.1">
 <h3><span class="header-section-number">14.3.1</span> Must coincide with</h3>
-<div class="figure"><span id="fig:unnamed-chunk-175"></span>
+<div class="figure"><span id="fig:unnamed-chunk-177"></span>
 <img src="images/topology_rules/5_0.jpg" alt="Source: @esri-topology"  />
 <p class="caption">
 Figure 14.27: Source: <span class="citation">Esri (2011)</span>
@@ -412,7 +414,7 @@ Figure 14.27: Source: <span class="citation">Esri (2011)</span>
 </div>
 <div id="must-be-disjoint" class="section level3" number="14.3.2">
 <h3><span class="header-section-number">14.3.2</span> Must be disjoint</h3>
-<div class="figure"><span id="fig:unnamed-chunk-176"></span>
+<div class="figure"><span id="fig:unnamed-chunk-178"></span>
 <img src="images/topology_rules/5_1.jpg" alt="Source: @esri-topology"  />
 <p class="caption">
 Figure 14.28: Source: <span class="citation">Esri (2011)</span>
@@ -421,7 +423,7 @@ Figure 14.28: Source: <span class="citation">Esri (2011)</span>
 </div>
 <div id="must-be-covered-by-endpoint-of" class="section level3" number="14.3.3">
 <h3><span class="header-section-number">14.3.3</span> Must be covered by endpoint of</h3>
-<div class="figure"><span id="fig:unnamed-chunk-177"></span>
+<div class="figure"><span id="fig:unnamed-chunk-179"></span>
 <img src="images/topology_rules/6_0.jpg" alt="Source: @esri-topology"  />
 <p class="caption">
 Figure 14.29: Source: <span class="citation">Esri (2011)</span>
@@ -430,7 +432,7 @@ Figure 14.29: Source: <span class="citation">Esri (2011)</span>
 </div>
 <div id="point-must-be-covered-by-line" class="section level3" number="14.3.4">
 <h3><span class="header-section-number">14.3.4</span> Point must be covered by line</h3>
-<div class="figure"><span id="fig:unnamed-chunk-178"></span>
+<div class="figure"><span id="fig:unnamed-chunk-180"></span>
 <img src="images/topology_rules/6_1.jpg" alt="Source: @esri-topology"  />
 <p class="caption">
 Figure 14.30: Source: <span class="citation">Esri (2011)</span>
@@ -439,7 +441,7 @@ Figure 14.30: Source: <span class="citation">Esri (2011)</span>
 </div>
 <div id="must-be-properly-inside-1" class="section level3" number="14.3.5">
 <h3><span class="header-section-number">14.3.5</span> Must be properly inside</h3>
-<div class="figure"><span id="fig:unnamed-chunk-179"></span>
+<div class="figure"><span id="fig:unnamed-chunk-181"></span>
 <img src="images/topology_rules/7_0.jpg" alt="Source: @esri-topology"  />
 <p class="caption">
 Figure 14.31: Source: <span class="citation">Esri (2011)</span>
@@ -448,7 +450,7 @@ Figure 14.31: Source: <span class="citation">Esri (2011)</span>
 </div>
 <div id="must-be-covered-by-boundary-of-1" class="section level3" number="14.3.6">
 <h3><span class="header-section-number">14.3.6</span> Must be covered by boundary of</h3>
-<div class="figure"><span id="fig:unnamed-chunk-180"></span>
+<div class="figure"><span id="fig:unnamed-chunk-182"></span>
 <img src="images/topology_rules/7_1.jpg" alt="Source: @esri-topology"  />
 <p class="caption">
 Figure 14.32: Source: <span class="citation">Esri (2011)</span>

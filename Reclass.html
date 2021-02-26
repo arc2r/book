@@ -164,9 +164,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="setting_up.html"><a href="setting_up.html"><i class="fa fa-check"></i><b>2</b> How to use this book</a>
 <ul>
-<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-1-installing-r-and-rstudio"><i class="fa fa-check"></i>Step 1: Installing R and RStudio</a></li>
-<li><a href="setting_up.html#step-2-install-the-accompanying-package-arc2r">Step 2: Install the accompanying package <code>arc2r</code></a></li>
-<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-3-create-a-new-project-rstudio-only"><i class="fa fa-check"></i>Step 3: Create a new project (RStudio only)</a></li>
+<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-1-installing-r"><i class="fa fa-check"></i>Step 1: Installing R</a></li>
+<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-2-installing-rstudio"><i class="fa fa-check"></i>Step 2: Installing RStudio</a></li>
+<li><a href="setting_up.html#step-3-install-the-accompanying-package-arc2r">Step 3: Install the accompanying package <code>arc2r</code></a></li>
+<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-4-create-a-new-project"><i class="fa fa-check"></i>Step 4: Create a new project</a></li>
 </ul></li>
 <li class="part"><span><b>I Getting Started</b></span></li>
 <li class="chapter" data-level="" data-path="10_Getting_Started.html"><a href="10_Getting_Started.html"><i class="fa fa-check"></i>About this section</a></li>
@@ -375,6 +376,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="Progress.html"><a href="Progress.html"><i class="fa fa-check"></i><b>A</b> Progress</a></li>
+<li class="chapter" data-level="B" data-path="Sessioninfo.html"><a href="Sessioninfo.html"><i class="fa fa-check"></i><b>B</b> Sessioninfo</a></li>
 <li class="chapter" data-level="" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://www.zhaw.ch/en/about-us/person/rata/">Nils Ratnaweera</a></li>
@@ -410,10 +412,10 @@ GIS @ ZHAW</a></li>
 <div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="Reclass.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;swissAlti3D&quot;</span>)</span>
 <span id="cb148-2"><a href="Reclass.html#cb148-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb148-3"><a href="Reclass.html#cb148-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(swissAlti3D)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-103-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-105-1.png" width="672" /></p>
 <p>Let’s have a look at the histogram of the raster values to see their distribution.</p>
 <div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="Reclass.html#cb149-1" aria-hidden="true" tabindex="-1"></a>histinfo <span class="ot">&lt;-</span> <span class="fu">hist</span>(swissAlti3D)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-104-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-106-1.png" width="672" /></p>
 <p>The histogram above automatically created 13 breaks (620,640,…,840,860). We can use these breaks to reclassify our values. To do so, we create below a reclassification matrix with the respective values.</p>
 <pre><code>##       [,1] [,2] [,3]
 ##  [1,]    0  620    1
@@ -433,8 +435,8 @@ GIS @ ZHAW</a></li>
 <div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="Reclass.html#cb151-1" aria-hidden="true" tabindex="-1"></a>swissAlti3D_reclass <span class="ot">&lt;-</span> <span class="fu">reclassify</span>(swissAlti3D, reclass_m)</span>
 <span id="cb151-2"><a href="Reclass.html#cb151-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb151-3"><a href="Reclass.html#cb151-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(swissAlti3D_reclass)</span></code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-106"></span>
-<img src="_main_files/figure-html/unnamed-chunk-106-1.png" alt="Aspect of swissALTI3D2019 in 4 classes" width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-108"></span>
+<img src="_main_files/figure-html/unnamed-chunk-108-1.png" alt="Aspect of swissALTI3D2019 in 4 classes" width="672" />
 <p class="caption">
 Figure 8.1: Aspect of swissALTI3D2019 in 4 classes
 </p>
