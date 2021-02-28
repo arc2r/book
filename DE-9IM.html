@@ -10,16 +10,16 @@
 
   <meta property="og:title" content="13 DE-9IM | All things R Spatial" />
   <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://arc2r.github.io/book/" />
+  <meta property="og:image" content="https://arc2r.github.io/book/images/logo.png" />
   
-  
-  
-  
+  <meta name="github-repo" content="https://github.com/arc2r/book" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="13 DE-9IM | All things R Spatial" />
   
   
-  
+  <meta name="twitter:image" content="https://arc2r.github.io/book/images/logo.png" />
 
 <meta name="author" content="Nils Ratnaweera and Nikolaos Bakogiannis" />
 
@@ -413,6 +413,12 @@ GIS @ ZHAW</a></li>
 <p>Interior of blue with the boundary of red:</p>
 <p><img src="_main_files/figure-html/unnamed-chunk-137-1.png" width="672" /></p>
 <p>The resulting object has a dimenion “line,” i.e. 1. Formally: <span class="math inline">\(dim(I(blue) \cap B(red)) = 1\)</span>. Now just for the sake of looking at the third level (Exerior), let’s look at what this looks like:</p>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="DE-9IM.html#cb183-1" aria-hidden="true" tabindex="-1"></a>p2_ls <span class="ot">&lt;-</span> <span class="fu">st_cast</span>(p2, <span class="st">&quot;LINESTRING&quot;</span>)</span>
+<span id="cb183-2"><a href="DE-9IM.html#cb183-2" aria-hidden="true" tabindex="-1"></a>p2_ls2 <span class="ot">&lt;-</span> <span class="fu">st_intersection</span>(p1, p2_ls)</span>
+<span id="cb183-3"><a href="DE-9IM.html#cb183-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb183-4"><a href="DE-9IM.html#cb183-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> p1, <span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> p2, <span class="at">fill =</span> <span class="st">&quot;red&quot;</span>, </span>
+<span id="cb183-5"><a href="DE-9IM.html#cb183-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> <span class="fu">st_difference</span>(p1, p2), <span class="at">fill =</span> <span class="st">&quot;yellow&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb183-6"><a href="DE-9IM.html#cb183-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_void</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-138-1.png" width="672" /></p>
 <p>The resulting object is again an area, i.e. 2. Formally <span class="math inline">\(dim(I(blue) \cap E(red)) = 2\)</span>.</p>
 <p>If we go through all intersections of <strong>I</strong>nterior, <em><code>b</code></em>oundry and <strong>E</strong>xterior of both geometries, we can denote for each comination what type of dimesion we “allow.” This can be either 0 (for points), 1 (for lines) or 3 (for areas) or <code>TRUE</code> (for either of these), or <code>FALSE</code> (for none of these) or <code>*</code> (for "I dont care).</p>
@@ -452,6 +458,7 @@ GIS @ ZHAW</a></li>
 </table>
 <p>We can now write this into a string, starting from the top left: <code>F***1****</code></p>
 <p>Now that we have this string, we case use <code>st_relate()</code>and specify the string as the pattern we are looking for:</p>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="DE-9IM.html#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_relate</span>(chessboard[<span class="dv">36</span>, ], chessboard, <span class="at">pattern =</span> <span class="st">&quot;F***1****&quot;</span>)</span></code></pre></div>
 <pre><code>## Sparse geometry binary predicate list of length 1, where the predicate was `relate_pattern&#39;
 ##  1: 28, 35, 37, 44</code></pre>
 <p>Which visually gives us this pattern:</p>
@@ -490,6 +497,7 @@ GIS @ ZHAW</a></li>
 </tr>
 </tbody>
 </table>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="DE-9IM.html#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_relate</span>(chessboard[<span class="dv">36</span>, ], chessboard, <span class="at">pattern =</span> <span class="st">&quot;F***0****&quot;</span>)</span></code></pre></div>
 <pre><code>## Sparse geometry binary predicate list of length 1, where the predicate was `relate_pattern&#39;
 ##  1: 27, 29, 43, 45</code></pre>
 <p>Visually:</p>

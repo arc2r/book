@@ -10,16 +10,16 @@
 
   <meta property="og:title" content="12 Spatial Predicates | All things R Spatial" />
   <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://arc2r.github.io/book/" />
+  <meta property="og:image" content="https://arc2r.github.io/book/images/logo.png" />
   
-  
-  
-  
+  <meta name="github-repo" content="https://github.com/arc2r/book" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="12 Spatial Predicates | All things R Spatial" />
   
   
-  
+  <meta name="twitter:image" content="https://arc2r.github.io/book/images/logo.png" />
 
 <meta name="author" content="Nils Ratnaweera and Nikolaos Bakogiannis" />
 
@@ -438,30 +438,30 @@ GIS @ ZHAW</a></li>
 <div id="touches" class="section level3" number="12.1.1">
 <h3><span class="header-section-number">12.1.1</span> Touches</h3>
 <p>Lets take the example of a chessboard:</p>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="Spatial_Predicates.html#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb176-2"><a href="Spatial_Predicates.html#cb176-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb176-3"><a href="Spatial_Predicates.html#cb176-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arc2r)</span>
-<span id="cb176-4"><a href="Spatial_Predicates.html#cb176-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb176-5"><a href="Spatial_Predicates.html#cb176-5" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;chessboard&quot;</span>)</span>
-<span id="cb176-6"><a href="Spatial_Predicates.html#cb176-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb176-7"><a href="Spatial_Predicates.html#cb176-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb176-8"><a href="Spatial_Predicates.html#cb176-8" aria-hidden="true" tabindex="-1"></a>chessplot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(chessboard) <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> colour)) <span class="sc">+</span> <span class="fu">geom_sf_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> i)) <span class="sc">+</span> </span>
-<span id="cb176-9"><a href="Spatial_Predicates.html#cb176-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">8</span> <span class="sc">-</span> <span class="fl">0.5</span>, <span class="at">labels =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>]) <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">8</span> <span class="sc">-</span> </span>
-<span id="cb176-10"><a href="Spatial_Predicates.html#cb176-10" aria-hidden="true" tabindex="-1"></a>    <span class="fl">0.5</span>, <span class="at">labels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>) <span class="sc">+</span> <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="at">black =</span> <span class="st">&quot;black&quot;</span>, <span class="at">white =</span> <span class="st">&quot;white&quot;</span>)) <span class="sc">+</span> </span>
-<span id="cb176-11"><a href="Spatial_Predicates.html#cb176-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_void</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
-<span id="cb176-12"><a href="Spatial_Predicates.html#cb176-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb176-13"><a href="Spatial_Predicates.html#cb176-13" aria-hidden="true" tabindex="-1"></a>chessplot</span></code></pre></div>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="Spatial_Predicates.html#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb179-2"><a href="Spatial_Predicates.html#cb179-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb179-3"><a href="Spatial_Predicates.html#cb179-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arc2r)</span>
+<span id="cb179-4"><a href="Spatial_Predicates.html#cb179-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb179-5"><a href="Spatial_Predicates.html#cb179-5" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;chessboard&quot;</span>)</span>
+<span id="cb179-6"><a href="Spatial_Predicates.html#cb179-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb179-7"><a href="Spatial_Predicates.html#cb179-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb179-8"><a href="Spatial_Predicates.html#cb179-8" aria-hidden="true" tabindex="-1"></a>chessplot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(chessboard) <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> colour)) <span class="sc">+</span> <span class="fu">geom_sf_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> i)) <span class="sc">+</span> </span>
+<span id="cb179-9"><a href="Spatial_Predicates.html#cb179-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">8</span> <span class="sc">-</span> <span class="fl">0.5</span>, <span class="at">labels =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>]) <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">8</span> <span class="sc">-</span> </span>
+<span id="cb179-10"><a href="Spatial_Predicates.html#cb179-10" aria-hidden="true" tabindex="-1"></a>    <span class="fl">0.5</span>, <span class="at">labels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>) <span class="sc">+</span> <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="at">black =</span> <span class="st">&quot;black&quot;</span>, <span class="at">white =</span> <span class="st">&quot;white&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb179-11"><a href="Spatial_Predicates.html#cb179-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_void</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb179-12"><a href="Spatial_Predicates.html#cb179-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb179-13"><a href="Spatial_Predicates.html#cb179-13" aria-hidden="true" tabindex="-1"></a>chessplot</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-133-1.png" width="672" /></p>
 <p>To find out which field <code>touch</code> field number 36, we can write the following line of code:</p>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="Spatial_Predicates.html#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_touches</span>(chessboard[<span class="dv">36</span>, ], chessboard)</span></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="Spatial_Predicates.html#cb180-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_touches</span>(chessboard[<span class="dv">36</span>, ], chessboard)</span></code></pre></div>
 <pre><code>## Sparse geometry binary predicate list of length 1, where the predicate was `touches&#39;
 ##  1: 27, 28, 29, 35, 37, 43, 44, 45</code></pre>
 <p>Visually, these are the following fields:</p>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="Spatial_Predicates.html#cb179-1" aria-hidden="true" tabindex="-1"></a>sel36 <span class="ot">&lt;-</span> <span class="fu">st_touches</span>(chessboard[<span class="dv">36</span>, ], chessboard)[[<span class="dv">1</span>]]</span>
-<span id="cb179-2"><a href="Spatial_Predicates.html#cb179-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb179-3"><a href="Spatial_Predicates.html#cb179-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb179-4"><a href="Spatial_Predicates.html#cb179-4" aria-hidden="true" tabindex="-1"></a>chessplot <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> chessboard[<span class="dv">36</span>, ], <span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> chessboard[sel36, </span>
-<span id="cb179-5"><a href="Spatial_Predicates.html#cb179-5" aria-hidden="true" tabindex="-1"></a>    ], <span class="at">fill =</span> <span class="st">&quot;red&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="Spatial_Predicates.html#cb182-1" aria-hidden="true" tabindex="-1"></a>sel36 <span class="ot">&lt;-</span> <span class="fu">st_touches</span>(chessboard[<span class="dv">36</span>, ], chessboard)[[<span class="dv">1</span>]]</span>
+<span id="cb182-2"><a href="Spatial_Predicates.html#cb182-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb182-3"><a href="Spatial_Predicates.html#cb182-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb182-4"><a href="Spatial_Predicates.html#cb182-4" aria-hidden="true" tabindex="-1"></a>chessplot <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> chessboard[<span class="dv">36</span>, ], <span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> chessboard[sel36, </span>
+<span id="cb182-5"><a href="Spatial_Predicates.html#cb182-5" aria-hidden="true" tabindex="-1"></a>    ], <span class="at">fill =</span> <span class="st">&quot;red&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-135-1.png" width="672" /></p>
 
 </div>

@@ -10,16 +10,16 @@
 
   <meta property="og:title" content="8.4 Density Toolset | All things R Spatial" />
   <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://arc2r.github.io/book/" />
+  <meta property="og:image" content="https://arc2r.github.io/book/images/logo.png" />
   
-  
-  
-  
+  <meta name="github-repo" content="https://github.com/arc2r/book" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="8.4 Density Toolset | All things R Spatial" />
   
   
-  
+  <meta name="twitter:image" content="https://arc2r.github.io/book/images/logo.png" />
 
 <meta name="author" content="Nils Ratnaweera and Nikolaos Bakogiannis" />
 
@@ -412,38 +412,38 @@ GIS @ ZHAW</a></li>
 <li><code>MASS::kde2d()</code>: Takes x/y coordinates as vectors and returns a matrix</li>
 </ul>
 <p>In this example, I take <code>MASS:kde2d()</code> and tweak it to take <code>sf</code> and return <code>raster</code>. First, let’s create some sample data:</p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="Density.html#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">10</span>)</span>
-<span id="cb152-2"><a href="Density.html#cb152-2" aria-hidden="true" tabindex="-1"></a>mypoints <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>), <span class="at">y =</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)) <span class="sc">%&gt;%</span> <span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="dv">1</span>, </span>
-<span id="cb152-3"><a href="Density.html#cb152-3" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span>))</span>
-<span id="cb152-4"><a href="Density.html#cb152-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb152-5"><a href="Density.html#cb152-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mypoints)</span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="Density.html#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">10</span>)</span>
+<span id="cb153-2"><a href="Density.html#cb153-2" aria-hidden="true" tabindex="-1"></a>mypoints <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>), <span class="at">y =</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)) <span class="sc">%&gt;%</span> <span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="dv">1</span>, </span>
+<span id="cb153-3"><a href="Density.html#cb153-3" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span>))</span>
+<span id="cb153-4"><a href="Density.html#cb153-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-5"><a href="Density.html#cb153-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mypoints)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-109-1.png" width="672" /></p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="Density.html#cb153-1" aria-hidden="true" tabindex="-1"></a>my_kde <span class="ot">&lt;-</span> <span class="cf">function</span>(points, cellsize, bandwith, <span class="at">extent =</span> <span class="cn">NULL</span>) {</span>
-<span id="cb153-2"><a href="Density.html#cb153-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">require</span>(MASS)</span>
-<span id="cb153-3"><a href="Density.html#cb153-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">require</span>(raster)</span>
-<span id="cb153-4"><a href="Density.html#cb153-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">require</span>(sf)</span>
-<span id="cb153-5"><a href="Density.html#cb153-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(extent)) {</span>
-<span id="cb153-6"><a href="Density.html#cb153-6" aria-hidden="true" tabindex="-1"></a>        extent_vec <span class="ot">&lt;-</span> <span class="fu">st_bbox</span>(points)[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">4</span>)]</span>
-<span id="cb153-7"><a href="Density.html#cb153-7" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
-<span id="cb153-8"><a href="Density.html#cb153-8" aria-hidden="true" tabindex="-1"></a>        extent_vec <span class="ot">&lt;-</span> <span class="fu">st_bbox</span>(extent)[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">4</span>)]</span>
-<span id="cb153-9"><a href="Density.html#cb153-9" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb153-10"><a href="Density.html#cb153-10" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb153-11"><a href="Density.html#cb153-11" aria-hidden="true" tabindex="-1"></a>    n_y <span class="ot">&lt;-</span> <span class="fu">ceiling</span>((extent_vec[<span class="dv">4</span>] <span class="sc">-</span> extent_vec[<span class="dv">3</span>])<span class="sc">/</span>cellsize)</span>
-<span id="cb153-12"><a href="Density.html#cb153-12" aria-hidden="true" tabindex="-1"></a>    n_x <span class="ot">&lt;-</span> <span class="fu">ceiling</span>((extent_vec[<span class="dv">2</span>] <span class="sc">-</span> extent_vec[<span class="dv">1</span>])<span class="sc">/</span>cellsize)</span>
-<span id="cb153-13"><a href="Density.html#cb153-13" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb153-14"><a href="Density.html#cb153-14" aria-hidden="true" tabindex="-1"></a>    extent_vec[<span class="dv">2</span>] <span class="ot">&lt;-</span> extent_vec[<span class="dv">1</span>] <span class="sc">+</span> (n_x <span class="sc">*</span> cellsize) <span class="sc">-</span> cellsize</span>
-<span id="cb153-15"><a href="Density.html#cb153-15" aria-hidden="true" tabindex="-1"></a>    extent_vec[<span class="dv">4</span>] <span class="ot">&lt;-</span> extent_vec[<span class="dv">3</span>] <span class="sc">+</span> (n_y <span class="sc">*</span> cellsize) <span class="sc">-</span> cellsize</span>
-<span id="cb153-16"><a href="Density.html#cb153-16" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb153-17"><a href="Density.html#cb153-17" aria-hidden="true" tabindex="-1"></a>    coords <span class="ot">&lt;-</span> <span class="fu">st_coordinates</span>(points)</span>
-<span id="cb153-18"><a href="Density.html#cb153-18" aria-hidden="true" tabindex="-1"></a>    matrix <span class="ot">&lt;-</span> <span class="fu">kde2d</span>(coords[, <span class="dv">1</span>], coords[, <span class="dv">2</span>], <span class="at">h =</span> bandwith, <span class="at">n =</span> <span class="fu">c</span>(n_x, n_y), <span class="at">lims =</span> extent_vec)</span>
-<span id="cb153-19"><a href="Density.html#cb153-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">raster</span>(matrix)</span>
-<span id="cb153-20"><a href="Density.html#cb153-20" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="Density.html#cb154-1" aria-hidden="true" tabindex="-1"></a>mypoints_kde <span class="ot">&lt;-</span> <span class="fu">my_kde</span>(mypoints, <span class="fl">0.01</span>, <span class="dv">1</span>)</span>
-<span id="cb154-2"><a href="Density.html#cb154-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stars)</span>
-<span id="cb154-3"><a href="Density.html#cb154-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-4"><a href="Density.html#cb154-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_stars</span>(<span class="at">data =</span> <span class="fu">st_as_stars</span>(mypoints_kde)) <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> mypoints, </span>
-<span id="cb154-5"><a href="Density.html#cb154-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.2</span>, <span class="at">fill =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span> <span class="fu">scale_fill_viridis_c</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">fill =</span> <span class="st">&quot;KDE&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb154-6"><a href="Density.html#cb154-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_void</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="Density.html#cb154-1" aria-hidden="true" tabindex="-1"></a>my_kde <span class="ot">&lt;-</span> <span class="cf">function</span>(points, cellsize, bandwith, <span class="at">extent =</span> <span class="cn">NULL</span>) {</span>
+<span id="cb154-2"><a href="Density.html#cb154-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">require</span>(MASS)</span>
+<span id="cb154-3"><a href="Density.html#cb154-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">require</span>(raster)</span>
+<span id="cb154-4"><a href="Density.html#cb154-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">require</span>(sf)</span>
+<span id="cb154-5"><a href="Density.html#cb154-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(extent)) {</span>
+<span id="cb154-6"><a href="Density.html#cb154-6" aria-hidden="true" tabindex="-1"></a>        extent_vec <span class="ot">&lt;-</span> <span class="fu">st_bbox</span>(points)[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">4</span>)]</span>
+<span id="cb154-7"><a href="Density.html#cb154-7" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb154-8"><a href="Density.html#cb154-8" aria-hidden="true" tabindex="-1"></a>        extent_vec <span class="ot">&lt;-</span> <span class="fu">st_bbox</span>(extent)[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">4</span>)]</span>
+<span id="cb154-9"><a href="Density.html#cb154-9" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb154-10"><a href="Density.html#cb154-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb154-11"><a href="Density.html#cb154-11" aria-hidden="true" tabindex="-1"></a>    n_y <span class="ot">&lt;-</span> <span class="fu">ceiling</span>((extent_vec[<span class="dv">4</span>] <span class="sc">-</span> extent_vec[<span class="dv">3</span>])<span class="sc">/</span>cellsize)</span>
+<span id="cb154-12"><a href="Density.html#cb154-12" aria-hidden="true" tabindex="-1"></a>    n_x <span class="ot">&lt;-</span> <span class="fu">ceiling</span>((extent_vec[<span class="dv">2</span>] <span class="sc">-</span> extent_vec[<span class="dv">1</span>])<span class="sc">/</span>cellsize)</span>
+<span id="cb154-13"><a href="Density.html#cb154-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb154-14"><a href="Density.html#cb154-14" aria-hidden="true" tabindex="-1"></a>    extent_vec[<span class="dv">2</span>] <span class="ot">&lt;-</span> extent_vec[<span class="dv">1</span>] <span class="sc">+</span> (n_x <span class="sc">*</span> cellsize) <span class="sc">-</span> cellsize</span>
+<span id="cb154-15"><a href="Density.html#cb154-15" aria-hidden="true" tabindex="-1"></a>    extent_vec[<span class="dv">4</span>] <span class="ot">&lt;-</span> extent_vec[<span class="dv">3</span>] <span class="sc">+</span> (n_y <span class="sc">*</span> cellsize) <span class="sc">-</span> cellsize</span>
+<span id="cb154-16"><a href="Density.html#cb154-16" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb154-17"><a href="Density.html#cb154-17" aria-hidden="true" tabindex="-1"></a>    coords <span class="ot">&lt;-</span> <span class="fu">st_coordinates</span>(points)</span>
+<span id="cb154-18"><a href="Density.html#cb154-18" aria-hidden="true" tabindex="-1"></a>    matrix <span class="ot">&lt;-</span> <span class="fu">kde2d</span>(coords[, <span class="dv">1</span>], coords[, <span class="dv">2</span>], <span class="at">h =</span> bandwith, <span class="at">n =</span> <span class="fu">c</span>(n_x, n_y), <span class="at">lims =</span> extent_vec)</span>
+<span id="cb154-19"><a href="Density.html#cb154-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">raster</span>(matrix)</span>
+<span id="cb154-20"><a href="Density.html#cb154-20" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="Density.html#cb155-1" aria-hidden="true" tabindex="-1"></a>mypoints_kde <span class="ot">&lt;-</span> <span class="fu">my_kde</span>(mypoints, <span class="fl">0.01</span>, <span class="dv">1</span>)</span>
+<span id="cb155-2"><a href="Density.html#cb155-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stars)</span>
+<span id="cb155-3"><a href="Density.html#cb155-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb155-4"><a href="Density.html#cb155-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_stars</span>(<span class="at">data =</span> <span class="fu">st_as_stars</span>(mypoints_kde)) <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> mypoints, </span>
+<span id="cb155-5"><a href="Density.html#cb155-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.2</span>, <span class="at">fill =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span> <span class="fu">scale_fill_viridis_c</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">fill =</span> <span class="st">&quot;KDE&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb155-6"><a href="Density.html#cb155-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_void</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-111-1.png" width="672" /></p>
 
 </div>

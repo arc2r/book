@@ -10,16 +10,16 @@
 
   <meta property="og:title" content="9.1 Analysing Patterns Toolset | All things R Spatial" />
   <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://arc2r.github.io/book/" />
+  <meta property="og:image" content="https://arc2r.github.io/book/images/logo.png" />
   
-  
-  
-  
+  <meta name="github-repo" content="https://github.com/arc2r/book" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="9.1 Analysing Patterns Toolset | All things R Spatial" />
   
   
-  
+  <meta name="twitter:image" content="https://arc2r.github.io/book/images/logo.png" />
 
 <meta name="author" content="Nils Ratnaweera and Nikolaos Bakogiannis" />
 
@@ -404,40 +404,40 @@ GIS @ ZHAW</a></li>
 <div id="analysing-patterns-toolset" class="section level2" number="9.1">
 <h2><span class="header-section-number">9.1</span> Analysing Patterns Toolset</h2>
 <p>For this chapter, you will need the following R Packages:</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="Analysing_Patterns.html#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arc2r)</span>
-<span id="cb156-2"><a href="Analysing_Patterns.html#cb156-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb156-3"><a href="Analysing_Patterns.html#cb156-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="Analysing_Patterns.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arc2r)</span>
+<span id="cb159-2"><a href="Analysing_Patterns.html#cb159-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb159-3"><a href="Analysing_Patterns.html#cb159-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
 <div id="spatial-autocorrelation-global-morans-i" class="section level3" number="9.1.1">
 <h3><span class="header-section-number">9.1.1</span> Spatial Autocorrelation (Global Morans I)</h3>
 <p>Here’s the function to calculate Morans I</p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="Analysing_Patterns.html#cb157-1" aria-hidden="true" tabindex="-1"></a>morans_i <span class="ot">&lt;-</span> <span class="cf">function</span>(sf_object, col) {</span>
-<span id="cb157-2"><a href="Analysing_Patterns.html#cb157-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">require</span>(sf)</span>
-<span id="cb157-3"><a href="Analysing_Patterns.html#cb157-3" aria-hidden="true" tabindex="-1"></a>    n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(sf_object)</span>
-<span id="cb157-4"><a href="Analysing_Patterns.html#cb157-4" aria-hidden="true" tabindex="-1"></a>    y <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">st_set_geometry</span>(sf_object, <span class="cn">NULL</span>)[, col], <span class="at">use.names =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb157-5"><a href="Analysing_Patterns.html#cb157-5" aria-hidden="true" tabindex="-1"></a>    ybar <span class="ot">&lt;-</span> <span class="fu">mean</span>(y, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb157-6"><a href="Analysing_Patterns.html#cb157-6" aria-hidden="true" tabindex="-1"></a>    dy <span class="ot">&lt;-</span> y <span class="sc">-</span> ybar</span>
-<span id="cb157-7"><a href="Analysing_Patterns.html#cb157-7" aria-hidden="true" tabindex="-1"></a>    dy_sum <span class="ot">&lt;-</span> <span class="fu">sum</span>(dy<span class="sc">^</span><span class="dv">2</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb157-8"><a href="Analysing_Patterns.html#cb157-8" aria-hidden="true" tabindex="-1"></a>    vr <span class="ot">&lt;-</span> n<span class="sc">/</span>dy_sum</span>
-<span id="cb157-9"><a href="Analysing_Patterns.html#cb157-9" aria-hidden="true" tabindex="-1"></a>    w <span class="ot">&lt;-</span> <span class="fu">st_touches</span>(sf_object, <span class="at">sparse =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb157-10"><a href="Analysing_Patterns.html#cb157-10" aria-hidden="true" tabindex="-1"></a>    pm <span class="ot">&lt;-</span> <span class="fu">tcrossprod</span>(dy)</span>
-<span id="cb157-11"><a href="Analysing_Patterns.html#cb157-11" aria-hidden="true" tabindex="-1"></a>    pmw <span class="ot">&lt;-</span> pm <span class="sc">*</span> w</span>
-<span id="cb157-12"><a href="Analysing_Patterns.html#cb157-12" aria-hidden="true" tabindex="-1"></a>    spmw <span class="ot">&lt;-</span> <span class="fu">sum</span>(pmw, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb157-13"><a href="Analysing_Patterns.html#cb157-13" aria-hidden="true" tabindex="-1"></a>    smw <span class="ot">&lt;-</span> <span class="fu">sum</span>(w, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb157-14"><a href="Analysing_Patterns.html#cb157-14" aria-hidden="true" tabindex="-1"></a>    sw <span class="ot">&lt;-</span> spmw<span class="sc">/</span>smw</span>
-<span id="cb157-15"><a href="Analysing_Patterns.html#cb157-15" aria-hidden="true" tabindex="-1"></a>    MI <span class="ot">&lt;-</span> vr <span class="sc">*</span> sw</span>
-<span id="cb157-16"><a href="Analysing_Patterns.html#cb157-16" aria-hidden="true" tabindex="-1"></a>    MI</span>
-<span id="cb157-17"><a href="Analysing_Patterns.html#cb157-17" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="Analysing_Patterns.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;zweitwohnung_gemeinden&quot;</span>)</span>
-<span id="cb158-2"><a href="Analysing_Patterns.html#cb158-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb158-3"><a href="Analysing_Patterns.html#cb158-3" aria-hidden="true" tabindex="-1"></a>zweitwohung <span class="ot">&lt;-</span> <span class="fu">st_set_crs</span>(zweitwohnung_gemeinden, <span class="dv">2056</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="Analysing_Patterns.html#cb159-1" aria-hidden="true" tabindex="-1"></a>zweit_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(zweitwohung) <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> ja_in_percent), <span class="at">colour =</span> <span class="cn">NA</span>) <span class="sc">+</span> </span>
-<span id="cb159-2"><a href="Analysing_Patterns.html#cb159-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_gradient2</span>(<span class="at">low =</span> <span class="st">&quot;#2c7bb6&quot;</span>, <span class="at">mid =</span> <span class="st">&quot;#ffffbf&quot;</span>, <span class="at">high =</span> <span class="st">&quot;#d7191c&quot;</span>, <span class="at">midpoint =</span> <span class="dv">50</span>, </span>
-<span id="cb159-3"><a href="Analysing_Patterns.html#cb159-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">25</span>, <span class="dv">50</span>, <span class="dv">75</span>, <span class="dv">100</span>), <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>)) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Results from the &#39;Zweitwohungsinitiative&#39;&quot;</span>, </span>
-<span id="cb159-4"><a href="Analysing_Patterns.html#cb159-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Percent in Approval&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span> <span class="fu">theme_void</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)</span>
-<span id="cb159-5"><a href="Analysing_Patterns.html#cb159-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-6"><a href="Analysing_Patterns.html#cb159-6" aria-hidden="true" tabindex="-1"></a>zweit_plot</span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="Analysing_Patterns.html#cb160-1" aria-hidden="true" tabindex="-1"></a>morans_i <span class="ot">&lt;-</span> <span class="cf">function</span>(sf_object, col) {</span>
+<span id="cb160-2"><a href="Analysing_Patterns.html#cb160-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">require</span>(sf)</span>
+<span id="cb160-3"><a href="Analysing_Patterns.html#cb160-3" aria-hidden="true" tabindex="-1"></a>    n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(sf_object)</span>
+<span id="cb160-4"><a href="Analysing_Patterns.html#cb160-4" aria-hidden="true" tabindex="-1"></a>    y <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">st_set_geometry</span>(sf_object, <span class="cn">NULL</span>)[, col], <span class="at">use.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb160-5"><a href="Analysing_Patterns.html#cb160-5" aria-hidden="true" tabindex="-1"></a>    ybar <span class="ot">&lt;-</span> <span class="fu">mean</span>(y, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb160-6"><a href="Analysing_Patterns.html#cb160-6" aria-hidden="true" tabindex="-1"></a>    dy <span class="ot">&lt;-</span> y <span class="sc">-</span> ybar</span>
+<span id="cb160-7"><a href="Analysing_Patterns.html#cb160-7" aria-hidden="true" tabindex="-1"></a>    dy_sum <span class="ot">&lt;-</span> <span class="fu">sum</span>(dy<span class="sc">^</span><span class="dv">2</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb160-8"><a href="Analysing_Patterns.html#cb160-8" aria-hidden="true" tabindex="-1"></a>    vr <span class="ot">&lt;-</span> n<span class="sc">/</span>dy_sum</span>
+<span id="cb160-9"><a href="Analysing_Patterns.html#cb160-9" aria-hidden="true" tabindex="-1"></a>    w <span class="ot">&lt;-</span> <span class="fu">st_touches</span>(sf_object, <span class="at">sparse =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb160-10"><a href="Analysing_Patterns.html#cb160-10" aria-hidden="true" tabindex="-1"></a>    pm <span class="ot">&lt;-</span> <span class="fu">tcrossprod</span>(dy)</span>
+<span id="cb160-11"><a href="Analysing_Patterns.html#cb160-11" aria-hidden="true" tabindex="-1"></a>    pmw <span class="ot">&lt;-</span> pm <span class="sc">*</span> w</span>
+<span id="cb160-12"><a href="Analysing_Patterns.html#cb160-12" aria-hidden="true" tabindex="-1"></a>    spmw <span class="ot">&lt;-</span> <span class="fu">sum</span>(pmw, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb160-13"><a href="Analysing_Patterns.html#cb160-13" aria-hidden="true" tabindex="-1"></a>    smw <span class="ot">&lt;-</span> <span class="fu">sum</span>(w, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb160-14"><a href="Analysing_Patterns.html#cb160-14" aria-hidden="true" tabindex="-1"></a>    sw <span class="ot">&lt;-</span> spmw<span class="sc">/</span>smw</span>
+<span id="cb160-15"><a href="Analysing_Patterns.html#cb160-15" aria-hidden="true" tabindex="-1"></a>    MI <span class="ot">&lt;-</span> vr <span class="sc">*</span> sw</span>
+<span id="cb160-16"><a href="Analysing_Patterns.html#cb160-16" aria-hidden="true" tabindex="-1"></a>    MI</span>
+<span id="cb160-17"><a href="Analysing_Patterns.html#cb160-17" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="Analysing_Patterns.html#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;zweitwohnung_gemeinden&quot;</span>)</span>
+<span id="cb161-2"><a href="Analysing_Patterns.html#cb161-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb161-3"><a href="Analysing_Patterns.html#cb161-3" aria-hidden="true" tabindex="-1"></a>zweitwohung <span class="ot">&lt;-</span> <span class="fu">st_set_crs</span>(zweitwohnung_gemeinden, <span class="dv">2056</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="Analysing_Patterns.html#cb162-1" aria-hidden="true" tabindex="-1"></a>zweit_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(zweitwohung) <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> ja_in_percent), <span class="at">colour =</span> <span class="cn">NA</span>) <span class="sc">+</span> </span>
+<span id="cb162-2"><a href="Analysing_Patterns.html#cb162-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_gradient2</span>(<span class="at">low =</span> <span class="st">&quot;#2c7bb6&quot;</span>, <span class="at">mid =</span> <span class="st">&quot;#ffffbf&quot;</span>, <span class="at">high =</span> <span class="st">&quot;#d7191c&quot;</span>, <span class="at">midpoint =</span> <span class="dv">50</span>, </span>
+<span id="cb162-3"><a href="Analysing_Patterns.html#cb162-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">25</span>, <span class="dv">50</span>, <span class="dv">75</span>, <span class="dv">100</span>), <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>)) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Results from the &#39;Zweitwohungsinitiative&#39;&quot;</span>, </span>
+<span id="cb162-4"><a href="Analysing_Patterns.html#cb162-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Percent in Approval&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span> <span class="fu">theme_void</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)</span>
+<span id="cb162-5"><a href="Analysing_Patterns.html#cb162-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb162-6"><a href="Analysing_Patterns.html#cb162-6" aria-hidden="true" tabindex="-1"></a>zweit_plot</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-119-1.png" width="672" /></p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="Analysing_Patterns.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="fu">morans_i</span>(zweitwohung, <span class="st">&quot;ja_in_percent&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="Analysing_Patterns.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="fu">morans_i</span>(zweitwohung, <span class="st">&quot;ja_in_percent&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] 0.6304227</code></pre>
 
 </div>

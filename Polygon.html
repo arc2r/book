@@ -10,16 +10,16 @@
 
   <meta property="og:title" content="14.1 Polygon | All things R Spatial" />
   <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://arc2r.github.io/book/" />
+  <meta property="og:image" content="https://arc2r.github.io/book/images/logo.png" />
   
-  
-  
-  
+  <meta name="github-repo" content="https://github.com/arc2r/book" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="14.1 Polygon | All things R Spatial" />
   
   
-  
+  <meta name="twitter:image" content="https://arc2r.github.io/book/images/logo.png" />
 
 <meta name="author" content="Nils Ratnaweera and Nikolaos Bakogiannis" />
 
@@ -416,16 +416,16 @@ Figure 14.2: Source: <span class="citation">Esri (2011)</span>
 todo: replace this with a real life dataset, which is stored in arc2r/arc2r
 
 -->
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="Polygon.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">10</span>)</span>
-<span id="cb182-2"><a href="Polygon.html#cb182-2" aria-hidden="true" tabindex="-1"></a>nrows <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb182-3"><a href="Polygon.html#cb182-3" aria-hidden="true" tabindex="-1"></a>circs <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span>nrows, <span class="at">x =</span> <span class="fu">rnorm</span>(nrows), <span class="at">y =</span> <span class="fu">rnorm</span>(nrows)) <span class="sc">%&gt;%</span> <span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="dv">2</span>, </span>
-<span id="cb182-4"><a href="Polygon.html#cb182-4" aria-hidden="true" tabindex="-1"></a>    <span class="dv">3</span>)) <span class="sc">%&gt;%</span> <span class="fu">st_buffer</span>(<span class="fl">0.25</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="Polygon.html#cb183-1" aria-hidden="true" tabindex="-1"></a>circsplot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(circs) <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span> <span class="fu">geom_sf_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> id)) <span class="sc">+</span> </span>
-<span id="cb183-2"><a href="Polygon.html#cb183-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_void</span>()</span>
-<span id="cb183-3"><a href="Polygon.html#cb183-3" aria-hidden="true" tabindex="-1"></a>circsplot</span></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="Polygon.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">10</span>)</span>
+<span id="cb188-2"><a href="Polygon.html#cb188-2" aria-hidden="true" tabindex="-1"></a>nrows <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb188-3"><a href="Polygon.html#cb188-3" aria-hidden="true" tabindex="-1"></a>circs <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span>nrows, <span class="at">x =</span> <span class="fu">rnorm</span>(nrows), <span class="at">y =</span> <span class="fu">rnorm</span>(nrows)) <span class="sc">%&gt;%</span> <span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="dv">2</span>, </span>
+<span id="cb188-4"><a href="Polygon.html#cb188-4" aria-hidden="true" tabindex="-1"></a>    <span class="dv">3</span>)) <span class="sc">%&gt;%</span> <span class="fu">st_buffer</span>(<span class="fl">0.25</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="Polygon.html#cb189-1" aria-hidden="true" tabindex="-1"></a>circsplot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(circs) <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span> <span class="fu">geom_sf_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> id)) <span class="sc">+</span> </span>
+<span id="cb189-2"><a href="Polygon.html#cb189-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_void</span>()</span>
+<span id="cb189-3"><a href="Polygon.html#cb189-3" aria-hidden="true" tabindex="-1"></a>circsplot</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-145-1.png" width="672" /></p>
 <p>This gives us a sparse matrix as an output, which is esentially a list with the same length as the <code>x</code>, where each position is a vector of integers with the indicies of the features in <code>y</code> (which may equal to <code>x</code>) where the pattern matches.</p>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="Polygon.html#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_relate</span>(circs, <span class="at">pattern =</span> <span class="st">&quot;2********&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="Polygon.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_relate</span>(circs, <span class="at">pattern =</span> <span class="st">&quot;2********&quot;</span>)</span></code></pre></div>
 <pre><code>## Sparse geometry binary predicate list of length 10, where the predicate was `relate_pattern&#39;
 ##  1: 1, 2, 5
 ##  2: 1, 2, 4, 5, 10
@@ -438,8 +438,8 @@ todo: replace this with a real life dataset, which is stored in arc2r/arc2r
 ##  9: 9
 ##  10: 2, 10</code></pre>
 <p>Setting <code>sparse = FALSE</code> returns a crossmatrix of all combinations.W</p>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="Polygon.html#cb186-1" aria-hidden="true" tabindex="-1"></a>crossmatrix <span class="ot">&lt;-</span> <span class="fu">st_relate</span>(circs, <span class="at">pattern =</span> <span class="st">&quot;2********&quot;</span>, <span class="at">sparse =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb186-2"><a href="Polygon.html#cb186-2" aria-hidden="true" tabindex="-1"></a>crossmatrix[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]  <span class="co"># only showing 6 since this prints nicely</span></span></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="Polygon.html#cb192-1" aria-hidden="true" tabindex="-1"></a>crossmatrix <span class="ot">&lt;-</span> <span class="fu">st_relate</span>(circs, <span class="at">pattern =</span> <span class="st">&quot;2********&quot;</span>, <span class="at">sparse =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb192-2"><a href="Polygon.html#cb192-2" aria-hidden="true" tabindex="-1"></a>crossmatrix[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]  <span class="co"># only showing 6 since this prints nicely</span></span></code></pre></div>
 <pre><code>##       [,1]  [,2]  [,3]  [,4]  [,5]  [,6]
 ## [1,]  TRUE  TRUE FALSE FALSE  TRUE FALSE
 ## [2,]  TRUE  TRUE FALSE  TRUE  TRUE FALSE
@@ -447,12 +447,12 @@ todo: replace this with a real life dataset, which is stored in arc2r/arc2r
 ## [4,] FALSE  TRUE FALSE  TRUE FALSE FALSE
 ## [5,]  TRUE  TRUE FALSE FALSE  TRUE FALSE
 ## [6,] FALSE FALSE FALSE FALSE FALSE  TRUE</code></pre>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="Polygon.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove the diagonals since it&#39;s simply each feature tested against itself</span></span>
-<span id="cb188-2"><a href="Polygon.html#cb188-2" aria-hidden="true" tabindex="-1"></a><span class="fu">diag</span>(crossmatrix) <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
-<span id="cb188-3"><a href="Polygon.html#cb188-3" aria-hidden="true" tabindex="-1"></a>error <span class="ot">&lt;-</span> <span class="fu">which</span>(crossmatrix, <span class="at">arr.ind =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">as.vector</span>() <span class="sc">%&gt;%</span> <span class="fu">unique</span>()</span>
-<span id="cb188-4"><a href="Polygon.html#cb188-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb188-5"><a href="Polygon.html#cb188-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb188-6"><a href="Polygon.html#cb188-6" aria-hidden="true" tabindex="-1"></a>circsplot <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> circs[error, ], <span class="at">fill =</span> <span class="st">&quot;red&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="Polygon.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove the diagonals since it&#39;s simply each feature tested against itself</span></span>
+<span id="cb194-2"><a href="Polygon.html#cb194-2" aria-hidden="true" tabindex="-1"></a><span class="fu">diag</span>(crossmatrix) <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb194-3"><a href="Polygon.html#cb194-3" aria-hidden="true" tabindex="-1"></a>error <span class="ot">&lt;-</span> <span class="fu">which</span>(crossmatrix, <span class="at">arr.ind =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">as.vector</span>() <span class="sc">%&gt;%</span> <span class="fu">unique</span>()</span>
+<span id="cb194-4"><a href="Polygon.html#cb194-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb194-5"><a href="Polygon.html#cb194-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb194-6"><a href="Polygon.html#cb194-6" aria-hidden="true" tabindex="-1"></a>circsplot <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> circs[error, ], <span class="at">fill =</span> <span class="st">&quot;red&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-147-1.png" width="672" /></p>
 </div>
 <div id="must-not-have-gaps" class="section level3" number="14.1.2">
@@ -464,38 +464,38 @@ Figure 14.3: Source: <span class="citation">Esri (2011)</span>
 </p>
 </div>
 <p>Lets cosider the North Carolina Dataset for this question.</p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="Polygon.html#cb189-1" aria-hidden="true" tabindex="-1"></a>nc <span class="ot">=</span> <span class="fu">st_read</span>(<span class="fu">system.file</span>(<span class="st">&quot;shape/nc.shp&quot;</span>, <span class="at">package =</span> <span class="st">&quot;sf&quot;</span>), <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb189-2"><a href="Polygon.html#cb189-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb189-3"><a href="Polygon.html#cb189-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(nc) <span class="sc">+</span> <span class="fu">geom_sf</span>() <span class="sc">+</span> <span class="fu">theme_void</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="Polygon.html#cb195-1" aria-hidden="true" tabindex="-1"></a>nc <span class="ot">=</span> <span class="fu">st_read</span>(<span class="fu">system.file</span>(<span class="st">&quot;shape/nc.shp&quot;</span>, <span class="at">package =</span> <span class="st">&quot;sf&quot;</span>), <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb195-2"><a href="Polygon.html#cb195-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb195-3"><a href="Polygon.html#cb195-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(nc) <span class="sc">+</span> <span class="fu">geom_sf</span>() <span class="sc">+</span> <span class="fu">theme_void</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-149-1.png" width="672" /></p>
 <p>The first task is to dissolve all adjecent polygons together</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="Polygon.html#cb190-1" aria-hidden="true" tabindex="-1"></a>nc_union <span class="ot">&lt;-</span> <span class="fu">st_union</span>(nc)</span>
-<span id="cb190-2"><a href="Polygon.html#cb190-2" aria-hidden="true" tabindex="-1"></a>nc_union</span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="Polygon.html#cb196-1" aria-hidden="true" tabindex="-1"></a>nc_union <span class="ot">&lt;-</span> <span class="fu">st_union</span>(nc)</span>
+<span id="cb196-2"><a href="Polygon.html#cb196-2" aria-hidden="true" tabindex="-1"></a>nc_union</span></code></pre></div>
 <pre><code>## Geometry set for 1 feature 
 ## geometry type:  MULTIPOLYGON
 ## dimension:      XY
 ## bbox:           xmin: -84.32385 ymin: 33.88199 xmax: -75.45698 ymax: 36.58965
 ## geographic CRS: NAD27</code></pre>
 <p>If the output is a multipolygon as it is the case here, it’s bad news, there are gaps. To check which parts are disconnected from each other, we can cast the multipolygon to a polygon (in ArcGIS Terms “Multipart to singlepart”), add a rowname for each part and colour it by rowname.</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="Polygon.html#cb192-1" aria-hidden="true" tabindex="-1"></a>nc_singlepart <span class="ot">&lt;-</span> nc_union <span class="sc">%&gt;%</span> <span class="fu">st_cast</span>(<span class="st">&quot;POLYGON&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">st_sf</span>() <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">n</span>())</span>
-<span id="cb192-2"><a href="Polygon.html#cb192-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb192-3"><a href="Polygon.html#cb192-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(nc_singlepart) <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> <span class="fu">factor</span>(id))) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">fill =</span> <span class="st">&quot;id&quot;</span>) <span class="sc">+</span> <span class="fu">theme_void</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="Polygon.html#cb198-1" aria-hidden="true" tabindex="-1"></a>nc_singlepart <span class="ot">&lt;-</span> nc_union <span class="sc">%&gt;%</span> <span class="fu">st_cast</span>(<span class="st">&quot;POLYGON&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">st_sf</span>() <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">n</span>())</span>
+<span id="cb198-2"><a href="Polygon.html#cb198-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb198-3"><a href="Polygon.html#cb198-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(nc_singlepart) <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> <span class="fu">factor</span>(id))) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">fill =</span> <span class="st">&quot;id&quot;</span>) <span class="sc">+</span> <span class="fu">theme_void</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-151-1.png" width="672" /></p>
 <p>But maybe we can live with these Islands in the state of North Carolina, since this is in fact an accurate representation of reality (the gaps are a result of the Atlantic Ocean). We must now check whether the individual geometries have holes. Here we can make use of the way polygons are defined in <code>sf</code>:</p>
 <blockquote>
 <p>geometry with a positive area (two-dimensional); sequence of points form a closed, non-self intersecting ring; the first ring denotes the exterior ring, zero or more subsequent rings denote holes in this exterior ring</p>
 </blockquote>
 <p>This means that the length of each Polygon geometry must be 1. A length of 2 or more would mean that there are one (or more) holes in the geometry. We can do this with any of the functions from the <code>apply</code> family, I prefer <code>purrr</code>:</p>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="Polygon.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map_lgl</span>(nc_singlepart<span class="sc">$</span>geometry, <span class="sc">~</span><span class="fu">length</span>(.x) <span class="sc">==</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="Polygon.html#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map_lgl</span>(nc_singlepart<span class="sc">$</span>geometry, <span class="sc">~</span><span class="fu">length</span>(.x) <span class="sc">==</span> <span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## [1] TRUE TRUE TRUE TRUE TRUE TRUE</code></pre>
 <p>Let’s see what happens if we cut a hole into the polygons</p>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="Polygon.html#cb195-1" aria-hidden="true" tabindex="-1"></a>holes <span class="ot">&lt;-</span> nc_singlepart <span class="sc">%&gt;%</span> <span class="fu">st_union</span>() <span class="sc">%&gt;%</span> <span class="fu">st_centroid</span>() <span class="sc">%&gt;%</span> <span class="fu">st_buffer</span>(<span class="fl">0.5</span>)</span>
-<span id="cb195-2"><a href="Polygon.html#cb195-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb195-3"><a href="Polygon.html#cb195-3" aria-hidden="true" tabindex="-1"></a>nc_holes <span class="ot">&lt;-</span> <span class="fu">st_difference</span>(nc_singlepart, holes)</span>
-<span id="cb195-4"><a href="Polygon.html#cb195-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb195-5"><a href="Polygon.html#cb195-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(nc_holes) <span class="sc">+</span> <span class="fu">geom_sf</span>() <span class="sc">+</span> <span class="fu">theme_void</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="Polygon.html#cb201-1" aria-hidden="true" tabindex="-1"></a>holes <span class="ot">&lt;-</span> nc_singlepart <span class="sc">%&gt;%</span> <span class="fu">st_union</span>() <span class="sc">%&gt;%</span> <span class="fu">st_centroid</span>() <span class="sc">%&gt;%</span> <span class="fu">st_buffer</span>(<span class="fl">0.5</span>)</span>
+<span id="cb201-2"><a href="Polygon.html#cb201-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb201-3"><a href="Polygon.html#cb201-3" aria-hidden="true" tabindex="-1"></a>nc_holes <span class="ot">&lt;-</span> <span class="fu">st_difference</span>(nc_singlepart, holes)</span>
+<span id="cb201-4"><a href="Polygon.html#cb201-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb201-5"><a href="Polygon.html#cb201-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(nc_holes) <span class="sc">+</span> <span class="fu">geom_sf</span>() <span class="sc">+</span> <span class="fu">theme_void</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-153-1.png" width="672" /></p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="Polygon.html#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map_lgl</span>(nc_holes<span class="sc">$</span>geometry, <span class="sc">~</span><span class="fu">length</span>(.x) <span class="sc">==</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="Polygon.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map_lgl</span>(nc_holes<span class="sc">$</span>geometry, <span class="sc">~</span><span class="fu">length</span>(.x) <span class="sc">==</span> <span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## [1] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
 </div>
 <div id="contains-point" class="section level3" number="14.1.3">

@@ -10,16 +10,16 @@
 
   <meta property="og:title" content="10.1 Map Algebra Toolset | All things R Spatial" />
   <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://arc2r.github.io/book/" />
+  <meta property="og:image" content="https://arc2r.github.io/book/images/logo.png" />
   
-  
-  
-  
+  <meta name="github-repo" content="https://github.com/arc2r/book" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="10.1 Map Algebra Toolset | All things R Spatial" />
   
   
-  
+  <meta name="twitter:image" content="https://arc2r.github.io/book/images/logo.png" />
 
 <meta name="author" content="Nils Ratnaweera and Nikolaos Bakogiannis" />
 
@@ -404,41 +404,41 @@ GIS @ ZHAW</a></li>
 <div id="map-algebra-toolset" class="section level2" number="10.1">
 <h2><span class="header-section-number">10.1</span> Map Algebra Toolset</h2>
 <p>For this chapter, you will need the following R Packages:</p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="Map_Algebra.html#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arc2r)</span>
-<span id="cb162-2"><a href="Map_Algebra.html#cb162-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
-<span id="cb162-3"><a href="Map_Algebra.html#cb162-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="Map_Algebra.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arc2r)</span>
+<span id="cb165-2"><a href="Map_Algebra.html#cb165-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
+<span id="cb165-3"><a href="Map_Algebra.html#cb165-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span></code></pre></div>
 <div id="raster-calulator" class="section level3" number="10.1.1">
 <h3><span class="header-section-number">10.1.1</span> Raster Calulator</h3>
 <p>In GIS Softwares (ArcGIS pro, QGIS etc) <code>Raster Calculator</code> is one of the most
 commonly used tools for performing various operations with raster datasets.</p>
 <p>For the example below we will work with 2 datasets that depict India’s population at two different timestamps. Our goal is to produce an output raster that demonstrates the evolvement of country’s population in this 10 years timespan. Naturally in ArcGIS pro, the aforementioned operation would be performed with the use of <code>Raster Calculator</code>. Let’s explore our options with R.</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="Map_Algebra.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="co"># India&#39;s population in 2000</span></span>
-<span id="cb163-2"><a href="Map_Algebra.html#cb163-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;pop_india2000&quot;</span>)</span>
-<span id="cb163-3"><a href="Map_Algebra.html#cb163-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb163-4"><a href="Map_Algebra.html#cb163-4" aria-hidden="true" tabindex="-1"></a><span class="co"># India&#39;s population in 2010</span></span>
-<span id="cb163-5"><a href="Map_Algebra.html#cb163-5" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;pop_india2010&quot;</span>)</span>
-<span id="cb163-6"><a href="Map_Algebra.html#cb163-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb163-7"><a href="Map_Algebra.html#cb163-7" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
-<span id="cb163-8"><a href="Map_Algebra.html#cb163-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pop_india2000)</span>
-<span id="cb163-9"><a href="Map_Algebra.html#cb163-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pop_india2010)</span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="Map_Algebra.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="co"># India&#39;s population in 2000</span></span>
+<span id="cb166-2"><a href="Map_Algebra.html#cb166-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;pop_india2000&quot;</span>)</span>
+<span id="cb166-3"><a href="Map_Algebra.html#cb166-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb166-4"><a href="Map_Algebra.html#cb166-4" aria-hidden="true" tabindex="-1"></a><span class="co"># India&#39;s population in 2010</span></span>
+<span id="cb166-5"><a href="Map_Algebra.html#cb166-5" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;pop_india2010&quot;</span>)</span>
+<span id="cb166-6"><a href="Map_Algebra.html#cb166-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb166-7"><a href="Map_Algebra.html#cb166-7" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb166-8"><a href="Map_Algebra.html#cb166-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pop_india2000)</span>
+<span id="cb166-9"><a href="Map_Algebra.html#cb166-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pop_india2010)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-123-1.png" width="672" /></p>
 <p>Let’s compute now the difference between the two rasters. To do so, there are various
 options. As first we can create a function that performs a simple subtraction of two
 rasters.</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="Map_Algebra.html#cb164-1" aria-hidden="true" tabindex="-1"></a>diff_rasters <span class="ot">&lt;-</span> <span class="cf">function</span>(b1, b2) {</span>
-<span id="cb164-2"><a href="Map_Algebra.html#cb164-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># this function calculates the difference between two rasters of the same CRS and</span></span>
-<span id="cb164-3"><a href="Map_Algebra.html#cb164-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># extent input: 2 raster layers of the same extent, crs that can be subtracted</span></span>
-<span id="cb164-4"><a href="Map_Algebra.html#cb164-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># output: a single different raster of the same extent, crs of the input rasters</span></span>
-<span id="cb164-5"><a href="Map_Algebra.html#cb164-5" aria-hidden="true" tabindex="-1"></a>    diff <span class="ot">&lt;-</span> b2 <span class="sc">-</span> b1</span>
-<span id="cb164-6"><a href="Map_Algebra.html#cb164-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(diff)</span>
-<span id="cb164-7"><a href="Map_Algebra.html#cb164-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="Map_Algebra.html#cb167-1" aria-hidden="true" tabindex="-1"></a>diff_rasters <span class="ot">&lt;-</span> <span class="cf">function</span>(b1, b2) {</span>
+<span id="cb167-2"><a href="Map_Algebra.html#cb167-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># this function calculates the difference between two rasters of the same CRS and</span></span>
+<span id="cb167-3"><a href="Map_Algebra.html#cb167-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># extent input: 2 raster layers of the same extent, crs that can be subtracted</span></span>
+<span id="cb167-4"><a href="Map_Algebra.html#cb167-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># output: a single different raster of the same extent, crs of the input rasters</span></span>
+<span id="cb167-5"><a href="Map_Algebra.html#cb167-5" aria-hidden="true" tabindex="-1"></a>    diff <span class="ot">&lt;-</span> b2 <span class="sc">-</span> b1</span>
+<span id="cb167-6"><a href="Map_Algebra.html#cb167-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(diff)</span>
+<span id="cb167-7"><a href="Map_Algebra.html#cb167-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Since, we created the function for subtracting one raster from another, we use now
 the function <em>overlay</em> of the <code>raster</code> package for producing the new raster output.</p>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="Map_Algebra.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the raster that depicts the difference in population in these 10 years</span></span>
-<span id="cb165-2"><a href="Map_Algebra.html#cb165-2" aria-hidden="true" tabindex="-1"></a>pop2010_2000 <span class="ot">&lt;-</span> <span class="fu">overlay</span>(pop_india2000, pop_india2010, <span class="at">fun =</span> diff_rasters)</span>
-<span id="cb165-3"><a href="Map_Algebra.html#cb165-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb165-4"><a href="Map_Algebra.html#cb165-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pop2010_2000, <span class="at">main =</span> <span class="st">&quot;India&#39;s population difference in the timespan of 10 years&quot;</span>, </span>
-<span id="cb165-5"><a href="Map_Algebra.html#cb165-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">cex.main =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="Map_Algebra.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the raster that depicts the difference in population in these 10 years</span></span>
+<span id="cb168-2"><a href="Map_Algebra.html#cb168-2" aria-hidden="true" tabindex="-1"></a>pop2010_2000 <span class="ot">&lt;-</span> <span class="fu">overlay</span>(pop_india2000, pop_india2010, <span class="at">fun =</span> diff_rasters)</span>
+<span id="cb168-3"><a href="Map_Algebra.html#cb168-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-4"><a href="Map_Algebra.html#cb168-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pop2010_2000, <span class="at">main =</span> <span class="st">&quot;India&#39;s population difference in the timespan of 10 years&quot;</span>, </span>
+<span id="cb168-5"><a href="Map_Algebra.html#cb168-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">cex.main =</span> <span class="dv">1</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-125-1.png" width="672" /></p>
 
 </div>
