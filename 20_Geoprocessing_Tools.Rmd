@@ -10,11 +10,7 @@ Generally speaking ESRI's approach to building ArcGIS is to create a tool for ev
 
 
 
-```{r, echo = TRUE}
-knitr::opts_chunk$set(echo = FALSE, message=FALSE)
-```
-
-```{r, echo = TRUE}
+```{r, echo = FALSE}
 
 library(dplyr)
 library(readr)
