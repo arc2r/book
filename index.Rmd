@@ -1,13 +1,16 @@
 ---
 title: "All things R Spatial"
-subtitle: "arc2r: An introduction to spatial-R for recovering ArcGIS users"
+subtitle: "An introduction to spatial R for ArcGIS users"
 author: "Nils Ratnaweera and Nikolaos Bakogiannis"
-date: "`r format(Sys.time(), '%d %B, %Y')`"
+date: "Version from: `r format(Sys.time(), '%d %B, %Y')`"
 site: bookdown::bookdown_site
 bibliography:
   - bibliography/general.bib
   - bibliography/packages.bib
 nocite: '@*'
+url: https://arc2r.github.io/book/
+github-repo: https://github.com/arc2r/book
+cover-image: images/logo.png
 ---
 
 
@@ -17,7 +20,13 @@ tz <- Sys.timezone()
 ```
 
 
+```{r,echo=FALSE,message=FALSE,warning=FALSE, out.width="50%", fig.align="center"}
+knitr::include_graphics('images/logo.svg')
+```
+
+
 [![Actions Status](https://github.com/arc2r/book/workflows/bookdown/badge.svg)](https://github.com/arc2r/book/actions)
+
 
 
 # Welcome!
