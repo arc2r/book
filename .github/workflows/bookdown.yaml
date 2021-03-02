@@ -37,9 +37,17 @@ jobs:
 
       - name: Install packages
         run: |
-          sudo apt-get install libcurl4-openssl-dev
-          sudo apt install libudunits2-dev
-          sudo apt-get install libgdal1-dev gdal-bin libproj-dev proj-data proj-bin libgeos-dev
+          # sudo apt-get install libcurl4-openssl-dev
+          # sudo apt install libudunits2-dev
+          # sudo apt-get install libgdal1-dev gdal-bin libproj-dev proj-data proj-bin libgeos-dev
+          sudo apt install \
+            libudunits2-dev \
+            libgdal-dev \
+            libgeos-dev \
+            libproj-dev \
+            libv8-dev \
+            libjq-dev \
+            libcurl4-openssl-dev
           R -e 'install.packages("remotes")'
           R -e 'remotes::install_deps()'
           R -e 'remotes::install_github("arc2r/arc2r",dependencies = TRUE, upgrade = "always")'
