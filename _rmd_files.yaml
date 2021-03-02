@@ -1,7 +1,7 @@
 --- # Rmdfile
   Meta:
     - index.Rmd
-    - setting_up.Rmd
+    - 01_Setting_up.Rmd
   Getting Started:
     index: 10_Getting_Started.Rmd
     chapters:
@@ -100,12 +100,12 @@
       index: NULL
       chapters:
         Progress:
-          folder: 99_Appendix
+          folder: 90_Appendix
           index: Progress.Rmd
           subchapters:
           - Sessioninfo.Rmd
   
   References:
-    index: bibliography.Rmd
+    index: 95_Bibliography.Rmd
           
 
