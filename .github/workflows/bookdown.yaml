@@ -74,21 +74,11 @@ jobs:
           user-email: 'rata@zhaw.ch'
           commit-message: 'updated bookdown'
           
-
-          
-      # - name: Build readme
-      #   run: |
-      #     R -e 'rmarkdown::render("Readme.Rmd","github_document",output_file = "Readme.md")'
-      # 
-      # - name: Commit readme
-      #   run: |
-      #     git config --local user.email "action@github.com"
-      #     git config --local user.name "GitHub Action"
-      #     git add README.md
-      #     git commit -m "update Readme"
-      #     
-      # - name: Push changes to readme
-      #   uses: ad-m/github-push-action@master
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+  upload_on_fail:
+    steps:
+      - uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: main_rmd_file
+          path: _main.Rmd
       
