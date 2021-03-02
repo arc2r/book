@@ -17,7 +17,7 @@ data("swissAlti3D")
 As we saw in chapter \@ref(importing-vector-sf), we can quickly visualize an `sf` object by simply calling `plot`. This will return a small multiple of your geodata, where each facet is colour coded based on a column. 
 
 
-```{r}
+```{r, echo = TRUE}
 plot(gemeindegrenzen_zh)
 ```
 
