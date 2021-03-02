@@ -5,11 +5,13 @@ on:
       - master
 
 name: bookdown
-strategy:
-  max-parallel: 1
+
 
 
 jobs:
+  strategy:
+    max-parallel: 1
+    
   build_book:
     
     name: Build the book
