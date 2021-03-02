@@ -5,9 +5,14 @@ on:
       - master
 
 name: bookdown
+strategy:
+  max-parallel: 1
+
 
 jobs:
-  build:
+  build_book:
+    
+    name: Build the book
     runs-on: macOS-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -50,17 +55,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: /docs
           
-      - name: Pushes to another arc2r.github.io
-        uses: cpina/github-action-push-to-another-repository@master
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-        with:
-          source-directory: 'docs'
-          destination-github-username: 'ratnanil'
-          destination-repository-name: 'arc2r.github.io'
-          destination-repository-username: 'arc2r'
-          user-email: 'rata@zhaw.ch'
-          commit-message: 'updated bookdown'
+
           
       # - name: Build readme
       #   run: |
@@ -77,3 +72,27 @@ jobs:
       #   uses: ad-m/github-push-action@master
       #   with:
       #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      
+  publish_book:
+  
+    name: Publish book
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps: 
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          ref: gh-pages
+        
+      - name: Pushes to another arc2r.github.io
+        uses: cpina/github-action-push-to-another-repository@master
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          source-directory: 'docs'
+          destination-github-username: 'ratnanil'
+          destination-repository-name: 'arc2r.github.io'
+          destination-repository-username: 'arc2r'
+          user-email: 'rata@zhaw.ch'
+          commit-message: 'updated bookdown'
