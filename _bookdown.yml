@@ -1,6 +1,6 @@
 rmd_files:
 - index.Rmd
-- setting_up.Rmd
+- 01_Setting_up.Rmd
 - 10_Getting_Started.Rmd
 - 11_Data/Data.Rmd
 - 11_Data/import_vector.Rmd
@@ -43,8 +43,8 @@ rmd_files:
 - 33_Topology_Rules/Line.Rmd
 - 33_Topology_Rules/Point.Rmd
 - 33_Topology_Rules/Line_or_Polygon.Rmd
-- 99_Appendix/Progress.Rmd
-- 99_Appendix/Sessioninfo.Rmd
-- bibliography.Rmd
+- 90_Appendix/Progress.Rmd
+- 90_Appendix/Sessioninfo.Rmd
+- 95_Bibliography.Rmd
 delete_merged_file: yes
 output_dir: docs
