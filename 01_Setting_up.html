@@ -162,12 +162,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#what-this-book-is-about"><i class="fa fa-check"></i><b>1.1</b> What this book is about</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#how-it-started"><i class="fa fa-check"></i><b>1.2</b> How it started</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="setting_up.html"><a href="setting_up.html"><i class="fa fa-check"></i><b>2</b> How to use this book</a>
+<li class="chapter" data-level="2" data-path="01_Setting_up.html"><a href="01_Setting_up.html"><i class="fa fa-check"></i><b>2</b> How to use this book</a>
 <ul>
-<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-1-installing-r"><i class="fa fa-check"></i>Step 1: Installing R</a></li>
-<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-2-installing-rstudio"><i class="fa fa-check"></i>Step 2: Installing RStudio</a></li>
-<li><a href="setting_up.html#step-3-install-the-accompanying-package-arc2r">Step 3: Install the accompanying package <code>arc2r</code></a></li>
-<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-4-create-a-new-project"><i class="fa fa-check"></i>Step 4: Create a new project</a></li>
+<li class="chapter" data-level="" data-path="01_Setting_up.html"><a href="01_Setting_up.html#step-1-installing-r"><i class="fa fa-check"></i>Step 1: Installing R</a></li>
+<li class="chapter" data-level="" data-path="01_Setting_up.html"><a href="01_Setting_up.html#step-2-installing-rstudio"><i class="fa fa-check"></i>Step 2: Installing RStudio</a></li>
+<li><a href="01_Setting_up.html#step-3-install-the-accompanying-package-arc2r">Step 3: Install the accompanying package <code>arc2r</code></a></li>
+<li class="chapter" data-level="" data-path="01_Setting_up.html"><a href="01_Setting_up.html#step-4-create-a-new-project"><i class="fa fa-check"></i>Step 4: Create a new project</a></li>
 </ul></li>
 <li class="part"><span><b>I Getting Started</b></span></li>
 <li class="chapter" data-level="" data-path="10_Getting_Started.html"><a href="10_Getting_Started.html"><i class="fa fa-check"></i>About this section</a></li>
@@ -377,7 +377,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="Progress.html"><a href="Progress.html"><i class="fa fa-check"></i><b>A</b> Progress</a></li>
 <li class="chapter" data-level="B" data-path="Sessioninfo.html"><a href="Sessioninfo.html"><i class="fa fa-check"></i><b>B</b> Sessioninfo</a></li>
-<li class="chapter" data-level="" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="95_Bibliography.html"><a href="95_Bibliography.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://www.zhaw.ch/en/about-us/person/rata/">Nils Ratnaweera</a></li>
 <li><a href="https://www.zhaw.ch/en/about-us/person/bako/"> Nikolaos Bakogiannis </a></li>
@@ -454,9 +454,9 @@ GIS @ ZHAW</a></li>
    </TR>
    <TR>
      <TD>3. Install the accompanying R Package "arc2r"  </TD>
-     <TD COLSPAN = "2" ALIGN = "CENTER">remotes::install_github("arc2r/arc2r")      </TD>
+     <TD COLSPAN = "2" ALIGN = "CENTER">install_github("arc2r/arc2r")</TD>
      <TD>this step is not necessary </TD>
-     <TD>remotes::install_github("arc2r/arc2r")</TD>
+     <TD>install_github("arc2r/arc2r")</TD>
    </TR>
    <TR>
      <TD>4. Create a new Project using the Templates    </TD>
@@ -480,13 +480,13 @@ GIS @ ZHAW</a></li>
 <h2>Step 3: Install the accompanying package <code>arc2r</code></h2>
 <p>This book has an accompanying package that will provide you with all the necessary datasets. Plus, installing this package in the right way (<code>dependencies = TRUE</code>) will also provide you with all the necessary packages, so you don’t have to install them manually.
 Since the package is hosted on github and is not available on CRAN, you cannot install it the usual way (<code>install.packages("arc2r")</code>). Instead, you will have to install it using the <code>remotes</code> packages, which <em>is</em> on CRAN. This package will provide you with a function named <code>install_github()</code>, which allows installing packages from github. Note: Since the package contains all the datasets, this might take a while. You might get promted to upgrade your <code>R</code> packages: We recommend you do so. If you are afraid of messing up dependencies in other projects, cosider working with <a href="https://rstudio.github.io/renv/"><code>renv</code></a>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="setting_up.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;remotes&quot;</span>)</span>
-<span id="cb1-2"><a href="setting_up.html#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="setting_up.html#cb1-3" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;arc2r/arc2r&quot;</span>, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="01_Setting_up.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;remotes&quot;</span>)</span>
+<span id="cb1-2"><a href="01_Setting_up.html#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="01_Setting_up.html#cb1-3" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;arc2r/arc2r&quot;</span>, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 </div>
 <div id="step-4-create-a-new-project" class="section level2 unnumbered">
 <h2>Step 4: Create a new project</h2>
-<p>If you are working with RStudio, you can make use of the RMarkdown Template that we provide you with the data package you installed in the last step. To use these, restart RStudio and create a new project (File &gt; New Project). Choose “New Directory” and in the next window, click on the the template we created for following along (see figure <a href="setting_up.html#fig:projettemplate">2.1</a>).</p>
+<p>If you are working with RStudio, you can make use of the RMarkdown Template that we provide you with the data package you installed in the last step. To use these, restart RStudio and create a new project (File &gt; New Project). Choose “New Directory” and in the next window, click on the the template we created for following along (see figure <a href="01_Setting_up.html#fig:projettemplate">2.1</a>).</p>
 <p>Note that this feature is not available if you are using a different IDE than RStudio or if you are working on RStudio Cloud.</p>
 <div class="figure"><span id="fig:projettemplate"></span>
 <img src="images/new_project.jpg" alt="To use the templates, click on 'Create project' and then on 'arc2r: all things R Spatial' " width="49%" /><img src="images/template.jpg" alt="To use the templates, click on 'Create project' and then on 'arc2r: all things R Spatial' " width="49%" />
@@ -550,7 +550,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/arc2r/book/edit/master/setting_up.Rmd",
+"link": "https://github.com/arc2r/book/edit/master/01_Setting_up.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -558,7 +558,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/arc2r/book/blob/master/setting_up.Rmd",
+"link": "https://github.com/arc2r/book/blob/master/01_Setting_up.Rmd",
 "text": null
 },
 "download": null,

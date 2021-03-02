@@ -162,12 +162,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#what-this-book-is-about"><i class="fa fa-check"></i><b>1.1</b> What this book is about</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#how-it-started"><i class="fa fa-check"></i><b>1.2</b> How it started</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="setting_up.html"><a href="setting_up.html"><i class="fa fa-check"></i><b>2</b> How to use this book</a>
+<li class="chapter" data-level="2" data-path="01_Setting_up.html"><a href="01_Setting_up.html"><i class="fa fa-check"></i><b>2</b> How to use this book</a>
 <ul>
-<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-1-installing-r"><i class="fa fa-check"></i>Step 1: Installing R</a></li>
-<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-2-installing-rstudio"><i class="fa fa-check"></i>Step 2: Installing RStudio</a></li>
-<li><a href="setting_up.html#step-3-install-the-accompanying-package-arc2r">Step 3: Install the accompanying package <code>arc2r</code></a></li>
-<li class="chapter" data-level="" data-path="setting_up.html"><a href="setting_up.html#step-4-create-a-new-project"><i class="fa fa-check"></i>Step 4: Create a new project</a></li>
+<li class="chapter" data-level="" data-path="01_Setting_up.html"><a href="01_Setting_up.html#step-1-installing-r"><i class="fa fa-check"></i>Step 1: Installing R</a></li>
+<li class="chapter" data-level="" data-path="01_Setting_up.html"><a href="01_Setting_up.html#step-2-installing-rstudio"><i class="fa fa-check"></i>Step 2: Installing RStudio</a></li>
+<li><a href="01_Setting_up.html#step-3-install-the-accompanying-package-arc2r">Step 3: Install the accompanying package <code>arc2r</code></a></li>
+<li class="chapter" data-level="" data-path="01_Setting_up.html"><a href="01_Setting_up.html#step-4-create-a-new-project"><i class="fa fa-check"></i>Step 4: Create a new project</a></li>
 </ul></li>
 <li class="part"><span><b>I Getting Started</b></span></li>
 <li class="chapter" data-level="" data-path="10_Getting_Started.html"><a href="10_Getting_Started.html"><i class="fa fa-check"></i>About this section</a></li>
@@ -377,7 +377,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="Progress.html"><a href="Progress.html"><i class="fa fa-check"></i><b>A</b> Progress</a></li>
 <li class="chapter" data-level="B" data-path="Sessioninfo.html"><a href="Sessioninfo.html"><i class="fa fa-check"></i><b>B</b> Sessioninfo</a></li>
-<li class="chapter" data-level="" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="95_Bibliography.html"><a href="95_Bibliography.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://www.zhaw.ch/en/about-us/person/rata/">Nils Ratnaweera</a></li>
 <li><a href="https://www.zhaw.ch/en/about-us/person/bako/"> Nikolaos Bakogiannis </a></li>
@@ -421,28 +421,28 @@ replac this with a real life dataset
 <span id="cb141-10"><a href="Zonal.html#cb141-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb141-11"><a href="Zonal.html#cb141-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Zonal statistics - Summarize</span></span>
 <span id="cb141-12"><a href="Zonal.html#cb141-12" aria-hidden="true" tabindex="-1"></a><span class="fu">zonal</span>(r, z, <span class="st">&quot;sum&quot;</span>)</span></code></pre></div>
-<pre><code>##      zone      sum
-## [1,]    1 113.4274
-## [2,]    2 319.6282
-## [3,]    3 546.0724
-## [4,]    4 826.5709
-## [5,]    5 786.2122</code></pre>
+<pre><code>##      zone       sum
+## [1,]    1  91.45046
+## [2,]    2 273.45239
+## [3,]    3 493.49186
+## [4,]    4 607.91764
+## [5,]    5 983.46942</code></pre>
 <div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="Zonal.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Zonal statistics - Mean</span></span>
 <span id="cb143-2"><a href="Zonal.html#cb143-2" aria-hidden="true" tabindex="-1"></a><span class="fu">zonal</span>(r, z, <span class="st">&quot;mean&quot;</span>)</span></code></pre></div>
 <pre><code>##      zone      mean
-## [1,]    1  5.671368
-## [2,]    2 15.981409
-## [3,]    3 27.303618
-## [4,]    4 41.328544
-## [5,]    5 39.310608</code></pre>
+## [1,]    1  4.572523
+## [2,]    2 13.672619
+## [3,]    3 24.674593
+## [4,]    4 30.395882
+## [5,]    5 49.173471</code></pre>
 <div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="Zonal.html#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Zonal statistics - Minimum</span></span>
 <span id="cb145-2"><a href="Zonal.html#cb145-2" aria-hidden="true" tabindex="-1"></a><span class="fu">zonal</span>(r, z, <span class="st">&quot;min&quot;</span>)</span></code></pre></div>
-<pre><code>##      zone       min
-## [1,]    1 0.1451089
-## [2,]    2 1.1925336
-## [3,]    3 0.4038655
-## [4,]    4 0.1906627
-## [5,]    5 1.5951449</code></pre>
+<pre><code>##      zone        min
+## [1,]    1  0.1732373
+## [2,]    2  1.7665573
+## [3,]    3  5.0742877
+## [4,]    4 10.0742510
+## [5,]    5 18.6159826</code></pre>
 
 </div>
 </div>
