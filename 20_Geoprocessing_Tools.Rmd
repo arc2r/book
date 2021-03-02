@@ -19,13 +19,13 @@ library(data.tree)
 library(networkD3)
 library(yaml)
 
-tools <- read_csv("ESRI_Tool_names.csv") %>%
+tools <- read_csv("auxiliary/ESRI_Tool_names.csv") %>%
   mutate(toolb = str_remove(toolb," toolbox")) %>%
   distinct(toolb, toolset, Tool)
   
-toolsets <-  read_csv("ESRI_Toolsets.csv") %>%
+toolsets <-  read_csv("auxiliary/ESRI_Toolsets.csv") %>%
   distinct(toolb, tool)
-toolboxes <- read_csv("ESRI_Toolboxes.csv") %>%
+toolboxes <- read_csv("auxiliary/ESRI_Toolboxes.csv") %>%
   distinct(name)
 ```
 
