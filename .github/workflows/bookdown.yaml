@@ -74,10 +74,7 @@ jobs:
           user-email: 'rata@zhaw.ch'
           commit-message: 'updated bookdown'
           
-  upload_on_fail:
-    name: Build the book
-    runs-on: ubuntu-latest
-    steps:
+
       - uses: actions/upload-artifact@v2
         if: failure()
         with:
