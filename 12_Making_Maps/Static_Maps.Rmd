@@ -10,6 +10,10 @@ library(ggplot2)
 
 data("gemeindegrenzen_zh")
 data("swissAlti3D")
+
+# Just to be sure, let's set the CRS for the dataset explicitly. You will 
+# learn more about this later
+st_crs(gemeindegrenzen_zh) <- 2056
 ```
 
 
