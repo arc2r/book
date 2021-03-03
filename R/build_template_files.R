@@ -11,8 +11,8 @@ library(dplyr)
 library(knitr)
 rmd_files_yaml <- yaml::read_yaml("_rmd_files.yaml")
 
-filelist <- map(rmd_files_yaml, function(x){
-  if(is.list(x)){
+filelist <- imap(rmd_files_yaml, function(x,nam){
+  if(is.list(x) & !(nam %in% c("Appendix"))){
     map(x[["chapters"]], function(y){
       file.path(y$folder,y$subchapters)
     })
