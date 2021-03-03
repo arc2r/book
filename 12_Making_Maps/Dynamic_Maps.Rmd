@@ -30,6 +30,11 @@ library(mapview)
 This next line of code generates a representation of your data (in this case, `gemeindegrenzen_zh`), much like the default map in ArcGIS. 
 
 ```{r, eval=Sys.getenv("RSTUDIO_USER_IDENTITY") != "rata"}
+
+# Just to be sure, let's specify the CRS of the dataset. You will learn about
+# this later.
+st_crs(gemeindegrenzen_zh) <- 2056
+
 mapview(gemeindegrenzen_zh)
 ```
 
